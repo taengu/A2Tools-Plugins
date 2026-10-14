@@ -215,8 +215,8 @@ function render() {
 }
 
 // Where a pet's souls come from: the monsters that drop them (level, chance,
-// zone and map, nearest Kibelisk) and the chests that hold them, with the
-// metabot.gg page the data is from.
+// zone and map, nearest Kibelisk) and the chests that hold them, from the
+// game's own data (sources.js).
 function whereOf(id) {
   const box = document.createElement("div");
   box.className = "where";
@@ -239,8 +239,10 @@ function whereOf(id) {
       continue;
     }
     box.append(line("who", d.name, d.level && `Lv ${d.level}`, d.chance));
+    // In the Abyss each side has Kibelisks of its own: yours, when known.
+    const k = d.bySide?.[sideOf(key)] || d;
     // The teleport's number as the in-game map lists it, where known.
-    const kibelisk = d.kibelisk && (d.teleport ? `nearest teleport #${d.teleport} ${d.kibelisk}` : `near Kibelisk ${d.kibelisk}`);
+    const kibelisk = k.kibelisk && (k.teleport ? `nearest teleport #${k.teleport} ${k.kibelisk}` : `near Kibelisk ${k.kibelisk}`);
     box.append(line("at", d.where, kibelisk));
   }
   for (const c of src.chests) {
@@ -249,14 +251,6 @@ function whereOf(id) {
   }
   if (!src.drops.length && !src.chests.length) box.append(line("at", "No drops or chests listed."));
   if (elsewhere.size) box.append(line("at", `Also drops in ${[...elsewhere].join(", ")} (hidden)`));
-  const credit = document.createElement("div");
-  credit.className = "credit";
-  const link = document.createElement("a");
-  link.href = src.url;
-  link.textContent = `metabot.gg: ${src.title}`;
-  link.title = src.url;
-  credit.append("Source: ", link);
-  box.append(credit);
   return box;
 }
 
@@ -467,11 +461,6 @@ els.hideMax.addEventListener("change", () => {
   prefs.hideMax = els.hideMax.checked;
   savePrefs();
   render();
-});
-// The plugin's frame can't open a browser: a link's click would only take the
-// window away from the plugin, so links are there to name and credit the page.
-document.addEventListener("click", (e) => {
-  if (e.target.closest("a")) e.preventDefault();
 });
 // A click on a pet shows or hides where its souls drop (a double click on
 // its name still renames it).

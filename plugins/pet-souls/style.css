@@ -212,7 +212,6 @@ body.compact .foot {
 }
 .where .who { color: rgba(255, 255, 255, 0.9); margin-top: 3px; }
 .where .at { color: rgba(255, 255, 255, 0.55); }
-.where .credit { margin-top: 4px; font-size: 11px; color: rgba(255, 255, 255, 0.45); }
 .where a, .foot a { color: #8fc2ff; text-decoration: none; }
 
 /* Pin to the top, and the pet being farmed. */

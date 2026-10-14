@@ -4,7 +4,7 @@ Reviewed plugins for the [A2 Tools DPS Meter](https://a2tools.app), the damage m
 
 | Plugin | What it does |
 |---|---|
-| [Pet Soul Tracker](plugins/pet-souls) | How many souls each of your pets still needs to reach level 3, from the game's own pet data, with filters by genus and level, in all ten meter languages, and where each pet's souls drop (from metabot.gg). |
+| [Pet Soul Tracker](plugins/pet-souls) | How many souls each of your pets still needs to reach level 3, from the game's own pet data, with filters by genus and level, in all ten meter languages, and where each pet's souls drop and the nearest teleport, from the game's own data. |
 
 ## Install a plugin
 

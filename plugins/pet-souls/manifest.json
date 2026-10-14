@@ -1,10 +1,10 @@
 {
   "id": "pet-souls",
   "name": "Pet Soul Tracker",
-  "version": "0.3.3",
+  "version": "0.4.0",
   "apiVersion": 1,
   "author": "A2 Tools",
-  "description": "Souls still needed to raise each pet, from the game's own pet data, and where each pet's souls drop (from metabot.gg).",
+  "description": "Souls still needed to raise each pet, from the game's own pet data, and where each pet's souls drop.",
   "permissions": ["storage", "events:character", "decoder:pet-list", "decoder:soul-gained", "decoder:level-up"],
   "decoders": [
     {

@@ -16,13 +16,13 @@ A pet levels up as soon as its souls reach what its level needs, and its count s
 
 ## Where souls drop
 
-Click a pet to see where its souls come from: the monsters that drop them (level, drop chance, zone and map, number of spawns, nearest Kibelisk) and the chests that hold them. Click it again to close. Each pet's sources end with the metabot.gg page they came from.
+Click a pet to see where its souls come from: the monsters that drop them (level, drop chance, zone and map, number of spawns, nearest Kibelisk) and the chests that hold them. Click it again to close.
 
-- In Altgard and Verteron, the nearest Kibelisk also shows its number as the in-game map lists it ("nearest teleport #18 Odar's Shade"). Where the game's list cuts two names alike, both numbers show ("#17/18"). Reshanta shows the name only, until its list is added to `tools/metabot-souls/teleports.json`.
+- The nearest Kibelisk shows its number as the in-game map lists it ("nearest teleport #18 Odar's Shade"), and how far it is from the middle of the spawns. In the Abyss, where each side has Kibelisks of its own, it is the nearest one your side can use.
 - The region chips (Altgard, Verteron, Lower and Middle Reshanta) choose which regions you farm in: the list shows only the pets whose souls drop in a region that is on (a pinned pet always shows, and so does one no monster is known to drop), and a pet's sources show only those regions' spawns. Until you change them, the other side's maps are off: Verteron for an Asmodian, Altgard for an Elyos, from the server number (1xxx Elyos, 2xxx Asmodian). A pet that also drops in a turned-off region says so. Turn on one region to list what you can farm there.
-- 199 of the 200 pets that take souls have sources (metabot.gg has no page for Krao Test Subject).
+- All 200 pets that take souls have sources: 165 drop from monsters, and every one is in a Pet Soul Chest.
 
-The data is [metabot.gg](https://metabot.gg/en/aion-2)'s, one page per soul, which its terms allow reusing with a link to each page. The plugin has no network access, so the data ships in `sources.js` and changes only with a new version. `tools/metabot-souls/update.sh` refreshes it: it downloads only the pages that changed since the last run (each page is kept with its ETag, so an unchanged one costs a "304 Not Modified"), one request every 1.5 s, and rebuilds `sources.js` with `build.py`. The teleport numbers in `teleports.json` were read from the in-game map: Altgard from screenshots, Verteron from a video of its list.
+The data is the game's own: the soul items, which monsters drop them and how often, the chests and where they come from, and every spawn point and Kibelisk on each map, read from the game client's tables and map data. The plugin has no network access, so the data ships in `sources.js` and changes only with a new version. To rebuild it after a game patch, extract the client's `AION2/Content/Data/Table`, `Data/Map` and `Data/MapDataHierarchy` with [Aion2DataExtractor](https://github.com/adainrivers/aion2-data-extractor), then run `python tools/game-souls/gamesouls.py --tables <Output>/AION2/Content/Data/Table --compare plugins/pet-souls/sources.js` (the report lists what changed).
 
 ## Permissions
 
