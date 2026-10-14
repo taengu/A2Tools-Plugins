@@ -6,8 +6,12 @@ The data comes from the game client, extracted with Aion2DataExtractor
 (github.com/adainrivers/aion2-data-extractor) with these Include prefixes:
     AION2/Content/Data/Table, AION2/Content/Data/Map, AION2/Content/Data/MapDataHierarchy
 --tables is the Table folder; Map and MapDataHierarchy are found beside it.
-Writes plugins/pet-souls/sources.js. --compare <old sources.js> also writes a
-report of what changed (--report), --debug the ids behind each row.
+Writes plugins/pet-souls/sources.js: PET_SOURCES (ids, numbers and text keys)
+and SOURCE_TEXT (each text key in every language the client has). The Global
+client has eight languages; --tw-l10n <...>/L10N from the Taiwan client adds
+Traditional Chinese, and Simplified Chinese is converted from it (OpenCC).
+--compare <old sources.js> also writes a report of what changed in English
+(--report), --debug the ids behind each row.
 
 Chain (all client tables under AION2/Content/Data/Table):
   VehicleList.ID (pet id) .SoulItemName -> Item.Name (soul item; also
@@ -60,6 +64,12 @@ def pct(p, scale):
 
 
 # Where a box comes from, from its own ItemGetRoute entry (field -> label).
+# The meter's language codes, and the client's L10N folder for each.
+LANG_DIRS = {"en": "en-US", "ko": "ko-KR", "ja": "ja-JP", "de": "de-DE", "fr": "fr-FR",
+             "es": "es-ES", "pt": "pt-BR", "ru": "ru-RU"}
+# Where a box comes from, as the game words it where it has a string for it.
+ROUTE_TEXT_KEYS = {"BattlePassInfo": "STR_ITEM_TOOLTIP_BattlePass"}
+
 ROUTE_LABELS = [
     ("BattlePassInfo", "Battle pass"),
     ("MembershipPassInfo", "Membership pass"),
@@ -100,6 +110,7 @@ def main():
     ap.add_argument("--compare", default=None, help="an earlier sources.js to report the changes against")
     ap.add_argument("--report", default="diff_report.txt")
     ap.add_argument("--debug", action="store_true", help="also write <out>_debug.json: the ids behind each row")
+    ap.add_argument("--tw-l10n", default=None, help="the Taiwan client's extracted Table/L10N folder (zh-TW)")
     ap.add_argument("--chances", action=argparse.BooleanOptionalAction, default=True,
                     help="include drop chances (from RewardData/RewardItem)")
     ap.add_argument("--infer-model-key", action="store_true",
@@ -116,6 +127,41 @@ def main():
         if not key or key == "None":
             return ""
         return S.get(key) or S.get("String_" + key + "_body") or key
+
+    # Every language's strings, for SOURCE_TEXT.
+    langs = {}
+    for code, folder in LANG_DIRS.items():
+        fp = os.path.join(T, "L10N", folder, "L10NString.json")
+        if os.path.exists(fp):
+            with open(fp, encoding="utf-8") as f:
+                langs[code] = json.load(f)["Entries"]
+    if a.tw_l10n:
+        with open(os.path.join(a.tw_l10n, "zh-TW", "L10NString.json"), encoding="utf-8") as f:
+            langs["zh-Hant"] = json.load(f)["Entries"]
+    TEXT = {}
+
+    def tk(key):
+        """A text key for SOURCE_TEXT: the client's string key, registered
+        with its text in every language that has its own."""
+        if not key or key == "None":
+            return None
+        k = key if key in S else "String_" + key + "_body"
+        if k not in S:
+            return lit(key)
+        if k not in TEXT:
+            t = {"en": S[k]}
+            for code, E in langs.items():
+                x = E.get(k)
+                if code != "en" and x and x != k and x.strip() not in ("???", "None") and x != S[k]:
+                    t[code] = x
+            TEXT[k] = t
+        return k
+
+    def lit(text):
+        """A text the client has no string for, kept as it is."""
+        k = "=" + text
+        TEXT.setdefault(k, {"en": text})
+        return k
 
     print("loading tables...", file=sys.stderr)
     vehicles = load(T, "VehicleList.json")
@@ -209,6 +255,17 @@ def main():
         for it in b["Items"]:
             if "Prob" in it:
                 chests_by_soul[it["Item"]].append((b, it["Prob"] / 1e4))
+
+    def box_from_keys(box_item):
+        """Where a box comes from, as text keys."""
+        r = routes.get(v(box_item["ID"])) if box_item else None
+        if not r:
+            return []
+        keys = [tk(ROUTE_TEXT_KEYS[key]) if key in ROUTE_TEXT_KEYS else lit(lab)
+                for key, lab in ROUTE_LABELS if r.get(key)]
+        if r.get("RewardBoxInfo", {}).get("BoxDatas") or r.get("RewardBoxInfo", {}).get("BoxClassDatas"):
+            keys.append(lit("Other boxes"))
+        return keys
 
     def box_from(box_item):
         r = routes.get(v(box_item["ID"])) if box_item else None
@@ -315,7 +372,7 @@ def main():
         m = re.match(r"TeleportArtifact_(\d+)$", e.get("UsageValue", ""))
         if m and int(m.group(1)) in tele_art:
             order = tele_art[int(m.group(1))]["Order"]
-        return tr(e["Desc"]["Key"]), round(dist), order, eid
+        return tr(e["Desc"]["Key"]), round(dist), order, eid, e["Desc"]["Key"]
 
     def join_zones(subs):
         if len(subs) <= 1:
@@ -324,7 +381,7 @@ def main():
             return " and ".join(subs)
         return ", ".join(subs[:-1]) + ", and " + subs[-1]
 
-    out, debug = {}, {}
+    out, debug, data = {}, {}, {}
     for veh in vehicles:
         if veh["SoulItemName"] == "None":
             continue
@@ -353,7 +410,7 @@ def main():
         if a.infer_model_key:
             for nid in model_key_npcs.get(sname, []):
                 npc_src[nid].add("model_key")
-        drops, dbg = [], []
+        drops, dbg, sdrops = [], [], []
         for npc_id in sorted(npc_src):
             n = npcs.get(npc_id)
             if not n:
@@ -377,22 +434,32 @@ def main():
                 use = {None: []}
             for mid, pos in sorted(use.items(), key=lambda kv: -len(kv[1])):
                 d = {"name": tr(n["Desc"]["Key"]), "level": str(n["Level"])}
+                sd = {"npc": tk(n["Desc"]["Key"]), "level": n["Level"]}
                 if a.chances:
                     d["chance"] = pct(chance, 1) if chance is not None else "?"
+                    if chance is not None:
+                        sd["chance"] = d["chance"]
                 cnt = defaultdict(int)
                 for x, y, z in pos:
                     cnt[subzone_at(mid, x, y, z)] += 1
-                subs = [tr(subzones[s_]["DisplayName"]["Key"])
-                        for s_, _ in sorted(cnt.items(), key=lambda kv: -kv[1]) if s_ in subzones]
+                sub_ids = [s_ for s_, _ in sorted(cnt.items(), key=lambda kv: -kv[1]) if s_ in subzones]
+                subs = [tr(subzones[s_]["DisplayName"]["Key"]) for s_ in sub_ids]
                 if not subs:  # no spawn data: hierarchy, then route subzones
                     ids_ = sorted(hier_npc_subzones.get((mid, npc_id), ()))
                     ids_ += [v(r["RegionInfo"]["SubzoneId"]) for r in route.get("MonsterGetRoutes", [])
                              if v(r["NpcId"]) == npc_id and v(r["RegionInfo"]["MapId"]) == mid]
-                    subs = [tr(subzones[s_]["DisplayName"]["Key"]) for s_ in ids_ if s_ in subzones]
+                    sub_ids = [s_ for s_ in ids_ if s_ in subzones]
+                    subs = [tr(subzones[s_]["DisplayName"]["Key"]) for s_ in sub_ids]
                 subs = list(dict.fromkeys(subs))
+                sd["zones"] = list(dict.fromkeys(tk(subzones[s_]["DisplayName"]["Key"]) for s_ in sub_ids))
                 parts = [join_zones(subs) or "?"]
                 if mid in maps:
                     parts.append(tr(maps[mid]["Desc"]["Key"]) or maps[mid]["Name"])
+                    # The region chips go by the English map name (saved choices too).
+                    sd["region"] = parts[-1]
+                    sd["map"] = tk(maps[mid]["Desc"]["Key"]) or lit(maps[mid]["Name"])
+                if pos:
+                    sd["spawns"] = len(pos)
                 if pos:
                     parts.append(f"{len(pos)} spawn" + ("" if len(pos) == 1 else "s"))
                 d["where"] = " · ".join(parts)
@@ -401,24 +468,28 @@ def main():
                     d["kibelisk"] = f"{k[0]} · {k[1]:,} m"
                     if k[2]:
                         d["teleport"] = k[2]
+                    sd["kibelisk"] = {"name": tk(k[4]), "m": k[1], **({"teleport": k[2]} if k[2] else {})}
                 # In the Abyss each side has Kibelisks of its own: the nearest
                 # one each side can use, where the two differ.
                 races = {kib_race(c[0]) for c in kibs.get(mid, [])}
                 if {"elyos", "asmodian"} <= races:
-                    by_side = {}
+                    by_side, s_by_side = {}, {}
                     for side in ("elyos", "asmodian"):
                         ks = nearest_kibelisk(mid, pos, side)
                         if ks:
                             by_side[side] = {"kibelisk": f"{ks[0]} · {ks[1]:,} m", **({"teleport": ks[2]} if ks[2] else {})}
+                            s_by_side[side] = {"name": tk(ks[4]), "m": ks[1], **({"teleport": ks[2]} if ks[2] else {})}
                     if by_side:
                         d["bySide"] = by_side
+                        sd["bySide"] = s_by_side
                 drops.append(d)
+                sdrops.append(sd)
                 dbg.append({"npc": npc_id, "npc_name": n["Name"], "grade": n["Grade"], "map": mid,
                             "sources": sorted(npc_src[npc_id]), "rewards": via,
                             "chance": chance, "spawns": len(pos), "route_kibelisk": route_kib.get(npc_id),
                             "kibelisk_envobj": k[3] if k else None,
                             "subzone_counts": {str(s_): c for s_, c in cnt.items()}})
-        chests = []
+        chests, schests = [], []
         for b, p in chests_by_soul.get(sname, []):
             bi = box_item_by_group.get(b["Group"])
             c = {"name": tr(bi["Desc"]["Key"]) if bi else b["Group"], "chance": pct(p, 1) + " per opening"}
@@ -426,14 +497,22 @@ def main():
             if f:
                 c["from"] = f
             chests.append(c)
+            sc = {"name": tk(bi["Desc"]["Key"]) if bi else lit(b["Group"]), "chance": pct(p, 1)}
+            if box_from_keys(bi):
+                sc["from"] = box_from_keys(bi)
+            schests.append(sc)
         out[str(pet_id)] = {"title": tr(soul["Desc"]["Key"]), "soul_item": sid, "drops": drops, "chests": chests}
+        data[str(pet_id)] = {"title": tk(soul["Desc"]["Key"]), "drops": sdrops, "chests": schests}
         debug[str(pet_id)] = dbg
 
     with open(a.out, "w", encoding="utf-8") as f:
         f.write("// Where each pet's souls come from, keyed by pet id: the monsters that drop\n")
         f.write("// them and the chests that hold them, from the game's own tables and map\n")
         f.write("// data. Generated by tools/game-souls/gamesouls.py: don't edit by hand.\n")
-        f.write("const PET_SOURCES = " + json.dumps(out, ensure_ascii=False, indent=1, sort_keys=True) + ";\n")
+        f.write("// Text values are keys into SOURCE_TEXT, which holds each in every language\n")
+        f.write("// that has its own (English otherwise).\n")
+        f.write("const PET_SOURCES = " + json.dumps(data, ensure_ascii=False, indent=1, sort_keys=True) + ";\n")
+        f.write("const SOURCE_TEXT = " + json.dumps(source_text(TEXT), ensure_ascii=False, indent=1, sort_keys=True) + ";\n")
     if a.debug:
         with open(os.path.splitext(a.out)[0] + "_debug.json", "w", encoding="utf-8") as f:
             json.dump(debug, f, ensure_ascii=False, indent=1)
@@ -444,10 +523,68 @@ def main():
         compare(out, a.compare, a.report)
 
 
+def source_text(text):
+    """SOURCE_TEXT, with Simplified Chinese converted from Traditional."""
+    try:
+        import opencc
+        t2s = opencc.OpenCC("t2s").convert
+    except ImportError:
+        t2s = None
+        print("opencc missing: no zh-Hans", file=sys.stderr)
+    out = {}
+    for k, t in text.items():
+        t = dict(t)
+        if t2s and "zh-Hant" in t:
+            t["zh-Hans"] = t2s(t["zh-Hant"])
+        out[k] = t
+    return out
+
+
+def legacy_rows(data, text):
+    """A structured sources.js rendered as the English rows the report compares."""
+    en = lambda k: (text.get(k) or {}).get("en", k[1:] if k and k.startswith("=") else k or "")
+
+    def zones(subs):
+        if len(subs) <= 1:
+            return "".join(subs)
+        if len(subs) == 2:
+            return " and ".join(subs)
+        return ", ".join(subs[:-1]) + ", and " + subs[-1]
+
+    out = {}
+    for pid, src in data.items():
+        drops = []
+        for sd in src["drops"]:
+            parts = [zones([en(z) for z in sd.get("zones", [])]) or "?"]
+            if sd.get("map"):
+                parts.append(en(sd["map"]))
+            if sd.get("spawns"):
+                parts.append(f"{sd['spawns']} spawn" + ("" if sd["spawns"] == 1 else "s"))
+            d = {"name": en(sd["npc"]), "level": str(sd["level"]), "chance": sd.get("chance", "?"), "where": " · ".join(parts)}
+            if sd.get("kibelisk"):
+                d["kibelisk"] = f"{en(sd['kibelisk']['name'])} · {sd['kibelisk']['m']:,} m"
+                if sd["kibelisk"].get("teleport"):
+                    d["teleport"] = sd["kibelisk"]["teleport"]
+            drops.append(d)
+        chests = []
+        for sc in src["chests"]:
+            c = {"name": en(sc["name"]), "chance": sc["chance"] + " per opening"}
+            if sc.get("from"):
+                c["from"] = "The box comes from " + ", ".join(en(k) for k in sc["from"])
+            chests.append(c)
+        out[pid] = {"title": en(src["title"]), "drops": drops, "chests": chests}
+    return out
+
+
 def compare(game, path, report):
     t = open(path, encoding="utf-8").read()
-    t = t[t.index("{"): t.rindex("}") + 1]
-    meta = json.loads(t)
+    if "SOURCE_TEXT" in t:
+        a_, b_ = t.split("const SOURCE_TEXT = ", 1)
+        meta = legacy_rows(json.loads(a_[a_.index("{"): a_.rindex("}") + 1]),
+                           json.loads(b_[b_.index("{"): b_.rindex("}") + 1]))
+    else:
+        t = t[t.index("{"): t.rindex("}") + 1]
+        meta = json.loads(t)
     L = []
     stats = defaultdict(int)
 
