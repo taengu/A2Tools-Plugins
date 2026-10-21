@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Daily Checklist</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="banner" hidden>
+      <div class="bannerText"></div>
+      <div class="bannerLink" hidden>
+        <select class="linkTo"></select>
+        <button type="button" class="linkYes">Link</button>
+        <button type="button" class="linkNo">Ignore</button>
+      </div>
+      <button type="button" class="bannerClose" title="Close">×</button>
+    </div>
+    <div class="head">
+      <span class="who"></span>
+      <span class="resets"></span>
+      <button type="button" class="edit" title="Edit the lists and settings">Edit</button>
+    </div>
+    <div class="lists">
+      <section data-kind="daily">
+        <h2><span class="title">Daily</span> <span class="tally"></span></h2>
+        <ul class="items"></ul>
+        <form class="add" hidden><input type="text" maxlength="60" placeholder="Add a daily…" /></form>
+      </section>
+      <section data-kind="weekly">
+        <h2><span class="title">Weekly</span> <span class="tally"></span></h2>
+        <ul class="items"></ul>
+        <form class="add" hidden><input type="text" maxlength="60" placeholder="Add a weekly…" /></form>
+      </section>
+      <section data-kind="once">
+        <h2><span class="title">One-time</span> <span class="tally"></span></h2>
+        <ul class="items"></ul>
+        <form class="add" hidden><input type="text" maxlength="60" placeholder="Add a one-time…" /></form>
+      </section>
+      <div class="others"></div>
+      <div class="settings" hidden>
+        <button type="button" class="makeMain" title="Main only items show on this character only"></button>
+        <label>Daily reset (your time) <input type="time" class="resetTime" step="60" /></label>
+        <label>Weekly reset on
+          <select class="resetDay">
+            <option value="0">Sunday</option><option value="1">Monday</option><option value="2">Tuesday</option>
+            <option value="3">Wednesday</option><option value="4">Thursday</option><option value="5">Friday</option>
+            <option value="6">Saturday</option>
+          </select>
+        </label>
+        <label>Remind before daily reset
+          <select class="remindDaily">
+            <option value="0">Off</option><option value="1">1 h</option><option value="2">2 h</option>
+            <option value="4">4 h</option><option value="8">8 h</option>
+          </select>
+        </label>
+        <label>Remind before weekly reset
+          <select class="remindWeekly">
+            <option value="0">Off</option><option value="2">2 h</option><option value="12">12 h</option>
+            <option value="24">1 day</option><option value="48">2 days</option>
+          </select>
+        </label>
+        <label>Sound
+          <span>
+            <select class="sound">
+              <option value="chime">Chime</option><option value="bell">Bell</option><option value="ping">Ping</option>
+              <option value="">None</option>
+            </select>
+            <button type="button" class="testAlert">Test</button>
+          </span>
+        </label>
+        <p class="note">Items are the same for every character (main only ones on your main); ticks are each character's own. One-time items never clear.
+          An item linked to a game counter (⚡) ticks itself when you use one of its entries.</p>
+      </div>
+    </div>
+    <script src="/_sdk/a2.js"></script>
+    <script src="logic.js"></script>
+    <script src="plugin.js"></script>
+  </body>
+</html>

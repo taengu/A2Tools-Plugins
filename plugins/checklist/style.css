@@ -1,0 +1,81 @@
+/* Transparent: the window paints the panel at the opacity the user picks. */
+[hidden] { display: none !important; }
+html, body { margin: 0; height: 100%; background: transparent; overflow: hidden; }
+body {
+  display: flex; flex-direction: column;
+  padding: 6px 10px; box-sizing: border-box;
+  color: rgba(255, 255, 255, 0.88);
+  font: 13px/1.35 "Segoe UI", system-ui, sans-serif;
+  user-select: none;
+}
+button, select, input {
+  font: inherit; font-size: 12px; color: inherit;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.18); border-radius: 3px;
+}
+button { cursor: pointer; padding: 0 7px; }
+select option { background: #222; }
+input[type="text"], input[type="number"] { padding: 1px 4px; }
+
+.head { display: flex; align-items: center; gap: 8px; white-space: nowrap; }
+.who { font-weight: 600; }
+.resets { flex: 1; min-width: 0; overflow: hidden; text-overflow: ellipsis; font-size: 12px; color: rgba(255, 255, 255, 0.55); }
+
+.lists { flex: 1; min-height: 0; overflow-y: auto; margin-top: 4px; }
+h2 { margin: 6px 0 2px; font-size: 12px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.04em; color: rgba(255, 255, 255, 0.55); }
+h2 .tally { text-transform: none; letter-spacing: 0; }
+section.done h2 .tally { color: #7ed37e; }
+
+.items { margin: 0; padding: 0; list-style: none; }
+.items li { display: flex; align-items: center; gap: 6px; padding: 1px 0; cursor: pointer; }
+.items li .box {
+  flex: none; width: 13px; height: 13px; border-radius: 3px;
+  border: 1px solid rgba(255, 255, 255, 0.45); display: grid; place-items: center; font-size: 11px; line-height: 1;
+}
+.items li .name { flex: 1; min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.items li .text { flex: 1; min-width: 0; display: flex; flex-direction: column; }
+.items li .note { font-size: 11px; color: rgba(255, 255, 255, 0.45); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.items li .mainOnly { font-size: 10px; padding: 0 4px; border-radius: 3px; color: #c9a7ff; border: 1px solid rgba(201, 167, 255, 0.5); }
+.items li.done .note { text-decoration: line-through; }
+.items li .count, .items li .left { font-size: 12px; color: rgba(255, 255, 255, 0.55); }
+.items li .auto { color: #f5c542; font-size: 11px; }
+.items li.done .box { background: #4caf50; border-color: #4caf50; color: #fff; }
+.items li.done .name { color: rgba(255, 255, 255, 0.45); text-decoration: line-through; }
+.items li.ticked { animation: ticked 0.8s ease-out; }
+@keyframes ticked { from { background: rgba(245, 197, 66, 0.35); } to { background: transparent; } }
+.items .empty { color: rgba(255, 255, 255, 0.4); font-style: italic; cursor: default; }
+
+/* Editing: each item's name, how many times, its counter, remove. */
+body.editing .items li { cursor: default; }
+.items li.editRow { flex-wrap: wrap; padding: 3px 0; border-bottom: 1px solid rgba(255, 255, 255, 0.08); }
+.items li input.rename { flex: 1; min-width: 0; }
+.items li input.noteEdit { flex: 1 1 60%; min-width: 0; font-size: 11px; }
+.items li .mainEdit { font-size: 11px; display: flex; align-items: center; gap: 3px; white-space: nowrap; }
+.items li input.target { width: 34px; }
+.items li select.counter { width: 92px; }
+.items li .remove { padding: 0 5px; }
+.add { margin: 2px 0 0; }
+.add input { width: 100%; box-sizing: border-box; }
+
+.others { margin-top: 6px; font-size: 12px; color: rgba(255, 255, 255, 0.5); }
+.others:empty { display: none; }
+
+.settings { margin-top: 8px; display: grid; gap: 4px; font-size: 12px; }
+.settings label { display: flex; align-items: center; justify-content: space-between; gap: 6px; }
+.settings label button { margin-left: 4px; }
+.settings .makeMain { justify-self: start; }
+.settings .note { margin: 2px 0 0; color: rgba(255, 255, 255, 0.5); }
+
+/* An alert (a reminder) or a counter to link, above everything. */
+.banner {
+  position: relative; margin: 0 0 4px; padding: 5px 22px 5px 8px; border-radius: 4px;
+  background: rgba(245, 197, 66, 0.18); border: 1px solid rgba(245, 197, 66, 0.55);
+}
+.bannerText { font-weight: 600; color: #f5c542; }
+.bannerText small { display: block; font-weight: 400; color: rgba(255, 255, 255, 0.8); }
+.bannerLink { display: flex; gap: 4px; margin-top: 4px; }
+.bannerLink select { flex: 1; min-width: 0; }
+.bannerClose { position: absolute; top: 3px; right: 3px; border: 0; background: none; font-size: 14px; padding: 0 4px; }
+
+/* The fold button: only what is left to do. */
+body.compact .resets, body.compact .others, body.compact .items li.done, body.compact .edit { display: none; }

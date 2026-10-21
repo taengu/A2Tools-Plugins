@@ -1,0 +1,234 @@
+{
+  "id": "checklist",
+  "name": "Daily Checklist",
+  "version": "1.0.0",
+  "apiVersion": 2,
+  "author": "Nullception",
+  "description": "Your dailies and weeklies, ticked per character and cleared at reset. Dungeon entries tick themselves once linked, and a reminder comes before reset.",
+  "permissions": [
+    "storage",
+    "events:character",
+    "window",
+    "decoder:counts-1",
+    "decoder:counts-0",
+    "decoder:counts-11",
+    "decoder:counts-10",
+    "decoder:counts-01",
+    "decoder:counts-21",
+    "decoder:counts-20"
+  ],
+  "decoders": [
+    {
+      "name": "counts-1",
+      "opcode": "0C 61",
+      "fields": [
+        {
+          "name": "count",
+          "type": "u8"
+        },
+        {
+          "name": "kind1",
+          "type": "u8"
+        },
+        {
+          "name": "id1",
+          "type": "u32"
+        },
+        {
+          "name": "value1",
+          "type": "varint"
+        }
+      ]
+    },
+    {
+      "name": "counts-0",
+      "opcode": "0C 61",
+      "fields": [
+        {
+          "name": "count",
+          "type": "u8"
+        },
+        {
+          "name": "kind1",
+          "type": "u8"
+        },
+        {
+          "name": "id1",
+          "type": "u32"
+        }
+      ]
+    },
+    {
+      "name": "counts-11",
+      "opcode": "0C 61",
+      "fields": [
+        {
+          "name": "count",
+          "type": "u8"
+        },
+        {
+          "name": "kind1",
+          "type": "u8"
+        },
+        {
+          "name": "id1",
+          "type": "u32"
+        },
+        {
+          "name": "value1",
+          "type": "varint"
+        },
+        {
+          "name": "kind2",
+          "type": "u8"
+        },
+        {
+          "name": "id2",
+          "type": "u32"
+        },
+        {
+          "name": "value2",
+          "type": "varint"
+        }
+      ]
+    },
+    {
+      "name": "counts-10",
+      "opcode": "0C 61",
+      "fields": [
+        {
+          "name": "count",
+          "type": "u8"
+        },
+        {
+          "name": "kind1",
+          "type": "u8"
+        },
+        {
+          "name": "id1",
+          "type": "u32"
+        },
+        {
+          "name": "value1",
+          "type": "varint"
+        },
+        {
+          "name": "kind2",
+          "type": "u8"
+        },
+        {
+          "name": "id2",
+          "type": "u32"
+        }
+      ]
+    },
+    {
+      "name": "counts-01",
+      "opcode": "0C 61",
+      "fields": [
+        {
+          "name": "count",
+          "type": "u8"
+        },
+        {
+          "name": "kind1",
+          "type": "u8"
+        },
+        {
+          "name": "id1",
+          "type": "u32"
+        },
+        {
+          "name": "kind2",
+          "type": "u8"
+        },
+        {
+          "name": "id2",
+          "type": "u32"
+        },
+        {
+          "name": "value2",
+          "type": "varint"
+        }
+      ]
+    },
+    {
+      "name": "counts-21",
+      "opcode": "0C 61",
+      "fields": [
+        {
+          "name": "count",
+          "type": "u8"
+        },
+        {
+          "name": "kind1",
+          "type": "u8"
+        },
+        {
+          "name": "id1",
+          "type": "u32"
+        },
+        {
+          "name": "value1",
+          "type": "varint"
+        },
+        {
+          "name": "second1",
+          "type": "varint"
+        },
+        {
+          "name": "kind2",
+          "type": "u8"
+        },
+        {
+          "name": "id2",
+          "type": "u32"
+        },
+        {
+          "name": "value2",
+          "type": "varint"
+        }
+      ]
+    },
+    {
+      "name": "counts-20",
+      "opcode": "0C 61",
+      "fields": [
+        {
+          "name": "count",
+          "type": "u8"
+        },
+        {
+          "name": "kind1",
+          "type": "u8"
+        },
+        {
+          "name": "id1",
+          "type": "u32"
+        },
+        {
+          "name": "value1",
+          "type": "varint"
+        },
+        {
+          "name": "second1",
+          "type": "varint"
+        },
+        {
+          "name": "kind2",
+          "type": "u8"
+        },
+        {
+          "name": "id2",
+          "type": "u32"
+        }
+      ]
+    }
+  ],
+  "ui": {
+    "panel": {
+      "width": 300,
+      "height": 440
+    }
+  }
+}
