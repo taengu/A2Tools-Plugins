@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Roster / Content Overview</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <nav class="tabs" role="tablist">
+      <button type="button" role="tab" data-tab="roster">Roster</button>
+      <button type="button" role="tab" data-tab="content">Content</button>
+    </nav>
+    <header class="top">
+      <div class="refill">
+        <svg class="dial" viewBox="0 0 36 36" aria-hidden="true">
+          <circle class="dialTrack" cx="18" cy="18" r="15" />
+          <circle class="dialFill" cx="18" cy="18" r="15" pathLength="100" />
+        </svg>
+        <div>
+          <div class="refillLabel">Next +15 basic energy</div>
+          <div class="refillIn"></div>
+        </div>
+      </div>
+      <div class="resets"></div>
+    </header>
+    <div class="capped" hidden></div>
+    <div class="toolbar">
+      <input type="search" class="search" placeholder="Find a character or server" spellcheck="false" />
+      <select class="sort" title="Order">
+        <option value="name">Name</option>
+        <option value="cp">Combat power</option>
+        <option value="gs">Gear score</option>
+        <option value="energy">Basic energy</option>
+        <option value="full">Full soonest</option>
+        <option value="seen">Last played</option>
+      </select>
+      <span class="count"></span>
+    </div>
+    <div class="head" aria-hidden="true">
+      <span>Character</span><span class="num">Combat</span><span class="num">Gear</span><span>Basic energy</span><span class="num">Charged</span><span class="num">Full in</span>
+    </div>
+    <ol class="list"></ol>
+    <p class="empty" hidden></p>
+    <p class="foot"></p>
+    <section class="contentView" hidden>
+      <p class="placeholder">As the game last said, per character or shared on the server. ≈ recharged since (estimated). +N: extra from recharge items.</p>
+      <div class="contentScroll"><table class="contentTable"></table></div>
+    </section>
+    <script src="/_sdk/a2.js"></script>
+    <script src="servers.js"></script>
+    <script src="logic.js"></script>
+    <script src="plugin.js"></script>
+  </body>
+</html>

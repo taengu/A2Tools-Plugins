@@ -1,0 +1,18 @@
+{
+  "id": "alt-roster",
+  "name": "Roster / Content Overview",
+  "version": "1.3.0",
+  "apiVersion": 1,
+  "author": "Nullception",
+  "description": "Every character you play in one window: class, level, combat power, gear score and Odyle energy, with when each one's basic energy is full again; and what each has left of Nightmare, Ascension Trial, Daily Dungeon, Shugo Festival and Invasion, and the Daily Duties completed.",
+  "permissions": [
+    "storage",
+    "events:character"
+  ],
+  "ui": {
+    "panel": {
+      "width": 620,
+      "height": 420
+    }
+  }
+}

@@ -1,0 +1,180 @@
+/* Transparent: the window paints the panel at the opacity the user picks. */
+[hidden] { display: none !important; }
+html, body { margin: 0; height: 100%; background: transparent; }
+body {
+  --text: rgba(255, 255, 255, 0.9);
+  --dim: rgba(255, 255, 255, 0.5);
+  --line: rgba(255, 255, 255, 0.08);
+  --accent: #5ec8f2;
+  --full: #f2b84b;
+  display: flex; flex-direction: column; box-sizing: border-box;
+  padding: 8px 10px; overflow: hidden;
+  color: var(--text);
+  font: 13px/1.35 "Segoe UI", system-ui, sans-serif;
+}
+button, select, input {
+  font: inherit; font-size: 12px; color: inherit;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.14); border-radius: 4px;
+}
+/* Dark on the dropdown too: on Linux its list is drawn in the system's
+   (light) theme otherwise. Not on the page, where it would paint it opaque. */
+select { color-scheme: dark; }
+select option { background: #1d2230; color: var(--text); }
+button { cursor: pointer; }
+.num { text-align: right; font-variant-numeric: tabular-nums; }
+
+/* The refill dial and the resets. */
+.top { display: flex; align-items: center; gap: 12px; flex-wrap: wrap; }
+.refill { display: flex; align-items: center; gap: 8px; }
+.dial { width: 34px; height: 34px; transform: rotate(-90deg); }
+.dial circle { fill: none; stroke-width: 3.5; }
+.dialTrack { stroke: rgba(255, 255, 255, 0.1); }
+.dialFill { stroke: var(--accent); stroke-linecap: round; transition: stroke-dasharray 0.5s; }
+.refillLabel { font-size: 11px; color: var(--dim); text-transform: uppercase; letter-spacing: 0.05em; }
+.refillIn { font-size: 18px; font-weight: 600; font-variant-numeric: tabular-nums; }
+.resets { margin-left: auto; display: flex; gap: 6px; }
+.chip { display: flex; flex-direction: column; align-items: flex-end; padding: 2px 8px; border-left: 2px solid var(--line); }
+.chipLabel { font-size: 10.5px; color: var(--dim); }
+.chipValue { font-variant-numeric: tabular-nums; }
+
+/* Characters whose basic energy is full. */
+.capped {
+  display: flex; flex-wrap: wrap; align-items: center; gap: 4px 6px;
+  margin-top: 8px; padding: 5px 8px; border-radius: 5px;
+  background: rgba(242, 184, 75, 0.1); border: 1px solid rgba(242, 184, 75, 0.45);
+}
+.capped strong { color: var(--full); font-weight: 600; margin-right: 4px; }
+.cappedName { padding: 0 6px; border-radius: 9px; background: rgba(242, 184, 75, 0.18); font-size: 12px; }
+
+.toolbar { display: flex; gap: 6px; align-items: center; margin-top: 8px; }
+.search { flex: 1; min-width: 0; padding: 3px 7px; }
+.sort { padding: 2px 4px; }
+.count { font-size: 12px; color: var(--dim); white-space: nowrap; }
+
+/* The list: a table while there's room, cards when narrow. */
+.head, .row {
+  display: grid;
+  grid-template-columns: minmax(150px, 1.4fr) 62px 44px minmax(96px, 1fr) 46px 64px;
+  gap: 0 8px; align-items: center;
+}
+.head {
+  margin-top: 8px; padding: 0 6px 3px; border-bottom: 1px solid var(--line);
+  font-size: 10.5px; text-transform: uppercase; letter-spacing: 0.05em; color: var(--dim);
+}
+.list { flex: 1; min-height: 0; overflow-y: auto; margin: 0; padding: 0; list-style: none; }
+.row { position: relative; padding: 6px; border-bottom: 1px solid var(--line); border-left: 2px solid transparent; }
+.row.playing { border-left-color: var(--accent); background: rgba(94, 200, 242, 0.05); }
+.row.full .energyValue { color: var(--full); }
+
+.who { display: flex; align-items: center; gap: 8px; min-width: 0; }
+.badge {
+  flex: none; width: 26px; height: 26px; border-radius: 50%;
+  display: grid; place-items: center; font-weight: 700; font-size: 13px;
+  color: var(--c); background: color-mix(in srgb, var(--c) 16%, transparent);
+  box-shadow: inset 0 0 0 1.5px color-mix(in srgb, var(--c) 60%, transparent);
+}
+.names { min-width: 0; flex: 1; }
+.name { font-weight: 600; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.now { margin-left: 6px; font-size: 10.5px; font-weight: 500; color: var(--accent); }
+.sub, .seen { font-size: 11.5px; color: var(--dim); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.seen { font-size: 11px; opacity: 0.8; }
+.remove {
+  position: absolute; top: 2px; left: 2px; display: none; padding: 0 5px; line-height: 16px;
+  border: 0; border-radius: 3px; background: rgba(20, 24, 34, 0.9); color: var(--dim); font-size: 13px;
+}
+.row:hover .remove, .remove.confirm { display: block; }
+.remove.confirm { font-size: 11px; color: #ff8b8b; background: rgba(255, 90, 90, 0.12); }
+
+.cp { color: #ff9f7a; }
+.energy { min-width: 0; }
+.energyTop { display: flex; align-items: baseline; gap: 4px; }
+.energyValue { font-weight: 600; font-variant-numeric: tabular-nums; }
+.cap { padding: 0 2px; border: 0; background: none; font-size: 11px; color: var(--dim); }
+.cap:hover { color: var(--text); text-decoration: underline; }
+.bar { display: flex; height: 5px; margin-top: 3px; border-radius: 3px; background: rgba(255, 255, 255, 0.08); overflow: hidden; }
+.barSeen { background: var(--accent); }
+.barGrown {
+  background: repeating-linear-gradient(135deg, var(--accent) 0 3px, transparent 3px 6px);
+  opacity: 0.7;
+}
+.row.full .barSeen { background: var(--full); }
+.row.full .barGrown { background: repeating-linear-gradient(135deg, var(--full) 0 3px, transparent 3px 6px); }
+.unknown, .num.none { color: var(--dim); }
+.charged { color: #c7a6ff; }
+.fullIn { display: flex; flex-direction: column; align-items: flex-end; }
+.fullWhen { font-size: 10.5px; color: var(--dim); white-space: nowrap; }
+.isFull { color: var(--full); font-weight: 600; }
+
+.empty { margin: 20px 0; text-align: center; color: var(--dim); }
+.foot { margin: 6px 0 0; font-size: 11px; color: var(--dim); }
+
+/* Narrow: each character a card, the numbers in a row under the name. */
+@media (max-width: 520px) {
+  .head { display: none; }
+  .row {
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-areas: "who who who who" "energy energy energy energy" "cp gs charged fullIn";
+    gap: 6px 8px;
+  }
+  .who { grid-area: who; }
+  .energy { grid-area: energy; }
+  .cp { grid-area: cp; } .gs { grid-area: gs; } .charged { grid-area: charged; } .fullIn { grid-area: fullIn; }
+  .row .num { text-align: left; align-items: flex-start; }
+  .row .num::before { content: attr(data-label); display: block; font-size: 10px; color: var(--dim); text-transform: uppercase; }
+  .resets { margin-left: 0; }
+}
+
+/* The fold button: name and energy only. */
+body.compact .top, body.compact .toolbar, body.compact .head, body.compact .foot,
+body.compact .cp, body.compact .gs, body.compact .charged, body.compact .sub, body.compact .seen { display: none; }
+body.compact .row {
+  grid-template-columns: minmax(100px, 1fr) minmax(90px, 1fr) 60px;
+  grid-template-areas: "who energy fullIn"; gap: 0 8px;
+}
+body.compact .who { grid-area: who; }
+body.compact .energy { grid-area: energy; }
+body.compact .fullIn { grid-area: fullIn; text-align: right; align-items: flex-end; }
+body.compact .row .num::before { content: none; }
+body.compact .badge { width: 20px; height: 20px; font-size: 11px; }
+
+/* Roster | Content. */
+.tabs { display: flex; gap: 2px; margin-bottom: 8px; padding: 2px; border-radius: 6px; background: rgba(255, 255, 255, 0.04); align-self: flex-start; }
+.tabs button { border: 0; background: none; padding: 2px 12px; color: var(--dim); border-radius: 4px; }
+.tabs button:hover { color: var(--text); }
+.tabs button[aria-selected="true"] { color: var(--text); background: rgba(255, 255, 255, 0.1); }
+body.tab-content .top, body.tab-content .capped, body.tab-content .toolbar, body.tab-content .head,
+body.tab-content .list, body.tab-content .empty, body.tab-content .foot { display: none !important; }
+
+/* Content: each content a row, the server and each character a column. */
+.contentView { flex: 1; min-height: 0; display: flex; flex-direction: column; }
+.placeholder { margin: 0 0 8px; font-size: 11.5px; color: var(--dim); }
+.contentScroll { flex: 1; min-height: 0; overflow: auto; }
+.contentTable { border-collapse: collapse; width: 100%; font-size: 12.5px; }
+.contentTable th, .contentTable td { padding: 6px 8px; border-bottom: 1px solid var(--line); text-align: left; vertical-align: middle; }
+.contentTable thead th { position: sticky; top: 0; background: rgba(20, 24, 34, 0.96); font-weight: 600; white-space: nowrap; z-index: 1; }
+.contentTable thead .colSub { display: block; font-size: 10.5px; font-weight: 400; color: var(--dim); }
+.contentTable .serverCol { background: rgba(167, 139, 250, 0.06); }
+.contentTable thead .serverCol { color: #b9a2ff; background: rgba(28, 26, 44, 0.96); }
+.contentTable .group th {
+  padding-top: 8px; font-size: 10.5px; font-weight: 500; text-transform: uppercase; letter-spacing: 0.05em; color: var(--dim);
+  background: rgba(255, 255, 255, 0.025);
+}
+.contentTable .group .when { margin-left: 6px; text-transform: none; letter-spacing: 0; color: var(--accent); }
+.cName { font-weight: 600; white-space: nowrap; }
+.cMeta { display: flex; align-items: center; gap: 6px; margin-top: 2px; font-size: 11px; color: var(--dim); white-space: nowrap; }
+.scope { padding: 0 5px; border-radius: 3px; font-size: 9.5px; font-weight: 600; letter-spacing: 0.04em; border: 1px solid; }
+.scope.char { color: #8fc2ff; border-color: rgba(143, 194, 255, 0.45); }
+.scope.server { color: #b9a2ff; border-color: rgba(185, 162, 255, 0.45); }
+.cell { min-width: 74px; }
+.cellValue { font-variant-numeric: tabular-nums; }
+.cellValue b { font-size: 15px; }
+.cellValue .of { color: var(--dim); }
+.cell .bar { width: 100%; max-width: 110px; }
+.cellNote { margin-top: 2px; font-size: 10.5px; color: var(--dim); white-space: nowrap; }
+.na { background: repeating-linear-gradient(135deg, rgba(255, 255, 255, 0.025) 0 6px, transparent 6px 12px); }
+.unknownValue b { color: var(--dim); }
+.cellValue .extra { color: #4fd8ff; font-weight: 600; }
+.cell.full .cellValue b, .cellNote.isFull { color: var(--full); }
+.cell.full .barSeen { background: var(--full); }
+.cell.full .barGrown { background: repeating-linear-gradient(135deg, var(--full) 0 3px, transparent 3px 6px); }
