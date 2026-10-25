@@ -201,7 +201,36 @@ const SORTS = {
   progress: (a, b) => a.progress - b.progress,
   // Pets already at level 3 sort after every pet still to raise.
   left: (a, b) => a.rank - b.rank,
+  // Closest spawn on this map of a monster that drops its souls (with the
+  // map on); pets with none here after, in the usual order.
+  near: (a, b) => nearOf(a.id) - nearOf(b.id),
 };
+// Metres from you to each pet's nearest spawn on the map you're on, worked
+// out once per list render (nearestByPet); pets with none, far away.
+const FAR = 1e9;
+let nearest = new Map();
+const nearOf = (id) => nearest.get(String(id)) ?? FAR;
+function nearestByPet() {
+  const out = new Map();
+  const map = currentMap();
+  const me = field.where(Date.now())?.pos;
+  const spawns = map && PET_SPAWNS[map];
+  if (!me || !spawns) return out;
+  // Spawns are in metres, positions in centimetres.
+  const x = me[0] / 100;
+  const y = me[1] / 100;
+  for (const [npc, xy] of Object.entries(spawns)) {
+    const pets = NPC_DROPS[npc]?.pets;
+    if (!pets?.length) continue;
+    let best = FAR;
+    for (let i = 0; i + 1 < xy.length; i += 2) best = Math.min(best, Math.hypot(xy[i] - x, xy[i + 1] - y));
+    for (const pet of pets) if (best < (out.get(String(pet)) ?? FAR)) out.set(String(pet), best);
+  }
+  return out;
+}
+// Where the list was last sorted from: re-sorted when you've moved this far.
+let nearFrom = null;
+const NEAR_STEP_M = 40;
 
 // A pet as the list draws it.
 function petOf(id) {
@@ -259,7 +288,14 @@ function render() {
     p.name.toLocaleLowerCase().includes(query) ||
     (PET_NAMES[p.id]?.en || "").toLowerCase().includes(query) ||
     p.id === query;
-  const sort = SORTS[prefs.sort] || SORTS.left;
+  // Nearest only with the map on (it needs your position); else as before.
+  const byNear = prefs.sort === "near" && prefs.nearby === true;
+  if (byNear) {
+    nearest = nearestByPet();
+    const me = field.where(Date.now())?.pos;
+    nearFrom = me ? { map: currentMap(), x: me[0], y: me[1] } : null;
+  }
+  const sort = byNear ? SORTS.near : prefs.sort === "near" ? SORTS.left : SORTS[prefs.sort] || SORTS.left;
   const dir = prefs.desc ? -1 : 1;
   // Picking level 3 shows those pets even while they are otherwise hidden.
   const listed = els.hideMax.checked && prefs.level !== String(MAX_LEVEL) ? open : pets;
@@ -306,6 +342,7 @@ function render() {
     .filter((p) => ofRegion(p) || pinned.includes(p.id))
     .sort((a, b) => pinRank(a) - pinRank(b) || dir * sort(a, b) || a.rank - b.rank || a.id - b.id);
 
+  els.head.querySelector(".sortNear").hidden = prefs.nearby !== true;
   for (const button of els.head.querySelectorAll("button")) {
     const active = button.dataset.sort === prefs.sort;
     button.classList.toggle("active", active);
@@ -681,6 +718,16 @@ function renderNearby() {
     else others.push(n);
   }
   nearbyLive = { wanted, others };
+  // Sorted by nearest: again once you've moved on, or the map changed.
+  if (prefs.sort === "near" && me) {
+    const map = currentMap();
+    const moved = !nearFrom || nearFrom.map !== map || Math.hypot(me[0] - nearFrom.x, me[1] - nearFrom.y) / 100 >= NEAR_STEP_M;
+    // Noted now and drawn on the next tick: the list's render draws this too.
+    if (moved) {
+      nearFrom = { map, x: me[0], y: me[1] };
+      setTimeout(render, 0);
+    }
+  }
   const id = currentMap();
   els.nearbyTitle.textContent = id ? (MAP_NAMES[id] ? text(MAP_NAMES[id]) : PET_MAPS[id]?.name || t.around) : t.around;
   // Exact, estimated from what came into view, or old.
@@ -1398,7 +1445,8 @@ els.nearbyOn.addEventListener("change", () => {
   savePrefs();
   // Off, the pop-out goes too.
   if (!prefs.nearby && popOpen) popIn();
-  renderNearby();
+  // The list too: its Nearest button comes and goes with the map.
+  render();
   fitFarm();
 });
 els.allNpcs.addEventListener("change", () => {
