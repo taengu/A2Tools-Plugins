@@ -41,7 +41,11 @@ function label(t) {
   set(".zoomOut", t.zoomOut);
   set(".follow", t.back);
   set(".minimap", t.mapTip);
-  set(".mapCredit", null, t.credit);
+  // Aion 2 Timers' badge: its tooltip, and its two lines (not its text,
+  // which holds the logo).
+  set(".mapCredit", t.credit);
+  set(".creditLive", null, t.creditLive);
+  set(".creditBy", null, t.creditBy);
   if (t.mapLabel) $(".minimap").setAttribute("aria-label", t.mapLabel);
 }
 

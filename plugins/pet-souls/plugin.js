@@ -494,7 +494,7 @@ const MAP_UI = {
         compass4: ["N", "E", "S", "W"], compass8: ["N", "NE", "E", "SE", "S", "SW", "W", "NW"],
         zoomIn: "Zoom in", zoomOut: "Zoom out", back: "Back to you", mapTip: "Drag to move, wheel to zoom, double-click to follow you again",
         mapLabel: "Map of where the monsters you need spawn, north up", drag: "Drag to move", bigger: "Bigger (then back to the smallest)",
-        backIn: "Back into the Pet Soul Tracker window", credit: "Map: Aion 2 Timers" },
+        backIn: "Back into the Pet Soul Tracker window", credit: "Open the live map on aion2timers.com", creditLive: "Live map ↗", creditBy: "by Aion 2 Timers" },
   ko: { around: "주변", showMap: "지도 표시", showMapTip: "레벨 3 미만 펫의 영혼을 주는 몬스터가 나타나는 곳과 내 위치를 보여 주는 지도",
         allMonsters: "모든 몬스터", allMonstersTip: "범위 안의 다른 몬스터도 회색 점으로 표시", popOut: "지도를 별도 창으로 띄우기",
         popped: "지도가 별도 창에 있습니다.", putBack: "되돌리기", unknown: "위치 아직 모름", estimated: "≈ 추정 위치",
@@ -506,7 +506,7 @@ const MAP_UI = {
         compass4: ["북", "동", "남", "서"], compass8: ["북", "북동", "동", "남동", "남", "남서", "서", "북서"],
         zoomIn: "확대", zoomOut: "축소", back: "내 위치로", mapTip: "드래그로 이동, 휠로 확대/축소, 더블클릭하면 다시 나를 따라갑니다",
         mapLabel: "필요한 몬스터가 나타나는 곳의 지도 (북쪽이 위)", drag: "드래그해서 이동", bigger: "크게 (가장 크면 다시 작게)",
-        backIn: "Pet Soul Tracker 창으로 되돌리기", credit: "지도: Aion 2 Timers" },
+        backIn: "Pet Soul Tracker 창으로 되돌리기", credit: "aion2timers.com에서 실시간 지도 열기", creditLive: "실시간 지도 ↗", creditBy: "제공: Aion 2 Timers" },
   ja: { around: "周辺", showMap: "地図を表示", showMapTip: "レベル3未満のペットの魂を落とすモンスターの出現場所と、あなたの位置を示す地図",
         allMonsters: "すべてのモンスター", allMonstersTip: "範囲内のほかのモンスターも灰色の点で表示", popOut: "地図を別ウィンドウに出す",
         popped: "地図は別ウィンドウにあります。", putBack: "戻す", unknown: "位置はまだ不明", estimated: "≈ 推定位置",
@@ -518,7 +518,7 @@ const MAP_UI = {
         compass4: ["北", "東", "南", "西"], compass8: ["北", "北東", "東", "南東", "南", "南西", "西", "北西"],
         zoomIn: "拡大", zoomOut: "縮小", back: "自分の位置へ", mapTip: "ドラッグで移動、ホイールで拡大縮小、ダブルクリックで再び追従",
         mapLabel: "必要なモンスターの出現場所の地図（北が上）", drag: "ドラッグで移動", bigger: "大きく（最大の次は最小に戻る）",
-        backIn: "Pet Soul Trackerのウィンドウに戻す", credit: "地図: Aion 2 Timers" },
+        backIn: "Pet Soul Trackerのウィンドウに戻す", credit: "aion2timers.comでライブマップを開く", creditLive: "ライブマップ ↗", creditBy: "提供: Aion 2 Timers" },
   de: { around: "In der Nähe", showMap: "Karte zeigen", showMapTip: "Eine Karte, wo die Monster erscheinen, die eine Seele für ein Pet unter Stufe 3 droppen, mit dir darauf",
         allMonsters: "Alle Monster", allMonstersTip: "Auch alle anderen Monster in Reichweite, als graue Punkte", popOut: "Karte in ein eigenes Fenster lösen",
         popped: "Die Karte ist in einem eigenen Fenster.", putBack: "Zurückholen", unknown: "Position noch unbekannt", estimated: "≈ Position geschätzt",
@@ -530,7 +530,7 @@ const MAP_UI = {
         compass4: ["N", "O", "S", "W"], compass8: ["N", "NO", "O", "SO", "S", "SW", "W", "NW"],
         zoomIn: "Vergrößern", zoomOut: "Verkleinern", back: "Zurück zu dir", mapTip: "Ziehen zum Verschieben, Mausrad zum Zoomen, Doppelklick folgt dir wieder",
         mapLabel: "Karte, wo die Monster erscheinen, die du brauchst, Norden oben", drag: "Ziehen zum Verschieben", bigger: "Größer (danach wieder am kleinsten)",
-        backIn: "Zurück ins Fenster von Pet Soul Tracker", credit: "Karte: Aion 2 Timers" },
+        backIn: "Zurück ins Fenster von Pet Soul Tracker", credit: "Live-Karte auf aion2timers.com öffnen", creditLive: "Live-Karte ↗", creditBy: "von Aion 2 Timers" },
   fr: { around: "Autour de vous", showMap: "Afficher la carte", showMapTip: "Une carte des apparitions des monstres qui donnent une âme pour un familier sous le niveau 3, avec vous dessus",
         allMonsters: "Tous les monstres", allMonstersTip: "Tous les autres monstres à portée aussi, en points gris", popOut: "Détacher la carte dans sa propre fenêtre",
         popped: "La carte est dans sa propre fenêtre.", putBack: "La remettre", unknown: "position encore inconnue", estimated: "≈ position estimée",
@@ -542,7 +542,7 @@ const MAP_UI = {
         compass4: ["N", "E", "S", "O"], compass8: ["N", "NE", "E", "SE", "S", "SO", "O", "NO"],
         zoomIn: "Zoom avant", zoomOut: "Zoom arrière", back: "Revenir sur vous", mapTip: "Glisser pour déplacer, molette pour zoomer, double-clic pour vous suivre à nouveau",
         mapLabel: "Carte des apparitions des monstres dont vous avez besoin, nord en haut", drag: "Glisser pour déplacer", bigger: "Plus grand (puis retour au plus petit)",
-        backIn: "Revenir dans la fenêtre de Pet Soul Tracker", credit: "Carte : Aion 2 Timers" },
+        backIn: "Revenir dans la fenêtre de Pet Soul Tracker", credit: "Ouvrir la carte en direct sur aion2timers.com", creditLive: "Carte en direct ↗", creditBy: "par Aion 2 Timers" },
   es: { around: "A tu alrededor", showMap: "Mostrar el mapa", showMapTip: "Un mapa de dónde aparecen los monstruos que sueltan un alma para una mascota por debajo del nivel 3, contigo en él",
         allMonsters: "Todos los monstruos", allMonstersTip: "También el resto de monstruos al alcance, como puntos grises", popOut: "Sacar el mapa a su propia ventana",
         popped: "El mapa está en su propia ventana.", putBack: "Devolverlo", unknown: "posición aún desconocida", estimated: "≈ posición estimada",
@@ -554,7 +554,7 @@ const MAP_UI = {
         compass4: ["N", "E", "S", "O"], compass8: ["N", "NE", "E", "SE", "S", "SO", "O", "NO"],
         zoomIn: "Acercar", zoomOut: "Alejar", back: "Volver a ti", mapTip: "Arrastra para mover, rueda para hacer zoom, doble clic para seguirte de nuevo",
         mapLabel: "Mapa de dónde aparecen los monstruos que necesitas, norte arriba", drag: "Arrastra para mover", bigger: "Más grande (luego vuelve al más pequeño)",
-        backIn: "Volver a la ventana de Pet Soul Tracker", credit: "Mapa: Aion 2 Timers" },
+        backIn: "Volver a la ventana de Pet Soul Tracker", credit: "Abrir el mapa en vivo en aion2timers.com", creditLive: "Mapa en vivo ↗", creditBy: "por Aion 2 Timers" },
   pt: { around: "Ao seu redor", showMap: "Mostrar o mapa", showMapTip: "Um mapa de onde surgem os monstros que dropam uma alma para um mascote abaixo do nível 3, com você nele",
         allMonsters: "Todos os monstros", allMonstersTip: "Também os outros monstros ao alcance, como pontos cinza", popOut: "Destacar o mapa em uma janela própria",
         popped: "O mapa está em uma janela própria.", putBack: "Trazer de volta", unknown: "posição ainda desconhecida", estimated: "≈ posição estimada",
@@ -566,7 +566,7 @@ const MAP_UI = {
         compass4: ["N", "L", "S", "O"], compass8: ["N", "NE", "L", "SE", "S", "SO", "O", "NO"],
         zoomIn: "Aproximar", zoomOut: "Afastar", back: "Voltar para você", mapTip: "Arraste para mover, roda para zoom, clique duplo para seguir você de novo",
         mapLabel: "Mapa de onde surgem os monstros de que você precisa, norte para cima", drag: "Arraste para mover", bigger: "Maior (depois volta ao menor)",
-        backIn: "Voltar para a janela do Pet Soul Tracker", credit: "Mapa: Aion 2 Timers" },
+        backIn: "Voltar para a janela do Pet Soul Tracker", credit: "Abrir o mapa ao vivo no aion2timers.com", creditLive: "Mapa ao vivo ↗", creditBy: "por Aion 2 Timers" },
   ru: { around: "Вокруг вас", showMap: "Показывать карту", showMapTip: "Карта мест появления монстров, с которых падает душа для питомца ниже 3-го уровня, и ваше положение на ней",
         allMonsters: "Все монстры", allMonstersTip: "Остальные монстры поблизости тоже, серыми точками", popOut: "Вынести карту в отдельное окно",
         popped: "Карта в отдельном окне.", putBack: "Вернуть", unknown: "положение пока неизвестно", estimated: "≈ примерное положение",
@@ -578,7 +578,7 @@ const MAP_UI = {
         compass4: ["С", "В", "Ю", "З"], compass8: ["С", "СВ", "В", "ЮВ", "Ю", "ЮЗ", "З", "СЗ"],
         zoomIn: "Приблизить", zoomOut: "Отдалить", back: "К вам", mapTip: "Перетаскивайте, чтобы сдвинуть, колесо — масштаб, двойной щелчок — снова следовать за вами",
         mapLabel: "Карта мест появления нужных монстров, север сверху", drag: "Перетащите, чтобы переместить", bigger: "Крупнее (после самого большого — снова маленький)",
-        backIn: "Вернуть в окно Pet Soul Tracker", credit: "Карта: Aion 2 Timers" },
+        backIn: "Вернуть в окно Pet Soul Tracker", credit: "Открыть живую карту на aion2timers.com", creditLive: "Живая карта ↗", creditBy: "от Aion 2 Timers" },
   "zh-Hant": { around: "周圍", showMap: "顯示地圖", showMapTip: "顯示掉落 3 級以下寵物靈魂的怪物出現位置與你所在位置的地圖",
         allMonsters: "所有怪物", allMonstersTip: "範圍內的其他怪物也以灰點顯示", popOut: "將地圖彈出為獨立視窗",
         popped: "地圖在獨立視窗中。", putBack: "放回", unknown: "位置尚未知", estimated: "≈ 推估位置",
@@ -590,7 +590,7 @@ const MAP_UI = {
         compass4: ["北", "東", "南", "西"], compass8: ["北", "東北", "東", "東南", "南", "西南", "西", "西北"],
         zoomIn: "放大", zoomOut: "縮小", back: "回到你的位置", mapTip: "拖曳移動，滾輪縮放，按兩下重新跟隨你",
         mapLabel: "你需要的怪物出現位置地圖，北方在上", drag: "拖曳以移動", bigger: "放大（最大後回到最小）",
-        backIn: "放回 Pet Soul Tracker 視窗", credit: "地圖：Aion 2 Timers" },
+        backIn: "放回 Pet Soul Tracker 視窗", credit: "在 aion2timers.com 開啟即時地圖", creditLive: "即時地圖 ↗", creditBy: "由 Aion 2 Timers 提供" },
   "zh-Hans": { around: "周围", showMap: "显示地图", showMapTip: "显示掉落 3 级以下宠物灵魂的怪物出现位置与你所在位置的地图",
         allMonsters: "所有怪物", allMonstersTip: "范围内的其他怪物也以灰点显示", popOut: "将地图弹出为独立窗口",
         popped: "地图在独立窗口中。", putBack: "放回", unknown: "位置尚未知", estimated: "≈ 估计位置",
@@ -602,7 +602,7 @@ const MAP_UI = {
         compass4: ["北", "东", "南", "西"], compass8: ["北", "东北", "东", "东南", "南", "西南", "西", "西北"],
         zoomIn: "放大", zoomOut: "缩小", back: "回到你的位置", mapTip: "拖动移动，滚轮缩放，双击重新跟随你",
         mapLabel: "你需要的怪物出现位置地图，北方在上", drag: "拖动以移动", bigger: "放大（最大后回到最小）",
-        backIn: "放回 Pet Soul Tracker 窗口", credit: "地图：Aion 2 Timers" },
+        backIn: "放回 Pet Soul Tracker 窗口", credit: "在 aion2timers.com 打开实时地图", creditLive: "实时地图 ↗", creditBy: "由 Aion 2 Timers 提供" },
 };
 const mui = () => MAP_UI[language] || MAP_UI.en;
 // The words in the page's own HTML, in the meter's language.
@@ -624,7 +624,10 @@ function applyMapText() {
   set(els.follow, null, t.back);
   els.minimap.title = t.mapTip;
   els.minimap.setAttribute("aria-label", t.mapLabel);
-  set(els.mapCredit, t.credit);
+  // The credit is Aion 2 Timers' badge: its tooltip, and its two lines.
+  set(els.mapCredit, null, t.credit);
+  els.mapCredit.querySelector(".creditLive").textContent = t.creditLive;
+  els.mapCredit.querySelector(".creditBy").textContent = t.creditBy;
 }
 
 // The map shown: the one the game said it loaded, else (the meter started
@@ -710,7 +713,7 @@ function renderNearby() {
     whereClass: stale || !you ? "stale" : you.estimated ? "estimated" : "",
     count: els.nearbyCount.textContent,
     // The map's own words, and the pop-out's.
-    labels: { compass: t.compass4, noMapYet: t.noMapYet, noPicture: t.noPicture, credit: t.credit,
+    labels: { compass: t.compass4, noMapYet: t.noMapYet, noPicture: t.noPicture, credit: t.credit, creditLive: t.creditLive, creditBy: t.creditBy,
               zoomIn: t.zoomIn, zoomOut: t.zoomOut, back: t.back, mapTip: t.mapTip, mapLabel: t.mapLabel,
               drag: t.drag, bigger: t.bigger, backIn: t.backIn },
   };

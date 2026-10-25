@@ -131,18 +131,44 @@ body.locked .bar {
 /* Where the pictures and spawns come from, next to the map. */
 .mapCredit {
   position: absolute;
-  right: 4px;
-  bottom: 3px;
-  padding: 0 4px;
-  border-radius: 3px;
-  background: rgba(20, 22, 30, 0.6);
-  color: rgba(232, 226, 208, 0.7);
-  font-size: 9px;
-  line-height: 14px;
+  right: 6px;
+  bottom: 6px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 3px 7px 3px 5px;
+  border-radius: 6px;
+  background: rgba(12, 16, 26, 0.6);
   text-decoration: none;
+  opacity: 0.88;
+  transition: opacity 120ms ease, background-color 120ms ease;
 }
 .mapCredit:hover {
-  color: #e8e2d0;
+  opacity: 1;
+  background: rgba(12, 16, 26, 0.8);
+}
+.mapCredit .creditLogo {
+  display: block;
+  height: 24px;
+  width: auto;
+  filter: drop-shadow(0 1px 2px rgba(0, 0, 0, 0.6));
+}
+.mapCredit .creditText {
+  display: flex;
+  flex-direction: column;
+  font-size: 11px;
+  line-height: 1.25;
+  white-space: nowrap;
+}
+.mapCredit .creditLive {
+  font-weight: 600;
+  color: #dfe9f5;
+}
+.mapCredit .creditBy {
+  font-size: 9.5px;
+  color: rgba(223, 233, 245, 0.7);
+}
+.mapCredit:hover .creditLive {
   text-decoration: underline;
 }
 .mapNote {
