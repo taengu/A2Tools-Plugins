@@ -21,3 +21,8 @@ jobs:
       - name: Check every script parses
         run: |
           for f in $(git ls-files 'plugins/**/*.js'); do node --check "$f"; done
+      - name: Test plugin behavior and generated data
+        run: |
+          node --test tests/*.test.mjs
+          # unittest uses exit 5 when a Node-only branch has no Python tests.
+          python -m unittest discover -s tests -p 'test_*.py' || test "$?" -eq 5

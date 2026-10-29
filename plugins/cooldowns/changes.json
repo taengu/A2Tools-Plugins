@@ -1,5 +1,9 @@
 [
   {
+    "version": "0.2.6",
+    "en": "Corrected the artwork for Zikel's Blessing and Lunge Stance, including their buffs. Their cooldown groups and timers stay unchanged."
+  },
+  {
     "version": "0.2.5",
     "en": "\"Skills and buffs apart\" shows its icons at once (they stayed empty until a cooldown changed).",
     "ko": "\"스킬과 버프 따로\"를 고르면 아이콘이 바로 표시됩니다 (재사용 대기 시간이 바뀔 때까지 비어 있었음).",
@@ -50,18 +54,5 @@
     "ru": "Названия звучат по одному, без запинок и обрывов.",
     "zh-Hant": "唸出的名稱一次一個，不再斷斷續續或被截斷。",
     "zh-Hans": "念出的名称一次一个，不再断断续续或被截断。"
-  },
-  {
-    "version": "0.2.0",
-    "en": "Your class's buffs listed from the start, held skills and charges, a volume and a voice picker.",
-    "ko": "직업 버프가 처음부터 표시되고, 차지 스킬과 충전 횟수, 음량, 음성 선택이 추가되었습니다.",
-    "ja": "職業のバフが最初から表示され、ため技とチャージ、音量、音声の選択を追加しました。",
-    "de": "Die Buffs deiner Klasse von Anfang an, gehaltene Skills und Ladungen, eine Lautstärke und eine Stimmauswahl.",
-    "fr": "Les buffs de votre classe listés dès le départ, compétences maintenues et charges, un volume et un choix de voix.",
-    "es": "Las mejoras de tu clase desde el principio, habilidades cargadas y cargas, volumen y selector de voz.",
-    "pt": "Os buffs da sua classe desde o início, habilidades carregadas e cargas, volume e seletor de voz.",
-    "ru": "Баффы класса сразу в списке, удерживаемые умения и заряды, громкость и выбор голоса.",
-    "zh-Hant": "職業增益從一開始就列出，新增蓄力技能與充能次數、音量與語音選擇。",
-    "zh-Hans": "职业增益从一开始就列出，新增蓄力技能与充能次数、音量与语音选择。"
   }
 ]

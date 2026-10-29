@@ -31,6 +31,21 @@ python tools/cooldowns/build_self_buffs.py --tables <extractor>/Output/AION2/Con
 
 `selfbuffs.js` (the second, after `skills.js`) lists the buffs each class's skills put on yourself: a class skill's effects (Skill `SkillEffectTimeDataList`) aimed at yourself or at friends (SkillEffectFilter `Self`, or friendly), whose SkillEffect rows apply an abnormal (`Abnormal`, `Abnormal_True`: the third value), kept to the buffs `skills.js` has; a passive's own skills count too.
 
+### Gladiator artwork correction (0.2.6)
+
+Zikel's Blessing and Lunge Stance used each other's artwork in the generated table. The [in-game tooltips reported in meter issue #130](https://github.com/taengu/A2Tools-DPS-Meter/issues/130#issuecomment-6502543233) identify the right icons and base times:
+
+| Skill | Cooldown group | Base time | Correct artwork |
+| --- | --- | --- | --- |
+| Zikel's Blessing | `11250000` | 120 seconds | Red crowned warrior (`ICON_GL_SKILL_040`) |
+| Lunge Stance | `11400000` | 60 seconds | Raised hands (`ICON_GL_SKILL_024`) |
+
+The correction covers both skills and their six existing buff ranks. It changes fourteen artwork references; names, cooldown groups, variants, base durations, and cooldown learning stay the same. The server's remaining-time updates still determine the timers you see. The numeric cooldowns have not been swapped: each timer is now drawn over the matching in-game icon.
+
+`build_skills.py` keeps the correction by skill group and buff family so rebuilding from the extracted tables preserves it. The embedded images themselves are unchanged. The original empty "Skills and buffs apart" bars were already fixed in 0.2.5 by the widget-ready handshake; this correction addresses the later artwork report.
+
+Run the data and generator regressions with `node --test tests/cooldown-icons.test.mjs` and `python -m unittest discover -s tests -p 'test_cooldown_icons.py'`, followed by `python tools/build_catalog.py`. The regressions check the shipped skill and buff artwork, unchanged groups and durations, regeneration, and unaffected artwork.
+
 ## Not yet
 
 Party members' cooldowns, debuffs on your target, the boss's casts and presets you can share: the decoders only read your own character for now.

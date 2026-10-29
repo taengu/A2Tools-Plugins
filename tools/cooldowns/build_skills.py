@@ -32,8 +32,6 @@ import urllib.error
 import urllib.request
 from pathlib import Path
 
-from PIL import Image
-
 ROOT = Path(__file__).resolve().parent.parent.parent
 OUT = ROOT / "plugins" / "cooldowns"
 LANGS = ["en", "ko", "ja", "de", "fr", "es", "pt", "ru", "zh-Hant", "zh-Hans"]
@@ -43,6 +41,12 @@ CLASSES = {"GLADIATOR": ("11", "GL"), "TEMPLAR": ("12", "TE"), "ASSASSIN": ("13"
 CDN = "https://assets.playnccdn.com/static-aion2-gamedata/resources/"
 PROXY = os.environ.get("CDN_PROXY", "http://192.168.0.113:16005")
 SIZE = 48
+
+# These two extracted icon references are reversed in the current client.
+# The in-game tooltips in meter issue #130 show the correct artwork; the
+# groups and their 120 s / 60 s cooldowns are already right and stay as-is.
+# https://github.com/taengu/A2Tools-DPS-Meter/issues/130#issuecomment-6502543233
+DISPLAY_ICONS = {11250000: "ICON_GL_SKILL_040", 11400000: "ICON_GL_SKILL_024"}
 
 
 def rows(tables, name):
@@ -74,6 +78,16 @@ def stem(icon_path):
     return icon_path.rsplit("/", 1)[-1]
 
 
+def skill_icon(group, icon_path):
+    return DISPLAY_ICONS.get(group, stem(icon_path))
+
+
+def buff_icon(abnormal, icon_path):
+    # Ranks and variants of these self buffs share their skill's artwork.
+    group = abnormal // 1000 * 100
+    return DISPLAY_ICONS.get(group, stem(icon_path))
+
+
 def fetch(name, cache):
     raw = cache / f"{name}.png"
     if raw.is_file():
@@ -98,6 +112,8 @@ def fetch(name, cache):
 
 
 def main():
+    from PIL import Image
+
     ap = argparse.ArgumentParser()
     ap.add_argument("--tables", required=True, type=Path)
     ap.add_argument("--meter", type=Path, default=ROOT.parent / "A2Tools-DPS-Meter")
@@ -151,7 +167,7 @@ def main():
         if not n:
             print(f"no name: {group}", file=sys.stderr)
             continue
-        icon = stem(base["SkillIcon"])
+        icon = skill_icon(group, base["SkillIcon"])
         icons.add(icon)
         s = {"g": group, "cd": cd, "icon": icon, "n": n}
         if group in charges:
@@ -170,7 +186,7 @@ def main():
         n = named(buff_names, str(r["ID"]["Value"]))
         if not n:
             continue
-        icon = stem(r["AbnormalIcon"])
+        icon = buff_icon(r["ID"]["Value"], r["AbnormalIcon"])
         icons.add(icon)
         buffs[str(r["ID"]["Value"])] = {"icon": icon, "n": n}
 
