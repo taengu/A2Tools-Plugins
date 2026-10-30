@@ -1,7 +1,7 @@
 {
   "id": "cooldowns",
   "name": "Cooldowns",
-  "version": "0.2.6",
+  "version": "0.2.7",
   "apiVersion": 2,
   "author": "A2 Tools",
   "description": "Your skill cooldowns and buffs as icons you place anywhere over the game, with a sound or your skill's name spoken when one is ready.",

@@ -438,8 +438,14 @@ function onBuffChanged(d, at) {
   if (Number(d.length) >= ENDLESS || live.clock == null) return;
   const b = live.buffs.get(d.instance);
   const end = Number(d.end) - live.clock;
-  if (b) b.end = end;
-  else live.buffs.set(d.instance, { a: buffKey(Number(d.abnormal)), skill: null, start: at, end });
+  const length = Number(d.length);
+  const knownStart = Number.isFinite(length) && length > 0;
+  if (b) {
+    b.end = end;
+    // A refresh restarts the server's interval; a stack-only change keeps it.
+    if (knownStart) b.start = end - length;
+  }
+  else live.buffs.set(d.instance, { a: buffKey(Number(d.abnormal)), skill: null, start: knownStart ? end - length : at, end });
   changed();
 }
 
