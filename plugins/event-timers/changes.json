@@ -1,5 +1,9 @@
 [
   {
+    "version": "0.6.25",
+    "en": "Show Events and Bosses together or separately. Your list selection is remembered when visiting Alerts or Settings and after reopening."
+  },
+  {
     "version": "0.6.24",
     "en": "A world boss's HP on its icon no longer jumps back up mid-fight.",
     "ko": "월드 보스 아이콘의 HP가 전투 중에 다시 올라가지 않습니다.",
@@ -50,18 +54,5 @@
     "ru": "Черное щупальце Лава: теперь показан телепорт 44, Руины древнего храма Джумион.",
     "zh-Hant": "黑色觸手拉瓦：顯示的傳送點改為 44 號，昔日祖米昂神殿遺址。",
     "zh-Hans": "黑色触手拉瓦：显示的传送点改为 44 号，昔日祖米昂神殿遗址。"
-  },
-  {
-    "version": "0.6.20",
-    "en": "Uses less memory: its sound engine closes after 30 seconds of silence and starts again for the next alert.",
-    "ko": "메모리를 덜 사용합니다. 30초 동안 소리가 없으면 사운드 엔진을 닫고, 다음 알림 때 다시 시작합니다.",
-    "ja": "メモリ使用量が減りました。30秒間音がなければサウンドエンジンを閉じ、次の通知で再び起動します。",
-    "de": "Braucht weniger Speicher: Die Sound-Engine schließt nach 30 Sekunden Stille und startet beim nächsten Alarm neu.",
-    "fr": "Utilise moins de mémoire : son moteur audio se ferme après 30 secondes de silence et redémarre à la prochaine alerte.",
-    "es": "Usa menos memoria: su motor de sonido se cierra tras 30 segundos de silencio y se reinicia con la siguiente alerta.",
-    "pt": "Usa menos memória: o motor de som fecha após 30 segundos de silêncio e reinicia no próximo alerta.",
-    "ru": "Меньше расход памяти: звуковой движок закрывается после 30 секунд тишины и запускается снова при следующем оповещении.",
-    "zh-Hant": "佔用更少記憶體：靜音 30 秒後關閉音效引擎，下次提醒時再重新啟動。",
-    "zh-Hans": "占用更少内存：静音 30 秒后关闭音效引擎，下次提醒时再重新启动。"
   }
 ]

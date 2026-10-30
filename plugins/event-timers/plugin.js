@@ -37,6 +37,7 @@ const els = {
     settings: $(".view.settings"),
   },
   events: $(".eventList"),
+  eventsHead: $(".eventsHead"),
   hidden: $(".hidden"),
   scheduledHead: $(".scheduledHead"),
   scheduled: $(".scheduledList"),
@@ -725,6 +726,7 @@ function renderStatic() {
   const a = aui();
   const labels = { events: words.events, bosses: words.bosses, alerts: a.alerts, settings: a.settings };
   for (const tab of els.tabs) tab.textContent = labels[tab.dataset.tab];
+  els.eventsHead.textContent = words.events;
   els.regionLabel.textContent = words.region;
   els.zoneLabel.textContent = a.showIn;
   els.scaleLabel.textContent = words.textSize;
@@ -799,9 +801,33 @@ function applyScale() {
   document.documentElement.style.zoom = String(Math.round(BASE_ZOOM * scale * 1000) / 1000);
 }
 
+// Events and bosses can stay visible together. Alerts and Settings remember
+// the last list selection when they temporarily replace the timers.
+function timerViews() {
+  const selected = Array.isArray(prefs.timerViews)
+    ? ["events", "bosses"].filter((name) => prefs.timerViews.includes(name)) : [];
+  return selected.length ? selected : [prefs.tab === "bosses" ? "bosses" : "events"];
+}
+
+function selectTab(name) {
+  if (["events", "bosses"].includes(name)) {
+    let selected = timerViews();
+    const showingTimers = ["events", "bosses", "both"].includes(prefs.tab);
+    if (showingTimers && selected.includes(name) && selected.length > 1) selected = selected.filter((v) => v !== name);
+    else if (!selected.includes(name)) selected.push(name);
+    prefs.timerViews = selected;
+    prefs.tab = selected.length === 2 ? "both" : selected[0];
+  } else prefs.tab = name;
+  savePrefs();
+  renderTabs();
+}
+
 function renderTabs() {
-  for (const tab of els.tabs) tab.setAttribute("aria-selected", String(tab.dataset.tab === prefs.tab));
-  for (const [name, view] of Object.entries(els.views)) view.hidden = name !== prefs.tab;
+  const visible = ["events", "bosses", "both"].includes(prefs.tab) ? timerViews() : [prefs.tab];
+  for (const tab of els.tabs) tab.setAttribute("aria-pressed", String(visible.includes(tab.dataset.tab)));
+  for (const [name, view] of Object.entries(els.views)) view.hidden = !visible.includes(name);
+  els.eventsHead.hidden = visible.length !== 2;
+  document.body.classList.toggle("combinedTimers", visible.length === 2);
 }
 
 // The header: server, region and its clock; the resets.
@@ -1926,11 +1952,7 @@ async function readFeed() {
 }
 
 for (const tab of els.tabs) {
-  tab.addEventListener("click", () => {
-    prefs.tab = tab.dataset.tab;
-    savePrefs();
-    renderTabs();
-  });
+  tab.addEventListener("click", () => selectTab(tab.dataset.tab));
 }
 els.sound.addEventListener("change", () => {
   prefs.sound = els.sound.value;
@@ -2138,7 +2160,8 @@ a2.on("compact", (on) => document.body.classList.toggle("compact", !!on));
   if (moved) savePrefs();
   setSoundVolume(prefs.volume);
   // The old single "timers" tab is the events one now.
-  if (!els.views[prefs.tab]) prefs.tab = "events";
+  if (!els.views[prefs.tab] && prefs.tab !== "both") prefs.tab = "events";
+  prefs.timerViews = timerViews();
   applyScale();
   applyColor();
   renderStatic();
