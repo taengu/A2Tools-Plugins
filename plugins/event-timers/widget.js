@@ -49,8 +49,6 @@ function renderPin(pin, d) {
   tp.hidden = !d.tp;
   pin.querySelector(".time").textContent = d.countdown || "";
   pin.dataset.copy = d.copy || "";
-  // An Abyss boss: purple, as a world boss is red, up or not.
-  pin.classList.toggle("abyss", !!d.abyss);
   sub.textContent = d.sub || "";
   // A world boss's HP: the ring drains from the top as it falls.
   const hasHp = typeof d.hp === "number";
@@ -63,7 +61,9 @@ function renderPin(pin, d) {
   // The HP in the ring's colour; "Enter" keeps its own.
   sub.style.color = hpColor;
   pin.querySelector(".name").textContent = d.showName ? d.name : "";
-  pin.className = `pin ${d.kind || "event"}${d.running ? " running" : ""}${d.due ? " due" : ""} ${d.effect || "shake"}`;
+  // An Abyss boss is purple, as a world boss is red, up or not (the class
+  // set apart, before this, was wiped here).
+  pin.className = `pin ${d.kind || "event"}${d.running ? " running" : ""}${d.due ? " due" : ""}${d.abyss ? " abyss" : ""} ${d.effect || "shake"}`;
   pin.title = d.tip || (pin.closest(".grid") && d.name) || "";
 }
 

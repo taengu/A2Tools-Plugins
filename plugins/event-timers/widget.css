@@ -132,6 +132,14 @@ body.locked .pin { cursor: default; }
 .pin.due.bounce .badge { animation: bounce 0.9s cubic-bezier(0.3, 0, 0.5, 1) infinite; }
 .pin.due.throb .badge { animation: throb 1s ease-in-out infinite; }
 .pin.due.glow .badge { animation: glow 1.1s ease-in-out infinite; }
+/* With HP, only the HP's ring glows: the glow's full ring under it read as
+   a second HP, full and green under 26% yellow (Neikel, 2026-10-31). */
+.pin.due.glow .badge.hasHp { animation: none; }
+.pin.due.glow .badge.hasHp::after { animation: hpGlow 1.1s ease-in-out infinite; }
+@keyframes hpGlow {
+  0%, 100% { filter: drop-shadow(0 0 1px var(--hp-color, #5fe08a)); }
+  50% { filter: drop-shadow(0 0 5px var(--hp-color, #5fe08a)) drop-shadow(0 0 2px var(--hp-color, #5fe08a)); }
+}
 /* Within the room above the badge kept for the glow. */
 @keyframes bounce {
   0%, 60%, 100% { transform: translateY(0); }
@@ -157,6 +165,8 @@ body.locked .pin { cursor: default; }
 }
 @media (prefers-reduced-motion: reduce) {
   .pin.due:is(.shake, .bounce, .throb) .badge { animation: glow 1.1s ease-in-out infinite; }
+  .pin.due:is(.shake, .bounce, .throb) .badge.hasHp { animation: none; }
+  .pin.due:is(.shake, .bounce, .throb) .badge.hasHp::after { animation: hpGlow 1.1s ease-in-out infinite; }
 }
 
 /* Copied (a double right-click): a white flash around the icon. */

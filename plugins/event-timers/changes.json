@@ -1,5 +1,18 @@
 [
   {
+    "version": "0.6.25",
+    "en": "A world boss's icon shows one HP ring: no longer a full green one under it while it alerts. Abyss bosses' icons are purple again.",
+    "ko": "월드 보스 아이콘에 HP 링이 하나만 표시됩니다: 알림 중에 그 아래로 초록색 전체 링이 더 이상 겹치지 않습니다. 어비스 보스 아이콘이 다시 보라색으로 표시됩니다.",
+    "ja": "ワールドボスのアイコンのHPリングが1本になりました：アラーム中に下に緑の全周リングが重ならなくなりました。アビスボスのアイコンが再び紫になります。",
+    "de": "Das Symbol eines Weltbosses zeigt einen HP-Ring: kein voller grüner mehr darunter, während es alarmiert. Abyss-Bosse haben wieder lila Symbole.",
+    "fr": "L'icône d'un boss mondial n'affiche qu'un anneau de PV : plus d'anneau vert complet dessous pendant l'alerte. Les icônes des boss des Abysses sont de nouveau violettes.",
+    "es": "El icono de un jefe de mundo muestra un solo anillo de PV: ya no hay uno verde completo debajo mientras avisa. Los iconos de los jefes del Abismo vuelven a ser morados.",
+    "pt": "O ícone de um chefe mundial mostra um só anel de HP: não há mais um verde completo por baixo durante o alerta. Os ícones dos chefes do Abismo voltam a ser roxos.",
+    "ru": "На значке мирового босса одно кольцо HP: под ним больше нет полного зелёного во время оповещения. Значки боссов Бездны снова фиолетовые.",
+    "zh-Hant": "世界首領圖示只顯示一圈 HP：提醒時下方不再疊著一整圈綠色。深淵首領圖示恢復為紫色。",
+    "zh-Hans": "世界首领图标只显示一圈 HP：提醒时下方不再叠着一整圈绿色。深渊首领图标恢复为紫色。"
+  },
+  {
     "version": "0.6.24",
     "en": "A world boss's HP on its icon no longer jumps back up mid-fight.",
     "ko": "월드 보스 아이콘의 HP가 전투 중에 다시 올라가지 않습니다.",
@@ -50,18 +63,5 @@
     "ru": "Черное щупальце Лава: теперь показан телепорт 44, Руины древнего храма Джумион.",
     "zh-Hant": "黑色觸手拉瓦：顯示的傳送點改為 44 號，昔日祖米昂神殿遺址。",
     "zh-Hans": "黑色触手拉瓦：显示的传送点改为 44 号，昔日祖米昂神殿遗址。"
-  },
-  {
-    "version": "0.6.20",
-    "en": "Uses less memory: its sound engine closes after 30 seconds of silence and starts again for the next alert.",
-    "ko": "메모리를 덜 사용합니다. 30초 동안 소리가 없으면 사운드 엔진을 닫고, 다음 알림 때 다시 시작합니다.",
-    "ja": "メモリ使用量が減りました。30秒間音がなければサウンドエンジンを閉じ、次の通知で再び起動します。",
-    "de": "Braucht weniger Speicher: Die Sound-Engine schließt nach 30 Sekunden Stille und startet beim nächsten Alarm neu.",
-    "fr": "Utilise moins de mémoire : son moteur audio se ferme après 30 secondes de silence et redémarre à la prochaine alerte.",
-    "es": "Usa menos memoria: su motor de sonido se cierra tras 30 segundos de silencio y se reinicia con la siguiente alerta.",
-    "pt": "Usa menos memória: o motor de som fecha após 30 segundos de silêncio e reinicia no próximo alerta.",
-    "ru": "Меньше расход памяти: звуковой движок закрывается после 30 секунд тишины и запускается снова при следующем оповещении.",
-    "zh-Hant": "佔用更少記憶體：靜音 30 秒後關閉音效引擎，下次提醒時再重新啟動。",
-    "zh-Hans": "占用更少内存：静音 30 秒后关闭音效引擎，下次提醒时再重新启动。"
   }
 ]
