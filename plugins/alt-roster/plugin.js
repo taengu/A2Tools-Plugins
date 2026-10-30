@@ -29,7 +29,7 @@ const CLASSES = {
 //   energy: { basic, charged, at }, cap, seen, counts } }
 // servers: { "<serverId>": { counts } } for content shared on a server.
 // counts: { "<entry id>": { v: [left, extra], at } } as the game last said.
-const state = { chars: {}, servers: {}, prefs: { sort: "name", tab: "roster" } };
+const state = { chars: {}, servers: {}, prefs: { sort: "name", tab: "roster", display: "all" } };
 let current = null; // the key of who is playing now
 let gameRunning = true; // meters before 2.0.65 don't say
 let saveTimer = 0;
@@ -290,6 +290,19 @@ function sorted(rows) {
   return rows.sort((a, b) => by(a, b) || a.ch.name.localeCompare(b.ch.name));
 }
 
+// Display filtering never removes saved characters or changes their totals.
+function visibleCharacter({ key, ch }) {
+  const playing = state.chars[current];
+  if (!playing) return true;
+  if (state.prefs.display === "character") return key === current;
+  if (state.prefs.display === "server") return ch.serverId === playing.serverId;
+  if (state.prefs.display === "faction") {
+    const side = sideOf(playing.serverId);
+    return !side || sideOf(ch.serverId) === side;
+  }
+  return true;
+}
+
 function render() {
   if (state.prefs.tab !== "roster") {
     renderContent();
@@ -311,7 +324,7 @@ function render() {
 
   const q = $(".search").value.trim().toLowerCase();
   const all = Object.entries(state.chars).map(([key, ch]) => view(key, ch, now));
-  const rows = sorted(all.filter((r) => !q || `${r.ch.name} ${serverName(r.ch.serverId)}`.toLowerCase().includes(q)));
+  const rows = sorted(all.filter(visibleCharacter).filter((r) => !q || `${r.ch.name} ${serverName(r.ch.serverId)}`.toLowerCase().includes(q)));
   $(".count").textContent = all.length ? t.count(rows.length, all.length) : "";
 
   // Full: each refill until they spend some is lost.
@@ -425,13 +438,14 @@ function renderContent() {
   const serverId = lead?.serverId;
   const mine = chars.filter((c) => c.ch.serverId === serverId)
     .sort((a, b) => (b.key === current) - (a.key === current) || a.ch.name.localeCompare(b.ch.name));
+  const visible = mine.filter(visibleCharacter);
 
   const head = el("tr");
   head.append(el("th", null, t.content));
   const server = el("th", "serverCol", t.server);
   server.append(el("span", "colSub", serverName(serverId) || t.allChars));
   head.append(server);
-  for (const { key, ch } of mine) {
+  for (const { key, ch } of visible) {
     const th = el("th", null, ch.name);
     th.append(el("span", "colSub", key === current && gameRunning ? t.playing : ch.seen ? t.seenAgo(ago(ch.seen, now)) : ""));
     head.append(th);
@@ -440,7 +454,7 @@ function renderContent() {
   thead.append(head);
 
   const tbody = el("tbody");
-  const cols = 2 + mine.length;
+  const cols = 2 + visible.length;
   for (const every of ["daily", "weekly"]) {
     const at = every === "daily" ? nextDaily(now) : nextWeekly(now);
     const group = el("tr", "group");
@@ -466,7 +480,7 @@ function renderContent() {
       tr.append(name);
       const shared = c.ofChars ? sumOfChars(c, mine, now) : state.servers[serverId ?? ""]?.counts?.[c.id];
       tr.append(c.scope === "server" ? cellOf(c, shared, at, now, "serverCol") : el("td", "serverCol na"));
-      for (const m of mine) tr.append(c.scope === "char" ? cellOf(c, m.ch.counts?.[c.id], at, now) : el("td", "na"));
+      for (const m of visible) tr.append(c.scope === "char" ? cellOf(c, m.ch.counts?.[c.id], at, now) : el("td", "na"));
       tbody.append(tr);
     }
   }
@@ -663,6 +677,11 @@ $(".sort").addEventListener("change", (e) => {
   save();
   render();
 });
+$(".display").addEventListener("change", (e) => {
+  state.prefs.display = e.target.value;
+  save();
+  render();
+});
 
 // The page's fixed words (index.html), in the meter's language.
 function applyLanguage() {
@@ -672,6 +691,8 @@ function applyLanguage() {
   $(".refillLabel").textContent = t.nextRefill;
   $(".search").placeholder = t.search;
   $(".sort").title = t.order;
+  $(".displayFilter span").textContent = t.show;
+  for (const o of $(".display").options) o.textContent = t.display[o.value];
   for (const o of $(".sort").options) o.textContent = t.sort[o.value] ?? o.textContent;
   const cols = [t.colChar, t.colCombat, t.colGear, t.colBasic, t.colCharged, t.colFullIn];
   document.querySelectorAll(".head span").forEach((s, i) => (s.textContent = cols[i] ?? s.textContent));
@@ -701,6 +722,8 @@ function applyLanguage() {
   }
   if (merged) save();
   $(".sort").value = state.prefs.sort;
+  if (!["all", "faction", "server", "character"].includes(state.prefs.display)) state.prefs.display = "all";
+  $(".display").value = state.prefs.display;
   showTab(state.prefs.tab);
   a2.ready();
   // The countdowns, and the one playing stays "seen now" (saved every 5 min).

@@ -59,6 +59,12 @@ move it to a second monitor: it never hides by itself.
   each login, the Kinah gained today (1,000,000 a day) and the week's Abyss
   Points with the limit the game sends.
 
+**Show** limits the displayed characters to the current faction, server or
+character. All characters remain visible by default, and until the current
+identity is known. Content and Other still use the current or last-played
+server. Hidden characters stay saved and contribute to shared server totals;
+full-energy warnings are unchanged. The choice is saved between launches.
+
 ## What it reads
 
 No decoders. The meter's `character` event (`events:character`): name,
