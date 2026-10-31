@@ -1,5 +1,18 @@
 [
   {
+    "version": "0.2.8",
+    "en": "A skill with charges shows when its next charge comes back, with a lighter sweep while it can still be used.",
+    "ko": "충전형 스킬은 다음 충전이 돌아오는 시간을 표시하며, 아직 사용할 수 있는 동안에는 더 옅게 표시됩니다.",
+    "ja": "チャージ式スキルは次のチャージが戻るまでの時間を表示し、まだ使える間は薄めに表示されます。",
+    "de": "Eine Fertigkeit mit Aufladungen zeigt, wann die nächste zurückkommt, mit hellerer Anzeige, solange sie noch nutzbar ist.",
+    "fr": "Une compétence à charges indique quand sa prochaine charge revient, avec un balayage plus léger tant qu'elle reste utilisable.",
+    "es": "Una habilidad con cargas muestra cuándo vuelve su siguiente carga, con un barrido más claro mientras aún se puede usar.",
+    "pt": "Uma habilidade com cargas mostra quando a próxima carga volta, com uma varredura mais clara enquanto ainda pode ser usada.",
+    "ru": "Для умений с зарядами показывается, когда вернётся следующий заряд; пока умение доступно, затемнение светлее.",
+    "zh-Hant": "有充能的技能會顯示下一次充能回復的時間，仍可使用時以較淡的遮罩顯示。",
+    "zh-Hans": "有充能的技能会显示下一次充能恢复的时间，仍可使用时以较淡的遮罩显示。"
+  },
+  {
     "version": "0.2.7",
     "en": "A renewed buff, such as Fury, restarts its progress ring with its countdown.",
     "ko": "갱신된 버프는 남은 시간과 함께 진행 링도 처음부터 다시 시작합니다.",
@@ -50,18 +63,5 @@
     "ru": "Меньше расход памяти: звуковой движок закрывается после 30 секунд тишины и запускается снова при следующем оповещении.",
     "zh-Hant": "佔用更少記憶體：靜音 30 秒後關閉音效引擎，下次提醒時再重新啟動。",
     "zh-Hans": "占用更少内存：静音 30 秒后关闭音效引擎，下次提醒时再重新启动。"
-  },
-  {
-    "version": "0.2.3",
-    "en": "A built-in English voice (Kokoro), so names are spoken even on a PC with no voices, such as Linux.",
-    "ko": "내장 영어 음성(Kokoro): 음성이 없는 PC(예: Linux)에서도 이름을 읽어 줍니다.",
-    "ja": "内蔵の英語音声（Kokoro）：音声のないPC（Linuxなど）でも名前を読み上げます。",
-    "de": "Eine eingebaute englische Stimme (Kokoro): Namen werden auch auf PCs ohne Stimmen gesprochen, etwa unter Linux.",
-    "fr": "Une voix anglaise intégrée (Kokoro) : les noms sont dits même sur un PC sans voix, comme sous Linux.",
-    "es": "Una voz inglesa integrada (Kokoro): los nombres se dicen incluso en un PC sin voces, como en Linux.",
-    "pt": "Uma voz inglesa integrada (Kokoro): os nomes são falados mesmo num PC sem vozes, como no Linux.",
-    "ru": "Встроенный английский голос (Kokoro): названия звучат даже на ПК без голосов, например в Linux.",
-    "zh-Hant": "內建英語語音（Kokoro）：即使電腦沒有語音（例如 Linux）也能唸出名稱。",
-    "zh-Hans": "内置英语语音（Kokoro）：即使电脑没有语音（例如 Linux）也能念出名称。"
   }
 ]

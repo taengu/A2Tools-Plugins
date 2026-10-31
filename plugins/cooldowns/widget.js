@@ -70,6 +70,9 @@ function tick() {
     el.classList.toggle("cooling", timing);
     el.classList.toggle("buffing", buffing);
     el.classList.toggle("both", timing && buffing);
+    // Still usable (a charge left): a lighter sweep, so it doesn't look
+    // like a skill on cooldown.
+    el.classList.toggle("charged", !cooling && recharging);
     const chNum = el.querySelector(".chNum");
     const chText = s.chMax && charges ? String(charges) : "";
     if (chNum.textContent !== chText) chNum.textContent = chText;

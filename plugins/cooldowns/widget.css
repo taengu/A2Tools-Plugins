@@ -50,6 +50,8 @@ body:not(.locked) .slot { cursor: grab; }
   background: conic-gradient(rgba(0, 0, 0, 0.68) var(--p, 0deg), rgba(0, 0, 0, 0.12) 0);
 }
 .slot:not(.cooling) .sweep { display: none; }
+/* A charge left: the next one's sweep, lighter than a cooldown's. */
+.slot.charged .sweep { background: conic-gradient(rgba(0, 0, 0, 0.3) var(--p, 0deg), transparent 0); }
 .num {
   position: absolute;
   font-family: "Bahnschrift", "Segoe UI", sans-serif;
