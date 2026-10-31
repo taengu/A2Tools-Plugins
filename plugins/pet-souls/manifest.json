@@ -1,7 +1,7 @@
 {
   "id": "pet-souls",
   "name": "Pet Soul Tracker",
-  "version": "0.5.2",
+  "version": "0.5.3",
   "apiVersion": 2,
   "author": "A2 Tools",
   "description": "Souls still needed to raise each pet, from the game's own pet data, where each pet's souls drop, and the monsters around you that drop them.",

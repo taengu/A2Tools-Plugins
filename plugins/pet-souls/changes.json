@@ -1,5 +1,18 @@
 [
   {
+    "version": "0.5.3",
+    "en": "The pet you're farming stays at the top of the list with a pet type or level filter picked.",
+    "ko": "펫 종류나 레벨 필터를 선택해도 파밍 중인 펫이 목록 맨 위에 유지됩니다.",
+    "ja": "ペットの種類やレベルで絞り込んでいても、育成中のペットがリストの一番上に表示されます。",
+    "de": "Das Haustier, das du gerade farmst, bleibt auch mit einem Typ- oder Stufenfilter oben in der Liste.",
+    "fr": "Le familier que vous farmez reste en haut de la liste, même avec un filtre de type ou de niveau.",
+    "es": "La mascota que estás farmeando se queda arriba de la lista aunque filtres por tipo o nivel.",
+    "pt": "O mascote que você está farmando fica no topo da lista mesmo com um filtro de tipo ou nível.",
+    "ru": "Питомец, которого вы фармите, остаётся вверху списка даже с фильтром по типу или уровню.",
+    "zh-Hant": "即使選了寵物種類或等級篩選，正在刷的寵物仍會留在列表最上方。",
+    "zh-Hans": "即使选了宠物种类或等级筛选，正在刷的宠物仍会留在列表最上方。"
+  },
+  {
     "version": "0.5.2",
     "en": "Uses less memory: with Show the map off, the map pictures are let go of, and loaded again when it is turned back on.",
     "ko": "메모리를 덜 사용합니다. 지도 표시를 끄면 지도 이미지를 메모리에서 해제하고, 다시 켜면 불러옵니다.",

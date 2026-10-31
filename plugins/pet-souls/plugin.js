@@ -335,9 +335,11 @@ function render() {
       return b;
     }),
   );
+  // The pet being farmed stays at the top whatever the type or level
+  // filters: with a Pet type picked it was filtered out, so the list no
+  // longer led with it (HomelessGuy, 2026-10-31).
   const shown = listed
-    .filter(ofGenus)
-    .filter(ofLevel)
+    .filter((p) => (ofGenus(p) && ofLevel(p)) || p.id === farming)
     .filter((p) => matches(p) || (!query && pinned.includes(p.id)))
     .filter((p) => ofRegion(p) || pinned.includes(p.id))
     .sort((a, b) => pinRank(a) - pinRank(b) || dir * sort(a, b) || a.rank - b.rank || a.id - b.id);
