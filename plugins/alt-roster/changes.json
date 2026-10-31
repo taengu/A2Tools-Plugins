@@ -1,7 +1,16 @@
 [
   {
     "version": "1.4.7",
-    "en": "Choose to show all characters or only the current faction, server or character. Saved characters, shared totals and full-energy warnings are kept."
+    "en": "Choose to show all characters or only the current faction, server or character. Saved characters, shared totals and full-energy warnings are kept.",
+    "ko": "모든 캐릭터를 보거나 현재 진영, 서버, 캐릭터만 볼 수 있습니다. 저장된 캐릭터, 공유 합계, 에너지 가득 참 경고는 그대로 유지됩니다.",
+    "ja": "すべてのキャラクター、または現在の陣営・サーバー・キャラクターだけを表示できます。保存したキャラクター、共有の合計、エネルギー満タンの警告はそのままです。",
+    "de": "Wähle, ob alle Charaktere oder nur die aktuelle Fraktion, der Server oder der Charakter angezeigt werden. Gespeicherte Charaktere, gemeinsame Summen und Warnungen bei voller Energie bleiben erhalten.",
+    "fr": "Choisissez d'afficher tous les personnages, ou seulement la faction, le serveur ou le personnage actuel. Les personnages enregistrés, les totaux partagés et les alertes d'énergie pleine sont conservés.",
+    "es": "Elige mostrar todos los personajes o solo la facción, el servidor o el personaje actual. Los personajes guardados, los totales compartidos y los avisos de energía llena se mantienen.",
+    "pt": "Escolha mostrar todos os personagens ou só a facção, o servidor ou o personagem atual. Personagens salvos, totais compartilhados e avisos de energia cheia são mantidos.",
+    "ru": "Можно показывать всех персонажей или только текущую фракцию, сервер или персонажа. Сохранённые персонажи, общие итоги и предупреждения о полной энергии сохраняются.",
+    "zh-Hant": "可選擇顯示所有角色，或只顯示目前的陣營、伺服器或角色。已儲存的角色、共用總計與能量已滿提醒都會保留。",
+    "zh-Hans": "可选择显示所有角色，或只显示当前的阵营、服务器或角色。已保存的角色、共享总计与能量已满提醒都会保留。"
   },
   {
     "version": "1.4.6",

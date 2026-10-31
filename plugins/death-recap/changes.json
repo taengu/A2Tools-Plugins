@@ -1,7 +1,16 @@
 [
   {
     "version": "0.1.1",
-    "en": "The class and score icons show on Linux, in the popup and the window."
+    "en": "The class and score icons show on Linux, in the popup and the window.",
+    "ko": "직업과 점수 아이콘이 리눅스에서도 팝업과 창에 표시됩니다.",
+    "ja": "クラスとスコアのアイコンがLinuxでもポップアップとウィンドウに表示されます。",
+    "de": "Die Klassen- und Punktesymbole erscheinen unter Linux, im Popup und im Fenster.",
+    "fr": "Les icônes de classe et de score s'affichent sous Linux, dans la fenêtre surgissante et la fenêtre.",
+    "es": "Los iconos de clase y puntuación se muestran en Linux, en la ventana emergente y en la ventana.",
+    "pt": "Os ícones de classe e pontuação aparecem no Linux, no pop-up e na janela.",
+    "ru": "Значки класса и оценки отображаются в Linux, во всплывающем окне и в окне.",
+    "zh-Hant": "職業與分數圖示在 Linux 上也會顯示於彈出視窗與視窗中。",
+    "zh-Hans": "职业与分数图标在 Linux 上也会显示于弹出窗口与窗口中。"
   },
   {
     "version": "0.1.0",

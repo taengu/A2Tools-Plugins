@@ -1,7 +1,16 @@
 [
   {
     "version": "0.2.7",
-    "en": "A renewed buff, such as Fury, restarts its progress ring with its countdown."
+    "en": "A renewed buff, such as Fury, restarts its progress ring with its countdown.",
+    "ko": "갱신된 버프는 남은 시간과 함께 진행 링도 처음부터 다시 시작합니다.",
+    "ja": "更新されたバフは、カウントダウンとともに進行リングも最初からやり直します。",
+    "de": "Ein erneuerter Buff startet seinen Fortschrittsring mit dem Countdown neu.",
+    "fr": "Un buff renouvelé relance son anneau de progression avec son compte à rebours.",
+    "es": "Un beneficio renovado reinicia su anillo de progreso con su cuenta atrás.",
+    "pt": "Um buff renovado reinicia seu anel de progresso com a contagem regressiva.",
+    "ru": "Обновлённый бафф начинает кольцо прогресса заново вместе с отсчётом.",
+    "zh-Hant": "被刷新的增益，進度圈會隨倒數一起重新開始。",
+    "zh-Hans": "被刷新的增益，进度圈会随倒计时一起重新开始。"
   },
   {
     "version": "0.2.6",
