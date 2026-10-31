@@ -58,13 +58,18 @@ function tick() {
     const el = n.el;
     const cooling = s.cdEnd > now;
     const buffing = s.buffEnd > now;
-    el.classList.toggle("cooling", cooling);
-    el.classList.toggle("buffing", buffing);
-    el.classList.toggle("both", cooling && buffing);
     // Charges (a skill's variant with them): how many there are now, one
     // back every chPer ms until chFull; the count shows while there are any.
     const charges = s.chMax ? s.chMax - Math.min(s.chMax, Math.ceil(Math.max(0, s.chFull - now) / s.chPer)) : 0;
     const recharging = !!s.chMax && charges < s.chMax;
+    // A skill can be usable while a spent charge is still coming back.
+    // Show that next charge's timer without changing its ready-flash state.
+    const timing = cooling || recharging;
+    const end = cooling ? s.cdEnd : s.chFull - (s.chMax - charges - 1) * s.chPer;
+    const start = cooling ? s.cdStart : end - s.chPer;
+    el.classList.toggle("cooling", timing);
+    el.classList.toggle("buffing", buffing);
+    el.classList.toggle("both", timing && buffing);
     const chNum = el.querySelector(".chNum");
     const chText = s.chMax && charges ? String(charges) : "";
     if (chNum.textContent !== chText) chNum.textContent = chText;
@@ -72,10 +77,10 @@ function tick() {
     el.hidden = !active && locked;
     el.classList.toggle("idle", !active);
     const cdNum = el.querySelector(".cdNum");
-    if (cooling) {
-      const total = Math.max(1, s.cdEnd - s.cdStart);
-      el.style.setProperty("--p", `${Math.min(360, ((s.cdEnd - now) / total) * 360)}deg`);
-      cdNum.textContent = fmt(s.cdEnd - now);
+    if (timing) {
+      const total = Math.max(1, end - start);
+      el.style.setProperty("--p", `${Math.min(360, ((end - now) / total) * 360)}deg`);
+      cdNum.textContent = fmt(end - now);
     } else {
       cdNum.textContent = "";
     }
