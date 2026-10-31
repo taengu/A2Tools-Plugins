@@ -1,5 +1,18 @@
 [
   {
+    "version": "0.6.26",
+    "en": "Events and Bosses can show together: each button turns its list on or off. Your choice is kept while you visit Alerts or Settings, and the next time you open it.",
+    "ko": "이벤트와 보스를 함께 볼 수 있습니다: 각 버튼으로 목록을 켜고 끕니다. 선택은 알림이나 설정을 다녀와도, 다시 열어도 유지됩니다.",
+    "ja": "イベントとボスを一緒に表示できます：各ボタンでリストの表示を切り替えます。選択はアラームや設定を見たあとも、次に開いたときも保たれます。",
+    "de": "Events und Bosse können zusammen angezeigt werden: Jede Schaltfläche blendet ihre Liste ein oder aus. Die Auswahl bleibt beim Besuch von Alarme oder Einstellungen und beim nächsten Öffnen erhalten.",
+    "fr": "Les événements et les boss peuvent s'afficher ensemble : chaque bouton affiche ou masque sa liste. Votre choix est conservé pendant que vous visitez Alertes ou Paramètres, et à la prochaine ouverture.",
+    "es": "Eventos y jefes pueden mostrarse juntos: cada botón muestra u oculta su lista. Tu elección se mantiene al visitar Alertas o Ajustes y la próxima vez que lo abras.",
+    "pt": "Eventos e chefes podem aparecer juntos: cada botão mostra ou oculta sua lista. Sua escolha é mantida ao visitar Alertas ou Configurações e na próxima vez que abrir.",
+    "ru": "События и боссы могут отображаться вместе: каждая кнопка включает или скрывает свой список. Выбор сохраняется при переходе в «Оповещения» или «Настройки» и при следующем открытии.",
+    "zh-Hant": "活動與首領可以同時顯示：每個按鈕各自開關其列表。前往提醒或設定時、下次開啟時都會保留你的選擇。",
+    "zh-Hans": "活动与首领可以同时显示：每个按钮各自开关其列表。前往提醒或设置时、下次打开时都会保留你的选择。"
+  },
+  {
     "version": "0.6.25",
     "en": "A world boss's icon shows one HP ring: no longer a full green one under it while it alerts. Abyss bosses' icons are purple again.",
     "ko": "월드 보스 아이콘에 HP 링이 하나만 표시됩니다: 알림 중에 그 아래로 초록색 전체 링이 더 이상 겹치지 않습니다. 어비스 보스 아이콘이 다시 보라색으로 표시됩니다.",
@@ -50,18 +63,5 @@
     "ru": "Боссы Бездны показаны на месте с момента появления, с HP. Босс после времени возрождения показан на месте, при 0% — убитым. Двойной щелчок правой кнопкой по значку копирует строку для чата.",
     "zh-Hant": "深淵首領自出現時起顯示為已出現並附 HP。超過重生時間的首領顯示為已出現，HP 0% 顯示為已擊敗。在圖示上按兩下右鍵可複製聊天用文字。",
     "zh-Hans": "深渊首领自出现时起显示为已出现并附 HP。超过重生时间的首领显示为已出现，HP 0% 显示为已击败。在图标上双击右键可复制聊天用文字。"
-  },
-  {
-    "version": "0.6.21",
-    "en": "Black Tentacle Lawa: the teleport shown is 44, Ancient Zumion Temple Site.",
-    "ko": "검은 촉수 라와: 표시되는 텔레포트가 44번, 옛 주미온 신전 터입니다.",
-    "ja": "黒き触手ラワ：表示されるテレポートが44番、旧ズミオン神殿跡になりました。",
-    "de": "Schwarztentakel Lawa: Der angezeigte Teleport ist 44, Ruinen des alten Zumiontempels.",
-    "fr": "Lawa aux tentacules noires : la téléportation affichée est la 44, Site du Temple ancien de Zumion.",
-    "es": "Lawa del tentáculo negro: el teletransporte que se muestra es el 44, Terreno del Antiguo Templo Divino de Zumion.",
-    "pt": "Lawa dos Tentáculos Negros: o teletransporte mostrado é o 44, Terras do Antigo Templo Divino de Zumion.",
-    "ru": "Черное щупальце Лава: теперь показан телепорт 44, Руины древнего храма Джумион.",
-    "zh-Hant": "黑色觸手拉瓦：顯示的傳送點改為 44 號，昔日祖米昂神殿遺址。",
-    "zh-Hans": "黑色触手拉瓦：显示的传送点改为 44 号，昔日祖米昂神殿遗址。"
   }
 ]

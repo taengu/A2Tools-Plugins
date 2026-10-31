@@ -18,6 +18,7 @@ body.compact .controls,
 body.compact .view.bosses,
 body.compact .view.alerts,
 body.compact .view.settings,
+body.compact .eventsHead,
 body.compact .hidden,
 body.compact .eventList li:nth-child(n + 4) {
   display: none;
@@ -61,7 +62,7 @@ body.compact .view.events {
 .chips button:focus-visible {
   color: rgba(255, 255, 255, 0.95);
 }
-.chips button[aria-selected="true"] {
+.chips button[aria-pressed="true"] {
   color: #0a0e16;
   background: var(--a2-accent, #8fc2ff);
   border-color: var(--a2-accent, #8fc2ff);
@@ -244,6 +245,9 @@ input[type="checkbox"] {
 }
 .view.bosses .group:first-child {
   margin-top: 0;
+}
+body.combinedTimers .view.bosses .group:first-child {
+  margin-top: 12px;
 }
 .note[hidden] {
   display: none;

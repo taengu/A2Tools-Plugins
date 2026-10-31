@@ -17,14 +17,15 @@
     <div class="controls">
       <div class="status"></div>
       <div class="resets"></div>
-      <div class="chips tabs" role="tablist">
-        <button type="button" class="tab" data-tab="events" role="tab">Events</button>
-        <button type="button" class="tab" data-tab="bosses" role="tab">Bosses</button>
-        <button type="button" class="tab" data-tab="alerts" role="tab">Alerts</button>
-        <button type="button" class="tab" data-tab="settings" role="tab">Settings</button>
+      <div class="chips tabs">
+        <button type="button" class="tab" data-tab="events" aria-pressed="true">Events</button>
+        <button type="button" class="tab" data-tab="bosses" aria-pressed="false">Bosses</button>
+        <button type="button" class="tab" data-tab="alerts" aria-pressed="false">Alerts</button>
+        <button type="button" class="tab" data-tab="settings" aria-pressed="false">Settings</button>
       </div>
     </div>
     <section class="view events">
+      <h2 class="group eventsHead" hidden>Events</h2>
       <ol class="list eventList"></ol>
       <div class="hidden"></div>
     </section>
