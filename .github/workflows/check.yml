@@ -21,3 +21,5 @@ jobs:
       - name: Check every script parses
         run: |
           for f in $(git ls-files 'plugins/**/*.js'); do node --check "$f"; done
+      - name: Test buff refresh timing
+        run: node --test tests/cooldowns-buff-refresh.test.mjs

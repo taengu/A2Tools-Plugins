@@ -1,5 +1,9 @@
 [
   {
+    "version": "0.2.7",
+    "en": "A renewed buff, such as Fury, restarts its progress ring with its countdown."
+  },
+  {
     "version": "0.2.6",
     "en": "Gladiator: Zikel's Blessing and Lunge Stance show their own icons (they were swapped).",
     "ko": "검성: 지켈의 축복과 돌격 자세가 각자의 아이콘으로 표시됩니다 (서로 바뀌어 있었음).",
@@ -50,18 +54,5 @@
     "ru": "Встроенный английский голос (Kokoro): названия звучат даже на ПК без голосов, например в Linux.",
     "zh-Hant": "內建英語語音（Kokoro）：即使電腦沒有語音（例如 Linux）也能唸出名稱。",
     "zh-Hans": "内置英语语音（Kokoro）：即使电脑没有语音（例如 Linux）也能念出名称。"
-  },
-  {
-    "version": "0.2.2",
-    "en": "Spoken names come one at a time, without stutters or cut-offs.",
-    "ko": "읽어 주는 이름이 끊기거나 겹치지 않고 하나씩 나옵니다.",
-    "ja": "読み上げが途切れたり重なったりせず、一つずつ流れます。",
-    "de": "Gesprochene Namen kommen nacheinander, ohne Stocken oder Abbrechen.",
-    "fr": "Les noms sont dits un par un, sans hachures ni coupures.",
-    "es": "Los nombres se dicen de uno en uno, sin cortes ni tartamudeos.",
-    "pt": "Os nomes são falados um de cada vez, sem cortes nem engasgos.",
-    "ru": "Названия звучат по одному, без запинок и обрывов.",
-    "zh-Hant": "唸出的名稱一次一個，不再斷斷續續或被截斷。",
-    "zh-Hans": "念出的名称一次一个，不再断断续续或被截断。"
   }
 ]
