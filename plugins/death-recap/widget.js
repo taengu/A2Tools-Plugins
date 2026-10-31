@@ -8,10 +8,11 @@ a2.on("widget", (d) => {
   if (!d) return;
   card.dataset.style = d.style || "toast";
   document.documentElement.style.setProperty("--scale", String(d.scale || 1));
-  const icon = $(".classIcon");
-  icon.hidden = !d.icon;
-  if (d.icon) icon.src = d.icon;
-  icon.alt = d.className || "";
+  for (const icon of document.querySelectorAll(".classIcon")) {
+    const shown = !!d.icon && d.icon === `icons/${icon.dataset.class}.png`;
+    icon.hidden = !shown;
+    icon.alt = shown ? d.className || "" : "";
+  }
   $(".dismiss").setAttribute("aria-label", d.hideLabel || "Hide");
   $(".dismiss").title = d.hideLabel || "Hide";
   $(".killedBy").textContent = d.killedBy;

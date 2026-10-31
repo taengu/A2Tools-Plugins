@@ -1,5 +1,9 @@
 [
   {
+    "version": "0.1.1",
+    "en": "The class and score icons show on Linux, in the popup and the window."
+  },
+  {
     "version": "0.1.0",
     "en": "Who killed you, once you are dead: their name, legion, server, class, level, combat power and gear score, the damage they did to you, and who assisted. In a popup, and a history with tallies.",
     "ko": "사망한 뒤 누가 처치했는지 보여 줍니다: 이름, 레기온, 서버, 클래스, 레벨, 전투력, 장비 점수, 당신에게 준 피해와 도운 플레이어. 알림과 기록, 집계로 표시합니다.",

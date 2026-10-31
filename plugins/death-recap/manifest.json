@@ -1,7 +1,7 @@
 {
   "id": "death-recap",
   "name": "Death Recap",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "apiVersion": 2,
   "author": "A2 Tools",
   "description": "After a player kills you: who they were (name, legion, server, class, level, combat power and gear score) and what they did to you (damage, hits, fight time, DPS and skills), in a popup and a history with tallies by player, legion and server. Nothing is shown about players while you live.",

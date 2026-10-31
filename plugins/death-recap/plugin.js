@@ -36,7 +36,9 @@ const className = (key) => {
   const i = RECAP_CLASS_KEYS.indexOf(key);
   return i < 0 ? "" : (RECAP_CLASSES[lang] || RECAP_CLASSES.en)[i];
 };
-const classIcon = (key) => (RECAP_CLASS_KEYS.includes(key) ? `icons/${key}.png` : null);
+const classIcon = (key) => (RECAP_CLASS_KEYS.includes(key) ? RECAP_ICONS[key] : null);
+// The popup is its own page and loads the file.
+const classFile = (key) => (RECAP_CLASS_KEYS.includes(key) ? `icons/${key}.png` : null);
 const when = (at) => {
   const d = new Date(at);
   const today = new Date().toDateString() === d.toDateString();
@@ -78,7 +80,7 @@ function score(kind, value) {
   const box = el("span", `score ${kind}`);
   box.title = label;
   const icon = el("img", "scoreIcon");
-  icon.src = `icons/${kind}.png`;
+  icon.src = RECAP_ICONS[kind];
   icon.alt = "";
   box.append(icon, el("span", "visuallyHidden", `${label} `), el("span", "value", value));
   return box;
@@ -260,7 +262,7 @@ function popupData(h) {
     scale: Number(prefs.size),
     killedBy: words.killedBy,
     name: h.name,
-    icon: classIcon(h.class),
+    icon: classFile(h.class),
     className: className(h.class),
     level: h.level ? words.lv(h.level) : "",
     legion: h.legion || "",
