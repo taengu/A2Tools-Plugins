@@ -1,7 +1,7 @@
 {
   "id": "alt-roster",
   "name": "Roster / Content Overview",
-  "version": "1.4.6",
+  "version": "1.4.7",
   "apiVersion": 1,
   "author": "Nullception",
   "description": "Every character you play in one window: class, level, combat power, gear score and Odyle energy, with when each one's basic energy is full again; what each has left of Nightmare, Ascension Trial, Daily Dungeon, Shugo Festival, Invasion and the Abyss Corridors, and the Daily Duties completed; and the week's Odyle Energy crafts and shop limits, the Kinah gained today and the week's Abyss Points.",

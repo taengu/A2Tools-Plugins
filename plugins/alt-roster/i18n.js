@@ -5,6 +5,7 @@
 // and Daily Dungeon are translated.
 globalThis.ROSTER_UI = {
   en: {
+    show: "Show", display: { all: "All characters", faction: "Current faction", server: "Current server", character: "Current character" },
     units: { d: "d", h: "h", m: "m", sep: " " },
     tabOther: "Other", perWeek: (n) => `${n} a week`, usedToday: (t) => `today · new in ${t}`, usedWeek: (t) => `this week · new in ${t}`,
     otherNote: "As the game last said: the shop and crafting rows once that window has opened on a character, the rest from each login. Weekly rows reset Wednesday 07:00 UTC.",
@@ -48,6 +49,7 @@ globalThis.ROSTER_UI = {
     classes: ["Gladiator", "Templar", "Assassin", "Ranger", "Sorcerer", "Spiritmaster", "Cleric", "Chanter", "Brawler"],
   },
   ko: {
+    show: "표시", display: { all: "모든 캐릭터", faction: "현재 종족", server: "현재 서버", character: "현재 캐릭터" },
     units: { d: "일", h: "시간", m: "분", sep: " " },
     tabOther: "기타", perWeek: (n) => `주 ${n}회`, usedToday: (t) => `오늘 · ${t} 후 초기화`, usedWeek: (t) => `이번 주 · ${t} 후 초기화`,
     otherNote: "게임이 마지막으로 알려 준 값입니다. 상점·제작 항목은 캐릭터로 그 창을 연 뒤, 나머지는 접속할 때마다 갱신됩니다. 주간 항목은 수요일 07:00 UTC 초기화.",
@@ -91,6 +93,7 @@ globalThis.ROSTER_UI = {
     classes: ["검성", "수호성", "살성", "궁성", "마도성", "정령성", "치유성", "호법성", "권성"],
   },
   ja: {
+    show: "表示", display: { all: "すべてのキャラクター", faction: "現在の種族", server: "現在のサーバー", character: "現在のキャラクター" },
     units: { d: "日", h: "時間", m: "分", sep: " " },
     tabOther: "その他", perWeek: (n) => `週${n}回`, usedToday: (t) => `本日 · あと${t}でリセット`, usedWeek: (t) => `今週 · あと${t}でリセット`,
     otherNote: "ゲームが最後に伝えた値です。ショップ・製作の行はキャラクターでその画面を開いた後、それ以外はログインごとに更新。毎週の行は水曜 07:00 UTC にリセット。",
@@ -134,6 +137,7 @@ globalThis.ROSTER_UI = {
     classes: ["グラディエーター", "テンプラー", "アサシン", "レンジャー", "ソーサラー", "スピリットマスター", "クレリック", "チャンター", "ファイター"],
   },
   de: {
+    show: "Anzeigen", display: { all: "Alle Charaktere", faction: "Aktuelle Fraktion", server: "Aktueller Server", character: "Aktueller Charakter" },
     units: { d: "T", h: "h", m: "min", sep: " " },
     tabOther: "Sonstiges", perWeek: (n) => `${n} pro Woche`, usedToday: (t) => `heute · neu in ${t}`, usedWeek: (t) => `diese Woche · neu in ${t}`,
     otherNote: "Wie das Spiel zuletzt sagte: Laden- und Herstellungszeilen, sobald das Fenster auf einem Charakter offen war, der Rest bei jedem Login. Wöchentliche Zeilen: Reset Mittwoch 07:00 UTC.",
@@ -177,6 +181,7 @@ globalThis.ROSTER_UI = {
     classes: ["Gladiator", "Templer", "Assassine", "Waldläufer", "Magier", "Beschwörer", "Kleriker", "Kantor", "Faustkämpfer"],
   },
   fr: {
+    show: "Afficher", display: { all: "Tous les personnages", faction: "Faction actuelle", server: "Serveur actuel", character: "Personnage actuel" },
     units: { d: "j", h: "h", m: "min", sep: " " },
     tabOther: "Autres", perWeek: (n) => `${n} par semaine`, usedToday: (t) => `aujourd'hui · nouveau dans ${t}`, usedWeek: (t) => `cette semaine · nouveau dans ${t}`,
     otherNote: "Comme le jeu l'a dit en dernier : les lignes de boutique et d'artisanat une fois la fenêtre ouverte sur un personnage, le reste à chaque connexion. Lignes hebdomadaires réinitialisées le mercredi à 07:00 UTC.",
@@ -220,6 +225,7 @@ globalThis.ROSTER_UI = {
     classes: ["Gladiateur", "Templier", "Assassin", "Rôdeur", "Sorcier", "Spiritualiste", "Clerc", "Aède", "Pugiliste"],
   },
   es: {
+    show: "Mostrar", display: { all: "Todos los personajes", faction: "Facción actual", server: "Servidor actual", character: "Personaje actual" },
     units: { d: "d", h: "h", m: "min", sep: " " },
     tabOther: "Otros", perWeek: (n) => `${n} a la semana`, usedToday: (t) => `hoy · nuevo en ${t}`, usedWeek: (t) => `esta semana · nuevo en ${t}`,
     otherNote: "Según lo último que dijo el juego: las filas de tienda y fabricación una vez abierta esa ventana con un personaje, el resto en cada inicio de sesión. Las semanales se reinician el miércoles a las 07:00 UTC.",
@@ -263,6 +269,7 @@ globalThis.ROSTER_UI = {
     classes: ["Gladiador", "Templario", "Sicario", "Ranger", "Hechicero", "Espiritualista", "Clérigo", "Conjurador", "Luchador"],
   },
   pt: {
+    show: "Mostrar", display: { all: "Todos os personagens", faction: "Facção atual", server: "Servidor atual", character: "Personagem atual" },
     units: { d: "d", h: "h", m: "min", sep: " " },
     tabOther: "Outros", perWeek: (n) => `${n} por semana`, usedToday: (t) => `hoje · novo em ${t}`, usedWeek: (t) => `esta semana · novo em ${t}`,
     otherNote: "Como o jogo disse por último: as linhas de loja e criação depois de abrir essa janela num personagem, o resto a cada login. As semanais reiniciam na quarta às 07:00 UTC.",
@@ -306,6 +313,7 @@ globalThis.ROSTER_UI = {
     classes: ["Gladiador", "Templário", "Assassino", "Arqueiro", "Mago", "Espiritualista", "Clérigo", "Encantador", "Lutador"],
   },
   ru: {
+    show: "Показать", display: { all: "Все персонажи", faction: "Текущая раса", server: "Текущий сервер", character: "Текущий персонаж" },
     units: { d: "д", h: "ч", m: "мин", sep: " " },
     tabOther: "Прочее", perWeek: (n) => `${n} в неделю`, usedToday: (t) => `сегодня · новые через ${t}`, usedWeek: (t) => `на этой неделе · новые через ${t}`,
     otherNote: "Как игра сообщила в последний раз: строки магазина и создания — после открытия этого окна на персонаже, остальное — при каждом входе. Еженедельные строки сбрасываются в среду в 07:00 UTC.",
@@ -349,6 +357,7 @@ globalThis.ROSTER_UI = {
     classes: ["Гладиатор", "Страж", "Убийца", "Стрелок", "Волшебник", "Заклинатель", "Целитель", "Чародей", "Мастер кулака"],
   },
   "zh-Hans": {
+    show: "显示", display: { all: "所有角色", faction: "当前种族", server: "当前服务器", character: "当前角色" },
     units: { d: "天", h: "小时", m: "分钟", sep: "" },
     tabOther: "其他", perWeek: (n) => `每周 ${n} 次`, usedToday: (t) => `今日 · ${t}后刷新`, usedWeek: (t) => `本周 · ${t}后刷新`,
     otherNote: "游戏最后告知的数值：商店和制作行在角色打开该窗口后更新，其余每次登录时更新。每周行在周三 07:00 UTC 重置。",
@@ -392,6 +401,7 @@ globalThis.ROSTER_UI = {
     classes: ["剑圣", "守护圣", "杀圣", "弓圣", "魔道圣", "精灵圣", "治愈圣", "护法圣", "拳圣"],
   },
   "zh-Hant": {
+    show: "顯示", display: { all: "所有角色", faction: "目前種族", server: "目前伺服器", character: "目前角色" },
     units: { d: "天", h: "小時", m: "分鐘", sep: "" },
     tabOther: "其他", perWeek: (n) => `每週 ${n} 次`, usedToday: (t) => `今日 · ${t}後刷新`, usedWeek: (t) => `本週 · ${t}後刷新`,
     otherNote: "遊戲最後告知的數值：商店和製作行在角色打開該視窗後更新，其餘每次登入時更新。每週行在週三 07:00 UTC 重置。",

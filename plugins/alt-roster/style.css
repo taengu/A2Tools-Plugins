@@ -65,6 +65,8 @@ button { cursor: pointer; }
 .cappedName { padding: 0 6px; border-radius: 9px; background: rgba(242, 184, 75, 0.18); font-size: 12px; }
 
 .toolbar { display: flex; gap: 6px; align-items: center; margin-top: 8px; }
+.displayFilter { display: flex; gap: 6px; align-items: center; margin-top: 8px; }
+body.compact .displayFilter { display: none; }
 .search { flex: 1; min-width: 0; padding: 3px 7px; }
 .count { font-size: 12px; color: var(--dim); white-space: nowrap; }
 

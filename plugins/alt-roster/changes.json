@@ -1,5 +1,9 @@
 [
   {
+    "version": "1.4.7",
+    "en": "Choose to show all characters or only the current faction, server or character. Saved characters, shared totals and full-energy warnings are kept."
+  },
+  {
     "version": "1.4.6",
     "en": "Buy Odyle Energy follows the shop again: 4 per character and 16 per server a week. Buy Rift Stones is gone from the shop, so from the list too.",
     "ko": "오드 에너지 구매가 다시 상점과 같아졌습니다: 주간 캐릭터당 4개, 서버당 16개. 균열석 구매는 상점에서 빠져 목록에서도 빠졌습니다.",
@@ -50,18 +54,5 @@
     "ru": "Если метр запущен раньше игры, пустая копия последнего персонажа больше не появляется; уже созданная исчезает, когда известен настоящий.",
     "zh-Hant": "計量器比遊戲先啟動時，不再產生上次角色的空白副本；已產生的會在確認實際角色後消失。",
     "zh-Hans": "计量器比游戏先启动时，不再产生上次角色的空白副本；已产生的会在确认实际角色后消失。"
-  },
-  {
-    "version": "1.4.2",
-    "en": "A membership's 840 energy cap now counts for every character, not only those seen above 560.",
-    "ko": "멤버십의 840 에너지 상한이 560을 넘은 캐릭터뿐 아니라 모든 캐릭터에 적용됩니다.",
-    "ja": "メンバーシップのエネルギー上限840が、560を超えたキャラクターだけでなく全キャラクターに適用されます。",
-    "de": "Das Energielimit 840 einer Mitgliedschaft gilt jetzt für alle Charaktere, nicht nur für die über 560 gesehenen.",
-    "fr": "Le plafond d'énergie de 840 d'un abonnement compte désormais pour tous les personnages, pas seulement ceux vus au-dessus de 560.",
-    "es": "El límite de energía de 840 de una membresía cuenta ahora para todos los personajes, no solo los vistos por encima de 560.",
-    "pt": "O limite de energia de 840 de uma assinatura agora vale para todos os personagens, não só os vistos acima de 560.",
-    "ru": "Предел энергии 840 по подписке теперь действует для всех персонажей, а не только для замеченных выше 560.",
-    "zh-Hant": "會員的 840 能量上限現在適用於所有角色，不只是曾超過 560 的角色。",
-    "zh-Hans": "会员的 840 能量上限现在适用于所有角色，不只是曾超过 560 的角色。"
   }
 ]
