@@ -5,7 +5,7 @@ const stack = document.querySelector(".stack");
 let locked = false;
 let look = { size: 60, fg: "#ffff00", safe: "#66ff66", bg: "#000000", bgOpacity: 0.85 };
 let items = [];
-let preview = { text: "Enhanced Boss Telegraph", sub: "" };
+let preview = { text: "Boss Callouts", sub: "" };
 
 const hex = (c, a) => {
   const m = /^#([0-9a-f]{6})$/i.exec(c || "");

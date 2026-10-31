@@ -1,4 +1,4 @@
-"""Build Enhanced Boss Telegraph' bosses.js from AION 2's own game data.
+"""Build Boss Callouts' bosses.js from AION 2's own game data.
 
     python tools/boss-telegraph/build.py --tables <extractor>/Output/AION2/Content/Data/Table
         [--tw-l10n <extractor>/OutputTW/AION2/Content/Data/Table/L10N] [--meter <A2Tools-DPS-Meter>]

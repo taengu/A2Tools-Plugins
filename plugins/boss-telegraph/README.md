@@ -1,6 +1,8 @@
-# Enhanced Boss Telegraph
+# Boss Callouts
 
-An accessibility plugin, asked for by Nyx, a visually impaired player. Some boss mechanics show only on screen: the boss's line in the middle of the screen, the colour it glows, a buff icon on it and its time. Enhanced Boss Telegraph speaks them aloud and shows them in big, high-contrast text you place anywhere over the game.
+(Called Enhanced Boss Telegraph before 0.1.8; its id is still `boss-telegraph`.)
+
+An accessibility plugin, asked for by Nyx, a visually impaired player. Some boss mechanics show only on screen: the boss's line in the middle of the screen, the colour it glows, a buff icon on it and its time. Boss Callouts speaks them aloud and shows them in big, high-contrast text you place anywhere over the game.
 
 - **Calls:** when a boss starts a cast, uses a skill or gets a buff that the game marks with a line, you hear it and see it. A cast shows its cast bar's time left. For the mechanics checked by hand (below) you also get a short call ("Purple — stop magic attacks"), a countdown while the boss's buff lasts ("Stop magic — 7.0 s") and "Safe to attack" when it ends.
 - **Call style:** the short call and the boss's line, the short call only, or the boss's line only.

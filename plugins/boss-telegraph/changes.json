@@ -1,5 +1,18 @@
 [
   {
+    "version": "0.1.8",
+    "en": "Enhanced Boss Telegraph is now called Boss Callouts. Your settings and your own words for calls are kept.",
+    "ko": "Enhanced Boss Telegraph의 이름이 보스 알림(Boss Callouts)으로 바뀌었습니다. 설정과 직접 입력한 알림 문구는 그대로 유지됩니다.",
+    "ja": "Enhanced Boss Telegraph は Boss Callouts(ボスコールアウト)に名前が変わりました。設定と自分で入力した呼びかけはそのままです。",
+    "de": "Enhanced Boss Telegraph heißt jetzt Boss Callouts (Boss-Ansagen). Deine Einstellungen und eigenen Ansagen bleiben erhalten.",
+    "fr": "Enhanced Boss Telegraph s'appelle désormais Boss Callouts (Annonces de boss). Vos réglages et vos propres textes sont conservés.",
+    "es": "Enhanced Boss Telegraph ahora se llama Boss Callouts (Avisos de jefes). Se conservan tus ajustes y tus propios textos.",
+    "pt": "Enhanced Boss Telegraph agora se chama Boss Callouts (Avisos de chefes). Suas configurações e seus próprios textos são mantidos.",
+    "ru": "Enhanced Boss Telegraph теперь называется Boss Callouts (Подсказки боссов). Настройки и ваши собственные фразы сохраняются.",
+    "zh-Hant": "Enhanced Boss Telegraph 已更名為 Boss Callouts（首領提示）。你的設定與自訂提示文字都會保留。",
+    "zh-Hans": "Enhanced Boss Telegraph 已更名为 Boss Callouts（首领提示）。你的设置与自定义提示文字都会保留。"
+  },
+  {
     "version": "0.1.7",
     "en": "Uses less memory: its sound engine closes after 30 seconds of silence and starts again for the next alert.",
     "ko": "메모리를 덜 사용합니다. 30초 동안 소리가 없으면 사운드 엔진을 닫고, 다음 알림 때 다시 시작합니다.",
@@ -50,18 +63,5 @@
     "ru": "Свои слова для любого сигнала (✎) и пояснения к настройкам.",
     "zh-Hant": "任何提示都能改成自訂文字（✎），設定也會說明其作用。",
     "zh-Hans": "任何提示都能改成自定义文字（✎），设置也会说明其作用。"
-  },
-  {
-    "version": "0.1.3",
-    "en": "Talisra of the Void: her spear order, said one by one and shown whole (Dark → Dark → Light).",
-    "ko": "공허의 탈리스라: 창 순서를 하나씩 읽고 전체를 표시합니다(어둠 → 어둠 → 빛).",
-    "ja": "虚空のタリスラ：槍の順番を一つずつ読み上げ、全体を表示します（闇 → 闇 → 光）。",
-    "de": "Talisra der Leere: die Reihenfolge ihrer Speere, einzeln gesagt und ganz gezeigt (Dunkel → Dunkel → Licht).",
-    "fr": "Talisra du Néant : l'ordre de ses lances, dit une à une et affiché en entier (Ombre → Ombre → Lumière).",
-    "es": "Talisra del Vacío: el orden de sus lanzas, dicho una a una y mostrado entero (Oscuridad → Oscuridad → Luz).",
-    "pt": "Talisra do Vazio: a ordem das lanças, dita uma a uma e mostrada inteira (Escuridão → Escuridão → Luz).",
-    "ru": "Талисра Пустоты: порядок копий называется по одному и показывается целиком (Тьма → Тьма → Свет).",
-    "zh-Hant": "虛空的塔莉絲拉：逐一唸出長槍順序並完整顯示（暗 → 暗 → 光）。",
-    "zh-Hans": "虚空的塔莉丝拉：逐一念出长枪顺序并完整显示（暗 → 暗 → 光）。"
   }
 ]

@@ -1,4 +1,4 @@
-"""Enhanced Boss Telegraph's built-in voice: every line it can speak, in English,
+"""Boss Callouts' built-in voice: every line it can speak, in English,
 made with Kokoro (https://huggingface.co/hexgrad/Kokoro-82M, Apache 2.0) and
 written to plugins/boss-telegraph/voice.js as Opus clips.
 
@@ -19,7 +19,7 @@ from pathlib import Path
 
 PLUGIN = Path(__file__).resolve().parents[2] / "plugins" / "boss-telegraph"
 # Said by the page itself (i18n.js): the voice and volume preview.
-EXTRA = ["Enhanced Boss Telegraph"]
+EXTRA = ["Boss Callouts"]
 
 
 def spoken(data):

@@ -15,7 +15,7 @@ const UI = {
     help: "Unlocked, drag the text anywhere. Double-click it to open this window.",
     boundary: "Only what the game shows a sighted player: the boss's lines, its cast bar, the buff on it and how long it lasts. It never acts for you. It knows only the bosses in its list.",
     report: "A mechanic missing or wrong? Report it here.",
-    preview: "Enhanced Boss Telegraph", previewSub: "Drag to place, then lock",
+    preview: "Boss Callouts", previewSub: "Drag to place, then lock",
     custom: "Your own words",
     customReset: "Back to the default",
     customHint: "Said and shown instead of this call, whatever the call style. Empty: the default. The built-in English voice has only its own words: yours are said by your computer's voice.",

@@ -1,4 +1,4 @@
-// Enhanced Boss Telegraph' rules, apart from the page so they can be tried without one.
+// Boss Callouts' rules, apart from the page so they can be tried without one.
 //
 // What it hears (manifest.json decoders; worked out from captures, 2026-10-26):
 //   09 38  a cast bar starts: caster, skill

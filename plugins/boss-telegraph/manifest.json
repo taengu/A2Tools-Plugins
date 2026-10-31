@@ -1,7 +1,7 @@
 {
   "id": "boss-telegraph",
-  "name": "Enhanced Boss Telegraph",
-  "version": "0.1.7",
+  "name": "Boss Callouts",
+  "version": "0.1.8",
   "apiVersion": 2,
   "author": "A2 Tools",
   "description": "Accessibility: a boss's on-screen lines and mechanics spoken aloud and shown in large, high-contrast text, with a countdown while the boss's buff lasts and \"Safe to attack\" when it ends.",

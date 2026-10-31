@@ -1,4 +1,4 @@
-// Enhanced Boss Telegraph: a boss's lines and mechanics spoken and shown in big text.
+// Boss Callouts (once Enhanced Boss Telegraph): a boss's lines and mechanics spoken and shown in big text.
 // The rules are in logic.js; this page holds the settings, the voice and the
 // widget. Nothing leaves the computer: no network, only the meter's storage.
 const $ = (s) => document.querySelector(s);
