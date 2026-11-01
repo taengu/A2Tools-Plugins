@@ -1,0 +1,19 @@
+{
+  "id": "kda-counter",
+  "name": "K/D/A Counter",
+  "version": "0.1.0",
+  "apiVersion": 2,
+  "author": "Nullception",
+  "description": "Your kills, deaths and assists against players, with a sound for each kill that climbs as you chain them, up to six in a row.",
+  "permissions": [
+    "storage",
+    "events:kda"
+  ],
+  "decoders": [],
+  "ui": {
+    "panel": {
+      "width": 250,
+      "height": 190
+    }
+  }
+}

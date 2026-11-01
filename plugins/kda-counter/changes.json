@@ -1,0 +1,6 @@
+[
+  {
+    "version": "0.1.0",
+    "en": "Counts your kills, assists and deaths against players, with a sound for each kill that climbs as you chain them, up to six in a row. Needs a meter update that sends the kill, assist and death events."
+  }
+]
