@@ -4,16 +4,17 @@
   "version": "0.1.0",
   "apiVersion": 2,
   "author": "Nullception",
-  "description": "Your kills, deaths and assists against players, with a sound for each kill that climbs as you chain them, up to six in a row.",
+  "description": "Your kills, deaths and assists against players, with a sound for each kill that climbs as you chain them, up to six in a row, and the Abyss Points you earn in the Abyss. Its window shows when you enter the Abyss.",
   "permissions": [
     "storage",
-    "events:kda"
+    "events:kda",
+    "window"
   ],
   "decoders": [],
   "ui": {
     "panel": {
       "width": 250,
-      "height": 190
+      "height": 215
     }
   }
 }

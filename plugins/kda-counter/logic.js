@@ -7,17 +7,28 @@ globalThis.KdaLogic = (() => {
   const SPARKLE = [2093, 2637, 3136, 3951, 4186];
   const SEEN_MAX = 100;
 
-  const fresh = () => ({ kills: 0, deaths: 0, assists: 0, streak: 0, best: 0, since: null, seen: [] });
+  const fresh = () => ({ kills: 0, deaths: 0, assists: 0, streak: 0, best: 0, since: null, seen: [], abyssPoints: 0, inAbyss: false });
 
   // Count one event, once. False when it was counted before (the meter keeps
   // its events for a window opened later) or is not one of ours.
   function apply(state, event) {
     const kind = event?.kind;
-    if (kind !== "kill" && kind !== "assist" && kind !== "death") return false;
+    if (!["kill", "assist", "death", "points", "zone"].includes(kind)) return false;
     const key = `${event.at}:${kind}`;
     if (state.seen.includes(key)) return false;
     state.seen.push(key);
     if (state.seen.length > SEEN_MAX) state.seen.shift();
+    // The Abyss: the points gained while in it, added up. The meter tells
+    // when the Abyss is entered and left; points outside it don't count.
+    if (kind === "zone") {
+      state.inAbyss = event.abyss === true;
+      return true;
+    }
+    if (kind === "points") {
+      const amount = Number(event.amount);
+      if (state.inAbyss && amount > 0) state.abyssPoints += amount;
+      return true;
+    }
     state.since ??= Number(event.at) || Date.now();
     if (kind === "kill") {
       state.kills += 1;

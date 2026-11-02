@@ -1,13 +1,14 @@
 // K/D/A Counter: kills, deaths and assists against players, and a sound for
-// each kill that climbs with the streak (a2.on("kda"), permission
-// "events:kda").
+// each kill that climbs with the streak, and the Abyss Points earned in the
+// Abyss (a2.on("kda"), permission "events:kda"); its window shows when the
+// Abyss is entered (permission "window").
 const { apply, notes, fresh, kda, clock, MAX_STREAK } = globalThis.KdaLogic;
 const $ = (sel, root = document) => root.querySelector(sel);
 
 // An event older than this is the meter's replay of what came before the
 // window opened: counted, not played.
 const STALE_MS = 5_000;
-const prefs = { volume: 70, assistSound: true, deathSound: false };
+const prefs = { volume: 70, assistSound: true, deathSound: false, abyssPopup: true };
 let state = fresh();
 let audio = null;
 
@@ -48,6 +49,9 @@ function draw() {
   streak.textContent = state.streak ? `Streak ${Math.min(state.streak, 99)}${state.streak >= MAX_STREAK ? " 🔥" : ""} · best ${state.best}` : state.best ? `Best streak ${state.best}` : "";
   streak.classList.toggle("hot", state.streak >= 2);
   $(".ratio").textContent = state.kills + state.assists + state.deaths ? `KDA ${kda(state)}` : "";
+  // In the Abyss, or with points earned there since the reset.
+  $(".abyss").hidden = !state.inAbyss && !state.abyssPoints;
+  $(".abyss b").textContent = state.abyssPoints.toLocaleString("en-US");
 }
 function tick() {
   $(".time").textContent = clock(state.since ? Date.now() - state.since : 0);
@@ -55,7 +59,9 @@ function tick() {
 
 a2.on("kda", (e, meta) => {
   if (!apply(state, e)) return;
-  if (Date.now() - (e.at || meta?.at || Date.now()) <= STALE_MS) play(e.kind, state.streak);
+  const fresh = Date.now() - (e.at || meta?.at || Date.now()) <= STALE_MS;
+  if (fresh && e.kind === "zone" && e.abyss && prefs.abyssPopup) Promise.resolve(a2.window.show()).catch(() => {});
+  if (fresh && (e.kind === "kill" || e.kind === "assist" || e.kind === "death")) play(e.kind, state.streak);
   draw();
   save();
 });
@@ -63,8 +69,10 @@ a2.on("kda", (e, meta) => {
 $(".reset").addEventListener("click", () => {
   // Keeps the events already counted, so a replay can't count them again.
   const seen = state.seen;
+  const inAbyss = state.inAbyss;
   state = fresh();
   state.seen = seen;
+  state.inAbyss = inAbyss;
   draw();
   tick();
   save();
@@ -82,6 +90,10 @@ $(".assistSound").addEventListener("change", (e) => {
 });
 $(".deathSound").addEventListener("change", (e) => {
   prefs.deathSound = e.target.checked;
+  savePrefs();
+});
+$(".abyssPopup").addEventListener("change", (e) => {
+  prefs.abyssPopup = e.target.checked;
   savePrefs();
 });
 // One button per step of the climb, then the other two.
@@ -107,6 +119,7 @@ for (const [label, kind, streak] of [["1", "kill", 1], ["2", "kill", 2], ["3", "
   $(".volume").value = prefs.volume;
   $(".assistSound").checked = prefs.assistSound;
   $(".deathSound").checked = prefs.deathSound;
+  $(".abyssPopup").checked = prefs.abyssPopup;
   draw();
   tick();
   setInterval(tick, 1000);
