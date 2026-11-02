@@ -1,5 +1,18 @@
 [
   {
+    "version": "0.2.9",
+    "en": "Clarifies that Hide outside combat applies only when widgets are locked; unlocked widgets stay visible for positioning.",
+    "ko": "전투 중이 아닐 때 숨기기는 위젯이 잠겨 있을 때만 적용된다는 설명을 추가했습니다. 잠금 해제 시에는 위치 조정을 위해 계속 표시됩니다.",
+    "ja": "「戦闘外は隠す」はウィジェットのロック中のみ有効と明記しました。ロック解除中は位置調整のため表示されます。",
+    "de": "Erklärt, dass „Außerhalb des Kampfes ausblenden“ nur für gesperrte Widgets gilt. Entsperrte Widgets bleiben zum Positionieren sichtbar.",
+    "fr": "Précise que le masquage hors combat concerne les widgets verrouillés. Les widgets déverrouillés restent visibles pour être repositionnés.",
+    "es": "Aclara que ocultar fuera de combate solo se aplica a los widgets bloqueados; los desbloqueados siguen visibles para poder colocarlos.",
+    "pt": "Esclarece que ocultar fora de combate só se aplica a widgets bloqueados; os desbloqueados continuam visíveis para ajustar a posição.",
+    "ru": "Уточнено, что скрытие вне боя действует только для закреплённых виджетов. Незакреплённые остаются видимыми для перемещения.",
+    "zh-Hant": "補充說明：「非戰鬥時隱藏」僅對已鎖定的小工具生效，未鎖定時會保持顯示，方便調整位置。",
+    "zh-Hans": "补充说明：“非战斗时隐藏”仅对已锁定的小工具生效，未锁定时会保持显示，方便调整位置。"
+  },
+  {
     "version": "0.2.8",
     "en": "A skill with charges shows when its next charge comes back, with a lighter sweep while it can still be used.",
     "ko": "충전형 스킬은 다음 충전이 돌아오는 시간을 표시하며, 아직 사용할 수 있는 동안에는 더 옅게 표시됩니다.",
@@ -50,18 +63,5 @@
     "ru": "«Умения и баффы отдельно» сразу показывает значки (они оставались пустыми до смены перезарядки).",
     "zh-Hant": "「技能與增益分開」會立即顯示圖示（之前要等到冷卻變化才出現）。",
     "zh-Hans": "「技能与增益分开」会立即显示图标（之前要等到冷却变化才出现）。"
-  },
-  {
-    "version": "0.2.4",
-    "en": "Uses less memory: its sound engine closes after 30 seconds of silence and starts again for the next alert.",
-    "ko": "메모리를 덜 사용합니다. 30초 동안 소리가 없으면 사운드 엔진을 닫고, 다음 알림 때 다시 시작합니다.",
-    "ja": "メモリ使用量が減りました。30秒間音がなければサウンドエンジンを閉じ、次の通知で再び起動します。",
-    "de": "Braucht weniger Speicher: Die Sound-Engine schließt nach 30 Sekunden Stille und startet beim nächsten Alarm neu.",
-    "fr": "Utilise moins de mémoire : son moteur audio se ferme après 30 secondes de silence et redémarre à la prochaine alerte.",
-    "es": "Usa menos memoria: su motor de sonido se cierra tras 30 segundos de silencio y se reinicia con la siguiente alerta.",
-    "pt": "Usa menos memória: o motor de som fecha após 30 segundos de silêncio e reinicia no próximo alerta.",
-    "ru": "Меньше расход памяти: звуковой движок закрывается после 30 секунд тишины и запускается снова при следующем оповещении.",
-    "zh-Hant": "佔用更少記憶體：靜音 30 秒後關閉音效引擎，下次提醒時再重新啟動。",
-    "zh-Hans": "占用更少内存：静音 30 秒后关闭音效引擎，下次提醒时再重新启动。"
   }
 ]

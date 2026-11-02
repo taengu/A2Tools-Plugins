@@ -69,8 +69,9 @@
       </label>
       <label class="switch"><span data-t="numbers">Show seconds</span><input type="checkbox" class="numbers" /></label>
       <label class="switch"><span data-t="readyGlow">Flash when ready</span><input type="checkbox" class="readyGlow" /></label>
-      <label class="switch"><span data-t="combatOnly">Hide outside combat</span><input type="checkbox" class="combatOnly" /></label>
-      <label class="row combatAfterRow"><span data-t="combatAfter">after no skill for</span><span class="num"><input type="number" class="combatAfter" min="3" max="120" step="1" /> s</span></label>
+      <label class="switch"><span data-t="combatOnly">Hide outside combat</span><input type="checkbox" class="combatOnly" aria-describedby="combatLockNote" /></label>
+      <label class="row combatAfterRow"><span data-t="combatAfter">after no skill for</span><span class="num"><input type="number" class="combatAfter" min="3" max="120" step="1" aria-describedby="combatLockNote" /> s</span></label>
+      <p class="note" id="combatLockNote" data-t="combatLockNote">Applies when locked. Unlocked widgets stay visible for positioning.</p>
       <p class="note" data-t="help">Drag the icons anywhere. Double-click them to open this window.</p>
     </section>
 
