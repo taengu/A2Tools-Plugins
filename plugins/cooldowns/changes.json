@@ -2,15 +2,15 @@
   {
     "version": "0.2.9",
     "en": "Recuperation's charges come back at their own pace again. Settings now say that Hide outside combat applies only while the widgets are locked.",
-    "ko": "회복 스킬의 충전이 다시 원래 속도로 돌아옵니다. 설정에서 '전투 밖에서 숨기기'가 위젯이 고정된 동안에만 적용된다고 안내합니다.",
-    "ja": "リカバリーのチャージが本来の速さで戻るようになりました。設定に「戦闘外で隠す」はウィジェットを固定している間だけ働くと表示されます。",
-    "de": "Die Aufladungen von Erholung kommen wieder in ihrem eigenen Tempo zurück. Die Einstellungen sagen jetzt, dass Außerhalb des Kampfes ausblenden nur bei fixierten Widgets gilt.",
-    "fr": "Les charges de Récupération reviennent de nouveau à leur propre rythme. Les réglages précisent que Masquer hors combat ne s'applique que lorsque les widgets sont verrouillés.",
-    "es": "Las cargas de Recuperación vuelven otra vez a su propio ritmo. Los ajustes indican que Ocultar fuera de combate solo se aplica con los widgets fijados.",
-    "pt": "As cargas de Recuperação voltam de novo no próprio ritmo. As configurações agora dizem que Ocultar fora de combate só vale com os widgets travados.",
-    "ru": "Заряды Восстановления снова восполняются в своём темпе. В настройках теперь сказано, что «Скрывать вне боя» работает только с закреплёнными виджетами.",
-    "zh-Hant": "恢復技能的充能重新以原本的速度回復。設定中說明「戰鬥外隱藏」只在小工具鎖定時生效。",
-    "zh-Hans": "恢复技能的充能重新以原本的速度回复。设置中说明“战斗外隐藏”只在小工具锁定时生效。"
+    "ko": "쾌유의 주문의 충전이 다시 원래 속도로 돌아옵니다. 설정에서 '전투 중이 아닐 때 숨기기'가 위젯이 고정된 동안에만 적용된다고 안내합니다.",
+    "ja": "快癒の呪文のチャージが本来の速さで戻るようになりました。設定に「戦闘外は隠す」はウィジェットを固定している間だけ働くと表示されます。",
+    "de": "Die Aufladungen von Zauber der Genesung kommen wieder in ihrem eigenen Tempo zurück. Die Einstellungen sagen jetzt, dass „Außerhalb des Kampfes ausblenden“ nur bei fixierten Widgets gilt.",
+    "fr": "Les charges de Sort de récupération reviennent de nouveau à leur propre rythme. Les réglages précisent que « Masquer hors combat » ne s'applique que lorsque les widgets sont verrouillés.",
+    "es": "Las cargas de Hechizo de recobro vuelven otra vez a su propio ritmo. Los ajustes indican que «Ocultar fuera de combate» solo se aplica con los widgets fijados.",
+    "pt": "As cargas de Feitiço da Convalescença voltam de novo no próprio ritmo. As configurações agora dizem que “Ocultar fora de combate” só vale com os widgets travados.",
+    "ru": "Заряды «Заклинания выздоровления» снова восполняются в своём темпе. В настройках теперь сказано, что «Скрывать вне боя» работает только с закреплёнными виджетами.",
+    "zh-Hant": "痊癒咒語的充能重新以原本的速度回復。設定中說明「非戰鬥時隱藏」只在小工具鎖定時生效。",
+    "zh-Hans": "痊愈咒语的充能重新以原本的速度回复。设置中说明“非战斗时隐藏”只在小工具锁定时生效。"
   },
   {
     "version": "0.2.8",
