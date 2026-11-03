@@ -1,5 +1,18 @@
 [
   {
+    "version": "0.2.9",
+    "en": "Recuperation charges now use their variant's recharge time, without shortening it by cooldown reduction inferred from other skills.",
+    "ko": "Recuperation 충전은 이제 해당 변형의 재충전 시간을 사용하며, 다른 스킬에서 추정한 재사용 대기시간 감소율로 단축되지 않습니다.",
+    "ja": "Recuperationのチャージは各派生の再充填時間を使用し、他のスキルから推定したクールダウン短縮率では短縮されなくなりました。",
+    "de": "Aufladungen von Recuperation nutzen nun die Wiederaufladezeit der jeweiligen Variante, ohne sie durch die aus anderen Fertigkeiten geschätzte Abklingzeitverkürzung zu reduzieren.",
+    "fr": "Les charges de Recuperation utilisent désormais le temps de recharge de leur variante, sans appliquer la réduction estimée à partir des autres compétences.",
+    "es": "Las cargas de Recuperation usan ahora el tiempo de recarga de su variante, sin acortarlo con la reducción estimada a partir de otras habilidades.",
+    "pt": "As cargas de Recuperation agora usam o tempo de recarga da variante, sem reduzi-lo pela redução de recarga estimada a partir de outras habilidades.",
+    "ru": "Заряды Recuperation теперь восстанавливаются за время своего варианта умения, без сокращения, рассчитанного по другим умениям.",
+    "zh-Hant": "Recuperation 的充能現在使用對應變體的恢復時間，不再套用從其他技能推算出的冷卻縮減。",
+    "zh-Hans": "Recuperation 的充能现在使用对应变体的恢复时间，不再套用从其他技能推算出的冷却缩减。"
+  },
+  {
     "version": "0.2.8",
     "en": "A skill with charges shows when its next charge comes back, with a lighter sweep while it can still be used.",
     "ko": "충전형 스킬은 다음 충전이 돌아오는 시간을 표시하며, 아직 사용할 수 있는 동안에는 더 옅게 표시됩니다.",
@@ -50,18 +63,5 @@
     "ru": "«Умения и баффы отдельно» сразу показывает значки (они оставались пустыми до смены перезарядки).",
     "zh-Hant": "「技能與增益分開」會立即顯示圖示（之前要等到冷卻變化才出現）。",
     "zh-Hans": "「技能与增益分开」会立即显示图标（之前要等到冷却变化才出现）。"
-  },
-  {
-    "version": "0.2.4",
-    "en": "Uses less memory: its sound engine closes after 30 seconds of silence and starts again for the next alert.",
-    "ko": "메모리를 덜 사용합니다. 30초 동안 소리가 없으면 사운드 엔진을 닫고, 다음 알림 때 다시 시작합니다.",
-    "ja": "メモリ使用量が減りました。30秒間音がなければサウンドエンジンを閉じ、次の通知で再び起動します。",
-    "de": "Braucht weniger Speicher: Die Sound-Engine schließt nach 30 Sekunden Stille und startet beim nächsten Alarm neu.",
-    "fr": "Utilise moins de mémoire : son moteur audio se ferme après 30 secondes de silence et redémarre à la prochaine alerte.",
-    "es": "Usa menos memoria: su motor de sonido se cierra tras 30 segundos de silencio y se reinicia con la siguiente alerta.",
-    "pt": "Usa menos memória: o motor de som fecha após 30 segundos de silêncio e reinicia no próximo alerta.",
-    "ru": "Меньше расход памяти: звуковой движок закрывается после 30 секунд тишины и запускается снова при следующем оповещении.",
-    "zh-Hant": "佔用更少記憶體：靜音 30 秒後關閉音效引擎，下次提醒時再重新啟動。",
-    "zh-Hans": "占用更少内存：静音 30 秒后关闭音效引擎，下次提醒时再重新启动。"
   }
 ]
