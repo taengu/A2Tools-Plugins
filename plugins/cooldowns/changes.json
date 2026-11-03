@@ -1,5 +1,18 @@
 [
   {
+    "version": "0.2.9",
+    "en": "Recuperation's charges come back at their own pace again. Settings now say that Hide outside combat applies only while the widgets are locked.",
+    "ko": "회복 스킬의 충전이 다시 원래 속도로 돌아옵니다. 설정에서 '전투 밖에서 숨기기'가 위젯이 고정된 동안에만 적용된다고 안내합니다.",
+    "ja": "リカバリーのチャージが本来の速さで戻るようになりました。設定に「戦闘外で隠す」はウィジェットを固定している間だけ働くと表示されます。",
+    "de": "Die Aufladungen von Erholung kommen wieder in ihrem eigenen Tempo zurück. Die Einstellungen sagen jetzt, dass Außerhalb des Kampfes ausblenden nur bei fixierten Widgets gilt.",
+    "fr": "Les charges de Récupération reviennent de nouveau à leur propre rythme. Les réglages précisent que Masquer hors combat ne s'applique que lorsque les widgets sont verrouillés.",
+    "es": "Las cargas de Recuperación vuelven otra vez a su propio ritmo. Los ajustes indican que Ocultar fuera de combate solo se aplica con los widgets fijados.",
+    "pt": "As cargas de Recuperação voltam de novo no próprio ritmo. As configurações agora dizem que Ocultar fora de combate só vale com os widgets travados.",
+    "ru": "Заряды Восстановления снова восполняются в своём темпе. В настройках теперь сказано, что «Скрывать вне боя» работает только с закреплёнными виджетами.",
+    "zh-Hant": "恢復技能的充能重新以原本的速度回復。設定中說明「戰鬥外隱藏」只在小工具鎖定時生效。",
+    "zh-Hans": "恢复技能的充能重新以原本的速度回复。设置中说明“战斗外隐藏”只在小工具锁定时生效。"
+  },
+  {
     "version": "0.2.8",
     "en": "A skill with charges shows when its next charge comes back, with a lighter sweep while it can still be used.",
     "ko": "충전형 스킬은 다음 충전이 돌아오는 시간을 표시하며, 아직 사용할 수 있는 동안에는 더 옅게 표시됩니다.",
@@ -50,18 +63,5 @@
     "ru": "«Умения и баффы отдельно» сразу показывает значки (они оставались пустыми до смены перезарядки).",
     "zh-Hant": "「技能與增益分開」會立即顯示圖示（之前要等到冷卻變化才出現）。",
     "zh-Hans": "「技能与增益分开」会立即显示图标（之前要等到冷却变化才出现）。"
-  },
-  {
-    "version": "0.2.4",
-    "en": "Uses less memory: its sound engine closes after 30 seconds of silence and starts again for the next alert.",
-    "ko": "메모리를 덜 사용합니다. 30초 동안 소리가 없으면 사운드 엔진을 닫고, 다음 알림 때 다시 시작합니다.",
-    "ja": "メモリ使用量が減りました。30秒間音がなければサウンドエンジンを閉じ、次の通知で再び起動します。",
-    "de": "Braucht weniger Speicher: Die Sound-Engine schließt nach 30 Sekunden Stille und startet beim nächsten Alarm neu.",
-    "fr": "Utilise moins de mémoire : son moteur audio se ferme après 30 secondes de silence et redémarre à la prochaine alerte.",
-    "es": "Usa menos memoria: su motor de sonido se cierra tras 30 segundos de silencio y se reinicia con la siguiente alerta.",
-    "pt": "Usa menos memória: o motor de som fecha após 30 segundos de silêncio e reinicia no próximo alerta.",
-    "ru": "Меньше расход памяти: звуковой движок закрывается после 30 секунд тишины и запускается снова при следующем оповещении.",
-    "zh-Hant": "佔用更少記憶體：靜音 30 秒後關閉音效引擎，下次提醒時再重新啟動。",
-    "zh-Hans": "占用更少内存：静音 30 秒后关闭音效引擎，下次提醒时再重新启动。"
   }
 ]

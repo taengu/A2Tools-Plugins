@@ -2,6 +2,7 @@
 // from the game's own (skills.js).
 const UI = {
   en: {
+    combatLockNote: "Applies when locked. Unlocked widgets stay visible for positioning.",
     showWidget: "Show the icons", lock: "Lock in place", skills: "Skills", buffs: "Buffs", look: "Look", alerts: "Alerts",
     autoAdd: "Add skills as you use them", filter: "Filter", classNone: "Use a skill in game and your class's skills show here.",
     learnNote: "Cooldowns marked ≈ are the game's base times. Each one is measured as you play, cooldown reduction included.",
@@ -19,6 +20,7 @@ const UI = {
     classes: { 11: "Gladiator", 12: "Templar", 13: "Assassin", 14: "Ranger", 15: "Sorcerer", 16: "Spiritmaster", 17: "Cleric", 18: "Chanter", 19: "Brawler" },
   },
   ko: {
+    combatLockNote: "잠금 상태에서만 적용됩니다. 잠금 해제된 위젯은 위치를 조정할 수 있도록 계속 표시됩니다.",
     showWidget: "아이콘 표시", lock: "위치 고정", skills: "스킬", buffs: "버프", look: "모양", alerts: "알림",
     autoAdd: "사용한 스킬 자동 추가", filter: "검색", classNone: "게임에서 스킬을 사용하면 직업 스킬이 여기에 표시됩니다.",
     learnNote: "≈ 표시는 게임의 기본 재사용 시간입니다. 플레이하면서 재사용 감소를 포함해 실제 값을 측정합니다.",
@@ -36,6 +38,7 @@ const UI = {
     classes: { 11: "검성", 12: "수호성", 13: "살성", 14: "궁성", 15: "마도성", 16: "정령성", 17: "치유성", 18: "호법성", 19: "권성" },
   },
   ja: {
+    combatLockNote: "ロック中のみ適用されます。ロックを解除したウィジェットは、位置を調整できるよう表示されたままになります。",
     showWidget: "アイコンを表示", lock: "位置をロック", skills: "スキル", buffs: "バフ", look: "見た目", alerts: "通知",
     autoAdd: "使ったスキルを追加", filter: "絞り込み", classNone: "ゲームでスキルを使うと、クラスのスキルがここに表示されます。",
     learnNote: "≈ はゲームの基本クールタイムです。プレイ中にクールタイム短縮込みの実際の値を測定します。",
@@ -53,6 +56,7 @@ const UI = {
     classes: { 11: "グラディエーター", 12: "テンプラー", 13: "アサシン", 14: "レンジャー", 15: "ソーサラー", 16: "スピリットマスター", 17: "クレリック", 18: "チャンター", 19: "ファイター" },
   },
   de: {
+    combatLockNote: "Gilt nur bei gesperrten Widgets. Entsperrte Widgets bleiben zum Positionieren sichtbar.",
     showWidget: "Symbole anzeigen", lock: "Fixieren", skills: "Skills", buffs: "Buffs", look: "Aussehen", alerts: "Hinweise",
     autoAdd: "Benutzte Skills hinzufügen", filter: "Filtern", classNone: "Nutze im Spiel einen Skill, dann erscheinen hier die Skills deiner Klasse.",
     learnNote: "Mit ≈ markierte Abklingzeiten sind die Grundwerte des Spiels. Beim Spielen wird jede gemessen, Abklingzeitverkürzung inklusive.",
@@ -70,6 +74,7 @@ const UI = {
     classes: { 11: "Gladiator", 12: "Templer", 13: "Assassine", 14: "Waldläufer", 15: "Magier", 16: "Beschwörer", 17: "Kleriker", 18: "Kantor", 19: "Faustkämpfer" },
   },
   fr: {
+    combatLockNote: "S’applique aux widgets verrouillés. Les widgets déverrouillés restent visibles pour être repositionnés.",
     showWidget: "Afficher les icônes", lock: "Verrouiller", skills: "Compétences", buffs: "Buffs", look: "Apparence", alerts: "Alertes",
     autoAdd: "Ajouter les compétences utilisées", filter: "Filtrer", classNone: "Utilise une compétence en jeu et celles de ta classe s'affichent ici.",
     learnNote: "Les recharges marquées ≈ sont les valeurs de base du jeu. Chacune est mesurée en jeu, réduction de recharge comprise.",
@@ -87,6 +92,7 @@ const UI = {
     classes: { 11: "Gladiateur", 12: "Templier", 13: "Assassin", 14: "Rôdeur", 15: "Sorcier", 16: "Spiritualiste", 17: "Clerc", 18: "Aède", 19: "Pugiliste" },
   },
   es: {
+    combatLockNote: "Se aplica con los widgets bloqueados. Los desbloqueados siguen visibles para poder colocarlos.",
     showWidget: "Mostrar los iconos", lock: "Fijar en su sitio", skills: "Habilidades", buffs: "Mejoras", look: "Aspecto", alerts: "Avisos",
     autoAdd: "Añadir las habilidades que uses", filter: "Filtrar", classNone: "Usa una habilidad en el juego y las de tu clase aparecerán aquí.",
     learnNote: "Los tiempos con ≈ son los base del juego. Cada uno se mide mientras juegas, con la reducción de reutilización incluida.",
@@ -104,6 +110,7 @@ const UI = {
     classes: { 11: "Gladiador", 12: "Templario", 13: "Sicario", 14: "Ranger", 15: "Hechicero", 16: "Espiritualista", 17: "Clérigo", 18: "Conjurador", 19: "Luchador" },
   },
   pt: {
+    combatLockNote: "Aplica-se com os widgets bloqueados. Os desbloqueados continuam visíveis para ajustar a posição.",
     showWidget: "Mostrar os ícones", lock: "Travar no lugar", skills: "Habilidades", buffs: "Buffs", look: "Aparência", alerts: "Alertas",
     autoAdd: "Adicionar habilidades ao usar", filter: "Filtrar", classNone: "Use uma habilidade no jogo e as da sua classe aparecem aqui.",
     learnNote: "Tempos com ≈ são os valores base do jogo. Cada um é medido enquanto você joga, com a redução de recarga incluída.",
@@ -121,6 +128,7 @@ const UI = {
     classes: { 11: "Gladiador", 12: "Templário", 13: "Assassino", 14: "Arqueiro", 15: "Mago", 16: "Espiritualista", 17: "Clérigo", 18: "Encantador", 19: "Lutador" },
   },
   ru: {
+    combatLockNote: "Действует только при закреплённых виджетах. Незакреплённые остаются видимыми, чтобы их можно было перемещать.",
     showWidget: "Показывать значки", lock: "Закрепить", skills: "Умения", buffs: "Баффы", look: "Вид", alerts: "Оповещения",
     autoAdd: "Добавлять применённые умения", filter: "Фильтр", classNone: "Примените умение в игре, и здесь появятся умения вашего класса.",
     learnNote: "Время с ≈ — базовое время игры. Каждое измеряется во время игры, с учётом сокращения отката.",
@@ -138,6 +146,7 @@ const UI = {
     classes: { 11: "Гладиатор", 12: "Страж", 13: "Убийца", 14: "Стрелок", 15: "Волшебник", 16: "Заклинатель", 17: "Целитель", 18: "Чародей", 19: "Мастер кулака" },
   },
   "zh-Hant": {
+    combatLockNote: "僅在鎖定時生效。未鎖定的小工具會保持顯示，方便調整位置。",
     showWidget: "顯示圖示", lock: "鎖定位置", skills: "技能", buffs: "增益", look: "外觀", alerts: "提醒",
     autoAdd: "使用技能時自動加入", filter: "篩選", classNone: "在遊戲中使用技能後，你的職業技能會顯示在這裡。",
     learnNote: "標示 ≈ 的是遊戲的基本冷卻時間。遊玩時會測量實際冷卻（含冷卻縮減）。",
@@ -155,6 +164,7 @@ const UI = {
     classes: { 11: "劍聖", 12: "守護聖", 13: "殺聖", 14: "弓聖", 15: "魔道聖", 16: "精靈聖", 17: "治癒聖", 18: "護法聖", 19: "拳聖" },
   },
   "zh-Hans": {
+    combatLockNote: "仅在锁定时生效。未锁定的小工具会保持显示，方便调整位置。",
     showWidget: "显示图标", lock: "锁定位置", skills: "技能", buffs: "增益", look: "外观", alerts: "提醒",
     autoAdd: "使用技能时自动加入", filter: "筛选", classNone: "在游戏中使用技能后，你的职业技能会显示在这里。",
     learnNote: "标有 ≈ 的是游戏的基础冷却时间。游玩时会测量实际冷却（含冷却缩减）。",

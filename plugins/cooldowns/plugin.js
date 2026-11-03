@@ -281,7 +281,9 @@ function onSkill(data, at) {
     const c = live.charges.get(g) || { full: 0 };
     const was = `${c.max}/${c.per}`;
     c.max = ch[0];
-    c.per = scaled(g, ch[1]);
+    // Recuperation's charges use the variant's reload time (15 or 12 s),
+    // not the reduction inferred from ordinary skill cooldowns.
+    c.per = g === 18120000 ? ch[1] : scaled(g, ch[1]);
     c.full = Math.min(Math.max(c.full, at) + c.per, at + c.max * c.per);
     live.charges.set(g, c);
     if (was !== `${c.max}/${c.per}`) renderSkills();
@@ -812,7 +814,11 @@ function renderBuffs() {
   $(".buffEmpty").hidden = !!ids.length || !!filter;
 }
 
-const showCombatAfter = () => ($(".combatAfterRow").hidden = !prefs.combatOnly);
+// The delay and the note about locking only with Hide outside combat on.
+const showCombatAfter = () => {
+  $(".combatAfterRow").hidden = !prefs.combatOnly;
+  $("#combatLockNote").hidden = !prefs.combatOnly;
+};
 function renderAll() {
   translate();
   showCombatAfter();

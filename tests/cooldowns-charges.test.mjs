@@ -5,7 +5,7 @@ import vm from "node:vm";
 
 const source = (name) => readFileSync(new URL(`../plugins/cooldowns/${name}`, import.meta.url), "utf8");
 
-function shield() {
+function engine(learned = {}) {
   const context = vm.createContext({
     window: {}, UI: { en: {} }, TextEncoder,
     Date: class extends Date { static now() { return 1000; } },
@@ -14,9 +14,15 @@ function shield() {
   });
   vm.runInContext(`${source("skills.js")}\n${source("plugin.js").split("// ---- The page")[0]}
     function renderSkills() {}
-    globalThis.api = { onSkill, slots };`, context);
-  context.api.onSkill({ skill: 12110010 }, 1000);
-  return context.api.slots().skills.find((slot) => slot.key === "s12110000");
+    globalThis.api = { onSkill, onCooldowns, slots, learn(values) { mine.learned = values; } };`, context);
+  context.api.learn(learned);
+  return context.api;
+}
+
+function shield() {
+  const p = engine();
+  p.onSkill({ skill: 12110010 }, 1000);
+  return p.slots().skills.find((slot) => slot.key === "s12110000");
 }
 
 // Run the shipped widget against one icon, with a controlled clock.
@@ -105,4 +111,58 @@ test("ordinary cooldowns and unlocked placement placeholders retain their behavi
   assert.equal(draw(11000).cooling, false);
   assert.equal(draw(11000).hidden, false);
   assert.equal(draw(11000).flashes, 1);
+});
+
+test("Recuperation restores each charge in 15 seconds despite inferred ordinary cooldown reduction", () => {
+  const p = engine({ 18290000: 24000 }); // A 30-second ordinary cooldown measured at 24.
+  p.onSkill({ skill: 18120010 }, 1000);
+  const slot = () => p.slots().skills.find((s) => s.key === "s18120000");
+  assert.equal(slot().chPer, 15000);
+  assert.equal(icon(slot())(1000).text, "15");
+  p.onSkill({ skill: 18120010 }, 2000);
+  const draw = icon(slot());
+  assert.equal(slot().cdEnd, 16000, "the first charge must not return after 12 seconds");
+  assert.equal(draw(13000).charges, "", "zero usable charges have no count badge");
+  assert.equal(draw(13000).text, "3.0");
+  assert.equal(draw(16000).charges, "1");
+  assert.equal(draw(16000).text, "15");
+  assert.equal(draw(28000).charges, "1", "the second charge also needs its full interval");
+  assert.equal(draw(31000).charges, "2");
+  assert.equal(draw(31000).hidden, true);
+});
+
+test("Recuperation keeps the shorter charge interval of its 12-second variants", () => {
+  const p = engine({ 18290000: 24000 });
+  p.onSkill({ skill: 18120150 }, 1000);
+  const slot = p.slots().skills.find((s) => s.key === "s18120000");
+  assert.equal(slot.chPer, 12000);
+  const draw = icon(slot);
+  assert.equal(draw(1000).text, "12");
+  assert.equal(draw(11000).charges, "1");
+  assert.equal(draw(13000).charges, "2");
+});
+
+test("Recuperation charge timing still accepts the server's remaining-time corrections", () => {
+  const p = engine({ 18290000: 24000 });
+  p.onSkill({ skill: 18120010 }, 1000);
+  p.onSkill({ skill: 18120010 }, 2000);
+  p.onCooldowns({ skills: [{ group: 18120000, ms: 14000 }] }, 3000);
+  const slot = () => p.slots().skills.find((s) => s.key === "s18120000");
+  assert.equal(slot().cdEnd, 17000);
+  assert.equal(slot().chFull, 32000);
+  assert.equal(icon(slot())(17000).charges, "1");
+  p.onCooldowns({ skills: [{ group: 18120000, ms: 0 }] }, 4000);
+  assert.equal(slot().chFull, 19000);
+  assert.equal(icon(slot())(4000).charges, "1");
+});
+
+test("ordinary Recuperation and other skills retain their cooldown reduction", () => {
+  const p = engine({ 18290000: 24000 });
+  p.onSkill({ skill: 18120010 }, 1000);
+  p.onSkill({ skill: 18120000 }, 2000);
+  const slot = p.slots().skills.find((s) => s.key === "s18120000");
+  assert.equal(slot.cdEnd, 14000);
+  assert.equal(slot.chPer, undefined, "switching to the ordinary variant clears charge timing");
+  p.onSkill({ skill: 12110010 }, 1000);
+  assert.equal(p.slots().skills.find((s) => s.key === "s12110000").chPer, 16000);
 });
