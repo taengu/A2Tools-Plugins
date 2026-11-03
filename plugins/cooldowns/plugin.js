@@ -550,9 +550,21 @@ async function placeWidgets() {
   }
   const sizes = JSON.stringify([...want]);
   if (sizes !== lastSizes) {
+    const previous = new Map(lastSizes ? JSON.parse(lastSizes) : []);
     lastSizes = sizes;
     for (const name of openNow) if (!want.has(name)) await a2.widgets.close(name).catch(() => {});
-    for (const [name, size] of want) await a2.widgets.open(name, size).catch(() => {});
+    for (const [name, size] of want) {
+      const old = previous.get(name);
+      const anchor = prefs.direction === "up" && openNow.has(name) && old && old.height !== size.height
+        && typeof a2.widgets.where === "function" && typeof a2.widgets.place === "function";
+      const at = anchor ? await a2.widgets.where(name).catch(() => null) : null;
+      const opened = await a2.widgets.open(name, size).then(() => true, () => false);
+      if (opened && at) {
+        // Keep the bottom edge fixed; window positions are physical pixels.
+        const scale = (typeof devicePixelRatio === "number" && devicePixelRatio > 0) ? devicePixelRatio : 1;
+        await a2.widgets.place(name, { x: at.x, y: Math.round(at.y + (old.height - size.height) * scale) }).catch(() => {});
+      }
+    }
     openNow = new Set(want.keys());
   }
   send();

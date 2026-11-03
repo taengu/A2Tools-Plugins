@@ -1,5 +1,18 @@
 [
   {
+    "version": "0.2.10",
+    "en": "Upward Cooldowns stacks keep their bottom edge in place when their icon count, size or wrapping changes.",
+    "ko": "위로 쌓이는 재사용 대기시간 위젯은 아이콘 수, 크기 또는 줄바꿈이 바뀌어도 아래쪽 가장자리를 같은 위치에 유지합니다.",
+    "ja": "上方向に並ぶクールダウンウィジェットは、アイコン数・サイズ・折り返しが変わっても下端の位置を維持します。",
+    "de": "Nach oben wachsende Cooldowns-Stapel behalten ihre Unterkante bei, wenn sich Symbolanzahl, Größe oder Umbruch ändern.",
+    "fr": "Les piles de Cooldowns orientées vers le haut gardent leur bord inférieur en place lorsque le nombre, la taille ou le retour à la ligne des icônes change.",
+    "es": "Las pilas ascendentes de Cooldowns mantienen fijo su borde inferior al cambiar la cantidad, el tamaño o la distribución en filas de los iconos.",
+    "pt": "As pilhas de Cooldowns voltadas para cima mantêm a borda inferior fixa quando a quantidade, o tamanho ou a quebra de linha dos ícones muda.",
+    "ru": "Растущие вверх группы Cooldowns сохраняют положение нижнего края при изменении числа и размера значков или переноса строк.",
+    "zh-Hant": "向上排列的冷卻時間元件在圖示數量、大小或換行方式變更時，底部邊緣會保持原位。",
+    "zh-Hans": "向上排列的冷却时间组件在图标数量、大小或换行方式变化时，底部边缘会保持原位。"
+  },
+  {
     "version": "0.2.9",
     "en": "Recuperation's charges come back at their own pace again. Settings now say that Hide outside combat applies only while the widgets are locked.",
     "ko": "쾌유의 주문의 충전이 다시 원래 속도로 돌아옵니다. 설정에서 '전투 중이 아닐 때 숨기기'가 위젯이 고정된 동안에만 적용된다고 안내합니다.",
@@ -50,18 +63,5 @@
     "ru": "Гладиатор: «Благословение Джикела» и «Боевой натиск» показывают свои значки (они были перепутаны).",
     "zh-Hant": "劍聖：吉凱爾祝福與突擊姿態顯示各自的圖示（之前互換了）。",
     "zh-Hans": "剑圣：吉凯尔祝福与突击姿态显示各自的图标（之前互换了）。"
-  },
-  {
-    "version": "0.2.5",
-    "en": "\"Skills and buffs apart\" shows its icons at once (they stayed empty until a cooldown changed).",
-    "ko": "\"스킬과 버프 따로\"를 고르면 아이콘이 바로 표시됩니다 (재사용 대기 시간이 바뀔 때까지 비어 있었음).",
-    "ja": "「スキルとバフを分ける」でアイコンがすぐ表示されます（クールダウンが変わるまで空でした）。",
-    "de": "„Skills und Buffs getrennt“ zeigt seine Symbole sofort (sie blieben leer, bis sich eine Abklingzeit änderte).",
-    "fr": "« Compétences et buffs séparés » affiche ses icônes tout de suite (elles restaient vides jusqu'au prochain temps de recharge).",
-    "es": "«Habilidades y mejoras aparte» muestra sus iconos al instante (quedaban vacíos hasta el siguiente cambio de enfriamiento).",
-    "pt": "\"Habilidades e buffs separados\" mostra os ícones na hora (ficavam vazios até mudar uma recarga).",
-    "ru": "«Умения и баффы отдельно» сразу показывает значки (они оставались пустыми до смены перезарядки).",
-    "zh-Hant": "「技能與增益分開」會立即顯示圖示（之前要等到冷卻變化才出現）。",
-    "zh-Hans": "「技能与增益分开」会立即显示图标（之前要等到冷却变化才出现）。"
   }
 ]
