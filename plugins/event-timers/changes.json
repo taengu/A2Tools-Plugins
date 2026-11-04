@@ -63,18 +63,5 @@
     "ru": "Боссы Бездны (Надзирательница Кайра, Нахма, Исполнители) теперь мировые боссы: HP в реальном времени в бою, фиолетовая рамка; оповещения и значки сохраняются.",
     "zh-Hant": "深淵首領（監視者凱拉、納赫瑪、執行者）現在視為世界首領：戰鬥中即時 HP、紫色外框，原有提醒與圖示會一併保留。",
     "zh-Hans": "深渊首领（监视者凯拉、纳赫玛、执行者）现在视为世界首领：战斗中实时 HP、紫色外框，原有提醒与图标会一并保留。"
-  },
-  {
-    "version": "0.6.22",
-    "en": "Abyss bosses show as up from their spawn, with HP. A boss past its respawn time shows as up; one at 0% as killed. Double right-click an icon to copy its line for chat.",
-    "ko": "어비스 보스가 출현 시각부터 HP와 함께 출현 중으로 표시됩니다. 재출현 시각이 지난 보스는 출현 중, HP 0%는 처치로 표시됩니다. 아이콘을 오른쪽 두 번 클릭하면 채팅용 문구가 복사됩니다.",
-    "ja": "アビスボスが出現時刻からHPつきで出現中と表示されます。再出現時刻を過ぎたボスは出現中、HP 0%は討伐済みと表示されます。アイコンを右ダブルクリックするとチャット用の一文をコピーします。",
-    "de": "Abyss-Bosse gelten ab ihrem Erscheinen als da, mit HP. Ein Boss nach seiner Erscheinungszeit gilt als da, einer bei 0 % als besiegt. Doppelter Rechtsklick auf ein Symbol kopiert eine Zeile für den Chat.",
-    "fr": "Les boss des Abysses apparaissent présents dès leur apparition, avec leurs PV. Un boss passé son heure de retour est présent ; un boss à 0 % est vaincu. Double clic droit sur une icône pour copier une ligne pour le chat.",
-    "es": "Los jefes del Abismo aparecen activos desde su aparición, con PV. Un jefe pasada su hora de reaparición se muestra activo; uno al 0 %, derrotado. Doble clic derecho en un icono copia una línea para el chat.",
-    "pt": "Os chefes do Abismo aparecem ativos desde que surgem, com PV. Um chefe após o horário de retorno aparece ativo; um em 0%, derrotado. Clique duplo com o botão direito num ícone copia uma linha para o chat.",
-    "ru": "Боссы Бездны показаны на месте с момента появления, с HP. Босс после времени возрождения показан на месте, при 0% — убитым. Двойной щелчок правой кнопкой по значку копирует строку для чата.",
-    "zh-Hant": "深淵首領自出現時起顯示為已出現並附 HP。超過重生時間的首領顯示為已出現，HP 0% 顯示為已擊敗。在圖示上按兩下右鍵可複製聊天用文字。",
-    "zh-Hans": "深渊首领自出现时起显示为已出现并附 HP。超过重生时间的首领显示为已出现，HP 0% 显示为已击败。在图标上双击右键可复制聊天用文字。"
   }
 ]

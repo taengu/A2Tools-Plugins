@@ -63,18 +63,5 @@
     "ru": "Обновлённый бафф начинает кольцо прогресса заново вместе с отсчётом.",
     "zh-Hant": "被刷新的增益，進度圈會隨倒數一起重新開始。",
     "zh-Hans": "被刷新的增益，进度圈会随倒计时一起重新开始。"
-  },
-  {
-    "version": "0.2.6",
-    "en": "Gladiator: Zikel's Blessing and Lunge Stance show their own icons (they were swapped).",
-    "ko": "검성: 지켈의 축복과 돌격 자세가 각자의 아이콘으로 표시됩니다 (서로 바뀌어 있었음).",
-    "ja": "グラディエーター：ジケルの祝福と突撃姿勢がそれぞれ正しいアイコンで表示されます（入れ替わっていました）。",
-    "de": "Gladiator: Zikels Segen und Angriffsstellung zeigen ihr eigenes Symbol (sie waren vertauscht).",
-    "fr": "Gladiateur : Bénédiction de Zikel et Position de charge affichent leur propre icône (elles étaient inversées).",
-    "es": "Gladiador: Bendición de Zikel y Postura de asalto muestran su propio icono (estaban intercambiados).",
-    "pt": "Gladiador: Bênção de Zikel e Postura de Assalto mostram o próprio ícone (estavam trocados).",
-    "ru": "Гладиатор: «Благословение Джикела» и «Боевой натиск» показывают свои значки (они были перепутаны).",
-    "zh-Hant": "劍聖：吉凱爾祝福與突擊姿態顯示各自的圖示（之前互換了）。",
-    "zh-Hans": "剑圣：吉凯尔祝福与突击姿态显示各自的图标（之前互换了）。"
   }
 ]
