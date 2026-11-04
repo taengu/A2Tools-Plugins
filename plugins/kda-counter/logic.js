@@ -14,7 +14,7 @@ globalThis.KdaLogic = (() => {
   function apply(state, event) {
     const kind = event?.kind;
     if (!["kill", "assist", "death", "points", "zone"].includes(kind)) return false;
-    const key = `${event.at}:${kind}`;
+    const key = `${event.at}:${event.seq ?? 0}:${kind}`;
     if (state.seen.includes(key)) return false;
     state.seen.push(key);
     if (state.seen.length > SEEN_MAX) state.seen.shift();

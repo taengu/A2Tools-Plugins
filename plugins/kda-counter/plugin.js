@@ -3,6 +3,7 @@
 // Abyss (a2.on("kda"), permission "events:kda"); its window shows when the
 // Abyss is entered (permission "window").
 const { apply, notes, fresh, kda, clock, MAX_STREAK } = globalThis.KdaLogic;
+let words = globalThis.KDA_UI.en;
 const $ = (sel, root = document) => root.querySelector(sel);
 
 // An event older than this is the meter's replay of what came before the
@@ -46,9 +47,9 @@ function draw() {
   $(".deaths b").textContent = state.deaths;
   $(".assists b").textContent = state.assists;
   const streak = $(".streak");
-  streak.textContent = state.streak ? `Streak ${Math.min(state.streak, 99)}${state.streak >= MAX_STREAK ? " 🔥" : ""} · best ${state.best}` : state.best ? `Best streak ${state.best}` : "";
+  streak.textContent = state.streak ? words.streak(Math.min(state.streak, 99), state.best, state.streak >= MAX_STREAK) : state.best ? words.bestStreak(state.best) : "";
   streak.classList.toggle("hot", state.streak >= 2);
-  $(".ratio").textContent = state.kills + state.assists + state.deaths ? `KDA ${kda(state)}` : "";
+  $(".ratio").textContent = state.kills + state.assists + state.deaths ? words.kda(kda(state)) : "";
   // In the Abyss, or with points earned there since the reset.
   $(".abyss").hidden = !state.inAbyss && !state.abyssPoints;
   $(".abyss b").textContent = state.abyssPoints.toLocaleString("en-US");
@@ -56,6 +57,17 @@ function draw() {
 function tick() {
   $(".time").textContent = clock(state.since ? Date.now() - state.since : 0);
 }
+
+// The page's words in the meter's language (English where it has none).
+function translate(code) {
+  const ui = globalThis.KDA_UI;
+  const lang = ui[code] ? code : ui[String(code).split("-")[0]] ? String(code).split("-")[0] : "en";
+  words = ui[lang];
+  for (const el of document.querySelectorAll("[data-t]")) el.textContent = words[el.dataset.t];
+  for (const el of document.querySelectorAll("[data-title]")) el.title = words[el.dataset.title];
+  draw();
+}
+a2.on("language", translate);
 
 a2.on("kda", (e, meta) => {
   if (!apply(state, e)) return;

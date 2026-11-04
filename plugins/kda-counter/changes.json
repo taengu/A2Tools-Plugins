@@ -1,6 +1,15 @@
 [
   {
     "version": "0.1.0",
-    "en": "Counts your kills, assists and deaths against players, with a kill sound that climbs up to six in a row, and the Abyss Points you earn in the Abyss. Opens by itself when you enter the Abyss. Needs a meter update."
+    "en": "Counts your kills, assists and deaths against players, with a kill sound that climbs up to six in a row, and the Abyss Points you earn in the Abyss. Opens by itself when you enter the Abyss. Needs a meter update.",
+    "ko": "플레이어를 상대로 한 처치, 어시스트, 사망을 세고, 연속 처치할수록 높아지는 소리(최대 6연속)와 어비스에서 얻은 어비스 포인트를 보여 줍니다. 어비스에 들어가면 자동으로 열립니다. 미터 업데이트가 필요합니다.",
+    "ja": "プレイヤーに対するキル・アシスト・デスを数え、連続キルで高くなる音（最大6連続）と、アビスで獲得したアビスポイントを表示します。アビスに入ると自動で開きます。メーターの更新が必要です。",
+    "de": "Zählt deine Kills, Assists und Tode gegen Spieler, mit einem Ton, der pro Kill in Folge höher wird (bis sechs), und die im Abyss verdienten Abyss-Punkte. Öffnet sich beim Betreten des Abyss. Braucht ein Meter-Update.",
+    "fr": "Compte vos éliminations, assistances et morts contre des joueurs, avec un son qui monte à chaque série (jusqu'à six) et les Points d'Abysse gagnés dans l'Abysse. S'ouvre en entrant dans l'Abysse. Nécessite une mise à jour du compteur.",
+    "es": "Cuenta tus bajas, asistencias y muertes contra jugadores, con un sonido que sube en cada racha (hasta seis) y los Puntos del Abismo ganados en el Abismo. Se abre al entrar en el Abismo. Necesita una actualización del medidor.",
+    "pt": "Conta seus abates, assistências e mortes contra jogadores, com um som que sobe a cada sequência (até seis) e os Pontos do Abismo ganhos no Abismo. Abre ao entrar no Abismo. Precisa de uma atualização do medidor.",
+    "ru": "Считает ваши убийства, помощь и смерти против игроков, со звуком, который растёт с каждой серией (до шести), и очки Бездны, полученные в Бездне. Открывается при входе в Бездну. Нужно обновление измерителя.",
+    "zh-Hans": "统计你对玩家的击杀、助攻和死亡，连杀时音调逐步升高（最多六连），并显示在深渊中获得的深渊点数。进入深渊时自动打开。需要更新计量器。",
+    "zh-Hant": "統計你對玩家的擊殺、助攻與死亡，連殺時音調逐步升高（最多六連），並顯示在深淵中獲得的深淵點數。進入深淵時自動開啟。需要更新計量器。"
   }
 ]

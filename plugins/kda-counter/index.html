@@ -8,25 +8,26 @@
   <body>
     <div class="head">
       <span class="title">PvP · <span class="time">0:00</span></span>
-      <button type="button" class="gear" title="Settings">⚙</button>
-      <button type="button" class="reset" title="Reset">↺</button>
+      <button type="button" class="gear" data-title="settings" title="Settings">⚙</button>
+      <button type="button" class="reset" data-title="reset" title="Reset">↺</button>
     </div>
     <div class="counts">
-      <div class="kills"><b>0</b><span>KILLS</span></div>
-      <div class="deaths"><b>0</b><span>DEATHS</span></div>
-      <div class="assists"><b>0</b><span>ASSISTS</span></div>
+      <div class="kills"><b>0</b><span data-t="kills">Kills</span></div>
+      <div class="deaths"><b>0</b><span data-t="deaths">Deaths</span></div>
+      <div class="assists"><b>0</b><span data-t="assists">Assists</span></div>
     </div>
     <div class="line"><span class="streak"></span><span class="ratio"></span></div>
-    <div class="abyss" hidden><span>ABYSS POINTS</span><b>0</b></div>
+    <div class="abyss" hidden><span data-t="abyss">Abyss Points</span><b>0</b></div>
     <div class="settings" hidden>
-      <label>Volume <input type="range" class="volume" min="0" max="100" step="5" /></label>
-      <label>Assist sound <input type="checkbox" class="assistSound" /></label>
-      <label>Death sound <input type="checkbox" class="deathSound" /></label>
-      <label>Show when entering the Abyss <input type="checkbox" class="abyssPopup" /></label>
-      <label>Test <span class="tests"></span></label>
+      <label><span data-t="volume">Volume</span> <input type="range" class="volume" min="0" max="100" step="5" /></label>
+      <label><span data-t="assistSound">Assist sound</span> <input type="checkbox" class="assistSound" /></label>
+      <label><span data-t="deathSound">Death sound</span> <input type="checkbox" class="deathSound" /></label>
+      <label><span data-t="abyssPopup">Show when entering the Abyss</span> <input type="checkbox" class="abyssPopup" /></label>
+      <label><span data-t="test">Test</span> <span class="tests"></span></label>
     </div>
     <script src="/_sdk/a2.js"></script>
     <script src="logic.js"></script>
+    <script src="i18n.js"></script>
     <script src="plugin.js"></script>
   </body>
 </html>

@@ -11,6 +11,7 @@ button:hover { color: var(--text); }
 .title { flex: 1; font-weight: 600; }
 .counts { display: grid; grid-template-columns: repeat(3, 1fr); text-align: center; margin: 8px 0 6px; }
 .counts b { display: block; font-size: 30px; line-height: 1.1; font-variant-numeric: tabular-nums; }
+.counts span, .abyss span { text-transform: uppercase; }
 .counts span { font-size: 11px; letter-spacing: 0.06em; color: var(--text-2); }
 .kills b { color: var(--green); }
 .deaths b { color: var(--red); }
