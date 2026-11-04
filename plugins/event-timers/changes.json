@@ -1,5 +1,18 @@
 [
   {
+    "version": "0.6.27",
+    "en": "Settings: Icon opacity, to make the alert icons see-through.",
+    "ko": "설정: 아이콘 불투명도로 알림 아이콘을 반투명하게 할 수 있습니다.",
+    "ja": "設定：アイコンの不透明度で通知アイコンを半透明にできます。",
+    "de": "Einstellungen: Deckkraft der Symbole, um die Alarmsymbole durchscheinend zu machen.",
+    "fr": "Paramètres : Opacité des icônes, pour rendre les icônes d'alerte transparentes.",
+    "es": "Ajustes: Opacidad de los iconos, para hacer translúcidos los iconos de alerta.",
+    "pt": "Configurações: Opacidade dos ícones, para deixar os ícones de alerta translúcidos.",
+    "ru": "Настройки: Непрозрачность значков — значки оповещений можно сделать полупрозрачными.",
+    "zh-Hant": "設定：圖示不透明度，可讓提醒圖示變得半透明。",
+    "zh-Hans": "设置：图标不透明度，可让提醒图标变得半透明。"
+  },
+  {
     "version": "0.6.26",
     "en": "Events and Bosses can show together: each button turns its list on or off. Your choice is kept while you visit Alerts or Settings, and the next time you open it.",
     "ko": "이벤트와 보스를 함께 볼 수 있습니다: 각 버튼으로 목록을 켜고 끕니다. 선택은 알림이나 설정을 다녀와도, 다시 열어도 유지됩니다.",

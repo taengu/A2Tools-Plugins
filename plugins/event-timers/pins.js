@@ -19,70 +19,70 @@
 
 const PIN_UI = {
   en: { keep: "Show icon even when not alerting", keepAll: "Show icons even when not alerting", more: "More options", open: "Open", killed: "Killed",
-    name: "Name on icon", tp: "Teleport number on icon", effect: "Alert icon animation", shake: "Shake", bounce: "Bounce", throb: "Throb", glow: "Glow", nothing: "None", style: "Show alerts as", icons: "Icons", window: "This window",
+    name: "Name on icon", tp: "Teleport number on icon", opacity: "Icon opacity", effect: "Alert icon animation", shake: "Shake", bounce: "Bounce", throb: "Throb", glow: "Glow", nothing: "None", style: "Show alerts as", icons: "Icons", window: "This window",
     deflt: "Default", shown: "Shown", hiddenName: "Hidden", sound: "Sound", repeat: "Repeat",
     lock: "Lock icons", lockNote: "Clicks pass through to the game.",
     fought: "When it's being fought", alertMe: "Alert me", noRemind: "Don't remind", fighting: "Fighting", foughtMsg: (name, hp) => `${name} is being fought (${hp}%), go join!`,
     hideIdle: "Hide window when idle", hideIdleNote: "Hides after 30 s unused. Double-click an icon, or Settings → Plugins → Open, to bring it back.",
     needsMeter: "Icons need meter 2.0.68 or newer", now: "Now" },
   ko: { keep: "알림이 아닐 때도 아이콘 표시", keepAll: "알림이 아닐 때도 아이콘 표시", more: "추가 설정", open: "열림", killed: "처치",
-    name: "아이콘에 이름", tp: "아이콘에 텔레포트 번호", effect: "알림 아이콘 효과", shake: "흔들기", bounce: "튀기기", throb: "두근거리기", glow: "빛나기", nothing: "없음", style: "알림 표시 방식", icons: "아이콘", window: "이 창",
+    name: "아이콘에 이름", tp: "아이콘에 텔레포트 번호", opacity: "아이콘 불투명도", effect: "알림 아이콘 효과", shake: "흔들기", bounce: "튀기기", throb: "두근거리기", glow: "빛나기", nothing: "없음", style: "알림 표시 방식", icons: "아이콘", window: "이 창",
     deflt: "기본값", shown: "표시", hiddenName: "숨김", sound: "소리", repeat: "반복",
     lock: "아이콘 잠금", lockNote: "잠긴 아이콘은 클릭이 게임으로 통과됩니다.",
     fought: "전투가 시작되면", alertMe: "알림", noRemind: "알리지 않음", fighting: "전투 중", foughtMsg: (name, hp) => `${name} 전투 중 (${hp}%), 지금 합류하세요!`,
     hideIdle: "사용하지 않을 때 이 창 숨기기", hideIdleNote: "30초 동안 사용하지 않으면 창이 숨겨집니다. 다시 열려면 아이콘을 더블클릭하거나 설정 → 플러그인 → 열기.",
     needsMeter: "아이콘은 미터 2.0.68 이상이 필요합니다", now: "지금" },
   ja: { keep: "通知時以外もアイコンを表示", keepAll: "通知時以外もアイコンを表示", more: "その他の設定", open: "開放中", killed: "討伐",
-    name: "アイコンに名前", tp: "アイコンにテレポート番号", effect: "通知アイコンの動き", shake: "揺らす", bounce: "跳ねる", throb: "脈打つ", glow: "光らせる", nothing: "なし", style: "通知の表示", icons: "アイコン", window: "このウィンドウ",
+    name: "アイコンに名前", tp: "アイコンにテレポート番号", opacity: "アイコンの不透明度", effect: "通知アイコンの動き", shake: "揺らす", bounce: "跳ねる", throb: "脈打つ", glow: "光らせる", nothing: "なし", style: "通知の表示", icons: "アイコン", window: "このウィンドウ",
     deflt: "既定", shown: "表示", hiddenName: "非表示", sound: "サウンド", repeat: "繰り返し",
     lock: "アイコンをロック", lockNote: "ロックしたアイコンはクリックがゲームに通ります。",
     fought: "戦闘が始まったら", alertMe: "通知する", noRemind: "通知しない", fighting: "戦闘中", foughtMsg: (name, hp) => `${name}が戦闘中（${hp}%）、参加しよう！`,
     hideIdle: "使っていないときはこのウィンドウを隠す", hideIdleNote: "30秒間使わないとウィンドウが隠れます。戻すには、アイコンをダブルクリックするか、設定 → プラグイン → 開く。",
     needsMeter: "アイコンにはメーター2.0.68以降が必要です", now: "今" },
   de: { keep: "Symbol auch ohne Alarm anzeigen", keepAll: "Symbole auch ohne Alarm anzeigen", more: "Weitere Optionen", open: "Offen", killed: "Besiegt",
-    name: "Name am Symbol", tp: "Teleport-Nummer am Symbol", effect: "Animation des Alarmsymbols", shake: "Wackeln", bounce: "Hüpfen", throb: "Pulsieren", glow: "Leuchten", nothing: "Nichts", style: "Alarme zeigen als", icons: "Symbole", window: "Dieses Fenster",
+    name: "Name am Symbol", tp: "Teleport-Nummer am Symbol", opacity: "Deckkraft der Symbole", effect: "Animation des Alarmsymbols", shake: "Wackeln", bounce: "Hüpfen", throb: "Pulsieren", glow: "Leuchten", nothing: "Nichts", style: "Alarme zeigen als", icons: "Symbole", window: "Dieses Fenster",
     deflt: "Standard", shown: "Angezeigt", hiddenName: "Ausgeblendet", sound: "Ton", repeat: "Wiederholen",
     lock: "Symbole sperren", lockNote: "Gesperrte Symbole lassen Klicks zum Spiel durch.",
     fought: "Wenn er bekämpft wird", alertMe: "Alarm", noRemind: "Nicht erinnern", fighting: "Im Kampf", foughtMsg: (name, hp) => `${name} wird bekämpft (${hp} %), mach mit!`,
     hideIdle: "Dieses Fenster ausblenden, wenn es nicht benutzt wird", hideIdleNote: "Das Fenster wird nach 30 Sekunden ohne Benutzung ausgeblendet. Zurück holst du es per Doppelklick auf ein Symbol oder über Einstellungen → Plugins → Öffnen.",
     needsMeter: "Symbole brauchen Meter 2.0.68 oder neuer", now: "Jetzt" },
   fr: { keep: "Afficher l'icône même sans alerte", keepAll: "Afficher les icônes même sans alerte", more: "Plus d'options", open: "Ouvert", killed: "Vaincu",
-    name: "Nom sur l'icône", tp: "Numéro de téléporteur sur l'icône", effect: "Animation de l'icône d'alerte", shake: "Secouer", bounce: "Rebondir", throb: "Pulser", glow: "Briller", nothing: "Rien", style: "Afficher les alertes en", icons: "Icônes", window: "Cette fenêtre",
+    name: "Nom sur l'icône", tp: "Numéro de téléporteur sur l'icône", opacity: "Opacité des icônes", effect: "Animation de l'icône d'alerte", shake: "Secouer", bounce: "Rebondir", throb: "Pulser", glow: "Briller", nothing: "Rien", style: "Afficher les alertes en", icons: "Icônes", window: "Cette fenêtre",
     deflt: "Par défaut", shown: "Affiché", hiddenName: "Masqué", sound: "Son", repeat: "Répéter",
     lock: "Verrouiller les icônes", lockNote: "Les icônes verrouillées laissent passer les clics vers le jeu.",
     fought: "Quand il est attaqué", alertMe: "M'alerter", noRemind: "Ne pas rappeler", fighting: "Attaqué", foughtMsg: (name, hp) => `${name} est attaqué (${hp} %), rejoignez le combat !`,
     hideIdle: "Masquer cette fenêtre quand elle ne sert pas", hideIdleNote: "La fenêtre se masque après 30 secondes sans utilisation. Pour la rouvrir, double-cliquez sur une icône, ou Réglages → Plugins → Ouvrir.",
     needsMeter: "Les icônes nécessitent le compteur 2.0.68 ou plus récent", now: "Maintenant" },
   es: { keep: "Mostrar el icono aunque no haya alerta", keepAll: "Mostrar los iconos aunque no haya alerta", more: "Más opciones", open: "Abierto", killed: "Derrotado",
-    name: "Nombre en el icono", tp: "Número de teletransporte en el icono", effect: "Animación del icono de alerta", shake: "Agitar", bounce: "Rebotar", throb: "Latir", glow: "Brillar", nothing: "Nada", style: "Mostrar las alertas como", icons: "Iconos", window: "Esta ventana",
+    name: "Nombre en el icono", tp: "Número de teletransporte en el icono", opacity: "Opacidad de los iconos", effect: "Animación del icono de alerta", shake: "Agitar", bounce: "Rebotar", throb: "Latir", glow: "Brillar", nothing: "Nada", style: "Mostrar las alertas como", icons: "Iconos", window: "Esta ventana",
     deflt: "Predeterminado", shown: "Visible", hiddenName: "Oculto", sound: "Sonido", repeat: "Repetir",
     lock: "Bloquear los iconos", lockNote: "Los iconos bloqueados dejan pasar los clics al juego.",
     fought: "Cuando lo estén atacando", alertMe: "Avisarme", noRemind: "No avisar", fighting: "En combate", foughtMsg: (name, hp) => `Están atacando a ${name} (${hp}%), ¡únete!`,
     hideIdle: "Ocultar esta ventana cuando no se usa", hideIdleNote: "La ventana se oculta tras 30 segundos sin usarla. Para volver a abrirla, haz doble clic en un icono, o Ajustes → Plugins → Abrir.",
     needsMeter: "Los iconos necesitan el medidor 2.0.68 o posterior", now: "Ahora" },
   pt: { keep: "Mostrar o ícone mesmo sem alerta", keepAll: "Mostrar os ícones mesmo sem alerta", more: "Mais opções", open: "Aberto", killed: "Derrotado",
-    name: "Nome no ícone", tp: "Número do teleporte no ícone", effect: "Animação do ícone de alerta", shake: "Tremer", bounce: "Quicar", throb: "Pulsar", glow: "Brilhar", nothing: "Nada", style: "Mostrar os alertas como", icons: "Ícones", window: "Esta janela",
+    name: "Nome no ícone", tp: "Número do teleporte no ícone", opacity: "Opacidade dos ícones", effect: "Animação do ícone de alerta", shake: "Tremer", bounce: "Quicar", throb: "Pulsar", glow: "Brilhar", nothing: "Nada", style: "Mostrar os alertas como", icons: "Ícones", window: "Esta janela",
     deflt: "Padrão", shown: "Visível", hiddenName: "Oculto", sound: "Som", repeat: "Repetir",
     lock: "Travar os ícones", lockNote: "Ícones travados deixam os cliques passarem para o jogo.",
     fought: "Quando estiver sendo atacado", alertMe: "Avisar-me", noRemind: "Não avisar", fighting: "Em combate", foughtMsg: (name, hp) => `${name} está sendo atacado (${hp}%), junte-se!`,
     hideIdle: "Ocultar esta janela quando não estiver em uso", hideIdleNote: "A janela se oculta após 30 segundos sem uso. Para reabri-la, clique duas vezes em um ícone, ou Configurações → Plugins → Abrir.",
     needsMeter: "Os ícones precisam do medidor 2.0.68 ou mais recente", now: "Agora" },
   ru: { keep: "Показывать значок и без оповещения", keepAll: "Показывать значки и без оповещения", more: "Дополнительно", open: "Открыт", killed: "Убит",
-    name: "Название на значке", tp: "Номер телепорта на значке", effect: "Анимация значка оповещения", shake: "Трясти", bounce: "Подпрыгивать", throb: "Пульсировать", glow: "Светиться", nothing: "Ничего", style: "Показывать оповещения", icons: "Значками", window: "В этом окне",
+    name: "Название на значке", tp: "Номер телепорта на значке", opacity: "Непрозрачность значков", effect: "Анимация значка оповещения", shake: "Трясти", bounce: "Подпрыгивать", throb: "Пульсировать", glow: "Светиться", nothing: "Ничего", style: "Показывать оповещения", icons: "Значками", window: "В этом окне",
     deflt: "По умолчанию", shown: "Показано", hiddenName: "Скрыто", sound: "Звук", repeat: "Повтор",
     lock: "Зафиксировать значки", lockNote: "Зафиксированные значки пропускают клики в игру.",
     fought: "Когда его атакуют", alertMe: "Оповестить", noRemind: "Не напоминать", fighting: "Бой", foughtMsg: (name, hp) => `${name} атакуют (${hp}%), присоединяйтесь!`,
     hideIdle: "Скрывать это окно, когда оно не используется", hideIdleNote: "Окно скрывается через 30 секунд без использования. Чтобы вернуть его, дважды щёлкните по значку или откройте Настройки → Плагины → Открыть.",
     needsMeter: "Для значков нужен счётчик 2.0.68 или новее", now: "Сейчас" },
   "zh-Hant": { keep: "未提醒時也顯示圖示", keepAll: "未提醒時也顯示圖示", more: "更多選項", open: "開啟中", killed: "已擊殺",
-    name: "圖示上的名稱", tp: "圖示上的傳送點編號", effect: "提醒圖示動畫", shake: "晃動", bounce: "彈跳", throb: "脈動", glow: "發光", nothing: "無", style: "提醒顯示為", icons: "圖示", window: "此視窗",
+    name: "圖示上的名稱", tp: "圖示上的傳送點編號", opacity: "圖示不透明度", effect: "提醒圖示動畫", shake: "晃動", bounce: "彈跳", throb: "脈動", glow: "發光", nothing: "無", style: "提醒顯示為", icons: "圖示", window: "此視窗",
     deflt: "預設", shown: "顯示", hiddenName: "隱藏", sound: "音效", repeat: "重複",
     lock: "鎖定圖示", lockNote: "鎖定的圖示會讓點擊穿透到遊戲。",
     fought: "開始戰鬥時", alertMe: "提醒我", noRemind: "不提醒", fighting: "戰鬥中", foughtMsg: (name, hp) => `${name} 戰鬥中（${hp}%），快去加入！`,
     hideIdle: "不使用時隱藏此視窗", hideIdleNote: "30 秒未使用後視窗會隱藏。要再開啟，請雙擊圖示，或 設定 → 外掛程式 → 開啟。",
     needsMeter: "圖示需要計量器 2.0.68 以上", now: "現在" },
   "zh-Hans": { keep: "未提醒时也显示图标", keepAll: "未提醒时也显示图标", more: "更多选项", open: "开启中", killed: "已击杀",
-    name: "图标上的名称", tp: "图标上的传送点编号", effect: "提醒图标动画", shake: "晃动", bounce: "弹跳", throb: "脉动", glow: "发光", nothing: "无", style: "提醒显示为", icons: "图标", window: "此窗口",
+    name: "图标上的名称", tp: "图标上的传送点编号", opacity: "图标不透明度", effect: "提醒图标动画", shake: "晃动", bounce: "弹跳", throb: "脉动", glow: "发光", nothing: "无", style: "提醒显示为", icons: "图标", window: "此窗口",
     deflt: "默认", shown: "显示", hiddenName: "隐藏", sound: "音效", repeat: "重复",
     lock: "锁定图标", lockNote: "锁定的图标会让点击穿透到游戏。",
     fought: "开始战斗时", alertMe: "提醒我", noRemind: "不提醒", fighting: "战斗中", foughtMsg: (name, hp) => `${name} 战斗中（${hp}%），快去加入！`,
@@ -199,6 +199,9 @@ const pinIcon = (id, kind) => {
 // Tight around the badge and its two lines, so icons can sit close together.
 // With room above the badge for its glow.
 const pinSize = (showName) => ({ width: 80, height: showName ? 128 : 94 });
+// How see-through the icons are (Settings: Icon opacity), 0.3 to 1.
+const PIN_OPACITIES = [100, 90, 80, 70, 60, 50, 40, 30];
+const pinOpacity = () => (PIN_OPACITIES.includes(Number(prefs.iconOpacity)) ? Number(prefs.iconOpacity) : 100) / 100;
 
 // What a timer is doing now: its name, kind, the next start (ms) or null,
 // whether it is running (an event under way, a world boss up), and a field
@@ -550,7 +553,7 @@ async function updatePins(now) {
         order: { id, fight: !!fight, running: !!state.running && !state.killed, hp: state.hp ?? null, until, killed: !!state.killed },
         // The icon's tooltip: its name, and a boss's nearest teleport.
         data: { name: state.name, tip: teleportTip(id) && [state.name, teleportTip(id)].join("\n"),
-          showName: !!pin.name, tp: pin.tp ? teleportBadge(id) : "", countdown, sub, hp: state.killed ? 0 : state.hp ?? null,
+          showName: !!pin.name, tp: pin.tp ? teleportBadge(id) : "", opacity: pinOpacity(), countdown, sub, hp: state.killed ? 0 : state.hp ?? null,
           running: state.running, due: due && !state.killed, effect: pin.effect, kind: state.kind, icon: pinIcon(id, state.kind),
           copy: pinLine(id, state, now, fight),
           abyss: id.startsWith("field:") && isAbyssBoss(FIELD_BOSSES[id.slice(6)] || {}) },
@@ -628,10 +631,12 @@ function renderPinLock() {
     effect.className = "iconEffect";
     const name = switchBox("iconName");
     const tp = switchBox("iconTp");
+    const opacity = document.createElement("select");
+    opacity.className = "iconOpacity";
     const lock = switchBox("pinLock");
     const note = document.createElement("p");
     note.className = "note pinLockNote";
-    box.append(row("styleRow", style), row("keepRow", keep), row("effectRow", effect), row("nameRow", name), row("tpRow", tp), row("lockRow", lock), note);
+    box.append(row("styleRow", style), row("keepRow", keep), row("effectRow", effect), row("nameRow", name), row("tpRow", tp), row("opacityRow", opacity), row("lockRow", lock), note);
     // First under the Alerts heading.
     // First in Settings, under its own "On screen" heading (anchor.js),
     // ahead of the Alerts heading.
@@ -664,6 +669,11 @@ function renderPinLock() {
       savePrefs();
       updatePins(Date.now());
     });
+    opacity.addEventListener("change", () => {
+      prefs.iconOpacity = Number(opacity.value);
+      savePrefs();
+      updatePins(Date.now());
+    });
     lock.addEventListener("change", () => {
       a2.widgets.lock(lock.checked).catch(() => {});
     });
@@ -675,6 +685,7 @@ function renderPinLock() {
   label("effectRow", p.effect);
   label("nameRow", p.name);
   label("tpRow", p.tp);
+  label("opacityRow", p.opacity);
   label("lockRow", p.lock);
   const style = box.querySelector(".alertStyle");
   style.replaceChildren(option("icons", p.icons), option("window", p.window));
@@ -686,7 +697,10 @@ function renderPinLock() {
   effect.value = prefs.iconEffect ?? "shake";
   box.querySelector(".iconName").checked = prefs.iconName ?? true;
   box.querySelector(".iconTp").checked = !!prefs.iconTp;
-  for (const cls of ["keepRow", "effectRow", "nameRow", "tpRow", "lockRow"]) box.querySelector(`.${cls}`).hidden = !iconStyle();
+  const opacity = box.querySelector(".iconOpacity");
+  opacity.replaceChildren(...PIN_OPACITIES.map((v) => option(String(v), `${v}%`)));
+  opacity.value = String(Math.round(pinOpacity() * 100));
+  for (const cls of ["keepRow", "effectRow", "nameRow", "tpRow", "opacityRow", "lockRow"]) box.querySelector(`.${cls}`).hidden = !iconStyle();
   const note = box.querySelector(".pinLockNote");
   note.textContent = canPin() ? p.lockNote : p.needsMeter;
   note.hidden = canPin() && !iconStyle();
@@ -715,7 +729,7 @@ function testIcon() {
   const ev = scheduled("event").find((e) => e.id.startsWith("festival")) || scheduled("event")[0];
   const name = ev ? text(ev.name) : "Shugo Festival";
   const show = prefs.iconName ?? true;
-  const data = { name, showName: show, tp: prefs.iconTp ? "3" : "", countdown: span(5 * 60_000), sub: "", hp: null, running: false, due: true,
+  const data = { name, showName: show, tp: prefs.iconTp ? "3" : "", opacity: pinOpacity(), countdown: span(5 * 60_000), sub: "", hp: null, running: false, due: true,
     effect: prefs.iconEffect ?? "shake", kind: "event", icon: ev ? pinIcon(ev.id, "event") : "shugo" };
   a2.widgets.open("test", pinSize(show)).then(() => a2.widgets.send("test", data)).catch(() => {});
   soundAlert(null);

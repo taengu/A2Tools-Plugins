@@ -65,6 +65,8 @@ function renderPin(pin, d) {
   // set apart, before this, was wiped here).
   pin.className = `pin ${d.kind || "event"}${d.running ? " running" : ""}${d.due ? " due" : ""}${d.abyss ? " abyss" : ""} ${d.effect || "shake"}`;
   pin.title = d.tip || (pin.closest(".grid") && d.name) || "";
+  // Settings: Icon opacity.
+  pin.style.opacity = typeof d.opacity === "number" ? String(d.opacity) : "";
 }
 
 // The grid: the frame's size, the grip in its corner, and each icon in its
