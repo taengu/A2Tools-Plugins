@@ -216,7 +216,7 @@ function anchorPlan(wanted) {
   const names = rest.map(([, e]) => `${e.data.name} · ${e.data.countdown}`);
   const n = rest.length;
   shown.push([MORE, { id: MORE, order: {}, data: { name: anchorUi().more(n), glyph: `+${n}`, tip: names.join("\n"),
-    showName: false, countdown: anchorUi().more(n), sub: "", hp: null, running: false, due: false, effect: "nothing", kind: "more", icon: "" } }]);
+    showName: false, opacity: typeof pinOpacity === "function" ? pinOpacity() : 1, countdown: anchorUi().more(n), sub: "", hp: null, running: false, due: false, effect: "nothing", kind: "more", icon: "" } }]);
   return new Map(shown);
 }
 
