@@ -3,7 +3,7 @@
 // settings.
 const grid = document.querySelector(".grid");
 let locked = false;
-let look = { size: 42, direction: "right", opacity: 1, numbers: true, readyGlow: true, ring: false };
+let look = { size: 42, direction: "right", opacity: 1, numbers: true, readyGlow: true, ring: false, show: "cooling" };
 let slots = [];
 const nodes = new Map(); // key -> { el, slot, wasCooling }
 
@@ -77,8 +77,15 @@ function tick() {
     const chText = s.chMax && charges ? String(charges) : "";
     if (chNum.textContent !== chText) chNum.textContent = chText;
     const active = cooling || buffing || recharging || s.always;
-    el.hidden = !active && locked;
-    el.classList.toggle("idle", !active);
+    // Settings' Show skill icons: while on cooldown (as a buff, while on
+    // you), when ready (a charge left counts; its place kept while it
+    // cools, so the others don't move with each cast), or always.
+    const mode = s.buff ? "cooling" : look.show;
+    const shown = mode === "always" || (mode === "ready" ? !cooling : active);
+    el.hidden = !shown && locked && mode !== "ready";
+    el.classList.toggle("vanish", !shown && locked && mode === "ready");
+    // Ready, in "when ready", is the point: not dimmed.
+    el.classList.toggle("idle", !active && mode !== "ready");
     const cdNum = el.querySelector(".cdNum");
     if (timing) {
       const total = Math.max(1, end - start);
@@ -141,7 +148,7 @@ a2.on("locked", (on) => {
 let lastArea = "";
 function reportArea() {
   if (typeof a2.widget.area !== "function") return;
-  const rs = [...nodes.values()].filter((n) => !n.el.hidden).map((n) => n.el.getBoundingClientRect());
+  const rs = [...nodes.values()].filter((n) => !n.el.hidden && !n.el.classList.contains("vanish")).map((n) => n.el.getBoundingClientRect());
   let area = { x: 0, y: 0, width: 1, height: 1 };
   if (rs.length) {
     const x = Math.max(0, Math.floor(Math.min(...rs.map((r) => r.left))));

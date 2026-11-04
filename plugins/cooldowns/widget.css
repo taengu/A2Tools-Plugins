@@ -40,6 +40,8 @@ html, body {
   transition: filter 0.3s;
 }
 .slot[hidden] { display: none; }
+/* Show skill icons: when ready: a cooling skill keeps its place. */
+.slot.vanish { visibility: hidden; }
 body:not(.locked) .slot { cursor: grab; }
 /* Unlocked, every icon shows, dimmed when there is nothing to show, so the
    bar can be placed. */

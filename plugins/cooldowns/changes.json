@@ -1,5 +1,18 @@
 [
   {
+    "version": "0.2.12",
+    "en": "Settings: Show skill icons: while on cooldown, when ready, or always.",
+    "ko": "설정: 스킬 아이콘 표시: 재사용 대기 중일 때, 사용할 수 있을 때, 항상 중에서 선택할 수 있습니다.",
+    "ja": "設定：スキルアイコンの表示を、クールダウン中・使用可能なとき・常にから選べます。",
+    "de": "Einstellungen: Skill-Symbole zeigen: während der Abklingzeit, wenn bereit oder immer.",
+    "fr": "Paramètres : Afficher les icônes de compétences pendant le temps de recharge, quand elle est prête ou toujours.",
+    "es": "Ajustes: Mostrar iconos de habilidades durante el enfriamiento, cuando está lista o siempre.",
+    "pt": "Configurações: Mostrar ícones de habilidades durante a recarga, quando estiver pronta ou sempre.",
+    "ru": "Настройки: Показывать значки умений во время перезарядки, когда готово или всегда.",
+    "zh-Hant": "設定：顯示技能圖示可選冷卻中、可以使用時或一律顯示。",
+    "zh-Hans": "设置：显示技能图标可选冷却中、可以使用时或始终显示。"
+  },
+  {
     "version": "0.2.11",
     "en": "On Linux Wayland, an upward stack no longer moves to the top left of the screen at the next start.",
     "ko": "Linux Wayland에서 위로 쌓이는 위젯이 다음 실행 때 화면 왼쪽 위로 옮겨지지 않습니다.",
@@ -50,18 +63,5 @@
     "ru": "Для умений с зарядами показывается, когда вернётся следующий заряд; пока умение доступно, затемнение светлее.",
     "zh-Hant": "有充能的技能會顯示下一次充能回復的時間，仍可使用時以較淡的遮罩顯示。",
     "zh-Hans": "有充能的技能会显示下一次充能恢复的时间，仍可使用时以较淡的遮罩显示。"
-  },
-  {
-    "version": "0.2.7",
-    "en": "A renewed buff, such as Fury, restarts its progress ring with its countdown.",
-    "ko": "갱신된 버프는 남은 시간과 함께 진행 링도 처음부터 다시 시작합니다.",
-    "ja": "更新されたバフは、カウントダウンとともに進行リングも最初からやり直します。",
-    "de": "Ein erneuerter Buff startet seinen Fortschrittsring mit dem Countdown neu.",
-    "fr": "Un buff renouvelé relance son anneau de progression avec son compte à rebours.",
-    "es": "Un beneficio renovado reinicia su anillo de progreso con su cuenta atrás.",
-    "pt": "Um buff renovado reinicia seu anel de progresso com a contagem regressiva.",
-    "ru": "Обновлённый бафф начинает кольцо прогресса заново вместе с отсчётом.",
-    "zh-Hant": "被刷新的增益，進度圈會隨倒數一起重新開始。",
-    "zh-Hans": "被刷新的增益，进度圈会随倒计时一起重新开始。"
   }
 ]

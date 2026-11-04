@@ -108,6 +108,10 @@ const DEFAULTS = {
   // 0.2.1: the Voice list's type ("any", "female", "male": voices.js) and
   // the voice's speed.
   voiceType: "any", voiceRate: 1,
+  // 0.2.12: when a skill's icon shows ("cooling": while on cooldown, unless
+  // the skill keeps showing when ready; "ready": while it can be used, its
+  // place kept while it cools; "always").
+  skillsShow: "cooling",
 };
 let prefs = { ...DEFAULTS };
 // What each character shows: { cls, skills: { g: opts }, buffs: { a: opts },
@@ -576,7 +580,7 @@ async function placeWidgets() {
 function send() {
   if (!openNow.size) return;
   const { skills, buffs } = slots();
-  const look = { size: Number(prefs.size), direction: prefs.direction, perLine: prefs.perLine, opacity: prefs.opacity / 100, numbers: prefs.numbers, readyGlow: prefs.readyGlow, ring: prefs.buffStyle === "ring", away };
+  const look = { size: Number(prefs.size), direction: prefs.direction, perLine: prefs.perLine, opacity: prefs.opacity / 100, numbers: prefs.numbers, readyGlow: prefs.readyGlow, ring: prefs.buffStyle === "ring", show: prefs.skillsShow, away };
   if (openNow.has("bar")) a2.widgets.send("bar", { look, slots: [...skills, ...buffs] }).catch(() => {});
   if (openNow.has("skills")) a2.widgets.send("skills", { look, slots: skills }).catch(() => {});
   if (openNow.has("buffs")) a2.widgets.send("buffs", { look, slots: buffs }).catch(() => {});
@@ -659,7 +663,7 @@ const els = {
   layout: $(".layout"), size: $(".size"), direction: $(".direction"), perLine: $(".perLine"), opacity: $(".opacity"),
   numbers: $(".numbers"), readyGlow: $(".readyGlow"), sound: $(".sound"), voice: $(".voice"), lead: $(".lead"),
   combatOnly: $(".combatOnly"), combatAfter: $(".combatAfter"),
-  buffStyle: $(".buffStyle"), volume: $(".volume"), voiceName: $(".voiceName"),
+  buffStyle: $(".buffStyle"), skillsShow: $(".skillsShow"), volume: $(".volume"), voiceName: $(".voiceName"),
   voiceType: $(".voiceType"), voiceRate: $(".voiceRate"),
 };
 let tab = "skills";
@@ -870,7 +874,7 @@ for (const [key, el] of Object.entries(els)) {
     if (el.type === "number") el.value = v;
     save();
     if (["show", "layout", "size", "direction", "perLine"].includes(key)) placeWidgets();
-    else if (["ownBuffs", "opacity", "numbers", "readyGlow", "buffStyle"].includes(key)) send();
+    else if (["ownBuffs", "opacity", "numbers", "readyGlow", "buffStyle", "skillsShow"].includes(key)) send();
     if (key === "volume") setSoundVolume(v);
     // A voice of the other type gives way to the first of this one.
     if (key === "voiceType") {
