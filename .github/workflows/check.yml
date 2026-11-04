@@ -22,4 +22,4 @@ jobs:
         run: |
           for f in $(git ls-files 'plugins/**/*.js'); do node --check "$f"; done
       - name: Test Cooldowns timers
-        run: node --test tests/cooldowns-*.test.mjs
+        run: node --test tests/*.test.mjs

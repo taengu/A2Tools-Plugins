@@ -1,0 +1,22 @@
+{
+  "id": "dice-rolls",
+  "name": "Dice Rolls",
+  "version": "0.1.0",
+  "apiVersion": 2,
+  "author": "A2 Tools",
+  "description": "Dice Roll loot as it happens: the item, every player's roll highest first with yours marked, the time left, and who won it. On a card on screen while it goes, and in a history of every roll. Needs meter 2.0.88 or newer.",
+  "permissions": [
+    "storage",
+    "window",
+    "widgets",
+    "events:character",
+    "events:loot-rolls"
+  ],
+  "decoders": [],
+  "ui": {
+    "panel": {
+      "width": 380,
+      "height": 520
+    }
+  }
+}

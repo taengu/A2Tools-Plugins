@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Dice Rolls</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <nav class="tabs" role="tablist">
+    <button type="button" role="tab" data-tab="rolls" data-t="tabRolls">Rolls</button>
+    <button type="button" role="tab" data-tab="settings" data-t="tabSettings">Settings</button>
+  </nav>
+  <main class="view" data-view="rolls"></main>
+  <main class="view settings" data-view="settings" hidden>
+    <label class="row">
+      <span data-t="card">Live card on screen</span>
+      <select class="cardOn">
+        <option value="on" data-t="cardOn">Show</option>
+        <option value="off" data-t="cardOff">Don't show</option>
+      </select>
+    </label>
+    <label class="row">
+      <span data-t="keepFor">Keep the result on the card for</span>
+      <select class="keepFor">
+        <option value="5"></option>
+        <option value="10"></option>
+        <option value="30"></option>
+        <option value="0" data-t="untilClicked">Until clicked</option>
+      </select>
+    </label>
+    <label class="row">
+      <span data-t="size">Card size</span>
+      <select class="size">
+        <option value="1" data-t="small">Small</option>
+        <option value="1.25" data-t="medium">Medium</option>
+        <option value="1.5" data-t="large">Large</option>
+      </select>
+    </label>
+    <p class="note" data-t="help">Drag the card to move it. Click it to open this window.</p>
+    <div class="buttons">
+      <button type="button" class="test" data-t="test">Show a test card</button>
+      <button type="button" class="clear danger" data-t="clear">Clear history</button>
+    </div>
+  </main>
+  <script src="/_sdk/a2.js"></script>
+  <script src="i18n.js"></script>
+  <script src="items.js"></script>
+  <script src="servers.js"></script>
+  <script src="logic.js"></script>
+  <script src="plugin.js"></script>
+</body>
+</html>

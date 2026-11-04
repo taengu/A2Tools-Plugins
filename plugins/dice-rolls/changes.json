@@ -1,0 +1,15 @@
+[
+  {
+    "version": "0.1.0",
+    "en": "Dice Roll loot as it happens: the item, every roll highest first with yours marked, the time left and who won. On a card on screen, and in a history.",
+    "ko": "주사위 분배 전리품을 실시간으로 보여 줍니다: 아이템, 높은 순서의 모든 주사위 결과(내 결과 표시), 남은 시간, 획득자. 화면 카드와 기록으로 표시합니다.",
+    "ja": "ダイス分配の戦利品をリアルタイムで表示：アイテム、高い順の全員の出目（自分の出目に印）、残り時間、獲得者。画面のカードと履歴で。",
+    "de": "Würfel-Beute live: der Gegenstand, alle Würfe absteigend mit deinem markiert, die verbleibende Zeit und wer gewonnen hat. Auf einer Karte am Bildschirm und im Verlauf.",
+    "fr": "Le butin aux dés en direct : l'objet, chaque lancer du plus haut au plus bas avec le vôtre en évidence, le temps restant et le gagnant. Sur une carte à l'écran et dans un historique.",
+    "es": "El botín por dados en directo: el objeto, cada tirada de mayor a menor con la tuya marcada, el tiempo restante y quién ganó. En una tarjeta en pantalla y en un historial.",
+    "pt": "O saque por dados ao vivo: o item, cada rolagem da maior para a menor com a sua destacada, o tempo restante e quem ganhou. Num cartão na tela e num histórico.",
+    "ru": "Добыча по броску кубиков в реальном времени: предмет, все броски по убыванию с вашим отмеченным, оставшееся время и победитель. На карточке на экране и в истории.",
+    "zh-Hant": "即時顯示擲骰分配的戰利品：物品、由高到低的所有擲骰點數（標示你的點數）、剩餘時間與獲得者。顯示於畫面卡片與紀錄中。",
+    "zh-Hans": "实时显示掷骰分配的战利品：物品、由高到低的所有掷骰点数（标示你的点数）、剩余时间与获得者。显示于屏幕卡片与记录中。"
+  }
+]

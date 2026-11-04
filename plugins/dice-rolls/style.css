@@ -1,0 +1,105 @@
+/* Solid colours, not translucent white: text blended into a see-through
+   window loses its sharpness. Each is at least 7:1 on the panel (#0e1420):
+   --text 15.9:1, --text-2 12.6:1, --text-3 9.0:1, --gold 10.6:1. */
+:root {
+  --text: #f2f6fb;
+  --text-2: #d3dce6;
+  --text-3: #b8c4d2;
+  --gold: #f5cf6b;
+}
+html, body {
+  margin: 0;
+  background: transparent;
+  color: var(--text);
+  font: 13.5px/1.45 "Segoe UI", system-ui, sans-serif;
+  text-rendering: optimizeLegibility;
+}
+body { padding: 10px 14px 14px; }
+[hidden] { display: none !important; }
+.note { font-size: 12.5px; margin: 6px 0; color: var(--text-3); }
+.empty { color: var(--text-2); margin: 18px 0 6px; }
+
+/* Tabs */
+.tabs { display: flex; gap: 4px; margin-bottom: 12px; flex-wrap: wrap; align-items: center; }
+.tabs button {
+  font: inherit;
+  color: var(--text-2);
+  background: none;
+  border: 0;
+  border-radius: 6px;
+  padding: 5px 10px;
+  cursor: pointer;
+}
+.tabs button:hover { background: rgba(255, 255, 255, 0.06); }
+.tabs button[aria-selected="true"] {
+  background: color-mix(in srgb, var(--a2-accent, #8fc2ff) 18%, transparent);
+  color: var(--a2-accent, #8fc2ff);
+  font-weight: 600;
+}
+button:focus-visible, select:focus-visible { outline: 2px solid var(--a2-accent, #8fc2ff); outline-offset: 1px; }
+
+/* The rolls, newest first: one row each, opened to every number. */
+.rolls { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 4px; }
+.rollRow {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 7px 8px;
+  box-sizing: border-box;
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.04);
+  font: inherit;
+  color: inherit;
+  text-align: left;
+  border: 0;
+  cursor: pointer;
+}
+.rollRow:hover { background: rgba(255, 255, 255, 0.08); }
+.going .rollRow { box-shadow: inset 3px 0 0 var(--a2-accent, #8fc2ff); }
+.grade { width: 10px; height: 10px; border-radius: 3px; flex: 0 0 auto; background: var(--g, #e8edf3); }
+.rowText { flex: 1 1 auto; min-width: 0; }
+.rowName { font-weight: 600; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; color: var(--g, var(--text)); }
+.rowSub { font-size: 12.5px; color: var(--text-2); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.rowSub .win { color: var(--gold); font-weight: 600; }
+.rowRight { text-align: right; font-size: 12.5px; flex: 0 0 auto; color: var(--text-2); font-variant-numeric: tabular-nums; }
+.chev { flex: 0 0 auto; color: var(--text-3); transition: transform 0.15s; }
+.open .chev { transform: rotate(90deg); }
+
+.detail { margin: 2px 0 6px 28px; display: flex; flex-direction: column; gap: 1px; }
+.line { display: flex; gap: 10px; font-variant-numeric: tabular-nums; padding: 1px 6px; border-radius: 4px; }
+.line .num { width: 4.2em; text-align: right; color: var(--text-2); }
+.line .who { flex: 1 1 auto; min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.line.top .num, .line.top .who { color: var(--gold); font-weight: 600; }
+.line.mine { background: color-mix(in srgb, var(--a2-accent, #8fc2ff) 16%, transparent); }
+.line.mine .who { font-weight: 600; }
+.passes { font-size: 12.5px; color: var(--text-3); padding: 3px 6px 0; }
+
+/* Settings */
+.settings .row { display: flex; align-items: center; justify-content: space-between; gap: 10px; min-height: 34px; }
+.buttons { display: flex; gap: 8px; flex-wrap: wrap; margin: 10px 0; }
+.buttons button {
+  font: inherit;
+  color: #fff;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  border-radius: 6px;
+  padding: 5px 12px;
+  cursor: pointer;
+}
+.buttons button:hover { background: rgba(255, 255, 255, 0.14); }
+.buttons .danger { border-color: rgba(239, 138, 138, 0.5); }
+select {
+  color-scheme: dark;
+  appearance: none;
+  -webkit-appearance: none;
+  min-height: 26px;
+  padding: 3px 26px 3px 8px;
+  font: inherit;
+  color: inherit;
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  border-radius: 6px;
+  background: rgba(255, 255, 255, 0.06) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6' viewBox='0 0 10 6'%3E%3Cpath d='M1 1l4 4 4-4' fill='none' stroke='white' stroke-opacity='.7' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") no-repeat right 9px center / 10px 6px;
+  cursor: pointer;
+}
+select option { background: var(--a2-panel, #0e1420); color: #fff; }
