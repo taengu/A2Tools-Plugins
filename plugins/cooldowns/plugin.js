@@ -559,7 +559,10 @@ async function placeWidgets() {
         && typeof a2.widgets.where === "function" && typeof a2.widgets.place === "function";
       const at = anchor ? await a2.widgets.where(name).catch(() => null) : null;
       const opened = await a2.widgets.open(name, size).then(() => true, () => false);
-      if (opened && at) {
+      // On native Wayland the meter cannot know where a window is and
+      // says 0,0: placed from there, the stack was kept at the top left of
+      // the screen at the next start. The window manager keeps it there.
+      if (opened && at && (at.x || at.y)) {
         // Keep the bottom edge fixed; window positions are physical pixels.
         const scale = (typeof devicePixelRatio === "number" && devicePixelRatio > 0) ? devicePixelRatio : 1;
         await a2.widgets.place(name, { x: at.x, y: Math.round(at.y + (old.height - size.height) * scale) }).catch(() => {});

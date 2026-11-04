@@ -1,5 +1,18 @@
 [
   {
+    "version": "0.2.11",
+    "en": "On Linux Wayland, an upward stack no longer moves to the top left of the screen at the next start.",
+    "ko": "Linux Wayland에서 위로 쌓이는 위젯이 다음 실행 때 화면 왼쪽 위로 옮겨지지 않습니다.",
+    "ja": "Linux Wayland で、上方向に並ぶウィジェットが次回起動時に画面左上へ移動しなくなりました。",
+    "de": "Unter Linux Wayland springt ein nach oben wachsender Stapel beim nächsten Start nicht mehr in die linke obere Bildschirmecke.",
+    "fr": "Sous Linux Wayland, une pile orientée vers le haut ne se déplace plus en haut à gauche de l'écran au démarrage suivant.",
+    "es": "En Linux Wayland, una pila ascendente ya no se mueve a la esquina superior izquierda de la pantalla al siguiente inicio.",
+    "pt": "No Linux Wayland, uma pilha voltada para cima não vai mais para o canto superior esquerdo da tela na próxima inicialização.",
+    "ru": "В Linux Wayland растущая вверх группа больше не перемещается в левый верхний угол экрана при следующем запуске.",
+    "zh-Hant": "在 Linux Wayland 上，向上排列的元件不會在下次啟動時跑到螢幕左上角。",
+    "zh-Hans": "在 Linux Wayland 上，向上排列的组件不会在下次启动时跑到屏幕左上角。"
+  },
+  {
     "version": "0.2.10",
     "en": "Upward Cooldowns stacks keep their bottom edge in place when their icon count, size or wrapping changes.",
     "ko": "위로 쌓이는 재사용 대기시간 위젯은 아이콘 수, 크기 또는 줄바꿈이 바뀌어도 아래쪽 가장자리를 같은 위치에 유지합니다.",
