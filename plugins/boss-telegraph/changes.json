@@ -1,5 +1,18 @@
 [
   {
+    "version": "0.1.9",
+    "en": "Updated from the game's November 4 patch: Russian and French lines as the game now words them, and Vakron's new skill.",
+    "ko": "11월 4일 게임 패치 반영: 러시아어와 프랑스어 대사를 게임의 현재 표현으로, 바크론의 새 스킬 추가.",
+    "ja": "11月4日のゲームパッチを反映：ロシア語とフランス語のセリフをゲームの現在の表現に更新し、バクロンの新スキルを追加。",
+    "de": "Aktualisiert mit dem Spielpatch vom 4. November: russische und französische Zeilen wie im Spiel, und Vakrons neue Fertigkeit.",
+    "fr": "Mis à jour avec le patch du 4 novembre : répliques russes et françaises telles que le jeu les formule, et la nouvelle compétence de Vakron.",
+    "es": "Actualizado con el parche del 4 de noviembre: frases en ruso y francés como las dice ahora el juego, y la nueva habilidad de Vakron.",
+    "pt": "Atualizado com o patch de 4 de novembro: falas em russo e francês como o jogo as diz agora, e a nova habilidade de Vakron.",
+    "ru": "Обновлено по патчу игры от 4 ноября: русские и французские реплики в нынешней формулировке игры и новый навык Вакрона.",
+    "zh-Hant": "依 11 月 4 日的遊戲更新：俄文與法文台詞改為遊戲目前的用語，並加入巴克隆的新技能。",
+    "zh-Hans": "依 11 月 4 日的游戏更新：俄文与法文台词改为游戏目前的用语，并加入巴克隆的新技能。"
+  },
+  {
     "version": "0.1.8",
     "en": "Enhanced Boss Telegraph is now called Boss Callouts. Your settings and your own words for calls are kept.",
     "ko": "Enhanced Boss Telegraph의 이름이 보스 알림(Boss Callouts)으로 바뀌었습니다. 설정과 직접 입력한 알림 문구는 그대로 유지됩니다.",
@@ -50,18 +63,5 @@
     "ru": "▶ у каждого сигнала проигрывает его сразу, как в бою.",
     "zh-Hant": "每個提示的 ▶ 可立即播放，就像戰鬥中一樣。",
     "zh-Hans": "每个提示的 ▶ 可立即播放，就像战斗中一样。"
-  },
-  {
-    "version": "0.1.4",
-    "en": "Your own words for any call (✎), and settings that say what they do.",
-    "ko": "모든 알림에 직접 문구 지정(✎), 설정마다 기능 설명 추가.",
-    "ja": "どの呼びかけにも自分の言葉を設定（✎）、各設定に説明を追加。",
-    "de": "Eigene Worte für jeden Ruf (✎), und Einstellungen, die sagen, was sie tun.",
-    "fr": "Vos propres mots pour chaque appel (✎), et des réglages qui disent ce qu'ils font.",
-    "es": "Tus propias palabras para cada aviso (✎), y ajustes que dicen lo que hacen.",
-    "pt": "Suas próprias palavras para cada aviso (✎), e configurações que dizem o que fazem.",
-    "ru": "Свои слова для любого сигнала (✎) и пояснения к настройкам.",
-    "zh-Hant": "任何提示都能改成自訂文字（✎），設定也會說明其作用。",
-    "zh-Hans": "任何提示都能改成自定义文字（✎），设置也会说明其作用。"
   }
 ]
