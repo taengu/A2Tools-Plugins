@@ -1233,11 +1233,15 @@ function rename(id, span) {
 // game's own level-up message doesn't come for every step (Brax: 24 souls
 // picked up at level 0 and no level-up seen), so the counts level themselves;
 // the next login's pet list corrects them either way.
+// The souls past a level's cost stay with the pet: a chest's 5 on a pet at
+// 24 of 25 levelled it with 4 left (2026-11-05), where the count was reset
+// to 0 and fell behind the game's until the next login.
 function levelUp(st, pet) {
   const level = st.levels[pet] || 0;
   if (level < MAX_LEVEL && (st.points[pet] || 0) >= NEEDED[level]) {
     st.levels[pet] = level + 1;
-    st.points[pet] = 0;
+    st.points[pet] -= NEEDED[level];
+    levelUp(st, pet);
   }
 }
 
@@ -1276,11 +1280,20 @@ const handle = {
     return farmed;
   },
   "decoded:level-up"(st, { pet, level }) {
-    // The game resets a pet's points as it levels (Karnif: 25 -> 0). Already
-    // levelled from its souls: the souls picked up since stay.
+    // The game takes the level's cost from a pet's points as it levels
+    // (Karnif: 25 -> 0; 29 -> 4). Already levelled from its souls: the souls
+    // picked up since stay.
+    const was = st.levels[pet] || 0;
+    if (was >= level) return;
+    st.levels[pet] = level;
+    st.points[pet] = Math.max(0, (st.points[pet] || 0) - NEEDED.slice(was, level).reduce((n, x) => n + x, 0));
+  },
+  // A pet of your own now, from a chest (09 90): at its level, with the souls
+  // it already had (one at 2 kept them, 2026-11-05). Before, a pet unlocked
+  // this way showed as not had until the next login.
+  "decoded:pet-unlocked"(st, { pet, level }) {
     if ((st.levels[pet] || 0) >= level) return;
     st.levels[pet] = level;
-    st.points[pet] = 0;
   },
 };
 

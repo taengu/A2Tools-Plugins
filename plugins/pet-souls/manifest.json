@@ -1,11 +1,11 @@
 {
   "id": "pet-souls",
   "name": "Pet Soul Tracker",
-  "version": "0.5.3",
+  "version": "0.5.4",
   "apiVersion": 2,
   "author": "A2 Tools",
   "description": "Souls still needed to raise each pet, from the game's own pet data, where each pet's souls drop, and the monsters around you that drop them.",
-  "permissions": ["storage", "events:character", "window", "widgets", "decoder:pet-list", "decoder:soul-gained", "decoder:level-up",
+  "permissions": ["storage", "events:character", "window", "widgets", "decoder:pet-list", "decoder:soul-gained", "decoder:level-up", "decoder:pet-unlocked",
     "decoder:npc-spawn", "decoder:npc-gone", "decoder:map-load", "decoder:own-position", "decoder:mantra-tick", "decoder:teleport"],
   "decoders": [
     {
@@ -32,6 +32,12 @@
     {
       "name": "level-up",
       "opcode": "14 90",
+      "immediate": true,
+      "fields": [ { "type": "skip:2" }, { "name": "pet", "type": "u32" }, { "name": "level", "type": "u32" } ]
+    },
+    {
+      "name": "pet-unlocked",
+      "opcode": "09 90",
       "immediate": true,
       "fields": [ { "type": "skip:2" }, { "name": "pet", "type": "u32" }, { "name": "level", "type": "u32" } ]
     },

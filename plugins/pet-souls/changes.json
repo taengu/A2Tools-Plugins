@@ -1,5 +1,18 @@
 [
   {
+    "version": "0.5.4",
+    "en": "Chests: new pets they give are counted at once, and souls past a level's cost stay with the pet.",
+    "ko": "상자: 상자에서 얻은 새 펫이 바로 반영되고, 레벨에 필요한 수를 넘는 영혼은 펫에 그대로 남습니다.",
+    "ja": "宝箱：宝箱から得た新しいペットがすぐに反映され、レベルに必要な数を超えた魂はペットに残ります。",
+    "de": "Truhen: neue Haustiere daraus werden sofort gezählt, und Seelen über den Stufenbedarf hinaus bleiben beim Haustier.",
+    "fr": "Coffres : les nouveaux familiers qu'ils donnent sont comptés aussitôt, et les âmes au-delà du coût d'un niveau restent au familier.",
+    "es": "Cofres: las mascotas nuevas que dan se cuentan al momento, y las almas que sobran tras subir de nivel se quedan con la mascota.",
+    "pt": "Baús: os novos mascotes que eles dão são contados na hora, e as almas além do custo de um nível ficam com o mascote.",
+    "ru": "Сундуки: новые питомцы из них учитываются сразу, а души сверх стоимости уровня остаются у питомца.",
+    "zh-Hant": "寶箱：寶箱給的新寵物會立即計入，超過升級所需的靈魂會保留在寵物身上。",
+    "zh-Hans": "宝箱：宝箱给的新宠物会立即计入，超过升级所需的灵魂会保留在宠物身上。"
+  },
+  {
     "version": "0.5.3",
     "en": "The pet you're farming stays at the top of the list with a pet type or level filter picked.",
     "ko": "펫 종류나 레벨 필터를 선택해도 파밍 중인 펫이 목록 맨 위에 유지됩니다.",
