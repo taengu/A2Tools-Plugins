@@ -9,14 +9,18 @@ dist/ then holds, ready to upload to cdn.a2tools.app/plugins/:
                                 file's SHA-256 (the meter checks each file it
                                 downloads against this)
     <id>/<version>/<file>       the plugin's files
+    <id>/<version>.a2pk         the same files in one download (meter 2.0.90 on):
+                                its SHA-256 is the entry's "pack"; see pack()
 
 The release workflow signs index.json (index.json.sig) with the key only it
 holds. The meter refuses a catalog whose signature does not match, and a file
 whose hash does not match the signed catalog.
 """
 
+import gzip
 import hashlib
 import json
+import struct
 import re
 import shutil
 import sys
@@ -109,6 +113,23 @@ def check_changes(name, folder, manifest):
     return changes
 
 
+# A plugin version's files in one download: gzip (no time in its header, so
+# the same files make the same pack) of b"A2PK1\n", then for each file in
+# path order a u16 LE path length, the path (UTF-8), a u32 LE size and the
+# bytes. The meter checks the pack against its hash in the signed catalog,
+# and each file in it against its own, as it would a file downloaded alone.
+PACK_MAGIC = b"A2PK1\n"
+
+
+def pack(folder, files):
+    body = bytearray(PACK_MAGIC)
+    for rel in sorted(files):
+        data = (folder / rel).read_bytes()
+        path = rel.encode("utf-8")
+        body += struct.pack("<H", len(path)) + path + struct.pack("<I", len(data)) + data
+    return gzip.compress(bytes(body), compresslevel=9, mtime=0)
+
+
 def check(folder):
     name = folder.name
     manifest_path = folder / "manifest.json"
@@ -178,6 +199,7 @@ def check(folder):
         "permissions": manifest.get("permissions", []),
         "source": f"https://github.com/taengu/A2Tools-Plugins/tree/main/plugins/{name}",
         "files": files,
+        "pack": hashlib.sha256(pack(folder, files)).hexdigest(),
     }
     if changes:
         entry["changes"] = changes
@@ -214,6 +236,7 @@ def main():
             target = dist / e["id"] / e["version"] / rel
             target.parent.mkdir(parents=True, exist_ok=True)
             shutil.copyfile(PLUGINS / e["id"] / rel, target)
+        (dist / e["id"] / f"{e['version']}.a2pk").write_bytes(pack(PLUGINS / e["id"], e["files"]))
     # Each build's serial, its time: a meter (2.0.87 on) refuses a catalog
     # older than one it has read, so an old signed index can't be served
     # again to hold back an update (audit L2).
