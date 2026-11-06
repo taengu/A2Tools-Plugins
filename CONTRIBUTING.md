@@ -55,6 +55,7 @@ Load `/_sdk/a2.js` before your own scripts. It provides `a2`:
 ```js
 a2.on("decoded:<name>", (data) => …)  // your decoder read a packet       (decoder:<name>)
 a2.on("character", (c) => …)          // name, serverId, class, level     (events:character)
+a2.on("kda", ({ kind, at }) => …)         // "kill", "assist" or "death" against a player (events:kda; needs a meter that sends it)
 a2.on("language", (code) => …)        // "en", "ko", "zh-Hans", … at start and on change
 a2.on("compact", (on) => …)           // the window's fold button: show only the essentials
 a2.on("theme", (t) => …)              // the Settings colours {bg, panel, accent}, at start and on change (meter 2.0.76)
