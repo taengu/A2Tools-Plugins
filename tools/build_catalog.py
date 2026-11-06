@@ -113,12 +113,12 @@ def check_changes(name, folder, manifest):
     return changes
 
 
-# A plugin version's files in one download: gzip (no time in its header, so
-# the same files make the same pack) of b"A2PK1\n", then for each file in
-# path order a u16 LE path length, the path (UTF-8), a u32 LE size and the
-# bytes. The meter checks the pack against its hash in the signed catalog,
+# A plugin version's files in one download: gzip of b"A2PK1\n", then for each
+# file in path order a u16 LE path length, the path (UTF-8), a u32 LE size and
+# the bytes. The meter checks the pack against its hash in the signed catalog,
 # and each file in it against its own, as it would a file downloaded alone.
 PACK_MAGIC = b"A2PK1\n"
+CDN = "https://cdn.a2tools.app/plugins"
 
 
 def pack(folder, files):
@@ -128,6 +128,46 @@ def pack(folder, files):
         path = rel.encode("utf-8")
         body += struct.pack("<H", len(path)) + path + struct.pack("<I", len(data)) + data
     return gzip.compress(bytes(body), compresslevel=9, mtime=0)
+
+
+def unpacked(packed):
+    """A pack's files, path → SHA-256."""
+    raw = gzip.decompress(packed)
+    if not raw.startswith(PACK_MAGIC):
+        raise ValueError("not a pack")
+    at, files = len(PACK_MAGIC), {}
+    while at < len(raw):
+        (n,) = struct.unpack_from("<H", raw, at)
+        path = raw[at + 2 : at + 2 + n].decode("utf-8")
+        (size,) = struct.unpack_from("<I", raw, at + 2 + n)
+        at += 2 + n + 4
+        files[path] = hashlib.sha256(raw[at : at + size]).hexdigest()
+        at += size
+    return files
+
+
+def published_pack(entry):
+    """The version's pack as already published, when it is: a published
+    version never changes, and the same files gzipped by another zlib (a
+    runner update) could come out different, its hash with them. None for a
+    version not published yet; a published pack whose files aren't the
+    version's stops the build."""
+    import urllib.error
+    import urllib.request
+
+    # The query keeps a plain GET from caching a 404 at the edge for a key
+    # the upload is about to put (see the uploader's wait_for_edge).
+    url = f"{CDN}/{entry['id']}/{entry['version']}.a2pk?build={int(time.time())}"
+    try:
+        with urllib.request.urlopen(urllib.request.Request(url, headers={"User-Agent": "A2Tools-Plugins catalog"}), timeout=60) as r:
+            packed = r.read()
+    except urllib.error.HTTPError as e:
+        if e.code == 404:
+            return None
+        raise
+    if unpacked(packed) != entry["files"]:
+        fail(entry["id"], f"{entry['version']}.a2pk on the CDN doesn't hold this version's files: bump the version")
+    return packed
 
 
 def check(folder):
@@ -199,7 +239,6 @@ def check(folder):
         "permissions": manifest.get("permissions", []),
         "source": f"https://github.com/taengu/A2Tools-Plugins/tree/main/plugins/{name}",
         "files": files,
-        "pack": hashlib.sha256(pack(folder, files)).hexdigest(),
     }
     if changes:
         entry["changes"] = changes
@@ -236,7 +275,9 @@ def main():
             target = dist / e["id"] / e["version"] / rel
             target.parent.mkdir(parents=True, exist_ok=True)
             shutil.copyfile(PLUGINS / e["id"] / rel, target)
-        (dist / e["id"] / f"{e['version']}.a2pk").write_bytes(pack(PLUGINS / e["id"], e["files"]))
+        packed = published_pack(e) or pack(PLUGINS / e["id"], e["files"])
+        (dist / e["id"] / f"{e['version']}.a2pk").write_bytes(packed)
+        e["pack"] = hashlib.sha256(packed).hexdigest()
     # Each build's serial, its time: a meter (2.0.87 on) refuses a catalog
     # older than one it has read, so an old signed index can't be served
     # again to hold back an update (audit L2).
