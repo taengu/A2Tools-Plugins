@@ -1,5 +1,18 @@
 [
   {
+    "version": "0.2.13",
+    "en": "Long cooldowns no longer show far too short when a few skills have big cooldown reductions of their own.",
+    "ko": "일부 스킬에 자체 재사용 대기시간 감소가 크게 붙어 있어도 긴 재사용 대기시간이 지나치게 짧게 표시되지 않습니다.",
+    "ja": "一部のスキルに個別の大きなクールダウン短縮があっても、長いクールダウンが短すぎる表示にならなくなりました。",
+    "de": "Lange Abklingzeiten werden nicht mehr viel zu kurz angezeigt, wenn einzelne Skills eine große eigene Abklingzeitverkürzung haben.",
+    "fr": "Les longs temps de recharge ne s'affichent plus beaucoup trop courts quand quelques compétences ont leur propre grosse réduction.",
+    "es": "Los enfriamientos largos ya no se muestran demasiado cortos cuando algunas habilidades tienen su propia gran reducción de enfriamiento.",
+    "pt": "Recargas longas não aparecem mais curtas demais quando algumas habilidades têm sua própria grande redução de recarga.",
+    "ru": "Долгая перезарядка больше не показывается слишком короткой, если у отдельных умений есть своё большое сокращение перезарядки.",
+    "zh-Hant": "即使部分技能有各自大幅的冷卻縮減，較長的冷卻時間也不會再顯示得過短。",
+    "zh-Hans": "即使部分技能有各自大幅的冷却缩减，较长的冷却时间也不会再显示得过短。"
+  },
+  {
     "version": "0.2.12",
     "en": "Settings: Show skill icons: while on cooldown, when ready, or always.",
     "ko": "설정: 스킬 아이콘 표시: 재사용 대기 중일 때, 사용할 수 있을 때, 항상 중에서 선택할 수 있습니다.",
@@ -50,18 +63,5 @@
     "ru": "Заряды «Заклинания выздоровления» снова восполняются в своём темпе. В настройках теперь сказано, что «Скрывать вне боя» работает только с закреплёнными виджетами.",
     "zh-Hant": "痊癒咒語的充能重新以原本的速度回復。設定中說明「非戰鬥時隱藏」只在小工具鎖定時生效。",
     "zh-Hans": "痊愈咒语的充能重新以原本的速度回复。设置中说明“非战斗时隐藏”只在小工具锁定时生效。"
-  },
-  {
-    "version": "0.2.8",
-    "en": "A skill with charges shows when its next charge comes back, with a lighter sweep while it can still be used.",
-    "ko": "충전형 스킬은 다음 충전이 돌아오는 시간을 표시하며, 아직 사용할 수 있는 동안에는 더 옅게 표시됩니다.",
-    "ja": "チャージ式スキルは次のチャージが戻るまでの時間を表示し、まだ使える間は薄めに表示されます。",
-    "de": "Eine Fertigkeit mit Aufladungen zeigt, wann die nächste zurückkommt, mit hellerer Anzeige, solange sie noch nutzbar ist.",
-    "fr": "Une compétence à charges indique quand sa prochaine charge revient, avec un balayage plus léger tant qu'elle reste utilisable.",
-    "es": "Una habilidad con cargas muestra cuándo vuelve su siguiente carga, con un barrido más claro mientras aún se puede usar.",
-    "pt": "Uma habilidade com cargas mostra quando a próxima carga volta, com uma varredura mais clara enquanto ainda pode ser usada.",
-    "ru": "Для умений с зарядами показывается, когда вернётся следующий заряд; пока умение доступно, затемнение светлее.",
-    "zh-Hant": "有充能的技能會顯示下一次充能回復的時間，仍可使用時以較淡的遮罩顯示。",
-    "zh-Hans": "有充能的技能会显示下一次充能恢复的时间，仍可使用时以较淡的遮罩显示。"
   }
 ]

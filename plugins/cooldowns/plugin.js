@@ -237,8 +237,13 @@ function reduction() {
     if (!Number.isFinite(x) || x <= 0 || x > 1.2) continue;
     byBase.set(base, Math.max(byBase.get(base) || 0, x));
   }
-  const r = [...byBase.values()].sort((a, b) => a - b);
-  return r.length ? r[Math.floor(r.length / 2)] : 1;
+  // The top of them, not the middle: what shortens one skill only (a stigma,
+  // an Arcana, a proc) never lengthens another, so the skills nearest their
+  // base show the reduction every skill gets. The median of a Cleric's took
+  // Earth Punishment's 30 s to 16 s where the game had 27 s (#183). The
+  // second highest once there are four, so one slow reading can't lift it.
+  const r = [...byBase.values()].map((x) => Math.min(x, 1)).sort((a, b) => a - b);
+  return r.length ? r[r.length >= 4 ? r.length - 2 : r.length - 1] : 1;
 }
 const scaled = (g, ms) => (SKILLS.get(g)?.noCdr ? ms : Math.round(ms * reduction()));
 const cooldownOf = (g) => mine.learned[g] || scaled(g, SKILLS.get(g)?.cd || 0);
