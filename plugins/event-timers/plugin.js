@@ -1886,12 +1886,20 @@ function hpOfLife(entry, life) {
 }
 // The feed file just read, keeping the newer HP held (pushed live): the file
 // is published at most once a minute, and each read put a boss's HP back up
-// by as much as it had fallen since (Kusan, 2026-10-30).
+// by as much as it had fallen since (Kusan, 2026-10-30). A boss held from a
+// newer report than the file's stays as held: the site writes the file every
+// 5 minutes, so through a whole fight it can still have the boss dead from
+// its last life, and each read took the HP away until the next push (Lawa and
+// Demiros on 1304, 2026-11-07).
 function keepNewerHp(bosses, held) {
   const out = { ...bosses };
   for (const [id, have] of Object.entries(held || {})) {
     const read = out[id];
-    if (read && hpOfLife(have, read) && (Number(have.hpAt) || 0) > (Number(read.hpAt) || 0)) {
+    if (!read || (Number(have.reportedAt) || 0) > (Number(read.reportedAt) || 0)) {
+      out[id] = have;
+      continue;
+    }
+    if (hpOfLife(have, read) && (Number(have.hpAt) || 0) > (Number(read.hpAt) || 0)) {
       out[id] = { ...read, hp: have.hp, hpAt: have.hpAt };
     }
   }

@@ -1,5 +1,18 @@
 [
   {
+    "version": "0.6.28",
+    "en": "A world boss's icon keeps its HP through the fight: the site's timers, read every 30 seconds, no longer take it away until the next update.",
+    "ko": "필드 보스 아이콘이 전투 내내 HP를 유지합니다: 30초마다 읽는 사이트 타이머가 다음 갱신 전까지 HP를 지우지 않습니다.",
+    "ja": "ワールドボスのアイコンが戦闘中ずっとHPを表示します：30秒ごとに読むサイトのタイマーが、次の更新までHPを消すことはなくなりました。",
+    "de": "Das Symbol eines Weltbosses behält seine LP während des ganzen Kampfes: Die alle 30 Sekunden gelesenen Timer der Website nehmen sie bis zum nächsten Update nicht mehr weg.",
+    "fr": "L'icône d'un boss de monde garde ses PV pendant tout le combat : les minuteurs du site, lus toutes les 30 secondes, ne les retirent plus jusqu'à la mise à jour suivante.",
+    "es": "El icono de un jefe de mundo mantiene su PV durante todo el combate: los temporizadores del sitio, leídos cada 30 segundos, ya no lo quitan hasta la siguiente actualización.",
+    "pt": "O ícone de um chefe de mundo mantém o PV durante toda a luta: os temporizadores do site, lidos a cada 30 segundos, não o apagam mais até a próxima atualização.",
+    "ru": "Значок мирового босса показывает HP весь бой: таймеры сайта, читаемые каждые 30 секунд, больше не убирают их до следующего обновления.",
+    "zh-Hant": "世界首領圖示在整場戰鬥中都保留血量：每 30 秒讀取的網站計時不再在下次更新前把它清掉。",
+    "zh-Hans": "世界首领图标在整场战斗中都保留血量：每 30 秒读取的网站计时不再在下次更新前把它清掉。"
+  },
+  {
     "version": "0.6.27",
     "en": "Settings: Icon opacity, to make the alert icons see-through.",
     "ko": "설정: 아이콘 불투명도로 알림 아이콘을 반투명하게 할 수 있습니다.",
@@ -50,18 +63,5 @@
     "ru": "HP мирового босса на значке больше не подскакивает обратно во время боя.",
     "zh-Hant": "世界首領圖示上的 HP 不會在戰鬥中又跳回上升。",
     "zh-Hans": "世界首领图标上的 HP 不会在战斗中又跳回上升。"
-  },
-  {
-    "version": "0.6.23",
-    "en": "Abyss bosses (Watcher Kaira, Nahma, the Executors) are world bosses now: live HP while you fight, a purple outline, and your alerts and icons carry over.",
-    "ko": "어비스 보스(감시자 카이라, 나흐마, 집행자)가 이제 월드 보스로 표시됩니다: 전투 중 실시간 HP, 보라색 테두리, 기존 알림과 아이콘은 그대로 옮겨집니다.",
-    "ja": "アビスボス（監視者カイラ、ナフマ、執行者）がワールドボス扱いになりました：戦闘中のリアルタイムHP、紫の枠、アラームとアイコンはそのまま引き継がれます。",
-    "de": "Abyss-Bosse (Aufseherin Kaira, Nahma, die Vollstrecker) sind jetzt Weltbosse: Live-HP im Kampf, ein violetter Rahmen; Alarme und Symbole bleiben erhalten.",
-    "fr": "Les boss des Abysses (Kaira la veilleuse, Nahma, les Exécuteurs) sont désormais des boss mondiaux : PV en direct pendant le combat, un contour violet ; vos alertes et icônes sont conservées.",
-    "es": "Los jefes del Abismo (Velador Kaira, Nahma, los Ejecutantes) ahora son jefes mundiales: PV en directo mientras luchas, contorno morado; tus alertas e iconos se conservan.",
-    "pt": "Os chefes do Abismo (Vigilante Kairah, Nahma, os Executores) agora são chefes mundiais: PV ao vivo durante a luta, contorno roxo; seus alertas e ícones são mantidos.",
-    "ru": "Боссы Бездны (Надзирательница Кайра, Нахма, Исполнители) теперь мировые боссы: HP в реальном времени в бою, фиолетовая рамка; оповещения и значки сохраняются.",
-    "zh-Hant": "深淵首領（監視者凱拉、納赫瑪、執行者）現在視為世界首領：戰鬥中即時 HP、紫色外框，原有提醒與圖示會一併保留。",
-    "zh-Hans": "深渊首领（监视者凯拉、纳赫玛、执行者）现在视为世界首领：战斗中实时 HP、紫色外框，原有提醒与图标会一并保留。"
   }
 ]
