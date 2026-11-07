@@ -1,5 +1,18 @@
 [
   {
+    "version": "0.6.30",
+    "en": "Countdowns and icons no longer freeze until the plugins are reloaded when one part runs into an error; the error shows at the bottom of Settings for bug reports.",
+    "ko": "일부 기능에서 오류가 나도 카운트다운과 아이콘이 더 이상 플러그인을 다시 불러올 때까지 멈추지 않습니다. 오류는 버그 제보용으로 설정 맨 아래에 표시됩니다.",
+    "ja": "一部でエラーが起きても、カウントダウンとアイコンがプラグインを再読み込みするまで止まることはなくなりました。エラーは不具合報告用に設定の一番下に表示されます。",
+    "de": "Countdowns und Symbole frieren nicht mehr bis zum Neuladen der Plugins ein, wenn ein Teil auf einen Fehler stößt; der Fehler steht für Fehlerberichte unten in den Einstellungen.",
+    "fr": "Les comptes à rebours et les icônes ne se figent plus jusqu'au rechargement des plugins quand une partie rencontre une erreur ; l'erreur s'affiche en bas des Paramètres pour les rapports de bug.",
+    "es": "Las cuentas atrás y los iconos ya no se congelan hasta recargar los plugins cuando una parte falla; el error se muestra al final de Ajustes para los informes de errores.",
+    "pt": "As contagens regressivas e os ícones não congelam mais até recarregar os plugins quando uma parte encontra um erro; o erro aparece no fim das Configurações para relatar bugs.",
+    "ru": "Отсчёты и значки больше не замирают до перезагрузки плагинов, если в одной из частей возникла ошибка; ошибка показывается внизу настроек для отчётов об ошибках.",
+    "zh-Hant": "某部分發生錯誤時，倒數和圖示不再凍結到重新載入外掛為止；錯誤會顯示在設定最下方，方便回報問題。",
+    "zh-Hans": "某部分发生错误时，倒计时和图标不再冻结到重新加载插件为止；错误会显示在设置最下方，方便反馈问题。"
+  },
+  {
     "version": "0.6.29",
     "en": "Settings: World boss timer offset, from -10 to +10 seconds, to match the game's times.",
     "ko": "설정: 월드 보스 타이머 보정(-10~+10초)으로 게임 시간에 맞출 수 있습니다.",
@@ -50,18 +63,5 @@
     "ru": "События и боссы могут отображаться вместе: каждая кнопка включает или скрывает свой список. Выбор сохраняется при переходе в «Оповещения» или «Настройки» и при следующем открытии.",
     "zh-Hant": "活動與首領可以同時顯示：每個按鈕各自開關其列表。前往提醒或設定時、下次開啟時都會保留你的選擇。",
     "zh-Hans": "活动与首领可以同时显示：每个按钮各自开关其列表。前往提醒或设置时、下次打开时都会保留你的选择。"
-  },
-  {
-    "version": "0.6.25",
-    "en": "A world boss's icon shows one HP ring: no longer a full green one under it while it alerts. Abyss bosses' icons are purple again.",
-    "ko": "월드 보스 아이콘에 HP 링이 하나만 표시됩니다: 알림 중에 그 아래로 초록색 전체 링이 더 이상 겹치지 않습니다. 어비스 보스 아이콘이 다시 보라색으로 표시됩니다.",
-    "ja": "ワールドボスのアイコンのHPリングが1本になりました：アラーム中に下に緑の全周リングが重ならなくなりました。アビスボスのアイコンが再び紫になります。",
-    "de": "Das Symbol eines Weltbosses zeigt einen HP-Ring: kein voller grüner mehr darunter, während es alarmiert. Abyss-Bosse haben wieder lila Symbole.",
-    "fr": "L'icône d'un boss mondial n'affiche qu'un anneau de PV : plus d'anneau vert complet dessous pendant l'alerte. Les icônes des boss des Abysses sont de nouveau violettes.",
-    "es": "El icono de un jefe de mundo muestra un solo anillo de PV: ya no hay uno verde completo debajo mientras avisa. Los iconos de los jefes del Abismo vuelven a ser morados.",
-    "pt": "O ícone de um chefe mundial mostra um só anel de HP: não há mais um verde completo por baixo durante o alerta. Os ícones dos chefes do Abismo voltam a ser roxos.",
-    "ru": "На значке мирового босса одно кольцо HP: под ним больше нет полного зелёного во время оповещения. Значки боссов Бездны снова фиолетовые.",
-    "zh-Hant": "世界首領圖示只顯示一圈 HP：提醒時下方不再疊著一整圈綠色。深淵首領圖示恢復為紫色。",
-    "zh-Hans": "世界首领图标只显示一圈 HP：提醒时下方不再叠着一整圈绿色。深渊首领图标恢复为紫色。"
   }
 ]

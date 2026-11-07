@@ -1942,6 +1942,28 @@ function feedBusy(now) {
   });
 }
 
+// An error in the tick, kept so a report can say what it was: the last one
+// shows at the foot of Settings (and in the console).
+let lastError = null;
+function tickStep(where, run, after) {
+  try {
+    run();
+  } catch (e) {
+    after?.();
+    const message = `${where}: ${e?.message || e}`;
+    if (lastError?.message !== message) {
+      console.error("Event Timers:", where, e);
+      lastError = { message, at: Date.now() };
+      a2.storage.set("lastError", lastError).catch(() => {});
+      const note = document.querySelector(".lastError");
+      if (note) {
+        note.textContent = `Last error (for bug reports): ${message} (${new Date(lastError.at).toLocaleString()})`;
+        note.hidden = false;
+      }
+    }
+  }
+}
+
 let feedReading = false;
 async function readFeed() {
   if (feedReading) return;
@@ -2170,6 +2192,13 @@ a2.on("compact", (on) => document.body.classList.toggle("compact", !!on));
 
 (async () => {
   prefs = { ...prefs, ...((await a2.storage.get("prefs").catch(() => null)) || {}) };
+  // The last error from before a reload (players reload to get out of it).
+  const kept = await a2.storage.get("lastError").catch(() => null);
+  const note = document.querySelector(".lastError");
+  if (kept?.message && note) {
+    note.textContent = `Last error (for bug reports): ${kept.message} (${new Date(kept.at).toLocaleString()})`;
+    note.hidden = false;
+  }
   prefs.closedLeads = prefs.closedLeads || {};
   // 0.6.22 and before listed the Abyss's scheduled bosses as events: their
   // alerts, times and icon settings go to the world bosses they are.
@@ -2192,11 +2221,14 @@ a2.on("compact", (on) => document.body.classList.toggle("compact", !!on));
   renderStatic();
   render();
   lastCheck = Date.now();
+  // Each part on its own: one that threw (a feature this WebView lacks, a
+  // state after a zone change) stopped the tick there every second, and
+  // the countdowns and icons froze until the plugins were reloaded (#185).
   setInterval(() => {
     const now = Date.now();
-    checkAlerts(now);
-    render();
-    if (typeof updatePins === "function") updatePins(now);
+    tickStep("alerts", () => checkAlerts(now), () => { lastCheck = now; });
+    tickStep("list", () => render());
+    if (typeof updatePins === "function") tickStep("icons", () => updatePins(now));
   }, 1000);
   if (!windowApi()) {
     els.pop.disabled = true;
