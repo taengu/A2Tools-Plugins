@@ -2,7 +2,7 @@
 // them (class, level, combat power, gear score, Odyle energy), kept between
 // sessions. Basic energy refills while you are away, so it is shown as it
 // likely is now (≈), until the game says again.
-const { CAPS, nextRefill, estimate, fullAt, EVERY } = globalThis.RosterLogic;
+const { CAPS, nextRefill, estimate, fullAt, EVERY, wastesNext } = globalThis.RosterLogic;
 const SERVERS = globalThis.ROSTER_SERVERS || {};
 const UI = globalThis.ROSTER_UI;
 const $ = (sel, root = document) => root.querySelector(sel);
@@ -626,6 +626,12 @@ function rowOf(r) {
     energy.title = est.gained
       ? t.energyGained(ch.energy.basic, ago(ch.energy.at, now), est.gained)
       : t.energySaid(ago(ch.energy.at, now));
+    // Too near the cap for the next +15: say when to use some by.
+    const wasteAt = wastesNext(ch.energy, capOf, now);
+    if (wasteAt) {
+      value.classList.add("wastes");
+      energy.title += `\n${t.wastesNext(clock(wasteAt))}`;
+    }
   } else {
     energy.append(el("span", "unknown", "—"));
     energy.title = t.tipNotSeen;

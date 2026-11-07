@@ -33,5 +33,14 @@
     return nextRefill(seen.at) + (needed - 1) * EVERY;
   }
 
-  globalThis.RosterLogic = { STEP, EVERY, CAPS, nextRefill, refillsBetween, estimate, fullAt };
+  // Whether the next refill would be wasted, all or part of it: basic energy
+  // above cap - STEP at `now` (830 or 835 of 840, or full). Then the time of
+  // that refill, by which energy wants using; else null.
+  function wastesNext(seen, cap, now) {
+    const est = estimate(seen, now, cap);
+    if (!est || est.basic <= cap - STEP) return null;
+    return nextRefill(now);
+  }
+
+  globalThis.RosterLogic = { STEP, EVERY, CAPS, nextRefill, refillsBetween, estimate, fullAt, wastesNext };
 })();

@@ -1,5 +1,18 @@
 [
   {
+    "version": "1.4.8",
+    "en": "Basic energy turns amber when the next refill would be wasted, and its tooltip says when to use some by.",
+    "ko": "다음 충전이 낭비될 때 기본 에너지가 주황색으로 바뀌고, 툴팁에 언제까지 사용해야 하는지 표시됩니다.",
+    "ja": "次の回復が無駄になるとき基本エネルギーが琥珀色になり、ツールチップにいつまでに使えばよいか表示されます。",
+    "de": "Grundenergie wird bernsteinfarben, wenn die nächste Aufladung verfallen würde; der Tooltip sagt, bis wann du sie nutzen solltest.",
+    "fr": "L'énergie de base passe en ambre quand la prochaine recharge serait perdue, et l'infobulle indique avant quand l'utiliser.",
+    "es": "La energía básica se vuelve ámbar cuando la próxima recarga se perdería, y su descripción indica antes de cuándo usarla.",
+    "pt": "A energia básica fica âmbar quando a próxima recarga seria desperdiçada, e a dica diz até quando usá-la.",
+    "ru": "Базовая энергия становится янтарной, когда следующее пополнение пропадёт, а подсказка говорит, до какого времени её потратить.",
+    "zh-Hant": "下次補充會被浪費時，基本能量會變成琥珀色，提示會說明要在何時前使用。",
+    "zh-Hans": "下次补充会被浪费时，基本能量会变成琥珀色，提示会说明要在何时前使用。"
+  },
+  {
     "version": "1.4.7",
     "en": "Choose to show all characters or only the current faction, server or character. Saved characters, shared totals and full-energy warnings are kept.",
     "ko": "모든 캐릭터를 보거나 현재 진영, 서버, 캐릭터만 볼 수 있습니다. 저장된 캐릭터, 공유 합계, 에너지 가득 참 경고는 그대로 유지됩니다.",
@@ -50,18 +63,5 @@
     "ru": "Создание энергии Одила теперь учитывается и у элийцев; раньше всегда показывалось 0.",
     "zh-Hant": "天族角色的奧德能量製作現在也會計算；之前一律顯示 0。",
     "zh-Hans": "天族角色的奥德能量制作现在也会计算；之前一律显示 0。"
-  },
-  {
-    "version": "1.4.3",
-    "en": "No more empty copy of your last character when the meter starts before the game; one already made goes once the real one is known.",
-    "ko": "게임보다 미터를 먼저 켜도 마지막 캐릭터의 빈 복사본이 생기지 않으며, 이미 생긴 것은 실제 캐릭터가 확인되면 사라집니다.",
-    "ja": "ゲームより先にメーターを起動しても、最後のキャラクターの空のコピーが作られなくなりました。既にあるものは本来のキャラクターが分かると消えます。",
-    "de": "Startet das Meter vor dem Spiel, entsteht keine leere Kopie deines letzten Charakters mehr; eine bestehende verschwindet, sobald der echte bekannt ist.",
-    "fr": "Plus de copie vide de votre dernier personnage quand le compteur démarre avant le jeu ; une copie déjà créée disparaît une fois le vrai connu.",
-    "es": "Ya no aparece una copia vacía de tu último personaje si el medidor se inicia antes que el juego; la que ya exista desaparece al conocerse el real.",
-    "pt": "Não aparece mais uma cópia vazia do seu último personagem quando o medidor inicia antes do jogo; a que já existir some quando o verdadeiro for conhecido.",
-    "ru": "Если метр запущен раньше игры, пустая копия последнего персонажа больше не появляется; уже созданная исчезает, когда известен настоящий.",
-    "zh-Hant": "計量器比遊戲先啟動時，不再產生上次角色的空白副本；已產生的會在確認實際角色後消失。",
-    "zh-Hans": "计量器比游戏先启动时，不再产生上次角色的空白副本；已产生的会在确认实际角色后消失。"
   }
 ]

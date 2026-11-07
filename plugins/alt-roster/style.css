@@ -84,6 +84,8 @@ body.compact .displayFilter { display: none; }
 .row { position: relative; padding: 6px; border-bottom: 1px solid var(--line); border-left: 2px solid transparent; }
 .row.playing { border-left-color: var(--accent); background: color-mix(in srgb, var(--accent) 5%, transparent); }
 .row.full .energyValue { color: var(--full); }
+/* The next refill would be wasted (logic.js wastesNext). */
+.energyValue.wastes { color: var(--full); }
 
 .who { display: flex; align-items: center; gap: 8px; min-width: 0; }
 .badge {
