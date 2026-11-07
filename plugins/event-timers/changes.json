@@ -1,5 +1,18 @@
 [
   {
+    "version": "0.6.29",
+    "en": "Settings: World boss timer offset, from -10 to +10 seconds, to match the game's times.",
+    "ko": "설정: 월드 보스 타이머 보정(-10~+10초)으로 게임 시간에 맞출 수 있습니다.",
+    "ja": "設定：ワールドボスのタイマー補正（-10～+10秒）でゲームの時刻に合わせられます。",
+    "de": "Einstellungen: Weltboss-Timer um -10 bis +10 Sekunden verschieben, passend zu den Zeiten im Spiel.",
+    "fr": "Réglages : décalage des minuteurs des boss mondiaux, de -10 à +10 secondes, pour coller aux horaires du jeu.",
+    "es": "Ajustes: desfase de los temporizadores de jefes mundiales, de -10 a +10 segundos, para coincidir con el juego.",
+    "pt": "Configurações: ajuste dos temporizadores de chefes mundiais, de -10 a +10 segundos, para bater com o jogo.",
+    "ru": "Настройки: сдвиг таймеров мировых боссов от -10 до +10 секунд, чтобы совпадать со временем в игре.",
+    "zh-Hant": "設定：世界首領計時器偏移（-10 至 +10 秒），可對齊遊戲時間。",
+    "zh-Hans": "设置：世界首领计时器偏移（-10 至 +10 秒），可对齐游戏时间。"
+  },
+  {
     "version": "0.6.28",
     "en": "A world boss's icon keeps its HP through the fight: the site's timers, read every 30 seconds, no longer take it away until the next update.",
     "ko": "필드 보스 아이콘이 전투 내내 HP를 유지합니다: 30초마다 읽는 사이트 타이머가 다음 갱신 전까지 HP를 지우지 않습니다.",
@@ -50,18 +63,5 @@
     "ru": "На значке мирового босса одно кольцо HP: под ним больше нет полного зелёного во время оповещения. Значки боссов Бездны снова фиолетовые.",
     "zh-Hant": "世界首領圖示只顯示一圈 HP：提醒時下方不再疊著一整圈綠色。深淵首領圖示恢復為紫色。",
     "zh-Hans": "世界首领图标只显示一圈 HP：提醒时下方不再叠着一整圈绿色。深渊首领图标恢复为紫色。"
-  },
-  {
-    "version": "0.6.24",
-    "en": "A world boss's HP on its icon no longer jumps back up mid-fight.",
-    "ko": "월드 보스 아이콘의 HP가 전투 중에 다시 올라가지 않습니다.",
-    "ja": "ワールドボスのアイコンのHPが戦闘中に戻って増えることがなくなりました。",
-    "de": "Die HP eines Weltbosses auf seinem Symbol springen im Kampf nicht mehr zurück nach oben.",
-    "fr": "Les PV d'un boss mondial sur son icône ne remontent plus en plein combat.",
-    "es": "Los PV de un jefe de mundo en su icono ya no vuelven a subir en pleno combate.",
-    "pt": "O HP de um chefe mundial no ícone não volta mais a subir no meio da luta.",
-    "ru": "HP мирового босса на значке больше не подскакивает обратно во время боя.",
-    "zh-Hant": "世界首領圖示上的 HP 不會在戰鬥中又跳回上升。",
-    "zh-Hans": "世界首领图标上的 HP 不会在战斗中又跳回上升。"
   }
 ]

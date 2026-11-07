@@ -79,6 +79,8 @@ const els = {
   colorLabel: $(".colorLabel"),
   colorSelect: $(".colorSelect"),
   scaleSelect: $(".scaleSelect"),
+  bossOffsetLabel: $(".bossOffsetLabel"),
+  bossOffsetSelect: $(".bossOffsetSelect"),
   defaultLeadLabel: $(".defaultLeadLabel"),
   defaultLead: $(".defaultLead"),
   defaultClosedLabel: $(".defaultClosedLabel"),
@@ -248,7 +250,7 @@ const MORE_UI = {
   en: { groupUp: "Up", groupWindow: "In window", groupUpcoming: "Upcoming", groupUnknown: "No report yet", ago: (t) => `${t} ago`, hpLeft: (n) => `HP ${n}%`,
         openFull: "Open Event Timers", alertOptions: "Options", testAlert: "Test alert", alertColor: "Alert colour", colors: {"orange": "Orange", "gold": "Gold", "red": "Red", "pink": "Pink", "purple": "Purple", "blue": "Blue", "green": "Green"},
         whileOpen: "Remind me", allOn: "All on", allOff: "All off", defaultLead: "When to alert", defaultClosed: "When to alert (AION2 closed)", applyAll: "Apply to current alerts", applyAsk: (n, lead, closed) => `Set the ${n} alerts that are on to ${lead}, and ${closed} while AION2 is closed?`, apply: "Apply", cancel: "Cancel", defaultsNote: "Default times for new alerts",
-        textSize: "Text size", popNote: "Hides after 30 s unused and comes back when an alert goes off. To open it sooner: Settings → Plugins → Open.", events: "Events", bosses: "Bosses", region: "Region", daily: "Daily reset", weekly: "Weekly reset",
+        bossOffset: "World boss timer offset", textSize: "Text size", popNote: "Hides after 30 s unused and comes back when an alert goes off. To open it sooner: Settings → Plugins → Open.", events: "Events", bosses: "Bosses", region: "Region", daily: "Daily reset", weekly: "Weekly reset",
         scheduled: "Abyss bosses", field: "World bosses", fieldNote: "Shared by players' meters as they open their map.",
         noFeed: "World boss timers need meter 2.0.65 or later.", feedFailed: "Couldn't read the world boss timers.",
         noServer: "Log in to a character to see your server's world bosses.", up: "Up", upFor: (t) => `for ${t}`,
@@ -258,7 +260,7 @@ const MORE_UI = {
   ko: { groupUp: "출현 중", groupWindow: "출현 시간 지남", groupUpcoming: "예정", groupUnknown: "아직 정보 없음", ago: (t) => `${t} 전`, hpLeft: (n) => `HP ${n}%`,
         openFull: "Event Timers 열기", alertOptions: "구성", testAlert: "알림 테스트", alertColor: "알림 색상", colors: {"orange": "주황", "gold": "금색", "red": "빨강", "pink": "분홍", "purple": "보라", "blue": "파랑", "green": "초록"},
         whileOpen: "알림 시간", allOn: "모두 켜기", allOff: "모두 끄기", defaultLead: "알림 시간", defaultClosed: "AION2가 꺼져 있을 때 알림 시간", applyAll: "현재 알림에 적용", applyAsk: (n, lead, closed) => `켜져 있는 알림 ${n}개를 ${lead}, AION2가 꺼져 있을 때는 ${closed}(으)로 바꿀까요?`, apply: "적용", cancel: "취소", defaultsNote: "새 알림의 기본 시간",
-        textSize: "글자 크기", popNote: "30초 동안 사용하지 않으면 창이 숨겨지고, 알림이 울리면 다시 나타납니다. 그 전에 열려면: 설정 → 플러그인 → 열기.", events: "이벤트", bosses: "보스", region: "지역", daily: "일일 초기화", weekly: "주간 초기화",
+        bossOffset: "월드 보스 타이머 보정", textSize: "글자 크기", popNote: "30초 동안 사용하지 않으면 창이 숨겨지고, 알림이 울리면 다시 나타납니다. 그 전에 열려면: 설정 → 플러그인 → 열기.", events: "이벤트", bosses: "보스", region: "지역", daily: "일일 초기화", weekly: "주간 초기화",
         scheduled: "어비스 보스", field: "월드 보스", fieldNote: "플레이어들이 지도를 열 때 미터가 공유한 정보입니다.",
         noFeed: "월드 보스 타이머는 미터 2.0.65 이상이 필요합니다.", feedFailed: "월드 보스 타이머를 읽지 못했습니다.",
         noServer: "캐릭터로 접속하면 서버의 월드 보스가 표시됩니다.", up: "출현", upFor: (t) => `${t}째`,
@@ -268,7 +270,7 @@ const MORE_UI = {
   ja: { groupUp: "出現中", groupWindow: "出現時刻経過", groupUpcoming: "予定", groupUnknown: "情報なし", ago: (t) => `${t}前`, hpLeft: (n) => `HP ${n}%`,
         openFull: "Event Timers を開く", alertOptions: "構成", testAlert: "通知をテスト", alertColor: "通知の色", colors: {"orange": "オレンジ", "gold": "ゴールド", "red": "赤", "pink": "ピンク", "purple": "紫", "blue": "青", "green": "緑"},
         whileOpen: "通知するタイミング", allOn: "すべてオン", allOff: "すべてオフ", defaultLead: "通知のタイミング", defaultClosed: "AION2を閉じているときの通知タイミング", applyAll: "現在の通知に適用", applyAsk: (n, lead, closed) => `オンの通知${n}件を${lead}、AION2を閉じているときは${closed}に変更しますか？`, apply: "適用", cancel: "キャンセル", defaultsNote: "新しい通知の既定のタイミング",
-        textSize: "文字の大きさ", popNote: "30秒操作がないとウィンドウは隠れ、通知が鳴ると自動で再表示されます。それまでに開くには：設定 → プラグイン → 開く。", events: "イベント", bosses: "ボス", region: "地域", daily: "デイリーリセット", weekly: "ウィークリーリセット",
+        bossOffset: "ワールドボスのタイマー補正", textSize: "文字の大きさ", popNote: "30秒操作がないとウィンドウは隠れ、通知が鳴ると自動で再表示されます。それまでに開くには：設定 → プラグイン → 開く。", events: "イベント", bosses: "ボス", region: "地域", daily: "デイリーリセット", weekly: "ウィークリーリセット",
         scheduled: "アビスボス", field: "ワールドボス", fieldNote: "プレイヤーがマップを開いたときにメーターが共有した情報です。",
         noFeed: "ワールドボスのタイマーにはメーター 2.0.65 以降が必要です。", feedFailed: "ワールドボスのタイマーを読み込めませんでした。",
         noServer: "キャラクターでログインするとサーバーのワールドボスが表示されます。", up: "出現中", upFor: (t) => `${t}経過`,
@@ -278,7 +280,7 @@ const MORE_UI = {
   de: { groupUp: "Da", groupWindow: "Im Zeitfenster", groupUpcoming: "Demnächst", groupUnknown: "Noch keine Meldung", ago: (t) => `vor ${t}`, hpLeft: (n) => `HP ${n} %`,
         openFull: "Event Timers öffnen", alertOptions: "Konfig", testAlert: "Testalarm", alertColor: "Alarmfarbe", colors: {"orange": "Orange", "gold": "Gold", "red": "Rot", "pink": "Pink", "purple": "Lila", "blue": "Blau", "green": "Grün"},
         whileOpen: "Erinnern", allOn: "Alle an", allOff: "Alle aus", defaultLead: "Alarmzeit", defaultClosed: "Alarmzeit, wenn AION2 geschlossen ist", applyAll: "Auf aktuelle Alarme anwenden", applyAsk: (n, lead, closed) => `Die ${n} aktiven Alarme auf ${lead} setzen, und auf ${closed}, wenn AION2 geschlossen ist?`, apply: "Anwenden", cancel: "Abbrechen", defaultsNote: "Standardzeiten für neue Alarme",
-        textSize: "Textgröße", popNote: "Das Fenster verschwindet nach 30 Sekunden ohne Nutzung und kommt bei einem Alarm von selbst zurück. Um es vorher zu öffnen: Einstellungen → Plugins → Öffnen.", events: "Events", bosses: "Bosse", region: "Region", daily: "Täglicher Reset", weekly: "Wöchentlicher Reset",
+        bossOffset: "Weltboss-Timer verschieben", textSize: "Textgröße", popNote: "Das Fenster verschwindet nach 30 Sekunden ohne Nutzung und kommt bei einem Alarm von selbst zurück. Um es vorher zu öffnen: Einstellungen → Plugins → Öffnen.", events: "Events", bosses: "Bosse", region: "Region", daily: "Täglicher Reset", weekly: "Wöchentlicher Reset",
         scheduled: "Abyss-Bosse", field: "Weltbosse", fieldNote: "Von den Metern der Spieler geteilt, wenn sie ihre Karte öffnen.",
         noFeed: "Weltboss-Timer brauchen Meter 2.0.65 oder neuer.", feedFailed: "Die Weltboss-Timer konnten nicht gelesen werden.",
         noServer: "Mit einem Charakter einloggen, um die Weltbosse deines Servers zu sehen.", up: "Da", upFor: (t) => `seit ${t}`,
@@ -288,7 +290,7 @@ const MORE_UI = {
   fr: { groupUp: "Présents", groupWindow: "Dans la fenêtre", groupUpcoming: "À venir", groupUnknown: "Pas encore signalés", ago: (t) => `il y a ${t}`, hpLeft: (n) => `PV ${n} %`,
         openFull: "Ouvrir Event Timers", alertOptions: "Config", testAlert: "Tester l'alerte", alertColor: "Couleur des alertes", colors: {"orange": "Orange", "gold": "Or", "red": "Rouge", "pink": "Rose", "purple": "Violet", "blue": "Bleu", "green": "Vert"},
         whileOpen: "Me rappeler", allOn: "Tout activer", allOff: "Tout désactiver", defaultLead: "Moment de l'alerte", defaultClosed: "Moment de l'alerte quand AION2 est fermé", applyAll: "Appliquer aux alertes actuelles", applyAsk: (n, lead, closed) => `Régler les ${n} alertes actives sur ${lead}, et ${closed} quand AION2 est fermé ?`, apply: "Appliquer", cancel: "Annuler", defaultsNote: "Moments par défaut des nouvelles alertes",
-        textSize: "Taille du texte", popNote: "La fenêtre se masque après 30 secondes sans utilisation et revient d'elle-même lors d'une alerte. Pour l'ouvrir avant : Réglages → Plugins → Ouvrir.", events: "Événements", bosses: "Boss", region: "Région", daily: "Réinitialisation quotidienne", weekly: "Réinitialisation hebdomadaire",
+        bossOffset: "Décalage des minuteurs des boss mondiaux", textSize: "Taille du texte", popNote: "La fenêtre se masque après 30 secondes sans utilisation et revient d'elle-même lors d'une alerte. Pour l'ouvrir avant : Réglages → Plugins → Ouvrir.", events: "Événements", bosses: "Boss", region: "Région", daily: "Réinitialisation quotidienne", weekly: "Réinitialisation hebdomadaire",
         scheduled: "Boss des Abysses", field: "Boss mondiaux", fieldNote: "Partagés par les meters des joueurs quand ils ouvrent leur carte.",
         noFeed: "Les minuteurs des boss mondiaux demandent le meter 2.0.65 ou plus récent.", feedFailed: "Impossible de lire les minuteurs des boss mondiaux.",
         noServer: "Connectez-vous avec un personnage pour voir les boss mondiaux de votre serveur.", up: "Présent", upFor: (t) => `depuis ${t}`,
@@ -298,7 +300,7 @@ const MORE_UI = {
   es: { groupUp: "Activos", groupWindow: "En ventana", groupUpcoming: "Próximos", groupUnknown: "Sin informes", ago: (t) => `hace ${t}`, hpLeft: (n) => `PV ${n} %`,
         openFull: "Abrir Event Timers", alertOptions: "Config", testAlert: "Probar alerta", alertColor: "Color de las alertas", colors: {"orange": "Naranja", "gold": "Dorado", "red": "Rojo", "pink": "Rosa", "purple": "Morado", "blue": "Azul", "green": "Verde"},
         whileOpen: "Avisarme", allOn: "Activar todo", allOff: "Desactivar todo", defaultLead: "Momento de la alerta", defaultClosed: "Momento de la alerta con AION2 cerrado", applyAll: "Aplicar a las alertas actuales", applyAsk: (n, lead, closed) => `¿Poner las ${n} alertas activas en ${lead}, y ${closed} con AION2 cerrado?`, apply: "Aplicar", cancel: "Cancelar", defaultsNote: "Momentos predeterminados de las alertas nuevas",
-        textSize: "Tamaño del texto", popNote: "La ventana se oculta tras 30 segundos sin uso y vuelve sola cuando suena una alerta. Para abrirla antes: Ajustes → Plugins → Abrir.", events: "Eventos", bosses: "Jefes", region: "Región", daily: "Reinicio diario", weekly: "Reinicio semanal",
+        bossOffset: "Desfase de los temporizadores de jefes mundiales", textSize: "Tamaño del texto", popNote: "La ventana se oculta tras 30 segundos sin uso y vuelve sola cuando suena una alerta. Para abrirla antes: Ajustes → Plugins → Abrir.", events: "Eventos", bosses: "Jefes", region: "Región", daily: "Reinicio diario", weekly: "Reinicio semanal",
         scheduled: "Jefes del Abismo", field: "Jefes mundiales", fieldNote: "Compartidos por los medidores de los jugadores al abrir su mapa.",
         noFeed: "Los temporizadores de jefes mundiales necesitan el medidor 2.0.65 o posterior.", feedFailed: "No se pudieron leer los temporizadores de jefes mundiales.",
         noServer: "Entra con un personaje para ver los jefes mundiales de tu servidor.", up: "Activo", upFor: (t) => `desde hace ${t}`,
@@ -308,7 +310,7 @@ const MORE_UI = {
   pt: { groupUp: "Ativos", groupWindow: "Na janela", groupUpcoming: "Próximos", groupUnknown: "Sem relatos ainda", ago: (t) => `há ${t}`, hpLeft: (n) => `PV ${n}%`,
         openFull: "Abrir Event Timers", alertOptions: "Config", testAlert: "Testar alerta", alertColor: "Cor dos alertas", colors: {"orange": "Laranja", "gold": "Dourado", "red": "Vermelho", "pink": "Rosa", "purple": "Roxo", "blue": "Azul", "green": "Verde"},
         whileOpen: "Avisar-me", allOn: "Ativar todos", allOff: "Desativar todos", defaultLead: "Momento do alerta", defaultClosed: "Momento do alerta com o AION2 fechado", applyAll: "Aplicar aos alertas atuais", applyAsk: (n, lead, closed) => `Ajustar os ${n} alertas ativos para ${lead}, e ${closed} com o AION2 fechado?`, apply: "Aplicar", cancel: "Cancelar", defaultsNote: "Momentos padrão dos novos alertas",
-        textSize: "Tamanho do texto", popNote: "A janela some após 30 segundos sem uso e volta sozinha quando um alerta toca. Para abri-la antes: Configurações → Plugins → Abrir.", events: "Eventos", bosses: "Chefes", region: "Região", daily: "Reinício diário", weekly: "Reinício semanal",
+        bossOffset: "Ajuste dos temporizadores de chefes mundiais", textSize: "Tamanho do texto", popNote: "A janela some após 30 segundos sem uso e volta sozinha quando um alerta toca. Para abri-la antes: Configurações → Plugins → Abrir.", events: "Eventos", bosses: "Chefes", region: "Região", daily: "Reinício diário", weekly: "Reinício semanal",
         scheduled: "Chefes do Abismo", field: "Chefes mundiais", fieldNote: "Compartilhados pelos medidores dos jogadores ao abrir o mapa.",
         noFeed: "Os timers de chefes mundiais precisam do medidor 2.0.65 ou mais novo.", feedFailed: "Não foi possível ler os timers de chefes mundiais.",
         noServer: "Entre com um personagem para ver os chefes mundiais do seu servidor.", up: "Ativo", upFor: (t) => `há ${t}`,
@@ -318,7 +320,7 @@ const MORE_UI = {
   ru: { groupUp: "На месте", groupWindow: "В окне появления", groupUpcoming: "Скоро", groupUnknown: "Пока нет данных", ago: (t) => `${t} назад`, hpLeft: (n) => `HP ${n}%`,
         openFull: "Открыть Event Timers", alertOptions: "Конфиг", testAlert: "Проверить", alertColor: "Цвет оповещений", colors: {"orange": "Оранжевый", "gold": "Золотой", "red": "Красный", "pink": "Розовый", "purple": "Фиолетовый", "blue": "Синий", "green": "Зелёный"},
         whileOpen: "Напомнить", allOn: "Включить все", allOff: "Выключить все", defaultLead: "Время оповещения", defaultClosed: "Время оповещения, когда AION2 закрыт", applyAll: "Применить к текущим оповещениям", applyAsk: (n, lead, closed) => `Установить ${n} включённых оповещений на «${lead}», а когда AION2 закрыт — «${closed}»?`, apply: "Применить", cancel: "Отмена", defaultsNote: "Время по умолчанию для новых оповещений",
-        textSize: "Размер текста", popNote: "Окно скрывается после 30 секунд без действий и само появляется при оповещении. Чтобы открыть его раньше: Настройки → Плагины → Открыть.", events: "События", bosses: "Боссы", region: "Регион", daily: "Ежедневный сброс", weekly: "Еженедельный сброс",
+        bossOffset: "Сдвиг таймеров мировых боссов", textSize: "Размер текста", popNote: "Окно скрывается после 30 секунд без действий и само появляется при оповещении. Чтобы открыть его раньше: Настройки → Плагины → Открыть.", events: "События", bosses: "Боссы", region: "Регион", daily: "Ежедневный сброс", weekly: "Еженедельный сброс",
         scheduled: "Боссы Бездны", field: "Мировые боссы", fieldNote: "Делятся метры игроков, когда те открывают карту.",
         noFeed: "Для таймеров мировых боссов нужен метр 2.0.65 или новее.", feedFailed: "Не удалось прочитать таймеры мировых боссов.",
         noServer: "Войдите персонажем, чтобы видеть мировых боссов своего сервера.", up: "На месте", upFor: (t) => `уже ${t}`,
@@ -328,7 +330,7 @@ const MORE_UI = {
   "zh-Hant": { groupUp: "已出現", groupWindow: "出現時段中", groupUpcoming: "即將出現", groupUnknown: "尚無回報", ago: (t) => `${t} 前`, hpLeft: (n) => `HP ${n}%`,
         openFull: "開啟 Event Timers", alertOptions: "配置", testAlert: "測試提醒", alertColor: "提醒顏色", colors: {"orange": "橘色", "gold": "金色", "red": "紅色", "pink": "粉紅", "purple": "紫色", "blue": "藍色", "green": "綠色"},
         whileOpen: "提醒時間", allOn: "全部開啟", allOff: "全部關閉", defaultLead: "提醒時間", defaultClosed: "AION2 關閉時的提醒時間", applyAll: "套用到目前的提醒", applyAsk: (n, lead, closed) => `將已開啟的 ${n} 個提醒設為「${lead}」，AION2 關閉時設為「${closed}」？`, apply: "套用", cancel: "取消", defaultsNote: "新提醒的預設時間",
-        textSize: "文字大小", popNote: "30 秒未使用後視窗會隱藏，提醒響起時會自動再出現。若要先開啟：設定 → 外掛 → 開啟。", events: "活動", bosses: "首領", region: "地區", daily: "每日重置", weekly: "每週重置",
+        bossOffset: "世界首領計時器偏移", textSize: "文字大小", popNote: "30 秒未使用後視窗會隱藏，提醒響起時會自動再出現。若要先開啟：設定 → 外掛 → 開啟。", events: "活動", bosses: "首領", region: "地區", daily: "每日重置", weekly: "每週重置",
         scheduled: "深淵首領", field: "世界首領", fieldNote: "由玩家開啟地圖時其計量器分享。",
         noFeed: "世界首領計時需要計量器 2.0.65 以上。", feedFailed: "無法讀取世界首領計時。",
         noServer: "登入角色即可查看伺服器的世界首領。", up: "已出現", upFor: (t) => `已 ${t}`,
@@ -338,7 +340,7 @@ const MORE_UI = {
   "zh-Hans": { groupUp: "已出现", groupWindow: "出现时段中", groupUpcoming: "即将出现", groupUnknown: "尚无回报", ago: (t) => `${t} 前`, hpLeft: (n) => `HP ${n}%`,
         openFull: "打开 Event Timers", alertOptions: "配置", testAlert: "测试提醒", alertColor: "提醒颜色", colors: {"orange": "橙色", "gold": "金色", "red": "红色", "pink": "粉红", "purple": "紫色", "blue": "蓝色", "green": "绿色"},
         whileOpen: "提醒时间", allOn: "全部开启", allOff: "全部关闭", defaultLead: "提醒时间", defaultClosed: "AION2 关闭时的提醒时间", applyAll: "应用到当前的提醒", applyAsk: (n, lead, closed) => `将已开启的 ${n} 个提醒设为“${lead}”，AION2 关闭时设为“${closed}”？`, apply: "应用", cancel: "取消", defaultsNote: "新提醒的默认时间",
-        textSize: "文字大小", popNote: "30 秒未使用后窗口会隐藏，提醒响起时会自动再出现。若要先打开：设置 → 插件 → 打开。", events: "活动", bosses: "首领", region: "地区", daily: "每日重置", weekly: "每周重置",
+        bossOffset: "世界首领计时器偏移", textSize: "文字大小", popNote: "30 秒未使用后窗口会隐藏，提醒响起时会自动再出现。若要先打开：设置 → 插件 → 打开。", events: "活动", bosses: "首领", region: "地区", daily: "每日重置", weekly: "每周重置",
         scheduled: "深渊首领", field: "世界首领", fieldNote: "由玩家打开地图时其计量器分享。",
         noFeed: "世界首领计时需要计量器 2.0.65 以上。", feedFailed: "无法读取世界首领计时。",
         noServer: "登录角色即可查看服务器的世界首领。", up: "已出现", upFor: (t) => `已 ${t}`,
@@ -429,7 +431,7 @@ let gameRunning = null;
 // voiceRate.
 let prefs = { region: "auto", hidden: [], alerts: {}, leads: {}, closedLeads: {}, sound: "chime", repeat: 1, volume: 100, pop: false,
   tab: "events", display: "system", lastServer: 0, scale: 1, defaultLead: DEFAULT_LEAD, defaultClosedLead: DEFAULT_CLOSED_LEAD,
-  alertColor: "orange", alsoAtStart: false, folded: {}, speak: false, voiceName: "", voiceType: "any", voiceRate: 1 };
+  alertColor: "orange", alsoAtStart: false, folded: {}, speak: false, voiceName: "", voiceType: "any", voiceRate: 1, bossOffset: 0 };
 // The world boss timers: { server, bosses, at, error }, from the feed and the
 // player's own map, the newest report of each boss kept.
 let feed = null;
@@ -674,7 +676,14 @@ const fieldBosses = () => {
 // it die, and until a map says so the feed has it up (Watcher Kaira, 0%).
 // One dead past its respawn time is up: the time is the game's own, and
 // nobody may have opened their map since.
-const feedEntry = (id) => (feed && feed.server === serverId() ? feed.bosses?.[id] || null : null);
+// Settings: World boss timer offset, -10 to +10 s on each respawn time the
+// feed gives (players saw it a few seconds off the game's).
+const BOSS_OFFSETS = Array.from({ length: 21 }, (_, i) => i - 10);
+const bossOffset = () => (BOSS_OFFSETS.includes(Number(prefs.bossOffset)) ? Number(prefs.bossOffset) : 0);
+const feedEntry = (id) => {
+  const t = feed && feed.server === serverId() ? feed.bosses?.[id] || null : null;
+  return t?.nextSpawn && bossOffset() ? { ...t, nextSpawn: t.nextSpawn + bossOffset() } : t;
+};
 const fieldTimer = (id) => {
   let t = feedEntry(id);
   if (t?.state === "up" && t.hp === 0 && t.hpAt) {
@@ -730,6 +739,7 @@ function renderStatic() {
   els.regionLabel.textContent = words.region;
   els.zoneLabel.textContent = a.showIn;
   els.scaleLabel.textContent = words.textSize;
+  els.bossOffsetLabel.textContent = words.bossOffset;
   els.colorLabel.textContent = words.alertColor;
   // Each colour shown in itself: a swatch and its name, on the list's dark.
   els.colorSelect.replaceChildren(...Object.entries(ALERT_COLORS).map(([k, hex]) => {
@@ -751,6 +761,8 @@ function renderStatic() {
   els.defaultClosed.value = String(defaultClosed());
   els.scaleSelect.replaceChildren(...SCALES.map((x) => option(x, `${Math.round(x * 100)}%`)));
   els.scaleSelect.value = String(prefs.scale);
+  els.bossOffsetSelect.replaceChildren(...BOSS_OFFSETS.map((s) => option(s, `${s > 0 ? "+" : ""}${s} s`)));
+  els.bossOffsetSelect.value = String(bossOffset());
   els.soundLabel.textContent = a.sound;
   els.testAlert.textContent = words.testAlert;
   els.alertOptionsBtn.textContent = words.alertOptions;
@@ -2105,6 +2117,11 @@ els.colorSelect.addEventListener("change", () => {
   prefs.alertColor = els.colorSelect.value;
   savePrefs();
   applyColor();
+});
+els.bossOffsetSelect.addEventListener("change", () => {
+  prefs.bossOffset = Number(els.bossOffsetSelect.value);
+  savePrefs();
+  renderStatic();
 });
 els.scaleSelect.addEventListener("change", () => {
   prefs.scale = Number(els.scaleSelect.value);
