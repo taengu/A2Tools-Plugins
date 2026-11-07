@@ -67,6 +67,22 @@ button { cursor: pointer; }
 .toolbar { display: flex; gap: 6px; align-items: center; margin-top: 8px; }
 .displayFilter { display: flex; gap: 6px; align-items: center; margin-top: 8px; }
 body.compact .displayFilter { display: none; }
+/* The energy alert's settings (plugin.js checkAlerts), under Show. */
+.alertBar { display: flex; flex-wrap: wrap; gap: 4px 10px; align-items: center; margin-top: 6px; font-size: 12px; }
+.alertBar label { display: flex; gap: 5px; align-items: center; }
+.alertBar .alertMode { max-width: 230px; }
+.alertBar .chimeLabel { gap: 4px; cursor: pointer; }
+.alertBar .alertTest { padding: 2px 8px; cursor: pointer; }
+body.compact .alertBar { display: none; }
+/* Each row's bell, with "Alert for: Ticked characters": lit when ticked. */
+.bell {
+  display: none; flex: none; width: 20px; height: 20px; padding: 0; border: 0;
+  background: none; cursor: pointer; color: var(--dim); opacity: 0.55;
+}
+body.alertTicked .bell { display: inline-flex; align-items: center; justify-content: center; }
+.bell.on { color: var(--full); opacity: 1; }
+.bell:hover { opacity: 1; }
+.bell svg { width: 14px; height: 14px; }
 .search { flex: 1; min-width: 0; padding: 3px 7px; }
 .count { font-size: 12px; color: var(--dim); white-space: nowrap; }
 

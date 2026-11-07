@@ -1,5 +1,18 @@
 [
   {
+    "version": "1.4.9",
+    "en": "An alert over the game, with a chime, when a character's Odyle energy nears the cap: when the next refill would be wasted, up to 3 refills sooner, or when full; for every character or the ones you tick.",
+    "ko": "캐릭터의 오드 에너지가 한도에 가까워지면 게임 위에 알림과 알림음이 나옵니다: 다음 충전이 낭비될 때, 최대 충전 3회 전, 또는 가득 찼을 때; 모든 캐릭터 또는 선택한 캐릭터에 대해.",
+    "ja": "キャラクターのオードエネルギーが上限に近づくと、ゲームの上に通知とチャイム：次の回復が無駄になるとき、最大で回復3回前、または満タンのとき。全キャラクターかチェックしたキャラクターで。",
+    "de": "Ein Hinweis über dem Spiel mit Ton, wenn die Odyle-Energie eines Charakters fast voll ist: wenn die nächste Aufladung verfällt, bis zu 3 Aufladungen früher oder wenn voll; für alle oder markierte Charaktere.",
+    "fr": "Une alerte au-dessus du jeu, avec un carillon, quand l'énergie d'Odyle d'un personnage approche du plafond : quand la prochaine recharge serait perdue, jusqu'à 3 recharges plus tôt, ou quand c'est plein ; pour tous ou les personnages cochés.",
+    "es": "Un aviso sobre el juego, con sonido, cuando la energía de Odyle de un personaje se acerca al límite: cuando la próxima recarga se perdería, hasta 3 recargas antes o cuando esté lleno; para todos o los personajes marcados.",
+    "pt": "Um alerta sobre o jogo, com som, quando a energia de Odyle de um personagem chega perto do limite: quando a próxima recarga seria desperdiçada, até 3 recargas antes ou quando estiver cheio; para todos ou os personagens marcados.",
+    "ru": "Оповещение поверх игры со звуком, когда энергия Одила персонажа близка к пределу: когда следующее пополнение пропадёт, до 3 пополнений раньше или когда полная; для всех или отмеченных персонажей.",
+    "zh-Hant": "角色的奧德能量接近上限時，在遊戲上方顯示提醒並發出提示音：下次補充會被浪費時、最多提前 3 次補充，或已滿時；適用於所有角色或勾選的角色。",
+    "zh-Hans": "角色的奥德能量接近上限时，在游戏上方显示提醒并发出提示音：下次补充会被浪费时、最多提前 3 次补充，或已满时；适用于所有角色或勾选的角色。"
+  },
+  {
     "version": "1.4.8",
     "en": "Basic energy turns amber when the next refill would be wasted, and its tooltip says when to use some by.",
     "ko": "다음 충전이 낭비될 때 기본 에너지가 주황색으로 바뀌고, 툴팁에 언제까지 사용해야 하는지 표시됩니다.",
@@ -50,18 +63,5 @@
     "ru": "Создание энергии Одила у персонажей Элийцев учитывается (показывалось 0).",
     "zh-Hant": "天族角色的奧德能量製作會被計算（之前顯示 0）。",
     "zh-Hans": "天族角色的奥德能量制作会被计算（之前显示 0）。"
-  },
-  {
-    "version": "1.4.4",
-    "en": "Odyle Energy crafts are counted for Elyos characters too; they always showed 0.",
-    "ko": "천족 캐릭터의 오드 에너지 제작도 집계됩니다. 이전에는 항상 0으로 표시되었습니다.",
-    "ja": "天族キャラクターのオードエネルギー製作も数えるようになりました。これまでは常に0と表示されていました。",
-    "de": "Odyle-Energie-Herstellungen werden jetzt auch für Elyos-Charaktere gezählt; sie zeigten immer 0.",
-    "fr": "Les fabrications d'énergie d'Odyle sont aussi comptées pour les personnages Élyséens ; elles affichaient toujours 0.",
-    "es": "Las fabricaciones de energía de Odyle ahora también se cuentan para personajes Elyos; siempre mostraban 0.",
-    "pt": "As criações de energia de Odyle agora também são contadas para personagens Elyos; sempre mostravam 0.",
-    "ru": "Создание энергии Одила теперь учитывается и у элийцев; раньше всегда показывалось 0.",
-    "zh-Hant": "天族角色的奧德能量製作現在也會計算；之前一律顯示 0。",
-    "zh-Hans": "天族角色的奥德能量制作现在也会计算；之前一律显示 0。"
   }
 ]

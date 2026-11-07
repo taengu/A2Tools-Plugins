@@ -33,6 +33,26 @@
         <option value="character">Current character</option>
       </select>
     </label>
+    <div class="alertBar">
+      <label><span class="alertLabel">Alert</span>
+        <select class="alertMode">
+          <option value="off">Off</option>
+          <option value="waste">When the next refill would be wasted</option>
+          <option value="early1">1 refill sooner (3 h)</option>
+          <option value="early2">2 refills sooner (6 h)</option>
+          <option value="early3">3 refills sooner (9 h)</option>
+          <option value="full">When full</option>
+        </select>
+      </label>
+      <label><span class="alertForLabel">For</span>
+        <select class="alertWho">
+          <option value="all">All characters</option>
+          <option value="ticked">Ticked characters</option>
+        </select>
+      </label>
+      <label class="chimeLabel"><input type="checkbox" class="alertChime" /> <span>Chime</span></label>
+      <button type="button" class="alertTest">Test</button>
+    </div>
     <div class="toolbar">
       <input type="search" class="search" placeholder="Find a character or server" spellcheck="false" />
       <select class="sort" title="Order">

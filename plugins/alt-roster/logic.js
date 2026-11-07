@@ -42,5 +42,38 @@
     return nextRefill(now);
   }
 
-  globalThis.RosterLogic = { STEP, EVERY, CAPS, nextRefill, refillsBetween, estimate, fullAt, wastesNext };
+  // The energy alert (Roster's "Alert" setting): a character's basic energy
+  // over its mark. "waste": the next refill would be wasted (over cap -
+  // STEP); "early1" to "early3": that many refills (3 h each) sooner; "full":
+  // at the cap; "off": never.
+  const ALERT_MODES = ["off", "waste", "early1", "early2", "early3", "full"];
+  function alertMark(cap, mode) {
+    if (mode === "full") return cap - 1;
+    if (mode === "waste") return cap - STEP;
+    const early = /^early([1-3])$/.exec(mode || "");
+    return early ? cap - STEP * (Number(early[1]) + 1) : null;
+  }
+
+  // Who to alert for at `now`, once each time they go over the mark.
+  // chars: [{ key, energy, cap, watched }]; who: "all", or "ticked" (only the
+  // watched); alerted: { key: mode } as kept, each one alerted and still
+  // over. Returns { fire: [keys], alerted }: a character that dropped back
+  // under (energy used) is forgotten, so it alerts again next time.
+  function alertsDue(chars, mode, who, alerted, now) {
+    const kept = {};
+    const fire = [];
+    for (const { key, energy, cap, watched } of chars) {
+      const mark = alertMark(cap, mode);
+      const est = estimate(energy, now, cap);
+      if (mark == null || !est || est.basic <= mark) continue;
+      if (who === "ticked" && !watched) continue;
+      kept[key] = mode;
+      if (alerted?.[key] !== mode) fire.push(key);
+    }
+    return { fire, alerted: kept };
+  }
+
+  globalThis.RosterLogic = {
+    STEP, EVERY, CAPS, ALERT_MODES, nextRefill, refillsBetween, estimate, fullAt, wastesNext, alertMark, alertsDue,
+  };
 })();

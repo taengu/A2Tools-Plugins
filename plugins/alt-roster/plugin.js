@@ -2,10 +2,12 @@
 // them (class, level, combat power, gear score, Odyle energy), kept between
 // sessions. Basic energy refills while you are away, so it is shown as it
 // likely is now (≈), until the game says again.
-const { CAPS, nextRefill, estimate, fullAt, EVERY, wastesNext } = globalThis.RosterLogic;
+const { CAPS, STEP, ALERT_MODES, nextRefill, estimate, fullAt, EVERY, wastesNext, alertsDue } = globalThis.RosterLogic;
 const SERVERS = globalThis.ROSTER_SERVERS || {};
 const UI = globalThis.ROSTER_UI;
 const $ = (sel, root = document) => root.querySelector(sel);
+// A row's bell (the energy alert's "Ticked characters").
+const BELL_SVG = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 8a6 6 0 0 1 12 0c0 7 3 9 3 9H3s3-2 3-9"/><path d="M10.3 21a1.94 1.94 0 0 0 3.4 0"/></svg>';
 
 // The page's words in the meter's language (i18n.js), English until it says.
 let lang = "en";
@@ -29,7 +31,14 @@ const CLASSES = {
 //   energy: { basic, charged, at }, cap, seen, counts } }
 // servers: { "<serverId>": { counts } } for content shared on a server.
 // counts: { "<entry id>": { v: [left, extra], at } } as the game last said.
-const state = { chars: {}, servers: {}, prefs: { sort: "name", tab: "roster", display: "all" } };
+// prefs.alert / alertWho / chime: the energy alert (checkAlerts);
+// prefs.alerted: { key: mode } the characters alerted for and still over.
+// A character's `watch`: its bell, for "Alert for: Ticked characters".
+const state = {
+  chars: {},
+  servers: {},
+  prefs: { sort: "name", tab: "roster", display: "all", alert: "waste", alertWho: "all", chime: true, alerted: {} },
+};
 let current = null; // the key of who is playing now
 let gameRunning = true; // meters before 2.0.65 don't say
 let saveTimer = 0;
@@ -601,7 +610,12 @@ function rowOf(r) {
   const remove = el("button", "remove", "×");
   remove.type = "button";
   remove.title = t.removeTip;
-  who.append(badge, names, remove);
+  const bell = el("button", `bell${ch.watch ? " on" : ""}`);
+  bell.type = "button";
+  bell.title = t.bellTip;
+  bell.setAttribute("aria-pressed", String(!!ch.watch));
+  bell.innerHTML = BELL_SVG;
+  who.append(badge, names, bell, remove);
 
   const cp = el("div", `num cp${ch.cp ? "" : " none"}`, ch.cp ? fmt.format(ch.cp) : "—");
   cp.dataset.label = t.colCombat;
@@ -657,7 +671,12 @@ $(".list").addEventListener("click", (e) => {
   if (!li) return;
   const ch = state.chars[li.dataset.key];
   if (!ch) return;
-  if (e.target.closest(".cap")) {
+  if (e.target.closest(".bell")) {
+    ch.watch = !ch.watch;
+    save();
+    render();
+    checkAlerts();
+  } else if (e.target.closest(".cap")) {
     // From what it shows now (the account's 840 too), to the other.
     ch.cap = capFor(ch, Date.now()) === CAPS[0] ? CAPS[1] : CAPS[0];
     ch.capSet = true;
@@ -689,6 +708,119 @@ $(".display").addEventListener("change", (e) => {
   render();
 });
 
+// ── The energy alert ───────────────────────────────────────────────────────
+// A pop-up over the game (a widget) naming each character over the mark the
+// Alert setting picks, with a chime: once each time one goes over (logic.js
+// alertsDue), for every character, played or not, as their energy is
+// estimated to grow. A click on it dismisses it; one whose energy is used
+// leaves it.
+const ALERT = "alert";
+// Most characters listed; the rest as "and N more".
+const ALERT_LINES = 6;
+// The characters on the pop-up now.
+let alertShown = new Set();
+
+const canAlert = () => !!(a2.widgets && typeof a2.widgets.open === "function");
+
+function alertLine(key, now) {
+  const ch = state.chars[key];
+  if (!ch) return null;
+  const cap = capFor(ch, now);
+  const est = estimate(ch.energy, now, cap);
+  if (!est) return null;
+  const note = est.full
+    ? t.alertFull
+    : est.basic > cap - STEP
+      ? t.alertWastes(clock(nextRefill(now)))
+      : t.alertFullIn(span(fullAt(ch.energy, cap) - now));
+  return { name: ch.name, energy: `${fmt.format(est.basic)} / ${cap}`, note, full: est.full };
+}
+
+async function showAlert(keys, now) {
+  if (!canAlert()) return;
+  const lines = keys.map((key) => alertLine(key, now)).filter(Boolean);
+  if (!lines.length) {
+    await a2.widgets.close(ALERT).catch(() => {});
+    return;
+  }
+  const shown = lines.slice(0, ALERT_LINES);
+  if (lines.length > shown.length) shown.push({ name: "", energy: "", note: t.alertMore(lines.length - shown.length) });
+  const size = { width: 320, height: 46 + shown.length * 21 };
+  if (await a2.widgets.open(ALERT, size).then(() => true, () => false)) {
+    a2.widgets.send(ALERT, { title: t.alertTitle, lines: shown, hint: t.alertHint }).catch(() => {});
+  }
+}
+
+// A short two-note chime, made on the spot (as Event Timers' "chime").
+let audio = null;
+function chime() {
+  try {
+    audio ||= new AudioContext();
+    const at = audio.currentTime + 0.02;
+    for (const [freq, start] of [[880, 0], [1320, 0.16]]) {
+      const osc = audio.createOscillator();
+      const gain = audio.createGain();
+      osc.type = "sine";
+      osc.frequency.value = freq;
+      gain.gain.setValueAtTime(0, at + start);
+      gain.gain.linearRampToValueAtTime(0.25, at + start + 0.02);
+      gain.gain.exponentialRampToValueAtTime(0.001, at + start + 0.5);
+      osc.connect(gain).connect(audio.destination);
+      osc.start(at + start);
+      osc.stop(at + start + 0.55);
+    }
+  } catch {}
+}
+
+function checkAlerts() {
+  const now = Date.now();
+  const chars = Object.entries(state.chars).map(([key, ch]) => ({ key, energy: ch.energy, cap: capFor(ch, now), watched: !!ch.watch }));
+  const { fire, alerted } = alertsDue(chars, state.prefs.alert, state.prefs.alertWho, state.prefs.alerted, now);
+  const changed = JSON.stringify(alerted) !== JSON.stringify(state.prefs.alerted);
+  state.prefs.alerted = alerted;
+  if (changed) save();
+  // Those no longer over leave the pop-up; those just over join it.
+  const before = alertShown.size;
+  alertShown = new Set([...alertShown].filter((key) => key in alerted));
+  for (const key of fire) alertShown.add(key);
+  if (fire.length && state.prefs.chime) chime();
+  if (fire.length || alertShown.size !== before) showAlert([...alertShown], now);
+}
+
+a2.on("widget-message", (msg) => {
+  if (!msg?.data?.dismiss) return;
+  alertShown.clear();
+  a2.widgets?.close?.(ALERT).catch(() => {});
+});
+
+$(".alertMode").addEventListener("change", (e) => {
+  state.prefs.alert = e.target.value;
+  save();
+  checkAlerts();
+});
+$(".alertWho").addEventListener("change", (e) => {
+  state.prefs.alertWho = e.target.value;
+  document.body.classList.toggle("alertTicked", state.prefs.alertWho === "ticked");
+  save();
+  checkAlerts();
+});
+$(".alertChime").addEventListener("change", (e) => {
+  state.prefs.chime = e.target.checked;
+  save();
+});
+// What it looks like: the characters over the mark now, else the one played
+// (or the first), and the chime; nothing is marked alerted.
+$(".alertTest").addEventListener("click", () => {
+  const now = Date.now();
+  const chars = Object.entries(state.chars).map(([key, ch]) => ({ key, energy: ch.energy, cap: capFor(ch, now), watched: true }));
+  const over = alertsDue(chars, state.prefs.alert === "off" ? "waste" : state.prefs.alert, "all", {}, now).fire;
+  const sample = over.length ? over : [current in state.chars ? current : Object.keys(state.chars)[0]].filter(Boolean);
+  if (state.prefs.chime) chime();
+  if (!canAlert()) return;
+  alertShown = new Set(sample);
+  showAlert(sample, now);
+});
+
 // The page's fixed words (index.html), in the meter's language.
 function applyLanguage() {
   document.documentElement.lang = lang;
@@ -698,6 +830,13 @@ function applyLanguage() {
   $(".search").placeholder = t.search;
   $(".sort").title = t.order;
   $(".displayFilter span").textContent = t.show;
+  $(".alertLabel").textContent = t.alertLabel;
+  for (const o of $(".alertMode").options) o.textContent = t.alertModes[o.value] ?? o.textContent;
+  $(".alertForLabel").textContent = t.alertFor;
+  for (const o of $(".alertWho").options) o.textContent = t.alertWho[o.value] ?? o.textContent;
+  $(".chimeLabel span").textContent = t.alertChime;
+  $(".alertTest").textContent = t.alertTest;
+  $(".alertTest").title = t.alertTestTip;
   for (const o of $(".display").options) o.textContent = t.display[o.value];
   for (const o of $(".sort").options) o.textContent = t.sort[o.value] ?? o.textContent;
   const cols = [t.colChar, t.colCombat, t.colGear, t.colBasic, t.colCharged, t.colFullIn];
@@ -730,6 +869,13 @@ function applyLanguage() {
   $(".sort").value = state.prefs.sort;
   if (!["all", "faction", "server", "character"].includes(state.prefs.display)) state.prefs.display = "all";
   $(".display").value = state.prefs.display;
+  if (!ALERT_MODES.includes(state.prefs.alert)) state.prefs.alert = "waste";
+  if (!["all", "ticked"].includes(state.prefs.alertWho)) state.prefs.alertWho = "all";
+  if (!state.prefs.alerted || typeof state.prefs.alerted !== "object") state.prefs.alerted = {};
+  $(".alertMode").value = state.prefs.alert;
+  $(".alertWho").value = state.prefs.alertWho;
+  $(".alertChime").checked = state.prefs.chime !== false;
+  document.body.classList.toggle("alertTicked", state.prefs.alertWho === "ticked");
   showTab(state.prefs.tab);
   a2.ready();
   // The countdowns, and the one playing stays "seen now" (saved every 5 min).
@@ -747,5 +893,7 @@ function applyLanguage() {
     const playing = state.chars[current];
     if (playing && state.servers[playing.serverId ?? ""]?.siege?.next <= Date.now()) askSiege(playing.serverId);
     if (!document.querySelector(".remove.confirm")) render();
+    checkAlerts();
   }, 30_000);
+  checkAlerts();
 })();
