@@ -1105,3 +1105,154 @@ body.farmOnly .nearby {
   border-radius: 0;
   background: none;
 }
+
+/* ---- The Black Market: the Black Cloud Merchants' pets ------------------- */
+.market {
+  display: none;
+}
+body.marketOnly {
+  padding: 0;
+}
+body.marketOnly .market {
+  display: block;
+  padding: 6px 8px 4px;
+  border-radius: 8px;
+  background: rgba(14, 18, 27, 0.92);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+body.marketOnly .controls,
+body.marketOnly .head,
+body.marketOnly .pets:not(.marketList),
+body.marketOnly .empty,
+body.marketOnly .foot,
+body.marketOnly .farm,
+body.marketOnly .nearby {
+  display: none;
+}
+.marketTitle {
+  font-weight: 650;
+  color: #e9edf5;
+}
+.marketWhen {
+  flex: 1;
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  text-align: right;
+  color: rgba(255, 255, 255, 0.55);
+}
+.toMarket {
+  font: inherit;
+  font-size: 11px;
+  color: #ffcf6e;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 207, 110, 0.4);
+  border-radius: 5px;
+  padding: 1px 7px;
+  cursor: pointer;
+}
+.toMarket:hover {
+  color: #fff;
+  background: rgba(255, 255, 255, 0.12);
+}
+.toMarket[hidden] {
+  display: none;
+}
+.marketList {
+  margin: 0;
+}
+.marketList li.marketItem {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 2px 8px;
+  padding: 5px 6px;
+  border-radius: 6px;
+}
+.marketList li.marketItem.unowned {
+  background: rgba(255, 255, 255, 0.05);
+  box-shadow: inset 2px 0 0 var(--g, #8fc2ff);
+}
+.marketList li.marketItem.done {
+  opacity: 0.45;
+}
+.marketList .main {
+  flex: 1;
+  min-width: 0;
+}
+.marketList .line {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  min-width: 0;
+}
+.marketList .nameText {
+  flex: 1;
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  font-weight: 600;
+}
+.marketList .off {
+  font-size: 11px;
+  font-weight: 650;
+  font-variant-numeric: tabular-nums;
+  padding: 0 4px;
+  border-radius: 3px;
+}
+.marketList .off.tier0 { color: #8be0a4; background: rgba(60, 170, 90, 0.18); }
+.marketList .off.tier1 { color: #8fc2ff; background: rgba(70, 130, 230, 0.2); }
+.marketList .off.tier2,
+.marketList .off.tier3 { color: #ff8f8f; background: rgba(210, 60, 60, 0.2); }
+.marketList .price {
+  min-width: 52px;
+  text-align: right;
+  font-weight: 650;
+  font-variant-numeric: tabular-nums;
+}
+.marketList .sub {
+  margin-top: 2px;
+  font-size: 11px;
+  color: rgba(255, 255, 255, 0.6);
+}
+.marketList .unlock {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: #ffcf6e;
+  border: 1px solid rgba(255, 207, 110, 0.55);
+  border-radius: 3px;
+  padding: 0 4px;
+}
+.marketList .genusName::before {
+  content: "● ";
+}
+.marketList .miniBar {
+  position: relative;
+  width: 54px;
+  height: 4px;
+  border-radius: 2px;
+  background: rgba(255, 255, 255, 0.12);
+  overflow: hidden;
+}
+.marketList .miniBar span {
+  position: absolute;
+  inset: 0 auto 0 0;
+  background: var(--g, #5cc9e6);
+}
+.marketList .chestsOnly {
+  color: #ffb35c;
+}
+.marketList .where {
+  flex-basis: 100%;
+}
+.marketNote {
+  margin: 4px 2px 2px;
+  font-size: 11px;
+  color: rgba(255, 255, 255, 0.5);
+}
+.marketNote[hidden] {
+  display: none;
+}

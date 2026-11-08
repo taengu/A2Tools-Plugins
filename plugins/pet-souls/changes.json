@@ -1,5 +1,18 @@
 [
   {
+    "version": "0.6.0",
+    "en": "Black Market: open the Black Cloud Merchants' shop and the window lists the pets on sale, those you don't have yet first, with each one's level and souls (meter 2.0.93).",
+    "ko": "암시장: 검은 구름 무역단 상점을 열면 판매 중인 펫을 보여 줍니다. 아직 없는 펫이 먼저 나오고, 각 펫의 레벨과 영혼이 함께 표시됩니다 (미터 2.0.93).",
+    "ja": "ブラックマーケット：黒雲商団のショップを開くと、販売中のペットを一覧表示します。まだ持っていないペットが先頭で、各ペットのレベルと魂も表示します（メーター 2.0.93）。",
+    "de": "Schwarzmarkt: Öffne den Laden der Schwarzwolken-Händler, und das Fenster zeigt die angebotenen Begleiter, die dir noch fehlenden zuerst, mit Stufe und Seelen (Meter 2.0.93).",
+    "fr": "Marché noir : ouvrez la boutique des Marchands du Nuage noir et la fenêtre liste les familiers en vente, ceux que vous n'avez pas d'abord, avec leur niveau et leurs âmes (meter 2.0.93).",
+    "es": "Mercado negro: abre la tienda de los Mercaderes de la Nube Negra y la ventana muestra las mascotas en venta, primero las que aún no tienes, con su nivel y almas (meter 2.0.93).",
+    "pt": "Mercado negro: abra a loja dos Mercadores da Nuvem Negra e a janela lista os mascotes à venda, primeiro os que você ainda não tem, com nível e almas (meter 2.0.93).",
+    "ru": "Чёрный рынок: откройте лавку торговцев Чёрного облака, и окно покажет питомцев на продаже — сначала тех, кого у вас ещё нет, — с их уровнем и душами (meter 2.0.93).",
+    "zh-Hant": "黑市：打開黑雲商團的商店，視窗會列出販售中的寵物，尚未擁有的排在最前，並顯示每隻的等級與靈魂（計量器 2.0.93）。",
+    "zh-Hans": "黑市：打开黑云商团的商店，窗口会列出出售中的宠物，尚未拥有的排在最前，并显示每只的等级与灵魂（计量器 2.0.93）。"
+  },
+  {
     "version": "0.5.4",
     "en": "Chests: new pets they give are counted at once, and souls past a level's cost stay with the pet.",
     "ko": "상자: 상자에서 얻은 새 펫이 바로 반영되고, 레벨에 필요한 수를 넘는 영혼은 펫에 그대로 남습니다.",

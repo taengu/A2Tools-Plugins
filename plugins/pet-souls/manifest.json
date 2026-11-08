@@ -1,11 +1,11 @@
 {
   "id": "pet-souls",
   "name": "Pet Soul Tracker",
-  "version": "0.5.4",
+  "version": "0.6.0",
   "apiVersion": 2,
   "author": "A2 Tools",
-  "description": "Souls still needed to raise each pet, from the game's own pet data, where each pet's souls drop, and the monsters around you that drop them.",
-  "permissions": ["storage", "events:character", "window", "widgets", "decoder:pet-list", "decoder:soul-gained", "decoder:level-up", "decoder:pet-unlocked",
+  "description": "Souls still needed to raise each pet, from the game's own pet data, where each pet's souls drop, the monsters around you that drop them, and which of the Black Cloud Merchants' pets you don't have yet.",
+  "permissions": ["storage", "events:character", "events:black-market", "window", "widgets", "decoder:pet-list", "decoder:soul-gained", "decoder:level-up", "decoder:pet-unlocked",
     "decoder:npc-spawn", "decoder:npc-gone", "decoder:map-load", "decoder:own-position", "decoder:mantra-tick", "decoder:teleport"],
   "decoders": [
     {

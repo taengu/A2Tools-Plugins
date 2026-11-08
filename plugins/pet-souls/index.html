@@ -15,6 +15,7 @@
       <div class="toolbar">
         <input type="search" class="search" placeholder="Search pets" aria-label="Search pets" spellcheck="false" />
         <button type="button" class="toFarm" hidden title="Only the pets you are farming">Farming</button>
+        <button type="button" class="toMarket" hidden title="The pets the Black Cloud Merchants sell now, and what you have of each">Black Market</button>
         <button type="button" class="filtersButton" aria-expanded="false" title="Genus, level, regions and text size">
           <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 6h16M7 12h10M10 18h4" /></svg>
           <span class="filtersLabel">Filters</span> <span class="filterCount"></span>
@@ -28,6 +29,7 @@
           <label class="option"><input type="checkbox" class="hideMax" checked /> Hide pets at level 3</label>
           <label class="option" title="Pets no monster drops: their souls come only from pet chests"><input type="checkbox" class="chestOnly" /> Show pets only from chests</label>
           <label class="option" title="A map of where the monsters that drop a soul for a pet below level 3 spawn, with you on it"><input type="checkbox" class="nearbyOn" /> Show the map</label>
+          <label class="option" title="When you open the Black Cloud Merchants' shop, the window shows the pets on sale and what you have of each"><input type="checkbox" class="marketPopup" /> Pop up at the Black Market</label>
           <label class="option farmOption" title="When you pick up a soul for a pet below level 3, the window shows just the pets you are farming, then hides itself. Open it from Settings for the whole list"><input type="checkbox" class="farmPopup" /> Pop up while farming</label>
           <label class="option sizeRow farmAfter">Hide after <select class="hideAfterSelect"></select></label>
           <label class="option sizeRow">Layout <select class="layoutSelect"></select></label>
@@ -69,6 +71,15 @@
       <p class="poppedNote" hidden>The map is in its own window. <button type="button" class="popIn">Put it back</button></p>
       <ol class="nearbyList"></ol>
     </section>
+    <div class="market">
+      <div class="farmHead">
+        <span class="marketTitle">Black Market · Pets</span>
+        <span class="marketWhen"></span>
+        <button type="button" class="marketClose" title="Back to the whole list" aria-label="Close">×</button>
+      </div>
+      <ol class="pets marketList"></ol>
+      <p class="marketNote" hidden></p>
+    </div>
     <div class="farm">
       <div class="farmHead">
         <span class="farmTitle">Farming</span>
@@ -91,6 +102,7 @@
     <script src="/_sdk/a2.js"></script>
     <script src="pets.js"></script>
     <script src="sources.js"></script>
+    <script src="shop.js"></script>
     <script src="maps.js"></script>
     <script src="minimap.js"></script>
     <script src="nearby.js"></script>

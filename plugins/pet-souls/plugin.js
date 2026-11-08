@@ -33,7 +33,7 @@ const els = {
   levels: document.querySelector(".levels"),
   regions: document.querySelector(".regions"),
   head: document.querySelector(".head"),
-  list: document.querySelector(".pets:not(.farmList)"),
+  list: document.querySelector(".pets:not(.farmList):not(.marketList)"),
   empty: document.querySelector(".empty"),
   farm: document.querySelector(".farm"),
   farmList: document.querySelector(".farmList"),
@@ -42,6 +42,13 @@ const els = {
   toFarm: document.querySelector(".toFarm"),
   farmHide: document.querySelector(".farmHide"),
   farmPopup: document.querySelector(".farmPopup"),
+  marketPopup: document.querySelector(".marketPopup"),
+  toMarket: document.querySelector(".toMarket"),
+  market: document.querySelector(".market"),
+  marketList: document.querySelector(".marketList"),
+  marketWhen: document.querySelector(".marketWhen"),
+  marketClose: document.querySelector(".marketClose"),
+  marketNote: document.querySelector(".marketNote"),
   farmAfter: document.querySelector(".farmAfter"),
   hideAfter: document.querySelector(".hideAfterSelect"),
   controls: document.querySelector(".controls"),
@@ -73,7 +80,7 @@ let language = "en";
 let openId = null; // the pet whose sources are shown
 // How the list is sorted, and whether maxed pets show; kept across restarts.
 // hiddenRegions: null until the user picks; until then the other side's maps hide.
-let prefs = { sort: "left", desc: false, hideMax: true, genus: "", level: "", pinned: [], hiddenRegions: null, scale: 1, filtersOpen: false, chestOnly: false, layout: "cards", farmPopup: false, hideAfter: 20, nearby: false, allNpcs: false, mapZoom: 2, popZoom: 2, popSize: 1, mapPopped: false };
+let prefs = { sort: "left", desc: false, hideMax: true, genus: "", level: "", pinned: [], hiddenRegions: null, scale: 1, filtersOpen: false, chestOnly: false, layout: "cards", farmPopup: false, marketPopup: true, hideAfter: 20, nearby: false, allNpcs: false, mapZoom: 2, popZoom: 2, popSize: 1, mapPopped: false };
 // Text size: the whole page scaled, spacing and controls with the text. 100%
 // is BASE_ZOOM, a little larger than the stylesheet's own sizes.
 const SCALES = [0.9, 1, 1.1, 1.25, 1.5];
@@ -253,6 +260,7 @@ function petOf(id) {
 
 function render() {
   renderNearby();
+  renderMarket();
   const ids = new Set([...Object.keys(state.levels), ...Object.keys(state.points)]);
   // Special pets come at their highest level and take no souls, so they are
   // left out, as are pets only found on maps not open yet (the game lists
@@ -445,7 +453,7 @@ function showFarm() {
 function showFull() {
   if (view === "full") return;
   view = "full";
-  document.body.classList.remove("farmOnly");
+  document.body.classList.remove("farmOnly", "marketOnly");
   els.controls.after(els.nearby);
   if (canFit()) win.fit().catch(() => {});
   render();
@@ -474,6 +482,143 @@ for (const type of ["pointerdown", "keydown", "wheel"]) {
   document.addEventListener(type, () => { usedAt = Date.now(); }, { passive: true });
 }
 document.addEventListener("pointermove", () => { hoveredAt = Date.now(); }, { passive: true });
+
+// ---- The Black Market: the Black Cloud Merchants' pets ---------------------
+//
+// Meter 2.0.93 tells what the shop sells each time a tab of it is opened
+// (blackMarket): the goods, pets among them as items (shop.js says which pet
+// each gives). Kept per character until the stock changes (on the hour), and
+// shown with what you have of each pet: not yours yet, its level and souls,
+// or done. Opening the shop pops the window up on them (Filters).
+const MARKET_KEY = "market";
+let market = {}; // character key -> { [tab]: { at, refreshAt, goods } }
+let marketChar = null; // the character whose stock is shown
+let marketName = "";
+const marketKeyOf = (character) => characterKey(character) || "char-unknown";
+
+// The pets on sale to the character now, each once.
+function marketPets(now = Date.now()) {
+  const seen = new Map();
+  for (const tab of Object.values(market[marketChar] || {})) {
+    if (!(tab.refreshAt > now)) continue;
+    for (const g of tab.goods || []) {
+      const pet = SHOP_PETS[g.itemId];
+      if (pet && !seen.has(String(pet))) seen.set(String(pet), { ...g, pet: String(pet) });
+    }
+  }
+  return [...seen.values()];
+}
+const marketRefresh = (now = Date.now()) =>
+  Math.min(...Object.values(market[marketChar] || {}).map((t) => t.refreshAt).filter((t) => t > now), Infinity);
+
+// Not yours yet first, then the lowest level, done last; cheapest first among equals.
+function marketOrder(a, b) {
+  const pa = petOf(a.pet);
+  const pb = petOf(b.pet);
+  const rank = (p) => (p.level === 0 ? 0 : p.level >= MAX_LEVEL ? 2 : 1);
+  return rank(pa) - rank(pb) || pa.level - pb.level || a.price - b.price;
+}
+
+function marketRow(g) {
+  const p = petOf(g.pet);
+  const li = el("li", "marketItem");
+  li.dataset.id = p.id;
+  li.dataset.genus = p.genus;
+  li.classList.toggle("done", p.level >= MAX_LEVEL);
+  li.classList.toggle("unowned", p.level === 0);
+  if (PET_SOURCES[p.id]) li.classList.add("hasWhere");
+  const top = el("div", "line");
+  const name = el("span", "nameText", p.name);
+  name.title = `${p.name}${p.genus ? ` · ${genusName(p.genus)}` : ""}`;
+  const off = g.originalPrice > 0 ? Math.round((1 - g.price / g.originalPrice) * 100) : 0;
+  const offTag = el("span", `off tier${Math.min(3, Number(g.tier) || 0)}`, off > 0 ? `−${off}%` : "");
+  const price = el("span", "price", Number(g.price).toLocaleString(language));
+  price.title = off > 0 ? `${Number(g.originalPrice).toLocaleString(language)} before the discount` : "";
+  top.append(name, offTag, price);
+  const sub = el("div", "line sub");
+  if (p.level === 0) {
+    const tag = el("span", "unlock", "Unlock");
+    tag.title = p.points ? `Not yours yet: ${p.points}/${p.target} souls toward it` : "Not yours yet";
+    sub.append(tag);
+  }
+  if (p.genus) {
+    const genus = el("span", "genusName", genusName(p.genus));
+    genus.style.color = GENUS_COLOURS[p.genus] || "";
+    sub.append(genus);
+  }
+  if (p.level >= MAX_LEVEL) sub.append(el("span", "lv", "Level 3, done"));
+  else if (p.level > 0 || p.points > 0) {
+    sub.append(el("span", "lv", `Lv ${p.level} · ${p.points}/${p.target}`));
+    const bar = el("span", "miniBar");
+    const fill = el("span");
+    fill.style.width = `${Math.min(100, p.progress * 100)}%`;
+    bar.append(fill);
+    sub.append(bar);
+  }
+  if (chestOnly(p.id)) {
+    const chests = el("span", "chestsOnly", "Chests only");
+    chests.title = "No monster drops its souls: they come only from pet chests";
+    sub.append(chests);
+  }
+  const main = el("div", "main");
+  main.append(top, sub);
+  li.append(genusIcon(p.genus), main);
+  if (openId === p.id) {
+    li.classList.add("open");
+    li.append(whereOf(p.id));
+  }
+  return li;
+}
+
+function renderMarket() {
+  const now = Date.now();
+  const pets = marketPets(now).sort(marketOrder);
+  els.toMarket.hidden = !pets.length;
+  if (view !== "market") return;
+  const refresh = marketRefresh(now);
+  const mins = Math.max(1, Math.ceil((refresh - now) / 60_000));
+  els.marketWhen.textContent = Number.isFinite(refresh) ? `${marketName ? `${marketName} · ` : ""}new stock in ${mins} min` : "";
+  els.marketList.replaceChildren(...pets.map(marketRow));
+  const missing = pets.filter((g) => petOf(g.pet).level === 0).length;
+  els.marketNote.hidden = false;
+  els.marketNote.textContent = !pets.length
+    ? "The stock has changed: open the shop again to see the new pets."
+    : missing
+      ? `${missing} of ${pets.length} not yours yet. Each tab of the shop sends its own pets: open Special and Pets.`
+      : `You have all ${pets.length}. Each tab of the shop sends its own pets: open Special and Pets.`;
+  fitMarket();
+}
+function fitMarket() {
+  if (view !== "market" || !canFit()) return;
+  win.fit(Math.ceil(els.market.getBoundingClientRect().height * zoomLeft()) + 2).catch(() => {});
+}
+function showMarket() {
+  view = "market";
+  document.body.classList.remove("farmOnly");
+  document.body.classList.add("marketOnly");
+  render();
+}
+
+a2.on("blackMarket", (m, meta) => queued(async () => {
+  const goods = (m?.goods || []).map((g) => ({ itemId: g.itemId, tier: g.tier, price: g.price, originalPrice: g.originalPrice }));
+  const k = marketKeyOf(meta?.character);
+  const now = Date.now();
+  // Stock that has changed since is dropped.
+  for (const [c, tabs] of Object.entries(market)) {
+    for (const [t, tab] of Object.entries(tabs)) if (!(tab.refreshAt > now)) delete tabs[t];
+    if (!Object.keys(tabs).length) delete market[c];
+  }
+  market[k] = { ...(market[k] || {}), [m?.kind ?? 0]: { at: Number(m?.at) || now, refreshAt: Number(m?.refreshAt) || 0, goods } };
+  await a2.storage.set(MARKET_KEY, market).catch(() => {});
+  marketChar = k;
+  marketName = meta?.character?.name || "";
+  const live = meta?.at != null ? now - Number(meta.at) < 15_000 : now - startedAt > 5_000;
+  if (live && prefs.marketPopup !== false && goods.some((g) => SHOP_PETS[g.itemId])) {
+    showMarket();
+    if (win && typeof win.show === "function") win.show().catch(() => {});
+  } else render();
+}));
+setInterval(() => { if (view === "market" || !els.toMarket.hidden) renderMarket(); }, 30_000);
 
 // ---- Around you: a map of where the souls you need are ---------------------
 //
@@ -1394,6 +1539,8 @@ for (const event of Object.keys(handle)) {
 }
 // Who is playing as the window opens.
 a2.on("character", (character) => queued(async () => {
+  marketChar = marketKeyOf(character);
+  marketName = character?.name || "";
   const k = keyFor(character);
   await adopt(k, character);
   await show(k || (await fallbackKey()));
@@ -1479,6 +1626,12 @@ els.toFarm.addEventListener("click", () => {
   showFarm();
 });
 els.farmHide.addEventListener("click", hideFarm);
+els.toMarket.addEventListener("click", showMarket);
+els.marketClose.addEventListener("click", showFull);
+els.marketPopup.addEventListener("change", () => {
+  prefs.marketPopup = els.marketPopup.checked;
+  savePrefs();
+});
 els.hideMax.addEventListener("change", () => {
   prefs.hideMax = els.hideMax.checked;
   savePrefs();
@@ -1502,6 +1655,7 @@ const onListClick = (e) => {
 };
 els.list.addEventListener("click", onListClick);
 els.farmList.addEventListener("click", onListClick);
+els.marketList.addEventListener("click", onListClick);
 // A column's button sorts by it; pressing it again reverses the order.
 els.head.addEventListener("click", (e) => {
   const button = e.target.closest("button[data-sort]");
@@ -1520,6 +1674,8 @@ els.head.addEventListener("click", (e) => {
   els.chestOnly.checked = !!prefs.chestOnly;
   els.farmPopup.checked = !!prefs.farmPopup;
   els.farmAfter.hidden = !prefs.farmPopup;
+  els.marketPopup.checked = prefs.marketPopup !== false;
+  market = (await a2.storage.get(MARKET_KEY).catch(() => null)) || {};
   els.nearbyOn.checked = prefs.nearby === true;
   minimap.setZoom(prefs.mapZoom);
   els.allNpcs.checked = !!prefs.allNpcs;
