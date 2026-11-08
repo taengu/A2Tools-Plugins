@@ -2,7 +2,7 @@
 // it since): your kills, deaths and assists against players, with a sound
 // for each kill that climbs as you chain them, and the Abyss Points earned
 // in the Abyss (the PvP tab, a2.on("kda"), permission "events:kda", meter
-// 2.0.93 on); and who killed you, once you are dead.
+// 2.0.94 on); and who killed you, once you are dead.
 //
 // Death Recap: who killed you, once you are dead. The meter hands it over
 // only then (a2.on("deathRecap"), permission "events:death-recap", meter
@@ -549,7 +549,7 @@ for (const [label, kind, streak] of [["1", "kill", 1], ["2", "kill", 2], ["3", "
   kdaTranslate(lang);
   kdaTick();
   setInterval(kdaTick, 1000);
-  // A meter before 2.0.93 sends no kda events: say so once it has had time.
+  // A meter before 2.0.94 sends no kda events: say so once it has had time.
   setTimeout(() => { if (!kdaHeard && !kdaState.kills && !kdaState.deaths && !kdaState.assists) K(".kdaOld").hidden = false; }, 15_000);
   const stored = await a2.storage.get("prefs").catch(() => null);
   if (stored && typeof stored === "object") prefs = { ...DEFAULTS, ...stored };

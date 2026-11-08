@@ -10,4 +10,4 @@ Your fights against other players: what you did, and who killed you. Death Recap
 
 Nothing about other players reaches this plugin while you live: the PvP counts carry no names, and who killed you comes only after the death.
 
-Needs A2Tools DPS Meter 2.0.93 or newer for the PvP tab (the meter's `kda` event), 2.0.81 for the death recap.
+Needs A2Tools DPS Meter 2.0.94 or newer for the PvP tab (the meter's `kda` event), 2.0.81 for the death recap.
