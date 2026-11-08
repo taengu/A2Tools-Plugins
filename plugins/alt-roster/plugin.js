@@ -653,6 +653,7 @@ function rowOf(r) {
 
   const charged = el("div", `num charged${est ? "" : " none"}`, est ? fmt.format(est.charged) : "—");
   charged.dataset.label = t.colCharged;
+  charged.title = t.colCharged;
   const fullIn = el("div", "num fullIn");
   if (!est) fullIn.append(el("span", "unknown", "—"));
   else if (est.full) fullIn.append(el("span", "isFull", t.fullLabel));

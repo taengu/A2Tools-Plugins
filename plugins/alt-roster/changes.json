@@ -1,5 +1,18 @@
 [
   {
+    "version": "1.4.10",
+    "en": "The folded view shows each character's charged Odyle energy too, next to the basic energy.",
+    "ko": "접은 보기에서도 기본 에너지 옆에 각 캐릭터의 충전된 오드 에너지가 표시됩니다.",
+    "ja": "折りたたみ表示でも、基本エネルギーの横に各キャラクターのチャージ済みオードエネルギーが表示されます。",
+    "de": "Die eingeklappte Ansicht zeigt neben der Grundenergie auch die geladene Odyle-Energie jedes Charakters.",
+    "fr": "La vue repliée affiche aussi l'énergie d'Odyle chargée de chaque personnage, à côté de l'énergie de base.",
+    "es": "La vista plegada también muestra la energía de Odyle cargada de cada personaje, junto a la energía básica.",
+    "pt": "A visualização recolhida também mostra a energia de Odyle carregada de cada personagem, ao lado da energia básica.",
+    "ru": "В свёрнутом виде теперь видна и заряженная энергия Одиль каждого персонажа, рядом с базовой.",
+    "zh-Hant": "摺疊檢視也會在基本能量旁顯示每個角色的已充能奧德能量。",
+    "zh-Hans": "折叠视图也会在基本能量旁显示每个角色的已充能奥德能量。"
+  },
+  {
     "version": "1.4.9",
     "en": "An alert over the game, with a chime, when a character's Odyle energy nears the cap: when the next refill would be wasted, up to 3 refills sooner, or when full; for every character or the ones you tick.",
     "ko": "캐릭터의 오드 에너지가 한도에 가까워지면 게임 위에 알림과 알림음이 나옵니다: 다음 충전이 낭비될 때, 최대 충전 3회 전, 또는 가득 찼을 때; 모든 캐릭터 또는 선택한 캐릭터에 대해.",

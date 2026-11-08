@@ -161,15 +161,16 @@ body.alertTicked .bell { display: inline-flex; align-items: center; justify-cont
   .resets { margin-left: 0; }
 }
 
-/* The fold button: name and energy only. */
+/* The fold button: name and energy (basic and charged) only. */
 body.compact .top, body.compact .toolbar, body.compact .head, body.compact .foot,
-body.compact .cp, body.compact .gs, body.compact .charged, body.compact .sub, body.compact .seen { display: none; }
+body.compact .cp, body.compact .gs, body.compact .sub, body.compact .seen { display: none; }
 body.compact .row {
-  grid-template-columns: minmax(100px, 1fr) minmax(90px, 1fr) 60px;
-  grid-template-areas: "who energy fullIn"; gap: 0 8px;
+  grid-template-columns: minmax(100px, 1fr) minmax(90px, 1fr) 40px 60px;
+  grid-template-areas: "who energy charged fullIn"; gap: 0 8px;
 }
 body.compact .who { grid-area: who; }
 body.compact .energy { grid-area: energy; }
+body.compact .charged { grid-area: charged; text-align: right; }
 body.compact .fullIn { grid-area: fullIn; text-align: right; align-items: flex-end; }
 body.compact .row .num::before { content: none; }
 body.compact .badge { width: 20px; height: 20px; font-size: 11px; }
