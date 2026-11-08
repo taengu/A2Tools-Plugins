@@ -477,7 +477,11 @@ a2.on("bossLive", (m) => {
   const take = (id, entry) => {
     const have = bosses[id];
     if (!have || (Number(have.reportedAt) || 0) <= (Number(entry?.reportedAt) || 0)) {
-      bosses[id] = entry;
+      // Newer as a report, but the HP read here (bossHp) can be newer
+      // still: kept for the same life.
+      bosses[id] = hpOfLife(have, entry) && (Number(have.hpAt) || 0) > (Number(entry?.hpAt) || 0)
+        ? { ...entry, hp: have.hp, hpAt: have.hpAt }
+        : entry;
       return;
     }
     // An older report can still bring newer HP: the site's HP updates leave
@@ -493,6 +497,31 @@ a2.on("bossLive", (m) => {
   liveUp = true;
   feed = { ...base, bosses };
   updatePins(Date.now());
+});
+
+// The player's own fight (meter 2.0.93 on): the HP their meter reads, at
+// once. The site's word came back later, or not while reports couldn't
+// reach it, and a boss's icon stayed at 24% through the fight (Allula,
+// 2026-11-08). Stamped now, it stands over any older word from the site.
+a2.on("bossHp", (m) => {
+  if (!m || Number(m.server) !== serverId() || !Array.isArray(m.bosses)) return;
+  const base = feed?.server === serverId() ? feed : { server: serverId(), bosses: {}, at: Date.now() };
+  const bosses = { ...(base.bosses || {}) };
+  const at = Math.floor(Date.now() / 1000);
+  for (const b of m.bosses) {
+    const hp = Number(b?.hp);
+    if (b?.id == null || !Number.isFinite(hp)) continue;
+    const id = String(b.id);
+    const have = bosses[id];
+    // Being hit, it is up, whatever the feed last said.
+    bosses[id] = have?.state === "up"
+      ? { ...have, hp, hpAt: at }
+      : { ...(have || {}), state: "up", upSince: at, nextSpawn: null, hp, hpAt: at,
+          reportedAt: Math.max(Number(have?.reportedAt) || 0, at) };
+  }
+  feed = { ...base, bosses: mergeOwn(bosses) };
+  updatePins(Date.now());
+  if (typeof render === "function") render();
 });
 
 // The open widgets, by widget name: the timer each shows and its height.

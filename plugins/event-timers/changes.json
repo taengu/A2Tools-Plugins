@@ -1,5 +1,18 @@
 [
   {
+    "version": "0.6.31",
+    "en": "With meter 2.0.93 or later: the HP of a world boss you're fighting comes straight from your meter, so its icon no longer sticks when the site is slow to update.",
+    "ko": "미터 2.0.93 이상: 내가 싸우는 월드 보스의 HP를 미터에서 바로 가져와, 사이트 갱신이 늦어도 아이콘이 멈추지 않습니다.",
+    "ja": "メーター 2.0.93 以降：戦っているワールドボスのHPを自分のメーターから直接表示するので、サイトの更新が遅れてもアイコンが止まらなくなりました。",
+    "de": "Ab Meter 2.0.93: Die HP eines Weltbosses, den du bekämpfst, kommen direkt von deinem Meter, sodass sein Symbol nicht mehr hängen bleibt, wenn die Seite langsam aktualisiert.",
+    "fr": "Avec le compteur 2.0.93 ou plus : les PV d'un boss mondial que vous combattez viennent directement de votre compteur, son icône ne se fige plus quand le site tarde à se mettre à jour.",
+    "es": "Con el medidor 2.0.93 o posterior: la vida de un jefe mundial que combates viene directamente de tu medidor, así que su icono ya no se queda atascado cuando el sitio tarda en actualizarse.",
+    "pt": "Com o medidor 2.0.93 ou mais novo: o HP de um chefe mundial que você está enfrentando vem direto do seu medidor, então o ícone não trava mais quando o site demora para atualizar.",
+    "ru": "С метром 2.0.93 и новее: здоровье мирового босса, с которым вы сражаетесь, берётся прямо из вашего метра, и значок больше не замирает, когда сайт обновляется медленно.",
+    "zh-Hant": "搭配計量器 2.0.93 以上：你正在打的世界首領血量直接來自你的計量器，網站更新慢時圖示不會再卡住。",
+    "zh-Hans": "搭配计量器 2.0.93 以上：你正在打的世界首领血量直接来自你的计量器，网站更新慢时图标不会再卡住。"
+  },
+  {
     "version": "0.6.30",
     "en": "Countdowns and icons no longer freeze until the plugins are reloaded when one part runs into an error; the error shows at the bottom of Settings for bug reports.",
     "ko": "일부 기능에서 오류가 나도 카운트다운과 아이콘이 더 이상 플러그인을 다시 불러올 때까지 멈추지 않습니다. 오류는 버그 제보용으로 설정 맨 아래에 표시됩니다.",
@@ -50,18 +63,5 @@
     "ru": "Настройки: Непрозрачность значков — значки оповещений можно сделать полупрозрачными.",
     "zh-Hant": "設定：圖示不透明度，可讓提醒圖示變得半透明。",
     "zh-Hans": "设置：图标不透明度，可让提醒图标变得半透明。"
-  },
-  {
-    "version": "0.6.26",
-    "en": "Events and Bosses can show together: each button turns its list on or off. Your choice is kept while you visit Alerts or Settings, and the next time you open it.",
-    "ko": "이벤트와 보스를 함께 볼 수 있습니다: 각 버튼으로 목록을 켜고 끕니다. 선택은 알림이나 설정을 다녀와도, 다시 열어도 유지됩니다.",
-    "ja": "イベントとボスを一緒に表示できます：各ボタンでリストの表示を切り替えます。選択はアラームや設定を見たあとも、次に開いたときも保たれます。",
-    "de": "Events und Bosse können zusammen angezeigt werden: Jede Schaltfläche blendet ihre Liste ein oder aus. Die Auswahl bleibt beim Besuch von Alarme oder Einstellungen und beim nächsten Öffnen erhalten.",
-    "fr": "Les événements et les boss peuvent s'afficher ensemble : chaque bouton affiche ou masque sa liste. Votre choix est conservé pendant que vous visitez Alertes ou Paramètres, et à la prochaine ouverture.",
-    "es": "Eventos y jefes pueden mostrarse juntos: cada botón muestra u oculta su lista. Tu elección se mantiene al visitar Alertas o Ajustes y la próxima vez que lo abras.",
-    "pt": "Eventos e chefes podem aparecer juntos: cada botão mostra ou oculta sua lista. Sua escolha é mantida ao visitar Alertas ou Configurações e na próxima vez que abrir.",
-    "ru": "События и боссы могут отображаться вместе: каждая кнопка включает или скрывает свой список. Выбор сохраняется при переходе в «Оповещения» или «Настройки» и при следующем открытии.",
-    "zh-Hant": "活動與首領可以同時顯示：每個按鈕各自開關其列表。前往提醒或設定時、下次開啟時都會保留你的選擇。",
-    "zh-Hans": "活动与首领可以同时显示：每个按钮各自开关其列表。前往提醒或设置时、下次打开时都会保留你的选择。"
   }
 ]
