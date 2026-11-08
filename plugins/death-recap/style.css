@@ -172,3 +172,21 @@ select {
   cursor: pointer;
 }
 select option { background: var(--a2-panel, #0e1420); color: #fff; }
+
+/* The PvP tab: kills, deaths and assists (from Nullception's K/D/A Counter). */
+:root { --green: #6ee7a0; }
+.kdaHead { display: flex; align-items: center; justify-content: space-between; color: var(--text-2); font-variant-numeric: tabular-nums; }
+.kdaReset { background: none; border: 0; color: var(--text-2); font-size: 16px; cursor: pointer; padding: 0 4px; }
+.kdaReset:hover { color: var(--text); }
+.kdaCounts { display: grid; grid-template-columns: repeat(3, 1fr); text-align: center; margin: 10px 0 8px; }
+.kdaCounts b { display: block; font-size: 34px; line-height: 1.1; font-variant-numeric: tabular-nums; }
+.kdaCounts span, .kdaAbyss span { text-transform: uppercase; font-size: 11.5px; letter-spacing: 0.06em; color: var(--text-3); }
+.kdaKills b { color: var(--green); }
+.kdaDeaths b { color: var(--red); }
+.kdaLine { display: flex; justify-content: space-between; font-size: 12.5px; color: var(--text-2); min-height: 18px; }
+.kdaStreak.hot { color: var(--green); font-weight: 600; }
+.kdaAbyss { display: flex; justify-content: space-between; align-items: baseline; margin-top: 8px; padding-top: 8px; border-top: 1px solid rgba(255, 255, 255, 0.08); }
+.kdaAbyss b { font-size: 18px; color: #f5c84b; font-variant-numeric: tabular-nums; }
+.kdaSettings { margin-top: 6px; padding-top: 6px; border-top: 1px solid rgba(255, 255, 255, 0.08); }
+.kdaTests button { border: 1px solid rgba(255, 255, 255, 0.2); border-radius: 4px; margin-left: 3px; padding: 0 6px; background: none; color: var(--text-2); cursor: pointer; }
+.kdaTests button:hover { color: var(--text); background: rgba(255, 255, 255, 0.08); }

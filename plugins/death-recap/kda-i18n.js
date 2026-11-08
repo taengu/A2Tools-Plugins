@@ -1,0 +1,73 @@
+// The page's words, in the meter's ten languages.
+globalThis.KDA_UI = {
+  en: {
+    kills: "Kills", deaths: "Deaths", assists: "Assists", abyss: "Abyss Points",
+    settings: "Settings", reset: "Reset",
+    streak: (n, best, hot) => `Streak ${n}${hot ? " 🔥" : ""} · best ${best}`, bestStreak: (n) => `Best streak ${n}`,
+    kda: (v) => `KDA ${v}`,
+    volume: "Volume", assistSound: "Assist sound", deathSound: "Death sound", abyssPopup: "Show when entering the Abyss", test: "Test",
+  },
+  ko: {
+    kills: "처치", deaths: "사망", assists: "어시스트", abyss: "어비스 포인트",
+    settings: "설정", reset: "초기화",
+    streak: (n, best, hot) => `연속 ${n}${hot ? " 🔥" : ""} · 최고 ${best}`, bestStreak: (n) => `최고 연속 ${n}`,
+    kda: (v) => `KDA ${v}`,
+    volume: "음량", assistSound: "어시스트 소리", deathSound: "사망 소리", abyssPopup: "어비스에 들어가면 표시", test: "테스트",
+  },
+  ja: {
+    kills: "キル", deaths: "デス", assists: "アシスト", abyss: "アビスポイント",
+    settings: "設定", reset: "リセット",
+    streak: (n, best, hot) => `連続 ${n}${hot ? " 🔥" : ""} · 最高 ${best}`, bestStreak: (n) => `最高連続 ${n}`,
+    kda: (v) => `KDA ${v}`,
+    volume: "音量", assistSound: "アシスト音", deathSound: "デス音", abyssPopup: "アビスに入ったら表示", test: "テスト",
+  },
+  de: {
+    kills: "Kills", deaths: "Tode", assists: "Assists", abyss: "Abyss-Punkte",
+    settings: "Einstellungen", reset: "Zurücksetzen",
+    streak: (n, best, hot) => `Serie ${n}${hot ? " 🔥" : ""} · Bestwert ${best}`, bestStreak: (n) => `Beste Serie ${n}`,
+    kda: (v) => `KDA ${v}`,
+    volume: "Lautstärke", assistSound: "Assist-Ton", deathSound: "Todes-Ton", abyssPopup: "Beim Betreten des Abyss anzeigen", test: "Test",
+  },
+  fr: {
+    kills: "Éliminations", deaths: "Morts", assists: "Assistances", abyss: "Points d'Abysse",
+    settings: "Réglages", reset: "Réinitialiser",
+    streak: (n, best, hot) => `Série ${n}${hot ? " 🔥" : ""} · record ${best}`, bestStreak: (n) => `Meilleure série ${n}`,
+    kda: (v) => `KDA ${v}`,
+    volume: "Volume", assistSound: "Son d'assistance", deathSound: "Son de mort", abyssPopup: "Afficher en entrant dans l'Abysse", test: "Test",
+  },
+  es: {
+    kills: "Bajas", deaths: "Muertes", assists: "Asistencias", abyss: "Puntos del Abismo",
+    settings: "Ajustes", reset: "Reiniciar",
+    streak: (n, best, hot) => `Racha ${n}${hot ? " 🔥" : ""} · mejor ${best}`, bestStreak: (n) => `Mejor racha ${n}`,
+    kda: (v) => `KDA ${v}`,
+    volume: "Volumen", assistSound: "Sonido de asistencia", deathSound: "Sonido de muerte", abyssPopup: "Mostrar al entrar en el Abismo", test: "Probar",
+  },
+  pt: {
+    kills: "Abates", deaths: "Mortes", assists: "Assistências", abyss: "Pontos do Abismo",
+    settings: "Configurações", reset: "Reiniciar",
+    streak: (n, best, hot) => `Sequência ${n}${hot ? " 🔥" : ""} · melhor ${best}`, bestStreak: (n) => `Melhor sequência ${n}`,
+    kda: (v) => `KDA ${v}`,
+    volume: "Volume", assistSound: "Som de assistência", deathSound: "Som de morte", abyssPopup: "Mostrar ao entrar no Abismo", test: "Testar",
+  },
+  ru: {
+    kills: "Убийства", deaths: "Смерти", assists: "Помощь", abyss: "Очки Бездны",
+    settings: "Настройки", reset: "Сбросить",
+    streak: (n, best, hot) => `Серия ${n}${hot ? " 🔥" : ""} · рекорд ${best}`, bestStreak: (n) => `Лучшая серия ${n}`,
+    kda: (v) => `KDA ${v}`,
+    volume: "Громкость", assistSound: "Звук помощи", deathSound: "Звук смерти", abyssPopup: "Показывать при входе в Бездну", test: "Проверка",
+  },
+  "zh-Hans": {
+    kills: "击杀", deaths: "死亡", assists: "助攻", abyss: "深渊点数",
+    settings: "设置", reset: "重置",
+    streak: (n, best, hot) => `连杀 ${n}${hot ? " 🔥" : ""} · 最高 ${best}`, bestStreak: (n) => `最高连杀 ${n}`,
+    kda: (v) => `KDA ${v}`,
+    volume: "音量", assistSound: "助攻音效", deathSound: "死亡音效", abyssPopup: "进入深渊时显示", test: "测试",
+  },
+  "zh-Hant": {
+    kills: "擊殺", deaths: "死亡", assists: "助攻", abyss: "深淵點數",
+    settings: "設定", reset: "重設",
+    streak: (n, best, hot) => `連殺 ${n}${hot ? " 🔥" : ""} · 最高 ${best}`, bestStreak: (n) => `最高連殺 ${n}`,
+    kda: (v) => `KDA ${v}`,
+    volume: "音量", assistSound: "助攻音效", deathSound: "死亡音效", abyssPopup: "進入深淵時顯示", test: "測試",
+  },
+};

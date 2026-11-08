@@ -1,3 +1,9 @@
+// PvP Tracker (Death Recap until 0.2.0, with Nullception's K/D/A Counter in
+// it since): your kills, deaths and assists against players, with a sound
+// for each kill that climbs as you chain them, and the Abyss Points earned
+// in the Abyss (the PvP tab, a2.on("kda"), permission "events:kda", meter
+// 2.0.93 on); and who killed you, once you are dead.
+//
 // Death Recap: who killed you, once you are dead. The meter hands it over
 // only then (a2.on("deathRecap"), permission "events:death-recap", meter
 // 2.0.81 on): the killer's name, server, legion, class, level, gear score
@@ -18,7 +24,7 @@ const L = globalThis.RecapLogic;
 const DEFAULTS = { style: "toast", hideAfter: 10, size: "1" };
 let prefs = { ...DEFAULTS };
 let history = [];
-let tab = "last";
+let tab = "pvp";
 let tallyBy = "player";
 // The death the Last death tab shows (an index into history).
 let shown = 0;
@@ -350,6 +356,7 @@ a2.on("language", (code) => {
   lang = RECAP_UI[code] ? code : RECAP_UI[String(code).split("-")[0]] ? String(code).split("-")[0] : "en";
   words = RECAP_UI[lang];
   translate();
+  kdaTranslate(lang);
   render();
 });
 
@@ -414,7 +421,136 @@ $(".clear").addEventListener("click", async () => {
   render();
 });
 
+// ----- The PvP tab: kills, deaths and assists (Nullception's K/D/A Counter) -----
+
+const { apply: kdaApply, notes: kdaNotes, fresh: kdaFresh, kda: kdaRatio, clock: kdaClock, MAX_STREAK } = globalThis.KdaLogic;
+const K = (s) => document.querySelector(s);
+let kdaWords = globalThis.KDA_UI.en;
+// An event older than this is the meter's replay of what came before the
+// window opened: counted, not played.
+const KDA_STALE_MS = 5_000;
+// Off at first: Death Recap's players never asked for sounds or a window
+// opening by itself, so these wait to be turned on in Settings.
+const kdaPrefs = { volume: 0, assistSound: true, deathSound: false, abyssPopup: false };
+let kdaState = kdaFresh();
+let kdaHeard = false;
+let audio = null;
+const kdaSave = () => a2.storage.set("kdaState", kdaState).catch(() => {});
+const kdaSavePrefs = () => a2.storage.set("kdaPrefs", kdaPrefs).catch(() => {});
+
+function kdaPlay(kind, streak) {
+  if (!kdaPrefs.volume || (kind === "assist" && !kdaPrefs.assistSound) || (kind === "death" && !kdaPrefs.deathSound)) return;
+  try {
+    audio ||= new AudioContext();
+    // Not awaited: in a hidden window WebKitGTK's resume() waits for the page
+    // to be used, and a sound that waited for it stayed silent.
+    if (audio.state !== "running") audio.resume().catch(() => {});
+    for (const [freq, start, length, wave, volume] of kdaNotes(kind, streak)) {
+      const osc = audio.createOscillator();
+      const gain = audio.createGain();
+      osc.type = wave;
+      osc.frequency.value = freq;
+      const t = audio.currentTime + start;
+      const peak = Math.max(0.0002, volume * (kdaPrefs.volume / 100));
+      gain.gain.setValueAtTime(0.0001, t);
+      gain.gain.exponentialRampToValueAtTime(peak, t + 0.015);
+      gain.gain.exponentialRampToValueAtTime(0.0001, t + length);
+      osc.connect(gain).connect(audio.destination);
+      osc.start(t);
+      osc.stop(t + length + 0.05);
+    }
+  } catch (e) {
+    console.warn(e);
+  }
+}
+
+function kdaDraw() {
+  K(".kdaKills b").textContent = kdaState.kills;
+  K(".kdaDeaths b").textContent = kdaState.deaths;
+  K(".kdaAssists b").textContent = kdaState.assists;
+  const streak = K(".kdaStreak");
+  streak.textContent = kdaState.streak
+    ? kdaWords.streak(Math.min(kdaState.streak, 99), kdaState.best, kdaState.streak >= MAX_STREAK)
+    : kdaState.best ? kdaWords.bestStreak(kdaState.best) : "";
+  streak.classList.toggle("hot", kdaState.streak >= 2);
+  K(".kdaRatio").textContent = kdaState.kills + kdaState.assists + kdaState.deaths ? kdaWords.kda(kdaRatio(kdaState)) : "";
+  // In the Abyss, or with points earned there since the reset.
+  K(".kdaAbyss").hidden = !kdaState.inAbyss && !kdaState.abyssPoints;
+  K(".kdaAbyss b").textContent = kdaState.abyssPoints.toLocaleString(lang);
+}
+function kdaTick() {
+  K(".kdaTime").textContent = kdaClock(kdaState.since ? Date.now() - kdaState.since : 0);
+}
+function kdaTranslate(code) {
+  const ui = globalThis.KDA_UI;
+  kdaWords = ui[code] || ui[String(code).split("-")[0]] || ui.en;
+  for (const e of document.querySelectorAll("[data-k]")) e.textContent = kdaWords[e.dataset.k];
+  for (const e of document.querySelectorAll("[data-k-title]")) e.title = kdaWords[e.dataset.kTitle];
+  kdaDraw();
+}
+
+a2.on("kda", (e, meta) => {
+  kdaHeard = true;
+  K(".kdaOld").hidden = true;
+  if (!kdaApply(kdaState, e)) return;
+  const live = Date.now() - (e.at || meta?.at || Date.now()) <= KDA_STALE_MS;
+  if (live && e.kind === "zone" && e.abyss && kdaPrefs.abyssPopup) {
+    setTab("pvp");
+    Promise.resolve(a2.window?.show?.()).catch(() => {});
+  }
+  if (live && (e.kind === "kill" || e.kind === "assist" || e.kind === "death")) kdaPlay(e.kind, kdaState.streak);
+  kdaDraw();
+  kdaSave();
+});
+
+K(".kdaReset").addEventListener("click", () => {
+  // Keeps the events already counted, so a replay can't count them again.
+  const { seen, inAbyss } = kdaState;
+  kdaState = { ...kdaFresh(), seen, inAbyss };
+  kdaDraw();
+  kdaTick();
+  kdaSave();
+});
+K(".kdaVolume").addEventListener("input", (e) => {
+  kdaPrefs.volume = Number(e.target.value);
+  kdaSavePrefs();
+});
+for (const [cls, key] of [["kdaAssistSound", "assistSound"], ["kdaDeathSound", "deathSound"], ["kdaAbyssPopup", "abyssPopup"]]) {
+  K(`.${cls}`).addEventListener("change", (e) => {
+    kdaPrefs[key] = e.target.checked;
+    kdaSavePrefs();
+  });
+}
+// One button per step of the climb, then the other two. A test plays even
+// where that sound is off, at the volume set (half where it is 0).
+for (const [label, kind, streak] of [["1", "kill", 1], ["2", "kill", 2], ["3", "kill", 3], ["4", "kill", 4], ["5", "kill", 5], ["6", "kill", 6], ["A", "assist", 3], ["D", "death", 0]]) {
+  const b = document.createElement("button");
+  b.type = "button";
+  b.textContent = label;
+  b.addEventListener("click", () => {
+    const keep = { ...kdaPrefs };
+    kdaPrefs.assistSound = kdaPrefs.deathSound = true;
+    kdaPrefs.volume ||= 50;
+    kdaPlay(kind, streak);
+    Object.assign(kdaPrefs, keep);
+  });
+  K(".kdaTests").append(b);
+}
+
 (async () => {
+  const kp = await a2.storage.get("kdaPrefs").catch(() => null);
+  if (kp && typeof kp === "object") Object.assign(kdaPrefs, kp);
+  const ks = await a2.storage.get("kdaState").catch(() => null);
+  if (ks && typeof ks.kills === "number") kdaState = { ...kdaFresh(), ...ks };
+  K(".kdaVolume").value = kdaPrefs.volume;
+  K(".kdaAssistSound").checked = kdaPrefs.assistSound;
+  K(".kdaDeathSound").checked = kdaPrefs.deathSound;
+  K(".kdaAbyssPopup").checked = kdaPrefs.abyssPopup;
+  kdaTranslate(lang);
+  kdaTick();
+  setInterval(kdaTick, 1000);
+  // A meter before 2.0.93 sends no kda events: say so once it has had time.
+  setTimeout(() => { if (!kdaHeard && !kdaState.kills && !kdaState.deaths && !kdaState.assists) K(".kdaOld").hidden = false; }, 15_000);
   const stored = await a2.storage.get("prefs").catch(() => null);
   if (stored && typeof stored === "object") prefs = { ...DEFAULTS, ...stored };
   const kept = await a2.storage.get("history").catch(() => null);
@@ -423,6 +559,7 @@ $(".clear").addEventListener("click", async () => {
   $(".hideAfter").value = String(prefs.hideAfter);
   $(".size").value = String(prefs.size);
   translate();
-  setTab("last");
+  setTab("pvp");
+  // Only now the meter hands over the events it kept: the saved counts are in.
   a2.ready();
 })();

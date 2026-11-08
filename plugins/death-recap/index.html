@@ -2,11 +2,12 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>Death Recap</title>
+  <title>PvP Tracker</title>
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
   <nav class="tabs" role="tablist">
+    <button type="button" role="tab" data-tab="pvp">PvP</button>
     <button type="button" role="tab" data-tab="last" data-t="tabLast">Last death</button>
     <button type="button" role="tab" data-tab="history" data-t="tabHistory">History</button>
     <button type="button" role="tab" data-tab="tally" data-t="tabTally">Tally</button>
@@ -14,6 +15,20 @@
     <span class="shotStatus" role="status"></span>
     <button type="button" class="shot" data-t-label="screenshot" aria-label="Screenshot" title="Screenshot" hidden><svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.5 4h-5L7 7H4a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2h-3l-2.5-3z"/><circle cx="12" cy="13" r="3"/></svg></button>
   </nav>
+  <main class="view pvp" data-view="pvp" hidden>
+    <div class="kdaHead">
+      <span class="kdaTime">0:00</span>
+      <button type="button" class="kdaReset" data-k-title="reset" title="Reset">↺</button>
+    </div>
+    <div class="kdaCounts">
+      <div class="kdaKills"><b>0</b><span data-k="kills">Kills</span></div>
+      <div class="kdaDeaths"><b>0</b><span data-k="deaths">Deaths</span></div>
+      <div class="kdaAssists"><b>0</b><span data-k="assists">Assists</span></div>
+    </div>
+    <div class="kdaLine"><span class="kdaStreak"></span><span class="kdaRatio"></span></div>
+    <div class="kdaAbyss" hidden><span data-k="abyss">Abyss Points</span><b>0</b></div>
+    <p class="note kdaOld" hidden>Needs meter 2.0.93 or newer.</p>
+  </main>
   <main class="view" data-view="last"></main>
   <main class="view" data-view="history" hidden></main>
   <main class="view" data-view="tally" hidden>
@@ -52,6 +67,13 @@
       </select>
     </label>
     <p class="note" data-t="popupHelp">Drag the popup to move it. Click it to open this window.</p>
+    <div class="kdaSettings">
+      <label class="row"><span data-k="volume">Volume</span> <input type="range" class="kdaVolume" min="0" max="100" step="5" /></label>
+      <label class="row"><span data-k="assistSound">Assist sound</span> <input type="checkbox" class="kdaAssistSound" /></label>
+      <label class="row"><span data-k="deathSound">Death sound</span> <input type="checkbox" class="kdaDeathSound" /></label>
+      <label class="row"><span data-k="abyssPopup">Show when entering the Abyss</span> <input type="checkbox" class="kdaAbyssPopup" /></label>
+      <div class="row"><span data-k="test">Test</span> <span class="kdaTests"></span></div>
+    </div>
     <div class="buttons">
       <button type="button" class="test" data-t="test">Show a test popup</button>
       <button type="button" class="clear danger" data-t="clear">Clear history</button>
@@ -63,6 +85,8 @@
   <script src="i18n.js"></script>
   <script src="servers.js"></script>
   <script src="logic.js"></script>
+  <script src="kda.js"></script>
+  <script src="kda-i18n.js"></script>
   <script src="plugin.js"></script>
 </body>
 </html>

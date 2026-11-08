@@ -1,5 +1,18 @@
 [
   {
+    "version": "0.2.0",
+    "en": "Death Recap is now PvP Tracker, with Nullception's K/D/A Counter in it: a PvP tab counts your kills, deaths and assists, your streak and the Abyss Points you earn in the Abyss (meter 2.0.93). Kill sounds and opening in the Abyss are off until you turn them on in Settings.",
+    "ko": "죽음 요약이 PvP 트래커가 되었고, Nullception의 K/D/A 카운터가 들어 있습니다. PvP 탭에서 처치, 사망, 어시스트, 연속 처치와 어비스에서 얻은 어비스 포인트를 셉니다 (미터 2.0.93). 처치 소리와 어비스 입장 시 열기는 설정에서 켜기 전까지 꺼져 있습니다.",
+    "ja": "デスリキャップは PvP トラッカーになり、Nullception の K/D/A カウンターが入りました。PvP タブでキル、デス、アシスト、連続キル、アビスで得たアビスポイントを数えます（メーター 2.0.93）。キル音とアビスでの自動表示は、設定でオンにするまでオフです。",
+    "de": "Death Recap heißt jetzt PvP Tracker und enthält Nullceptions K/D/A Counter: Ein PvP-Tab zählt deine Kills, Tode und Assists, deine Serie und die im Abyss verdienten Abyss-Punkte (Meter 2.0.93). Kill-Töne und das Öffnen im Abyss sind aus, bis du sie in den Einstellungen einschaltest.",
+    "fr": "Death Recap devient PvP Tracker, avec le K/D/A Counter de Nullception : un onglet PvP compte tes kills, morts, assists, ta série et tes Points d'Abysse (meter 2.0.93). Les sons et l'ouverture dans l'Abysse restent désactivés tant que tu ne les actives pas.",
+    "es": "Death Recap ahora es PvP Tracker, con el K/D/A Counter de Nullception: una pestaña PvP cuenta tus muertes causadas, muertes y asistencias, tu racha y los Puntos del Abismo que ganas en el Abismo (meter 2.0.93). Los sonidos y la apertura en el Abismo están apagados hasta que los actives en Ajustes.",
+    "pt": "Death Recap agora é PvP Tracker, com o K/D/A Counter do Nullception: uma aba PvP conta seus abates, mortes e assistências, sua sequência e os Pontos do Abismo ganhos no Abismo (meter 2.0.93). Os sons e a abertura no Abismo ficam desligados até você ativá-los nas Configurações.",
+    "ru": "Death Recap теперь называется PvP Tracker и включает K/D/A Counter от Nullception: вкладка PvP считает ваши убийства, смерти и помощи, серию и очки Бездны, заработанные в Бездне (meter 2.0.93). Звуки убийств и открытие в Бездне выключены, пока вы не включите их в настройках.",
+    "zh-Hant": "死亡回顧現在是 PvP 追蹤器，並加入了 Nullception 的 K/D/A 計數器：PvP 分頁會計算你的擊殺、死亡、助攻、連殺，以及在深淵獲得的深淵點數（計量器 2.0.93）。擊殺音效與進入深淵時自動開啟，在設定中開啟前都是關閉的。",
+    "zh-Hans": "死亡回顾现在是 PvP 追踪器，并加入了 Nullception 的 K/D/A 计数器：PvP 页签会统计你的击杀、死亡、助攻、连杀，以及在深渊获得的深渊点数（计量器 2.0.93）。击杀音效与进入深渊时自动打开，在设置中开启前都是关闭的。"
+  },
+  {
     "version": "0.1.1",
     "en": "The class and score icons show on Linux, in the popup and the window.",
     "ko": "직업과 점수 아이콘이 리눅스에서도 팝업과 창에 표시됩니다.",
