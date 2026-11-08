@@ -63,18 +63,5 @@
     "ru": "Призванные существа других игроков больше не отображаются на карте.",
     "zh-Hant": "其他玩家的召喚物不再顯示在地圖上。",
     "zh-Hans": "其他玩家的召唤物不再显示在地图上。"
-  },
-  {
-    "version": "0.5.0",
-    "en": "A map of where to farm souls, with the monsters around you, sorted by nearest.",
-    "ko": "영혼을 모을 장소와 주변 몬스터를 보여 주는 지도, 가까운 순 정렬이 추가되었습니다.",
-    "ja": "魂を集める場所と周囲のモンスターを表示するマップと、近い順の並べ替えを追加しました。",
-    "de": "Eine Karte, wo man Seelen farmt, mit den Monstern um dich, nach Nähe sortiert.",
-    "fr": "Une carte des lieux où récolter des âmes, avec les monstres autour de vous, triés par proximité.",
-    "es": "Un mapa de dónde conseguir almas, con los monstruos cercanos, ordenados por cercanía.",
-    "pt": "Um mapa de onde coletar almas, com os monstros ao redor, ordenados pelo mais próximo.",
-    "ru": "Карта мест для сбора душ с монстрами вокруг вас, по близости.",
-    "zh-Hant": "新增可收集靈魂的地點地圖與周圍怪物，可依距離排序。",
-    "zh-Hans": "新增可收集灵魂的地点地图与周围怪物，可按距离排序。"
   }
 ]

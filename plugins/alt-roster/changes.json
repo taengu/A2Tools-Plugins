@@ -63,18 +63,5 @@
     "ru": "Покупка энергии Одила снова как в магазине: 4 на персонажа и 16 на сервер в неделю. Покупки камней разлома больше нет в магазине, поэтому и в списке.",
     "zh-Hant": "購買奧德能量再次與商店一致：每週每個角色 4 個、每個伺服器 16 個。購買裂縫石已從商店移除，因此也從列表移除。",
     "zh-Hans": "购买奥德能量再次与商店一致：每周每个角色 4 个、每个服务器 16 个。购买裂缝石已从商店移除，因此也从列表移除。"
-  },
-  {
-    "version": "1.4.5",
-    "en": "Elyos characters' Odyle Energy crafts are counted (they showed 0).",
-    "ko": "천족 캐릭터의 오드 에너지 제작이 집계됩니다 (0으로 표시되었음).",
-    "ja": "天族キャラクターのオードエネルギー製作が数えられます（0と表示されていました）。",
-    "de": "Odyle-Energie-Herstellungen von Elyos-Charakteren werden gezählt (sie zeigten 0).",
-    "fr": "Les fabrications d'Énergie d'Odyle des personnages Élyséens sont comptées (elles affichaient 0).",
-    "es": "Se cuentan las fabricaciones de Energía de Odyle de los personajes Elyos (mostraban 0).",
-    "pt": "As fabricações de Energia de Odyle de personagens Elyos são contadas (mostravam 0).",
-    "ru": "Создание энергии Одила у персонажей Элийцев учитывается (показывалось 0).",
-    "zh-Hant": "天族角色的奧德能量製作會被計算（之前顯示 0）。",
-    "zh-Hans": "天族角色的奥德能量制作会被计算（之前显示 0）。"
   }
 ]
