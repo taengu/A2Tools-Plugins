@@ -196,7 +196,6 @@ const EVENTS = [
   ],
   "side": null,
   "days": [
-   1,
    4,
    6
   ],
@@ -266,12 +265,35 @@ const EVENTS = [
   ],
   "side": null,
   "days": [
-   1,
    4,
    6
   ],
   "starts": [
    1290
+  ],
+  "minutes": 15
+ },
+ {
+  "id": "boss-king",
+  "kind": "boss",
+  "name": "String_STR_M_AR1_WSA_ELEKING_01_V02_001_body",
+  "also": [],
+  "where": [
+   "String_STR_Map_Abyss_Reshanta_A_body"
+  ],
+  "side": null,
+  "days": [
+   0,
+   1,
+   2,
+   3,
+   4,
+   5,
+   6
+  ],
+  "starts": [
+   630,
+   1350
   ],
   "minutes": 15
  },
@@ -632,12 +654,6 @@ const FIELD_BOSSES = {
   "name": "String_STR_M_D1_FieldBoss_BeritraD_01_001_body",
   "side": "asmodian",
   "where": "String_STR_Map_World_D_A_body"
- },
- "2001": {
-  "level": 65,
-  "name": "String_STR_M_AR1_WSA_ELEKING_01_V02_001_body",
-  "side": null,
-  "where": "String_STR_Map_Abyss_Reshanta_A_body"
  }
 };
 // Global servers' names, by server id, in each language that differs.
@@ -4287,12 +4303,12 @@ const EVENT_TEXT = {
  "String_STR_M_AR1_BERITRAD_01_001_body": {
   "de": "Aufseherin Kaira",
   "en": "Watcher Kaira",
-  "es": "Velador Kaira",
+  "es": "Kaira, la Vigilante",
   "fr": "Kaira la veilleuse",
   "ja": "監視者カイラ",
   "ko": "감시자 카이라",
   "pt": "Vigilante Kairah",
-  "ru": "Дозорщик Кайра",
+  "ru": "Дозорный Кайра",
   "zh-Hans": "监视者卡伊拉",
   "zh-Hant": "監視者卡伊拉"
  },
@@ -4334,11 +4350,11 @@ const EVENT_TEXT = {
  "String_STR_M_AR1_WSA_ELEKING_01_V02_001_body": {
   "de": "Geisterfürst Agro",
   "en": "Argo, the Spirit King",
-  "es": "Rey Espíritu Agro",
+  "es": "Agro, el Rey Espíritu",
   "fr": "Agro le roi des esprits",
   "ja": "精霊王アグロ",
   "ko": "정령왕 아그로",
-  "pt": "Rei dos Espíritos Argo",
+  "pt": "Argo, Rei dos Espíritos",
   "ru": "Король духов Агро",
   "zh-Hans": "精灵王阿格罗",
   "zh-Hant": "精靈王阿格羅"
@@ -4357,7 +4373,7 @@ const EVENT_TEXT = {
  "String_STR_M_D1_BCV_KrallElite_01_01_body": {
   "en": "Veteran Shujakan",
   "es": "Veterano Shujakan",
-  "fr": "Shujakan le Vétéran",
+  "fr": "Shujakan le vétéran",
   "ja": "百戦老将シュザカン",
   "ko": "백전노장 슈자칸",
   "pt": "Veterano Shujakan",
@@ -4369,7 +4385,7 @@ const EVENT_TEXT = {
   "de": "Visionärer Karuka",
   "en": "Visionary Karuka",
   "es": "Karuka visionario",
-  "fr": "Karuka le Visionnaire",
+  "fr": "Karuka le visionnaire",
   "ja": "秘伝のカルカ",
   "ko": "비전의 카루카",
   "pt": "Visionário Karuka",
@@ -4381,7 +4397,7 @@ const EVENT_TEXT = {
   "de": "Schänder Newbold",
   "en": "Desecrator Newbold",
   "es": "Profanador Newbold",
-  "fr": "Newbold le Profanateur",
+  "fr": "Newbold le profanateur",
   "ja": "冒涜者ノブルード",
   "ko": "모독자 노블루드",
   "pt": "Profanador Newbold",
@@ -4393,7 +4409,7 @@ const EVENT_TEXT = {
   "de": "Schattenarchon Axios",
   "en": "Specter Archon Axios",
   "es": "Akan de ánimas perdidas Axios",
-  "fr": "Axios l'Archon des âmes égarées",
+  "fr": "Axios l'archon des âmes égarées",
   "ja": "亡魂のアルコン アクシオス",
   "ko": "망혼의 아칸 악시오스",
   "pt": "Arconte da Alma Perdida Axios",
@@ -4405,7 +4421,7 @@ const EVENT_TEXT = {
   "de": "Sondereinsatzhauptmann Linx",
   "en": "Special Operations Leader Linx",
   "es": "Líder de operaciones especiales Linx",
-  "fr": "Linx le Chef des opérations spéciales",
+  "fr": "Linx le chef des opérations spéciales",
   "ja": "別動隊長リンクス",
   "ko": "별동대장 링크스",
   "pt": "Capitão de Operações Especiais Linx",
@@ -4429,7 +4445,7 @@ const EVENT_TEXT = {
   "de": "Berater Resana",
   "en": "Advisor Resana",
   "es": "Consejero Resana",
-  "fr": "Resana le Conseiller",
+  "fr": "Resana le conseiller",
   "ja": "参謀官ルサナ",
   "ko": "참모관 르사나",
   "pt": "Assessor Resana",
@@ -4441,7 +4457,7 @@ const EVENT_TEXT = {
   "de": "Hauptaufseher Nutah",
   "en": "High Overseer Nutah",
   "es": "Nutah supervisor jefe",
-  "fr": "Nutah le Chef superviseur",
+  "fr": "Nutah le chef superviseur",
   "ja": "総監督官ヌタ",
   "ko": "총감독관 누타",
   "pt": "Supervisor Geral Nutah",
@@ -4477,7 +4493,7 @@ const EVENT_TEXT = {
   "de": "Schweigender Dartan",
   "en": "Silent Dartan",
   "es": "Dartan del silencio",
-  "fr": "Dartan la Silencieuse",
+  "fr": "Dartan la silencieuse",
   "ja": "沈黙のタルタン",
   "ko": "침묵의 타르탄",
   "pt": "Dartan do Silêncio",
@@ -4513,7 +4529,7 @@ const EVENT_TEXT = {
   "de": "Scharfer Shylak",
   "en": "Sharp Shylak",
   "es": "Shylak agudo",
-  "fr": "Shylak l'Acéré",
+  "fr": "Shylak l'acéré",
   "ja": "鋭きシュラク",
   "ko": "예리한 쉬라크",
   "pt": "Shylak Afiado",
@@ -4525,7 +4541,7 @@ const EVENT_TEXT = {
   "de": "Dunkelschatten Vishwada",
   "en": "Dark Shadow Vishwada",
   "es": "Vishwada de oscuridad",
-  "fr": "Vishwada le Ténébreux",
+  "fr": "Vishwada le ténébreux",
   "ja": "黒闇のビシュベダ",
   "ko": "흑암의 비슈베다",
   "pt": "Vishwada da Escuridão",
@@ -4549,7 +4565,7 @@ const EVENT_TEXT = {
   "de": "Verschlinger Garsan",
   "en": "Predator Garsan",
   "es": "Garsan depredador",
-  "fr": "Garsan le Prédateur",
+  "fr": "Garsan le prédateur",
   "ja": "捕食者ガルサン",
   "ko": "포식자 가르산",
   "pt": "Predador Garsan",
@@ -4561,7 +4577,7 @@ const EVENT_TEXT = {
   "de": "Blauwelle Kelpina",
   "en": "Blue Wave Kelpina",
   "es": "Kelpina de onda azul",
-  "fr": "Kelpina la Vague bleue",
+  "fr": "Kelpina la vague bleue",
   "ja": "青波ケルピーナ",
   "ko": "푸른물결 켈피나",
   "pt": "Kelpina da Onda Azul",
@@ -4573,7 +4589,7 @@ const EVENT_TEXT = {
   "de": "Täuscherin Trid",
   "en": "Deceiver Trid",
   "es": "Impostora Trid",
-  "fr": "Trid la Trompeuse",
+  "fr": "Trid la trompeuse",
   "ja": "欺瞞者トリド",
   "ko": "기만자 트리드",
   "pt": "Trid Enganadora",
@@ -4610,19 +4626,19 @@ const EVENT_TEXT = {
   "ja": "黒き戦士アエド",
   "ko": "검은 전사 아에드",
   "pt": "Guerreiro Negro Aed",
-  "ru": "Черный воин Аэд",
+  "ru": "Черный Воин Аэд",
   "zh-Hans": "黑色战士阿埃德",
   "zh-Hant": "黑色戰士阿埃德"
  },
  "String_STR_M_D1_WGC_AltKnife_04_01_body": {
   "de": "Henker Barthien",
   "en": "Executioner Barthien",
-  "es": "Barthien verdugo",
-  "fr": "Barthien le Bourreau",
+  "es": "Verdugo Barthien",
+  "fr": "Barthien le bourreau",
   "ja": "処刑者バルシエン",
   "ko": "처형자 바르시엔",
   "pt": "Carrasco Barthien",
-  "ru": "Эмиссар Варсиен",
+  "ru": "Палач Варсиен",
   "zh-Hans": "处刑者巴尔西恩",
   "zh-Hant": "處刑者巴爾西恩"
  },
@@ -4654,7 +4670,7 @@ const EVENT_TEXT = {
   "de": "Schwarztentakel Lawa",
   "en": "Black Tentacle Lawa",
   "es": "Lawa del tentáculo negro",
-  "fr": "Lawa aux tentacules noires",
+  "fr": "Lawa aux tentacules noirs",
   "ja": "黒き触手ラワ",
   "ko": "검은 촉수 라와",
   "pt": "Lawa dos Tentáculos Negros",
@@ -4713,7 +4729,7 @@ const EVENT_TEXT = {
   "de": "Verfaulter Kutar",
   "en": "Rotten Kutar",
   "es": "Kutar podrido",
-  "fr": "Kutar le Putréfié",
+  "fr": "Kutar le putréfié",
   "ja": "腐ったクタル",
   "ko": "썩은 쿠타르",
   "pt": "Kutar Putrefato",
@@ -4860,7 +4876,7 @@ const EVENT_TEXT = {
   "fr": "Kusan le Berserker",
   "ja": "狂闘士クサン",
   "ko": "광투사 쿠산",
-  "pt": "Combatente Insano Kusan",
+  "pt": "Kusan, Combatente Insano",
   "ru": "Безумный берсерк Кусан",
   "zh-Hans": "狂斗士库森",
   "zh-Hant": "狂鬥士庫森"
@@ -4869,7 +4885,7 @@ const EVENT_TEXT = {
   "de": "Erzpriester Garshim",
   "en": "Ritualist Garshim",
   "es": "Ritualista Garshim",
-  "fr": "Garshim le Ritualiste",
+  "fr": "Garshim le ritualiste",
   "ja": "祭司長ガルシム",
   "ko": "제사장 가르심",
   "pt": "Sacerdote-Mor Garshim",
@@ -4920,7 +4936,7 @@ const EVENT_TEXT = {
  "String_UI_ARTIFACTWAR_HUD_EVENT_TITLE_body": {
   "de": "Artefakt-Eroberung",
   "en": "Artifact Siege",
-  "es": "Asedio de artefacto",
+  "es": "Asedio de artefactos",
   "fr": "Siège d'artefact",
   "ja": "アーティファクト占領戦",
   "ko": "아티팩트 점령전",

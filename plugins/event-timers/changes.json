@@ -1,5 +1,18 @@
 [
   {
+    "version": "0.6.32",
+    "en": "Schedules from the latest game data: the Artifact Siege and the Abyss day bosses are on Thursday and Saturday only (no longer Monday), and Argo, the Spirit King now comes at 10:30 and 22:30 every day.",
+    "ko": "최신 게임 데이터의 일정: 아티팩트 공성전과 어비스 요일 보스는 이제 목요일과 토요일에만 열리며(월요일 제외), 정령왕 아르고는 매일 10:30과 22:30에 등장합니다.",
+    "ja": "最新のゲームデータの予定：アーティファクト攻城戦とアビスの曜日ボスは木曜と土曜のみ（月曜はなし）、精霊王アルゴは毎日10:30と22:30に出現します。",
+    "de": "Zeitpläne aus den neuesten Spieldaten: Die Artefakt-Belagerung und die Abyss-Tagesbosse gibt es nur noch donnerstags und samstags (nicht mehr montags), und Argo, der Geisterkönig, erscheint täglich um 10:30 und 22:30.",
+    "fr": "Horaires des dernières données du jeu : le siège des artefacts et les boss du jour de l'Abysse n'ont lieu que le jeudi et le samedi (plus le lundi), et Argo, le Roi des esprits, apparaît chaque jour à 10:30 et 22:30.",
+    "es": "Horarios de los últimos datos del juego: el asedio de artefactos y los jefes diarios del Abismo solo son el jueves y el sábado (ya no el lunes), y Argo, el Rey Espíritu, aparece cada día a las 10:30 y 22:30.",
+    "pt": "Horários dos dados mais recentes do jogo: o cerco dos artefatos e os chefes diários do Abismo só acontecem na quinta e no sábado (não mais na segunda), e Argo, Rei dos Espíritos, aparece todo dia às 10:30 e 22:30.",
+    "ru": "Расписание по последним данным игры: осада артефактов и дневные боссы Бездны только по четвергам и субботам (больше не по понедельникам), а Арго, Король духов, появляется каждый день в 10:30 и 22:30.",
+    "zh-Hant": "依最新遊戲資料的時間表：神器攻城戰與深淵每日首領只在週四和週六（不再有週一），精靈王阿爾戈每天 10:30 和 22:30 出現。",
+    "zh-Hans": "依最新游戏数据的时间表：神器攻城战与深渊每日首领只在周四和周六（不再有周一），精灵王阿尔戈每天 10:30 和 22:30 出现。"
+  },
+  {
     "version": "0.6.31",
     "en": "With meter 2.0.93 or later: the HP of a world boss you're fighting comes straight from your meter, so its icon no longer sticks when the site is slow to update.",
     "ko": "미터 2.0.93 이상: 내가 싸우는 월드 보스의 HP를 미터에서 바로 가져와, 사이트 갱신이 늦어도 아이콘이 멈추지 않습니다.",
@@ -50,18 +63,5 @@
     "ru": "Значок мирового босса показывает HP весь бой: таймеры сайта, читаемые каждые 30 секунд, больше не убирают их до следующего обновления.",
     "zh-Hant": "世界首領圖示在整場戰鬥中都保留血量：每 30 秒讀取的網站計時不再在下次更新前把它清掉。",
     "zh-Hans": "世界首领图标在整场战斗中都保留血量：每 30 秒读取的网站计时不再在下次更新前把它清掉。"
-  },
-  {
-    "version": "0.6.27",
-    "en": "Settings: Icon opacity, to make the alert icons see-through.",
-    "ko": "설정: 아이콘 불투명도로 알림 아이콘을 반투명하게 할 수 있습니다.",
-    "ja": "設定：アイコンの不透明度で通知アイコンを半透明にできます。",
-    "de": "Einstellungen: Deckkraft der Symbole, um die Alarmsymbole durchscheinend zu machen.",
-    "fr": "Paramètres : Opacité des icônes, pour rendre les icônes d'alerte transparentes.",
-    "es": "Ajustes: Opacidad de los iconos, para hacer translúcidos los iconos de alerta.",
-    "pt": "Configurações: Opacidade dos ícones, para deixar os ícones de alerta translúcidos.",
-    "ru": "Настройки: Непрозрачность значков — значки оповещений можно сделать полупрозрачными.",
-    "zh-Hant": "設定：圖示不透明度，可讓提醒圖示變得半透明。",
-    "zh-Hans": "设置：图标不透明度，可让提醒图标变得半透明。"
   }
 ]
