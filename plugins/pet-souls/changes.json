@@ -1,5 +1,18 @@
 [
   {
+    "version": "0.6.1",
+    "en": "Black Market: a pet you buy leaves the list until the stock changes, as each item sells only once per stock.",
+    "ko": "암시장: 각 상품은 한 번만 팔리므로, 구입한 펫은 판매 목록이 바뀔 때까지 목록에서 사라집니다.",
+    "ja": "ブラックマーケット：各商品は品揃えごとに一度しか買えないため、買ったペットは品揃えが変わるまで一覧から消えます。",
+    "de": "Schwarzmarkt: Ein gekaufter Begleiter verschwindet bis zum nächsten Angebot aus der Liste, da jeder Artikel nur einmal verkauft wird.",
+    "fr": "Marché noir : un familier acheté quitte la liste jusqu'au prochain stock, chaque article ne se vendant qu'une fois.",
+    "es": "Mercado negro: una mascota comprada sale de la lista hasta que cambien las existencias, ya que cada artículo se vende una sola vez.",
+    "pt": "Mercado negro: um mascote comprado sai da lista até o estoque mudar, já que cada item é vendido uma só vez.",
+    "ru": "Чёрный рынок: купленный питомец пропадает из списка до смены товаров, ведь каждый товар продаётся один раз.",
+    "zh-Hant": "黑市：每件商品每輪只能買一次，買下的寵物會從清單消失，直到貨品更新。",
+    "zh-Hans": "黑市：每件商品每轮只能买一次，买下的宠物会从列表消失，直到货品更新。"
+  },
+  {
     "version": "0.6.0",
     "en": "Black Market: open the Black Cloud Merchants' shop and the window lists the pets on sale, those you don't have yet first, with each one's level and souls (meter 2.0.93).",
     "ko": "암시장: 검은 구름 무역단 상점을 열면 판매 중인 펫을 보여 줍니다. 아직 없는 펫이 먼저 나오고, 각 펫의 레벨과 영혼이 함께 표시됩니다 (미터 2.0.93).",
@@ -50,18 +63,5 @@
     "ru": "Меньше расход памяти: при выключенной «Показывать карту» изображения карт выгружаются и загружаются снова при включении.",
     "zh-Hant": "佔用更少記憶體：關閉「顯示地圖」時會釋放地圖圖片，重新開啟時再載入。",
     "zh-Hans": "占用更少内存：关闭「显示地图」时会释放地图图片，重新开启时再加载。"
-  },
-  {
-    "version": "0.5.1",
-    "en": "Other players' summons are left off the map.",
-    "ko": "다른 플레이어의 소환수는 지도에 표시되지 않습니다.",
-    "ja": "他のプレイヤーの召喚物はマップに表示されません。",
-    "de": "Beschwörungen anderer Spieler erscheinen nicht mehr auf der Karte.",
-    "fr": "Les invocations des autres joueurs ne figurent plus sur la carte.",
-    "es": "Las invocaciones de otros jugadores ya no aparecen en el mapa.",
-    "pt": "As invocações de outros jogadores não aparecem mais no mapa.",
-    "ru": "Призванные существа других игроков больше не отображаются на карте.",
-    "zh-Hant": "其他玩家的召喚物不再顯示在地圖上。",
-    "zh-Hans": "其他玩家的召唤物不再显示在地图上。"
   }
 ]

@@ -495,19 +495,29 @@ let market = {}; // character key -> { [tab]: { at, refreshAt, goods } }
 let marketChar = null; // the character whose stock is shown
 let marketName = "";
 const marketKeyOf = (character) => characterKey(character) || "char-unknown";
+// Pets bought from the stock shown: character key -> { pet id: refreshAt }.
+// Each item sells once per stock; a bought one leaves the list until it
+// changes.
+const BOUGHT_KEY = "marketBought";
+let marketBought = {};
 
-// The pets on sale to the character now, each once.
-function marketPets(now = Date.now()) {
+// The pets on sale to the character now, each once; with `bought`, the
+// ones bought from this stock too.
+function marketPets(now = Date.now(), { bought = false } = {}) {
   const seen = new Map();
+  const gone = marketBought[marketChar] || {};
   for (const tab of Object.values(market[marketChar] || {})) {
     if (!(tab.refreshAt > now)) continue;
     for (const g of tab.goods || []) {
       const pet = SHOP_PETS[g.itemId];
-      if (pet && !seen.has(String(pet))) seen.set(String(pet), { ...g, pet: String(pet) });
+      if (!pet || seen.has(String(pet))) continue;
+      if (!bought && gone[pet] > now) continue;
+      seen.set(String(pet), { ...g, pet: String(pet) });
     }
   }
   return [...seen.values()];
 }
+const boughtCount = (now = Date.now()) => Object.values(marketBought[marketChar] || {}).filter((until) => until > now).length;
 const marketRefresh = (now = Date.now()) =>
   Math.min(...Object.values(market[marketChar] || {}).map((t) => t.refreshAt).filter((t) => t > now), Infinity);
 
@@ -580,12 +590,15 @@ function renderMarket() {
   els.marketWhen.textContent = Number.isFinite(refresh) ? `${marketName ? `${marketName} · ` : ""}new stock in ${mins} min` : "";
   els.marketList.replaceChildren(...pets.map(marketRow));
   const missing = pets.filter((g) => petOf(g.pet).level === 0).length;
+  const bought = boughtCount(now);
   els.marketNote.hidden = false;
   els.marketNote.textContent = !pets.length
-    ? "The stock has changed: open the shop again to see the new pets."
-    : missing
+    ? bought
+      ? `You bought ${bought === 1 ? "the only pet left" : `all ${bought}`} from this stock.`
+      : "The stock has changed: open the shop again to see the new pets."
+    : (bought ? `${bought} bought. ` : "") + (missing
       ? `${missing} of ${pets.length} not yours yet. Each tab of the shop sends its own pets: open Special and Pets.`
-      : `You have all ${pets.length}. Each tab of the shop sends its own pets: open Special and Pets.`;
+      : `You have all ${pets.length}. Each tab of the shop sends its own pets: open Special and Pets.`);
   fitMarket();
 }
 function fitMarket() {
@@ -618,6 +631,32 @@ a2.on("blackMarket", (m, meta) => queued(async () => {
     if (win && typeof win.show === "function") win.show().catch(() => {});
   } else render();
 }));
+// A pet bought here: the game gives it its first 5 souls (the unlock; two
+// bought pets got 5 each, AV4PSZ 2026-11-09), and the item is sold out
+// until the stock changes. Read before the counts take the souls (they are
+// handled queued, after this).
+const BOUGHT_SOULS = 5;
+a2.on("decoded:soul-gained", (data, meta) => {
+  const k = meta?.character ? marketKeyOf(meta.character) : marketChar;
+  if (!k || k !== marketChar) return;
+  const now = Date.now();
+  const onSale = new Set(marketPets(now).map((g) => g.pet));
+  const refresh = marketRefresh(now);
+  let changed = false;
+  for (const { pet, amount } of soulsIn(data)) {
+    if (Number(amount) !== BOUGHT_SOULS || (state.levels[pet] || 0) !== 0 || !onSale.has(String(pet)) || !Number.isFinite(refresh)) continue;
+    marketBought[k] = { ...(marketBought[k] || {}), [pet]: refresh };
+    changed = true;
+  }
+  if (!changed) return;
+  // Only this character's, and only stock not changed yet, are kept.
+  for (const [c, pets] of Object.entries(marketBought)) {
+    for (const [pet, until] of Object.entries(pets)) if (!(until > now)) delete pets[pet];
+    if (!Object.keys(pets).length) delete marketBought[c];
+  }
+  a2.storage.set(BOUGHT_KEY, marketBought).catch(() => {});
+  renderMarket();
+});
 setInterval(() => { if (view === "market" || !els.toMarket.hidden) renderMarket(); }, 30_000);
 
 // ---- Around you: a map of where the souls you need are ---------------------
@@ -1676,6 +1715,7 @@ els.head.addEventListener("click", (e) => {
   els.farmAfter.hidden = !prefs.farmPopup;
   els.marketPopup.checked = prefs.marketPopup !== false;
   market = (await a2.storage.get(MARKET_KEY).catch(() => null)) || {};
+  marketBought = (await a2.storage.get(BOUGHT_KEY).catch(() => null)) || {};
   els.nearbyOn.checked = prefs.nearby === true;
   minimap.setZoom(prefs.mapZoom);
   els.allNpcs.checked = !!prefs.allNpcs;
