@@ -1,5 +1,18 @@
 [
   {
+    "version": "0.6.3",
+    "en": "Black Market: a skin or Theostone you buy leaves the list at once (sold out until the stock changes) and counts as owned, without logging in again.",
+    "ko": "암시장: 구입한 외형이나 신석은 바로 목록에서 빠지고(판매 목록이 바뀔 때까지 품절) 다시 접속하지 않아도 보유로 표시됩니다.",
+    "ja": "ブラックマーケット：買った外形や神石はすぐに一覧から消え（品揃えが変わるまで売り切れ）、再ログインしなくても所持として数えます。",
+    "de": "Schwarzmarkt: Ein gekaufter Skin oder Götterstein verschwindet sofort aus der Liste (ausverkauft bis zum nächsten Angebot) und zählt als vorhanden, ohne neuen Login.",
+    "fr": "Marché noir : une apparence ou une pierre sacrée achetée quitte aussitôt la liste (épuisée jusqu'au prochain stock) et compte comme possédée, sans vous reconnecter.",
+    "es": "Mercado negro: una apariencia o piedra sagrada comprada sale de la lista al instante (agotada hasta que cambien las existencias) y cuenta como tuya sin volver a iniciar sesión.",
+    "pt": "Mercado negro: um visual ou pedra divina comprado sai da lista na hora (esgotado até o estoque mudar) e conta como seu, sem precisar entrar de novo.",
+    "ru": "Чёрный рынок: купленный скин или священный камень сразу исчезает из списка (распродан до смены товаров) и считается вашим без повторного входа.",
+    "zh-Hant": "黑市：買下的外觀或神石會立刻從清單消失（貨品更新前為售完），並直接算作已擁有，不必重新登入。",
+    "zh-Hans": "黑市：买下的外观或神石会立刻从列表消失（货品更新前为售完），并直接算作已拥有，不必重新登录。"
+  },
+  {
     "version": "0.6.2",
     "en": "Black Market: Skins and Theostones tabs list everything else on sale, the ones you don't have first (as of your last login), then the best deals, with each item's grade, discount and price.",
     "ko": "암시장: 외형과 신석 탭에서 나머지 판매 상품을 보여 줍니다. 아직 없는 상품(마지막 접속 기준)이 먼저, 그다음 할인율이 큰 순서이며 등급·할인·가격도 표시합니다.",
@@ -50,18 +63,5 @@
     "ru": "Сундуки: новые питомцы из них учитываются сразу, а души сверх стоимости уровня остаются у питомца.",
     "zh-Hant": "寶箱：寶箱給的新寵物會立即計入，超過升級所需的靈魂會保留在寵物身上。",
     "zh-Hans": "宝箱：宝箱给的新宠物会立即计入，超过升级所需的灵魂会保留在宠物身上。"
-  },
-  {
-    "version": "0.5.3",
-    "en": "The pet you're farming stays at the top of the list with a pet type or level filter picked.",
-    "ko": "펫 종류나 레벨 필터를 선택해도 파밍 중인 펫이 목록 맨 위에 유지됩니다.",
-    "ja": "ペットの種類やレベルで絞り込んでいても、育成中のペットがリストの一番上に表示されます。",
-    "de": "Das Haustier, das du gerade farmst, bleibt auch mit einem Typ- oder Stufenfilter oben in der Liste.",
-    "fr": "Le familier que vous farmez reste en haut de la liste, même avec un filtre de type ou de niveau.",
-    "es": "La mascota que estás farmeando se queda arriba de la lista aunque filtres por tipo o nivel.",
-    "pt": "O mascote que você está farmando fica no topo da lista mesmo com um filtro de tipo ou nível.",
-    "ru": "Питомец, которого вы фармите, остаётся вверху списка даже с фильтром по типу или уровню.",
-    "zh-Hant": "即使選了寵物種類或等級篩選，正在刷的寵物仍會留在列表最上方。",
-    "zh-Hans": "即使选了宠物种类或等级筛选，正在刷的宠物仍会留在列表最上方。"
   }
 ]

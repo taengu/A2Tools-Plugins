@@ -512,28 +512,33 @@ function marketPets(now = Date.now(), { bought = false } = {}) {
     for (const g of tab.goods || []) {
       const pet = SHOP_PETS[g.itemId];
       if (!pet || seen.has(String(pet))) continue;
-      if (!bought && gone[pet] > now) continue;
+      if (!bought && (gone[pet] > now || gone[`i${g.itemId}`] > now)) continue;
       seen.set(String(pet), { ...g, pet: String(pet) });
     }
   }
   return [...seen.values()];
 }
-// The skins or Theostones on sale to the character now, each once.
+// When a bought item's stock ends (0 if not bought from it).
+const boughtUntil = (key) => (marketBought[marketChar] || {})[key] || 0;
+// The skins or Theostones on sale to the character now, each once, less
+// those bought from it.
 function marketItems(kind, now = Date.now()) {
   const seen = new Map();
   for (const tab of Object.values(market[marketChar] || {})) {
     if (!(tab.refreshAt > now)) continue;
     for (const g of tab.goods || []) {
       const item = SHOP_ITEMS[g.itemId];
-      if (item && item[0] === kind && !seen.has(g.itemId)) seen.set(g.itemId, { ...g, grade: item[1], text: SHOP_TEXT[item[2]] });
+      if (!item || item[0] !== kind || seen.has(g.itemId) || boughtUntil(`i${g.itemId}`) > now) continue;
+      seen.set(g.itemId, { ...g, grade: item[1], text: SHOP_TEXT[item[2]] });
     }
   }
   return [...seen.values()];
 }
 // What each character owns, as the game lists it at login: the skins in the
 // Closet (5B 8D: Skin ids) and the Theostones (33 56: Godstone id, count).
-// Character key -> { skins: [ids], stones: { id: count }, at }. A skin or
-// Theostone bought later this session shows as owned after the next login.
+// Character key -> { skins: [ids], stones: { id: count }, at }. One bought
+// from the shop counts at once (item-gained), as does a skin added to the
+// Closet (skin-added); any other new Theostone only at the next login.
 const OWNED_KEY = "closetOwned";
 let owned = {};
 const ownedNow = () => owned[marketChar] || null;
@@ -605,7 +610,18 @@ function itemRow(g, kind) {
   return li;
 }
 
-const boughtCount = (now = Date.now()) => Object.values(marketBought[marketChar] || {}).filter((until) => until > now).length;
+// How many bought from this stock: pets (by their souls or as items), or
+// one kind of item.
+function boughtCount(now = Date.now(), kind = "pet") {
+  let n = 0;
+  for (const [key, until] of Object.entries(marketBought[marketChar] || {})) {
+    if (!(until > now)) continue;
+    const item = key.startsWith("i") ? Number(key.slice(1)) : null;
+    const of = item == null ? "pet" : SHOP_PETS[item] ? "pet" : SHOP_ITEMS[item]?.[0];
+    if (of === kind) n += 1;
+  }
+  return n;
+}
 const marketRefresh = (now = Date.now()) =>
   Math.min(...Object.values(market[marketChar] || {}).map((t) => t.refreshAt).filter((t) => t > now), Infinity);
 
@@ -673,7 +689,8 @@ function renderMarket() {
   const pets = marketPets(now).sort(marketOrder);
   const skins = marketItems("skin", now).sort(itemOrder);
   const stones = marketItems("theostone", now).sort(itemOrder);
-  els.toMarket.hidden = !pets.length && !skins.length && !stones.length && !boughtCount(now);
+  els.toMarket.hidden = !pets.length && !skins.length && !stones.length
+    && !boughtCount(now) && !boughtCount(now, "skin") && !boughtCount(now, "theostone");
   if (view !== "market") return;
   const counts = { pets: pets.length, skin: skins.length, theostone: stones.length };
   for (const b of els.marketTabs.querySelectorAll("[data-mt]")) {
@@ -690,11 +707,14 @@ function renderMarket() {
     els.marketNote.hidden = false;
     const known = ownedNow() !== null;
     const missing = list.filter((g) => ownsItem(g) === false).length;
+    const bought = boughtCount(now, prefs.marketTab);
     els.marketNote.textContent = !list.length
-      ? "None seen in this stock yet: open the shop's Special and Skins tabs."
-      : known
-        ? `${missing} of ${list.length} missing; the best deals first. Owned as of your last login.`
-        : "The best deals first. Log in again (or change character) for which ones you own.";
+      ? bought
+        ? `You bought ${bought === 1 ? "the only one left" : `all ${bought}`} from this stock.`
+        : "None seen in this stock yet: open the shop's Special and Skins tabs."
+      : (bought ? `${bought} bought. ` : "") + (known
+        ? `${missing} of ${list.length} missing; the best deals first.`
+        : "The best deals first. Log in again (or change character) for which ones you own.");
     fitMarket();
     return;
   }
@@ -762,13 +782,51 @@ a2.on("decoded:soul-gained", (data, meta) => {
     changed = true;
   }
   if (!changed) return;
-  // Only this character's, and only stock not changed yet, are kept.
-  for (const [c, pets] of Object.entries(marketBought)) {
-    for (const [pet, until] of Object.entries(pets)) if (!(until > now)) delete pets[pet];
-    if (!Object.keys(pets).length) delete marketBought[c];
-  }
+  // Only stock not changed yet is kept.
+  forgetOldBought(now);
   a2.storage.set(BOUGHT_KEY, marketBought).catch(() => {});
   renderMarket();
+});
+// An item bought here: it comes into the bag as a new item (1B 56, kind 2,
+// 2026-11-10: three skins bought, each sent at once). Each item sells once
+// per stock, so it leaves the list; a skin is owned from then on, and a
+// Theostone one more.
+const NEW_ITEM = 2;
+function forgetOldBought(now) {
+  for (const [c, keys] of Object.entries(marketBought)) {
+    for (const [key, until] of Object.entries(keys)) if (!(until > now)) delete keys[key];
+    if (!Object.keys(keys).length) delete marketBought[c];
+  }
+}
+a2.on("decoded:item-gained", (d, meta) => {
+  if (Number(d?.entries) !== 1 || Number(d?.kind) !== NEW_ITEM) return;
+  const itemId = Number(d.item);
+  const k = meta?.character ? marketKeyOf(meta.character) : marketChar;
+  if (!k || k !== marketChar) return;
+  const now = Date.now();
+  const onSale = Object.values(market[k] || {}).some((t) => t.refreshAt > now && (t.goods || []).some((g) => g.itemId === itemId));
+  const refresh = marketRefresh(now);
+  if (!onSale || !Number.isFinite(refresh)) return;
+  marketBought[k] = { ...(marketBought[k] || {}), [`i${itemId}`]: refresh };
+  forgetOldBought(now);
+  a2.storage.set(BOUGHT_KEY, marketBought).catch(() => {});
+  const item = SHOP_ITEMS[itemId];
+  if (item?.[3] && owned[k]) {
+    if (item[0] === "skin" && Array.isArray(owned[k].skins) && !owned[k].skins.includes(item[3])) {
+      noteOwned(meta, "skins", [...owned[k].skins, item[3]]);
+    } else if (item[0] === "theostone" && owned[k].stones) {
+      noteOwned(meta, "stones", { ...owned[k].stones, [item[3]]: (owned[k].stones[item[3]] || 0) + 1 });
+    }
+  }
+  renderMarket();
+});
+// A skin into the Closet, bought or not: owned from then on.
+a2.on("decoded:skin-added", (d, meta) => {
+  const k = meta?.character ? marketKeyOf(meta.character) : marketChar;
+  const have = owned[k]?.skins;
+  if (!Array.isArray(have)) return;
+  const added = (d?.skins || []).map((s) => Number(s.skin)).filter((id) => id > 0 && !have.includes(id));
+  if (added.length) noteOwned(meta, "skins", [...have, ...added]);
 });
 setInterval(() => { if (view === "market" || !els.toMarket.hidden) renderMarket(); }, 30_000);
 

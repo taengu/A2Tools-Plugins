@@ -1,7 +1,7 @@
 {
   "id": "pet-souls",
   "name": "Pet Soul Tracker",
-  "version": "0.6.2",
+  "version": "0.6.3",
   "apiVersion": 2,
   "author": "A2 Tools",
   "description": "Souls still needed to raise each pet, from the game's own pet data, where each pet's souls drop, the monsters around you that drop them, which of the Black Cloud Merchants' pets you don't have yet, and their skins and Theostones on sale.",
@@ -22,7 +22,9 @@
     "decoder:mantra-tick",
     "decoder:teleport",
     "decoder:skins-owned",
-    "decoder:theostones-owned"
+    "decoder:theostones-owned",
+    "decoder:item-gained",
+    "decoder:skin-added"
   ],
   "decoders": [
     {
@@ -356,6 +358,49 @@
             {
               "name": "count",
               "type": "u32"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "item-gained",
+      "opcode": "1B 56",
+      "immediate": true,
+      "fields": [
+        {
+          "name": "entries",
+          "type": "u8"
+        },
+        {
+          "name": "kind",
+          "type": "u8"
+        },
+        {
+          "type": "skip:9"
+        },
+        {
+          "name": "item",
+          "type": "u32"
+        }
+      ]
+    },
+    {
+      "name": "skin-added",
+      "opcode": "5C 8D",
+      "immediate": true,
+      "fields": [
+        {
+          "name": "skins",
+          "type": "list",
+          "count": "u8",
+          "fields": [
+            {
+              "name": "skin",
+              "type": "u32"
+            },
+            {
+              "type": "skip:10"
             }
           ]
         }
