@@ -2,7 +2,7 @@
   {
     "version": "0.2.14",
     "en": "Cooldowns no longer run short for Clerics and Chanters (a proc's time cut was taken for the whole cooldown), and a Cleric's Bolt is tracked from its release. Times learnt before are relearnt once.",
-    "ko": "클레릭과 치유성의 재사용 대기시간이 더 이상 짧게 표시되지 않으며(발동 효과로 줄어든 시간을 전체 대기시간으로 착각했습니다), 클레릭의 번개는 시전을 놓는 순간부터 추적됩니다. 이전에 학습한 시간은 한 번 다시 학습합니다.",
+    "ko": "치유성과 호법성의 재사용 대기시간이 더 이상 짧게 표시되지 않으며(발동 효과로 줄어든 시간을 전체 대기시간으로 착각했습니다), 치유성의 번개는 시전을 놓는 순간부터 추적됩니다. 이전에 학습한 시간은 한 번 다시 학습합니다.",
     "ja": "クレリックとチャンターのクールダウンが短く表示されなくなりました（発動効果で減った時間を全体と取り違えていました）。クレリックのボルトは放った時点から追跡します。以前に学習した時間は一度だけ学び直します。",
     "de": "Abklingzeiten laufen für Kleriker und Kantoren nicht mehr zu kurz (eine Verkürzung durch einen Proc galt als ganze Abklingzeit), und der Blitz des Klerikers wird ab dem Loslassen verfolgt. Bisher gelernte Zeiten werden einmal neu gelernt.",
     "fr": "Les temps de recharge ne sont plus trop courts pour les clercs et les aèdes (la réduction d'un effet était prise pour la recharge entière), et l'Éclair du clerc est suivi dès son relâchement. Les temps appris avant sont réappris une fois.",
