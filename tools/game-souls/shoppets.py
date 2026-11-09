@@ -46,6 +46,18 @@ def main():
         t2s = opencc.OpenCC("t2s")
         langs["zh-Hans"] = {k: t2s.convert(v) for k, v in tw.items() if isinstance(v, str)}
 
+    # The game's own ids, which its owned lists name: a skin's Skin id (by the
+    # item's skin name) and a Theostone's Godstone id (by its name string).
+    skin_ids = {r["Name"]: r["ID"]["Value"] for r in load(os.path.join(args.tables, "Skin.json"))["Properties"]["Data"]}
+    stone_ids = {r["NameString"]["Key"].upper(): r["GodstoneId"]["Value"]
+                 for r in load(os.path.join(args.tables, "GodstoneData.json"))["Properties"]["Data"]}
+
+    def game_id(item):
+        value = str(item["UseEffectValues"][0])
+        if item["UseEffect"] == "EItemUseEffect::GetSkin":
+            return skin_ids.get(value, 0)
+        return stone_ids.get("STR_" + value.upper(), 0)
+
     by_name = {i["Name"]: i for i in items}
     goods = load(os.path.join(args.tables, "RandomShopGoods.json"))["Properties"]["Data"]
     on_sale = {}
@@ -68,7 +80,7 @@ def main():
                     t[code] = x
             text_index[key] = len(texts)
             texts.append(t)
-        rows[item_id] = [KINDS[item["UseEffect"]], GRADES.get(item.get("ItemGrade"), 0), text_index[key]]
+        rows[item_id] = [KINDS[item["UseEffect"]], GRADES.get(item.get("ItemGrade"), 0), text_index[key], game_id(item)]
 
     # Every one is bound, and each language says so in a last bracket ("(Bound)",
     # "(각인)", "(Gebunden)"): the list leaves that out.
@@ -108,7 +120,7 @@ def main():
             "// The pet each pet item gives (Item id -> pet id).\n"
             f"const SHOP_PETS = {{\n{pet_lines},\n}};\n"
             "// Each skin and Theostone on sale (Item id -> [kind, grade: 0 common,\n"
-            "// 1 rare, 2 legend, index into SHOP_TEXT]).\n"
+            "// 1 rare, 2 legend, index into SHOP_TEXT, the game's Skin or Godstone id]).\n"
             f"const SHOP_ITEMS = {{\n{item_lines},\n}};\n"
             "// Their names, in each language that has its own (English otherwise).\n"
             f"const SHOP_TEXT = [\n{text_lines},\n];\n"

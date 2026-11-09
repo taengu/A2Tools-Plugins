@@ -530,10 +530,47 @@ function marketItems(kind, now = Date.now()) {
   }
   return [...seen.values()];
 }
+// What each character owns, as the game lists it at login: the skins in the
+// Closet (5B 8D: Skin ids) and the Theostones (33 56: Godstone id, count).
+// Character key -> { skins: [ids], stones: { id: count }, at }. A skin or
+// Theostone bought later this session shows as owned after the next login.
+const OWNED_KEY = "closetOwned";
+let owned = {};
+const ownedNow = () => owned[marketChar] || null;
+// Whether the character owns a shop item: true, false, or null not known.
+function ownsItem(g) {
+  const o = ownedNow();
+  const item = SHOP_ITEMS[g.itemId];
+  if (!o || !item || !item[3]) return null;
+  if (item[0] === "skin") return Array.isArray(o.skins) ? o.skins.includes(item[3]) : null;
+  return o.stones ? (o.stones[item[3]] || 0) > 0 : null;
+}
+const noteOwned = (meta, part, value) => queued(async () => {
+  const k = meta?.character ? marketKeyOf(meta.character) : marketChar;
+  if (!k) return;
+  owned[k] = { ...(owned[k] || {}), [part]: value, at: Date.now() };
+  // The newest characters only.
+  const keys = Object.keys(owned);
+  for (const old of keys.slice(0, Math.max(0, keys.length - 30))) delete owned[old];
+  await a2.storage.set(OWNED_KEY, owned).catch(() => {});
+  renderMarket();
+});
+a2.on("decoded:skins-owned", (d, meta) => {
+  const ids = (d?.skins || []).map((s) => Number(s.skin)).filter((id) => id > 0);
+  if (ids.length) noteOwned(meta, "skins", ids);
+});
+a2.on("decoded:theostones-owned", (d, meta) => {
+  const stones = {};
+  for (const s of d?.stones || []) if (Number(s.stone) > 0) stones[Number(s.stone)] = Number(s.count) || 0;
+  noteOwned(meta, "stones", stones);
+});
+
 const itemName = (g) => g.text?.[language] || g.text?.en || `#${g.itemId}`;
 const offOf = (g) => (g.originalPrice > 0 ? Math.round((1 - g.price / g.originalPrice) * 100) : 0);
-// The best deal first: the largest discount, then the higher grade, then the cheapest.
-const itemOrder = (a, b) => offOf(b) - offOf(a) || b.grade - a.grade || a.price - b.price;
+// Missing ones first, then the best deal: the largest discount, then the
+// higher grade, then the cheapest.
+const itemOrder = (a, b) => (ownsItem(a) === false ? 0 : 1) - (ownsItem(b) === false ? 0 : 1)
+  || offOf(b) - offOf(a) || b.grade - a.grade || a.price - b.price;
 const GRADE_NAMES = ["Common", "Rare", "Legendary"];
 
 function itemRow(g, kind) {
@@ -549,7 +586,19 @@ function itemRow(g, kind) {
   price.title = off > 0 ? `${Number(g.originalPrice).toLocaleString(language)} before the discount` : "";
   top.append(name, offTag, price);
   const sub = el("div", "line sub");
+  const has = ownsItem(g);
+  if (has === false) {
+    const tag = el("span", "unlock", "Missing");
+    tag.title = kind === "skin" ? "Not in your Closet" : "You have none";
+    sub.append(tag);
+  }
   sub.append(el("span", `gradeName grade${g.grade}`, GRADE_NAMES[g.grade] || ""));
+  if (has) {
+    const n = kind === "theostone" ? ownedNow()?.stones?.[SHOP_ITEMS[g.itemId][3]] || 0 : 0;
+    sub.append(el("span", "lv", n > 1 ? `Owned ×${n}` : "Owned"));
+  }
+  li.classList.toggle("done", has === true);
+  li.classList.toggle("unowned", has === false);
   const main = el("div", "main");
   main.append(top, sub);
   li.append(badge, main);
@@ -639,9 +688,13 @@ function renderMarket() {
       : "";
     els.marketList.replaceChildren(...list.map((g) => itemRow(g, prefs.marketTab)));
     els.marketNote.hidden = false;
-    els.marketNote.textContent = list.length
-      ? "The best deals first. Each tab of the shop sends its own items: open Special and Skins."
-      : "None seen in this stock yet: open the shop's Special and Skins tabs.";
+    const known = ownedNow() !== null;
+    const missing = list.filter((g) => ownsItem(g) === false).length;
+    els.marketNote.textContent = !list.length
+      ? "None seen in this stock yet: open the shop's Special and Skins tabs."
+      : known
+        ? `${missing} of ${list.length} missing; the best deals first. Owned as of your last login.`
+        : "The best deals first. Log in again (or change character) for which ones you own.";
     fitMarket();
     return;
   }
@@ -1783,6 +1836,7 @@ els.head.addEventListener("click", (e) => {
   els.marketPopup.checked = prefs.marketPopup !== false;
   market = (await a2.storage.get(MARKET_KEY).catch(() => null)) || {};
   marketBought = (await a2.storage.get(BOUGHT_KEY).catch(() => null)) || {};
+  owned = (await a2.storage.get(OWNED_KEY).catch(() => null)) || {};
   els.nearbyOn.checked = prefs.nearby === true;
   minimap.setZoom(prefs.mapZoom);
   els.allNpcs.checked = !!prefs.allNpcs;

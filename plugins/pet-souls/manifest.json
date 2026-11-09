@@ -5,20 +5,66 @@
   "apiVersion": 2,
   "author": "A2 Tools",
   "description": "Souls still needed to raise each pet, from the game's own pet data, where each pet's souls drop, the monsters around you that drop them, which of the Black Cloud Merchants' pets you don't have yet, and their skins and Theostones on sale.",
-  "permissions": ["storage", "events:character", "events:black-market", "window", "widgets", "decoder:pet-list", "decoder:soul-gained", "decoder:level-up", "decoder:pet-unlocked",
-    "decoder:npc-spawn", "decoder:npc-gone", "decoder:map-load", "decoder:own-position", "decoder:mantra-tick", "decoder:teleport"],
+  "permissions": [
+    "storage",
+    "events:character",
+    "events:black-market",
+    "window",
+    "widgets",
+    "decoder:pet-list",
+    "decoder:soul-gained",
+    "decoder:level-up",
+    "decoder:pet-unlocked",
+    "decoder:npc-spawn",
+    "decoder:npc-gone",
+    "decoder:map-load",
+    "decoder:own-position",
+    "decoder:mantra-tick",
+    "decoder:teleport",
+    "decoder:skins-owned",
+    "decoder:theostones-owned"
+  ],
   "decoders": [
     {
       "name": "pet-list",
       "opcode": "00 90",
       "fields": [
-        { "type": "skip:4" },
-        { "name": "levels", "type": "list", "count": "varint", "fields": [
-          { "name": "pet", "type": "u32" }, { "type": "skip:4" }, { "name": "level", "type": "u32" }
-        ] },
-        { "name": "points", "type": "list", "count": "varint", "fields": [
-          { "name": "pet", "type": "u32" }, { "name": "points", "type": "u32" }
-        ] }
+        {
+          "type": "skip:4"
+        },
+        {
+          "name": "levels",
+          "type": "list",
+          "count": "varint",
+          "fields": [
+            {
+              "name": "pet",
+              "type": "u32"
+            },
+            {
+              "type": "skip:4"
+            },
+            {
+              "name": "level",
+              "type": "u32"
+            }
+          ]
+        },
+        {
+          "name": "points",
+          "type": "list",
+          "count": "varint",
+          "fields": [
+            {
+              "name": "pet",
+              "type": "u32"
+            },
+            {
+              "name": "points",
+              "type": "u32"
+            }
+          ]
+        }
       ]
     },
     {
@@ -26,36 +72,127 @@
       "opcode": "0D 90",
       "immediate": true,
       "fields": [
-        { "name": "souls", "type": "list", "count": "u8", "fields": [ { "name": "pet", "type": "u32" }, { "name": "amount", "type": "u32" } ] }
+        {
+          "name": "souls",
+          "type": "list",
+          "count": "u8",
+          "fields": [
+            {
+              "name": "pet",
+              "type": "u32"
+            },
+            {
+              "name": "amount",
+              "type": "u32"
+            }
+          ]
+        }
       ]
     },
     {
       "name": "level-up",
       "opcode": "14 90",
       "immediate": true,
-      "fields": [ { "type": "skip:2" }, { "name": "pet", "type": "u32" }, { "name": "level", "type": "u32" } ]
+      "fields": [
+        {
+          "type": "skip:2"
+        },
+        {
+          "name": "pet",
+          "type": "u32"
+        },
+        {
+          "name": "level",
+          "type": "u32"
+        }
+      ]
     },
     {
       "name": "pet-unlocked",
       "opcode": "09 90",
       "immediate": true,
-      "fields": [ { "type": "skip:2" }, { "name": "pet", "type": "u32" }, { "name": "level", "type": "u32" } ]
+      "fields": [
+        {
+          "type": "skip:2"
+        },
+        {
+          "name": "pet",
+          "type": "u32"
+        },
+        {
+          "name": "level",
+          "type": "u32"
+        }
+      ]
     },
     {
       "name": "npc-spawn",
       "opcode": "41 36",
       "fields": [
-        { "name": "entity", "type": "varint" }, { "type": "skip:3" }, { "name": "npc", "type": "u32" }, { "type": "skip:2" },
-        { "name": "x", "type": "u32" }, { "name": "y", "type": "u32" }, { "name": "z", "type": "u32" }
+        {
+          "name": "entity",
+          "type": "varint"
+        },
+        {
+          "type": "skip:3"
+        },
+        {
+          "name": "npc",
+          "type": "u32"
+        },
+        {
+          "type": "skip:2"
+        },
+        {
+          "name": "x",
+          "type": "u32"
+        },
+        {
+          "name": "y",
+          "type": "u32"
+        },
+        {
+          "name": "z",
+          "type": "u32"
+        }
       ]
     },
-    { "name": "npc-gone", "opcode": "42 36", "fields": [ { "name": "entity", "type": "varint" } ] },
+    {
+      "name": "npc-gone",
+      "opcode": "42 36",
+      "fields": [
+        {
+          "name": "entity",
+          "type": "varint"
+        }
+      ]
+    },
     {
       "name": "map-load",
       "opcode": "21 36",
       "fields": [
-        { "type": "skip:4" }, { "name": "map", "type": "u32" }, { "type": "skip:8" },
-        { "name": "x", "type": "u32" }, { "name": "y", "type": "u32" }, { "name": "z", "type": "u32" }
+        {
+          "type": "skip:4"
+        },
+        {
+          "name": "map",
+          "type": "u32"
+        },
+        {
+          "type": "skip:8"
+        },
+        {
+          "name": "x",
+          "type": "u32"
+        },
+        {
+          "name": "y",
+          "type": "u32"
+        },
+        {
+          "name": "z",
+          "type": "u32"
+        }
       ]
     },
     {
@@ -63,9 +200,49 @@
       "opcode": "2A 38",
       "self": "source",
       "fields": [
-        { "name": "source", "type": "varint" }, { "name": "one", "type": "u8" }, { "name": "kind", "type": "u8" }, { "name": "seq", "type": "varint" },
-        { "type": "skip:20" }, { "name": "target", "type": "varint" }, { "name": "p", "type": "u8" }, { "name": "q", "type": "u8" },
-        { "name": "x", "type": "u32" }, { "name": "y", "type": "u32" }, { "name": "z", "type": "u32" }
+        {
+          "name": "source",
+          "type": "varint"
+        },
+        {
+          "name": "one",
+          "type": "u8"
+        },
+        {
+          "name": "kind",
+          "type": "u8"
+        },
+        {
+          "name": "seq",
+          "type": "varint"
+        },
+        {
+          "type": "skip:20"
+        },
+        {
+          "name": "target",
+          "type": "varint"
+        },
+        {
+          "name": "p",
+          "type": "u8"
+        },
+        {
+          "name": "q",
+          "type": "u8"
+        },
+        {
+          "name": "x",
+          "type": "u32"
+        },
+        {
+          "name": "y",
+          "type": "u32"
+        },
+        {
+          "name": "z",
+          "type": "u32"
+        }
       ]
     },
     {
@@ -73,19 +250,122 @@
       "opcode": "2B 38",
       "self": "source",
       "fields": [
-        { "name": "source", "type": "varint" }, { "name": "kind", "type": "u8" }, { "name": "seq", "type": "varint" },
-        { "type": "skip:20" }, { "name": "target", "type": "varint" }, { "name": "p", "type": "u8" }, { "type": "skip:4" }, { "name": "q", "type": "u8" },
-        { "name": "x", "type": "u32" }, { "name": "y", "type": "u32" }, { "name": "z", "type": "u32" }
+        {
+          "name": "source",
+          "type": "varint"
+        },
+        {
+          "name": "kind",
+          "type": "u8"
+        },
+        {
+          "name": "seq",
+          "type": "varint"
+        },
+        {
+          "type": "skip:20"
+        },
+        {
+          "name": "target",
+          "type": "varint"
+        },
+        {
+          "name": "p",
+          "type": "u8"
+        },
+        {
+          "type": "skip:4"
+        },
+        {
+          "name": "q",
+          "type": "u8"
+        },
+        {
+          "name": "x",
+          "type": "u32"
+        },
+        {
+          "name": "y",
+          "type": "u32"
+        },
+        {
+          "name": "z",
+          "type": "u32"
+        }
       ]
     },
     {
       "name": "teleport",
       "opcode": "23 36",
       "fields": [
-        { "name": "flag", "type": "u8" }, { "type": "skip:5" },
-        { "name": "x", "type": "u32" }, { "name": "y", "type": "u32" }, { "name": "z", "type": "u32" }
+        {
+          "name": "flag",
+          "type": "u8"
+        },
+        {
+          "type": "skip:5"
+        },
+        {
+          "name": "x",
+          "type": "u32"
+        },
+        {
+          "name": "y",
+          "type": "u32"
+        },
+        {
+          "name": "z",
+          "type": "u32"
+        }
+      ]
+    },
+    {
+      "name": "skins-owned",
+      "opcode": "5B 8D",
+      "fields": [
+        {
+          "name": "skins",
+          "type": "list",
+          "count": "varint",
+          "fields": [
+            {
+              "name": "skin",
+              "type": "u32"
+            },
+            {
+              "name": "value",
+              "type": "u32"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "theostones-owned",
+      "opcode": "33 56",
+      "fields": [
+        {
+          "name": "stones",
+          "type": "list",
+          "count": "u8",
+          "fields": [
+            {
+              "name": "stone",
+              "type": "u32"
+            },
+            {
+              "name": "count",
+              "type": "u32"
+            }
+          ]
+        }
       ]
     }
   ],
-  "ui": { "panel": { "width": 380, "height": 520 } }
+  "ui": {
+    "panel": {
+      "width": 380,
+      "height": 520
+    }
+  }
 }

@@ -1,16 +1,16 @@
 [
   {
     "version": "0.6.2",
-    "en": "Black Market: Skins and Theostones tabs list everything else on sale, best deals first, with each item's grade, discount and price.",
-    "ko": "암시장: 외형과 신석 탭에서 판매 중인 나머지 상품을 할인율이 큰 순서로, 등급·할인·가격과 함께 보여 줍니다.",
-    "ja": "ブラックマーケット：外形と神石のタブで、ほかの販売中の商品をお得な順に、等級・割引・価格とともに表示します。",
-    "de": "Schwarzmarkt: Die Tabs Skins und Göttersteine zeigen alles andere im Angebot, die besten Angebote zuerst, mit Qualität, Rabatt und Preis.",
-    "fr": "Marché noir : les onglets Apparences et Pierres sacrées listent le reste des articles en vente, les meilleures offres d'abord, avec leur qualité, remise et prix.",
-    "es": "Mercado negro: las pestañas Apariencias y Piedras sagradas muestran el resto de artículos en venta, las mejores ofertas primero, con su grado, descuento y precio.",
-    "pt": "Mercado negro: as abas Visuais e Pedras Divinas mostram os demais itens à venda, as melhores ofertas primeiro, com grau, desconto e preço.",
-    "ru": "Чёрный рынок: вкладки «Скины» и «Священные камни» показывают остальные товары, сначала самые выгодные, с качеством, скидкой и ценой.",
-    "zh-Hant": "黑市：外觀與神石分頁列出其餘販售中的商品，最划算的排在最前，並顯示等級、折扣與價格。",
-    "zh-Hans": "黑市：外观与神石页签列出其余出售中的商品，最划算的排在最前，并显示等级、折扣与价格。"
+    "en": "Black Market: Skins and Theostones tabs list everything else on sale, the ones you don't have first (as of your last login), then the best deals, with each item's grade, discount and price.",
+    "ko": "암시장: 외형과 신석 탭에서 나머지 판매 상품을 보여 줍니다. 아직 없는 상품(마지막 접속 기준)이 먼저, 그다음 할인율이 큰 순서이며 등급·할인·가격도 표시합니다.",
+    "ja": "ブラックマーケット：外形と神石のタブで、ほかの販売中の商品を表示します。持っていないもの（前回のログイン時点）を先に、次にお得な順で、等級・割引・価格も表示します。",
+    "de": "Schwarzmarkt: Die Tabs Skins und Göttersteine zeigen alles andere im Angebot, was dir fehlt zuerst (Stand letzter Login), dann die besten Angebote, mit Qualität, Rabatt und Preis.",
+    "fr": "Marché noir : les onglets Apparences et Pierres sacrées listent le reste des articles en vente, ceux qui vous manquent d'abord (à votre dernière connexion), puis les meilleures offres, avec qualité, remise et prix.",
+    "es": "Mercado negro: las pestañas Apariencias y Piedras sagradas muestran el resto de artículos, primero los que te faltan (según tu último inicio de sesión) y luego las mejores ofertas, con grado, descuento y precio.",
+    "pt": "Mercado negro: as abas Visuais e Pedras Divinas mostram os demais itens, primeiro os que você não tem (no último login) e depois as melhores ofertas, com grau, desconto e preço.",
+    "ru": "Чёрный рынок: вкладки «Скины» и «Священные камни» показывают остальные товары: сначала те, которых у вас нет (на момент последнего входа), затем самые выгодные, с качеством, скидкой и ценой.",
+    "zh-Hant": "黑市：外觀與神石分頁列出其餘販售中的商品，尚未擁有的（以上次登入為準）排在最前，接著是最划算的，並顯示等級、折扣與價格。",
+    "zh-Hans": "黑市：外观与神石页签列出其余出售中的商品，尚未拥有的（以上次登录为准）排在最前，接着是最划算的，并显示等级、折扣与价格。"
   },
   {
     "version": "0.6.1",
