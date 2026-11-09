@@ -501,6 +501,9 @@ const marketKeyOf = (character) => characterKey(character) || "char-unknown";
 // changes.
 const BOUGHT_KEY = "marketBought";
 let marketBought = {};
+// The stock (its refreshAt) each character's window last popped up for.
+const POPPED_KEY = "marketPopped";
+let marketPopped = {};
 
 // The pets on sale to the character now, each once; with `bought`, the
 // ones bought from this stock too.
@@ -576,14 +579,16 @@ const offOf = (g) => (g.originalPrice > 0 ? Math.round((1 - g.price / g.original
 // higher grade, then the cheapest.
 const itemOrder = (a, b) => (ownsItem(a) === false ? 0 : 1) - (ownsItem(b) === false ? 0 : 1)
   || offOf(b) - offOf(a) || b.grade - a.grade || a.price - b.price;
-const GRADE_NAMES = ["Common", "Rare", "Legendary"];
+// The game's grades and colours: white Common, green Rare, blue Epic, yellow
+// Unique.
+const GRADE_NAMES = ["Common", "Rare", "Epic", "Unique"];
 
 function itemRow(g, kind) {
   const li = el("li", `marketItem grade${g.grade}`);
   const badge = el("span", "itemBadge", kind === "skin" ? "S" : "T");
   badge.title = GRADE_NAMES[g.grade] || "";
   const top = el("div", "line");
-  const name = el("span", "nameText", itemName(g));
+  const name = el("span", `nameText gradeText grade${g.grade}`, itemName(g));
   name.title = itemName(g);
   const off = offOf(g);
   const offTag = el("span", `off tier${Math.min(3, Number(g.tier) || 0)}`, off > 0 ? `−${off}%` : "");
@@ -749,6 +754,24 @@ a2.on("blackMarket", (m, meta) => queued(async () => {
   const goods = (m?.goods || []).map((g) => ({ itemId: g.itemId, tier: g.tier, price: g.price, originalPrice: g.originalPrice }));
   const k = marketKeyOf(meta?.character);
   const now = Date.now();
+  const refreshAt = Number(m?.refreshAt) || 0;
+  // What the game says is sold out (meter 2.0.95 on): bought by this
+  // character from this stock, before this plugin saw it or not. Out of the
+  // list as any purchase, and a skin is owned from then on.
+  for (const g of m?.goods || []) {
+    if (!g.soldOut || !(refreshAt > now)) continue;
+    marketBought[k] = { ...(marketBought[k] || {}), [`i${g.itemId}`]: refreshAt };
+    const item = SHOP_ITEMS[g.itemId];
+    const have = owned[k]?.skins;
+    if (item?.[0] === "skin" && item[3] && Array.isArray(have) && !have.includes(item[3])) {
+      owned[k] = { ...owned[k], skins: [...have, item[3]] };
+      await a2.storage.set(OWNED_KEY, owned).catch(() => {});
+    }
+  }
+  if ((m?.goods || []).some((g) => g.soldOut)) {
+    forgetOldBought(now);
+    await a2.storage.set(BOUGHT_KEY, marketBought).catch(() => {});
+  }
   // Stock that has changed since is dropped.
   for (const [c, tabs] of Object.entries(market)) {
     for (const [t, tab] of Object.entries(tabs)) if (!(tab.refreshAt > now)) delete tabs[t];
@@ -759,7 +782,13 @@ a2.on("blackMarket", (m, meta) => queued(async () => {
   marketChar = k;
   marketName = meta?.character?.name || "";
   const live = meta?.at != null ? now - Number(meta.at) < 15_000 : now - startedAt > 5_000;
-  if (live && prefs.marketPopup !== false && goods.some((g) => SHOP_PETS[g.itemId] || SHOP_ITEMS[g.itemId])) {
+  // Up once per stock: the game sends the same stock again without the shop
+  // being opened (twice in 10 minutes, 2026-11-10), and the window came back
+  // each time, closed or not.
+  const first = marketPopped[k] !== refreshAt;
+  if (live && first && prefs.marketPopup !== false && goods.some((g) => SHOP_PETS[g.itemId] || SHOP_ITEMS[g.itemId])) {
+    marketPopped = { [k]: refreshAt, ...Object.fromEntries(Object.entries(marketPopped).filter(([c, at]) => c !== k && at > now)) };
+    await a2.storage.set(POPPED_KEY, marketPopped).catch(() => {});
     showMarket();
     if (win && typeof win.show === "function") win.show().catch(() => {});
   } else render();
@@ -1894,6 +1923,7 @@ els.head.addEventListener("click", (e) => {
   els.marketPopup.checked = prefs.marketPopup !== false;
   market = (await a2.storage.get(MARKET_KEY).catch(() => null)) || {};
   marketBought = (await a2.storage.get(BOUGHT_KEY).catch(() => null)) || {};
+  marketPopped = (await a2.storage.get(POPPED_KEY).catch(() => null)) || {};
   owned = (await a2.storage.get(OWNED_KEY).catch(() => null)) || {};
   els.nearbyOn.checked = prefs.nearby === true;
   minimap.setZoom(prefs.mapZoom);

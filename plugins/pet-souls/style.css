@@ -1265,7 +1265,10 @@ body.marketOnly .nearby {
 .marketTabs .n { color: rgba(255, 255, 255, 0.45); font-weight: 400; font-variant-numeric: tabular-nums; }
 .marketList .itemBadge { display: grid; place-items: center; width: 30px; height: 30px; border-radius: 7px; font-weight: 700; font-size: 13px;
   color: var(--gc); background: color-mix(in srgb, var(--gc) 16%, rgba(0, 0, 0, 0.25)); border: 1px solid color-mix(in srgb, var(--gc) 40%, transparent); }
-.marketList .grade0 { --gc: #c9d1dc; }
-.marketList .grade1 { --gc: #5cb8ff; }
-.marketList .grade2 { --gc: #f2b950; }
-.marketList .gradeName { color: var(--gc); }
+/* The game's grade colours: white Common, green Rare, blue Epic, yellow Unique. */
+.marketList .grade0 { --gc: #d8dee6; }
+.marketList .grade1 { --gc: #6fd66f; }
+.marketList .grade2 { --gc: #5cb8ff; }
+.marketList .grade3 { --gc: #f2cf4a; }
+.marketList .gradeName,
+.marketList .gradeText { color: var(--gc); }

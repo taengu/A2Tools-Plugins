@@ -1,16 +1,16 @@
 [
   {
     "version": "0.6.3",
-    "en": "Black Market: a skin or Theostone you buy leaves the list at once (sold out until the stock changes) and counts as owned, without logging in again.",
-    "ko": "암시장: 구입한 외형이나 신석은 바로 목록에서 빠지고(판매 목록이 바뀔 때까지 품절) 다시 접속하지 않아도 보유로 표시됩니다.",
-    "ja": "ブラックマーケット：買った外形や神石はすぐに一覧から消え（品揃えが変わるまで売り切れ）、再ログインしなくても所持として数えます。",
-    "de": "Schwarzmarkt: Ein gekaufter Skin oder Götterstein verschwindet sofort aus der Liste (ausverkauft bis zum nächsten Angebot) und zählt als vorhanden, ohne neuen Login.",
-    "fr": "Marché noir : une apparence ou une pierre sacrée achetée quitte aussitôt la liste (épuisée jusqu'au prochain stock) et compte comme possédée, sans vous reconnecter.",
-    "es": "Mercado negro: una apariencia o piedra sagrada comprada sale de la lista al instante (agotada hasta que cambien las existencias) y cuenta como tuya sin volver a iniciar sesión.",
-    "pt": "Mercado negro: um visual ou pedra divina comprado sai da lista na hora (esgotado até o estoque mudar) e conta como seu, sem precisar entrar de novo.",
-    "ru": "Чёрный рынок: купленный скин или священный камень сразу исчезает из списка (распродан до смены товаров) и считается вашим без повторного входа.",
-    "zh-Hant": "黑市：買下的外觀或神石會立刻從清單消失（貨品更新前為售完），並直接算作已擁有，不必重新登入。",
-    "zh-Hans": "黑市：买下的外观或神石会立刻从列表消失（货品更新前为售完），并直接算作已拥有，不必重新登录。"
+    "en": "Black Market: what you bought leaves the list at once and counts as owned; with meter 2.0.95 also what you bought before (the game's Sold Out). Grades in the game's colours (Common, Rare, Epic, Unique), and the window pops up once per stock.",
+    "ko": "암시장: 구입한 상품은 바로 목록에서 빠지고 보유로 표시됩니다. 미터 2.0.95부터는 이전에 산 상품(게임의 품절 표시)도 반영됩니다. 등급은 게임 색상(일반·희귀·영웅·유일)으로 표시되며, 창은 판매 목록마다 한 번만 뜹니다.",
+    "ja": "ブラックマーケット：買った商品はすぐ一覧から消え、所持として数えます。メーター2.0.95からは以前に買った商品（ゲームの売り切れ表示）も反映。等級はゲームの色（コモン・レア・エピック・ユニーク）で、ウィンドウは品揃えごとに一度だけ開きます。",
+    "de": "Schwarzmarkt: Gekauftes verschwindet sofort und zählt als vorhanden, ab Meter 2.0.95 auch früher Gekauftes (das Ausverkauft des Spiels). Qualitäten in den Farben des Spiels (Gewöhnlich, Selten, Episch, Einzigartig), und das Fenster öffnet sich einmal pro Angebot.",
+    "fr": "Marché noir : vos achats quittent aussitôt la liste et comptent comme possédés ; avec le meter 2.0.95, aussi ceux d'avant (le « Épuisé » du jeu). Qualités aux couleurs du jeu (commun, rare, épique, unique), et la fenêtre s'ouvre une fois par stock.",
+    "es": "Mercado negro: lo que compras sale de la lista al instante y cuenta como tuyo; con el meter 2.0.95, también lo comprado antes (el «Agotado» del juego). Grados con los colores del juego (común, raro, épico, único), y la ventana se abre una vez por existencias.",
+    "pt": "Mercado negro: o que você compra sai da lista na hora e conta como seu; com o meter 2.0.95, também o que comprou antes (o «Esgotado» do jogo). Graus nas cores do jogo (comum, raro, épico, único), e a janela abre uma vez por estoque.",
+    "ru": "Чёрный рынок: купленное сразу исчезает из списка и считается вашим; с meter 2.0.95 — и купленное раньше («Распродано» в игре). Качество в цветах игры (обычное, редкое, эпическое, уникальное), окно открывается раз на ассортимент.",
+    "zh-Hant": "黑市：買下的商品會立刻從清單消失並算作已擁有；計量器 2.0.95 起，之前買的（遊戲的售完標示）也會反映。品質以遊戲顏色（一般、稀有、史詩、獨特）顯示，視窗每輪貨品只彈出一次。",
+    "zh-Hans": "黑市：买下的商品会立刻从列表消失并算作已拥有；计量器 2.0.95 起，之前买的（游戏的售完标示）也会反映。品质以游戏颜色（一般、稀有、史诗、独特）显示，窗口每轮货品只弹出一次。"
   },
   {
     "version": "0.6.2",

@@ -17,7 +17,9 @@ OUT = os.path.join(HERE, "..", "..", "plugins", "pet-souls", "shop.js")
 LANG_DIRS = {"en": "en-US", "ko": "ko-KR", "ja": "ja-JP", "de": "de-DE", "fr": "fr-FR",
              "es": "es-ES", "pt": "pt-BR", "ru": "ru-RU"}
 KINDS = {"EItemUseEffect::GetSkin": "skin", "EItemUseEffect::GetGodstone": "theostone"}
-GRADES = {"EItemGrade::Common": 0, "EItemGrade::Rare": 1, "EItemGrade::Legend": 2}
+# As the game shows them: white Common, green Rare, blue Epic (the tables'
+# "Legend"), yellow Unique.
+GRADES = {"EItemGrade::Common": 0, "EItemGrade::Rare": 1, "EItemGrade::Legend": 2, "EItemGrade::Unique": 3}
 
 
 def load(path):
@@ -119,8 +121,8 @@ def main():
             "// tables: don't edit by hand.\n"
             "// The pet each pet item gives (Item id -> pet id).\n"
             f"const SHOP_PETS = {{\n{pet_lines},\n}};\n"
-            "// Each skin and Theostone on sale (Item id -> [kind, grade: 0 common,\n"
-            "// 1 rare, 2 legend, index into SHOP_TEXT, the game's Skin or Godstone id]).\n"
+            "// Each skin and Theostone on sale (Item id -> [kind, grade: 0 Common,\n"
+            "// 1 Rare, 2 Epic, 3 Unique, index into SHOP_TEXT, the game's Skin or Godstone id]).\n"
             f"const SHOP_ITEMS = {{\n{item_lines},\n}};\n"
             "// Their names, in each language that has its own (English otherwise).\n"
             f"const SHOP_TEXT = [\n{text_lines},\n];\n"

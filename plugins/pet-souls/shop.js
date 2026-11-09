@@ -215,8 +215,8 @@ const SHOP_PETS = {
   534760342: 1343,
   574760001: 1001,
 };
-// Each skin and Theostone on sale (Item id -> [kind, grade: 0 common,
-// 1 rare, 2 legend, index into SHOP_TEXT, the game's Skin or Godstone id]).
+// Each skin and Theostone on sale (Item id -> [kind, grade: 0 Common,
+// 1 Rare, 2 Epic, 3 Unique, index into SHOP_TEXT, the game's Skin or Godstone id]).
 const SHOP_ITEMS = {
   533840001: ["theostone", 2, 0, 19940001],
   533840003: ["theostone", 2, 1, 19940003],
