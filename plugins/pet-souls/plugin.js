@@ -49,6 +49,7 @@ const els = {
   marketWhen: document.querySelector(".marketWhen"),
   marketClose: document.querySelector(".marketClose"),
   marketNote: document.querySelector(".marketNote"),
+  marketTabs: document.querySelector(".marketTabs"),
   farmAfter: document.querySelector(".farmAfter"),
   hideAfter: document.querySelector(".hideAfterSelect"),
   controls: document.querySelector(".controls"),
@@ -80,7 +81,7 @@ let language = "en";
 let openId = null; // the pet whose sources are shown
 // How the list is sorted, and whether maxed pets show; kept across restarts.
 // hiddenRegions: null until the user picks; until then the other side's maps hide.
-let prefs = { sort: "left", desc: false, hideMax: true, genus: "", level: "", pinned: [], hiddenRegions: null, scale: 1, filtersOpen: false, chestOnly: false, layout: "cards", farmPopup: false, marketPopup: true, hideAfter: 20, nearby: false, allNpcs: false, mapZoom: 2, popZoom: 2, popSize: 1, mapPopped: false };
+let prefs = { sort: "left", desc: false, hideMax: true, genus: "", level: "", pinned: [], hiddenRegions: null, scale: 1, filtersOpen: false, chestOnly: false, layout: "cards", farmPopup: false, marketPopup: true, marketTab: "pets", hideAfter: 20, nearby: false, allNpcs: false, mapZoom: 2, popZoom: 2, popSize: 1, mapPopped: false };
 // Text size: the whole page scaled, spacing and controls with the text. 100%
 // is BASE_ZOOM, a little larger than the stylesheet's own sizes.
 const SCALES = [0.9, 1, 1.1, 1.25, 1.5];
@@ -517,6 +518,44 @@ function marketPets(now = Date.now(), { bought = false } = {}) {
   }
   return [...seen.values()];
 }
+// The skins or Theostones on sale to the character now, each once.
+function marketItems(kind, now = Date.now()) {
+  const seen = new Map();
+  for (const tab of Object.values(market[marketChar] || {})) {
+    if (!(tab.refreshAt > now)) continue;
+    for (const g of tab.goods || []) {
+      const item = SHOP_ITEMS[g.itemId];
+      if (item && item[0] === kind && !seen.has(g.itemId)) seen.set(g.itemId, { ...g, grade: item[1], text: SHOP_TEXT[item[2]] });
+    }
+  }
+  return [...seen.values()];
+}
+const itemName = (g) => g.text?.[language] || g.text?.en || `#${g.itemId}`;
+const offOf = (g) => (g.originalPrice > 0 ? Math.round((1 - g.price / g.originalPrice) * 100) : 0);
+// The best deal first: the largest discount, then the higher grade, then the cheapest.
+const itemOrder = (a, b) => offOf(b) - offOf(a) || b.grade - a.grade || a.price - b.price;
+const GRADE_NAMES = ["Common", "Rare", "Legendary"];
+
+function itemRow(g, kind) {
+  const li = el("li", `marketItem grade${g.grade}`);
+  const badge = el("span", "itemBadge", kind === "skin" ? "S" : "T");
+  badge.title = GRADE_NAMES[g.grade] || "";
+  const top = el("div", "line");
+  const name = el("span", "nameText", itemName(g));
+  name.title = itemName(g);
+  const off = offOf(g);
+  const offTag = el("span", `off tier${Math.min(3, Number(g.tier) || 0)}`, off > 0 ? `−${off}%` : "");
+  const price = el("span", "price", Number(g.price).toLocaleString(language));
+  price.title = off > 0 ? `${Number(g.originalPrice).toLocaleString(language)} before the discount` : "";
+  top.append(name, offTag, price);
+  const sub = el("div", "line sub");
+  sub.append(el("span", `gradeName grade${g.grade}`, GRADE_NAMES[g.grade] || ""));
+  const main = el("div", "main");
+  main.append(top, sub);
+  li.append(badge, main);
+  return li;
+}
+
 const boughtCount = (now = Date.now()) => Object.values(marketBought[marketChar] || {}).filter((until) => until > now).length;
 const marketRefresh = (now = Date.now()) =>
   Math.min(...Object.values(market[marketChar] || {}).map((t) => t.refreshAt).filter((t) => t > now), Infinity);
@@ -583,8 +622,29 @@ function marketRow(g) {
 function renderMarket() {
   const now = Date.now();
   const pets = marketPets(now).sort(marketOrder);
-  els.toMarket.hidden = !pets.length;
+  const skins = marketItems("skin", now).sort(itemOrder);
+  const stones = marketItems("theostone", now).sort(itemOrder);
+  els.toMarket.hidden = !pets.length && !skins.length && !stones.length && !boughtCount(now);
   if (view !== "market") return;
+  const counts = { pets: pets.length, skin: skins.length, theostone: stones.length };
+  for (const b of els.marketTabs.querySelectorAll("[data-mt]")) {
+    b.setAttribute("aria-selected", String(b.dataset.mt === prefs.marketTab));
+    b.querySelector(".n").textContent = counts[b.dataset.mt] ? String(counts[b.dataset.mt]) : "";
+  }
+  if (prefs.marketTab !== "pets") {
+    const list = prefs.marketTab === "skin" ? skins : stones;
+    const refreshAt = marketRefresh(now);
+    els.marketWhen.textContent = Number.isFinite(refreshAt)
+      ? `${marketName ? `${marketName} · ` : ""}new stock in ${Math.max(1, Math.ceil((refreshAt - now) / 60_000))} min`
+      : "";
+    els.marketList.replaceChildren(...list.map((g) => itemRow(g, prefs.marketTab)));
+    els.marketNote.hidden = false;
+    els.marketNote.textContent = list.length
+      ? "The best deals first. Each tab of the shop sends its own items: open Special and Skins."
+      : "None seen in this stock yet: open the shop's Special and Skins tabs.";
+    fitMarket();
+    return;
+  }
   const refresh = marketRefresh(now);
   const mins = Math.max(1, Math.ceil((refresh - now) / 60_000));
   els.marketWhen.textContent = Number.isFinite(refresh) ? `${marketName ? `${marketName} · ` : ""}new stock in ${mins} min` : "";
@@ -626,7 +686,7 @@ a2.on("blackMarket", (m, meta) => queued(async () => {
   marketChar = k;
   marketName = meta?.character?.name || "";
   const live = meta?.at != null ? now - Number(meta.at) < 15_000 : now - startedAt > 5_000;
-  if (live && prefs.marketPopup !== false && goods.some((g) => SHOP_PETS[g.itemId])) {
+  if (live && prefs.marketPopup !== false && goods.some((g) => SHOP_PETS[g.itemId] || SHOP_ITEMS[g.itemId])) {
     showMarket();
     if (win && typeof win.show === "function") win.show().catch(() => {});
   } else render();
@@ -1666,6 +1726,13 @@ els.toFarm.addEventListener("click", () => {
 });
 els.farmHide.addEventListener("click", hideFarm);
 els.toMarket.addEventListener("click", showMarket);
+els.marketTabs.addEventListener("click", (e) => {
+  const b = e.target.closest("[data-mt]");
+  if (!b || b.dataset.mt === prefs.marketTab) return;
+  prefs.marketTab = b.dataset.mt;
+  savePrefs();
+  renderMarket();
+});
 els.marketClose.addEventListener("click", showFull);
 els.marketPopup.addEventListener("change", () => {
   prefs.marketPopup = els.marketPopup.checked;

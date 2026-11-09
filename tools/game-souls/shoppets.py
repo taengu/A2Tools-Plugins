@@ -1,8 +1,12 @@
-"""Which pet each pet item gives, for Pet Soul Tracker's Black Market tab:
-the Black Cloud Merchants sell pets as items (Vehicle_*_b, "Pet: ..."), and
-the meter's blackMarket event names the item. Writes plugins/pet-souls/shop.js.
+"""What the Black Cloud Merchants sell, for Pet Soul Tracker's Black Market:
+the pet each pet item gives (Vehicle_*_b, "Pet: ..."), and every skin and
+Theostone on their lists, with its name in each language and its grade. The
+meter's blackMarket event names the item. Writes plugins/pet-souls/shop.js.
 
-    python tools/game-souls/shoppets.py --tables <Output>/AION2/Content/Data/Table
+    python tools/game-souls/shoppets.py --tables <Output>/AION2/Content/Data/Table [--tw-l10n <OutputTW>/.../Table/L10N]
+
+zh-Hans is the Taiwan client's zh-TW through OpenCC (t2s), as the other
+plugins' Simplified Chinese.
 """
 import argparse
 import json
@@ -10,26 +14,106 @@ import os
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 OUT = os.path.join(HERE, "..", "..", "plugins", "pet-souls", "shop.js")
+LANG_DIRS = {"en": "en-US", "ko": "ko-KR", "ja": "ja-JP", "de": "de-DE", "fr": "fr-FR",
+             "es": "es-ES", "pt": "pt-BR", "ru": "ru-RU"}
+KINDS = {"EItemUseEffect::GetSkin": "skin", "EItemUseEffect::GetGodstone": "theostone"}
+GRADES = {"EItemGrade::Common": 0, "EItemGrade::Rare": 1, "EItemGrade::Legend": 2}
+
+
+def load(path):
+    with open(path, encoding="utf-8") as f:
+        return json.load(f)
 
 
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--tables", required=True)
+    ap.add_argument("--tw-l10n", default=None)
     args = ap.parse_args()
-    items = json.load(open(os.path.join(args.tables, "Item.json"), encoding="utf-8"))["Properties"]["Data"]
+    items = load(os.path.join(args.tables, "Item.json"))["Properties"]["Data"]
     pets = {}
     for item in items:
         if item.get("UseEffect") == "EItemUseEffect::GetVehicle" and item.get("UseEffectValues"):
             pets[item["ID"]["Value"]] = int(item["UseEffectValues"][0])
-    lines = ",\n".join(f"  {k}: {v}" for k, v in sorted(pets.items()))
+
+    langs = {}
+    for code, folder in LANG_DIRS.items():
+        langs[code] = load(os.path.join(args.tables, "L10N", folder, "L10NString.json"))["Entries"]
+    if args.tw_l10n:
+        tw = load(os.path.join(args.tw_l10n, "zh-TW", "L10NString.json"))["Entries"]
+        langs["zh-Hant"] = tw
+        import opencc
+        t2s = opencc.OpenCC("t2s")
+        langs["zh-Hans"] = {k: t2s.convert(v) for k, v in tw.items() if isinstance(v, str)}
+
+    by_name = {i["Name"]: i for i in items}
+    goods = load(os.path.join(args.tables, "RandomShopGoods.json"))["Properties"]["Data"]
+    on_sale = {}
+    for g in goods:
+        item = by_name.get(g["ItemName"])
+        if item and item.get("UseEffect") in KINDS:
+            on_sale[item["ID"]["Value"]] = item
+
+    texts, text_index, rows = [], {}, {}
+    for item_id, item in sorted(on_sale.items()):
+        key = "String_%s_body" % item["Desc"]["Key"]
+        en = langs["en"].get(key)
+        if not en:
+            continue
+        if key not in text_index:
+            t = {"en": en}
+            for code, entries in langs.items():
+                x = entries.get(key)
+                if code != "en" and x and x != key and x != en:
+                    t[code] = x
+            text_index[key] = len(texts)
+            texts.append(t)
+        rows[item_id] = [KINDS[item["UseEffect"]], GRADES.get(item.get("ItemGrade"), 0), text_index[key]]
+
+    # Every one is bound, and each language says so in a last bracket ("(Bound)",
+    # "(각인)", "(Gebunden)"): the list leaves that out.
+    import re
+    from collections import Counter
+    last = re.compile(r"\s*[(（][^()（）]*[)）]\s*$")
+    for code in {c for t in texts for c in t}:
+        named = [t for t in texts if code in t]
+        tails = Counter(m.group(0).strip() for t in named for m in [last.search(t[code])] if m)
+        if not tails:
+            continue
+        # The last brackets that each end 5% of the names at least, when
+        # together they end 90% (French has three: "(lié)", "(liée)" and
+        # "(liés)").
+        bound, covered = [], 0
+        for tail, n in tails.most_common():
+            if n * 20 < len(named):
+                break
+            bound.append(tail)
+            covered += n
+        if covered * 10 < 9 * len(named):
+            continue
+        for t in named:
+            for tail in bound:
+                if t[code].rstrip().endswith(tail):
+                    t[code] = t[code].rstrip()[: -len(tail)].rstrip()
+                    break
+
+    pet_lines = ",\n".join(f"  {k}: {v}" for k, v in sorted(pets.items()))
+    item_lines = ",\n".join(f"  {k}: {json.dumps(v)}" for k, v in sorted(rows.items()))
+    text_lines = ",\n".join("  " + json.dumps(t, ensure_ascii=False) for t in texts)
     with open(OUT, "w", encoding="utf-8", newline="\n") as f:
         f.write(
-            "// The pet each pet item gives (Item id -> pet id), for the Black Market\n"
-            "// tab: the Black Cloud Merchants sell pets as items. Generated by\n"
-            "// tools/game-souls/shoppets.py from the game's Item table: don't edit by hand.\n"
-            f"const SHOP_PETS = {{\n{lines},\n}};\n"
+            "// What the Black Cloud Merchants sell, for the Black Market view. Generated\n"
+            "// by tools/game-souls/shoppets.py from the game's Item and RandomShopGoods\n"
+            "// tables: don't edit by hand.\n"
+            "// The pet each pet item gives (Item id -> pet id).\n"
+            f"const SHOP_PETS = {{\n{pet_lines},\n}};\n"
+            "// Each skin and Theostone on sale (Item id -> [kind, grade: 0 common,\n"
+            "// 1 rare, 2 legend, index into SHOP_TEXT]).\n"
+            f"const SHOP_ITEMS = {{\n{item_lines},\n}};\n"
+            "// Their names, in each language that has its own (English otherwise).\n"
+            f"const SHOP_TEXT = [\n{text_lines},\n];\n"
         )
-    print(f"{len(pets)} pet items")
+    print(f"{len(pets)} pet items, {len(rows)} skins and Theostones, {len(texts)} names")
 
 
 if __name__ == "__main__":

@@ -1,5 +1,18 @@
 [
   {
+    "version": "0.6.2",
+    "en": "Black Market: Skins and Theostones tabs list everything else on sale, best deals first, with each item's grade, discount and price.",
+    "ko": "암시장: 외형과 신석 탭에서 판매 중인 나머지 상품을 할인율이 큰 순서로, 등급·할인·가격과 함께 보여 줍니다.",
+    "ja": "ブラックマーケット：外形と神石のタブで、ほかの販売中の商品をお得な順に、等級・割引・価格とともに表示します。",
+    "de": "Schwarzmarkt: Die Tabs Skins und Theosteine zeigen alles andere im Angebot, die besten Angebote zuerst, mit Qualität, Rabatt und Preis.",
+    "fr": "Marché noir : les onglets Apparences et Théopierres listent le reste des articles en vente, les meilleures offres d'abord, avec leur qualité, remise et prix.",
+    "es": "Mercado negro: las pestañas Apariencias y Teopiedras muestran el resto de artículos en venta, las mejores ofertas primero, con su grado, descuento y precio.",
+    "pt": "Mercado negro: as abas Visuais e Teopedras mostram os demais itens à venda, as melhores ofertas primeiro, com grau, desconto e preço.",
+    "ru": "Чёрный рынок: вкладки «Скины» и «Теокамни» показывают остальные товары, сначала самые выгодные, с качеством, скидкой и ценой.",
+    "zh-Hant": "黑市：外觀與神石分頁列出其餘販售中的商品，最划算的排在最前，並顯示等級、折扣與價格。",
+    "zh-Hans": "黑市：外观与神石页签列出其余出售中的商品，最划算的排在最前，并显示等级、折扣与价格。"
+  },
+  {
     "version": "0.6.1",
     "en": "Black Market: a pet you buy leaves the list until the stock changes, as each item sells only once per stock.",
     "ko": "암시장: 각 상품은 한 번만 팔리므로, 구입한 펫은 판매 목록이 바뀔 때까지 목록에서 사라집니다.",
@@ -50,18 +63,5 @@
     "ru": "Питомец, которого вы фармите, остаётся вверху списка даже с фильтром по типу или уровню.",
     "zh-Hant": "即使選了寵物種類或等級篩選，正在刷的寵物仍會留在列表最上方。",
     "zh-Hans": "即使选了宠物种类或等级筛选，正在刷的宠物仍会留在列表最上方。"
-  },
-  {
-    "version": "0.5.2",
-    "en": "Uses less memory: with Show the map off, the map pictures are let go of, and loaded again when it is turned back on.",
-    "ko": "메모리를 덜 사용합니다. 지도 표시를 끄면 지도 이미지를 메모리에서 해제하고, 다시 켜면 불러옵니다.",
-    "ja": "メモリ使用量が減りました。「地図を表示」をオフにすると地図画像を解放し、オンに戻すと再び読み込みます。",
-    "de": "Braucht weniger Speicher: Ist „Karte zeigen“ aus, werden die Kartenbilder freigegeben und beim Einschalten neu geladen.",
-    "fr": "Utilise moins de mémoire : avec « Afficher la carte » désactivé, les images de carte sont libérées, puis rechargées à la réactivation.",
-    "es": "Usa menos memoria: con «Mostrar el mapa» desactivado, las imágenes del mapa se liberan y se vuelven a cargar al activarlo.",
-    "pt": "Usa menos memória: com \"Mostrar o mapa\" desligado, as imagens do mapa são liberadas e carregadas de novo ao religar.",
-    "ru": "Меньше расход памяти: при выключенной «Показывать карту» изображения карт выгружаются и загружаются снова при включении.",
-    "zh-Hant": "佔用更少記憶體：關閉「顯示地圖」時會釋放地圖圖片，重新開啟時再載入。",
-    "zh-Hans": "占用更少内存：关闭「显示地图」时会释放地图图片，重新开启时再加载。"
   }
 ]

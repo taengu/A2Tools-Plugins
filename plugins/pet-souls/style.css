@@ -1256,3 +1256,16 @@ body.marketOnly .nearby {
 .marketNote[hidden] {
   display: none;
 }
+
+/* The Black Market's tabs, and its skins and Theostones. */
+.marketTabs { display: flex; gap: 2px; margin: 0 0 6px; padding: 2px; border-radius: 6px; background: rgba(255, 255, 255, 0.04); }
+.marketTabs button { flex: 1; border: 0; background: none; padding: 2px 8px; border-radius: 4px; color: rgba(255, 255, 255, 0.6); font: inherit; font-size: 12px; cursor: pointer; }
+.marketTabs button:hover { color: #fff; }
+.marketTabs button[aria-selected="true"] { background: rgba(255, 255, 255, 0.1); color: #fff; font-weight: 600; }
+.marketTabs .n { color: rgba(255, 255, 255, 0.45); font-weight: 400; font-variant-numeric: tabular-nums; }
+.marketList .itemBadge { display: grid; place-items: center; width: 30px; height: 30px; border-radius: 7px; font-weight: 700; font-size: 13px;
+  color: var(--gc); background: color-mix(in srgb, var(--gc) 16%, rgba(0, 0, 0, 0.25)); border: 1px solid color-mix(in srgb, var(--gc) 40%, transparent); }
+.marketList .grade0 { --gc: #c9d1dc; }
+.marketList .grade1 { --gc: #5cb8ff; }
+.marketList .grade2 { --gc: #f2b950; }
+.marketList .gradeName { color: var(--gc); }
