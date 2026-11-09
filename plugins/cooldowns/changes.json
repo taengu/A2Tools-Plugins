@@ -1,5 +1,18 @@
 [
   {
+    "version": "0.2.14",
+    "en": "Cooldowns no longer run short for Clerics and Chanters (a proc's time cut was taken for the whole cooldown), and a Cleric's Bolt is tracked from its release. Times learnt before are relearnt once.",
+    "ko": "클레릭과 치유성의 재사용 대기시간이 더 이상 짧게 표시되지 않으며(발동 효과로 줄어든 시간을 전체 대기시간으로 착각했습니다), 클레릭의 번개는 시전을 놓는 순간부터 추적됩니다. 이전에 학습한 시간은 한 번 다시 학습합니다.",
+    "ja": "クレリックとチャンターのクールダウンが短く表示されなくなりました（発動効果で減った時間を全体と取り違えていました）。クレリックのボルトは放った時点から追跡します。以前に学習した時間は一度だけ学び直します。",
+    "de": "Abklingzeiten laufen für Kleriker und Kantoren nicht mehr zu kurz (eine Verkürzung durch einen Proc galt als ganze Abklingzeit), und der Blitz des Klerikers wird ab dem Loslassen verfolgt. Bisher gelernte Zeiten werden einmal neu gelernt.",
+    "fr": "Les temps de recharge ne sont plus trop courts pour les clercs et les aèdes (la réduction d'un effet était prise pour la recharge entière), et l'Éclair du clerc est suivi dès son relâchement. Les temps appris avant sont réappris une fois.",
+    "es": "Los tiempos de reutilización ya no son cortos para clérigos y cantores (la reducción de un efecto se tomaba por la recarga completa), y el Rayo del clérigo se sigue desde que se suelta. Los tiempos aprendidos antes se reaprenden una vez.",
+    "pt": "As recargas não aparecem mais curtas para clérigos e cantores (a redução de um efeito era tomada pela recarga inteira), e o Raio do clérigo é acompanhado a partir do momento em que é solto. Os tempos aprendidos antes são reaprendidos uma vez.",
+    "ru": "Откаты у жрецов и чародеев больше не отображаются короче (сокращение от срабатывания принималось за весь откат), а Молния жреца отслеживается с момента отпускания. Выученные раньше времена переучиваются один раз.",
+    "zh-Hant": "治癒星與護法星的冷卻不再顯示得較短（觸發效果縮短的時間被當成整個冷卻），治癒星的雷擊從放開時開始追蹤。先前學到的時間會重新學習一次。",
+    "zh-Hans": "治愈星与护法星的冷却不再显示得较短（触发效果缩短的时间被当成整个冷却），治愈星的雷击从松开时开始追踪。之前学到的时间会重新学习一次。"
+  },
+  {
     "version": "0.2.13",
     "en": "Long cooldowns no longer show far too short when a few skills have big cooldown reductions of their own.",
     "ko": "일부 스킬에 자체 재사용 대기시간 감소가 크게 붙어 있어도 긴 재사용 대기시간이 지나치게 짧게 표시되지 않습니다.",
@@ -50,18 +63,5 @@
     "ru": "Растущие вверх группы Cooldowns сохраняют положение нижнего края при изменении числа и размера значков или переноса строк.",
     "zh-Hant": "向上排列的冷卻時間元件在圖示數量、大小或換行方式變更時，底部邊緣會保持原位。",
     "zh-Hans": "向上排列的冷却时间组件在图标数量、大小或换行方式变化时，底部边缘会保持原位。"
-  },
-  {
-    "version": "0.2.9",
-    "en": "Recuperation's charges come back at their own pace again. Settings now say that Hide outside combat applies only while the widgets are locked.",
-    "ko": "쾌유의 주문의 충전이 다시 원래 속도로 돌아옵니다. 설정에서 '전투 중이 아닐 때 숨기기'가 위젯이 고정된 동안에만 적용된다고 안내합니다.",
-    "ja": "快癒の呪文のチャージが本来の速さで戻るようになりました。設定に「戦闘外は隠す」はウィジェットを固定している間だけ働くと表示されます。",
-    "de": "Die Aufladungen von Zauber der Genesung kommen wieder in ihrem eigenen Tempo zurück. Die Einstellungen sagen jetzt, dass „Außerhalb des Kampfes ausblenden“ nur bei fixierten Widgets gilt.",
-    "fr": "Les charges de Sort de récupération reviennent de nouveau à leur propre rythme. Les réglages précisent que « Masquer hors combat » ne s'applique que lorsque les widgets sont verrouillés.",
-    "es": "Las cargas de Hechizo de recobro vuelven otra vez a su propio ritmo. Los ajustes indican que «Ocultar fuera de combate» solo se aplica con los widgets fijados.",
-    "pt": "As cargas de Feitiço da Convalescença voltam de novo no próprio ritmo. As configurações agora dizem que “Ocultar fora de combate” só vale com os widgets travados.",
-    "ru": "Заряды «Заклинания выздоровления» снова восполняются в своём темпе. В настройках теперь сказано, что «Скрывать вне боя» работает только с закреплёнными виджетами.",
-    "zh-Hant": "痊癒咒語的充能重新以原本的速度回復。設定中說明「非戰鬥時隱藏」只在小工具鎖定時生效。",
-    "zh-Hans": "痊愈咒语的充能重新以原本的速度回复。设置中说明“非战斗时隐藏”只在小工具锁定时生效。"
   }
 ]

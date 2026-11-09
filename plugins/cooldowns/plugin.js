@@ -117,10 +117,12 @@ let prefs = { ...DEFAULTS };
 // What each character shows: { cls, skills: { g: opts }, buffs: { a: opts },
 // learned: { g: ms } }, by "name@server".
 let charKey = "?";
-let mine = { cls: null, skills: {}, buffs: {}, learned: {}, learnedV: 2 };
-// Times learnt before 0.1.6 are dropped once: one early use could set a
-// time far too short, and an early use only ever lowers it again.
-const LEARNED_V = 2;
+let mine = { cls: null, skills: {}, buffs: {}, learned: {}, learnedV: 3 };
+// Times learnt before 0.1.6, and again before 0.2.14, are dropped once: one
+// early use could set a time far too short (0.1.6), and a proc's entry was
+// taken for a whole cooldown (#183, 0.2.14). Nothing but an early use lowers
+// a time again, and only a list raises it.
+const LEARNED_V = 3;
 const fresh = (m) => ({ ...(m.learnedV === LEARNED_V ? m : { ...m, learned: {}, learnedV: LEARNED_V }), buffs: byFamily(m.buffs) });
 
 const save = () => a2.storage.set("prefs", prefs).catch(() => {});
@@ -234,16 +236,20 @@ function reduction() {
     if (SKILLS.get(Number(g))?.noCdr) continue;
     const base = SKILLS.get(Number(g))?.cd || 0;
     const x = ms / base;
-    if (!Number.isFinite(x) || x <= 0 || x > 1.2) continue;
+    // Longer than its base is no reading of the reduction (one slow reading
+    // mustn't lift it).
+    if (!Number.isFinite(x) || x <= 0 || x > 1) continue;
     byBase.set(base, Math.max(byBase.get(base) || 0, x));
   }
   // The top of them, not the middle: what shortens one skill only (a stigma,
-  // an Arcana, a proc) never lengthens another, so the skills nearest their
-  // base show the reduction every skill gets. The median of a Cleric's took
-  // Earth Punishment's 30 s to 16 s where the game had 27 s (#183). The
-  // second highest once there are four, so one slow reading can't lift it.
-  const r = [...byBase.values()].map((x) => Math.min(x, 1)).sort((a, b) => a - b);
-  return r.length ? r[r.length >= 4 ? r.length - 2 : r.length - 1] : 1;
+  // an Arcana, a specialisation) never lengthens another, so the skill
+  // nearest its base shows the reduction every skill gets. The median of a
+  // Cleric's took Earth Punishment's 30 s to 16 s where the game had 27 s;
+  // the second highest kept a Chanter at 72% (Impactful Crush and Power of
+  // the Storm, each shortened on its own) where Spinning Strike showed 87%
+  // (#183).
+  const r = [...byBase.values()];
+  return r.length ? Math.max(...r) : 1;
 }
 const scaled = (g, ms) => (SKILLS.get(g)?.noCdr ? ms : Math.round(ms * reduction()));
 const cooldownOf = (g) => mine.learned[g] || scaled(g, SKILLS.get(g)?.cd || 0);
@@ -396,13 +402,25 @@ function onCooldowns(data, at) {
     // (12.9 s of 15, 82.5 s of 90: 678 of 678 in a 50-minute capture).
     if (!all) live.changed.add(g);
     if (!first || !ms || !used || live.unsure.has(g) || at - used > 10 * 60_000) continue;
+    // A one-skill entry seconds after the use isn't the use's: it is a proc
+    // taking time off (a Cleric's Bolt, read 16 s after its release with
+    // Earth's Retribution's 7 s gone, learnt 33.45 s of 41.99 s and scaled
+    // every other skill to 74%, #183). Only one that comes with the use says
+    // the whole cooldown (an Elementalist's, at once).
+    if (!all && at - used > 2000) continue;
     const total = at - used + ms;
     const base = SKILLS.get(g).cd;
     if (total < base * 0.15 || total > base * 1.2) continue;
+    // The longest of the last few, not their middle: the first entry after a
+    // use is the whole cooldown only for some classes (an Elementalist's). A
+    // Chanter's and a Cleric's come seconds later, when a proc takes time
+    // off, so they read the cooldown less what the proc took: Spinning
+    // Strike's 20.0, 26.0, 26.0, 21.85, 21.85 s, where the game has 26.0 s,
+    // kept 21.85 s, and the skills not yet learnt were scaled down to match
+    // (#183, AV4PSZ). A reading is never longer than the cooldown.
     const list5 = [...(live.samples.get(g) || []), total].slice(-5);
     live.samples.set(g, list5);
-    const median = [...list5].sort((x, y) => x - y)[Math.floor(list5.length / 2)];
-    const value = Math.round(median / 50) * 50;
+    const value = Math.round(Math.max(...list5) / 50) * 50;
     live.cd.set(g, { start: used, end: at + ms });
     if (mine.learned[g] !== value) {
       mine.learned[g] = value;
@@ -920,6 +938,8 @@ fillVoices();
 
 const atOf = (meta) => (meta && typeof meta.at === "number" ? meta.at : Date.now());
 a2.on("decoded:skill-used", (d, meta) => onSkill(d, atOf(meta)));
+// A held skill's release (a Cleric's Bolt: 1E 38, never an 01 38) is its use.
+a2.on("decoded:skill-released", (d, meta) => onSkill(d, atOf(meta)));
 a2.on("decoded:cooldowns", (d, meta) => onCooldowns(d, atOf(meta)));
 a2.on("decoded:buff-added", (d, meta) => onBuffAdded(d, atOf(meta)));
 a2.on("decoded:buff-changed", (d, meta) => onBuffChanged(d, atOf(meta)));

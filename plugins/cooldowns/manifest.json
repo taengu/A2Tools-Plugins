@@ -1,7 +1,7 @@
 {
   "id": "cooldowns",
   "name": "Cooldowns",
-  "version": "0.2.13",
+  "version": "0.2.14",
   "apiVersion": 2,
   "author": "A2 Tools",
   "description": "Your skill cooldowns and buffs as icons you place anywhere over the game, with a sound or your skill's name spoken when one is ready.",
@@ -11,6 +11,7 @@
     "widgets",
     "events:character",
     "decoder:skill-used",
+    "decoder:skill-released",
     "decoder:cooldowns",
     "decoder:buff-added",
     "decoder:buff-changed",
@@ -20,6 +21,12 @@
     {
       "name": "skill-used",
       "opcode": "01 38",
+      "immediate": true,
+      "fields": [ { "type": "skip:3" }, { "name": "skill", "type": "u32" } ]
+    },
+    {
+      "name": "skill-released",
+      "opcode": "1E 38",
       "immediate": true,
       "fields": [ { "type": "skip:3" }, { "name": "skill", "type": "u32" } ]
     },
