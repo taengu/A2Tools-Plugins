@@ -1,5 +1,18 @@
 [
   {
+    "version": "0.2.15",
+    "en": "Cooldowns use your character's own cooldown reduction (meter 2.0.96) and each skill's specialisations (Power of the Storm 90 s). Illusive Clone is 60 s. Times read under a passing reduction no longer shorten the others.",
+    "ko": "캐릭터의 재사용 대기시간 감소(미터 2.0.96)와 각 스킬의 특화를 반영합니다(질풍의 권능 90초). 환영 분신은 60초입니다. 일시적인 감소 중에 잰 시간이 다른 스킬을 짧게 만들지 않습니다.",
+    "ja": "キャラクター自身のクールタイム短縮（メーター2.0.96）と各スキルの特化を反映します（疾風の権能 90秒）。幻影分身は60秒です。一時的な短縮中に測った時間で他のスキルが短くならなくなりました。",
+    "de": "Abklingzeiten nutzen die Abklingzeitverkürzung deines Charakters (Meter 2.0.96) und die Spezialisierungen jeder Fertigkeit (Hoheit des Sturmwinds 90 s). Illusion: 60 s. Unter vorübergehender Verkürzung gemessene Zeiten verkürzen die anderen nicht mehr.",
+    "fr": "Les recharges utilisent la réduction de recharge de votre personnage (meter 2.0.96) et les spécialisations de chaque compétence (Pouvoir de la tempête 90 s). Clone illusoire : 60 s. Un temps mesuré sous une réduction passagère ne raccourcit plus les autres.",
+    "es": "Los tiempos usan la reducción de reutilización de tu personaje (medidor 2.0.96) y las especializaciones de cada habilidad (Poder de vendaval 90 s). Clon ilusorio: 60 s. Un tiempo medido bajo una reducción pasajera ya no acorta los demás.",
+    "pt": "Os tempos usam a redução de recarga do seu personagem (medidor 2.0.96) e as especializações de cada habilidade (Soberania do Vendaval 90 s). Clone Ilusório: 60 s. Um tempo medido sob uma redução passageira não encurta mais os outros.",
+    "ru": "Откаты учитывают сокращение перезарядки вашего персонажа (метр 2.0.96) и специализации каждого умения (Повелитель бурь 90 с). Иллюзорный двойник: 60 с. Время, замеренное под временным сокращением, больше не укорачивает остальные.",
+    "zh-Hant": "冷卻會套用你角色的冷卻縮減（計量器 2.0.96）與各技能的特化（疾風權能 90 秒）。幻影分身為 60 秒。在暫時縮減下測得的時間不再縮短其他技能。",
+    "zh-Hans": "冷却会应用你角色的冷却缩减（计量器 2.0.96）与各技能的特化（疾风权能 90 秒）。幻影分身为 60 秒。在暂时缩减下测得的时间不再缩短其他技能。"
+  },
+  {
     "version": "0.2.14",
     "en": "Cooldowns no longer run short for Clerics and Chanters (a proc's time cut was taken for the whole cooldown), and a Cleric's Bolt is tracked from its release. Times learnt before are relearnt once.",
     "ko": "치유성과 호법성의 재사용 대기시간이 더 이상 짧게 표시되지 않으며(발동 효과로 줄어든 시간을 전체 대기시간으로 착각했습니다), 치유성의 번개는 시전을 놓는 순간부터 추적됩니다. 이전에 학습한 시간은 한 번 다시 학습합니다.",
@@ -50,18 +63,5 @@
     "ru": "В Linux Wayland растущая вверх группа больше не перемещается в левый верхний угол экрана при следующем запуске.",
     "zh-Hant": "在 Linux Wayland 上，向上排列的元件不會在下次啟動時跑到螢幕左上角。",
     "zh-Hans": "在 Linux Wayland 上，向上排列的组件不会在下次启动时跑到屏幕左上角。"
-  },
-  {
-    "version": "0.2.10",
-    "en": "Upward Cooldowns stacks keep their bottom edge in place when their icon count, size or wrapping changes.",
-    "ko": "위로 쌓이는 재사용 대기시간 위젯은 아이콘 수, 크기 또는 줄바꿈이 바뀌어도 아래쪽 가장자리를 같은 위치에 유지합니다.",
-    "ja": "上方向に並ぶクールダウンウィジェットは、アイコン数・サイズ・折り返しが変わっても下端の位置を維持します。",
-    "de": "Nach oben wachsende Cooldowns-Stapel behalten ihre Unterkante bei, wenn sich Symbolanzahl, Größe oder Umbruch ändern.",
-    "fr": "Les piles de Cooldowns orientées vers le haut gardent leur bord inférieur en place lorsque le nombre, la taille ou le retour à la ligne des icônes change.",
-    "es": "Las pilas ascendentes de Cooldowns mantienen fijo su borde inferior al cambiar la cantidad, el tamaño o la distribución en filas de los iconos.",
-    "pt": "As pilhas de Cooldowns voltadas para cima mantêm a borda inferior fixa quando a quantidade, o tamanho ou a quebra de linha dos ícones muda.",
-    "ru": "Растущие вверх группы Cooldowns сохраняют положение нижнего края при изменении числа и размера значков или переноса строк.",
-    "zh-Hant": "向上排列的冷卻時間元件在圖示數量、大小或換行方式變更時，底部邊緣會保持原位。",
-    "zh-Hans": "向上排列的冷却时间组件在图标数量、大小或换行方式变化时，底部边缘会保持原位。"
   }
 ]
