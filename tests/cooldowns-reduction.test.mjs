@@ -8,9 +8,9 @@ import vm from "node:vm";
 const source = readFileSync(new URL("../plugins/cooldowns/plugin.js", import.meta.url), "utf8");
 const part = source.slice(source.indexOf("function reduction()"), source.indexOf("\n// A use, announced"));
 
-function estimate(learned, skills, cdr) {
-  const SKILLS = new Map(Object.entries(skills).map(([g, cd]) => [Number(g), { cd }]));
-  const context = vm.createContext({ SKILLS, mine: { learned, cdr } });
+function estimate(learned, skills, cdr, spec, vc = {}) {
+  const SKILLS = new Map(Object.entries(skills).map(([g, cd]) => [Number(g), { cd, vc: vc[g] }]));
+  const context = vm.createContext({ SKILLS, mine: { learned, cdr, spec } });
   vm.runInContext(`${part}\nglobalThis.cooldownOf = cooldownOf;`, context);
   return (g) => context.cooldownOf(g);
 }
@@ -52,4 +52,11 @@ test("a time learnt under a passing reduction gives way to the sheet's", () => {
 test("a skill's own reduction, within a tenth, is kept", () => {
   const cooldownOf = estimate({ 9: 26000 }, { 9: 30000 }, 4.3);
   assert.equal(cooldownOf(9), 26000);
+});
+
+// Power of the Storm with its -30 s specialisation (18250010, 90 s), at 4.3%.
+test("the variant used sets the base", () => {
+  const vc = { 18250000: { 18250010: 90000 } };
+  assert.equal(estimate({}, { 18250000: 120000 }, 4.3, { 18250000: 18250010 }, vc)(18250000), 86130);
+  assert.equal(estimate({}, { 18250000: 120000 }, 4.3, {}, vc)(18250000), 114840);
 });

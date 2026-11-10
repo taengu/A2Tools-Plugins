@@ -115,9 +115,11 @@ const DEFAULTS = {
 };
 let prefs = { ...DEFAULTS };
 // What each character shows: { cls, skills: { g: opts }, buffs: { a: opts },
-// learned: { g: ms }, cdr }, by "name@server". cdr: the stat page's cooldown
-// reduction in percent, as the meter last read it (2.0.96 on), kept so a
-// meter started mid-session has it too.
+// learned: { g: ms }, cdr, spec: { g: skill id } }, by "name@server". cdr:
+// the stat page's cooldown reduction in percent, as the meter last read it
+// (2.0.96 on), kept so a meter started mid-session has it too. spec: the
+// variant each skill was last used as, its specialisations, which can set
+// its own cooldown (skills.js vc).
 let charKey = "?";
 let mine = { cls: null, skills: {}, buffs: {}, learned: {}, learnedV: 3 };
 // Times learnt before 0.1.6, and again before 0.2.14, are dropped once: one
@@ -254,7 +256,7 @@ function reduction() {
   for (const [g, ms] of Object.entries(mine.learned)) {
     // Not the skills cooldown reduction doesn't touch (CoolTimeStat false).
     if (SKILLS.get(Number(g))?.noCdr) continue;
-    const base = SKILLS.get(Number(g))?.cd || 0;
+    const base = baseOf(Number(g));
     const x = ms / base;
     // Longer than its base is no reading of the reduction (one slow reading
     // mustn't lift it).
@@ -271,16 +273,23 @@ function reduction() {
   const r = [...byBase.values()];
   return r.length ? Math.max(...r) : 1;
 }
+// A skill's base cooldown as its specialisations set it: the variant it was
+// last used as (Power of the Storm 120 s, 90 s with its -30 s), else the
+// group's.
+const baseOf = (g) => {
+  const s = SKILLS.get(g);
+  return (s?.vc && s.vc[mine.spec?.[g]]) || s?.cd || 0;
+};
 const hasCdr = () => typeof mine.cdr === "number" && mine.cdr >= 0 && mine.cdr < 100;
 const scaled = (g, ms) => (SKILLS.get(g)?.noCdr ? ms : Math.round(ms * reduction()));
 // A time learnt well under what the sheet's reduction gives was read while
 // something shortened it for a while (Bolt learnt 35 s, the sheet's 6.7%
 // giving 41.99 s, #183): the sheet's time instead. A skill's own reduction
 // (a specialisation's) is kept when it is within a tenth of it.
-const usable = (g, learnt) => !learnt || !hasCdr() || learnt >= scaled(g, SKILLS.get(g)?.cd || 0) * 0.9;
+const usable = (g, learnt) => !learnt || !hasCdr() || learnt >= scaled(g, baseOf(g)) * 0.9;
 const cooldownOf = (g) => {
   const learnt = mine.learned[g];
-  return learnt && usable(g, learnt) ? learnt : scaled(g, SKILLS.get(g)?.cd || 0);
+  return learnt && usable(g, learnt) ? learnt : scaled(g, baseOf(g));
 };
 
 // A use, announced (01 38) or seen in the cooldown list: the class, the
@@ -318,6 +327,20 @@ function onSkill(data, at) {
   const s = SKILLS.get(g);
   if (!s.cd) return;
   took(g, at);
+  // Its specialisations, which the cast names: a change of them is a new
+  // cooldown, so what was learnt of the old one goes.
+  const id = Number(data.skill);
+  if ((mine.spec ||= {})[g] !== id) {
+    const before = baseOf(g);
+    mine.spec[g] = id;
+    if (baseOf(g) !== before) {
+      delete mine.learned[g];
+      live.samples.delete(g);
+      live.early.delete(g);
+      renderSkills();
+    }
+    saveMine();
+  }
   // A variant with charges (Healing Light 17100130: 3, one back every 6 s):
   // each use takes one, and they come back one after another.
   const ch = s.ch && s.ch[data.skill];
@@ -352,7 +375,7 @@ function onSkill(data, at) {
   const due = live.cd.get(g)?.end;
   if (before && due && at < due - 1000 && !live.changed.has(g) && !live.unsure.has(g)) {
     const gap = Math.round((at - before) / 50) * 50;
-    if (gap >= s.cd * 0.5 && gap < cooldownOf(g)) {
+    if (gap >= baseOf(g) * 0.5 && gap < cooldownOf(g)) {
       const was = live.early.get(g);
       live.early.set(g, gap);
       if (was && Math.abs(gap - was) <= Math.max(300, gap * 0.05)) {
@@ -401,7 +424,7 @@ function onCooldowns(data, at) {
       // More left than it had: used again without a word. Not the first
       // entry since a use, within the base time of it: what it had was
       // only the estimate (an Ancient Spirit's 82.5 s against 77.4 s).
-      const fits = first && used && at + ms <= used + SKILLS.get(g).cd * 1.2;
+      const fits = first && used && at + ms <= used + baseOf(g) * 1.2;
       const left = was && was.end > at ? was.end - at : 0;
       if (ms > left + 1000 && !fits) {
         live.unsure.add(g);
@@ -438,7 +461,7 @@ function onCooldowns(data, at) {
     // the whole cooldown (an Elementalist's, at once).
     if (!all && at - used > 2000) continue;
     const total = at - used + ms;
-    const base = SKILLS.get(g).cd;
+    const base = baseOf(g);
     if (total < base * 0.15 || total > base * 1.2) continue;
     // The longest of the last few, not their middle: the first entry after a
     // use is the whole cooldown only for some classes (an Elementalist's). A

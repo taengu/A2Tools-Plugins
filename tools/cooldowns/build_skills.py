@@ -10,7 +10,9 @@ Reads (client tables under AION2/Content/Data/Table):
                       Per group too: the variants with charges (AutoLoadType Time,
                       AutoLoadCount 2-3: NeedCoolTime 0, each charge back after its
                       AutoLoadTimeList time), CoolTimeStat false (cooldown reduction
-                      doesn't apply) and held skills (a ChargeId in SkillCharge.json)
+                      doesn't apply) and held skills (a ChargeId in SkillCharge.json),
+                      and each variant's own cooldown where its specialisations change
+                      it (Power of the Storm 120 s, its variants 90 s)
   SkillAbnormal.json  buffs: AbnormalType Buff with bAbnormalIconView
 Names come from the meter's own translations (src/data/i18n/skills and
 abnormals, by id); buffs have no Chinese, so they fall back to English.
@@ -160,6 +162,11 @@ def main():
         s = {"g": group, "cd": cd, "icon": icon, "n": n}
         if group in charges:
             s["ch"] = charges[group]
+        # A specialisation's cooldown, by the variant a cast names (01 38
+        # carries it): Power of the Storm's -30 s.
+        vc = {str(r["ID"]["Value"]): int(r["NeedCoolTime"]) for r in timed if int(r["NeedCoolTime"]) != cd}
+        if vc:
+            s["vc"] = vc
         if base.get("CoolTimeStat") is False:
             s["noCdr"] = True
         if group in held:
@@ -232,7 +239,8 @@ def main():
           "// classes[prefix].skills: g = cooldown group (the id the server's cooldown list uses),\n"
           "// cd = the table's base cooldown in ms, icon = a key of COOLDOWN_ICONS (icons.js), n = names;\n"
           "// where the tables have them: ch = {skill id: [charges, ms per charge]} (the variants with\n"
-          "// charges), noCdr = cooldown reduction doesn't apply, held = a held (charged) skill.\n"
+          "// charges), vc = {skill id: ms} (a variant whose specialisations change the cooldown),\n"
+          "// noCdr = cooldown reduction doesn't apply, held = a held (charged) skill.\n"
           "// variants: skill ids whose group isn't id - id % 10000. buffs[abnormal]: t indexes buffNames.\n"
           "window.COOLDOWN_DATA = " + json.dumps(data, ensure_ascii=False, separators=(",", ":")) + ";\n")
     (OUT / "skills.js").write_text(js, encoding="utf-8", newline="\n")
