@@ -1945,23 +1945,37 @@ function feedBusy(now) {
 // An error in the tick, kept so a report can say what it was: the last one
 // shows at the foot of Settings (and in the console).
 let lastError = null;
+function noteError(where, e) {
+  const message = `${where}: ${e?.message || e}`;
+  if (lastError?.message === message) return;
+  console.error("Event Timers:", where, e);
+  lastError = { message, at: Date.now() };
+  a2.storage.set("lastError", lastError).catch(() => {});
+  const note = document.querySelector(".lastError");
+  if (note) {
+    note.textContent = `Last error (for bug reports): ${message} (${new Date(lastError.at).toLocaleString()})`;
+    note.hidden = false;
+  }
+}
 function tickStep(where, run, after) {
   try {
     run();
   } catch (e) {
     after?.();
-    const message = `${where}: ${e?.message || e}`;
-    if (lastError?.message !== message) {
-      console.error("Event Timers:", where, e);
-      lastError = { message, at: Date.now() };
-      a2.storage.set("lastError", lastError).catch(() => {});
-      const note = document.querySelector(".lastError");
-      if (note) {
-        note.textContent = `Last error (for bug reports): ${message} (${new Date(lastError.at).toLocaleString()})`;
-        note.hidden = false;
-      }
-    }
+    noteError(where, e);
   }
+}
+
+// A call to the meter that never answers: given up after this long. One that
+// never did held the icons' update for good, which froze them with no error
+// (#185); now it fails, is noted, and the next second tries again.
+const CALL_LIMIT_MS = 5000;
+function answered(promise, what) {
+  let timer = 0;
+  const limit = new Promise((_, fail) => {
+    timer = setTimeout(() => fail(new Error(`${what}: no answer from the meter in ${CALL_LIMIT_MS / 1000} s`)), CALL_LIMIT_MS);
+  });
+  return Promise.race([promise, limit]).finally(() => clearTimeout(timer));
 }
 
 let feedReading = false;
@@ -2224,8 +2238,14 @@ a2.on("compact", (on) => document.body.classList.toggle("compact", !!on));
   // Each part on its own: one that threw (a feature this WebView lacks, a
   // state after a zone change) stopped the tick there every second, and
   // the countdowns and icons froze until the plugins were reloaded (#185).
+  let lastTick = Date.now();
   setInterval(() => {
     const now = Date.now();
+    // The once-a-second tick that didn't come for a while: the page was paused
+    // (its window hidden, the web engine slowing it). Noted, so a report
+    // tells a pause from an error (#185).
+    if (now - lastTick > 15_000) noteError("tick", `paused ${Math.round((now - lastTick) / 1000)} s (window hidden: ${document.hidden})`);
+    lastTick = now;
     tickStep("alerts", () => checkAlerts(now), () => { lastCheck = now; });
     tickStep("list", () => render());
     if (typeof updatePins === "function") tickStep("icons", () => updatePins(now));

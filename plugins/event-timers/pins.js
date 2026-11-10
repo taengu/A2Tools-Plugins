@@ -527,11 +527,18 @@ a2.on("bossHp", (m) => {
 // The open widgets, by widget name: the timer each shows and its height.
 const openPins = new Map();
 let pinsBusy = false;
+// When the update now running began: one held longer than this is taken as
+// stuck (a call that never answered) and let go.
+let pinsBusySince = 0;
+const BUSY_LIMIT_MS = 15_000;
 
 // Every second: open the icons that should show, close the rest, and send
 // each its countdown.
 async function updatePins(now) {
-  if (pinsBusy) return;
+  if (pinsBusy) {
+    if (now - pinsBusySince < BUSY_LIMIT_MS) return;
+    noteError("icons", `an update held ${Math.round((now - pinsBusySince) / 1000)} s, let go`);
+  }
   // A world boss just started to matter: read the feed now, not at its next
   // scheduled read.
   const live = pinnedBossLive(now);
@@ -541,6 +548,7 @@ async function updatePins(now) {
   if (live && typeof readFeed === "function" && (!feed || !feed.at || now - feed.at >= every)) readFeed();
   if (!canPin()) return;
   pinsBusy = true;
+  pinsBusySince = now;
   try {
     const p = pinUi();
     const words = ui();
@@ -595,14 +603,17 @@ async function updatePins(now) {
     for (const name of [...openPins.keys()]) {
       if (!wanted.has(name)) {
         openPins.delete(name);
-        await a2.widgets.close(name).catch(() => {});
+        await answered(a2.widgets.close(name), "close an icon").catch((e) => noteError("icons", e));
       }
     }
     for (const [name, { id, data }] of wanted) {
       // Opened, or opened again at its new size (its name turned on or off).
       const size = pinSize(data.showName);
       if (openPins.get(name)?.height !== size.height) {
-        const ok = await a2.widgets.open(name, size).then(() => true, () => false);
+        const ok = await answered(a2.widgets.open(name, size), "open an icon").then(() => true, (e) => {
+          if (String(e?.message || "").includes("no answer")) noteError("icons", e);
+          return false;
+        });
         if (!ok) continue;
         openPins.set(name, { id, height: size.height });
       }

@@ -258,6 +258,7 @@ document.addEventListener("visibilitychange", () => updatePins(Date.now()));
 let frameOpen = false;
 let frameSize = null;
 let frameBusy = false;
+let frameBusySince = 0;
 
 // Show `wanted` (anchorPlan's order) in the frame, or close it when anchor
 // mode is off. True when anchor mode showed them, so pins.js opens no icon
@@ -267,12 +268,16 @@ async function anchorShow(wanted) {
     if (frameOpen) {
       frameOpen = false;
       frameSize = null;
-      await a2.widgets.close(ANCHOR).catch(() => {});
+      await answered(a2.widgets.close(ANCHOR), "close the anchor").catch((e) => noteError("anchor", e));
     }
     return false;
   }
-  if (frameBusy) return true;
+  if (frameBusy) {
+    if (Date.now() - frameBusySince < BUSY_LIMIT_MS) return true;
+    noteError("anchor", `an update held ${Math.round((Date.now() - frameBusySince) / 1000)} s, let go`);
+  }
   frameBusy = true;
+  frameBusySince = Date.now();
   try {
     const cells = [...wanted.values()].map((e) => e.data);
     // Nothing to show and not being placed: no frame at all, so nothing on
@@ -283,7 +288,7 @@ async function anchorShow(wanted) {
     if (!cells.length && !placing()) {
       if (frameOpen) {
         frameOpen = false;
-        await a2.widgets.close(ANCHOR).catch(() => {});
+        await answered(a2.widgets.close(ANCHOR), "close the anchor").catch((e) => noteError("anchor", e));
       }
       return true;
     }
@@ -298,15 +303,18 @@ async function anchorShow(wanted) {
       // frame opens at its last top left, so its new grip is put where the
       // old one was.
       const wasOpen = frameOpen;
-      const before = wasOpen && frameSize && canMove() ? await a2.widgets.where(ANCHOR).catch(() => null) : null;
-      frameOpen = await a2.widgets.open(ANCHOR, size).then(() => true, () => false);
+      const before = wasOpen && frameSize && canMove() ? await answered(a2.widgets.where(ANCHOR), "ask where the anchor is").catch(() => null) : null;
+      frameOpen = await answered(a2.widgets.open(ANCHOR, size), "open the anchor").then(() => true, (e) => {
+        if (String(e?.message || "").includes("no answer")) noteError("anchor", e);
+        return false;
+      });
       if (!frameOpen) return true;
-      const at = before || (!wasOpen && frameSize && !same && canMove() ? await a2.widgets.where(ANCHOR).catch(() => null) : null);
+      const at = before || (!wasOpen && frameSize && !same && canMove() ? await answered(a2.widgets.where(ANCHOR), "ask where the anchor is").catch(() => null) : null);
       if (at && frameSize.grip) {
         const scale = (typeof devicePixelRatio === "number" && devicePixelRatio > 0) ? devicePixelRatio : 1;
         const x = Math.round(at.x + (frameSize.grip.x - layout.grip.x) * scale);
         const y = Math.round(at.y + (frameSize.grip.y - layout.grip.y) * scale);
-        if (x !== at.x || y !== at.y) await a2.widgets.place(ANCHOR, { x, y }).catch(() => {});
+        if (x !== at.x || y !== at.y) await answered(a2.widgets.place(ANCHOR, { x, y }), "move the anchor").catch(() => {});
       }
       frameSize = { ...size, grip: layout.grip };
     }

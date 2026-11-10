@@ -1,5 +1,18 @@
 [
   {
+    "version": "0.6.33",
+    "en": "The icons and the anchor no longer freeze when a request to the meter goes unanswered: it is given up after 5 s and tried again. A pause or a stuck update now shows in the error line at the bottom of Settings, for bug reports.",
+    "ko": "미터에 보낸 요청에 응답이 없어도 아이콘과 앵커가 더 이상 멈추지 않습니다. 5초 후 포기하고 다시 시도합니다. 일시 정지나 멈춘 업데이트는 이제 설정 하단의 오류 줄에 표시되어 버그 보고에 쓸 수 있습니다.",
+    "ja": "メーターへの要求に応答がなくても、アイコンとアンカーが止まらなくなりました。5秒で諦めて再試行します。一時停止や止まった更新は、設定下部のエラー行に表示されます（バグ報告用）。",
+    "de": "Die Symbole und der Anker frieren nicht mehr ein, wenn eine Anfrage an den Meter unbeantwortet bleibt: Nach 5 s wird aufgegeben und neu versucht. Eine Pause oder ein hängendes Update steht jetzt in der Fehlerzeile unten in den Einstellungen, für Fehlerberichte.",
+    "fr": "Les icônes et l'ancre ne se figent plus quand une demande au meter reste sans réponse : elle est abandonnée après 5 s et retentée. Une pause ou une mise à jour bloquée s'affiche désormais dans la ligne d'erreur en bas des Réglages, pour les rapports de bug.",
+    "es": "Los iconos y el ancla ya no se congelan cuando una petición al meter queda sin respuesta: se abandona tras 5 s y se reintenta. Una pausa o una actualización atascada aparece ahora en la línea de error al pie de Ajustes, para los informes de errores.",
+    "pt": "Os ícones e a âncora não congelam mais quando um pedido ao meter fica sem resposta: ele é abandonado após 5 s e tentado de novo. Uma pausa ou atualização travada agora aparece na linha de erro no fim das Configurações, para relatórios de bug.",
+    "ru": "Значки и якорь больше не замирают, если запрос к meter остаётся без ответа: через 5 с он отменяется и повторяется. Пауза или зависшее обновление теперь показывается в строке ошибки внизу настроек — для отчётов об ошибках.",
+    "zh-Hant": "對計量器的請求沒有回應時，圖示與錨點不再凍結：5 秒後放棄並重試。暫停或卡住的更新現在會顯示在設定底部的錯誤行，方便回報問題。",
+    "zh-Hans": "对计量器的请求没有回应时，图标与锚点不再冻结：5 秒后放弃并重试。暂停或卡住的更新现在会显示在设置底部的错误行，方便报告问题。"
+  },
+  {
     "version": "0.6.32",
     "en": "Schedules from the latest game data: the Artifact Siege and the Abyss day bosses are on Thursday and Saturday only (no longer Monday), and Argo, the Spirit King now comes at 10:30 and 22:30 every day.",
     "ko": "최신 게임 데이터의 일정: 아티팩트 공성전과 어비스 요일 보스는 이제 목요일과 토요일에만 열리며(월요일 제외), 정령왕 아르고는 매일 10:30과 22:30에 등장합니다.",
@@ -50,18 +63,5 @@
     "ru": "Настройки: сдвиг таймеров мировых боссов от -10 до +10 секунд, чтобы совпадать со временем в игре.",
     "zh-Hant": "設定：世界首領計時器偏移（-10 至 +10 秒），可對齊遊戲時間。",
     "zh-Hans": "设置：世界首领计时器偏移（-10 至 +10 秒），可对齐游戏时间。"
-  },
-  {
-    "version": "0.6.28",
-    "en": "A world boss's icon keeps its HP through the fight: the site's timers, read every 30 seconds, no longer take it away until the next update.",
-    "ko": "필드 보스 아이콘이 전투 내내 HP를 유지합니다: 30초마다 읽는 사이트 타이머가 다음 갱신 전까지 HP를 지우지 않습니다.",
-    "ja": "ワールドボスのアイコンが戦闘中ずっとHPを表示します：30秒ごとに読むサイトのタイマーが、次の更新までHPを消すことはなくなりました。",
-    "de": "Das Symbol eines Weltbosses behält seine LP während des ganzen Kampfes: Die alle 30 Sekunden gelesenen Timer der Website nehmen sie bis zum nächsten Update nicht mehr weg.",
-    "fr": "L'icône d'un boss de monde garde ses PV pendant tout le combat : les minuteurs du site, lus toutes les 30 secondes, ne les retirent plus jusqu'à la mise à jour suivante.",
-    "es": "El icono de un jefe de mundo mantiene su PV durante todo el combate: los temporizadores del sitio, leídos cada 30 segundos, ya no lo quitan hasta la siguiente actualización.",
-    "pt": "O ícone de um chefe de mundo mantém o PV durante toda a luta: os temporizadores do site, lidos a cada 30 segundos, não o apagam mais até a próxima atualização.",
-    "ru": "Значок мирового босса показывает HP весь бой: таймеры сайта, читаемые каждые 30 секунд, больше не убирают их до следующего обновления.",
-    "zh-Hant": "世界首領圖示在整場戰鬥中都保留血量：每 30 秒讀取的網站計時不再在下次更新前把它清掉。",
-    "zh-Hans": "世界首领图标在整场战斗中都保留血量：每 30 秒读取的网站计时不再在下次更新前把它清掉。"
   }
 ]
