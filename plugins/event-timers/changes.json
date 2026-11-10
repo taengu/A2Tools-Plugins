@@ -1,5 +1,18 @@
 [
   {
+    "version": "0.6.34",
+    "en": "Argo, the Spirit King is back in the Abyss bosses, with his icon and alerts: since 0.6.32 he had dropped off the list.",
+    "ko": "정령왕 아그로가 아이콘과 알림과 함께 어비스 보스 목록에 다시 표시됩니다. 0.6.32부터 목록에서 빠져 있었습니다.",
+    "ja": "精霊王アグロがアイコンと通知付きでアビスのボスに戻りました。0.6.32からリストから抜けていました。",
+    "de": "Geisterfürst Agro ist wieder bei den Abyss-Bossen, mit Symbol und Alarmen: seit 0.6.32 fehlte er in der Liste.",
+    "fr": "Agro le roi des esprits est de retour parmi les boss des Abysses, avec son icône et ses alertes : il avait disparu de la liste depuis la 0.6.32.",
+    "es": "Agro, el Rey Espíritu vuelve a los jefes del Abismo, con su icono y sus alertas: desde la 0.6.32 había desaparecido de la lista.",
+    "pt": "Argo, Rei dos Espíritos voltou aos chefes do Abismo, com seu ícone e alertas: desde a 0.6.32 ele tinha sumido da lista.",
+    "ru": "Король духов Агро снова среди боссов Бездны, со значком и оповещениями: с версии 0.6.32 он пропал из списка.",
+    "zh-Hant": "精靈王阿格羅回到深淵首領列表，並恢復圖示與提醒：自 0.6.32 起他從列表中消失了。",
+    "zh-Hans": "精灵王阿格罗回到深渊首领列表，并恢复图标与提醒：自 0.6.32 起他从列表中消失了。"
+  },
+  {
     "version": "0.6.33",
     "en": "The icons and the anchor no longer freeze when a request to the meter goes unanswered: it is given up after 5 s and tried again. A pause or a stuck update now shows in the error line at the bottom of Settings, for bug reports.",
     "ko": "미터에 보낸 요청에 응답이 없어도 아이콘과 앵커가 더 이상 멈추지 않습니다. 5초 후 포기하고 다시 시도합니다. 일시 정지나 멈춘 업데이트는 이제 설정 하단의 오류 줄에 표시되어 버그 보고에 쓸 수 있습니다.",
@@ -50,18 +63,5 @@
     "ru": "Отсчёты и значки больше не замирают до перезагрузки плагинов, если в одной из частей возникла ошибка; ошибка показывается внизу настроек для отчётов об ошибках.",
     "zh-Hant": "某部分發生錯誤時，倒數和圖示不再凍結到重新載入外掛為止；錯誤會顯示在設定最下方，方便回報問題。",
     "zh-Hans": "某部分发生错误时，倒计时和图标不再冻结到重新加载插件为止；错误会显示在设置最下方，方便反馈问题。"
-  },
-  {
-    "version": "0.6.29",
-    "en": "Settings: World boss timer offset, from -10 to +10 seconds, to match the game's times.",
-    "ko": "설정: 월드 보스 타이머 보정(-10~+10초)으로 게임 시간에 맞출 수 있습니다.",
-    "ja": "設定：ワールドボスのタイマー補正（-10～+10秒）でゲームの時刻に合わせられます。",
-    "de": "Einstellungen: Weltboss-Timer um -10 bis +10 Sekunden verschieben, passend zu den Zeiten im Spiel.",
-    "fr": "Réglages : décalage des minuteurs des boss mondiaux, de -10 à +10 secondes, pour coller aux horaires du jeu.",
-    "es": "Ajustes: desfase de los temporizadores de jefes mundiales, de -10 a +10 segundos, para coincidir con el juego.",
-    "pt": "Configurações: ajuste dos temporizadores de chefes mundiais, de -10 a +10 segundos, para bater com o jogo.",
-    "ru": "Настройки: сдвиг таймеров мировых боссов от -10 до +10 секунд, чтобы совпадать со временем в игре.",
-    "zh-Hant": "設定：世界首領計時器偏移（-10 至 +10 秒），可對齊遊戲時間。",
-    "zh-Hans": "设置：世界首领计时器偏移（-10 至 +10 秒），可对齐游戏时间。"
   }
 ]

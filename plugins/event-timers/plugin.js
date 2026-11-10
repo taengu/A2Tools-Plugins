@@ -697,16 +697,20 @@ const fieldTimer = (id) => {
   }
   return t;
 };
-// The Abyss's bosses (Reshanta) are listed apart from the world bosses: the
-// ones on a fixed schedule from it, Argo, the Spirit King from the feed.
+// The Abyss's bosses (Reshanta) are listed apart from the world bosses, all on
+// a fixed schedule from it.
 const isAbyssBoss = (b) => b.where === "String_STR_Map_Abyss_Reshanta_A_body";
 // The Abyss's scheduled bosses are world bosses, as the feed has them
-// (WorldMapFieldNamed: Watcher Kaira 2002; the three Guardian Lord Nahmas
-// 2003-2005; Executors Tamasa, Argo and Kaira 2006-2008), listed, followed
+// (WorldMapFieldNamed: Argo, the Spirit King 2001; Watcher Kaira 2002; the
+// three Guardian Lord Nahmas 2003-2005; Executors Tamasa, Argo and Kaira
+// 2006-2008), listed, followed
 // and alerted as the others are. Their next spawn comes from the game's
 // schedule (schedule.js EVENTS), the feed keeping none for them. Each spawn's
 // event, and its name's place in the event's names.
-const ABYSS_SPAWNS = { "boss-kaira": ["2002"], "boss-nahma": ["2003", "2004", "2005"], "boss-tamasa-argo-kaira": ["2006", "2007", "2008"] };
+// Argo, the Spirit King was a feed boss (2001) until the 2026-11-04 data put
+// him on the schedule (boss-king, daily): left out here, he went from the
+// list, its icons and its alerts in 0.6.32.
+const ABYSS_SPAWNS = { "boss-king": ["2001"], "boss-kaira": ["2002"], "boss-nahma": ["2003", "2004", "2005"], "boss-tamasa-argo-kaira": ["2006", "2007", "2008"] };
 for (const [evId, ids] of Object.entries(ABYSS_SPAWNS)) {
   const ev = EVENTS.find((e) => e.id === evId);
   if (!ev) continue;
