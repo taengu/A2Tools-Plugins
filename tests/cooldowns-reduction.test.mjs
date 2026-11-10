@@ -8,9 +8,9 @@ import vm from "node:vm";
 const source = readFileSync(new URL("../plugins/cooldowns/plugin.js", import.meta.url), "utf8");
 const part = source.slice(source.indexOf("function reduction()"), source.indexOf("\n// A use, announced"));
 
-function estimate(learned, skills) {
+function estimate(learned, skills, cdr) {
   const SKILLS = new Map(Object.entries(skills).map(([g, cd]) => [Number(g), { cd }]));
-  const context = vm.createContext({ SKILLS, mine: { learned } });
+  const context = vm.createContext({ SKILLS, mine: { learned, cdr } });
   vm.runInContext(`${part}\nglobalThis.cooldownOf = cooldownOf;`, context);
   return (g) => context.cooldownOf(g);
 }
@@ -34,4 +34,22 @@ test("one slow reading can't lift the estimate", () => {
 
 test("nothing learned: the base", () => {
   assert.equal(estimate({}, { 9: 30000 })(9), 30000);
+});
+
+// xanthics's Cleric, its stat page at -6.7% (#183): every skill not timed
+// yet is its base less that, whatever was learnt.
+test("the stat page's reduction sets the others", () => {
+  const cooldownOf = estimate({ 17060000: 35000, 17150000: 23300 }, { 17060000: 45000, 17150000: 30000, 17440000: 60000, 17070000: 20000 }, 6.7);
+  assert.equal(cooldownOf(17440000), 55980);
+  assert.equal(cooldownOf(17070000), 18660);
+});
+
+test("a time learnt under a passing reduction gives way to the sheet's", () => {
+  const cooldownOf = estimate({ 17060000: 35000 }, { 17060000: 45000 }, 6.7);
+  assert.equal(cooldownOf(17060000), 41985);
+});
+
+test("a skill's own reduction, within a tenth, is kept", () => {
+  const cooldownOf = estimate({ 9: 26000 }, { 9: 30000 }, 4.3);
+  assert.equal(cooldownOf(9), 26000);
 });

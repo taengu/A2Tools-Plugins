@@ -115,7 +115,9 @@ const DEFAULTS = {
 };
 let prefs = { ...DEFAULTS };
 // What each character shows: { cls, skills: { g: opts }, buffs: { a: opts },
-// learned: { g: ms } }, by "name@server".
+// learned: { g: ms }, cdr }, by "name@server". cdr: the stat page's cooldown
+// reduction in percent, as the meter last read it (2.0.96 on), kept so a
+// meter started mid-session has it too.
 let charKey = "?";
 let mine = { cls: null, skills: {}, buffs: {}, learned: {}, learnedV: 3 };
 // Times learnt before 0.1.6, and again before 0.2.14, are dropped once: one
@@ -163,6 +165,15 @@ let charName = null;
 
 // The class the meter knows, over the one learnt from the last skill cast:
 // so the right skills show from login, before anything is cast (Hirai).
+// The cooldown reduction the meter read from the character's stats.
+function takeCdr(c) {
+  const v = c?.cooldownReduction;
+  if (typeof v !== "number" || !Number.isFinite(v) || mine.cdr === v) return;
+  mine.cdr = v;
+  saveMine();
+  renderSkills();
+}
+
 function takeClass(c) {
   const cls = CLASS_IDS[c?.class];
   if (!cls || mine.cls === cls) return;
@@ -185,6 +196,7 @@ async function loadCharacter(c) {
   const knownServer = Number(charKey.split("@")[1]) || 0;
   if (c.name === charName && (key === charKey || knownServer || !server)) {
     takeClass(c);
+    takeCdr(c);
     return;
   }
   const sameCharacter = c.name === charName;
@@ -198,6 +210,7 @@ async function loadCharacter(c) {
   charKey = key;
   mine = fresh({ cls: null, skills: {}, buffs: {}, learned: {}, ...(stored || carried || {}) });
   takeClass(c);
+  takeCdr(c);
   live.cd.clear();
   live.charges.clear();
   live.buffs.clear();
@@ -230,6 +243,13 @@ const live = {
 // 12.9 s, more reduced than the rest (Curse 9.3 of 10, Corrode 41.85 of 45):
 // counted four times they set every other skill's time 7% too short.
 function reduction() {
+  // The character's own cooldown reduction, once the meter has read it: what
+  // every skill gets, exactly (300 + 130 hundredths for a sheet's -4.3%).
+  // Times learnt are a poor guide to it: one learnt under a reduction that
+  // lasts a while (a Chanter's Power of the Storm, Triniel's Dagger) took
+  // every skill not yet timed down with it, a Cleric's to 78% of base where
+  // the sheet said 93.3% (#183).
+  if (hasCdr()) return 1 - mine.cdr / 100;
   const byBase = new Map();
   for (const [g, ms] of Object.entries(mine.learned)) {
     // Not the skills cooldown reduction doesn't touch (CoolTimeStat false).
@@ -251,8 +271,17 @@ function reduction() {
   const r = [...byBase.values()];
   return r.length ? Math.max(...r) : 1;
 }
+const hasCdr = () => typeof mine.cdr === "number" && mine.cdr >= 0 && mine.cdr < 100;
 const scaled = (g, ms) => (SKILLS.get(g)?.noCdr ? ms : Math.round(ms * reduction()));
-const cooldownOf = (g) => mine.learned[g] || scaled(g, SKILLS.get(g)?.cd || 0);
+// A time learnt well under what the sheet's reduction gives was read while
+// something shortened it for a while (Bolt learnt 35 s, the sheet's 6.7%
+// giving 41.99 s, #183): the sheet's time instead. A skill's own reduction
+// (a specialisation's) is kept when it is within a tenth of it.
+const usable = (g, learnt) => !learnt || !hasCdr() || learnt >= scaled(g, SKILLS.get(g)?.cd || 0) * 0.9;
+const cooldownOf = (g) => {
+  const learnt = mine.learned[g];
+  return learnt && usable(g, learnt) ? learnt : scaled(g, SKILLS.get(g)?.cd || 0);
+};
 
 // A use, announced (01 38) or seen in the cooldown list: the class, the
 // skill added to the bar, the time of your last skill.
@@ -793,7 +822,7 @@ function renderSkills() {
     ...skills.map((s) => {
       const g = s.g;
       const o = mine.skills[g] || {};
-      const learned = mine.learned[g];
+      const measured = mine.learned[g] && usable(g, mine.learned[g]);
       const ch = live.charges.get(g);
       const set = (key, value) => {
         mine.skills[g] = { ...(mine.skills[g] || {}), [key]: value };
@@ -803,8 +832,8 @@ function renderSkills() {
       };
       return row({
         id: `s${g}`, icon: s.icon, name: skillName(g),
-        time: ch ? `${ch.max} × ≈ ${seconds(ch.per)}` : `${learned ? "" : "≈ "}${seconds(cooldownOf(g))}`,
-        timeTitle: learned && !ch ? words.learned : words.base,
+        time: ch ? `${ch.max} × ≈ ${seconds(ch.per)}` : `${measured || hasCdr() ? "" : "≈ "}${seconds(cooldownOf(g))}`,
+        timeTitle: ch ? words.base : measured ? words.learned : hasCdr() ? words.sheet : words.base,
         shown: o.show, onShow: (on) => set("show", on),
         options: [
           check(words.optAlways, o.always, (v) => set("always", v)),

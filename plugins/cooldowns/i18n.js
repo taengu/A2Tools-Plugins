@@ -16,7 +16,7 @@ const UI = {
     optBuffSound: "Sound when it's about to end", optBuffVoice: "Say its name when it's about to end",
     optBuffAlways: "Keep showing when it's not on you",
     volume: "Volume", voicePick: "Voice", voiceDefault: "Default", buffStyle: "A buff's time left", styleBar: "Green bar", styleRing: "Ring, icon dims", skillsShow: "Show skill icons", showCooling: "While on cooldown", showReady: "When ready", showAlways: "Always",
-    learned: "Measured in game", base: "Game's base time", noClass: "No class yet",
+    learned: "Measured in game", base: "Game's base time", sheet: "Base time with your cooldown reduction", noClass: "No class yet",
     classes: { 11: "Gladiator", 12: "Templar", 13: "Assassin", 14: "Ranger", 15: "Sorcerer", 16: "Spiritmaster", 17: "Cleric", 18: "Chanter", 19: "Brawler" },
   },
   ko: {
@@ -34,7 +34,7 @@ const UI = {
     optBuffSound: "끝나기 전에 소리", optBuffVoice: "끝나기 전에 이름 읽기",
     optBuffAlways: "버프가 없을 때도 표시",
     volume: "음량", voicePick: "음성", voiceDefault: "기본", buffStyle: "버프 남은 시간", styleBar: "초록 막대", styleRing: "테두리 링, 아이콘 어두워짐", skillsShow: "스킬 아이콘 표시", showCooling: "재사용 대기 중일 때", showReady: "사용할 수 있을 때", showAlways: "항상",
-    learned: "게임에서 측정함", base: "게임 기본 시간", noClass: "직업 미확인",
+    learned: "게임에서 측정함", base: "게임 기본 시간", sheet: "내 재사용 대기시간 감소를 적용한 기본 시간", noClass: "직업 미확인",
     classes: { 11: "검성", 12: "수호성", 13: "살성", 14: "궁성", 15: "마도성", 16: "정령성", 17: "치유성", 18: "호법성", 19: "권성" },
   },
   ja: {
@@ -52,7 +52,7 @@ const UI = {
     optBuffSound: "切れる前に音", optBuffVoice: "切れる前に名前を読む",
     optBuffAlways: "かかっていない時も表示",
     volume: "音量", voicePick: "音声", voiceDefault: "既定", buffStyle: "バフの残り時間", styleBar: "緑のバー", styleRing: "枠のリング、アイコンが暗く", skillsShow: "スキルアイコンの表示", showCooling: "クールダウン中", showReady: "使用可能なとき", showAlways: "常に",
-    learned: "ゲーム内で測定", base: "ゲームの基本時間", noClass: "クラス未確認",
+    learned: "ゲーム内で測定", base: "ゲームの基本時間", sheet: "クールタイム短縮を反映した基本時間", noClass: "クラス未確認",
     classes: { 11: "グラディエーター", 12: "テンプラー", 13: "アサシン", 14: "レンジャー", 15: "ソーサラー", 16: "スピリットマスター", 17: "クレリック", 18: "チャンター", 19: "ファイター" },
   },
   de: {
@@ -70,7 +70,7 @@ const UI = {
     optBuffSound: "Ton kurz vor dem Ende", optBuffVoice: "Namen kurz vor dem Ende sagen",
     optBuffAlways: "Auch anzeigen, wenn er nicht aktiv ist",
     volume: "Lautstärke", voicePick: "Stimme", voiceDefault: "Standard", buffStyle: "Restzeit eines Buffs", styleBar: "Grüner Balken", styleRing: "Ring, Symbol wird dunkler", skillsShow: "Skill-Symbole zeigen", showCooling: "Während der Abklingzeit", showReady: "Wenn bereit", showAlways: "Immer",
-    learned: "Im Spiel gemessen", base: "Grundwert des Spiels", noClass: "Noch keine Klasse",
+    learned: "Im Spiel gemessen", base: "Grundwert des Spiels", sheet: "Grundwert mit deiner Abklingzeitverkürzung", noClass: "Noch keine Klasse",
     classes: { 11: "Gladiator", 12: "Templer", 13: "Assassine", 14: "Waldläufer", 15: "Magier", 16: "Beschwörer", 17: "Kleriker", 18: "Kantor", 19: "Faustkämpfer" },
   },
   fr: {
@@ -88,7 +88,7 @@ const UI = {
     optBuffSound: "Son juste avant la fin", optBuffVoice: "Dire son nom juste avant la fin",
     optBuffAlways: "Afficher même quand il n'est pas actif",
     volume: "Volume", voicePick: "Voix", voiceDefault: "Par défaut", buffStyle: "Temps restant d'un buff", styleBar: "Barre verte", styleRing: "Anneau, icône qui s'assombrit", skillsShow: "Afficher les icônes de compétences", showCooling: "Pendant le temps de recharge", showReady: "Quand elle est prête", showAlways: "Toujours",
-    learned: "Mesuré en jeu", base: "Valeur de base du jeu", noClass: "Pas encore de classe",
+    learned: "Mesuré en jeu", base: "Valeur de base du jeu", sheet: "Valeur de base avec votre réduction de recharge", noClass: "Pas encore de classe",
     classes: { 11: "Gladiateur", 12: "Templier", 13: "Assassin", 14: "Rôdeur", 15: "Sorcier", 16: "Spiritualiste", 17: "Clerc", 18: "Aède", 19: "Pugiliste" },
   },
   es: {
@@ -106,7 +106,7 @@ const UI = {
     optBuffSound: "Sonido antes de que acabe", optBuffVoice: "Decir su nombre antes de que acabe",
     optBuffAlways: "Mostrar aunque no esté activa",
     volume: "Volumen", voicePick: "Voz", voiceDefault: "Predeterminada", buffStyle: "Tiempo restante de una mejora", styleBar: "Barra verde", styleRing: "Anillo, el icono se oscurece", skillsShow: "Mostrar iconos de habilidades", showCooling: "Durante el enfriamiento", showReady: "Cuando está lista", showAlways: "Siempre",
-    learned: "Medido en el juego", base: "Tiempo base del juego", noClass: "Aún sin clase",
+    learned: "Medido en el juego", base: "Tiempo base del juego", sheet: "Tiempo base con tu reducción de reutilización", noClass: "Aún sin clase",
     classes: { 11: "Gladiador", 12: "Templario", 13: "Sicario", 14: "Ranger", 15: "Hechicero", 16: "Espiritualista", 17: "Clérigo", 18: "Conjurador", 19: "Luchador" },
   },
   pt: {
@@ -124,7 +124,7 @@ const UI = {
     optBuffSound: "Som antes de acabar", optBuffVoice: "Falar o nome antes de acabar",
     optBuffAlways: "Mostrar mesmo quando não estiver ativo",
     volume: "Volume", voicePick: "Voz", voiceDefault: "Padrão", buffStyle: "Tempo restante de um buff", styleBar: "Barra verde", styleRing: "Anel, o ícone escurece", skillsShow: "Mostrar ícones de habilidades", showCooling: "Durante a recarga", showReady: "Quando estiver pronta", showAlways: "Sempre",
-    learned: "Medido no jogo", base: "Tempo base do jogo", noClass: "Classe ainda não vista",
+    learned: "Medido no jogo", base: "Tempo base do jogo", sheet: "Tempo base com a sua redução de recarga", noClass: "Classe ainda não vista",
     classes: { 11: "Gladiador", 12: "Templário", 13: "Assassino", 14: "Arqueiro", 15: "Mago", 16: "Espiritualista", 17: "Clérigo", 18: "Encantador", 19: "Lutador" },
   },
   ru: {
@@ -142,7 +142,7 @@ const UI = {
     optBuffSound: "Звук перед концом", optBuffVoice: "Название перед концом",
     optBuffAlways: "Показывать, даже когда его нет",
     volume: "Громкость", voicePick: "Голос", voiceDefault: "По умолчанию", buffStyle: "Остаток времени баффа", styleBar: "Зелёная полоса", styleRing: "Кольцо, значок темнеет", skillsShow: "Показывать значки умений", showCooling: "Во время перезарядки", showReady: "Когда готово", showAlways: "Всегда",
-    learned: "Измерено в игре", base: "Базовое время игры", noClass: "Класс ещё не известен",
+    learned: "Измерено в игре", base: "Базовое время игры", sheet: "Базовое время с вашим сокращением отката", noClass: "Класс ещё не известен",
     classes: { 11: "Гладиатор", 12: "Страж", 13: "Убийца", 14: "Стрелок", 15: "Волшебник", 16: "Заклинатель", 17: "Целитель", 18: "Чародей", 19: "Мастер кулака" },
   },
   "zh-Hant": {
@@ -160,7 +160,7 @@ const UI = {
     optBuffSound: "即將結束時播放音效", optBuffVoice: "即將結束時朗讀名稱",
     optBuffAlways: "未生效時仍顯示",
     volume: "音量", voicePick: "語音", voiceDefault: "預設", buffStyle: "增益剩餘時間", styleBar: "綠色橫條", styleRing: "外框環，圖示漸暗", skillsShow: "顯示技能圖示", showCooling: "冷卻中", showReady: "可以使用時", showAlways: "一律",
-    learned: "遊戲中測得", base: "遊戲基本時間", noClass: "尚未得知職業",
+    learned: "遊戲中測得", base: "遊戲基本時間", sheet: "套用你冷卻縮減的基本時間", noClass: "尚未得知職業",
     classes: { 11: "劍聖", 12: "守護聖", 13: "殺聖", 14: "弓聖", 15: "魔道聖", 16: "精靈聖", 17: "治癒聖", 18: "護法聖", 19: "拳聖" },
   },
   "zh-Hans": {
@@ -178,7 +178,7 @@ const UI = {
     optBuffSound: "即将结束时播放音效", optBuffVoice: "即将结束时朗读名称",
     optBuffAlways: "未生效时仍显示",
     volume: "音量", voicePick: "语音", voiceDefault: "默认", buffStyle: "增益剩余时间", styleBar: "绿色横条", styleRing: "外框环，图标渐暗", skillsShow: "显示技能图标", showCooling: "冷却中", showReady: "可以使用时", showAlways: "始终",
-    learned: "游戏中测得", base: "游戏基础时间", noClass: "尚未得知职业",
+    learned: "游戏中测得", base: "游戏基础时间", sheet: "应用你冷却缩减的基础时间", noClass: "尚未得知职业",
     classes: { 11: "剑圣", 12: "守护圣", 13: "杀圣", 14: "弓圣", 15: "魔道圣", 16: "精灵圣", 17: "治愈圣", 18: "护法圣", 19: "拳圣" },
   },
 };
