@@ -49,7 +49,7 @@ function drag(b) {
 }
 
 for (const layout of ["combined", "split"]) for (const scale of [1, 1.25, 1.5, 1.75, 2]) {
-  test(`Both sides keeps each dragged middle through resizes, without drifting (${layout}, ${scale}x)`, async () => {
+  test(`Centered keeps each dragged middle through resizes, without drifting (${layout}, ${scale}x)`, async () => {
     const b = bar({ layout, scale });
     await b.resize();
     assert.equal(b.calls.some(([action]) => action === "where" || action === "place"), false);
@@ -76,7 +76,7 @@ for (const layout of ["combined", "split"]) for (const scale of [1, 1.25, 1.5, 1
   });
 }
 
-test("Both sides takes the new middle of a widget dragged since", async () => {
+test("Centered takes the new middle of a widget dragged since", async () => {
   const b = bar({ scale: 1.25 });
   await b.resize({}, 3, 1);
   drag(b);
@@ -88,7 +88,7 @@ test("Both sides takes the new middle of a widget dragged since", async () => {
   }
 });
 
-test("Both sides doesn't move for a change that keeps the width (a new line)", async () => {
+test("Centered doesn't move for a change that keeps the width (a new line)", async () => {
   const b = bar();
   await b.resize({}, 5, 1);
   b.calls.length = 0;
@@ -98,7 +98,7 @@ test("Both sides doesn't move for a change that keeps the width (a new line)", a
   assert.equal(b.calls.some(([action]) => action === "where" || action === "place"), false);
 });
 
-test("Both sides: closing and reopening applies no old middle", async () => {
+test("Centered: closing and reopening applies no old middle", async () => {
   const b = bar();
   await b.resize();
   b.calls.length = 0;
@@ -107,7 +107,7 @@ test("Both sides: closing and reopening applies no old middle", async () => {
   assert.deepEqual(b.calls, [["close", "bar"], ["open", "bar"]]);
 });
 
-test("Both sides: missing placement APIs, failed bounds and failed opens don't move", async () => {
+test("Centered: missing placement APIs, failed bounds and failed opens don't move", async () => {
   for (const failure of ["missing-where", "missing-place", "where", "open"]) {
     const b = bar();
     await b.resize();
@@ -119,7 +119,7 @@ test("Both sides: missing placement APIs, failed bounds and failed opens don't m
   }
 });
 
-test("Both sides lays out like Right: the same window sizes", async () => {
+test("Centered lays out like Right: the same window sizes", async () => {
   const right = bar({ direction: "right" }), center = bar();
   for (const [skills, buffs] of [[1, 0], [4, 2], [9, 3]]) {
     await right.resize({}, skills, buffs);

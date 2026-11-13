@@ -612,7 +612,7 @@ function checkAway() {
 const widgetsWanted = () => prefs.show && gameOpen;
 let openNow = new Set();
 let lastSizes = "";
-// Both sides: each widget's middle on screen (physical px) as last kept, and
+// Centered: each widget's middle on screen (physical px) as last kept, and
 // where that put its left edge. While the widget stays there the middle is
 // taken from here, not from its rounded edge and width, so adding and taking
 // away icons never walks it sideways a pixel at a time.
@@ -643,7 +643,7 @@ async function placeWidgets() {
     }
     for (const [name, size] of want) {
       const old = previous.get(name);
-      // Up keeps the bottom edge where the player left it, Both sides the
+      // Up keeps the bottom edge where the player left it, Centered the
       // middle: the window grows (or shrinks) the other way, or both ways.
       const moves = old && (prefs.direction === "up" ? old.height !== size.height
         : prefs.direction === "center" && old.width !== size.width);
