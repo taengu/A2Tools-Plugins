@@ -586,16 +586,28 @@ function slots() {
 }
 
 // A widget's window: its icons laid out in lines of `perLine`.
-function sizeFor(count) {
+function sizeFor(count, perLine = prefs.perLine) {
   const s = Number(prefs.size);
   const gap = Math.round(s * 0.08) + 2;
   const n = Math.max(1, count);
-  const along = Math.min(n, prefs.perLine);
-  const across = Math.ceil(n / prefs.perLine);
+  const along = Math.min(n, perLine);
+  const across = Math.ceil(n / perLine);
   const vertical = prefs.direction === "down" || prefs.direction === "up";
   const w = (vertical ? across : along) * (s + gap) + gap + 8;
   const h = (vertical ? along : across) * (s + gap) + gap + 8;
-  return { width: Math.min(800, w), height: Math.min(800, h) };
+  return { width: w, height: h };
+}
+
+// Window size for `count` icons, with the Text size correction (see fits)
+// Icons that would make the window over 800 px are pushed to the next line
+function fitted(name, count) {
+  const fit = fits.get(name) || { x: 1, y: 1 };
+  for (let per = prefs.perLine; ; per--) {
+    const size = sizeFor(count, per);
+    const width = Math.ceil(size.width * fit.x);
+    const height = Math.ceil(size.height * fit.y);
+    if ((width <= 800 && height <= 800) || per <= 1) return { width: Math.min(800, width), height: Math.min(800, height) };
+  }
 }
 
 let gameOpen = false;
@@ -612,6 +624,14 @@ function checkAway() {
 const widgetsWanted = () => prefs.show && gameOpen;
 let openNow = new Set();
 let lastSizes = "";
+// Centered (saved to prevent rounding errors)
+const middles = new Map();
+// Text size correction per widget (from widget.js)
+// Windows' Text size draws pages bigger than the widow the meter gives them 
+// which pushes the last icon into nothingness
+const fits = new Map(); // name -> { x, y }
+// The size each widget's window was last given (incl the correction)
+const asked = new Map();
 
 // The widgets' windows sized for every icon that may show (a skill set to
 // show, a buff set to show), so nothing moves as cooldowns come and go.
@@ -621,20 +641,28 @@ async function placeWidgets() {
     const skills = Object.values(mine.skills).filter((o) => o.show).length;
     const buffs = Object.values(mine.buffs).filter((o) => o.show).length;
     if (prefs.layout === "split") {
-      if (skills) want.set("skills", sizeFor(skills));
-      if (buffs) want.set("buffs", sizeFor(buffs));
+      if (skills) want.set("skills", fitted("skills", skills));
+      if (buffs) want.set("buffs", fitted("buffs", buffs));
     } else if (skills + buffs) {
-      want.set("bar", sizeFor(skills + buffs));
+      want.set("bar", fitted("bar", skills + buffs));
     }
   }
+  asked.clear();
+  for (const [name, size] of want) asked.set(name, size);
   const sizes = JSON.stringify([...want]);
   if (sizes !== lastSizes) {
     const previous = new Map(lastSizes ? JSON.parse(lastSizes) : []);
     lastSizes = sizes;
-    for (const name of openNow) if (!want.has(name)) await a2.widgets.close(name).catch(() => {});
+    for (const name of openNow) {
+      if (want.has(name)) continue;
+      middles.delete(name);
+      await a2.widgets.close(name).catch(() => {});
+    }
     for (const [name, size] of want) {
       const old = previous.get(name);
-      const anchor = prefs.direction === "up" && openNow.has(name) && old && old.height !== size.height
+      const moves = old && (prefs.direction === "up" ? old.height !== size.height
+        : prefs.direction === "center" && old.width !== size.width);
+      const anchor = moves && openNow.has(name)
         && typeof a2.widgets.where === "function" && typeof a2.widgets.place === "function";
       const at = anchor ? await a2.widgets.where(name).catch(() => null) : null;
       const opened = await a2.widgets.open(name, size).then(() => true, () => false);
@@ -642,9 +670,20 @@ async function placeWidgets() {
       // says 0,0: placed from there, the stack was kept at the top left of
       // the screen at the next start. The window manager keeps it there.
       if (opened && at && (at.x || at.y)) {
-        // Keep the bottom edge fixed; window positions are physical pixels.
+        // Window positions are physical pixels.
         const scale = (typeof devicePixelRatio === "number" && devicePixelRatio > 0) ? devicePixelRatio : 1;
-        await a2.widgets.place(name, { x: at.x, y: Math.round(at.y + (old.height - size.height) * scale) }).catch(() => {});
+        if (prefs.direction === "up") {
+          await a2.widgets.place(name, { x: at.x, y: Math.round(at.y + (old.height - size.height) * scale) }).catch(() => {});
+        } else {
+          // The saved middle
+          // Unless the widget was moved
+          const kept = middles.get(name);
+          const middle = kept && kept.x === at.x ? kept.middle : at.x + (at.width || old.width * scale) / 2;
+          const width = at.width ? size.width * (at.width / old.width) : size.width * scale;
+          const x = Math.round(middle - width / 2);
+          middles.set(name, { x, middle });
+          await a2.widgets.place(name, { x, y: at.y }).catch(() => {});
+        }
       }
     }
     openNow = new Set(want.keys());
@@ -652,13 +691,27 @@ async function placeWidgets() {
   send();
 }
 
+// widget.js reports how much room its page really has. If that's < its
+// window size, windows get enlarged by that ratio from now on
+// Changes under 0.5% are ignored (rounding)
+function onRoom(name, room, size) {
+  if (!room || !size || !(room.width > 0) || !(room.height > 0) || !(size.width > 0) || !(size.height > 0)) return;
+  const x = Math.min(3, Math.max(1, size.width / room.width));
+  const y = Math.min(3, Math.max(1, size.height / room.height));
+  const had = fits.get(name) || { x: 1, y: 1 };
+  if (Math.abs(x - had.x) <= had.x * 0.005 && Math.abs(y - had.y) <= had.y * 0.005) return;
+  fits.set(name, { x, y });
+  return placeWidgets();
+}
+
 function send() {
   if (!openNow.size) return;
   const { skills, buffs } = slots();
   const look = { size: Number(prefs.size), direction: prefs.direction, perLine: prefs.perLine, opacity: prefs.opacity / 100, numbers: prefs.numbers, readyGlow: prefs.readyGlow, ring: prefs.buffStyle === "ring", show: prefs.skillsShow, away };
-  if (openNow.has("bar")) a2.widgets.send("bar", { look, slots: [...skills, ...buffs] }).catch(() => {});
-  if (openNow.has("skills")) a2.widgets.send("skills", { look, slots: skills }).catch(() => {});
-  if (openNow.has("buffs")) a2.widgets.send("buffs", { look, slots: buffs }).catch(() => {});
+  // Compare actual room against window size
+  if (openNow.has("bar")) a2.widgets.send("bar", { look, slots: [...skills, ...buffs], asked: asked.get("bar") }).catch(() => {});
+  if (openNow.has("skills")) a2.widgets.send("skills", { look, slots: skills, asked: asked.get("skills") }).catch(() => {});
+  if (openNow.has("buffs")) a2.widgets.send("buffs", { look, slots: buffs, asked: asked.get("buffs") }).catch(() => {});
 }
 
 // A change: the icons now, and soon again (several records come together).
@@ -1013,7 +1066,8 @@ a2.on("language", (code) => {
 a2.on("locked", (on) => {
   els.lock.checked = !!on;
 });
-a2.on("widget-message", ({ data }) => {
+a2.on("widget-message", ({ name, data }) => {
+  if (data && data.room) onRoom(name, data.room, data.asked);
   if (data && data.open) a2.window?.show?.();
   // A widget's page has loaded: send it its icons (widget.js).
   if (data && data.ready) send();
