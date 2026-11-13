@@ -1,5 +1,18 @@
 [
   {
+    "version": "0.2.16",
+    "en": "The last icon no longer disappears when every icon shows at once (with Windows Text size above 100%). A new way to grow: Centered, keeping the middle where you put it. Prayer of Amplification has its own icon, the praying hands.",
+    "ko": "모든 아이콘이 한꺼번에 보일 때 마지막 아이콘이 사라지지 않습니다(Windows 텍스트 크기 100% 초과 시). 새 방향 '가운데': 놓아둔 가운데를 그대로 두고 양쪽으로 늘어납니다. 증폭의 기도가 기도하는 손, 자기 아이콘으로 표시됩니다.",
+    "ja": "すべてのアイコンが同時に出たとき、最後のアイコンが消えなくなりました（Windowsのテキストのサイズが100%超のとき）。新しい伸び方「中央」：置いた中央を保ったまま両側に伸びます。増幅の祈りが自身のアイコン（祈る手）で表示されます。",
+    "de": "Das letzte Symbol verschwindet nicht mehr, wenn alle Symbole zugleich sichtbar sind (bei Windows-Textgröße über 100 %). Neu: Wächst zentriert, die Mitte bleibt, wo du sie hingesetzt hast. Gebet der Verstärkung hat sein eigenes Symbol, die betenden Hände.",
+    "fr": "La dernière icône ne disparaît plus quand toutes les icônes s'affichent à la fois (avec la taille du texte de Windows au-delà de 100 %). Nouveau : « Centré », le milieu restant où vous l'avez mis. Prière amplificatrice a sa propre icône, les mains jointes.",
+    "es": "El último icono ya no desaparece cuando se muestran todos a la vez (con el tamaño de texto de Windows por encima del 100 %). Nuevo: crecer centrado, con el centro donde lo dejaste. Oración de amplificación tiene su propio icono, las manos en oración.",
+    "pt": "O último ícone não some mais quando todos aparecem ao mesmo tempo (com o tamanho do texto do Windows acima de 100%). Novo: crescer centralizado, mantendo o meio onde você o deixou. Oração da Amplificação tem seu próprio ícone, as mãos em prece.",
+    "ru": "Последний значок больше не пропадает, когда видны все значки сразу (при размере текста Windows больше 100%). Новое направление «От центра»: середина остаётся на месте. У Молитвы усиления свой значок — сложенные руки.",
+    "zh-Hant": "所有圖示同時顯示時，最後一個圖示不再消失（Windows 文字大小高於 100% 時）。新的延伸方向「置中」：中心維持在你放的位置。增幅祈禱改用自己的圖示：合十的雙手。",
+    "zh-Hans": "所有图标同时显示时，最后一个图标不再消失（Windows 文本大小高于 100% 时）。新的延伸方向“居中”：中心保持在你放的位置。增幅祈祷改用自己的图标：合十的双手。"
+  },
+  {
     "version": "0.2.15",
     "en": "Cooldowns use your character's own cooldown reduction (meter 2.0.96) and each skill's specialisations (Power of the Storm 90 s). Illusive Clone is 60 s. Times read under a passing reduction no longer shorten the others.",
     "ko": "캐릭터의 재사용 대기시간 감소(미터 2.0.96)와 각 스킬의 특화를 반영합니다(질풍의 권능 90초). 환영 분신은 60초입니다. 일시적인 감소 중에 잰 시간이 다른 스킬을 짧게 만들지 않습니다.",
@@ -50,18 +63,5 @@
     "ru": "Настройки: Показывать значки умений во время перезарядки, когда готово или всегда.",
     "zh-Hant": "設定：顯示技能圖示可選冷卻中、可以使用時或一律顯示。",
     "zh-Hans": "设置：显示技能图标可选冷却中、可以使用时或始终显示。"
-  },
-  {
-    "version": "0.2.11",
-    "en": "On Linux Wayland, an upward stack no longer moves to the top left of the screen at the next start.",
-    "ko": "Linux Wayland에서 위로 쌓이는 위젯이 다음 실행 때 화면 왼쪽 위로 옮겨지지 않습니다.",
-    "ja": "Linux Wayland で、上方向に並ぶウィジェットが次回起動時に画面左上へ移動しなくなりました。",
-    "de": "Unter Linux Wayland springt ein nach oben wachsender Stapel beim nächsten Start nicht mehr in die linke obere Bildschirmecke.",
-    "fr": "Sous Linux Wayland, une pile orientée vers le haut ne se déplace plus en haut à gauche de l'écran au démarrage suivant.",
-    "es": "En Linux Wayland, una pila ascendente ya no se mueve a la esquina superior izquierda de la pantalla al siguiente inicio.",
-    "pt": "No Linux Wayland, uma pilha voltada para cima não vai mais para o canto superior esquerdo da tela na próxima inicialização.",
-    "ru": "В Linux Wayland растущая вверх группа больше не перемещается в левый верхний угол экрана при следующем запуске.",
-    "zh-Hant": "在 Linux Wayland 上，向上排列的元件不會在下次啟動時跑到螢幕左上角。",
-    "zh-Hans": "在 Linux Wayland 上，向上排列的组件不会在下次启动时跑到屏幕左上角。"
   }
 ]

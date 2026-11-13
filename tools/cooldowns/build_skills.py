@@ -47,7 +47,10 @@ PROXY = os.environ.get("CDN_PROXY", "http://192.168.0.113:16005")
 SIZE = 48
 # The tables give Zikel's Blessing and Lunge Stance each other's icon: the
 # game draws Zikel's Blessing with 040 and Lunge Stance with 024 (#130).
-SWAPPED = {"ICON_GL_SKILL_024": "ICON_GL_SKILL_040", "ICON_GL_SKILL_040": "ICON_GL_SKILL_024"}
+# It also gives Prayer of Amplification a shield icon, 043, instead of
+# the in-game icon (praying hands, now added as 044)
+SWAPPED = {"ICON_GL_SKILL_024": "ICON_GL_SKILL_040", "ICON_GL_SKILL_040": "ICON_GL_SKILL_024",
+           "ICON_CL_SKILL_043": "ICON_CL_SKILL_044"}
 
 
 def rows(tables, name):

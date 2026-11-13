@@ -134,8 +134,31 @@ a2.on("widget", (d) => {
   if (!d) return;
   look = { ...look, ...(d.look || {}) };
   slots = d.slots || [];
+  if (d.asked && JSON.stringify(d.asked) !== JSON.stringify(asked)) {
+    asked = d.asked;
+    roomSoon();
+  }
   build();
 });
+
+// Tells the plugin how much room the page really has given the window size (see fits in plugin.js)
+let asked = null;
+let roomTimer = null;
+let lastRoom = "";
+function roomSoon() {
+  clearTimeout(roomTimer);
+  roomTimer = setTimeout(reportRoom, 200);
+}
+function reportRoom() {
+  if (!asked) return;
+  const r = document.documentElement.getBoundingClientRect();
+  const room = { width: Math.round(r.width * 100) / 100, height: Math.round(r.height * 100) / 100 };
+  const key = JSON.stringify([room, asked]);
+  if (key === lastRoom) return;
+  lastRoom = key;
+  a2.widget.post({ room, asked }).catch(() => {});
+}
+window.addEventListener?.("resize", roomSoon);
 a2.on("locked", (on) => {
   locked = !!on;
   document.body.classList.toggle("locked", locked);
