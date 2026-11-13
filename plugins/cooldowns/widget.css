@@ -1,7 +1,7 @@
 /* The icons: a dark sweep and the seconds while a skill cools down, a green
    bar and its seconds while a buff lasts (or, in ring mode, a green ring
    round the icon that drains, the icon dimming as it runs out). */
-:root { --s: 42px; --gap: 5px; }
+:root { --s: 42px; --gap: 5px; --pad: calc(var(--gap) + 4px); }
 html, body {
   margin: 0;
   height: 100%;
@@ -15,14 +15,29 @@ html, body {
   flex-wrap: wrap;
   align-content: flex-start;
   gap: var(--gap);
-  padding: calc(var(--gap) + 4px);
+  padding: var(--pad);
   transition: opacity 0.4s;
+  position: relative;
   width: 100%;
   height: 100%;
 }
 .grid.left { flex-direction: row-reverse; }
 .grid.down { flex-direction: column; }
 .grid.up { flex-direction: column-reverse; }
+/* Both sides: the icons from the middle out, so it stays where it was left
+   as icons come and go. */
+.grid.center { justify-content: center; }
+/* The window is sized to its icons to the pixel, and lines broke at its far
+   edge: a window that came out a fraction of a pixel short (display scaling
+   rounds its size) put the last icon on a line of its own, out of sight,
+   whenever every icon showed at once. The grid reaches one padding past that
+   edge (both edges for Both sides), so a short window clips padding, never
+   an icon; where the icons sit is unchanged. */
+.grid.right { width: calc(100% + var(--pad)); }
+.grid.left { width: calc(100% + var(--pad)); left: calc(-1 * var(--pad)); }
+.grid.center { width: calc(100% + 2 * var(--pad)); left: calc(-1 * var(--pad)); }
+.grid.down { height: calc(100% + var(--pad)); }
+.grid.up { height: calc(100% + var(--pad)); top: calc(-1 * var(--pad)); }
 .slot {
   position: relative;
   width: var(--s);

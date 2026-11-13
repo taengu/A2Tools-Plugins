@@ -612,6 +612,11 @@ function checkAway() {
 const widgetsWanted = () => prefs.show && gameOpen;
 let openNow = new Set();
 let lastSizes = "";
+// Both sides: each widget's middle on screen (physical px) as last kept, and
+// where that put its left edge. While the widget stays there the middle is
+// taken from here, not from its rounded edge and width, so adding and taking
+// away icons never walks it sideways a pixel at a time.
+const middles = new Map();
 
 // The widgets' windows sized for every icon that may show (a skill set to
 // show, a buff set to show), so nothing moves as cooldowns come and go.
@@ -631,10 +636,18 @@ async function placeWidgets() {
   if (sizes !== lastSizes) {
     const previous = new Map(lastSizes ? JSON.parse(lastSizes) : []);
     lastSizes = sizes;
-    for (const name of openNow) if (!want.has(name)) await a2.widgets.close(name).catch(() => {});
+    for (const name of openNow) {
+      if (want.has(name)) continue;
+      middles.delete(name);
+      await a2.widgets.close(name).catch(() => {});
+    }
     for (const [name, size] of want) {
       const old = previous.get(name);
-      const anchor = prefs.direction === "up" && openNow.has(name) && old && old.height !== size.height
+      // Up keeps the bottom edge where the player left it, Both sides the
+      // middle: the window grows (or shrinks) the other way, or both ways.
+      const moves = old && (prefs.direction === "up" ? old.height !== size.height
+        : prefs.direction === "center" && old.width !== size.width);
+      const anchor = moves && openNow.has(name)
         && typeof a2.widgets.where === "function" && typeof a2.widgets.place === "function";
       const at = anchor ? await a2.widgets.where(name).catch(() => null) : null;
       const opened = await a2.widgets.open(name, size).then(() => true, () => false);
@@ -642,9 +655,20 @@ async function placeWidgets() {
       // says 0,0: placed from there, the stack was kept at the top left of
       // the screen at the next start. The window manager keeps it there.
       if (opened && at && (at.x || at.y)) {
-        // Keep the bottom edge fixed; window positions are physical pixels.
+        // Window positions are physical pixels.
         const scale = (typeof devicePixelRatio === "number" && devicePixelRatio > 0) ? devicePixelRatio : 1;
-        await a2.widgets.place(name, { x: at.x, y: Math.round(at.y + (old.height - size.height) * scale) }).catch(() => {});
+        if (prefs.direction === "up") {
+          await a2.widgets.place(name, { x: at.x, y: Math.round(at.y + (old.height - size.height) * scale) }).catch(() => {});
+        } else {
+          // The widget's own scale from its real width (its screen's, which
+          // can differ from this page's), the middle kept unless it was moved.
+          const kept = middles.get(name);
+          const middle = kept && kept.x === at.x ? kept.middle : at.x + (at.width || old.width * scale) / 2;
+          const width = at.width ? size.width * (at.width / old.width) : size.width * scale;
+          const x = Math.round(middle - width / 2);
+          middles.set(name, { x, middle });
+          await a2.widgets.place(name, { x, y: at.y }).catch(() => {});
+        }
       }
     }
     openNow = new Set(want.keys());

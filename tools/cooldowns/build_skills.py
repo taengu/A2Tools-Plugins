@@ -45,9 +45,12 @@ CLASSES = {"GLADIATOR": ("11", "GL"), "TEMPLAR": ("12", "TE"), "ASSASSIN": ("13"
 CDN = "https://assets.playnccdn.com/static-aion2-gamedata/resources/"
 PROXY = os.environ.get("CDN_PROXY", "http://192.168.0.113:16005")
 SIZE = 48
-# The tables give Zikel's Blessing and Lunge Stance each other's icon: the
-# game draws Zikel's Blessing with 040 and Lunge Stance with 024 (#130).
-SWAPPED = {"ICON_GL_SKILL_024": "ICON_GL_SKILL_040", "ICON_GL_SKILL_040": "ICON_GL_SKILL_024"}
+# Icons the tables name that the game doesn't draw. Zikel's Blessing and Lunge
+# Stance have each other's: the game draws Zikel's Blessing with 040 and Lunge
+# Stance with 024 (#130). Prayer of Amplification has the shield, 043, where
+# the game draws the praying hands, 044 (its skill bar, 2026-11-13).
+SWAPPED = {"ICON_GL_SKILL_024": "ICON_GL_SKILL_040", "ICON_GL_SKILL_040": "ICON_GL_SKILL_024",
+           "ICON_CL_SKILL_043": "ICON_CL_SKILL_044"}
 
 
 def rows(tables, name):
