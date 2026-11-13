@@ -1,5 +1,18 @@
 [
   {
+    "version": "0.6.35",
+    "en": "Guardian Lord Nahma shows as one boss, not three: he spawns at one of three points and is up when he is up at any, with that point's HP and teleport (all three listed until he is seen). An alert or icon set for any of the three is now his.",
+    "ko": "수호신장 나흐마가 셋이 아닌 하나의 보스로 표시됩니다. 세 지점 중 한 곳에 등장하며, 어느 곳에서든 등장하면 그 지점의 HP와 텔레포트와 함께 표시됩니다(확인 전에는 세 곳 모두). 세 개 중 어느 것에 설정한 알림이나 아이콘도 이제 그의 것입니다.",
+    "ja": "守護神将ナフマが3体ではなく1体のボスとして表示されます。3か所のどれかに出現し、どこかに出現すればその地点のHPとテレポート付きで表示されます（確認前は3か所すべて）。3つのどれかに設定した通知やアイコンは彼のものになります。",
+    "de": "Wächtergott Nahma erscheint als ein Boss, nicht drei: er spawnt an einem von drei Punkten und ist da, sobald er an einem ist, mit dessen HP und Teleport (bis er gesehen wird, alle drei). Ein Alarm oder Symbol für einen der drei gehört jetzt ihm.",
+    "fr": "Nahma le seigneur gardien s'affiche comme un seul boss, pas trois : il apparaît à l'un de trois points, avec les PV et le téléporteur de ce point (les trois tant qu'il n'est pas vu). Une alerte ou une icône pour l'un des trois est désormais la sienne.",
+    "es": "El Gran Vigía Nahma aparece como un solo jefe, no tres: sale en uno de tres puntos y está activo al salir en cualquiera, con los PV y el teletransporte de ese punto (los tres hasta que se le ve). Una alerta o icono de cualquiera de los tres es ahora suyo.",
+    "pt": "O Senhor Guardião Nahma aparece como um só chefe, não três: surge em um de três pontos e está ativo ao surgir em qualquer um, com o HP e o teleporte desse ponto (os três até ser visto). Um alerta ou ícone de qualquer um dos três agora é dele.",
+    "ru": "Лорд-хранитель Нахма показывается одним боссом, а не тремя: он появляется в одной из трёх точек, с HP и телепортом этой точки (пока его не видели, все три). Оповещение или значок любой из трёх теперь относятся к нему.",
+    "zh-Hant": "守護神將納赫瑪顯示為一個首領，而不是三個：他在三個出現點之一出現，任一處出現即顯示，並附上該處的 HP 與傳送點（看到他之前列出全部三處）。為三者任一設定的提醒或圖示，現在都歸他。",
+    "zh-Hans": "守护神将纳赫玛显示为一个首领，而不是三个：他在三个出现点之一出现，任一处出现即显示，并附上该处的 HP 与传送点（看到他之前列出全部三处）。为三者任一设置的提醒或图标，现在都归他。"
+  },
+  {
     "version": "0.6.34",
     "en": "Argo, the Spirit King is back in the Abyss bosses, with his icon and alerts: since 0.6.32 he had dropped off the list.",
     "ko": "정령왕 아그로가 아이콘과 알림과 함께 어비스 보스 목록에 다시 표시됩니다. 0.6.32부터 목록에서 빠져 있었습니다.",
@@ -50,18 +63,5 @@
     "ru": "С метром 2.0.93 и новее: здоровье мирового босса, с которым вы сражаетесь, берётся прямо из вашего метра, и значок больше не замирает, когда сайт обновляется медленно.",
     "zh-Hant": "搭配計量器 2.0.93 以上：你正在打的世界首領血量直接來自你的計量器，網站更新慢時圖示不會再卡住。",
     "zh-Hans": "搭配计量器 2.0.93 以上：你正在打的世界首领血量直接来自你的计量器，网站更新慢时图标不会再卡住。"
-  },
-  {
-    "version": "0.6.30",
-    "en": "Countdowns and icons no longer freeze until the plugins are reloaded when one part runs into an error; the error shows at the bottom of Settings for bug reports.",
-    "ko": "일부 기능에서 오류가 나도 카운트다운과 아이콘이 더 이상 플러그인을 다시 불러올 때까지 멈추지 않습니다. 오류는 버그 제보용으로 설정 맨 아래에 표시됩니다.",
-    "ja": "一部でエラーが起きても、カウントダウンとアイコンがプラグインを再読み込みするまで止まることはなくなりました。エラーは不具合報告用に設定の一番下に表示されます。",
-    "de": "Countdowns und Symbole frieren nicht mehr bis zum Neuladen der Plugins ein, wenn ein Teil auf einen Fehler stößt; der Fehler steht für Fehlerberichte unten in den Einstellungen.",
-    "fr": "Les comptes à rebours et les icônes ne se figent plus jusqu'au rechargement des plugins quand une partie rencontre une erreur ; l'erreur s'affiche en bas des Paramètres pour les rapports de bug.",
-    "es": "Las cuentas atrás y los iconos ya no se congelan hasta recargar los plugins cuando una parte falla; el error se muestra al final de Ajustes para los informes de errores.",
-    "pt": "As contagens regressivas e os ícones não congelam mais até recarregar os plugins quando uma parte encontra um erro; o erro aparece no fim das Configurações para relatar bugs.",
-    "ru": "Отсчёты и значки больше не замирают до перезагрузки плагинов, если в одной из частей возникла ошибка; ошибка показывается внизу настроек для отчётов об ошибках.",
-    "zh-Hant": "某部分發生錯誤時，倒數和圖示不再凍結到重新載入外掛為止；錯誤會顯示在設定最下方，方便回報問題。",
-    "zh-Hans": "某部分发生错误时，倒计时和图标不再冻结到重新加载插件为止；错误会显示在设置最下方，方便反馈问题。"
   }
 ]

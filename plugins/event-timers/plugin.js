@@ -457,29 +457,41 @@ const SPOKEN = {
 // on hover: in its row and on its icon. One line per spawn point, for the
 // player's side (both sides, named, before they log in).
 const TP_UI = {
-  en: { label: "Nearest teleport", tp: (n) => `TP ${n}` },
-  ko: { label: "가까운 텔레포트", tp: (n) => `${n}번` },
-  ja: { label: "最寄りのテレポート", tp: (n) => `${n}番` },
-  de: { label: "Nächster Teleport", tp: (n) => `TP ${n}` },
-  fr: { label: "Téléporteur le plus proche", tp: (n) => `TP ${n}` },
-  es: { label: "Teletransporte más cercano", tp: (n) => `TP ${n}` },
-  pt: { label: "Teleporte mais próximo", tp: (n) => `TP ${n}` },
-  ru: { label: "Ближайший телепорт", tp: (n) => `ТП ${n}` },
-  "zh-Hant": { label: "最近的傳送點", tp: (n) => `${n} 號` },
-  "zh-Hans": { label: "最近的传送点", tp: (n) => `${n} 号` },
+  en: { label: "Nearest teleport", tp: (n) => `TP ${n}`, anyOf: (n) => `Spawns at one of ${n} points. Nearest teleport` },
+  ko: { label: "가까운 텔레포트", tp: (n) => `${n}번`, anyOf: (n) => `${n}곳 중 한 곳에 등장. 가까운 텔레포트` },
+  ja: { label: "最寄りのテレポート", tp: (n) => `${n}番`, anyOf: (n) => `${n}か所のいずれかに出現。最寄りのテレポート` },
+  de: { label: "Nächster Teleport", tp: (n) => `TP ${n}`, anyOf: (n) => `Erscheint an einem von ${n} Orten. Nächster Teleport` },
+  fr: { label: "Téléporteur le plus proche", tp: (n) => `TP ${n}`, anyOf: (n) => `Apparaît à l'un de ${n} endroits. Téléporteur le plus proche` },
+  es: { label: "Teletransporte más cercano", tp: (n) => `TP ${n}`, anyOf: (n) => `Aparece en uno de ${n} puntos. Teletransporte más cercano` },
+  pt: { label: "Teleporte mais próximo", tp: (n) => `TP ${n}`, anyOf: (n) => `Surge em um de ${n} pontos. Teleporte mais próximo` },
+  ru: { label: "Ближайший телепорт", tp: (n) => `ТП ${n}`, anyOf: (n) => `Появляется в одной из ${n} точек. Ближайший телепорт` },
+  "zh-Hant": { label: "最近的傳送點", tp: (n) => `${n} 號`, anyOf: (n) => `在 ${n} 處之一出現。最近的傳送點` },
+  "zh-Hans": { label: "最近的传送点", tp: (n) => `${n} 号`, anyOf: (n) => `在 ${n} 处之一出现。最近的传送点` },
 };
 // A boss's teleports: a scheduled Abyss boss's are its event's (several
-// bosses, each named), only those for it.
+// bosses, each named), only those for it. Guardian Lord Nahma's are one per
+// spawner, in the order build_teleports.py writes them (PeriodSpawn's rows,
+// 1013-1015: 2003-2005): while he is up at one, that one's only.
+const spawnPointsOf = (id) => (id.startsWith("field:") ? SPAWN_POINTS[id.slice(6)] : null);
 const spotsOf = (id) => {
   if (typeof TELEPORTS !== "object") return null;
   const b = id.startsWith("field:") ? FIELD_BOSSES[id.slice(6)] : null;
   if (!b?.schedule) return TELEPORTS[id];
-  return (TELEPORTS[b.schedule] || []).filter((s) => !s.boss || s.boss === b.name);
+  const spots = (TELEPORTS[b.schedule] || []).filter((s) => !s.boss || s.boss === b.name);
+  const points = spawnPointsOf(id);
+  if (points && spots.length === points.length) {
+    const t = fieldTimer(id.slice(6));
+    const at = t?.state === "up" ? points.indexOf(t.spawn) : -1;
+    if (at >= 0) return [spots[at]];
+  }
+  return spots;
 };
 const teleportTip = (id) => {
   const spots = spotsOf(id);
   if (!spots?.length) return "";
   const u = TP_UI[language] || TP_UI.en;
+  // Where he may be, not yet where he is: each spawner's, said so.
+  const anyOf = spots.length > 1 && !!spawnPointsOf(id);
   const side = serverSide();
   // Several bosses at once (one event): each line names its boss.
   const named = !!EVENTS.find((e) => e.id === id)?.also?.length;
@@ -497,6 +509,7 @@ const teleportTip = (id) => {
     }
   }
   if (!lines.length) return "";
+  if (anyOf) return `${u.anyOf(spots.length)}:\n${lines.join("\n")}`;
   return lines.length === 1 ? `${u.label}: ${lines[0]}` : `${u.label}:\n${lines.join("\n")}`;
 };
 // The teleport list's numbers for a boss, on its icon: the player's side
@@ -681,8 +694,42 @@ const fieldBosses = () => {
 const BOSS_OFFSETS = Array.from({ length: 21 }, (_, i) => i - 10);
 const bossOffset = () => (BOSS_OFFSETS.includes(Number(prefs.bossOffset)) ? Number(prefs.bossOffset) : 0);
 const feedEntry = (id) => {
-  const t = feed && feed.server === serverId() ? feed.bosses?.[id] || null : null;
+  const t = SPAWN_POINTS[id] ? spawnEntry(id) : rawEntry(id);
   return t?.nextSpawn && bossOffset() ? { ...t, nextSpawn: t.nextSpawn + bossOffset() } : t;
+};
+const rawEntry = (id) => (feed && feed.server === serverId() ? feed.bosses?.[id] || null : null);
+// One still up at 0% HP was killed (as fieldTimer has it).
+const killedAtZero = (t) => (t?.state === "up" && t.hp === 0 && t.hpAt
+  ? { ...t, state: "dead", nextSpawn: null, reportedAt: Math.max(t.reportedAt || 0, t.hpAt) } : t);
+// Guardian Lord Nahma is one boss that the game spawns at one of three
+// spawners (WorldMapFieldNamed 2003-2005: M_AR1_AbBoss_01_1 to _3, PeriodSpawn
+// 1013-1015), and the feed has a timer for each spawner: three icons with the
+// same countdown until 0.6.35. He is listed, followed and alerted once, under
+// the first spawner's id, so the alerts and icons set for it stay; those set
+// for the other two move to it (the start below).
+// His timer: the spawner he is up at, with its HP, if any is; once that one
+// is reported dead, it; all three reported dead, the newest; else none, and
+// his schedule says when he is up. `spawn`: the spawner he is up at.
+const SPAWN_POINTS = { "2003": ["2003", "2004", "2005"] };
+const upAt = new Map();
+const spawnEntry = (id) => {
+  const ids = SPAWN_POINTS[id];
+  const reports = ids.map((spawn) => ({ spawn, t: killedAtZero(rawEntry(spawn)) })).filter((r) => r.t);
+  const newest = (rs) => rs.sort((x, y) => (Number(y.t.reportedAt) || 0) - (Number(x.t.reportedAt) || 0))[0];
+  const up = newest(reports.filter((r) => r.t.state === "up"));
+  if (up) {
+    upAt.set(id, { server: serverId(), spawn: up.spawn, upSince: Number(up.t.upSince) || 0 });
+    return { ...up.t, spawn: up.spawn };
+  }
+  const was = upAt.get(id);
+  const fell = was?.server === serverId()
+    && reports.find((r) => r.spawn === was.spawn && (Number(r.t.reportedAt) || 0) >= was.upSince);
+  if (fell) return { ...fell.t, spawn: null };
+  if (reports.length === ids.length) return { ...newest(reports).t, spawn: null };
+  // Some spawners reported dead, the others not at all: one that never
+  // spawned says nothing of him, unless it gives his respawn time.
+  const timed = newest(reports.filter((r) => r.t.nextSpawn));
+  return timed ? { ...timed.t, spawn: null } : null;
 };
 const fieldTimer = (id) => {
   let t = feedEntry(id);
@@ -701,16 +748,16 @@ const fieldTimer = (id) => {
 // a fixed schedule from it.
 const isAbyssBoss = (b) => b.where === "String_STR_Map_Abyss_Reshanta_A_body";
 // The Abyss's scheduled bosses are world bosses, as the feed has them
-// (WorldMapFieldNamed: Argo, the Spirit King 2001; Watcher Kaira 2002; the
-// three Guardian Lord Nahmas 2003-2005; Executors Tamasa, Argo and Kaira
-// 2006-2008), listed, followed
+// (WorldMapFieldNamed: Argo, the Spirit King 2001; Watcher Kaira 2002;
+// Guardian Lord Nahma 2003, with his other two spawners 2004 and 2005 (see
+// SPAWN_POINTS); Executors Tamasa, Argo and Kaira 2006-2008), listed, followed
 // and alerted as the others are. Their next spawn comes from the game's
 // schedule (schedule.js EVENTS), the feed keeping none for them. Each spawn's
 // event, and its name's place in the event's names.
 // Argo, the Spirit King was a feed boss (2001) until the 2026-11-04 data put
 // him on the schedule (boss-king, daily): left out here, he went from the
 // list, its icons and its alerts in 0.6.32.
-const ABYSS_SPAWNS = { "boss-king": ["2001"], "boss-kaira": ["2002"], "boss-nahma": ["2003", "2004", "2005"], "boss-tamasa-argo-kaira": ["2006", "2007", "2008"] };
+const ABYSS_SPAWNS = { "boss-king": ["2001"], "boss-kaira": ["2002"], "boss-nahma": ["2003"], "boss-tamasa-argo-kaira": ["2006", "2007", "2008"] };
 for (const [evId, ids] of Object.entries(ABYSS_SPAWNS)) {
   const ev = EVENTS.find((e) => e.id === evId);
   if (!ev) continue;
@@ -2226,6 +2273,21 @@ a2.on("compact", (on) => document.body.classList.toggle("compact", !!on));
       if (!store || !(evId in store)) continue;
       for (const id of ids) store[`field:${id}`] ??= store[evId];
       delete store[evId];
+      moved = true;
+    }
+  }
+  // 0.6.34 and before listed each of Guardian Lord Nahma's spawners: an alert
+  // set for any of them is his now, with its times, icon and fought settings
+  // (the first spawner's, if it had one, else the next one's).
+  for (const [id, ids] of Object.entries(SPAWN_POINTS)) {
+    const to = `field:${id}`;
+    const keys = ids.map((s) => `field:${s}`);
+    const alerted = keys.find((k) => k in (prefs.alerts || {}));
+    for (const store of [prefs.alerts, prefs.leads, prefs.closedLeads, prefs.overrides, prefs.fought]) {
+      if (!store || !keys.some((k) => k !== to && k in store)) continue;
+      const from = alerted && alerted in store ? alerted : keys.find((k) => k in store);
+      store[to] = store[from];
+      for (const k of keys) if (k !== to) delete store[k];
       moved = true;
     }
   }
