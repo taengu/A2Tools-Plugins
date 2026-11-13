@@ -1,14 +1,15 @@
 {
   "id": "pet-souls",
-  "name": "Pet Soul Tracker",
-  "version": "0.6.3",
+  "name": "Shugo's Ledger",
+  "version": "0.7.0",
   "apiVersion": 2,
   "author": "A2 Tools",
-  "description": "Souls still needed to raise each pet, from the game's own pet data, where each pet's souls drop, the monsters around you that drop them, which of the Black Cloud Merchants' pets you don't have yet, and their skins and Theostones on sale.",
+  "description": "Pets, Kinah, drops and skins in one window. Pets: souls still needed to raise each pet, where each pet's souls drop, the monsters around you that drop them, and the Black Cloud Merchants' pets, skins and Theostones. Kinah: how long each character takes to reach the daily 1,000,000 and the Unique drops along the way. Drops: your drop rates beside the game's listed chances. Skins: your Closet against every skin in the game, and where to get the ones you're missing.",
   "permissions": [
     "storage",
     "events:character",
     "events:black-market",
+    "events:loot",
     "window",
     "widgets",
     "decoder:pet-list",

@@ -1,4 +1,5 @@
-// Pet Soul Tracker: souls still needed to raise each pet, and where each
+// Shugo's Ledger's Pets tab (Pet Soul Tracker until 0.7.0; Kinah and Skins
+// are collection-ui.js): souls still needed to raise each pet, and where each
 // pet's souls drop (sources.js, from the game's own data; click a pet to see them).
 // "Around you" is a map of where the monsters that drop a soul for a pet below
 // level 3 spawn, with you and the monsters in range on it (maps.js, nearby.js).
@@ -1939,6 +1940,8 @@ els.head.addEventListener("click", (e) => {
   applyScale();
   renderScale();
   applyMapText();
+  // The scripts after this one (collection-ui.js) set their handlers first.
+  if (document.readyState === "loading") await new Promise((r) => document.addEventListener("DOMContentLoaded", r, { once: true }));
   await a2.ready();
   // The "farming" mark wears off without an event to redraw it.
   setInterval(() => { if (state.lastGain) render(); }, 60_000);

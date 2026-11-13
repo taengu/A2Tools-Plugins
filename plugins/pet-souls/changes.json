@@ -1,5 +1,18 @@
 [
   {
+    "version": "0.7.0",
+    "en": "Now Shugo's Ledger, with new tabs. Kinah: time to the daily 1,000,000 and Unique drops on the way. Drops: your drop rates beside the game's chances (meter 2.0.98). Skins: every skin against your Closet, and where to get the rest.",
+    "ko": "이제 Shugo's Ledger입니다. 새 탭: 키나(하루 100만 도달 시간과 유일 획득), 드롭(내 드롭 확률과 게임 표기 확률, 미터 2.0.98), 외형(모든 외형과 옷장 비교, 얻는 곳).",
+    "ja": "Shugo's Ledgerになりました。新しいタブ:キナ(1日100万までの時間と唯一入手)、ドロップ(自分のドロップ率とゲームの表記確率、メーター2.0.98)、外見(全外見とクローゼットの比較、入手方法)。",
+    "de": "Jetzt Shugo's Ledger, mit neuen Tabs. Kinah: Zeit bis zu den täglichen 1.000.000 und einzigartige Beute. Beute: deine Raten neben den Chancen des Spiels (Meter 2.0.98). Aussehen: alle gegen deinen Kleiderschrank, und woher der Rest kommt.",
+    "fr": "Devient Shugo's Ledger, avec de nouveaux onglets. Kinah : temps jusqu'au 1 000 000 quotidien et butin unique. Butin : vos taux face aux chances du jeu (compteur 2.0.98). Apparences : toutes face à votre garde-robe, et où obtenir le reste.",
+    "es": "Ahora es Shugo's Ledger, con pestañas nuevas. Kinah: tiempo hasta el 1.000.000 diario y botín único. Botín: tus tasas junto a las del juego (medidor 2.0.98). Aspectos: todos frente a tu armario, y dónde conseguir el resto.",
+    "pt": "Agora é Shugo's Ledger, com abas novas. Kinah: tempo até o 1.000.000 diário e saque único. Saque: suas taxas ao lado das chances do jogo (medidor 2.0.98). Visuais: todos comparados ao seu guarda-roupa, e onde conseguir o resto.",
+    "ru": "Теперь Shugo's Ledger, с новыми вкладками. Кина: время до дневного 1 000 000 и уникальная добыча. Добыча: ваши шансы рядом с игровыми (счётчик 2.0.98). Облики: все против вашего гардероба и где взять остальные.",
+    "zh-Hant": "更名為 Shugo's Ledger,新增分頁。基納:達到每日 100 萬的用時與獨特掉落。掉落:你的掉落率與遊戲標示機率(計量器 2.0.98)。外觀:所有外觀與衣櫃比較,以及其餘從哪裡取得。",
+    "zh-Hans": "更名为 Shugo's Ledger,新增分页。基纳:达到每日 100 万的用时与独特掉落。掉落:你的掉落率与游戏标示概率(计量器 2.0.98)。外观:所有外观与衣柜比较,以及其余从哪里获取。"
+  },
+  {
     "version": "0.6.3",
     "en": "Black Market: what you bought leaves the list at once and counts as owned; with meter 2.0.95 also what you bought before (the game's Sold Out). Grades in the game's colours (Common, Rare, Epic, Unique), and the window pops up once per stock.",
     "ko": "암시장: 구입한 상품은 바로 목록에서 빠지고 보유로 표시됩니다. 미터 2.0.95부터는 이전에 산 상품(게임의 품절 표시)도 반영됩니다. 등급은 게임 색상(일반·희귀·영웅·유일)으로 표시되며, 창은 판매 목록마다 한 번만 뜹니다.",
@@ -50,18 +63,5 @@
     "ru": "Чёрный рынок: откройте лавку торговцев Чёрного облака, и окно покажет питомцев на продаже — сначала тех, кого у вас ещё нет, — с их уровнем и душами (meter 2.0.93).",
     "zh-Hant": "黑市：打開黑雲商團的商店，視窗會列出販售中的寵物，尚未擁有的排在最前，並顯示每隻的等級與靈魂（計量器 2.0.93）。",
     "zh-Hans": "黑市：打开黑云商团的商店，窗口会列出出售中的宠物，尚未拥有的排在最前，并显示每只的等级与灵魂（计量器 2.0.93）。"
-  },
-  {
-    "version": "0.5.4",
-    "en": "Chests: new pets they give are counted at once, and souls past a level's cost stay with the pet.",
-    "ko": "상자: 상자에서 얻은 새 펫이 바로 반영되고, 레벨에 필요한 수를 넘는 영혼은 펫에 그대로 남습니다.",
-    "ja": "宝箱：宝箱から得た新しいペットがすぐに反映され、レベルに必要な数を超えた魂はペットに残ります。",
-    "de": "Truhen: neue Haustiere daraus werden sofort gezählt, und Seelen über den Stufenbedarf hinaus bleiben beim Haustier.",
-    "fr": "Coffres : les nouveaux familiers qu'ils donnent sont comptés aussitôt, et les âmes au-delà du coût d'un niveau restent au familier.",
-    "es": "Cofres: las mascotas nuevas que dan se cuentan al momento, y las almas que sobran tras subir de nivel se quedan con la mascota.",
-    "pt": "Baús: os novos mascotes que eles dão são contados na hora, e as almas além do custo de um nível ficam com o mascote.",
-    "ru": "Сундуки: новые питомцы из них учитываются сразу, а души сверх стоимости уровня остаются у питомца.",
-    "zh-Hant": "寶箱：寶箱給的新寵物會立即計入，超過升級所需的靈魂會保留在寵物身上。",
-    "zh-Hans": "宝箱：宝箱给的新宠物会立即计入，超过升级所需的灵魂会保留在宠物身上。"
   }
 ]

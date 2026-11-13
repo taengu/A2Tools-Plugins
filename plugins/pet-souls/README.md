@@ -1,4 +1,37 @@
-# Pet Soul Tracker
+# Shugo's Ledger
+
+Pets, Kinah, drops and skins in one window, on four tabs (Pet Soul Tracker until 0.7.0). Saved pets, names, pins and settings carry over.
+
+## Kinah
+
+The game counts the Kinah each character gains in a day, up to 1,000,000, and resets the count at the daily reset. The **Kinah** tab follows that count:
+
+- **Today**, for the character you play: the Kinah so far against 1,000,000, when the day's first Kinah came, how long since (or how long it took to reach the limit), the Kinah per hour and when you'll reach the limit at that pace, the Unique drops so far and when the day resets.
+- **Your characters today**: each character with Kinah today, on this server or all, with how long it took (or **running**, or **stopped** after 15 minutes without Kinah) and its Unique drops.
+- **Last 7 days** of one character (pick it in the menu): a bar per day for the time to the limit, shorter being faster, and a row per day.
+- **Unique drops today**: the Unique and Heroic items picked up, the ones during the run marked.
+
+"Took" runs from the day's first Kinah to the limit; time away from the game counts. A meter started after a character's first Kinah of the day starts the day where it first saw it (marked ≥). Unique drops are the items of Unique grade or above that the game lists from monsters, dungeons or gathering. Days are kept for 30 days.
+
+## Drops
+
+**Drops** puts what you get beside what the game lists (meter 2.0.98 or later). Each row is an item, with your rate and the game's listed chance:
+
+- **Monsters**: your drops of the item from a monster, against the kills of it you hit. In a party each member gets drops of their own, so only yours count. The listed chance is the game's own, from the monster's reward lists.
+- **Gathering**: the extras a gather can give (a Life Crystal from Aria and Targena, Poko's Skin Bundle from most nodes, a Seed of Detection from trees) and double yields, against your gathers of that item. The game lists no chance for these.
+- **Shugo Festival** and **Dimensional Invasion**: each item the rewards gave, and in how many of your runs.
+
+Search by item or monster, pick a source, sort by the most seen, the luckiest (your rate against the listed chance) or the name, and choose the period (today, the last 7 or 30 days, or all kept). **Unique and above only** and **This character only** narrow the list. Counts are kept per character and day, for 90 days.
+
+## Skins
+
+**Skins** lists every skin in the game against your Closet (sent when you log in, and each skin added since): how many you have, and the missing ones first. Search by name, show **Missing**, **Owned** or **All**, pick armour, weapons or accessories, and filter by where they come from (boxes, the Black Market, the coin shops, Hidden Cubes, rankings, dungeons, or other). A skin on the Black Market for you right now is marked and listed first.
+
+Each skin says where the game says it comes from, with the chance where the game gives one: Poko's Skin Bundle lists 38 wings and skins with their odds. **Where to get it** on a bundle skin lists the gathering nodes that drop the bundle (any gathering node of those kinds can; the game gives no chance for that).
+
+The skins, their sources and odds are the game's own (its Skin, Item, ItemGetRoute, BoxReward, RewardPackageItem and gathering tables), built by `tools/game-souls/collection.py` into `collection.js`.
+
+## Pets
 
 Shows how many souls each of your pets still needs to reach level 3 (Special pets are left out: they come at their highest level). At the top: the souls still needed for every pet, how many pets are left, and a bar of how far along you are. Search by name, or open **Filters** for genus, level, regions, "Hide pets at level 3", the layout and the text size (the button shows how many filters are on).
 

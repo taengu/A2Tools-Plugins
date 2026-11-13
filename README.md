@@ -4,7 +4,7 @@ Reviewed plugins for the [A2 Tools DPS Meter](https://a2tools.app), the damage m
 
 | Plugin | What it does |
 |---|---|
-| [Pet Soul Tracker](plugins/pet-souls) | How many souls each of your pets still needs to reach level 3, from the game's own pet data, with filters by genus and level, in all ten meter languages, and where each pet's souls drop and the nearest teleport, from the game's own data. |
+| [Shugo's Ledger](plugins/pet-souls) | Pets, Kinah and skins: how many souls each of your pets still needs to reach level 3 and where they drop, how long each character takes to reach the daily 1,000,000 Kinah with the Unique drops on the way, and every skin against your Closet with where to get the missing ones, from the game's own data, in all ten meter languages. |
 | [Mantra Watch](plugins/mantra-watch) | For Chanters: your mantras on or off, how many party members each reaches, an alert the moment one drops in a fight, and each fight's uptime. |
 | [Event Timers](plugins/event-timers) | Countdowns to the recurring events and scheduled bosses (Shugo Festival, Dimensional Invasion, Spacetime Rift, Artifact Siege, the Abyss bosses, resets), from the game's own schedules, in your server's time and your language. |
 | [Cooldowns](plugins/cooldowns) | Your skill cooldowns and buffs as icons you place anywhere over the game, with a sound or your skill's name spoken when one is ready, and hidden outside combat if you like. |

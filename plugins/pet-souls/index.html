@@ -2,10 +2,19 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <title>Pet Soul Tracker</title>
+    <title>Shugo's Ledger</title>
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
+    <nav class="tabs" role="tablist">
+      <button type="button" role="tab" data-tab="pets">Pets</button>
+      <button type="button" role="tab" data-tab="kinah">Kinah</button>
+      <button type="button" role="tab" data-tab="drops">Drops</button>
+      <button type="button" role="tab" data-tab="skins">Skins</button>
+    </nav>
+    <section class="kinahView"></section>
+    <section class="dropsView"></section>
+    <section class="skinsView"></section>
     <div class="controls">
       <div class="totals">
         <div class="summary"></div>
@@ -112,5 +121,7 @@
     <script src="minimap.js"></script>
     <script src="nearby.js"></script>
     <script src="plugin.js"></script>
+    <script src="collection.js"></script>
+    <script src="collection-ui.js"></script>
   </body>
 </html>
