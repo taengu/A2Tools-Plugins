@@ -7,7 +7,7 @@ globalThis.KdaLogic = (() => {
   const SPARKLE = [2093, 2637, 3136, 3951, 4186];
   const SEEN_MAX = 100;
 
-  const fresh = () => ({ kills: 0, deaths: 0, assists: 0, streak: 0, best: 0, since: null, seen: [], abyssPoints: 0, inAbyss: false });
+  const fresh = () => ({ kills: 0, deaths: 0, assists: 0, streak: 0, best: 0, since: null, seen: [], abyssPoints: 0, inAbyss: false, week: null, limit: null, weekAt: null });
 
   // Count one event, once. False when it was counted before (the meter keeps
   // its events for a window opened later) or is not one of ours.
@@ -27,6 +27,12 @@ globalThis.KdaLogic = (() => {
     if (kind === "points") {
       const amount = Number(event.amount);
       if (state.inAbyss && amount > 0) state.abyssPoints += amount;
+      // The week's points so far and their cap (meter 2.0.98 on).
+      if (Number(event.limit) > 0) {
+        state.week = Number(event.week) || 0;
+        state.limit = Number(event.limit);
+        state.weekAt = Number(event.at) || Date.now();
+      }
       return true;
     }
     state.since ??= Number(event.at) || Date.now();
@@ -76,6 +82,52 @@ globalThis.KdaLogic = (() => {
     return out;
   }
 
+  // The players you killed or helped kill, newest first (meter 2.0.98 on: its
+  // kill and assist events name them). The game sends the points a kill
+  // earns in the same moment as the record of it, just before or after, so a
+  // gain within PAIR_MS of a kill or assist is taken as what it earned.
+  const PAIR_MS = 3_000;
+  const VICTIMS_MAX = 300;
+  function logVictim(list, event) {
+    const kind = event?.kind;
+    if (kind === "kill" || kind === "assist") {
+      const v = event.victim || {};
+      const at = Number(event.at) || Date.now();
+      const entry = { at, kind, name: v.name || null, serverId: v.serverId ?? null, class: v.class || null, level: v.level ?? null, legion: v.legion || null, ap: null };
+      // A gain that came first and no kill took yet.
+      const gain = list.pendingGain;
+      if (gain && Math.abs(at - gain.at) <= PAIR_MS) {
+        entry.ap = gain.amount;
+        list.pendingGain = null;
+      }
+      list.items.unshift(entry);
+      if (list.items.length > VICTIMS_MAX) list.items.length = VICTIMS_MAX;
+      return true;
+    }
+    if (kind === "points") {
+      const amount = Number(event.amount);
+      if (!(amount > 0)) return false;
+      const at = Number(event.at) || Date.now();
+      const recent = list.items.find((v) => v.ap == null && Math.abs(at - v.at) <= PAIR_MS);
+      if (recent) {
+        recent.ap = amount;
+        return true;
+      }
+      list.pendingGain = { at, amount };
+      return false;
+    }
+    return false;
+  }
+  const freshVictims = () => ({ items: [], pendingGain: null });
+  // The average points a kill and an assist earned, of those paired.
+  function apEach(items) {
+    const avg = (kind) => {
+      const got = items.filter((v) => v.kind === kind && v.ap > 0);
+      return got.length ? Math.round(got.reduce((s, v) => s + v.ap, 0) / got.length) : null;
+    };
+    return { kill: avg("kill"), assist: avg("assist") };
+  }
+
   // (kills + assists) per death, one decimal; deaths 0 counts as 1.
   const kda = (s) => ((s.kills + s.assists) / Math.max(s.deaths, 1)).toFixed(1);
   const clock = (ms) => {
@@ -85,5 +137,5 @@ globalThis.KdaLogic = (() => {
     return h ? `${h}:${rest}` : rest;
   };
 
-  return { apply, notes, fresh, kda, clock, MAX_STREAK };
+  return { apply, notes, fresh, kda, clock, logVictim, freshVictims, apEach, MAX_STREAK };
 })();

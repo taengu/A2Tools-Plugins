@@ -423,7 +423,7 @@ $(".clear").addEventListener("click", async () => {
 
 // ----- The PvP tab: kills, deaths and assists (Nullception's K/D/A Counter) -----
 
-const { apply: kdaApply, notes: kdaNotes, fresh: kdaFresh, kda: kdaRatio, clock: kdaClock, MAX_STREAK } = globalThis.KdaLogic;
+const { apply: kdaApply, notes: kdaNotes, fresh: kdaFresh, kda: kdaRatio, clock: kdaClock, logVictim: kdaLogVictim, freshVictims: kdaFreshVictims, apEach: kdaApEach, MAX_STREAK } = globalThis.KdaLogic;
 const K = (s) => document.querySelector(s);
 let kdaWords = globalThis.KDA_UI.en;
 // An event older than this is the meter's replay of what came before the
@@ -433,9 +433,14 @@ const KDA_STALE_MS = 5_000;
 // opening by itself, so these wait to be turned on in Settings.
 const kdaPrefs = { volume: 0, assistSound: true, deathSound: false, abyssPopup: false };
 let kdaState = kdaFresh();
+// Kept apart from the counts: the reset clears those, not this.
+let kdaVictims = kdaFreshVictims();
 let kdaHeard = false;
 let audio = null;
-const kdaSave = () => a2.storage.set("kdaState", kdaState).catch(() => {});
+const kdaSave = () => {
+  a2.storage.set("kdaState", kdaState).catch(() => {});
+  a2.storage.set("kdaVictims", kdaVictims).catch(() => {});
+};
 const kdaSavePrefs = () => a2.storage.set("kdaPrefs", kdaPrefs).catch(() => {});
 
 function kdaPlay(kind, streak) {
@@ -477,6 +482,48 @@ function kdaDraw() {
   // In the Abyss, or with points earned there since the reset.
   K(".kdaAbyss").hidden = !kdaState.inAbyss && !kdaState.abyssPoints;
   K(".kdaAbyss b").textContent = kdaState.abyssPoints.toLocaleString(lang);
+  // The week's points against their cap, as the game last sent them.
+  const week = K(".kdaWeek");
+  week.hidden = !(kdaState.limit > 0);
+  if (!week.hidden) {
+    K(".kdaWeekOf").textContent = kdaWords.weekOf(kdaState.week.toLocaleString(lang), kdaState.limit.toLocaleString(lang));
+    K(".kdaWeekBar i").style.width = `${Math.min(100, (kdaState.week / kdaState.limit) * 100)}%`;
+  }
+  const each = kdaApEach(kdaVictims.items);
+  K(".kdaApEach").textContent = [
+    each.kill != null ? kdaWords.apPerKill(each.kill.toLocaleString(lang)) : "",
+    each.assist != null ? kdaWords.apPerAssist(each.assist.toLocaleString(lang)) : "",
+  ].filter(Boolean).join(" · ");
+  kdaDrawVictims();
+}
+
+// Who you killed or helped kill, newest first.
+const VICTIMS_SHOWN = 100;
+function kdaDrawVictims() {
+  const list = K(".kdaVictims");
+  K(".kdaVictimsHead").hidden = !kdaVictims.items.length;
+  list.replaceChildren(
+    ...kdaVictims.items.slice(0, VICTIMS_SHOWN).map((v) => {
+      const row = el("li", "victim");
+      const icon = classIcon(v.class);
+      if (icon) {
+        const img = el("img", "classIcon");
+        img.src = icon;
+        img.alt = className(v.class);
+        row.append(img);
+      } else {
+        row.append(el("span", "classIcon"));
+      }
+      const who = el("div", "who");
+      const name = el("div", "rowName", v.name || "?");
+      name.append(el("span", `badge is-${v.kind}`, v.kind === "kill" ? kdaWords.kill : kdaWords.assist));
+      who.append(name, el("div", "rowSub", [v.legion || words.noLegion, serverName(v.serverId), className(v.class), v.level ? words.lv(v.level) : ""].filter(Boolean).join(" · ")));
+      const side = el("div", "side");
+      side.append(el("div", "ap", v.ap > 0 ? `+${v.ap.toLocaleString(lang)}` : ""), el("div", "when", when(v.at)));
+      row.append(who, side);
+      return row;
+    }),
+  );
 }
 function kdaTick() {
   K(".kdaTime").textContent = kdaClock(kdaState.since ? Date.now() - kdaState.since : 0);
@@ -493,6 +540,7 @@ a2.on("kda", (e, meta) => {
   kdaHeard = true;
   K(".kdaOld").hidden = true;
   if (!kdaApply(kdaState, e)) return;
+  kdaLogVictim(kdaVictims, e);
   const live = Date.now() - (e.at || meta?.at || Date.now()) <= KDA_STALE_MS;
   if (live && e.kind === "zone" && e.abyss && kdaPrefs.abyssPopup) {
     setTab("pvp");
@@ -504,9 +552,10 @@ a2.on("kda", (e, meta) => {
 });
 
 K(".kdaReset").addEventListener("click", () => {
-  // Keeps the events already counted, so a replay can't count them again.
-  const { seen, inAbyss } = kdaState;
-  kdaState = { ...kdaFresh(), seen, inAbyss };
+  // Keeps the events already counted, so a replay can't count them again,
+  // and the week's points, which are the game's and no reset of ours.
+  const { seen, inAbyss, week, limit, weekAt } = kdaState;
+  kdaState = { ...kdaFresh(), seen, inAbyss, week, limit, weekAt };
   kdaDraw();
   kdaTick();
   kdaSave();
@@ -542,6 +591,8 @@ for (const [label, kind, streak] of [["1", "kill", 1], ["2", "kill", 2], ["3", "
   if (kp && typeof kp === "object") Object.assign(kdaPrefs, kp);
   const ks = await a2.storage.get("kdaState").catch(() => null);
   if (ks && typeof ks.kills === "number") kdaState = { ...kdaFresh(), ...ks };
+  const kv = await a2.storage.get("kdaVictims").catch(() => null);
+  if (kv && Array.isArray(kv.items)) kdaVictims = { ...kdaFreshVictims(), ...kv };
   K(".kdaVolume").value = kdaPrefs.volume;
   K(".kdaAssistSound").checked = kdaPrefs.assistSound;
   K(".kdaDeathSound").checked = kdaPrefs.deathSound;

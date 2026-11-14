@@ -1,5 +1,18 @@
 [
   {
+    "version": "0.3.0",
+    "en": "The PvP tab lists the players you killed or helped kill (name, legion, server, class), with the Abyss Points each earned you and the average per kill and assist, and shows the week's Abyss Points against their cap. Assists count only on enemies: a buff on an ally who then died no longer counts (meter 2.0.98).",
+    "ko": "PvP 탭에 처치하거나 처치를 도운 플레이어(이름, 레기온, 서버, 직업)가 각각 얻은 어비스 포인트와 처치·어시스트당 평균과 함께 나열되고, 이번 주 어비스 포인트를 한도와 함께 보여 줍니다. 어시스트는 적에게만 셉니다. 버프를 준 아군이 죽어도 더 이상 세지 않습니다 (미터 2.0.98).",
+    "ja": "PvP タブに、キルまたはアシストしたプレイヤー（名前、レギオン、サーバー、クラス）を、それぞれで得たアビスポイントとキル・アシストあたりの平均とともに表示し、今週のアビスポイントを上限と並べて表示します。アシストは敵にだけ数えます。バフをかけた味方が倒れても数えなくなりました（メーター 2.0.98）。",
+    "de": "Der PvP-Tab listet die Spieler, die du getötet oder mitgetötet hast (Name, Legion, Server, Klasse), mit den Abyss-Punkten, die jeder brachte, und dem Schnitt pro Kill und Assist, und zeigt die Abyss-Punkte der Woche gegen ihr Limit. Assists zählen nur bei Gegnern: ein gebuffter Verbündeter, der dann stirbt, zählt nicht mehr (Meter 2.0.98).",
+    "fr": "L'onglet PvP liste les joueurs que tu as éliminés ou aidé à éliminer (nom, légion, serveur, classe), avec les Points d'Abysse rapportés par chacun et la moyenne par élimination et par assistance, et montre les Points d'Abysse de la semaine face à leur plafond. Les assistances ne comptent que sur des ennemis : un allié buffé qui meurt ne compte plus (meter 2.0.98).",
+    "es": "La pestaña PvP lista los jugadores que mataste o ayudaste a matar (nombre, legión, servidor, clase), con los Puntos del Abismo que te dio cada uno y la media por baja y por asistencia, y muestra los Puntos del Abismo de la semana frente a su límite. Las asistencias solo cuentan con enemigos: un aliado al que diste un beneficio y luego murió ya no cuenta (meter 2.0.98).",
+    "pt": "A aba PvP lista os jogadores que você abateu ou ajudou a abater (nome, legião, servidor, classe), com os Pontos do Abismo que cada um rendeu e a média por abate e por assistência, e mostra os Pontos do Abismo da semana frente ao limite. Assistências só contam em inimigos: um aliado que recebeu seu buff e morreu não conta mais (meter 2.0.98).",
+    "ru": "Вкладка PvP показывает игроков, которых вы убили или помогли убить (имя, легион, сервер, класс), с очками Бездны за каждого и средним за убийство и помощь, а также очки Бездны за неделю против лимита. Помощь считается только по врагам: союзник, которого вы баффнули и который затем погиб, больше не считается (meter 2.0.98).",
+    "zh-Hant": "PvP 分頁列出你擊殺或協助擊殺的玩家（名稱、軍團、伺服器、職業），以及每位帶來的深淵點數與每次擊殺、助攻的平均，並顯示本週深淵點數與上限。助攻只計算敵人：你加過增益的隊友陣亡不再計入（計量器 2.0.98）。",
+    "zh-Hans": "PvP 页签列出你击杀或协助击杀的玩家（名称、军团、服务器、职业），以及每位带来的深渊点数与每次击杀、助攻的平均，并显示本周深渊点数与上限。助攻只计算敌人：你加过增益的友军阵亡不再计入（计量器 2.0.98）。"
+  },
+  {
     "version": "0.2.0",
     "en": "Death Recap is now PvP Tracker, with Nullception's K/D/A Counter in it: a PvP tab counts your kills, deaths and assists, your streak and the Abyss Points you earn in the Abyss (meter 2.0.94). Kill sounds and opening in the Abyss are off until you turn them on in Settings.",
     "ko": "죽음 요약이 PvP 트래커가 되었고, Nullception의 K/D/A 카운터가 들어 있습니다. PvP 탭에서 처치, 사망, 어시스트, 연속 처치와 어비스에서 얻은 어비스 포인트를 셉니다 (미터 2.0.94). 처치 소리와 어비스 입장 시 열기는 설정에서 켜기 전까지 꺼져 있습니다.",

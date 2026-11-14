@@ -190,3 +190,22 @@ select option { background: var(--a2-panel, #0e1420); color: #fff; }
 .kdaSettings { margin-top: 6px; padding-top: 6px; border-top: 1px solid rgba(255, 255, 255, 0.08); }
 .kdaTests button { border: 1px solid rgba(255, 255, 255, 0.2); border-radius: 4px; margin-left: 3px; padding: 0 6px; background: none; color: var(--text-2); cursor: pointer; }
 .kdaTests button:hover { color: var(--text); background: rgba(255, 255, 255, 0.08); }
+
+/* The week's Abyss Points against their cap; who you killed or helped kill. */
+.kdaWeek { margin-top: 8px; }
+.kdaWeekLine { display: flex; justify-content: space-between; align-items: baseline; font-size: 12.5px; color: var(--text-2); font-variant-numeric: tabular-nums; }
+.kdaWeekLine > span:first-child { text-transform: uppercase; font-size: 11.5px; letter-spacing: 0.06em; color: var(--text-3); }
+.kdaWeekBar { height: 6px; margin-top: 4px; border-radius: 3px; background: rgba(255, 255, 255, 0.1); overflow: hidden; }
+.kdaWeekBar i { display: block; height: 100%; background: #f5c84b; border-radius: 3px; }
+.kdaApEach { margin-top: 4px; font-size: 12.5px; color: var(--text-3); min-height: 16px; }
+.kdaVictimsHead { margin-top: 12px; padding-top: 8px; border-top: 1px solid rgba(255, 255, 255, 0.08); text-transform: uppercase; font-size: 11.5px; letter-spacing: 0.06em; color: var(--text-3); }
+.kdaVictims { list-style: none; margin: 4px 0 0; padding: 0; }
+.kdaVictims .victim { display: flex; align-items: center; gap: 10px; padding: 6px 0; border-bottom: 1px solid rgba(255, 255, 255, 0.05); }
+.kdaVictims .classIcon { width: 28px; height: 28px; }
+.kdaVictims .who { flex: 1 1 auto; min-width: 0; }
+.kdaVictims .rowName { display: flex; align-items: center; gap: 6px; }
+.kdaVictims .side { text-align: right; flex: 0 0 auto; font-variant-numeric: tabular-nums; }
+.kdaVictims .ap { color: #f5c84b; font-weight: 600; font-size: 13px; min-height: 16px; }
+.badge { font-size: 10.5px; font-weight: 600; letter-spacing: 0.04em; text-transform: uppercase; padding: 0 5px; border-radius: 3px; flex: 0 0 auto; }
+.badge.is-kill { color: #0d1a12; background: var(--green); }
+.badge.is-assist { color: var(--text-2); border: 1px solid rgba(255, 255, 255, 0.25); }

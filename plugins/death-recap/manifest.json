@@ -1,10 +1,10 @@
 {
   "id": "death-recap",
   "name": "PvP Tracker",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "apiVersion": 2,
   "author": "A2 Tools, Nullception",
-  "description": "Your kills, deaths and assists against players, with a sound for each kill that climbs as you chain them, and the Abyss Points you earn in the Abyss; and after a player kills you, who they were (name, legion, server, class, level, combat power and gear score) and what they did to you, in a popup and a history with tallies by player, legion and server. Nothing is shown about players while you live.",
+  "description": "Your kills, deaths and assists against players, with a sound for each kill that climbs as you chain them, the Abyss Points you earn in the Abyss and the week's against their cap, and the players you killed or helped kill; and after a player kills you, who they were (name, legion, server, class, level, combat power and gear score) and what they did to you, in a popup and a history with tallies by player, legion and server. Who killed you is shown only after you die.",
   "permissions": [
     "storage",
     "window",

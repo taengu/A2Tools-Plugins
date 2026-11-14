@@ -5,6 +5,8 @@ globalThis.KDA_UI = {
     settings: "Settings", reset: "Reset",
     streak: (n, best, hot) => `Streak ${n}${hot ? " 🔥" : ""} · best ${best}`, bestStreak: (n) => `Best streak ${n}`,
     kda: (v) => `KDA ${v}`,
+    week: "This week", weekOf: (a, b) => `${a} / ${b}`, apPerKill: (n) => `≈ ${n} per kill`, apPerAssist: (n) => `≈ ${n} per assist`,
+    victims: "Kills and assists", kill: "Kill", assist: "Assist",
     volume: "Volume", assistSound: "Assist sound", deathSound: "Death sound", abyssPopup: "Show when entering the Abyss", test: "Test",
   },
   ko: {
@@ -12,6 +14,8 @@ globalThis.KDA_UI = {
     settings: "설정", reset: "초기화",
     streak: (n, best, hot) => `연속 ${n}${hot ? " 🔥" : ""} · 최고 ${best}`, bestStreak: (n) => `최고 연속 ${n}`,
     kda: (v) => `KDA ${v}`,
+    week: "이번 주", weekOf: (a, b) => `${a} / ${b}`, apPerKill: (n) => `처치당 ≈ ${n}`, apPerAssist: (n) => `어시스트당 ≈ ${n}`,
+    victims: "처치와 어시스트", kill: "처치", assist: "어시스트",
     volume: "음량", assistSound: "어시스트 소리", deathSound: "사망 소리", abyssPopup: "어비스에 들어가면 표시", test: "테스트",
   },
   ja: {
@@ -19,6 +23,8 @@ globalThis.KDA_UI = {
     settings: "設定", reset: "リセット",
     streak: (n, best, hot) => `連続 ${n}${hot ? " 🔥" : ""} · 最高 ${best}`, bestStreak: (n) => `最高連続 ${n}`,
     kda: (v) => `KDA ${v}`,
+    week: "今週", weekOf: (a, b) => `${a} / ${b}`, apPerKill: (n) => `キルあたり ≈ ${n}`, apPerAssist: (n) => `アシストあたり ≈ ${n}`,
+    victims: "キルとアシスト", kill: "キル", assist: "アシスト",
     volume: "音量", assistSound: "アシスト音", deathSound: "デス音", abyssPopup: "アビスに入ったら表示", test: "テスト",
   },
   de: {
@@ -26,6 +32,8 @@ globalThis.KDA_UI = {
     settings: "Einstellungen", reset: "Zurücksetzen",
     streak: (n, best, hot) => `Serie ${n}${hot ? " 🔥" : ""} · Bestwert ${best}`, bestStreak: (n) => `Beste Serie ${n}`,
     kda: (v) => `KDA ${v}`,
+    week: "Diese Woche", weekOf: (a, b) => `${a} / ${b}`, apPerKill: (n) => `≈ ${n} pro Kill`, apPerAssist: (n) => `≈ ${n} pro Assist`,
+    victims: "Kills und Assists", kill: "Kill", assist: "Assist",
     volume: "Lautstärke", assistSound: "Assist-Ton", deathSound: "Todes-Ton", abyssPopup: "Beim Betreten des Abyss anzeigen", test: "Test",
   },
   fr: {
@@ -33,6 +41,8 @@ globalThis.KDA_UI = {
     settings: "Réglages", reset: "Réinitialiser",
     streak: (n, best, hot) => `Série ${n}${hot ? " 🔥" : ""} · record ${best}`, bestStreak: (n) => `Meilleure série ${n}`,
     kda: (v) => `KDA ${v}`,
+    week: "Cette semaine", weekOf: (a, b) => `${a} / ${b}`, apPerKill: (n) => `≈ ${n} par élimination`, apPerAssist: (n) => `≈ ${n} par assistance`,
+    victims: "Éliminations et assistances", kill: "Élimination", assist: "Assistance",
     volume: "Volume", assistSound: "Son d'assistance", deathSound: "Son de mort", abyssPopup: "Afficher en entrant dans l'Abysse", test: "Test",
   },
   es: {
@@ -40,6 +50,8 @@ globalThis.KDA_UI = {
     settings: "Ajustes", reset: "Reiniciar",
     streak: (n, best, hot) => `Racha ${n}${hot ? " 🔥" : ""} · mejor ${best}`, bestStreak: (n) => `Mejor racha ${n}`,
     kda: (v) => `KDA ${v}`,
+    week: "Esta semana", weekOf: (a, b) => `${a} / ${b}`, apPerKill: (n) => `≈ ${n} por baja`, apPerAssist: (n) => `≈ ${n} por asistencia`,
+    victims: "Bajas y asistencias", kill: "Baja", assist: "Asistencia",
     volume: "Volumen", assistSound: "Sonido de asistencia", deathSound: "Sonido de muerte", abyssPopup: "Mostrar al entrar en el Abismo", test: "Probar",
   },
   pt: {
@@ -47,6 +59,8 @@ globalThis.KDA_UI = {
     settings: "Configurações", reset: "Reiniciar",
     streak: (n, best, hot) => `Sequência ${n}${hot ? " 🔥" : ""} · melhor ${best}`, bestStreak: (n) => `Melhor sequência ${n}`,
     kda: (v) => `KDA ${v}`,
+    week: "Esta semana", weekOf: (a, b) => `${a} / ${b}`, apPerKill: (n) => `≈ ${n} por abate`, apPerAssist: (n) => `≈ ${n} por assistência`,
+    victims: "Abates e assistências", kill: "Abate", assist: "Assistência",
     volume: "Volume", assistSound: "Som de assistência", deathSound: "Som de morte", abyssPopup: "Mostrar ao entrar no Abismo", test: "Testar",
   },
   ru: {
@@ -54,6 +68,8 @@ globalThis.KDA_UI = {
     settings: "Настройки", reset: "Сбросить",
     streak: (n, best, hot) => `Серия ${n}${hot ? " 🔥" : ""} · рекорд ${best}`, bestStreak: (n) => `Лучшая серия ${n}`,
     kda: (v) => `KDA ${v}`,
+    week: "Эта неделя", weekOf: (a, b) => `${a} / ${b}`, apPerKill: (n) => `≈ ${n} за убийство`, apPerAssist: (n) => `≈ ${n} за помощь`,
+    victims: "Убийства и помощь", kill: "Убийство", assist: "Помощь",
     volume: "Громкость", assistSound: "Звук помощи", deathSound: "Звук смерти", abyssPopup: "Показывать при входе в Бездну", test: "Проверка",
   },
   "zh-Hans": {
@@ -61,6 +77,8 @@ globalThis.KDA_UI = {
     settings: "设置", reset: "重置",
     streak: (n, best, hot) => `连杀 ${n}${hot ? " 🔥" : ""} · 最高 ${best}`, bestStreak: (n) => `最高连杀 ${n}`,
     kda: (v) => `KDA ${v}`,
+    week: "本周", weekOf: (a, b) => `${a} / ${b}`, apPerKill: (n) => `每次击杀 ≈ ${n}`, apPerAssist: (n) => `每次助攻 ≈ ${n}`,
+    victims: "击杀与助攻", kill: "击杀", assist: "助攻",
     volume: "音量", assistSound: "助攻音效", deathSound: "死亡音效", abyssPopup: "进入深渊时显示", test: "测试",
   },
   "zh-Hant": {
@@ -68,6 +86,8 @@ globalThis.KDA_UI = {
     settings: "設定", reset: "重設",
     streak: (n, best, hot) => `連殺 ${n}${hot ? " 🔥" : ""} · 最高 ${best}`, bestStreak: (n) => `最高連殺 ${n}`,
     kda: (v) => `KDA ${v}`,
+    week: "本週", weekOf: (a, b) => `${a} / ${b}`, apPerKill: (n) => `每次擊殺 ≈ ${n}`, apPerAssist: (n) => `每次助攻 ≈ ${n}`,
+    victims: "擊殺與助攻", kill: "擊殺", assist: "助攻",
     volume: "音量", assistSound: "助攻音效", deathSound: "死亡音效", abyssPopup: "進入深淵時顯示", test: "測試",
   },
 };
