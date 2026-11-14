@@ -67,6 +67,12 @@ const els = {
   voiceRows: [...document.querySelectorAll(".voiceRow")],
   pop: $(".pop"),
   popLabel: $(".popLabel"),
+  rift: $(".rift"),
+  riftLabel: $(".riftLabel"),
+  riftNote: $(".riftNote"),
+  riftHead: $(".riftHead"),
+  riftListNote: $(".riftListNote"),
+  riftList: $(".riftList"),
   alsoAtStart: $(".alsoAtStart"),
   alsoAtStartLabel: $(".alsoAtStartLabel"),
   popNote: $(".popNote"),
@@ -440,6 +446,20 @@ let ownMap = { server: 0, bosses: {} };
 
 const ui = () => ({ ...(UI[language] || UI.en), ...(MORE_UI[language] || MORE_UI.en) });
 const aui = () => ALERT_UI[language] || ALERT_UI.en;
+// The Spacetime Rift's words (the enemy's world bosses).
+const RIFT_UI = {
+  "en": { label: "Spacetime Rift: show the enemy server's world bosses", note: "The world bosses on the server yours is matched against that are up, or will be up, while a Spacetime Rift is open: the 10 minutes to enter and the hour you can stay. Needs meter 2.0.99 or newer.", now: "Spacetime Rift now, until {to}", next: "Next Spacetime Rift {from}–{to}", head: "{server}'s world bosses", waiting: "Your server's rift opponent isn't known yet.", none: "None of their world bosses is up or due by then." },
+  "ko": { label: "시공의 균열: 적 서버의 월드 보스 표시", note: "내 서버와 매칭된 서버의 월드 보스 중 시공의 균열이 열려 있는 동안(입장 가능한 10분과 머무를 수 있는 1시간) 등장해 있거나 등장할 보스를 보여 줍니다. 미터 2.0.99 이상이 필요합니다.", now: "시공의 균열 진행 중, {to}까지", next: "다음 시공의 균열 {from}–{to}", head: "{server}의 월드 보스", waiting: "아직 내 서버의 균열 상대 서버를 알 수 없습니다.", none: "그때까지 등장해 있거나 등장할 월드 보스가 없습니다." },
+  "ja": { label: "時空の亀裂：敵サーバーのワールドボスを表示", note: "自サーバーとマッチングしたサーバーのワールドボスのうち、時空の亀裂が開いている間（入場できる10分と滞在できる1時間）に出現中、または出現予定のものを表示します。メーター2.0.99以降が必要です。", now: "時空の亀裂 開放中（{to}まで）", next: "次の時空の亀裂 {from}–{to}", head: "{server}のワールドボス", waiting: "自サーバーの亀裂の対戦相手はまだ分かりません。", none: "それまでに出現中・出現予定のワールドボスはありません。" },
+  "de": { label: "Raum-Zeit-Riss: Weltbosse des gegnerischen Servers zeigen", note: "Die Weltbosse des Servers, gegen den deiner gepaart ist, die da sind oder kommen, solange ein Raum-Zeit-Riss offen ist: die 10 Minuten zum Betreten und die Stunde, die du bleiben kannst. Benötigt Meter 2.0.99 oder neuer.", now: "Raum-Zeit-Riss jetzt, bis {to}", next: "Nächster Raum-Zeit-Riss {from}–{to}", head: "Weltbosse von {server}", waiting: "Der Riss-Gegner deines Servers ist noch nicht bekannt.", none: "Bis dahin ist keiner ihrer Weltbosse da oder fällig." },
+  "fr": { label: "Faille spatio-temporelle : afficher les boss mondiaux du serveur ennemi", note: "Les boss mondiaux du serveur opposé au tien qui sont là, ou le seront, pendant qu'une faille spatio-temporelle est ouverte : les 10 minutes pour entrer et l'heure où tu peux rester. Nécessite le compteur 2.0.99 ou plus récent.", now: "Faille spatio-temporelle ouverte, jusqu'à {to}", next: "Prochaine faille spatio-temporelle {from}–{to}", head: "Boss mondiaux de {server}", waiting: "L'adversaire de ton serveur pour la faille n'est pas encore connu.", none: "Aucun de leurs boss mondiaux n'est là ni attendu d'ici là." },
+  "es": { label: "Grieta espaciotemporal: mostrar los jefes mundiales del servidor enemigo", note: "Los jefes mundiales del servidor emparejado con el tuyo que están, o estarán, mientras una grieta espaciotemporal está abierta: los 10 minutos para entrar y la hora que puedes quedarte. Necesita el medidor 2.0.99 o posterior.", now: "Grieta espaciotemporal abierta, hasta las {to}", next: "Próxima grieta espaciotemporal {from}–{to}", head: "Jefes mundiales de {server}", waiting: "Aún no se conoce el rival de tu servidor en la grieta.", none: "Ninguno de sus jefes mundiales está o aparecerá para entonces." },
+  "pt": { label: "Fenda espaço-temporal: mostrar os chefes mundiais do servidor inimigo", note: "Os chefes mundiais do servidor pareado com o seu que estão, ou estarão, enquanto uma fenda espaço-temporal está aberta: os 10 minutos para entrar e a hora em que você pode ficar. Requer o medidor 2.0.99 ou mais recente.", now: "Fenda espaço-temporal aberta, até {to}", next: "Próxima fenda espaço-temporal {from}–{to}", head: "Chefes mundiais de {server}", waiting: "O adversário do seu servidor na fenda ainda não é conhecido.", none: "Nenhum dos chefes mundiais deles está ou estará ativo até lá." },
+  "ru": { label: "Пространственно-временной разлом: мировые боссы вражеского сервера", note: "Мировые боссы сервера, с которым сведён ваш, которые есть или появятся, пока открыт пространственно-временной разлом: 10 минут на вход и час, который можно там провести. Нужен метр 2.0.99 или новее.", now: "Разлом открыт, до {to}", next: "Следующий разлом {from}–{to}", head: "Мировые боссы сервера {server}", waiting: "Соперник вашего сервера по разлому пока неизвестен.", none: "К тому времени ни одного их мирового босса нет и не ожидается." },
+  "zh-Hant": { label: "時空裂縫：顯示敵方伺服器的世界首領", note: "與你的伺服器配對的伺服器上，在時空裂縫開啟期間（可進入的 10 分鐘與可停留的 1 小時）已出現或將出現的世界首領。需要計量器 2.0.99 或更新版本。", now: "時空裂縫開啟中，至 {to}", next: "下一次時空裂縫 {from}–{to}", head: "{server} 的世界首領", waiting: "尚不知道你的伺服器的裂縫對手。", none: "到時沒有已出現或將出現的世界首領。" },
+  "zh-Hans": { label: "时空裂缝：显示敌方服务器的世界首领", note: "与你的服务器配对的服务器上，在时空裂缝开启期间（可进入的 10 分钟与可停留的 1 小时）已出现或将出现的世界首领。需要计量器 2.0.99 或更新版本。", now: "时空裂缝开启中，至 {to}", next: "下一次时空裂缝 {from}–{to}", head: "{server} 的世界首领", waiting: "尚不知道你的服务器的裂缝对手。", none: "到时没有已出现或将出现的世界首领。" },
+};
+const riftUi = () => RIFT_UI[language] || RIFT_UI.en;
 const rui = () => ROW_UI[language] || ROW_UI.en;
 const text = (k) => EVENT_TEXT[k]?.[language] ?? EVENT_TEXT[k]?.en ?? k;
 // The built-in voice's lines (kokoro.js, made by tools/voices/make_voice.py
@@ -821,6 +841,8 @@ function renderStatic() {
   els.volumeLabel.textContent = words.volume;
   els.volume.value = String(prefs.volume ?? 100);
   els.popLabel.textContent = a.pop;
+  els.riftLabel.textContent = riftUi().label;
+  els.riftNote.textContent = riftUi().note;
   els.alsoAtStartLabel.textContent = a.alsoAtStart;
   els.popNote.textContent = words.popNote;
   els.popNote.hidden = !prefs.pop;
@@ -843,6 +865,7 @@ function renderStatic() {
   els.repeat.replaceChildren(...REPEATS.map((n) => option(n, n === 0 ? words.untilMuted : n === 1 ? words.once : words.times(n))));
   els.repeat.value = String(prefs.repeat);
   els.pop.checked = !!prefs.pop;
+  els.rift.checked = !!prefs.rift;
   els.alsoAtStart.checked = !!prefs.alsoAtStart;
   renderVoice();
   renderTabs();
@@ -1188,6 +1211,88 @@ function renderHidden(shown) {
   }
 }
 
+// The Spacetime Rift (Settings): the server yours is matched against for the
+// rift (the meter's pairings event, 2.0.99 on: a2tools.app's list of NC's
+// Server Matchmaking notices), whose field bosses can be fought through it. A rift opens every 3 hours from 02:00 server time; it can
+// be entered for 10 minutes and stayed in for an hour after.
+const RIFT_OPEN_MS = (10 + 60) * 60_000;
+let pairings = null;
+let enemyFeed = null;
+const enemyServer = () => (pairings && Number(pairings.server) === serverId() ? Number(pairings.rift) || 0 : 0);
+const sideOf = (id) => (String(id)[0] === "1" ? "elyos" : String(id)[0] === "2" ? "asmodian" : null);
+// The rift open now, or the next one: { from, to } (ms), in the server's time.
+const riftWindow = (now) => {
+  const tz = timeZone();
+  if (!tz) return null;
+  const p = partsIn(tz, now);
+  for (let day = 0; day < 2; day++) {
+    for (let h = 2; h < 24; h += 3) {
+      const from = wallToMs(tz, p.y, p.m, p.d + day, h * 60);
+      if (from + RIFT_OPEN_MS > now) return { from, to: from + RIFT_OPEN_MS };
+    }
+  }
+  return null;
+};
+async function readEnemyFeed() {
+  const server = enemyServer();
+  if (!prefs.rift || !server || typeof a2.bossTimers !== "function") return;
+  try {
+    const data = await a2.bossTimers(server);
+    enemyFeed = { server, bosses: data?.bosses || {}, at: Date.now() };
+  } catch {
+    enemyFeed = { server, bosses: enemyFeed?.server === server ? enemyFeed.bosses : {}, error: true, at: Date.now() };
+  }
+  render();
+}
+// The enemy side's world bosses up now, or back before the rift closes.
+function renderRift(now) {
+  const words = riftUi();
+  const server = enemyServer();
+  const win = prefs.rift ? riftWindow(now) : null;
+  const shown = !!win;
+  els.riftHead.hidden = !shown;
+  els.riftListNote.hidden = true;
+  els.riftList.hidden = !shown;
+  if (!shown) return;
+  const fmt = clock();
+  const time = (ms) => fmt.format(new Date(ms));
+  const names = SERVERS[String(server)];
+  const name = names ? names[language] || names.en : String(server || "");
+  const when = win.from <= now ? words.now.replace("{to}", time(win.to)) : words.next.replace("{from}", time(win.from)).replace("{to}", time(win.to));
+  els.riftHead.textContent = server ? `${words.head.replace("{server}", name)} · ${when}` : when;
+  if (!server || enemyFeed?.server !== server) {
+    els.riftListNote.hidden = false;
+    els.riftListNote.textContent = server ? ui().unknown : words.waiting;
+    els.riftList.replaceChildren();
+    return;
+  }
+  const side = sideOf(server);
+  const rows = Object.entries(FIELD_BOSSES)
+    .filter(([, b]) => b.side === side && !isAbyssBoss(b))
+    .map(([id, b]) => {
+      const t = enemyFeed.bosses[id];
+      if (!t) return null;
+      const killed = t.state === "up" && t.hp === 0 && t.hpAt;
+      const back = t.state === "dead" && t.nextSpawn ? (t.nextSpawn + bossOffset()) * 1000 : null;
+      const up = (t.state === "up" && !killed) || (back && back <= now);
+      if (!up && !(back && back <= win.to)) return null;
+      return { id, b, t, up, back };
+    })
+    .filter(Boolean)
+    .sort((x, y) => (y.up - x.up) || (x.back || 0) - (y.back || 0) || text(x.b.name).localeCompare(text(y.b.name)));
+  const u = ui();
+  els.riftList.replaceChildren(...rows.map(({ id, b, t, up, back }) => {
+    const name = text(b.name) + (b.level ? ` · Lv ${b.level}` : "");
+    const countdown = up ? u.up : u.in(span(back - now));
+    const at = up ? (t.hp != null && t.hpAt ? u.hpLeft(t.hp) : u.up) : time(back);
+    return row({ id: `rift:${id}`, name, where: text(b.where), countdown, at, up, soon: !up && back - now <= SOON_MS, actions: false });
+  }));
+  if (!rows.length) {
+    els.riftListNote.hidden = false;
+    els.riftListNote.textContent = words.none;
+  }
+}
+
 // World bosses: up ones first, then by when they're back, then the ones no
 // meter has reported yet.
 function renderField(now) {
@@ -1201,6 +1306,7 @@ function renderField(now) {
   else if (feed?.error) els.fieldNote.textContent = words.feedFailed;
   else els.fieldNote.textContent = words.fieldNote;
   els.field.replaceChildren(...fieldItems(fieldBosses().filter((b) => !isAbyssBoss(b)), now, true));
+  renderRift(now);
 }
 
 // The rows of these feed bosses, up ones first, then by when they're back;
@@ -2036,6 +2142,7 @@ async function readFeed() {
   feedTimer = setTimeout(readFeed, FEED_EVERY_MS);
   const server = serverId();
   if (!server || typeof a2.bossTimers !== "function") return;
+  readEnemyFeed();
   feedReading = true;
   try {
     const data = await a2.bossTimers(server);
@@ -2144,6 +2251,12 @@ els.alsoAtStart.addEventListener("change", () => {
   prefs.alsoAtStart = els.alsoAtStart.checked;
   savePrefs();
 });
+els.rift.addEventListener("change", () => {
+  prefs.rift = els.rift.checked;
+  savePrefs();
+  readEnemyFeed();
+  render();
+});
 els.pop.addEventListener("change", () => {
   prefs.pop = els.pop.checked;
   els.popNote.hidden = !prefs.pop;
@@ -2218,6 +2331,11 @@ els.scaleSelect.addEventListener("change", () => {
 els.regionSelect.addEventListener("change", () => {
   prefs.region = els.regionSelect.value;
   savePrefs();
+  render();
+});
+a2.on("pairings", (p) => {
+  pairings = p && p.server ? p : null;
+  readEnemyFeed();
   render();
 });
 a2.on("character", (c) => {

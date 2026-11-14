@@ -1,5 +1,18 @@
 [
   {
+    "version": "0.7.0",
+    "en": "Spacetime Rift (Settings): the world bosses of the server yours is matched against, up or due while a rift is open. Needs meter 2.0.99 or newer.",
+    "ko": "시공의 균열(설정): 매칭된 상대 서버의 월드 보스 중 균열이 열려 있는 동안 출현 중이거나 출현할 보스를 보여 줍니다. 미터 2.0.99 이상이 필요합니다.",
+    "ja": "時空の亀裂（設定）：マッチングした相手サーバーのワールドボスのうち、亀裂が開いている間に出現中・出現予定のものを表示。メーター2.0.99以降が必要です。",
+    "de": "Raum-Zeit-Riss (Einstellungen): die Weltbosse des gegnerischen Servers, die da sind oder kommen, solange ein Riss offen ist. Benötigt Meter 2.0.99 oder neuer.",
+    "fr": "Faille spatio-temporelle (Réglages) : les boss mondiaux du serveur adverse, présents ou attendus pendant qu'une faille est ouverte. Nécessite le compteur 2.0.99 ou plus récent.",
+    "es": "Grieta espaciotemporal (Ajustes): los jefes mundiales del servidor rival que están o aparecerán mientras una grieta está abierta. Necesita el medidor 2.0.99 o posterior.",
+    "pt": "Fenda espaço-temporal (Configurações): os chefes mundiais do servidor rival ativos ou previstos enquanto uma fenda está aberta. Requer o medidor 2.0.99 ou mais recente.",
+    "ru": "Пространственно-временной разлом (настройки): мировые боссы сервера-соперника, которые есть или появятся, пока разлом открыт. Нужен метр 2.0.99 или новее.",
+    "zh-Hant": "時空裂縫（設定）：配對敵方伺服器在裂縫開啟期間已出現或將出現的世界首領。需要計量器 2.0.99 或更新版本。",
+    "zh-Hans": "时空裂缝（设置）：配对敌方服务器在裂缝开启期间已出现或将出现的世界首领。需要计量器 2.0.99 或更新版本。"
+  },
+  {
     "version": "0.6.35",
     "en": "Guardian Lord Nahma shows as one boss, not three: he spawns at one of three points and is up when he is up at any, with that point's HP and teleport (all three listed until he is seen). An alert or icon set for any of the three is now his.",
     "ko": "수호신장 나흐마가 셋이 아닌 하나의 보스로 표시됩니다. 세 지점 중 한 곳에 등장하며, 어느 곳에서든 등장하면 그 지점의 HP와 텔레포트와 함께 표시됩니다(확인 전에는 세 곳 모두). 세 개 중 어느 것에 설정한 알림이나 아이콘도 이제 그의 것입니다.",

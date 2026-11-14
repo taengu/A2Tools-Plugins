@@ -35,6 +35,9 @@
       <h2 class="group fieldHead"><button type="button" class="foldBtn" data-fold="field" aria-expanded="true" aria-controls="fieldList"><svg class="chevron" viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg><span class="foldLabel">World bosses</span></button></h2>
       <p class="note fieldNote"></p>
       <ol class="list fieldList" id="fieldList"></ol>
+      <h2 class="group riftHead" hidden></h2>
+      <p class="note riftListNote" hidden></p>
+      <ol class="list riftList" hidden></ol>
       <p class="note fieldCredit" hidden>World boss data: <a href="https://www.aion2timers.com">Aion 2 Timers</a></p>
     </section>
     <section class="view alerts" hidden>
@@ -62,6 +65,8 @@
         </div>
         <label class="setting popRow alsoAtStartRow"><span class="alsoAtStartLabel">Also alert as it starts</span> <input type="checkbox" class="alsoAtStart switch" role="switch" /></label>
         <label class="setting popRow"><span class="popLabel">Keep this window hidden until an alert goes off</span> <input type="checkbox" class="pop switch" role="switch" /></label>
+        <label class="setting riftRow"><span class="riftLabel">Spacetime Rift: show the enemy server's world bosses</span> <input type="checkbox" class="rift switch" role="switch" /></label>
+        <p class="note riftNote">The world bosses on the server yours is matched against that are up, or will be up, while a Spacetime Rift is open: the 10 minutes to enter and the hour you can stay. Needs meter 2.0.99 or newer.</p>
         <p class="note popNote" hidden>The window hides after 30 seconds without use, and comes back on its own when an alert goes off. To open it before then: Settings → Plugins → Open.</p>
         <button type="button" class="btn testAlert">Test Alert</button>
       </div>
