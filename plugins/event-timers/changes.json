@@ -63,44 +63,5 @@
     "ru": "Король духов Агро снова среди боссов Бездны, со значком и оповещениями: с версии 0.6.32 он пропал из списка.",
     "zh-Hant": "精靈王阿格羅回到深淵首領列表，並恢復圖示與提醒：自 0.6.32 起他從列表中消失了。",
     "zh-Hans": "精灵王阿格罗回到深渊首领列表，并恢复图标与提醒：自 0.6.32 起他从列表中消失了。"
-  },
-  {
-    "version": "0.6.33",
-    "en": "The icons and the anchor no longer freeze when a request to the meter goes unanswered: it is given up after 5 s and tried again. A pause or a stuck update now shows in the error line at the bottom of Settings, for bug reports.",
-    "ko": "미터에 보낸 요청에 응답이 없어도 아이콘과 앵커가 더 이상 멈추지 않습니다. 5초 후 포기하고 다시 시도합니다. 일시 정지나 멈춘 업데이트는 이제 설정 하단의 오류 줄에 표시되어 버그 보고에 쓸 수 있습니다.",
-    "ja": "メーターへの要求に応答がなくても、アイコンとアンカーが止まらなくなりました。5秒で諦めて再試行します。一時停止や止まった更新は、設定下部のエラー行に表示されます（バグ報告用）。",
-    "de": "Die Symbole und der Anker frieren nicht mehr ein, wenn eine Anfrage an den Meter unbeantwortet bleibt: Nach 5 s wird aufgegeben und neu versucht. Eine Pause oder ein hängendes Update steht jetzt in der Fehlerzeile unten in den Einstellungen, für Fehlerberichte.",
-    "fr": "Les icônes et l'ancre ne se figent plus quand une demande au meter reste sans réponse : elle est abandonnée après 5 s et retentée. Une pause ou une mise à jour bloquée s'affiche désormais dans la ligne d'erreur en bas des Réglages, pour les rapports de bug.",
-    "es": "Los iconos y el ancla ya no se congelan cuando una petición al meter queda sin respuesta: se abandona tras 5 s y se reintenta. Una pausa o una actualización atascada aparece ahora en la línea de error al pie de Ajustes, para los informes de errores.",
-    "pt": "Os ícones e a âncora não congelam mais quando um pedido ao meter fica sem resposta: ele é abandonado após 5 s e tentado de novo. Uma pausa ou atualização travada agora aparece na linha de erro no fim das Configurações, para relatórios de bug.",
-    "ru": "Значки и якорь больше не замирают, если запрос к meter остаётся без ответа: через 5 с он отменяется и повторяется. Пауза или зависшее обновление теперь показывается в строке ошибки внизу настроек — для отчётов об ошибках.",
-    "zh-Hant": "對計量器的請求沒有回應時，圖示與錨點不再凍結：5 秒後放棄並重試。暫停或卡住的更新現在會顯示在設定底部的錯誤行，方便回報問題。",
-    "zh-Hans": "对计量器的请求没有回应时，图标与锚点不再冻结：5 秒后放弃并重试。暂停或卡住的更新现在会显示在设置底部的错误行，方便报告问题。"
-  },
-  {
-    "version": "0.6.32",
-    "en": "Schedules from the latest game data: the Artifact Siege and the Abyss day bosses are on Thursday and Saturday only (no longer Monday), and Argo, the Spirit King now comes at 10:30 and 22:30 every day.",
-    "ko": "최신 게임 데이터의 일정: 아티팩트 공성전과 어비스 요일 보스는 이제 목요일과 토요일에만 열리며(월요일 제외), 정령왕 아르고는 매일 10:30과 22:30에 등장합니다.",
-    "ja": "最新のゲームデータの予定：アーティファクト攻城戦とアビスの曜日ボスは木曜と土曜のみ（月曜はなし）、精霊王アルゴは毎日10:30と22:30に出現します。",
-    "de": "Zeitpläne aus den neuesten Spieldaten: Die Artefakt-Belagerung und die Abyss-Tagesbosse gibt es nur noch donnerstags und samstags (nicht mehr montags), und Argo, der Geisterkönig, erscheint täglich um 10:30 und 22:30.",
-    "fr": "Horaires des dernières données du jeu : le siège des artefacts et les boss du jour de l'Abysse n'ont lieu que le jeudi et le samedi (plus le lundi), et Argo, le Roi des esprits, apparaît chaque jour à 10:30 et 22:30.",
-    "es": "Horarios de los últimos datos del juego: el asedio de artefactos y los jefes diarios del Abismo solo son el jueves y el sábado (ya no el lunes), y Argo, el Rey Espíritu, aparece cada día a las 10:30 y 22:30.",
-    "pt": "Horários dos dados mais recentes do jogo: o cerco dos artefatos e os chefes diários do Abismo só acontecem na quinta e no sábado (não mais na segunda), e Argo, Rei dos Espíritos, aparece todo dia às 10:30 e 22:30.",
-    "ru": "Расписание по последним данным игры: осада артефактов и дневные боссы Бездны только по четвергам и субботам (больше не по понедельникам), а Арго, Король духов, появляется каждый день в 10:30 и 22:30.",
-    "zh-Hant": "依最新遊戲資料的時間表：神器攻城戰與深淵每日首領只在週四和週六（不再有週一），精靈王阿爾戈每天 10:30 和 22:30 出現。",
-    "zh-Hans": "依最新游戏数据的时间表：神器攻城战与深渊每日首领只在周四和周六（不再有周一），精灵王阿尔戈每天 10:30 和 22:30 出现。"
-  },
-  {
-    "version": "0.6.31",
-    "en": "With meter 2.0.93 or later: the HP of a world boss you're fighting comes straight from your meter, so its icon no longer sticks when the site is slow to update.",
-    "ko": "미터 2.0.93 이상: 내가 싸우는 월드 보스의 HP를 미터에서 바로 가져와, 사이트 갱신이 늦어도 아이콘이 멈추지 않습니다.",
-    "ja": "メーター 2.0.93 以降：戦っているワールドボスのHPを自分のメーターから直接表示するので、サイトの更新が遅れてもアイコンが止まらなくなりました。",
-    "de": "Ab Meter 2.0.93: Die HP eines Weltbosses, den du bekämpfst, kommen direkt von deinem Meter, sodass sein Symbol nicht mehr hängen bleibt, wenn die Seite langsam aktualisiert.",
-    "fr": "Avec le compteur 2.0.93 ou plus : les PV d'un boss mondial que vous combattez viennent directement de votre compteur, son icône ne se fige plus quand le site tarde à se mettre à jour.",
-    "es": "Con el medidor 2.0.93 o posterior: la vida de un jefe mundial que combates viene directamente de tu medidor, así que su icono ya no se queda atascado cuando el sitio tarda en actualizarse.",
-    "pt": "Com o medidor 2.0.93 ou mais novo: o HP de um chefe mundial que você está enfrentando vem direto do seu medidor, então o ícone não trava mais quando o site demora para atualizar.",
-    "ru": "С метром 2.0.93 и новее: здоровье мирового босса, с которым вы сражаетесь, берётся прямо из вашего метра, и значок больше не замирает, когда сайт обновляется медленно.",
-    "zh-Hant": "搭配計量器 2.0.93 以上：你正在打的世界首領血量直接來自你的計量器，網站更新慢時圖示不會再卡住。",
-    "zh-Hans": "搭配计量器 2.0.93 以上：你正在打的世界首领血量直接来自你的计量器，网站更新慢时图标不会再卡住。"
   }
 ]
