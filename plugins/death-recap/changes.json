@@ -1,16 +1,16 @@
 [
   {
     "version": "0.3.0",
-    "en": "The PvP tab lists the players you killed or helped kill (name, legion, server, class), with the Abyss Points each earned you and the average per kill and assist, and shows the week's Abyss Points against their cap. Assists count only on enemies: a buff on an ally who then died no longer counts (meter 2.0.98).",
-    "ko": "PvP 탭에 처치하거나 처치를 도운 플레이어(이름, 레기온, 서버, 직업)가 각각 얻은 어비스 포인트와 처치·어시스트당 평균과 함께 나열되고, 이번 주 어비스 포인트를 한도와 함께 보여 줍니다. 어시스트는 적에게만 셉니다. 버프를 준 아군이 죽어도 더 이상 세지 않습니다 (미터 2.0.98).",
-    "ja": "PvP タブに、キルまたはアシストしたプレイヤー（名前、レギオン、サーバー、クラス）を、それぞれで得たアビスポイントとキル・アシストあたりの平均とともに表示し、今週のアビスポイントを上限と並べて表示します。アシストは敵にだけ数えます。バフをかけた味方が倒れても数えなくなりました（メーター 2.0.98）。",
-    "de": "Der PvP-Tab listet die Spieler, die du getötet oder mitgetötet hast (Name, Legion, Server, Klasse), mit den Abyss-Punkten, die jeder brachte, und dem Schnitt pro Kill und Assist, und zeigt die Abyss-Punkte der Woche gegen ihr Limit. Assists zählen nur bei Gegnern: ein gebuffter Verbündeter, der dann stirbt, zählt nicht mehr (Meter 2.0.98).",
-    "fr": "L'onglet PvP liste les joueurs que tu as éliminés ou aidé à éliminer (nom, légion, serveur, classe), avec les Points d'Abysse rapportés par chacun et la moyenne par élimination et par assistance, et montre les Points d'Abysse de la semaine face à leur plafond. Les assistances ne comptent que sur des ennemis : un allié buffé qui meurt ne compte plus (meter 2.0.98).",
-    "es": "La pestaña PvP lista los jugadores que mataste o ayudaste a matar (nombre, legión, servidor, clase), con los Puntos del Abismo que te dio cada uno y la media por baja y por asistencia, y muestra los Puntos del Abismo de la semana frente a su límite. Las asistencias solo cuentan con enemigos: un aliado al que diste un beneficio y luego murió ya no cuenta (meter 2.0.98).",
-    "pt": "A aba PvP lista os jogadores que você abateu ou ajudou a abater (nome, legião, servidor, classe), com os Pontos do Abismo que cada um rendeu e a média por abate e por assistência, e mostra os Pontos do Abismo da semana frente ao limite. Assistências só contam em inimigos: um aliado que recebeu seu buff e morreu não conta mais (meter 2.0.98).",
-    "ru": "Вкладка PvP показывает игроков, которых вы убили или помогли убить (имя, легион, сервер, класс), с очками Бездны за каждого и средним за убийство и помощь, а также очки Бездны за неделю против лимита. Помощь считается только по врагам: союзник, которого вы баффнули и который затем погиб, больше не считается (meter 2.0.98).",
-    "zh-Hant": "PvP 分頁列出你擊殺或協助擊殺的玩家（名稱、軍團、伺服器、職業），以及每位帶來的深淵點數與每次擊殺、助攻的平均，並顯示本週深淵點數與上限。助攻只計算敵人：你加過增益的隊友陣亡不再計入（計量器 2.0.98）。",
-    "zh-Hans": "PvP 页签列出你击杀或协助击杀的玩家（名称、军团、服务器、职业），以及每位带来的深渊点数与每次击杀、助攻的平均，并显示本周深渊点数与上限。助攻只计算敌人：你加过增益的友军阵亡不再计入（计量器 2.0.98）。"
+    "en": "A list of the players you killed or helped kill, with the Abyss Points each earned; the week's Abyss Points against their cap. Assists count only on enemies (meter 2.0.98).",
+    "ko": "처치하거나 처치를 도운 플레이어 목록과 각각 얻은 어비스 포인트, 이번 주 어비스 포인트와 한도를 보여 줍니다. 어시스트는 적에게만 셉니다 (미터 2.0.98).",
+    "ja": "キル・アシストした相手の一覧とそれぞれで得たアビスポイント、今週のアビスポイントと上限を表示します。アシストは敵にだけ数えます（メーター 2.0.98）。",
+    "de": "Eine Liste der Spieler, die du getötet oder mitgetötet hast, mit den Abyss-Punkten je Kill; die Abyss-Punkte der Woche gegen ihr Limit. Assists zählen nur bei Gegnern (Meter 2.0.98).",
+    "fr": "La liste des joueurs que tu as éliminés ou aidé à éliminer, avec les Points d'Abysse de chacun ; ceux de la semaine face au plafond. Les assistances ne comptent que sur des ennemis (meter 2.0.98).",
+    "es": "Una lista de los jugadores que mataste o ayudaste a matar, con los Puntos del Abismo de cada uno; los de la semana frente a su límite. Las asistencias solo cuentan con enemigos (meter 2.0.98).",
+    "pt": "Uma lista dos jogadores que você abateu ou ajudou a abater, com os Pontos do Abismo de cada um; os da semana frente ao limite. Assistências só contam em inimigos (meter 2.0.98).",
+    "ru": "Список игроков, которых вы убили или помогли убить, с очками Бездны за каждого; очки Бездны за неделю против лимита. Помощь считается только по врагам (meter 2.0.98).",
+    "zh-Hant": "列出你擊殺或協助擊殺的玩家與各自帶來的深淵點數，並顯示本週深淵點數與上限。助攻只計算敵人（計量器 2.0.98）。",
+    "zh-Hans": "列出你击杀或协助击杀的玩家与各自带来的深渊点数，并显示本周深渊点数与上限。助攻只计算敌人（计量器 2.0.98）。"
   },
   {
     "version": "0.2.0",
