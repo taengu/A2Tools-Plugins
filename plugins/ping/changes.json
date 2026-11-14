@@ -1,5 +1,18 @@
 [
   {
+    "version": "0.3.0",
+    "en": "The jitter beside the ping and on the widget's tooltip, and an option to alternate the widget between ping and jitter (meter 2.0.99 or newer).",
+    "ko": "핑 옆과 위젯 툴팁에 지터가 표시되고, 위젯에서 핑과 지터를 번갈아 보여 주는 옵션이 생겼습니다 (미터 2.0.99 이상).",
+    "ja": "Pingの横とウィジェットのツールチップにジッターを表示し、ウィジェットでPingとジッターを交互に表示するオプションを追加しました（メーター2.0.99以降）。",
+    "de": "Der Jitter neben dem Ping und im Tooltip des Widgets, dazu eine Option, im Widget Ping und Jitter abzuwechseln (Meter 2.0.99 oder neuer).",
+    "fr": "La gigue à côté du ping et dans l'info-bulle du widget, avec une option pour alterner ping et gigue dans le widget (compteur 2.0.99 ou plus récent).",
+    "es": "La fluctuación junto al ping y en la descripción del widget, y una opción para alternar ping y fluctuación en el widget (medidor 2.0.99 o posterior).",
+    "pt": "A variação ao lado do ping e na dica do widget, e uma opção para alternar ping e variação no widget (medidor 2.0.99 ou mais recente).",
+    "ru": "Джиттер рядом с пингом и в подсказке виджета, а также опция чередовать в виджете пинг и джиттер (метр 2.0.99 или новее).",
+    "zh-Hant": "延遲旁與小工具提示中顯示抖動，並可讓小工具輪流顯示延遲與抖動（需計量器 2.0.99 或更新版本）。",
+    "zh-Hans": "延迟旁与小组件提示中显示抖动，并可让小组件轮流显示延迟与抖动（需计量器 2.0.99 或更新版本）。"
+  },
+  {
     "version": "0.2.1",
     "en": "The FPS coloured by how good it is, with the colours' limits in Settings.",
     "ko": "FPS가 상태에 따라 색으로 표시되고, 색 기준은 설정에서 바꿀 수 있습니다.",

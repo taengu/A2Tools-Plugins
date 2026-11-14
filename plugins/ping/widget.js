@@ -5,10 +5,38 @@ const msEl = document.querySelector(".ms");
 const fpsEl = document.querySelector(".fps");
 let locked = false;
 
+// The number shown: the ping, or the jitter while the page alternates them.
+// A change between the two fades out and in; a new ping alone just changes.
+const FADE_MS = 220;
+let shownKind = "ping";
+let fadeTimer = null;
+let pending = "";
+function showNumber(kind, text) {
+  if (kind === shownKind) {
+    if (!fadeTimer) msEl.textContent = text;
+    else pending = text;
+    return;
+  }
+  shownKind = kind;
+  pending = text;
+  clearTimeout(fadeTimer);
+  msEl.classList.add("fading");
+  fadeTimer = setTimeout(() => {
+    fadeTimer = null;
+    msEl.textContent = pending;
+    msEl.dataset.kind = shownKind;
+    msEl.classList.remove("fading");
+  }, FADE_MS);
+}
+
 a2.on("widget", (d) => {
   if (!d) return;
   pill.dataset.state = d.state || "none";
-  msEl.textContent = typeof d.ms === "number" ? `${d.ms} ms` : "– ms";
+  const pingText = typeof d.ms === "number" ? `${d.ms} ms` : "– ms";
+  if (typeof d.jitter === "string") showNumber("jitter", d.jitter);
+  else showNumber("ping", pingText);
+  // The jitter on hover, in the player's language.
+  pill.title = d.tip || "";
   // The game's FPS, when asked for (undefined: not shown).
   fpsEl.hidden = d.fps === undefined;
   fpsEl.textContent = typeof d.fps === "number" ? `${d.fps} fps` : "– fps";

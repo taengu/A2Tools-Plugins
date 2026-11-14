@@ -14,6 +14,10 @@ body { padding: 12px 14px 14px; }
   border-bottom: 1px solid rgba(255, 255, 255, 0.12);
 }
 .now .label { color: rgba(233, 240, 248, 0.7); }
+/* The ping, with its jitter in small under it. */
+.now .readings { display: flex; flex-direction: column; align-items: flex-end; gap: 2px; }
+.now .jitter { font-size: 12px; color: rgba(233, 240, 248, 0.6); font-variant-numeric: tabular-nums; }
+.now .jitter:empty { display: none; }
 .now .value {
   font-family: "Bahnschrift", "Segoe UI", sans-serif;
   font-variation-settings: "wght" 600, "wdth" 87.5;

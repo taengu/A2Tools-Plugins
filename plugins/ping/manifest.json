@@ -1,7 +1,7 @@
 {
   "id": "ping",
   "name": "Ping",
-  "version": "0.2.1",
+  "version": "0.3.0",
   "apiVersion": 2,
   "author": "A2 Tools",
   "description": "Your ping to the game server in a small widget you can drag anywhere and lock in place, coloured by how good it is, and the game's FPS if you want it.",

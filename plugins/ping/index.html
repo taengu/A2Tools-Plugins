@@ -8,7 +8,10 @@
   <body>
     <header class="now">
       <span class="label" data-t="now">Ping now</span>
-      <span class="value" data-state="none">–</span>
+      <span class="readings">
+        <span class="value" data-state="none">–</span>
+        <span class="jitter"></span>
+      </span>
     </header>
     <section class="rows">
       <label class="row">
@@ -20,6 +23,12 @@
         <input type="checkbox" class="lock" />
       </label>
       <p class="note" data-t="lockNote">Clicks pass through to the game. Unlock to move it.</p>
+      <label class="row">
+        <span data-t="cycle">Alternate ping and jitter</span>
+        <input type="checkbox" class="cycle" />
+      </label>
+      <p class="note" data-t="cycleNote">The widget shows the jitter 5 s after each ping, then the next ping.</p>
+      <p class="note jitterOld" data-t="jitterOld" hidden>Jitter needs meter 2.0.99 or newer.</p>
       <label class="row">
         <span data-t="fps">Show the game's FPS</span>
         <input type="checkbox" class="fps" />
