@@ -80,6 +80,7 @@ const els = {
   riftAlert: $(".riftAlert"),
   riftPickBtn: $(".riftPickBtn"),
   riftPicker: $(".riftPicker"),
+  riftBoardBtn: $(".riftBoardBtn"),
   riftListNote: $(".riftListNote"),
   riftList: $(".riftList"),
   alsoAtStart: $(".alsoAtStart"),
@@ -457,16 +458,16 @@ const ui = () => ({ ...(UI[language] || UI.en), ...(MORE_UI[language] || MORE_UI
 const aui = () => ALERT_UI[language] || ALERT_UI.en;
 // The Spacetime Rift's words (the enemy's world bosses).
 const RIFT_UI = {
-  "en": { label: "Spacetime Rift: show the enemy server's world bosses", note: "The world bosses on the server yours is matched against that are up, or will be up, while a Spacetime Rift is open: the 10 minutes to enter and the hour you can stay. Needs meter 2.0.99 or newer.", now: "Spacetime Rift now, until {to}", next: "Next Spacetime Rift {from}–{to}", head: "{server}'s world bosses", waiting: "Your server's rift opponent isn't known yet.", none: "None of their world bosses is up or due by then.", title: "Spacetime Rift: enemy world bosses", show: "Show", any: "Any free boss", picked: "Only the ones I pick", choose: "Choose bosses", done: "Done", alert: "Alert before a rift", off: "Off", minutes: "{n} min", noneChosen: "No bosses picked yet: choose some.", alertMsg: "Spacetime Rift in {n} min:", upTag: "up" },
-  "ko": { label: "시공의 균열: 적 서버의 월드 보스 표시", note: "내 서버와 매칭된 서버의 월드 보스 중 시공의 균열이 열려 있는 동안(입장 가능한 10분과 머무를 수 있는 1시간) 등장해 있거나 등장할 보스를 보여 줍니다. 미터 2.0.99 이상이 필요합니다.", now: "시공의 균열 진행 중, {to}까지", next: "다음 시공의 균열 {from}–{to}", head: "{server}의 월드 보스", waiting: "아직 내 서버의 균열 상대 서버를 알 수 없습니다.", none: "그때까지 등장해 있거나 등장할 월드 보스가 없습니다.", title: "시공의 균열: 적 월드 보스", show: "표시", any: "비어 있는 모든 보스", picked: "내가 고른 보스만", choose: "보스 선택", done: "완료", alert: "균열 전 알림", off: "끔", minutes: "{n}분", noneChosen: "아직 고른 보스가 없습니다: 보스를 선택하세요.", alertMsg: "{n}분 후 시공의 균열:", upTag: "출현 중" },
-  "ja": { label: "時空の亀裂：敵サーバーのワールドボスを表示", note: "自サーバーとマッチングしたサーバーのワールドボスのうち、時空の亀裂が開いている間（入場できる10分と滞在できる1時間）に出現中、または出現予定のものを表示します。メーター2.0.99以降が必要です。", now: "時空の亀裂 開放中（{to}まで）", next: "次の時空の亀裂 {from}–{to}", head: "{server}のワールドボス", waiting: "自サーバーの亀裂の対戦相手はまだ分かりません。", none: "それまでに出現中・出現予定のワールドボスはありません。", title: "時空の亀裂：敵のワールドボス", show: "表示", any: "空いているすべてのボス", picked: "選んだボスのみ", choose: "ボスを選ぶ", done: "完了", alert: "亀裂前の通知", off: "オフ", minutes: "{n}分", noneChosen: "まだボスが選ばれていません：選んでください。", alertMsg: "{n}分後に時空の亀裂：", upTag: "出現中" },
-  "de": { label: "Raum-Zeit-Riss: Weltbosse des gegnerischen Servers zeigen", note: "Die Weltbosse des Servers, gegen den deiner gepaart ist, die da sind oder kommen, solange ein Raum-Zeit-Riss offen ist: die 10 Minuten zum Betreten und die Stunde, die du bleiben kannst. Benötigt Meter 2.0.99 oder neuer.", now: "Raum-Zeit-Riss jetzt, bis {to}", next: "Nächster Raum-Zeit-Riss {from}–{to}", head: "Weltbosse von {server}", waiting: "Der Riss-Gegner deines Servers ist noch nicht bekannt.", none: "Bis dahin ist keiner ihrer Weltbosse da oder fällig.", title: "Raum-Zeit-Riss: gegnerische Weltbosse", show: "Zeigen", any: "Jeden freien Boss", picked: "Nur die, die ich wähle", choose: "Bosse wählen", done: "Fertig", alert: "Alarm vor einem Riss", off: "Aus", minutes: "{n} Min.", noneChosen: "Noch keine Bosse gewählt: wähle welche.", alertMsg: "Raum-Zeit-Riss in {n} Min.:", upTag: "da" },
-  "fr": { label: "Faille spatio-temporelle : afficher les boss mondiaux du serveur ennemi", note: "Les boss mondiaux du serveur opposé au tien qui sont là, ou le seront, pendant qu'une faille spatio-temporelle est ouverte : les 10 minutes pour entrer et l'heure où tu peux rester. Nécessite le compteur 2.0.99 ou plus récent.", now: "Faille spatio-temporelle ouverte, jusqu'à {to}", next: "Prochaine faille spatio-temporelle {from}–{to}", head: "Boss mondiaux de {server}", waiting: "L'adversaire de ton serveur pour la faille n'est pas encore connu.", none: "Aucun de leurs boss mondiaux n'est là ni attendu d'ici là.", title: "Faille spatio-temporelle : boss mondiaux ennemis", show: "Afficher", any: "Tout boss libre", picked: "Seulement ceux que je choisis", choose: "Choisir les boss", done: "Terminé", alert: "Alerte avant une faille", off: "Désactivée", minutes: "{n} min", noneChosen: "Aucun boss choisi pour l'instant : choisis-en.", alertMsg: "Faille spatio-temporelle dans {n} min :", upTag: "présent" },
-  "es": { label: "Grieta espaciotemporal: mostrar los jefes mundiales del servidor enemigo", note: "Los jefes mundiales del servidor emparejado con el tuyo que están, o estarán, mientras una grieta espaciotemporal está abierta: los 10 minutos para entrar y la hora que puedes quedarte. Necesita el medidor 2.0.99 o posterior.", now: "Grieta espaciotemporal abierta, hasta las {to}", next: "Próxima grieta espaciotemporal {from}–{to}", head: "Jefes mundiales de {server}", waiting: "Aún no se conoce el rival de tu servidor en la grieta.", none: "Ninguno de sus jefes mundiales está o aparecerá para entonces.", title: "Grieta espaciotemporal: jefes mundiales enemigos", show: "Mostrar", any: "Cualquier jefe libre", picked: "Solo los que elija", choose: "Elegir jefes", done: "Listo", alert: "Alerta antes de una grieta", off: "Desactivada", minutes: "{n} min", noneChosen: "Aún no has elegido jefes: elige algunos.", alertMsg: "Grieta espaciotemporal en {n} min:", upTag: "activo" },
-  "pt": { label: "Fenda espaço-temporal: mostrar os chefes mundiais do servidor inimigo", note: "Os chefes mundiais do servidor pareado com o seu que estão, ou estarão, enquanto uma fenda espaço-temporal está aberta: os 10 minutos para entrar e a hora em que você pode ficar. Requer o medidor 2.0.99 ou mais recente.", now: "Fenda espaço-temporal aberta, até {to}", next: "Próxima fenda espaço-temporal {from}–{to}", head: "Chefes mundiais de {server}", waiting: "O adversário do seu servidor na fenda ainda não é conhecido.", none: "Nenhum dos chefes mundiais deles está ou estará ativo até lá.", title: "Fenda espaço-temporal: chefes mundiais inimigos", show: "Mostrar", any: "Qualquer chefe livre", picked: "Só os que eu escolher", choose: "Escolher chefes", done: "Pronto", alert: "Alerta antes de uma fenda", off: "Desligado", minutes: "{n} min", noneChosen: "Nenhum chefe escolhido ainda: escolha alguns.", alertMsg: "Fenda espaço-temporal em {n} min:", upTag: "ativo" },
-  "ru": { label: "Пространственно-временной разлом: мировые боссы вражеского сервера", note: "Мировые боссы сервера, с которым сведён ваш, которые есть или появятся, пока открыт пространственно-временной разлом: 10 минут на вход и час, который можно там провести. Нужен метр 2.0.99 или новее.", now: "Разлом открыт, до {to}", next: "Следующий разлом {from}–{to}", head: "Мировые боссы сервера {server}", waiting: "Соперник вашего сервера по разлому пока неизвестен.", none: "К тому времени ни одного их мирового босса нет и не ожидается.", title: "Пространственно-временной разлом: вражеские мировые боссы", show: "Показывать", any: "Любого свободного босса", picked: "Только выбранных", choose: "Выбрать боссов", done: "Готово", alert: "Оповещение перед разломом", off: "Выкл.", minutes: "{n} мин", noneChosen: "Боссы ещё не выбраны: выберите.", alertMsg: "Разлом через {n} мин:", upTag: "есть" },
-  "zh-Hant": { label: "時空裂縫：顯示敵方伺服器的世界首領", note: "與你的伺服器配對的伺服器上，在時空裂縫開啟期間（可進入的 10 分鐘與可停留的 1 小時）已出現或將出現的世界首領。需要計量器 2.0.99 或更新版本。", now: "時空裂縫開啟中，至 {to}", next: "下一次時空裂縫 {from}–{to}", head: "{server} 的世界首領", waiting: "尚不知道你的伺服器的裂縫對手。", none: "到時沒有已出現或將出現的世界首領。", title: "時空裂縫：敵方世界首領", show: "顯示", any: "任何空著的首領", picked: "只顯示我選的", choose: "選擇首領", done: "完成", alert: "裂縫前提醒", off: "關閉", minutes: "{n} 分鐘", noneChosen: "尚未選擇首領：請選幾個。", alertMsg: "時空裂縫 {n} 分鐘後開啟：", upTag: "已出現" },
-  "zh-Hans": { label: "时空裂缝：显示敌方服务器的世界首领", note: "与你的服务器配对的服务器上，在时空裂缝开启期间（可进入的 10 分钟与可停留的 1 小时）已出现或将出现的世界首领。需要计量器 2.0.99 或更新版本。", now: "时空裂缝开启中，至 {to}", next: "下一次时空裂缝 {from}–{to}", head: "{server} 的世界首领", waiting: "尚不知道你的服务器的裂缝对手。", none: "到时没有已出现或将出现的世界首领。", title: "时空裂缝：敌方世界首领", show: "显示", any: "任何空着的首领", picked: "只显示我选的", choose: "选择首领", done: "完成", alert: "裂缝前提醒", off: "关闭", minutes: "{n} 分钟", noneChosen: "尚未选择首领：请选几个。", alertMsg: "时空裂缝 {n} 分钟后开启：", upTag: "已出现" },
+  "en": { label: "Spacetime Rift: show the enemy server's world bosses", note: "The world bosses on the server yours is matched against that are up, or will be up, while a Spacetime Rift is open: the 10 minutes to enter and the hour you can stay. Needs meter 2.0.99 or newer.", now: "Spacetime Rift now, until {to}", next: "Next Spacetime Rift {from}–{to}", head: "{server}'s world bosses", waiting: "Your server's rift opponent isn't known yet.", none: "None of their world bosses is up or due by then.", title: "Spacetime Rift: enemy world bosses", show: "Show", any: "Any free boss", picked: "Only the ones I pick", choose: "Choose bosses", done: "Done", alert: "Alert before a rift", off: "Off", minutes: "{n} min", noneChosen: "No bosses picked yet: choose some.", alertMsg: "Spacetime Rift in {n} min:", upTag: "up", boardTag: "★ Boss board", boardPick: "Pick my Boss board's bosses", boardTip: "Drops gear for a request on your Boss supply board" },
+  "ko": { label: "시공의 균열: 적 서버의 월드 보스 표시", note: "내 서버와 매칭된 서버의 월드 보스 중 시공의 균열이 열려 있는 동안(입장 가능한 10분과 머무를 수 있는 1시간) 등장해 있거나 등장할 보스를 보여 줍니다. 미터 2.0.99 이상이 필요합니다.", now: "시공의 균열 진행 중, {to}까지", next: "다음 시공의 균열 {from}–{to}", head: "{server}의 월드 보스", waiting: "아직 내 서버의 균열 상대 서버를 알 수 없습니다.", none: "그때까지 등장해 있거나 등장할 월드 보스가 없습니다.", title: "시공의 균열: 적 월드 보스", show: "표시", any: "비어 있는 모든 보스", picked: "내가 고른 보스만", choose: "보스 선택", done: "완료", alert: "균열 전 알림", off: "끔", minutes: "{n}분", noneChosen: "아직 고른 보스가 없습니다: 보스를 선택하세요.", alertMsg: "{n}분 후 시공의 균열:", upTag: "출현 중", boardTag: "★ 보스 의뢰", boardPick: "내 보스 의뢰 보스 고르기", boardTip: "내 보스 보급 의뢰 게시판의 의뢰 장비를 드롭합니다" },
+  "ja": { label: "時空の亀裂：敵サーバーのワールドボスを表示", note: "自サーバーとマッチングしたサーバーのワールドボスのうち、時空の亀裂が開いている間（入場できる10分と滞在できる1時間）に出現中、または出現予定のものを表示します。メーター2.0.99以降が必要です。", now: "時空の亀裂 開放中（{to}まで）", next: "次の時空の亀裂 {from}–{to}", head: "{server}のワールドボス", waiting: "自サーバーの亀裂の対戦相手はまだ分かりません。", none: "それまでに出現中・出現予定のワールドボスはありません。", title: "時空の亀裂：敵のワールドボス", show: "表示", any: "空いているすべてのボス", picked: "選んだボスのみ", choose: "ボスを選ぶ", done: "完了", alert: "亀裂前の通知", off: "オフ", minutes: "{n}分", noneChosen: "まだボスが選ばれていません：選んでください。", alertMsg: "{n}分後に時空の亀裂：", upTag: "出現中", boardTag: "★ ボス依頼", boardPick: "ボス依頼のボスを選ぶ", boardTip: "ボス補給依頼の掲示板にある依頼の装備を落とします" },
+  "de": { label: "Raum-Zeit-Riss: Weltbosse des gegnerischen Servers zeigen", note: "Die Weltbosse des Servers, gegen den deiner gepaart ist, die da sind oder kommen, solange ein Raum-Zeit-Riss offen ist: die 10 Minuten zum Betreten und die Stunde, die du bleiben kannst. Benötigt Meter 2.0.99 oder neuer.", now: "Raum-Zeit-Riss jetzt, bis {to}", next: "Nächster Raum-Zeit-Riss {from}–{to}", head: "Weltbosse von {server}", waiting: "Der Riss-Gegner deines Servers ist noch nicht bekannt.", none: "Bis dahin ist keiner ihrer Weltbosse da oder fällig.", title: "Raum-Zeit-Riss: gegnerische Weltbosse", show: "Zeigen", any: "Jeden freien Boss", picked: "Nur die, die ich wähle", choose: "Bosse wählen", done: "Fertig", alert: "Alarm vor einem Riss", off: "Aus", minutes: "{n} Min.", noneChosen: "Noch keine Bosse gewählt: wähle welche.", alertMsg: "Raum-Zeit-Riss in {n} Min.:", upTag: "da", boardTag: "★ Boss-Brett", boardPick: "Bosse meines Boss-Bretts wählen", boardTip: "Lässt Ausrüstung für einen Auftrag auf deinem Boss-Versorgungsbrett fallen" },
+  "fr": { label: "Faille spatio-temporelle : afficher les boss mondiaux du serveur ennemi", note: "Les boss mondiaux du serveur opposé au tien qui sont là, ou le seront, pendant qu'une faille spatio-temporelle est ouverte : les 10 minutes pour entrer et l'heure où tu peux rester. Nécessite le compteur 2.0.99 ou plus récent.", now: "Faille spatio-temporelle ouverte, jusqu'à {to}", next: "Prochaine faille spatio-temporelle {from}–{to}", head: "Boss mondiaux de {server}", waiting: "L'adversaire de ton serveur pour la faille n'est pas encore connu.", none: "Aucun de leurs boss mondiaux n'est là ni attendu d'ici là.", title: "Faille spatio-temporelle : boss mondiaux ennemis", show: "Afficher", any: "Tout boss libre", picked: "Seulement ceux que je choisis", choose: "Choisir les boss", done: "Terminé", alert: "Alerte avant une faille", off: "Désactivée", minutes: "{n} min", noneChosen: "Aucun boss choisi pour l'instant : choisis-en.", alertMsg: "Faille spatio-temporelle dans {n} min :", upTag: "présent", boardTag: "★ Tableau des boss", boardPick: "Choisir les boss de mon tableau", boardTip: "Lâche l'équipement d'une demande de ton tableau d'approvisionnement des boss" },
+  "es": { label: "Grieta espaciotemporal: mostrar los jefes mundiales del servidor enemigo", note: "Los jefes mundiales del servidor emparejado con el tuyo que están, o estarán, mientras una grieta espaciotemporal está abierta: los 10 minutos para entrar y la hora que puedes quedarte. Necesita el medidor 2.0.99 o posterior.", now: "Grieta espaciotemporal abierta, hasta las {to}", next: "Próxima grieta espaciotemporal {from}–{to}", head: "Jefes mundiales de {server}", waiting: "Aún no se conoce el rival de tu servidor en la grieta.", none: "Ninguno de sus jefes mundiales está o aparecerá para entonces.", title: "Grieta espaciotemporal: jefes mundiales enemigos", show: "Mostrar", any: "Cualquier jefe libre", picked: "Solo los que elija", choose: "Elegir jefes", done: "Listo", alert: "Alerta antes de una grieta", off: "Desactivada", minutes: "{n} min", noneChosen: "Aún no has elegido jefes: elige algunos.", alertMsg: "Grieta espaciotemporal en {n} min:", upTag: "activo", boardTag: "★ Tablón de jefes", boardPick: "Elegir los jefes de mi tablón", boardTip: "Suelta equipo para una petición de tu tablón de suministros de jefes" },
+  "pt": { label: "Fenda espaço-temporal: mostrar os chefes mundiais do servidor inimigo", note: "Os chefes mundiais do servidor pareado com o seu que estão, ou estarão, enquanto uma fenda espaço-temporal está aberta: os 10 minutos para entrar e a hora em que você pode ficar. Requer o medidor 2.0.99 ou mais recente.", now: "Fenda espaço-temporal aberta, até {to}", next: "Próxima fenda espaço-temporal {from}–{to}", head: "Chefes mundiais de {server}", waiting: "O adversário do seu servidor na fenda ainda não é conhecido.", none: "Nenhum dos chefes mundiais deles está ou estará ativo até lá.", title: "Fenda espaço-temporal: chefes mundiais inimigos", show: "Mostrar", any: "Qualquer chefe livre", picked: "Só os que eu escolher", choose: "Escolher chefes", done: "Pronto", alert: "Alerta antes de uma fenda", off: "Desligado", minutes: "{n} min", noneChosen: "Nenhum chefe escolhido ainda: escolha alguns.", alertMsg: "Fenda espaço-temporal em {n} min:", upTag: "ativo", boardTag: "★ Quadro de chefes", boardPick: "Escolher os chefes do meu quadro", boardTip: "Deixa cair equipamento para um pedido do seu quadro de suprimentos de chefes" },
+  "ru": { label: "Пространственно-временной разлом: мировые боссы вражеского сервера", note: "Мировые боссы сервера, с которым сведён ваш, которые есть или появятся, пока открыт пространственно-временной разлом: 10 минут на вход и час, который можно там провести. Нужен метр 2.0.99 или новее.", now: "Разлом открыт, до {to}", next: "Следующий разлом {from}–{to}", head: "Мировые боссы сервера {server}", waiting: "Соперник вашего сервера по разлому пока неизвестен.", none: "К тому времени ни одного их мирового босса нет и не ожидается.", title: "Пространственно-временной разлом: вражеские мировые боссы", show: "Показывать", any: "Любого свободного босса", picked: "Только выбранных", choose: "Выбрать боссов", done: "Готово", alert: "Оповещение перед разломом", off: "Выкл.", minutes: "{n} мин", noneChosen: "Боссы ещё не выбраны: выберите.", alertMsg: "Разлом через {n} мин:", upTag: "есть", boardTag: "★ Доска боссов", boardPick: "Выбрать боссов моей доски", boardTip: "Даёт снаряжение для запроса на вашей доске снабжения боссов" },
+  "zh-Hant": { label: "時空裂縫：顯示敵方伺服器的世界首領", note: "與你的伺服器配對的伺服器上，在時空裂縫開啟期間（可進入的 10 分鐘與可停留的 1 小時）已出現或將出現的世界首領。需要計量器 2.0.99 或更新版本。", now: "時空裂縫開啟中，至 {to}", next: "下一次時空裂縫 {from}–{to}", head: "{server} 的世界首領", waiting: "尚不知道你的伺服器的裂縫對手。", none: "到時沒有已出現或將出現的世界首領。", title: "時空裂縫：敵方世界首領", show: "顯示", any: "任何空著的首領", picked: "只顯示我選的", choose: "選擇首領", done: "完成", alert: "裂縫前提醒", off: "關閉", minutes: "{n} 分鐘", noneChosen: "尚未選擇首領：請選幾個。", alertMsg: "時空裂縫 {n} 分鐘後開啟：", upTag: "已出現", boardTag: "★ 首領委託", boardPick: "選擇我的首領委託首領", boardTip: "會掉落你的首領補給委託所需的裝備" },
+  "zh-Hans": { label: "时空裂缝：显示敌方服务器的世界首领", note: "与你的服务器配对的服务器上，在时空裂缝开启期间（可进入的 10 分钟与可停留的 1 小时）已出现或将出现的世界首领。需要计量器 2.0.99 或更新版本。", now: "时空裂缝开启中，至 {to}", next: "下一次时空裂缝 {from}–{to}", head: "{server} 的世界首领", waiting: "尚不知道你的服务器的裂缝对手。", none: "到时没有已出现或将出现的世界首领。", title: "时空裂缝：敌方世界首领", show: "显示", any: "任何空着的首领", picked: "只显示我选的", choose: "选择首领", done: "完成", alert: "裂缝前提醒", off: "关闭", minutes: "{n} 分钟", noneChosen: "尚未选择首领：请选几个。", alertMsg: "时空裂缝 {n} 分钟后开启：", upTag: "已出现", boardTag: "★ 首领委托", boardPick: "选择我的首领委托首领", boardTip: "会掉落你的首领补给委托所需的装备" },
 };
 const riftUi = () => RIFT_UI[language] || RIFT_UI.en;
 const rui = () => ROW_UI[language] || ROW_UI.en;
@@ -1281,6 +1282,13 @@ function riftBosses(now, win) {
     .sort((x, y) => (y.up - x.up) || (x.back || 0) - (y.back || 0) || text(x.b.name).localeCompare(text(y.b.name)));
 }
 const RIFT_ALERTS = [0, 5, 10, 15];
+// The Supply Requests boards the game sent at login (meter 2.0.99 on), and
+// the Boss board's requests: a world boss whose gear one of them takes
+// (supply.js, from the game's loot tables) is marked in the picker and list.
+let supplyBoards = null;
+const BOSS_BOARD = 4;
+const bossBoard = () => new Set((supplyBoards?.boards || []).filter((b) => b.tab === BOSS_BOARD).flatMap((b) => b.requests || []));
+const onBossBoard = (id, board = bossBoard()) => typeof BOSS_REQUESTS === "object" && (BOSS_REQUESTS[id] || []).some((r) => board.has(r));
 // As icons (pins.js), with "Only the ones I pick": the picked enemy bosses
 // that are up or due in the rift, from the alert's lead before it opens (15
 // minutes without an alert) until it closes. Not with "Any free boss": a
@@ -1324,6 +1332,11 @@ function renderRiftBar() {
   els.riftAlert.replaceChildren(...RIFT_ALERTS.map((n) => option(n, n ? words.minutes.replace("{n}", n) : words.off)));
   els.riftAlert.value = String(RIFT_ALERTS.includes(Number(prefs.riftAlert)) ? Number(prefs.riftAlert) : 0);
   els.riftPickBtn.hidden = prefs.riftShow !== "picked";
+  const board = bossBoard();
+  const onBoard = riftCandidates().filter(({ id }) => onBossBoard(id, board)).map(({ id }) => id);
+  els.riftBoardBtn.hidden = prefs.riftShow !== "picked" || !onBoard.length;
+  els.riftBoardBtn.textContent = `${words.boardPick} (${onBoard.length})`;
+  els.riftBoardBtn.title = words.boardTip;
   els.riftPickBtn.textContent = riftPicking ? words.done : words.choose;
   els.riftPickBtn.setAttribute("aria-expanded", String(riftPicking));
   els.riftPicker.hidden = !(riftPicking && prefs.riftShow === "picked");
@@ -1348,6 +1361,13 @@ function renderRiftBar() {
       const input = Object.assign(document.createElement("input"), { type: "checkbox", checked: picks.has(id) });
       input.dataset.boss = id;
       label.append(input, ` ${text(b.name)}${b.level ? ` · Lv ${b.level}` : ""}`);
+      if (onBossBoard(id, board)) {
+        const star = document.createElement("span");
+        star.className = "riftBoard";
+        star.textContent = words.boardTag;
+        star.title = words.boardTip;
+        label.append(star);
+      }
       box.append(label);
     }
     return box;
@@ -1370,6 +1390,15 @@ els.riftShow.addEventListener("change", () => {
 els.riftAlert.addEventListener("change", () => {
   prefs.riftAlert = Number(els.riftAlert.value);
   savePrefs();
+});
+// Picks every enemy boss whose gear the player's Boss board asks for.
+els.riftBoardBtn.addEventListener("click", () => {
+  const side = riftSide();
+  const picks = riftPicks();
+  for (const { id } of riftCandidates()) if (onBossBoard(id)) picks.add(id);
+  prefs.riftPicks = { ...(prefs.riftPicks || {}), [side]: [...picks] };
+  savePrefs();
+  render();
 });
 els.riftPickBtn.addEventListener("click", () => {
   riftPicking = !riftPicking;
@@ -1412,8 +1441,9 @@ function renderRift(now) {
   }
   const rows = riftBosses(now, win) || [];
   const u = ui();
+  const board = bossBoard();
   els.riftList.replaceChildren(...rows.map(({ id, b, t, up, back }) => {
-    const name = text(b.name) + (b.level ? ` · Lv ${b.level}` : "");
+    const name = text(b.name) + (b.level ? ` · Lv ${b.level}` : "") + (onBossBoard(id, board) ? ` ${words.boardTag}` : "");
     const countdown = up ? u.up : u.in(span(back - now));
     const at = up ? (t.hp != null && t.hpAt ? u.hpLeft(t.hp) : u.up) : time(back);
     return row({ id: `rift:${id}`, name, where: text(b.where), countdown, at, up, soon: !up && back - now <= SOON_MS, actions: false });
@@ -2480,6 +2510,10 @@ els.scaleSelect.addEventListener("change", () => {
 els.regionSelect.addEventListener("change", () => {
   prefs.region = els.regionSelect.value;
   savePrefs();
+  render();
+});
+a2.on("supplyBoards", (s) => {
+  supplyBoards = s && Array.isArray(s.boards) ? s : null;
   render();
 });
 a2.on("pairings", (p) => {

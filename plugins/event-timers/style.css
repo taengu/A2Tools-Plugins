@@ -1164,3 +1164,10 @@ body.alertOnly .openFull:hover {
   color: rgba(255, 255, 255, 0.75);
 }
 .riftHead { color: #ff8a8a; white-space: normal; text-transform: none; }
+/* A boss whose gear the player's Boss supply board asks for. */
+.riftBoard {
+  margin-left: 4px;
+  font-size: 10px;
+  color: #ffd25a;
+  white-space: nowrap;
+}

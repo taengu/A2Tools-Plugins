@@ -1,5 +1,18 @@
 [
   {
+    "version": "0.7.2",
+    "en": "Spacetime Rift: enemy bosses whose gear your Boss supply board asks for are marked ★, with a button to pick them all (meter 2.0.99 or newer).",
+    "ko": "시공의 균열: 내 보스 보급 의뢰가 요구하는 장비를 드롭하는 적 보스에 ★ 표시가 붙고, 한 번에 모두 고르는 버튼이 생겼습니다 (미터 2.0.99 이상).",
+    "ja": "時空の亀裂：ボス補給依頼が求める装備を落とす敵ボスに★を表示し、まとめて選ぶボタンを追加（メーター2.0.99以降）。",
+    "de": "Raum-Zeit-Riss: Gegnerische Bosse, deren Ausrüstung dein Boss-Versorgungsbrett verlangt, sind mit ★ markiert, mit einem Knopf, um alle zu wählen (Meter 2.0.99 oder neuer).",
+    "fr": "Faille spatio-temporelle : les boss ennemis dont ton tableau d'approvisionnement des boss demande l'équipement sont marqués ★, avec un bouton pour tous les choisir (compteur 2.0.99 ou plus récent).",
+    "es": "Grieta espaciotemporal: los jefes enemigos cuyo equipo pide tu tablón de suministros de jefes se marcan con ★, con un botón para elegirlos todos (medidor 2.0.99 o posterior).",
+    "pt": "Fenda espaço-temporal: os chefes inimigos cujo equipamento o seu quadro de suprimentos de chefes pede ficam marcados com ★, com um botão para escolher todos (medidor 2.0.99 ou mais recente).",
+    "ru": "Разлом: вражеские боссы, чьё снаряжение просит ваша доска снабжения боссов, отмечены ★, а кнопка выбирает их всех (метр 2.0.99 или новее).",
+    "zh-Hant": "時空裂縫：會掉落你的首領補給委託所需裝備的敵方首領標上★，並可一鍵全選（需計量器 2.0.99 或更新版本）。",
+    "zh-Hans": "时空裂缝：会掉落你的首领补给委托所需装备的敌方首领标上★，并可一键全选（需计量器 2.0.99 或更新版本）。"
+  },
+  {
     "version": "0.7.1",
     "en": "Spacetime Rift on the Bosses tab: any free enemy boss or only the ones you pick, an alert before each rift, picked bosses as red icons, and World Boss Train leaves out common bosses while a rift is open.",
     "ko": "보스 탭의 시공의 균열: 비어 있는 적 보스 전부 또는 고른 보스만, 균열 전 알림, 고른 보스는 빨간 아이콘으로 표시, 균열이 열려 있는 동안 월드 보스 트레인은 흔한 보스를 뺍니다.",
