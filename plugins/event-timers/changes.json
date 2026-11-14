@@ -1,5 +1,18 @@
 [
   {
+    "version": "0.7.1",
+    "en": "Spacetime Rift on the Bosses tab: any free enemy boss or only the ones you pick, an alert before each rift, picked bosses as red icons, and World Boss Train leaves out common bosses while a rift is open.",
+    "ko": "보스 탭의 시공의 균열: 비어 있는 적 보스 전부 또는 고른 보스만, 균열 전 알림, 고른 보스는 빨간 아이콘으로 표시, 균열이 열려 있는 동안 월드 보스 트레인은 흔한 보스를 뺍니다.",
+    "ja": "ボスタブの時空の亀裂：空いている敵ボスすべてか選んだボスのみ、亀裂前の通知、選んだボスは赤いアイコン、亀裂が開いている間はワールドボストレインから一般的なボスを除外。",
+    "de": "Raum-Zeit-Riss im Boss-Tab: jeder freie gegnerische Boss oder nur deine Auswahl, ein Alarm vor jedem Riss, gewählte Bosse als rote Symbole, und der Weltboss-Zug lässt häufige Bosse weg, solange ein Riss offen ist.",
+    "fr": "Faille spatio-temporelle dans l'onglet Boss : tout boss ennemi libre ou seulement ta sélection, une alerte avant chaque faille, les boss choisis en icônes rouges, et le train des boss mondiaux omet les boss courants pendant une faille.",
+    "es": "Grieta espaciotemporal en la pestaña Jefes: cualquier jefe enemigo libre o solo los que elijas, una alerta antes de cada grieta, los elegidos como iconos rojos, y el tren de jefes omite los comunes mientras hay una grieta abierta.",
+    "pt": "Fenda espaço-temporal na aba Chefes: qualquer chefe inimigo livre ou só os escolhidos, um alerta antes de cada fenda, os escolhidos como ícones vermelhos, e o trem de chefes omite os comuns enquanto uma fenda está aberta.",
+    "ru": "Разлом во вкладке боссов: любой свободный вражеский босс или только выбранные, оповещение перед каждым разломом, выбранные — красными значками, а поезд мировых боссов пропускает частых боссов, пока разлом открыт.",
+    "zh-Hant": "首領分頁的時空裂縫：任何空著的敵方首領或只顯示你選的，每次裂縫前提醒，選中的首領以紅色圖示顯示，裂縫開啟期間世界首領列車略過常見首領。",
+    "zh-Hans": "首领分页的时空裂缝：任何空着的敌方首领或只显示你选的，每次裂缝前提醒，选中的首领以红色图标显示，裂缝开启期间世界首领列车略过常见首领。"
+  },
+  {
     "version": "0.7.0",
     "en": "Spacetime Rift (Settings): the world bosses of the server yours is matched against, up or due while a rift is open. Needs meter 2.0.99 or newer.",
     "ko": "시공의 균열(설정): 매칭된 상대 서버의 월드 보스 중 균열이 열려 있는 동안 출현 중이거나 출현할 보스를 보여 줍니다. 미터 2.0.99 이상이 필요합니다.",

@@ -181,6 +181,9 @@ function iconPins() {
   // World Boss Train (anchor.js): the rest of the world bosses, shown while
   // up or about to spawn.
   if (typeof trainPins === "function") trainPins(out, cfg);
+  // The enemy bosses picked for a Spacetime Rift, while it is near or open
+  // (plugin.js).
+  if (typeof riftPins === "function") riftPins(out, cfg);
   return out;
 }
 
@@ -207,6 +210,7 @@ const pinOpacity = () => (PIN_OPACITIES.includes(Number(prefs.iconOpacity)) ? Nu
 // whether it is running (an event under way, a world boss up), and a field
 // boss's HP and kill.
 function pinState(id, now) {
+  if (id.startsWith("rift:")) return typeof riftPinState === "function" ? riftPinState(id.slice(5), now) : null;
   if (id.startsWith("field:")) {
     const b = fieldBosses().find((x) => `field:${x.id}` === id);
     if (!b) return null;
@@ -593,7 +597,9 @@ async function updatePins(now) {
           showName: !!pin.name, tp: pin.tp ? teleportBadge(id) : "", opacity: pinOpacity(), countdown, sub, hp: state.killed ? 0 : state.hp ?? null,
           running: state.running, due: due && !state.killed, effect: pin.effect, kind: state.kind, icon: pinIcon(id, state.kind),
           copy: pinLine(id, state, now, fight),
-          abyss: id.startsWith("field:") && isAbyssBoss(FIELD_BOSSES[id.slice(6)] || {}) },
+          abyss: id.startsWith("field:") && isAbyssBoss(FIELD_BOSSES[id.slice(6)] || {}),
+          // An enemy server's boss (Spacetime Rift): red.
+          enemy: !!state.enemy },
       });
     }
     // Anchor mode: in its order, with what doesn't fit folded into "+N",

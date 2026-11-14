@@ -87,6 +87,14 @@ body.locked .pin { cursor: default; }
 .pin.field .badge { --ring: #ff7a6b; }
 .pin.running .badge { --ring: #5fe08a; }
 .pin.abyss .badge, .pin.abyss.running .badge { --ring: #c08bff; }
+/* An enemy server's boss, for a Spacetime Rift: a red ring, and the boss
+   marker tinted red. */
+.pin.enemy .badge, .pin.enemy.running .badge { --ring: #d4161b; }
+.pin.enemy .badge {
+  background: radial-gradient(circle at 35% 30%, rgba(255, 120, 120, 0.25), rgba(40, 6, 10, 0.94) 70%);
+  box-shadow: 0 0 0 2px var(--ring), 0 0 8px 1px rgba(230, 20, 30, 0.55), 0 2px 6px rgba(0, 0, 0, 0.6);
+}
+.pin.enemy .art { filter: drop-shadow(0 1px 1px #000) brightness(0.55) sepia(1) saturate(14) hue-rotate(-38deg) brightness(1.25); }
 .glyph { font-size: 15px; letter-spacing: 0.5px; text-shadow: 0 1px 2px #000; }
 .art { width: 32px; height: 32px; object-fit: contain; filter: drop-shadow(0 1px 1px #000); }
 .art[hidden], .glyph[hidden], .tp[hidden] { display: none; }

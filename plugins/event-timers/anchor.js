@@ -148,10 +148,22 @@ const gridRows = () => Math.max(1, Math.min(ROWS_MAX, Number(prefs.anchorRows) |
 
 // The train's bosses, for iconPins(): each world boss without an alert of
 // its own, shown while up or within TRAIN_LEAD_MS of spawning (pinVisible).
+// While a Spacetime Rift is open with its enemy bosses shown (plugin.js), the
+// train leaves out the bosses back in under 6 hours (or not measured yet):
+// the player is likely across in the enemy's land, where the common ones on
+// their own side are out of reach anyway.
+const RIFT_TRAIN_MIN = 360;
+const inRift = (now) => {
+  if (!prefs.rift || typeof riftWindow !== "function") return false;
+  const win = riftWindow(now);
+  return !!win && win.from <= now;
+};
 function trainPins(out, cfg) {
   if (!trainOn()) return;
+  const rift = inRift(Date.now());
   for (const b of fieldBosses()) {
     const id = `field:${b.id}`;
+    if (rift && respawnOf(id) < RIFT_TRAIN_MIN) continue;
     // Not "Show icons even when not alerting", and no reminder: on the grid only while
     // up or about to spawn, and "Fighting" when it is.
     if (!(id in out)) out[id] = { ...cfg(id), always: false, lead: -1, fought: true, train: true };

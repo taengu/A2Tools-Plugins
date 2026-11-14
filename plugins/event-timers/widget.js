@@ -63,7 +63,7 @@ function renderPin(pin, d) {
   pin.querySelector(".name").textContent = d.showName ? d.name : "";
   // An Abyss boss is purple, as a world boss is red, up or not (the class
   // set apart, before this, was wiped here).
-  pin.className = `pin ${d.kind || "event"}${d.running ? " running" : ""}${d.due ? " due" : ""}${d.abyss ? " abyss" : ""} ${d.effect || "shake"}`;
+  pin.className = `pin ${d.kind || "event"}${d.running ? " running" : ""}${d.due ? " due" : ""}${d.abyss ? " abyss" : ""}${d.enemy ? " enemy" : ""} ${d.effect || "shake"}`;
   pin.title = d.tip || (pin.closest(".grid") && d.name) || "";
   // Settings: Icon opacity.
   pin.style.opacity = typeof d.opacity === "number" ? String(d.opacity) : "";
