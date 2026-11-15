@@ -1,5 +1,18 @@
 [
   {
+    "version": "0.7.3",
+    "en": "Spacetime Rift: with \"Any free boss\", the enemy bosses that are up or due back before the rift closes show as red icons too, from 15 minutes before it opens (before, only picked ones did).",
+    "ko": "시공의 균열: \"비어 있는 보스 전부\"에서도 균열이 닫히기 전에 살아 있거나 다시 나오는 적 보스가 균열 열리기 15분 전부터 빨간 아이콘으로 표시됩니다 (이전에는 고른 보스만).",
+    "ja": "時空の亀裂：「空いているボスすべて」でも、亀裂が閉じる前に出現中または再出現する敵ボスが、開く15分前から赤いアイコンで表示されます（以前は選んだボスのみ）。",
+    "de": "Raum-Zeit-Riss: Auch mit „Jeder freie Boss“ erscheinen gegnerische Bosse, die vor dem Schließen des Risses da sind oder wiederkommen, ab 15 Minuten vor dem Öffnen als rote Symbole (bisher nur gewählte).",
+    "fr": "Faille spatio-temporelle : avec « Tout boss libre », les boss ennemis présents ou de retour avant la fermeture de la faille s'affichent aussi en icônes rouges, dès 15 minutes avant l'ouverture (avant, seulement les boss choisis).",
+    "es": "Grieta espaciotemporal: con «Cualquier jefe libre», los jefes enemigos presentes o que vuelven antes de que cierre la grieta también salen como iconos rojos, desde 15 minutos antes de que abra (antes, solo los elegidos).",
+    "pt": "Fenda espaço-temporal: com \"Qualquer chefe livre\", os chefes inimigos presentes ou que voltam antes de a fenda fechar também aparecem como ícones vermelhos, a partir de 15 minutos antes de abrir (antes, só os escolhidos).",
+    "ru": "Разлом: и в режиме «Любой свободный босс» вражеские боссы, которые на месте или вернутся до закрытия разлома, показываются красными значками за 15 минут до открытия (раньше — только выбранные).",
+    "zh-Hant": "時空裂縫：選「任何空著的首領」時，裂縫關閉前在場或會重生的敵方首領，也會從開啟前 15 分鐘起以紅色圖示顯示（以前只有選中的首領）。",
+    "zh-Hans": "时空裂缝：选「任何空着的首领」时，裂缝关闭前在场或会重生的敌方首领，也会从开启前 15 分钟起以红色图标显示（以前只有选中的首领）。"
+  },
+  {
     "version": "0.7.2",
     "en": "Spacetime Rift: enemy bosses whose gear your Boss supply board asks for are marked ★, with a button to pick them all (meter 2.0.99 or newer).",
     "ko": "시공의 균열: 내 보스 보급 의뢰가 요구하는 장비를 드롭하는 적 보스에 ★ 표시가 붙고, 한 번에 모두 고르는 버튼이 생겼습니다 (미터 2.0.99 이상).",
@@ -50,18 +63,5 @@
     "ru": "Лорд-хранитель Нахма показывается одним боссом, а не тремя: он появляется в одной из трёх точек, с HP и телепортом этой точки (пока его не видели, все три). Оповещение или значок любой из трёх теперь относятся к нему.",
     "zh-Hant": "守護神將納赫瑪顯示為一個首領，而不是三個：他在三個出現點之一出現，任一處出現即顯示，並附上該處的 HP 與傳送點（看到他之前列出全部三處）。為三者任一設定的提醒或圖示，現在都歸他。",
     "zh-Hans": "守护神将纳赫玛显示为一个首领，而不是三个：他在三个出现点之一出现，任一处出现即显示，并附上该处的 HP 与传送点（看到他之前列出全部三处）。为三者任一设置的提醒或图标，现在都归他。"
-  },
-  {
-    "version": "0.6.34",
-    "en": "Argo, the Spirit King is back in the Abyss bosses, with his icon and alerts: since 0.6.32 he had dropped off the list.",
-    "ko": "정령왕 아그로가 아이콘과 알림과 함께 어비스 보스 목록에 다시 표시됩니다. 0.6.32부터 목록에서 빠져 있었습니다.",
-    "ja": "精霊王アグロがアイコンと通知付きでアビスのボスに戻りました。0.6.32からリストから抜けていました。",
-    "de": "Geisterfürst Agro ist wieder bei den Abyss-Bossen, mit Symbol und Alarmen: seit 0.6.32 fehlte er in der Liste.",
-    "fr": "Agro le roi des esprits est de retour parmi les boss des Abysses, avec son icône et ses alertes : il avait disparu de la liste depuis la 0.6.32.",
-    "es": "Agro, el Rey Espíritu vuelve a los jefes del Abismo, con su icono y sus alertas: desde la 0.6.32 había desaparecido de la lista.",
-    "pt": "Argo, Rei dos Espíritos voltou aos chefes do Abismo, com seu ícone e alertas: desde a 0.6.32 ele tinha sumido da lista.",
-    "ru": "Король духов Агро снова среди боссов Бездны, со значком и оповещениями: с версии 0.6.32 он пропал из списка.",
-    "zh-Hant": "精靈王阿格羅回到深淵首領列表，並恢復圖示與提醒：自 0.6.32 起他從列表中消失了。",
-    "zh-Hans": "精灵王阿格罗回到深渊首领列表，并恢复图标与提醒：自 0.6.32 起他从列表中消失了。"
   }
 ]

@@ -181,8 +181,8 @@ function iconPins() {
   // World Boss Train (anchor.js): the rest of the world bosses, shown while
   // up or about to spawn.
   if (typeof trainPins === "function") trainPins(out, cfg);
-  // The enemy bosses picked for a Spacetime Rift, while it is near or open
-  // (plugin.js).
+  // The enemy bosses shown for a Spacetime Rift (any free one, or the ones
+  // picked), while it is near or open (plugin.js).
   if (typeof riftPins === "function") riftPins(out, cfg);
   return out;
 }

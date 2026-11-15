@@ -1289,12 +1289,11 @@ let supplyBoards = null;
 const BOSS_BOARD = 4;
 const bossBoard = () => new Set((supplyBoards?.boards || []).filter((b) => b.tab === BOSS_BOARD).flatMap((b) => b.requests || []));
 const onBossBoard = (id, board = bossBoard()) => typeof BOSS_REQUESTS === "object" && (BOSS_REQUESTS[id] || []).some((r) => board.has(r));
-// As icons (pins.js), with "Only the ones I pick": the picked enemy bosses
-// that are up or due in the rift, from the alert's lead before it opens (15
-// minutes without an alert) until it closes. Not with "Any free boss": a
-// whole map's bosses would cover the screen.
+// As icons (pins.js): the enemy bosses shown (any free one, or the ones
+// picked) that are up or due back before the rift closes, from the alert's
+// lead before it opens (15 minutes without an alert) until it closes.
 function riftPins(out, cfg) {
-  if (!prefs.rift || prefs.riftShow !== "picked") return;
+  if (!prefs.rift) return;
   const now = Date.now();
   const lead = (Number(prefs.riftAlert) || 15) * 60_000;
   const win = riftWindow(now + lead);
