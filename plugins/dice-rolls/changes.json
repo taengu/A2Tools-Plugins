@@ -1,5 +1,18 @@
 [
   {
+    "version": "0.1.1",
+    "en": "While you arrange the screen with the meter's Edit layout (meter 2.1.0 or newer), the card shows a sample roll, so you can place it.",
+    "ko": "미터의 레이아웃 편집으로 화면을 배치하는 동안(미터 2.1.0 이상) 카드에 예시 주사위가 표시되어 위치를 정할 수 있습니다.",
+    "ja": "メーターのレイアウト編集で画面を配置している間（メーター2.1.0以降）、カードにサンプルの出目が表示され、配置できます。",
+    "de": "Während du den Bildschirm mit „Layout bearbeiten“ des Meters anordnest (Meter 2.1.0 oder neuer), zeigt die Karte einen Beispielwurf, damit du sie platzieren kannst.",
+    "fr": "Pendant que tu disposes l'écran avec « Modifier la disposition » du compteur (compteur 2.1.0 ou plus récent), la carte affiche un lancer d'exemple pour la placer.",
+    "es": "Mientras colocas la pantalla con «Editar diseño» del medidor (medidor 2.1.0 o posterior), la tarjeta muestra una tirada de ejemplo para que puedas colocarla.",
+    "pt": "Enquanto você organiza a tela com \"Editar layout\" do medidor (medidor 2.1.0 ou mais recente), o cartão mostra uma rolagem de exemplo para você posicioná-lo.",
+    "ru": "Пока вы расставляете элементы через «Изменить раскладку» метра (метр 2.1.0 или новее), карточка показывает пример броска, чтобы её можно было разместить.",
+    "zh-Hant": "使用計量器的「編輯版面」排列畫面時（需計量器 2.1.0 或更新版本），卡片會顯示範例擲骰，方便放置。",
+    "zh-Hans": "使用计量器的「编辑布局」排列屏幕时（需计量器 2.1.0 或更新版本），卡片会显示示例掷骰，方便放置。"
+  },
+  {
     "version": "0.1.0",
     "en": "Dice Roll loot as it happens: the item, every roll highest first with yours marked, the time left and who won. On a card on screen, and in a history.",
     "ko": "주사위 분배 전리품을 실시간으로 보여 줍니다: 아이템, 높은 순서의 모든 주사위 결과(내 결과 표시), 남은 시간, 획득자. 화면 카드와 기록으로 표시합니다.",

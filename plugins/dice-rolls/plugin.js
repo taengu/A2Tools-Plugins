@@ -150,6 +150,7 @@ function setTab(name) {
 // What the card shows: each roll going, and each just over for as long as
 // the player chose, not hidden.
 function cardRolls(now) {
+  if (layoutSample) return layoutSample;
   if (test) return test.filter((r) => !dismissed.has(keyOf(r)));
   if (prefs.cardOn !== "on") return [];
   const keep = Number(prefs.keepFor) * 1000;
@@ -235,6 +236,23 @@ function startTest() {
     updateCard();
   }, 5000 + Math.max(5, Number(prefs.keepFor) || 10) * 1000);
 }
+
+// The meter's layout editor (meter 2.1.0 on): while the player arranges the
+// screen, the card shows a sample roll, so it is there to place.
+let layoutSample = null;
+a2.on("layout", (layout) => {
+  if (layout?.editing && prefs.cardOn === "on") {
+    const now = Date.now();
+    layoutSample = [{
+      rollId: "layout", itemId: 514310074, count: 1, openedAt: now, endsAt: now + 3_600_000, lastAt: now, endedAt: null, winner: null, passes: [],
+      rolls: [{ name: "T7", serverId: 1304, roll: 5070, mine: false }, { name: me?.name, serverId: me?.serverId, roll: 2003, mine: true },
+        { name: "Codix", serverId: 1304, roll: 1944, mine: false }],
+    }];
+  } else {
+    layoutSample = null;
+  }
+  updateCard();
+});
 
 // ----- Events -----
 
