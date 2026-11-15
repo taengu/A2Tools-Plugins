@@ -1,5 +1,18 @@
 [
   {
+    "version": "0.1.4",
+    "en": "Avoids false off alerts near other Chanters. Your pulses reaching allies count as activity; mantras received from another Chanter show separate coverage without claiming your own toggle is on.",
+    "ko": "다른 호법 근처에서 잘못된 꺼짐 알림이 뜨지 않도록 수정했습니다. 아군에게 닿은 내 진언도 활성 증거로 사용하며, 다른 호법이 주는 효과는 내 토글이 켜졌다고 단정하지 않고 별도로 표시합니다.",
+    "ja": "他のチャンター付近での誤った切断通知を修正。味方に届く自分のマントラも稼働として扱い、他者からの効果は自分の切替状態を断定せず別表示します。",
+    "de": "Verhindert falsche Aus-Alarme neben anderen Kantoren. Eigene Impulse auf Verbündete zählen als Aktivität; empfangene Mantras werden getrennt angezeigt und belegen nicht den eigenen Schalter.",
+    "fr": "Évite les fausses alertes près d’autres Aèdes. Vos impulsions sur les alliés comptent comme activité ; les mantras reçus sont affichés séparément sans affirmer que votre propre activation est en marche.",
+    "es": "Evita falsas alertas junto a otros Conjuradores. Tus pulsos sobre aliados cuentan como actividad; los mantras recibidos muestran cobertura separada sin afirmar que tu propia activación esté encendida.",
+    "pt": "Evita alertas falsos perto de outros Encantadores. Seus pulsos em aliados contam como atividade; mantras recebidos aparecem como cobertura separada, sem afirmar que sua própria ativação está ligada.",
+    "ru": "Убраны ложные сигналы рядом с другими чародеями. Ваши импульсы на союзниках учитываются как активность; чужие мантры показываются отдельно и не подтверждают ваш собственный переключатель.",
+    "zh-Hans": "修复靠近其他护法时误报真言关闭的问题。自己的真言对队友生效也算活动证据；其他护法提供的真言会单独显示覆盖状态，不再据此声称自己的开关已开启。",
+    "zh-Hant": "修正靠近其他護法時誤報真言關閉的問題。自己的真言對隊友生效也算活動證據；其他護法提供的真言會單獨顯示涵蓋狀態，不再據此聲稱自己的開關已開啟。"
+  },
+  {
     "version": "0.1.3",
     "en": "Uses less memory: its sound engine closes after 30 seconds of silence and starts again for the next alert.",
     "ko": "메모리를 덜 사용합니다. 30초 동안 소리가 없으면 사운드 엔진을 닫고, 다음 알림 때 다시 시작합니다.",
