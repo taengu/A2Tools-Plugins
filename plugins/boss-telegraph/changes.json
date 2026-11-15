@@ -1,5 +1,44 @@
 [
   {
+    "version": "0.2.0",
+    "en": "Expanded Global mechanics and retained KR guides with strict region, mode and stage checks. Added scope-labelled previews, ten-language instructions and English audio. Manual encounter choices reset on travel; unverified or ambiguous events stay neutral.",
+    "ko": "글로벌 기믹 안내를 확대하고 한국 공략은 지역·모드·단계 조건에 따라 유지합니다. 적용 조건이 표시되는 미리보기, 10개 언어 지침과 영어 음성을 추가했습니다. 수동 전투 설정은 이동 시 초기화되며, 미확인·불명확 이벤트는 중립적으로 안내합니다.",
+    "ja": "Globalのギミック案内を拡充し、KR攻略は地域・モード・段階を厳密に確認。条件付きプレビュー、10言語の指示と英語音声を追加。手動の戦闘設定は移動時にリセットされ、未確認・曖昧なイベントは中立的に案内します。",
+    "de": "Global-Mechaniken erweitert, KR-Anleitungen mit strengen Regions-, Modus- und Stufenprüfungen erhalten. Vorschau mit Geltungsbereich, Anweisungen in zehn Sprachen und englische Audioausgabe ergänzt. Manuelle Kampfauswahl wird bei Reisen gelöscht; unklare Ereignisse bleiben neutral.",
+    "fr": "Mécaniques Global enrichies et guides KR conservés avec contrôle de région, mode et palier. Aperçus contextualisés, consignes en dix langues et audio anglais ajoutés. Les choix manuels sont effacés en voyage ; les événements incertains restent neutres.",
+    "es": "Ampliadas las mecánicas Global y conservadas las guías KR con controles de región, modo y etapa. Vistas previas con contexto, instrucciones en diez idiomas y audio inglés. Los ajustes manuales se reinician al viajar; los eventos inciertos siguen neutrales.",
+    "pt": "Mecânicas Global ampliadas e guias KR mantidos com verificação de região, modo e etapa. Prévias com contexto, instruções em dez idiomas e áudio inglês. Escolhas manuais reiniciam ao viajar; eventos não confirmados ou ambíguos mantêm avisos neutros.",
+    "ru": "Расширены механики Global, сохранены гайды KR с проверкой региона, режима и этапа. Добавлены предпросмотр с условиями, инструкции на десяти языках и английская озвучка. Ручные настройки боя сбрасываются при переходе; неясные события получают нейтральный сигнал.",
+    "zh-Hant": "擴充 Global 機制提示，並以嚴格的地區、模式及階段條件保留 KR 攻略。新增標示適用條件的預覽、十種語言指示及英文語音。移動後重設手動戰鬥選項；未確認或有歧義的事件維持中性提示。",
+    "zh-Hans": "扩充 Global 机制提示，并以严格的地区、模式及阶段条件保留 KR 攻略。新增标示适用条件的预览、十种语言指示及英文语音。移动后重置手动战斗选项；未确认或有歧义的事件维持中性提示。"
+  },
+  {
+    "version": "0.1.11",
+    "en": "Fixed stale calls after encounter resets and delayed audio after disabling Callouts. Countdown expiry stays quiet; confirmed effect removal drives completion. Separate buff instances and bosses no longer suppress each other.",
+    "ko": "전투 초기화 뒤 오래된 알림이 나오거나 알림을 끈 뒤 음성이 재생되는 문제를 수정했습니다. 타이머 만료만으로 안전을 알리지 않고 효과 해제를 확인합니다. 서로 다른 효과 인스턴스와 보스의 알림이 충돌하지 않습니다.",
+    "ja": "戦闘リセット後の古い通知と、無効化後に遅れて再生される音声を修正。タイマー切れでは安全を告げず、効果の解除を確認して完了を通知します。別の効果インスタンスやボスによる通知の抑制も修正しました。",
+    "de": "Veraltete Ansagen nach Kampf-Resets und verzögerte Töne nach dem Abschalten behoben. Timer laufen still aus; erst bestätigtes Effektende löst die Abschlussansage aus. Separate Effekte und Bosse unterdrücken einander nicht mehr.",
+    "fr": "Correction des anciennes alertes après réinitialisation et des voix tardives après désactivation. Le décompte expire en silence ; la fin est annoncée après confirmation de la suppression de l'effet. Les effets et boss distincts ne se masquent plus.",
+    "es": "Corregidas las alertas antiguas tras reiniciar el combate y las voces tardías al desactivarlas. El contador termina en silencio; el fin se anuncia al confirmar la retirada del efecto. Efectos y jefes distintos ya no suprimen sus avisos entre sí.",
+    "pt": "Corrigidos avisos antigos após reiniciar o combate e áudio tardio após desativar. O contador termina em silêncio; o fim é anunciado após confirmar a remoção do efeito. Instâncias de efeitos e chefes diferentes não suprimem mais os avisos entre si.",
+    "ru": "Исправлены старые сигналы после сброса боя и запоздалый звук после отключения. Истечение таймера молчит; завершение объявляется после подтверждённого снятия эффекта. Разные экземпляры эффектов и боссы больше не подавляют чужие сигналы.",
+    "zh-Hant": "修正重設戰鬥後仍出現舊提示，以及停用提示後延遲播放語音的問題。倒數結束時保持安靜，確認效果移除後才播報結束。不同效果實例與首領的提示不再互相抑制。",
+    "zh-Hans": "修正重置战斗后仍出现旧提示，以及停用提示后延迟播放语音的问题。倒计时结束时保持安静，确认效果移除后才播报结束。不同效果实例与首领的提示不再互相抑制。"
+  },
+  {
+    "version": "0.1.10",
+    "en": "Added default-on Tell me what to do: speaks supported instructions, keeps the boss's line visible, and uses a neutral advisory for unknown mechanics. Turn it off for the previous call style. Custom wording takes priority; built-in English audio included.",
+    "ko": "기본으로 켜지는 '할 일을 알려 주세요' 추가: 확인된 행동 지침을 읽고 보스 대사는 화면에 유지합니다. 모르는 기믹은 중립적으로 안내합니다. 끄면 기존 알림 방식을 사용합니다. 내 문구가 우선하며 내장 영어 음성도 포함됩니다.",
+    "ja": "既定でオンの「すべきことを教えて」を追加。対応する行動指示を読み上げ、ボスのセリフは画面に残します。不明なギミックは中立的に案内。オフで以前の形式に戻ります。自分の言葉を優先し、内蔵英語音声も対応。",
+    "de": "Neue Standardoption: „Sag mir, was ich tun soll“. Liest belegte Anweisungen, zeigt den Boss-Text weiter und warnt bei unbekannten Mechaniken neutral. Ausschalten stellt die bisherige Ansageart wieder her. Eigene Worte haben Vorrang; mit eingebautem englischem Audio.",
+    "fr": "Ajout de « Dites-moi quoi faire », activé par défaut : consignes connues à l'oral, réplique conservée à l'écran, avis neutre si la mécanique est inconnue. Désactivez-le pour l'ancien style. Vos mots restent prioritaires ; audio anglais intégré inclus.",
+    "es": "Nueva opción activada por defecto: «Dime qué hacer». Lee instrucciones conocidas, mantiene la frase en pantalla y avisa de forma neutral si la mecánica es desconocida. Desactívala para el estilo anterior. Tus palabras tienen prioridad; incluye audio inglés integrado.",
+    "pt": "Nova opção ativada por padrão: «Diga-me o que fazer». Fala instruções conhecidas, mantém a fala na tela e avisa de forma neutra sobre mecânicas desconhecidas. Desative para usar o estilo anterior. Suas palavras têm prioridade; inclui áudio inglês integrado.",
+    "ru": "Добавлен включённый по умолчанию режим «Говорить, что делать»: известные инструкции озвучиваются, реплики видны на экране, для неизвестных механик — нейтральное предупреждение. Выключите для прежнего стиля. Ваш текст приоритетен; добавлено встроенное английское аудио.",
+    "zh-Hant": "新增預設開啟的「告訴我該怎麼做」：語音播報已確認的指示，畫面保留首領台詞；未知機制給出中性提醒。關閉可恢復原提示風格。自訂文字優先，並附內建英文語音。",
+    "zh-Hans": "新增默认开启的“告诉我该怎么做”：语音播报已确认的指示，画面保留首领台词；未知机制给出中性提醒。关闭可恢复原提示风格。自定义文字优先，并附内置英文语音。"
+  },
+  {
     "version": "0.1.9",
     "en": "Updated from the game's November 4 patch: Russian and French lines as the game now words them, and Vakron's new skill.",
     "ko": "11월 4일 게임 패치 반영: 러시아어와 프랑스어 대사를 게임의 현재 표현으로, 바크론의 새 스킬 추가.",
@@ -24,44 +63,5 @@
     "ru": "Enhanced Boss Telegraph теперь называется Boss Callouts (Подсказки боссов). Настройки и ваши собственные фразы сохраняются.",
     "zh-Hant": "Enhanced Boss Telegraph 已更名為 Boss Callouts（首領提示）。你的設定與自訂提示文字都會保留。",
     "zh-Hans": "Enhanced Boss Telegraph 已更名为 Boss Callouts（首领提示）。你的设置与自定义提示文字都会保留。"
-  },
-  {
-    "version": "0.1.7",
-    "en": "Uses less memory: its sound engine closes after 30 seconds of silence and starts again for the next alert.",
-    "ko": "메모리를 덜 사용합니다. 30초 동안 소리가 없으면 사운드 엔진을 닫고, 다음 알림 때 다시 시작합니다.",
-    "ja": "メモリ使用量が減りました。30秒間音がなければサウンドエンジンを閉じ、次の通知で再び起動します。",
-    "de": "Braucht weniger Speicher: Die Sound-Engine schließt nach 30 Sekunden Stille und startet beim nächsten Alarm neu.",
-    "fr": "Utilise moins de mémoire : son moteur audio se ferme après 30 secondes de silence et redémarre à la prochaine alerte.",
-    "es": "Usa menos memoria: su motor de sonido se cierra tras 30 segundos de silencio y se reinicia con la siguiente alerta.",
-    "pt": "Usa menos memória: o motor de som fecha após 30 segundos de silêncio e reinicia no próximo alerta.",
-    "ru": "Меньше расход памяти: звуковой движок закрывается после 30 секунд тишины и запускается снова при следующем оповещении.",
-    "zh-Hant": "佔用更少記憶體：靜音 30 秒後關閉音效引擎，下次提醒時再重新啟動。",
-    "zh-Hans": "占用更少内存：静音 30 秒后关闭音效引擎，下次提醒时再重新启动。"
-  },
-  {
-    "version": "0.1.6",
-    "en": "The settings window for reduced vision: a text size for the window, stronger contrast, a clear focus ring, and Off said in words.",
-    "ko": "저시력 사용자를 위한 설정 창: 창 글자 크기, 더 강한 대비, 뚜렷한 포커스 표시, '꺼짐'을 글자로 표시.",
-    "ja": "弱視の方のための設定画面：ウィンドウの文字サイズ、強いコントラスト、はっきりしたフォーカス表示、「オフ」を文字で表示。",
-    "de": "Das Einstellungsfenster für eingeschränktes Sehen: eine Textgröße fürs Fenster, stärkerer Kontrast, ein klarer Fokusrahmen und „Aus“ in Worten.",
-    "fr": "La fenêtre des réglages pour la basse vision : une taille de texte pour la fenêtre, un contraste renforcé, un cadre de focus net et « Désactivé » écrit.",
-    "es": "La ventana de ajustes para baja visión: tamaño de texto de la ventana, más contraste, un marco de foco claro y «Apagado» escrito.",
-    "pt": "A janela de configurações para baixa visão: tamanho de texto da janela, mais contraste, um contorno de foco claro e «Desligado» escrito.",
-    "ru": "Окно настроек для слабовидящих: размер текста окна, повышенный контраст, заметная рамка фокуса и «Выкл.» словами.",
-    "zh-Hant": "為弱視玩家改善設定視窗：視窗文字大小、更高對比、清楚的焦點框，並以文字標示「已關閉」。",
-    "zh-Hans": "为弱视玩家改善设置窗口：窗口文字大小、更高对比、清楚的焦点框，并以文字标示“已关闭”。"
-  },
-  {
-    "version": "0.1.5",
-    "en": "▶ on each call plays it now, as a fight would.",
-    "ko": "각 알림의 ▶로 전투 때처럼 바로 재생해 볼 수 있습니다.",
-    "ja": "各呼びかけの ▶ で、戦闘中と同じように今すぐ再生できます。",
-    "de": "▶ bei jedem Ruf spielt ihn sofort ab, wie im Kampf.",
-    "fr": "▶ sur chaque appel le joue tout de suite, comme en combat.",
-    "es": "▶ en cada aviso lo reproduce ya, como en un combate.",
-    "pt": "▶ em cada aviso o toca agora, como numa luta.",
-    "ru": "▶ у каждого сигнала проигрывает его сразу, как в бою.",
-    "zh-Hant": "每個提示的 ▶ 可立即播放，就像戰鬥中一樣。",
-    "zh-Hans": "每个提示的 ▶ 可立即播放，就像战斗中一样。"
   }
 ]

@@ -1,7 +1,7 @@
 {
   "id": "boss-telegraph",
   "name": "Boss Callouts",
-  "version": "0.1.9",
+  "version": "0.2.0",
   "apiVersion": 2,
   "author": "A2 Tools",
   "description": "Accessibility: a boss's on-screen lines and mechanics spoken aloud and shown in large, high-contrast text, with a countdown while the boss's buff lasts and \"Safe to attack\" when it ends.",
@@ -9,6 +9,7 @@
     "storage",
     "window",
     "widgets",
+    "decoder:boss-map",
     "decoder:boss-cast",
     "decoder:boss-skill",
     "decoder:boss-wave",
@@ -16,6 +17,12 @@
     "decoder:boss-buff-removed"
   ],
   "decoders": [
+    {
+      "name": "boss-map",
+      "opcode": "21 36",
+      "immediate": true,
+      "fields": [ { "name": "count", "type": "u32" }, { "name": "map", "type": "u32" } ]
+    },
     {
       "name": "boss-cast",
       "opcode": "09 38",

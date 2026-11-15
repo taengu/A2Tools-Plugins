@@ -17,10 +17,11 @@
 // buff on the boss and its time. A curated mechanic (tools/boss-telegraph/
 // curated.json) adds a short call for what the colour or the buff means.
 (function (root) {
-  const STALE_MS = 3000; // events older than this (queued while the window was shut) are not spoken
+  const STALE_MS = 3000; // older events (queued while the window was shut) are ignored
   const REPEAT_MS = 1200; // one boss's same trigger twice in this time: once
   const SHOW_MS = 4000; // how long a call without a countdown stays up
   const SAFE_MS = 2500;
+  const REMOVAL_GRACE_MS = 3000; // retain expired instance IDs for a briefly delayed confirmation
   const WAVE_GAP_MS = 400; // a wave's several projectiles: one beep
   const WAVES_FOR_MS = 8000; // waves heard this long after their skill
   const BIND_MS = 30 * 60 * 1000;
@@ -52,13 +53,24 @@
     const recent = new Map(); // "entity:t:id" -> at
     const phases = new Map(); // "entity:instance" -> { call, end, item }
     const waveFrom = new Map(); // "entity:skill" -> { call, at, last }
-    const lastCall = new Map(); // call.k -> at
+    const lastCall = new Map(); // "entity:call.k" -> at
     const orders = new Map(); // "entity:mark" -> { words, at }
+    const previewTimers = new Set();
+    let generation = 0;
+    let resetAt = -Infinity;
     let items = []; // on the widget: { id, kind, text, sub, end, until }
     let seq = 0;
 
     const now = () => hooks.now();
     const prefs = () => hooks.prefs();
+    const fresh = (at) => Number.isFinite(at) && at <= now() && now() - at <= STALE_MS;
+    // Packets queued before a reset belong to the previous encounter context.
+    // Same-millisecond packets are ambiguous too; previews are explicit and
+    // use fresh() directly rather than crossing this live-event boundary.
+    const live = (at) => fresh(at) && at > resetAt;
+    const validId = (id) => Number.isSafeInteger(id) && id > 0;
+    const validInstance = (id) => Number.isSafeInteger(id) && id >= 0;
+    const callKey = (c, entity) => `${entity}:${c.k}`;
     const T = (i) => {
       if (i == null) return "";
       const t = D.texts[i];
@@ -93,17 +105,42 @@
       return list.find((c) => !c.bind) || null;
     }
 
+    function pickPhase(list, entity, abnormal) {
+      // A phase must not select the first of several boss/mechanic meanings.
+      // Unique curated boss buffs can stand alone; shared meanings stay
+      // unresolved, and bound buffs must match the recipient's narrow context.
+      if (new Set(list.map((c) => `${c.b}:${c.k}`)).size !== 1) return null;
+      const c = list[0];
+      const other = byTrigger.get(`abnormal:${abnormal}`) || [];
+      if (other.some((x) => x.b !== c.b)) return null;
+      const e = entities.get(entity);
+      const known = e && now() - e.at < BIND_MS ? e.boss : null;
+      if (known && !known.has(c.b)) return null;
+      if ((c.bind || c.phase.bind) && (!known || known.size !== 1 || !known.has(c.b))) return null;
+      return on(c) ? c : null;
+    }
+
     // The player's own words for a call (Settings, ✎), if any.
     const own = (c) => String((prefs().custom || {})[c.k] || "").trim();
+    const actionMode = () => prefs().tellMeWhatToDo !== false;
+    const actionText = (entry) => entry && (entry[hooks.lang()] || entry.en) || "";
+    const actions = hooks.actions || {};
     // What the call says and shows, by the player's call style; the player's
     // own words for it instead, whatever the style.
-    function words(c) {
+    function words(c, preview = false) {
       const mine = own(c);
       if (mine) return { big: mine, sub: "", say: [mine] };
       const style = prefs().style || "both";
       const line = T(c.line);
       const act = T(c.act);
       const buff = c.t === "abnormal" ? T(c.n) : "";
+      if (actionMode()) {
+        const resolved = hooks.instruction?.(c, { preview, uncertain: !!c.uncertain });
+        const action = (!c.uncertain && (actionText(resolved?.text) || (!resolved?.suppressLegacy && actionText(actions.calls?.[c.k])))) || actionText(actions.watch);
+        // Unknown mechanics get a neutral advisory, never an inferred dodge,
+        // shield or target. Keep the game context visible, without reading it.
+        return { big: action, sub: [preview ? resolved?.scopeLabel : "", line || act || buff].filter(Boolean).join(" · "), say: [action] };
+      }
       if (style === "line") return { big: line || act || buff, sub: "", say: [line || act || buff] };
       if (style === "act") return { big: act || line || buff, sub: act ? "" : buff, say: [act || line || buff] };
       // both: the short call first (it's what to do), then the game's line.
@@ -126,7 +163,7 @@
     // An order the boss shows one sign at a time (Talisra's spears: Dark,
     // Dark, Light), then plays out: each sign said as it comes, the callout
     // the order so far, up until it has played out.
-    function mark(c, entity, at) {
+    function mark(c, entity, at, preview = false, resolved = null) {
       const key = `${entity}:${c.mark}`;
       const was = orders.get(key);
       const order = was && at - was.at < MARK_GAP_MS ? was : { words: [] };
@@ -135,17 +172,23 @@
       order.at = at;
       orders.set(key, order);
       if (orders.size > 20) for (const [k, o] of orders) if (at - o.at > 60_000) orders.delete(k);
-      lastCall.set(c.k, at);
-      hooks.say(word, "high");
-      show({ key: `m:${c.mark}:${entity}`, kind: "call", text: order.words.join(" → "), sub: "", end: 0, until: at + ORDER_SHOW_MS });
+      lastCall.set(callKey(c, entity), at);
+      // These are signs for future pulses, not directions to move immediately.
+      const shortSign = c.k === "talisra-dark-spear" || c.k === "talisra-light-spear";
+      const instruction = shortSign ? actionText(actions.calls?.[c.k]) : actionText(resolved?.text) || actionText(actions.calls?.[c.k]);
+      hooks.say(own(c) || (actionMode() && instruction) || word, "high");
+      const sub = [preview ? resolved?.scopeLabel : "", actionMode() ? actionText(actions.order) : ""].filter(Boolean).join(" · ");
+      show({ key: `m:${c.mark}:${entity}`, kind: "call", text: order.words.join(" → "), sub, end: 0, until: at + ORDER_SHOW_MS });
     }
 
-    function fire(c, entity, at) {
-      const fresh = now() - at <= STALE_MS;
-      if (!fresh) return;
-      if (c.mark) return mark(c, entity, at);
-      const w = words(c);
-      lastCall.set(c.k, at);
+    function fire(c, entity, at, preview = false) {
+      if (!fresh(at)) return;
+      if (c.mark) {
+        const resolved = actionMode() && !own(c) ? hooks.instruction?.(c, { preview, uncertain: !!c.uncertain }) : null;
+        if (!resolved?.suppressLegacy || resolved.text) return mark(c, entity, at, preview, resolved);
+      }
+      const w = words(c, preview);
+      lastCall.set(callKey(c, entity), at);
       for (let i = 0; i < w.say.length; i++) if (w.say[i]) hooks.say(w.say[i], i === 0 ? "high" : "low");
       const end = c.lead ? at + c.lead : 0;
       show({ key: `c:${c.k}:${entity}`, kind: "call", text: w.big, sub: w.sub, end, until: Math.max(end, at + SHOW_MS) });
@@ -155,6 +198,7 @@
     function trigger(t, d, at) {
       const skill = Number(d.skill ?? d.abnormal);
       const entity = Number(d.caster ?? d.entity);
+      if (!live(at) || !validId(skill) || !validId(entity)) return;
       if (t !== "abnormal") learn(entity, skill, at);
       const list = byTrigger.get(`${t}:${skill}`);
       if (!list) return;
@@ -165,57 +209,82 @@
       recent.set(key, at);
       if (recent.size > 300) for (const [k, v] of recent) if (at - v > 60_000) recent.delete(k);
       if (last != null && at - last < REPEAT_MS) return;
-      fire(c, entity, at);
+      // Shared skills and reused entity IDs cannot safely establish which
+      // boss-specific action to take. Keep their live advisory neutral; the
+      // explicitly selected per-boss preview can still demonstrate its call.
+      const ambiguous = new Set(list.map((x) => x.b)).size > 1;
+      fire(ambiguous ? { ...c, uncertain: true } : c, entity, at);
     }
 
     function added(d, at) {
       const abnormal = Number(d.abnormal);
       const entity = Number(d.entity);
+      const instance = Number(d.instance);
+      if (!live(at) || !validId(abnormal) || !validId(entity) || !validInstance(instance)) return;
       // A curated phase: the buff on the boss, and how long it lasts.
       const ph = byPhase.get(abnormal);
       if (ph) {
-        const c = ph.find(on);
-        if (c) startPhase(c, entity, Number(d.instance), at, Number(d.length) || c.phase.ms);
+        const c = pickPhase(ph, entity, abnormal);
+        if (c) startPhase(c, entity, instance, at, Number(d.length) || c.phase.ms);
       }
       trigger("abnormal", d, at);
     }
-    function startPhase(c, entity, instance, at, length) {
+    function startPhase(c, entity, instance, at, length, preview = false) {
+      if (!fresh(at) || !Number.isFinite(length) || length < 0) return;
+      const resolved = actionMode() && !own(c) ? hooks.instruction?.(c, { preview, uncertain: false }) : null;
+      if (resolved?.suppressLegacy && !resolved.text) return;
       const key = `${entity}:${instance}`;
       const end = at + Math.min(Math.max(length, 500), 120_000);
       // The game's line style: the buff's own name; else what to do.
-      const label = (prefs().style === "line" && T(c.phase.n)) || T(c.phase.label) || T(c.act);
+      const label = actionMode()
+        ? own(c) || T(c.phase.label) || actionText(actions.calls?.[c.k]) || actionText(actions.watch)
+        : (prefs().style === "line" && T(c.phase.n)) || T(c.phase.label) || T(c.act);
       const was = phases.get(key);
-      const sub = prefs().style === "line" ? "" : T(c.phase.n);
-      const item = show({ key: `p:${c.k}:${entity}`, kind: "phase", text: label, sub, end, until: end });
+      const sub = [preview ? resolved?.scopeLabel : "", !actionMode() && prefs().style === "line" ? "" : T(c.phase.n)].filter(Boolean).join(" · ");
+      const item = show({ key: `p:${c.k}:${entity}:${instance}`, kind: "phase", text: label, sub, end, until: end });
       phases.set(key, { call: c, end, item, entity });
       // Said again only when its call wasn't just heard (a cast seen before).
-      const heard = lastCall.get(c.k);
-      if (!was && now() - at <= STALE_MS && (heard == null || at - heard > 6000)) hooks.say(label, "high");
+      const heard = lastCall.get(callKey(c, entity));
+      if (!was && (heard == null || at - heard > 6000)) {
+        lastCall.set(callKey(c, entity), at);
+        hooks.say(label, "high");
+      }
     }
-    function endPhase(key, at) {
+    function endPhase(key, at, confirmed = false) {
       const p = phases.get(key);
       if (!p) return;
-      phases.delete(key);
       drop(p.item.key);
-      // Another of the same mechanic still running: not safe yet.
-      for (const q of phases.values()) if (q.call.k === p.call.k) return;
-      if (now() - at > STALE_MS) return;
+      // Hide an elapsed estimate quietly, retaining its exact instance briefly
+      // for a real removal arriving after the countdown (native batches add a
+      // small delay). An estimate alone never confirms the effect ended.
+      if (!confirmed) {
+        if (now() > p.end + REMOVAL_GRACE_MS) phases.delete(key);
+        return;
+      }
+      phases.delete(key);
+      if (now() > p.end + REMOVAL_GRACE_MS || !fresh(at) || !on(p.call)) return;
+      // Any other active or awaiting-confirmation hazard on this entity keeps
+      // its completion from becoming an unsafe resume-attack announcement.
+      for (const q of phases.values()) if (q.entity === p.entity) return;
       const safe = T(D.safe);
       hooks.say(safe, "high");
       show({ key: `s:${p.call.k}:${p.entity}`, kind: "safe", text: safe, sub: "", end: 0, until: at + SAFE_MS });
     }
     function removed(d, at) {
-      endPhase(`${Number(d.entity)}:${Number(d.instance)}`, at);
+      const entity = Number(d.entity), instance = Number(d.instance);
+      if (!live(at) || !validId(entity) || !validInstance(instance)) return;
+      endPhase(`${entity}:${instance}`, at, true);
     }
 
     function wave(d, at) {
       const entity = Number(d.caster);
       const skill = Number(d.skill);
+      if (!live(at) || !validId(entity) || !validId(skill)) return;
       const w = waveFrom.get(`${entity}:${skill}`);
       if (!w || at - w.at > WAVES_FOR_MS || !on(w.call) || !wavesOn(w.call)) return;
       if (at - w.last < WAVE_GAP_MS) return;
       w.last = at;
-      if (now() - at <= STALE_MS) hooks.beep();
+      hooks.beep();
       // The call stays up while its waves come.
       let longer = false;
       for (const it of items) {
@@ -227,7 +296,7 @@
       if (longer) hooks.show(items);
     }
 
-    // Every 100 ms: phases that ran out say "safe", old items go.
+    // Every 100 ms: expired estimates and old items go quietly.
     function tick() {
       const t = now();
       for (const [key, p] of phases) if (p.end <= t) endPhase(key, p.end);
@@ -236,30 +305,39 @@
       if (items.length !== n) hooks.show(items);
     }
 
-    // The test button: a made-up purple phase, 5 s, then "safe".
+    function schedulePreview(fn, delay) {
+      const current = generation;
+      const timer = setTimeout(() => {
+        previewTimers.delete(timer);
+        if (current === generation) fn();
+      }, delay);
+      previewTimers.add(timer);
+    }
+
+    // The test button: a made-up purple phase lasting 5 s.
     function test() {
       const c = D.calls.find((x) => x.k === "thamon-violet") || D.calls.find((x) => x.act) || D.calls[0];
       const at = now();
-      const w = words(c);
+      const w = words(c, true);
       w.say.forEach((s, i) => s && hooks.say(s, i === 0 ? "high" : "low"));
       show({ key: "test", kind: "call", text: w.big, sub: w.sub, end: at + 1800, until: at + 1800 });
       if (c.phase) {
-        lastCall.set(c.k, at);
-        setTimeout(() => startPhase(c, -1, -1, now(), 5000), 1800);
+        lastCall.set(callKey(c, -1), at);
+        schedulePreview(() => startPhase(c, -1, -1, now(), 5000, true), 1800);
       }
     }
 
     // ▶ on a call in the list: that call as a fight would bring it (its
     // words, the player's own if set, its countdown), and its phase after,
-    // shortened to 5 s, then "safe". Ignores the call being ticked off.
+    // shortened to 5 s. Ignores the call being ticked off.
     function preview(k) {
       const c = D.calls.find((x) => x.k === k);
       if (!c) return;
       const at = now();
-      fire(c, -1, at);
+      fire(c, -1, at, true);
       if (c.phase) {
-        lastCall.set(c.k, at);
-        setTimeout(() => startPhase(c, -1, -1, now(), 5000), Math.min(c.lead || 1800, 3000));
+        lastCall.set(callKey(c, -1), at);
+        schedulePreview(() => startPhase(c, -1, -1, now(), 5000, true), Math.min(c.lead || 1800, 3000));
       }
     }
 
@@ -273,8 +351,19 @@
       tick,
       test,
       items: () => items,
-      clear() {
+      clear(at = now()) {
+        const boundary = fresh(at) ? at : now();
+        generation++;
+        resetAt = Math.max(resetAt, boundary);
+        for (const timer of previewTimers) if (typeof clearTimeout === "function") clearTimeout(timer);
+        previewTimers.clear();
+        entities.clear();
+        recent.clear();
         phases.clear();
+        waveFrom.clear();
+        lastCall.clear();
+        orders.clear();
+        seq = 0;
         items = [];
         hooks.show(items);
       },

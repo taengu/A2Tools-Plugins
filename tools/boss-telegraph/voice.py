@@ -52,6 +52,12 @@ def main():
     src = (PLUGIN / "bosses.js").read_text(encoding="utf-8")
     data = json.loads(src[src.index("{"):src.rindex("}") + 1])
     texts = spoken(data)
+    from actions import build_actions
+    actions = build_actions(data, check=True)
+    texts = sorted(set(texts) | {actions["watch"]["en"]} | {t["en"] for t in actions["calls"].values()})
+    from mechanics import build_mechanics
+    mechanics = build_mechanics(data, check=True)
+    texts = sorted(set(texts) | {entry["text"]["en"] for entry in mechanics["entries"]})
     out = PLUGIN / "voice.js"
     had = {}
     if out.exists():
@@ -75,7 +81,7 @@ def main():
         "// as Opus clips. The built-in voice, for computers with none of their own.\n"
         "// Don't edit by hand: run it again after build.py.\n"
         "window.BOSS_VOICE = " + json.dumps(clips, ensure_ascii=False, separators=(",", ":")) + ";\n",
-        encoding="utf-8")
+        encoding="utf-8", newline="\n")
     print(f"{out}: {out.stat().st_size} B, {len(clips)} clips")
 
 
