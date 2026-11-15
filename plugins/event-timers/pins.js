@@ -467,7 +467,74 @@ function followLive(now) {
   if (oldServer && oldServer !== server) a2.followBosses(oldServer, []).catch(() => {});
   a2.followBosses(server, ids).catch(() => { followed = before; });
 }
+// The newest report of each boss stands, as for the feed (mergeOwn): the
+// site's older word overwrote the player's own map's, and the boss went from
+// up to dead and back with each read, its icon opening and closing.
+function mergeEntry(have, entry) {
+  if (!have || (Number(have.reportedAt) || 0) <= (Number(entry?.reportedAt) || 0)) {
+    // Newer as a report, but the HP read here (bossHp) can be newer still:
+    // kept for the same life.
+    return hpOfLife(have, entry) && (Number(have.hpAt) || 0) > (Number(entry?.hpAt) || 0)
+      ? { ...entry, hp: have.hp, hpAt: have.hpAt }
+      : entry;
+  }
+  // An older report can still bring newer HP: the site's HP updates leave
+  // reportedAt as it was. Taken for the same life still up.
+  if (hpOfLife(entry, have) && (Number(entry.hpAt) || 0) > (Number(have.hpAt) || 0)) {
+    return { ...have, hp: entry.hp, hpAt: entry.hpAt };
+  }
+  return have;
+}
+
+// The Spacetime Rift's enemy server (plugin.js): the bosses shown for the
+// rift that are up or due within 5 minutes are followed live too, while the
+// rift is near or open, so they carry their HP as that server's meters (and
+// yours, fighting there) report it; with no push, its feed is read every
+// minute then. They showed "up" and a timer, never HP (FiRE, 2026-11-15).
+let enemyFollowed = "";
+let enemyLiveUp = false;
+const ENEMY_FEED_MS = 60_000;
+function riftNear(now) {
+  if (!prefs.rift || typeof riftWindow !== "function") return null;
+  const lead = (Number(prefs.riftAlert) || 15) * 60_000;
+  const win = riftWindow(now + lead);
+  return win && now >= win.from - lead ? win : null;
+}
+function followEnemy(now) {
+  if (typeof a2.followBosses !== "function" || typeof enemyServer !== "function") return;
+  const server = enemyServer();
+  const win = server ? riftNear(now) : null;
+  const ids = win
+    ? (riftBosses(now, win) || []).filter((x) => x.up || (x.back && x.back - now <= 5 * 60_000)).map((x) => x.id).sort()
+    : [];
+  const key = ids.length ? `${server}:${ids.join(",")}` : "";
+  if (key === enemyFollowed) return;
+  const before = enemyFollowed;
+  enemyFollowed = key;
+  if (!ids.length) enemyLiveUp = false;
+  const oldServer = Number(before.split(":")[0]);
+  if (oldServer && oldServer !== server) a2.followBosses(oldServer, []).catch(() => {});
+  if (server) a2.followBosses(server, ids).catch(() => { enemyFollowed = before; });
+}
+// A pushed entry, or HP read here, for the enemy's bosses.
+function enemyTake(entries) {
+  if (typeof enemyServer !== "function" || !enemyFeed || enemyFeed.server !== enemyServer()) return;
+  const bosses = { ...(enemyFeed.bosses || {}) };
+  for (const [id, entry] of entries) bosses[id] = mergeEntry(bosses[id], entry);
+  enemyFeed = { ...enemyFeed, bosses };
+  updatePins(Date.now());
+  if (typeof render === "function") render();
+}
+const isEnemy = (server) => typeof enemyServer === "function" && Number(server) > 0
+  && Number(server) === enemyServer() && Number(server) !== serverId();
+
 a2.on("bossLive", (m) => {
+  if (m && isEnemy(m.server)) {
+    if (m.type === "status") enemyLiveUp = !!m.connected;
+    else if (m.type === "state" && m.bosses && typeof m.bosses === "object") enemyTake(Object.entries(m.bosses));
+    else if (m.type === "boss" && m.boss != null && m.entry) enemyTake([[String(m.boss), m.entry]]);
+    return;
+  }
   if (!m || Number(m.server) !== serverId()) return;
   if (m.type === "status") {
     liveUp = !!m.connected;
@@ -475,25 +542,7 @@ a2.on("bossLive", (m) => {
   }
   const base = feed?.server === serverId() ? feed : { server: serverId(), bosses: {}, at: Date.now() };
   let bosses = { ...(base.bosses || {}) };
-  // The newest report of each boss stands, as for the feed (mergeOwn): the
-  // site's older word overwrote the player's own map's, and the boss went
-  // from up to dead and back with each read, its icon opening and closing.
-  const take = (id, entry) => {
-    const have = bosses[id];
-    if (!have || (Number(have.reportedAt) || 0) <= (Number(entry?.reportedAt) || 0)) {
-      // Newer as a report, but the HP read here (bossHp) can be newer
-      // still: kept for the same life.
-      bosses[id] = hpOfLife(have, entry) && (Number(have.hpAt) || 0) > (Number(entry?.hpAt) || 0)
-        ? { ...entry, hp: have.hp, hpAt: have.hpAt }
-        : entry;
-      return;
-    }
-    // An older report can still bring newer HP: the site's HP updates leave
-    // reportedAt as it was. Taken for the same life still up.
-    if (hpOfLife(entry, have) && (Number(entry.hpAt) || 0) > (Number(have.hpAt) || 0)) {
-      bosses[id] = { ...have, hp: entry.hp, hpAt: entry.hpAt };
-    }
-  };
+  const take = (id, entry) => { bosses[id] = mergeEntry(bosses[id], entry); };
   if (m.type === "state" && m.bosses && typeof m.bosses === "object") for (const [id, e] of Object.entries(m.bosses)) take(id, e);
   else if (m.type === "boss" && m.boss != null && m.entry) take(String(m.boss), m.entry);
   else return;
@@ -508,6 +557,18 @@ a2.on("bossLive", (m) => {
 // reach it, and a boss's icon stayed at 24% through the fight (Allula,
 // 2026-11-08). Stamped now, it stands over any older word from the site.
 a2.on("bossHp", (m) => {
+  // Hitting the enemy's boss in the rift: its HP, at once, too.
+  if (m && isEnemy(m.server) && Array.isArray(m.bosses)) {
+    const at = Math.floor(Date.now() / 1000);
+    enemyTake(m.bosses.filter((b) => b?.id != null && Number.isFinite(Number(b?.hp))).map((b) => {
+      const have = enemyFeed?.bosses?.[String(b.id)];
+      const hp = Number(b.hp);
+      return [String(b.id), have?.state === "up"
+        ? { ...have, hp, hpAt: at, reportedAt: Math.max(Number(have.reportedAt) || 0, at) }
+        : { ...(have || {}), state: "up", upSince: at, nextSpawn: null, hp, hpAt: at, reportedAt: Math.max(Number(have?.reportedAt) || 0, at) }];
+    }));
+    return;
+  }
   if (!m || Number(m.server) !== serverId() || !Array.isArray(m.bosses)) return;
   const base = feed?.server === serverId() ? feed : { server: serverId(), bosses: {}, at: Date.now() };
   const bosses = { ...(base.bosses || {}) };
@@ -547,6 +608,9 @@ async function updatePins(now) {
   // scheduled read.
   const live = pinnedBossLive(now);
   followLive(now);
+  followEnemy(now);
+  // The rift near: the enemy's feed every minute, unless pushed live.
+  if (riftNear(now) && !enemyLiveUp && (!enemyFeed?.at || now - enemyFeed.at >= ENEMY_FEED_MS)) readEnemyFeed();
   // Pushed live: the feed only as a fallback, every 30 s.
   const every = liveUp ? 30_000 : live === "up" ? FEED_PINNED_UP_MS : FEED_PINNED_MS;
   if (live && typeof readFeed === "function" && (!feed || !feed.at || now - feed.at >= every)) readFeed();

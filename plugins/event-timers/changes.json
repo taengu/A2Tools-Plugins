@@ -1,5 +1,18 @@
 [
   {
+    "version": "0.7.4",
+    "en": "Spacetime Rift: the enemy's bosses show their HP live while the rift is near or open, as that server's meters and your own report it.",
+    "ko": "시공의 균열: 균열이 가까워지거나 열려 있는 동안 적 보스의 HP가 그 서버의 미터와 내 미터가 보고하는 대로 실시간으로 표시됩니다.",
+    "ja": "時空の亀裂：亀裂が近いか開いている間、敵ボスのHPを、そのサーバーのメーターと自分のメーターの報告どおりリアルタイムで表示します。",
+    "de": "Raum-Zeit-Riss: Die Bosse des Gegners zeigen ihre HP live, solange der Riss bald öffnet oder offen ist, wie die Meter dieses Servers und dein eigenes sie melden.",
+    "fr": "Faille spatio-temporelle : les boss ennemis affichent leurs PV en direct quand la faille approche ou est ouverte, tels que les compteurs de ce serveur et le tien les signalent.",
+    "es": "Grieta espaciotemporal: los jefes enemigos muestran su vida en directo cuando la grieta está cerca o abierta, según la informan los medidores de ese servidor y el tuyo.",
+    "pt": "Fenda espaço-temporal: os chefes inimigos mostram o HP ao vivo quando a fenda está perto ou aberta, como os medidores desse servidor e o seu informam.",
+    "ru": "Разлом: у вражеских боссов видно HP в реальном времени, пока разлом скоро откроется или открыт, — как сообщают метры того сервера и ваш.",
+    "zh-Hant": "時空裂縫：裂縫即將開啟或開啟期間，敵方首領的 HP 會依該伺服器的計量器與你的計量器回報即時顯示。",
+    "zh-Hans": "时空裂缝：裂缝即将开启或开启期间，敌方首领的 HP 会按该服务器的计量器与你的计量器回报实时显示。"
+  },
+  {
     "version": "0.7.3",
     "en": "Spacetime Rift: with \"Any free boss\", the enemy bosses that are up or due back before the rift closes show as red icons too, from 15 minutes before it opens (before, only picked ones did).",
     "ko": "시공의 균열: \"비어 있는 보스 전부\"에서도 균열이 닫히기 전에 살아 있거나 다시 나오는 적 보스가 균열 열리기 15분 전부터 빨간 아이콘으로 표시됩니다 (이전에는 고른 보스만).",
@@ -50,18 +63,5 @@
     "ru": "Пространственно-временной разлом (настройки): мировые боссы сервера-соперника, которые есть или появятся, пока разлом открыт. Нужен метр 2.0.99 или новее.",
     "zh-Hant": "時空裂縫（設定）：配對敵方伺服器在裂縫開啟期間已出現或將出現的世界首領。需要計量器 2.0.99 或更新版本。",
     "zh-Hans": "时空裂缝（设置）：配对敌方服务器在裂缝开启期间已出现或将出现的世界首领。需要计量器 2.0.99 或更新版本。"
-  },
-  {
-    "version": "0.6.35",
-    "en": "Guardian Lord Nahma shows as one boss, not three: he spawns at one of three points and is up when he is up at any, with that point's HP and teleport (all three listed until he is seen). An alert or icon set for any of the three is now his.",
-    "ko": "수호신장 나흐마가 셋이 아닌 하나의 보스로 표시됩니다. 세 지점 중 한 곳에 등장하며, 어느 곳에서든 등장하면 그 지점의 HP와 텔레포트와 함께 표시됩니다(확인 전에는 세 곳 모두). 세 개 중 어느 것에 설정한 알림이나 아이콘도 이제 그의 것입니다.",
-    "ja": "守護神将ナフマが3体ではなく1体のボスとして表示されます。3か所のどれかに出現し、どこかに出現すればその地点のHPとテレポート付きで表示されます（確認前は3か所すべて）。3つのどれかに設定した通知やアイコンは彼のものになります。",
-    "de": "Wächtergott Nahma erscheint als ein Boss, nicht drei: er spawnt an einem von drei Punkten und ist da, sobald er an einem ist, mit dessen HP und Teleport (bis er gesehen wird, alle drei). Ein Alarm oder Symbol für einen der drei gehört jetzt ihm.",
-    "fr": "Nahma le seigneur gardien s'affiche comme un seul boss, pas trois : il apparaît à l'un de trois points, avec les PV et le téléporteur de ce point (les trois tant qu'il n'est pas vu). Une alerte ou une icône pour l'un des trois est désormais la sienne.",
-    "es": "El Gran Vigía Nahma aparece como un solo jefe, no tres: sale en uno de tres puntos y está activo al salir en cualquiera, con los PV y el teletransporte de ese punto (los tres hasta que se le ve). Una alerta o icono de cualquiera de los tres es ahora suyo.",
-    "pt": "O Senhor Guardião Nahma aparece como um só chefe, não três: surge em um de três pontos e está ativo ao surgir em qualquer um, com o HP e o teleporte desse ponto (os três até ser visto). Um alerta ou ícone de qualquer um dos três agora é dele.",
-    "ru": "Лорд-хранитель Нахма показывается одним боссом, а не тремя: он появляется в одной из трёх точек, с HP и телепортом этой точки (пока его не видели, все три). Оповещение или значок любой из трёх теперь относятся к нему.",
-    "zh-Hant": "守護神將納赫瑪顯示為一個首領，而不是三個：他在三個出現點之一出現，任一處出現即顯示，並附上該處的 HP 與傳送點（看到他之前列出全部三處）。為三者任一設定的提醒或圖示，現在都歸他。",
-    "zh-Hans": "守护神将纳赫玛显示为一个首领，而不是三个：他在三个出现点之一出现，任一处出现即显示，并附上该处的 HP 与传送点（看到他之前列出全部三处）。为三者任一设置的提醒或图标，现在都归他。"
   }
 ]

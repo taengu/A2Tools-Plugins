@@ -1243,14 +1243,24 @@ const riftWindow = (now) => {
   }
   return null;
 };
+let enemyReading = false;
 async function readEnemyFeed() {
   const server = enemyServer();
-  if (!prefs.rift || !server || typeof a2.bossTimers !== "function") return;
+  if (!prefs.rift || !server || typeof a2.bossTimers !== "function" || enemyReading) return;
+  enemyReading = true;
   try {
     const data = await a2.bossTimers(server);
-    enemyFeed = { server, bosses: data?.bosses || {}, at: Date.now() };
+    // HP pushed live (pins.js) is newer than the file's: kept for the same life.
+    const have = enemyFeed?.server === server ? enemyFeed.bosses || {} : {};
+    const bosses = { ...(data?.bosses || {}) };
+    for (const [id, entry] of Object.entries(have)) {
+      if (typeof mergeEntry === "function") bosses[id] = bosses[id] ? mergeEntry(entry, bosses[id]) : entry;
+    }
+    enemyFeed = { server, bosses, at: Date.now() };
   } catch {
     enemyFeed = { server, bosses: enemyFeed?.server === server ? enemyFeed.bosses : {}, error: true, at: Date.now() };
+  } finally {
+    enemyReading = false;
   }
   render();
 }
