@@ -1,5 +1,18 @@
 [
   {
+    "version": "0.4.0",
+    "en": "A ping history in the window: a chart of the last 15 minutes to 24 hours, with the average, median, 95th percentile, best, worst, jitter and how many readings went over amber. Each day's average, min, max and share over amber are kept for 60 days.",
+    "ko": "창에 핑 기록: 최근 15분부터 24시간까지의 그래프와 평균, 중앙값, 95번째 백분위수, 최저, 최고, 지터, 주황색 기준을 넘은 횟수. 날마다 평균, 최저, 최고, 주황색 초과 비율을 60일 동안 보관합니다.",
+    "ja": "ウィンドウにPing履歴：直近15分〜24時間のグラフと、平均、中央値、95パーセンタイル、最良、最悪、ジッター、橙の上限を超えた回数。 日ごとの平均、最小、最大、橙の上限を超えた割合を60日間保存します。",
+    "de": "Ein Ping-Verlauf im Fenster: ein Diagramm der letzten 15 Minuten bis 24 Stunden mit Durchschnitt, Median, 95. Perzentil, bestem, schlechtestem Wert, Jitter und wie oft der Ping über Gelb lag. Durchschnitt, Minimum, Maximum und Anteil über Gelb jedes Tages werden 60 Tage aufbewahrt.",
+    "fr": "Un historique du ping dans la fenêtre : un graphique de 15 minutes à 24 heures, avec moyenne, médiane, 95e centile, meilleur, pire, gigue et mesures au-dessus de l'orange. Moyenne, min, max et part au-dessus de l'orange de chaque jour gardés 60 jours.",
+    "es": "Un historial de ping en la ventana: un gráfico de 15 minutos a 24 horas, con media, mediana, percentil 95, mejor, peor, fluctuación y mediciones por encima del ámbar. La media, el mínimo, el máximo y el porcentaje sobre el ámbar de cada día se guardan 60 días.",
+    "pt": "Um histórico de ping na janela: um gráfico dos últimos 15 minutos a 24 horas, com a média, a mediana, o percentil 95, o melhor, o pior, a variação e quantas medições passaram do âmbar. A média, o mínimo, o máximo e a parcela acima do âmbar de cada dia ficam guardados por 60 dias.",
+    "ru": "История пинга в окне: график за последние 15 минут — 24 часа со средним, медианой, 95-м процентилем, лучшим, худшим, джиттером и числом замеров выше жёлтого. Среднее, минимум, максимум и доля выше жёлтого за каждый день хранятся 60 дней.",
+    "zh-Hant": "視窗中的延遲紀錄：最近 15 分鐘到 24 小時的圖表，以及平均、中位數、第 95 百分位數、最佳、最差、抖動與超過橘色上限的次數。 每日的平均、最低、最高與超過橘色上限的比例會保留 60 天。",
+    "zh-Hans": "窗口中的延迟记录：最近 15 分钟到 24 小时的图表，以及平均、中位数、第 95 百分位数、最佳、最差、抖动与超过橙色上限的次数。 每日的平均、最低、最高与超过橙色上限的比例会保留 60 天。"
+  },
+  {
     "version": "0.3.0",
     "en": "The jitter beside the ping and on the widget's tooltip, and an option to alternate the widget between ping and jitter (meter 2.0.99 or newer).",
     "ko": "핑 옆과 위젯 툴팁에 지터가 표시되고, 위젯에서 핑과 지터를 번갈아 보여 주는 옵션이 생겼습니다 (미터 2.0.99 이상).",

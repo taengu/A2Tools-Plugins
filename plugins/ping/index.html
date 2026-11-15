@@ -13,6 +13,30 @@
         <span class="jitter"></span>
       </span>
     </header>
+    <section class="history">
+      <div class="historyHead">
+        <span data-t="history">History</span>
+        <select class="range">
+          <option value="15" data-t="r15">15 minutes</option>
+          <option value="60" data-t="r60">1 hour</option>
+          <option value="360" data-t="r360">6 hours</option>
+          <option value="1440" data-t="r1440">24 hours</option>
+        </select>
+      </div>
+      <svg class="chart" role="img" aria-label="Ping history"></svg>
+      <div class="axis"><span class="from"></span><span class="hover"></span><span class="to"></span></div>
+      <p class="note noHistory" data-t="noHistory" hidden>No readings in this time yet.</p>
+      <dl class="stats"></dl>
+      <div class="daily" hidden>
+        <div class="dailyHead" data-t="daily">Each day</div>
+        <div class="dailyScroll">
+          <table>
+            <thead><tr></tr></thead>
+            <tbody></tbody>
+          </table>
+        </div>
+      </div>
+    </section>
     <section class="rows">
       <label class="row">
         <span data-t="show">Show the ping widget</span>

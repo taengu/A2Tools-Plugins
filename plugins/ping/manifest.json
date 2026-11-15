@@ -1,10 +1,10 @@
 {
   "id": "ping",
   "name": "Ping",
-  "version": "0.3.0",
+  "version": "0.4.0",
   "apiVersion": 2,
   "author": "A2 Tools",
-  "description": "Your ping to the game server in a small widget you can drag anywhere and lock in place, coloured by how good it is, and the game's FPS if you want it.",
+  "description": "Your ping to the game server in a small widget you can drag anywhere and lock in place, coloured by how good it is, and the game's FPS if you want it. Its window charts the last day's ping with its average, 95th percentile, jitter and spikes.",
   "permissions": [
     "storage",
     "window",
@@ -15,7 +15,7 @@
   "ui": {
     "panel": {
       "width": 320,
-      "height": 400
+      "height": 640
     }
   }
 }
