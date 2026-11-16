@@ -1,16 +1,16 @@
 [
   {
     "version": "0.8.0",
-    "en": "Anchor mode's new List layout: one slim row per boss with a small icon, its name, teleport and time (Placement, Layout; icons can be turned off). Asmodian Kashapa's teleport is 50, Amunta's Hideout.",
-    "ko": "앵커 모드의 새 목록 배치: 보스마다 작은 아이콘, 이름, 텔레포트, 시간을 담은 한 줄 (배치 설정, 아이콘은 끌 수 있음). 마족 카샤파의 텔레포트는 50번, 아문타의 은신처입니다.",
-    "ja": "アンカーモードに新しいリスト表示：ボスごとに小さなアイコン、名前、テレポート、時間の1行（配置の設定、アイコンはオフ可）。魔族側カシャパのテレポートは50番、アムンタの隠れ家です。",
-    "de": "Neue Listen-Darstellung im Ankermodus: eine schmale Zeile pro Boss mit kleinem Symbol, Name, Teleport und Zeit (Platzierung; Symbole abschaltbar). Asmodier-Kashapa: Teleport 50, Amuntas Versteck.",
-    "fr": "Nouvelle disposition en liste du mode ancre : une ligne fine par boss avec petite icône, nom, téléport et heure (Placement ; icônes désactivables). Kashapa côté Asmodien : téléport 50, Refuge d'Amunta.",
-    "es": "Nuevo diseño de lista en el modo ancla: una fila fina por jefe con icono pequeño, nombre, teletransporte y hora (Colocación; iconos opcionales). Kashapa asmodiano: teletransporte 50, Escondite de Amunta.",
-    "pt": "Novo layout em lista no modo âncora: uma linha fina por chefe com ícone pequeno, nome, teleporte e horário (Posição; ícones opcionais). Kashapa asmodiano: teleporte 50, Esconderijo de Amunta.",
-    "ru": "Новый вид «Список» в режиме якоря: узкая строка на босса с маленьким значком, именем, телепортом и временем (Размещение; значки отключаются). Телепорт асмодианской Кашапы — 50, Убежище Амунта.",
-    "zh-Hant": "錨點模式新增清單版面：每個首領一列細行，含小圖示、名稱、傳送點與時間（放置設定，圖示可關閉）。魔族卡夏帕的傳送點改為 50 號，阿蒙塔藏身處。",
-    "zh-Hans": "锚点模式新增列表布局：每个首领一行细条，含小图标、名称、传送点与时间（放置设置，图标可关闭）。魔族卡夏帕的传送点改为 50 号，阿蒙塔藏身处。"
+    "en": "A short tour of how alerts can show (Settings, Take the tour). Anchor mode's new List layout: one slim row per boss. Show the icon (off: pins show name and time only). Icons is now Overlay. Asmodian Kashapa's teleport is 50.",
+    "ko": "알림 표시 방식 간단 안내 (설정 → 안내 다시 보기). 앵커 모드의 새 목록 배치: 보스마다 한 줄. 아이콘 표시 (끄면 이름과 시간만). '아이콘'은 이제 '오버레이'입니다. 마족 카샤파의 텔레포트는 50번입니다.",
+    "ja": "通知の表示方法のかんたんツアー（設定→ツアーを見る）。アンカーモードの新しいリスト表示：ボスごとに1行。アイコンを表示（オフで名前と時間のみ）。「アイコン」は「オーバーレイ」に。魔族側カシャパのテレポートは50番。",
+    "de": "Eine kurze Tour zur Anzeige der Alarme (Einstellungen, Tour ansehen). Neue Listen-Darstellung im Ankermodus. „Symbol anzeigen“ (aus: nur Name und Zeit). „Symbole“ heißt jetzt „Overlay“. Asmodier-Kashapa: Teleport 50.",
+    "fr": "Une courte visite des façons d'afficher les alertes (Réglages, Revoir la visite). Nouvelle disposition en liste du mode ancre. « Afficher l'icône » (désactivé : nom et heure seuls). « Icônes » devient « Superposition ». Kashapa côté Asmodien : téléport 50.",
+    "es": "Una visita rápida a cómo mostrar las alertas (Ajustes, Ver la visita). Nuevo diseño de lista del modo ancla. «Mostrar el icono» (desactivado: solo nombre y hora). «Iconos» ahora es «Superposición». Kashapa asmodiano: teletransporte 50.",
+    "pt": "Um tour rápido de como mostrar os alertas (Configurações, Ver o tour). Novo layout em lista do modo âncora. \"Mostrar o ícone\" (desligado: só nome e horário). \"Ícones\" agora é \"Sobreposição\". Kashapa asmodiano: teleporte 50.",
+    "ru": "Короткий тур по способам показа оповещений (Настройки, Пройти тур). Новый вид «Список» в режиме якоря. «Показывать значок» (выкл.: только имя и время). «Значками» теперь «Поверх игры». Телепорт асмодианской Кашапы — 50.",
+    "zh-Hant": "提醒顯示方式的快速導覽（設定→觀看導覽）。錨點模式新增清單版面：每個首領一列。顯示圖示（關閉時只顯示名稱與時間）。「圖示」改名為「覆蓋層」。魔族卡夏帕的傳送點改為 50 號。",
+    "zh-Hans": "提醒显示方式的快速导览（设置→观看导览）。锚点模式新增列表布局：每个首领一行。显示图标（关闭时只显示名称与时间）。「图标」改名为「覆盖层」。魔族卡夏帕的传送点改为 50 号。"
   },
   {
     "version": "0.7.4",

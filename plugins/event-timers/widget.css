@@ -230,6 +230,32 @@ body.locked .lrow { cursor: default; }
   .pin.due:is(.shake, .bounce, .throb) .badge.hasHp::after { animation: hpGlow 1.1s ease-in-out infinite; }
 }
 
+/* Settings, Show the icon off: the name and time alone, on a dark plate so
+   they read over the game, in the kind's colour at its edge; due, the plate
+   pulses. */
+.badge[hidden] { display: none; }
+.pin.bare { padding-top: 0; gap: 0; }
+.pin.bare .time, .pin.bare .name, .pin.bare .sub:not(:empty) {
+  align-self: stretch;
+  max-width: none;
+  box-sizing: border-box;
+  background: rgba(14, 18, 27, 0.72);
+  padding: 1px 6px;
+}
+.pin.bare .name { order: -1; border-radius: 6px 6px 0 0; padding-top: 3px; box-shadow: inset 0 2px 0 var(--ring, #5aa9ff); }
+.pin.bare .time { border-radius: 0 0 6px 6px; padding-bottom: 3px; }
+.pin.bare .sub:not(:empty) { order: 1; text-align: center; }
+.pin.bare .time { order: 2; }
+.pin.bare.boss { --ring: #c08bff; }
+.pin.bare.field { --ring: #ff7a6b; }
+.pin.bare.running { --ring: #5fe08a; }
+.pin.bare.abyss { --ring: #c08bff; }
+.pin.bare.enemy { --ring: #d4161b; }
+.pin.bare.due .name { animation: bareDue 1.1s ease-in-out infinite; }
+@keyframes bareDue {
+  0%, 100% { box-shadow: inset 0 2px 0 var(--ring, #5aa9ff); }
+  50% { box-shadow: inset 0 2px 0 var(--ring, #5aa9ff), 0 0 8px 2px var(--ring, #5aa9ff); }
+}
 /* Copied (a double right-click): a white flash around the icon. */
 .pin.copied .badge { animation: copied 0.9s ease-out; }
 @keyframes copied {
