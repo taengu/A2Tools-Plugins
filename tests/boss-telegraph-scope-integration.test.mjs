@@ -98,6 +98,33 @@ async function scope(h, region, category, qualifier, value) {
   if (qualifier) await h.choose(qualifier, value);
 }
 
+test("Global Talisra dark/light retains its original reminders and order without a selected stage", async () => {
+  const h = await page({registry: "real", stored: {guideRegion: "Global"}});
+  await h.emit("talisra-dark-spear"); assert.equal(h.spoken.at(-1), "Remember dark shield");
+  await h.advance(1500); await h.emit("talisra-light-spear");
+  assert.equal(h.spoken.at(-1), "Remember light shield");
+  const item=h.engine.items().find(item=>item.key.startsWith("m:"));
+  assert.equal(item.text,"Dark → Light"); assert.match(item.sub,/pulses|order|shield/i);
+  assert.equal(h.context().stage,null); assert.equal(h.context().category,"auto");
+});
+
+test("the missing-stage exception cannot enable other mechanics, wrong regions or explicitly unsupported stages", async () => {
+  const h = await page({registry: "real", stored: {guideRegion: "Global"}});
+  const entry=h.registry.entries.find(e=>e.id===1801780&&e.scope.regions.includes("Global"));
+  await h.emit(entry.k); assert.equal(h.spoken.at(-1),"Watch the boss");
+  await h.choose(".guideRegion","KR"); await h.emit("talisra-dark-spear");
+  assert.equal(h.spoken.at(-1),"Watch the boss");
+  await h.choose(".guideRegion","Global"); await h.choose(".guideCategory","transcendence"); await h.choose(".guideStage",9);
+  await h.emit("talisra-light-spear"); assert.equal(h.spoken.at(-1),"Watch the boss");
+});
+
+test("the missing-stage reminder cannot bypass an ambiguous trigger or create a remembered manual stage", async () => {
+  const h = await page({registry: "real", stored: {guideRegion: "Global"}});
+  const call=h.data.calls.find(c=>c.k==="talisra-dark-spear");
+  call.uncertain=true; await h.emit(call.k); assert.equal(h.spoken.at(-1),"Watch the boss");
+  assert.equal(h.context().stage,null); assert.equal(h.saved.length,0);
+});
+
 test("unknown region opens context and holds managed legacy actions, phases and marks", async () => {
   const h = await page(); assert.equal(h.elements.get(".guideContext").open, true);
   await h.emit("thamon-violet"); assert.equal(h.spoken.at(-1), "Watch the boss");

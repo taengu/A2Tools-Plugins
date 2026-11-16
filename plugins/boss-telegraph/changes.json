@@ -1,5 +1,18 @@
 [
   {
+    "version": "0.2.1",
+    "en": "Restored the original Talisra dark/light reminders and displayed order on Global when the stage is unknown. Stage-specific extra instructions remain guarded; unknown regions, ambiguous triggers and explicitly unsupported stages do not bypass their checks.",
+    "ko": "글로벌에서 단계가 미확인일 때 기존 탈리스라 암흑·빛 알림과 순서 표시를 복구했습니다. 단계별 추가 지침은 계속 보호되며, 미확인 지역·불명확한 신호·명시적으로 지원하지 않는 단계는 검사 조건을 우회하지 않습니다.",
+    "ja": "Globalで段階が不明な場合も、既存のタリスラの闇・光の合図と順序表示を復元。段階固有の追加指示は保護を維持し、不明な地域・曖昧なトリガー・明示的な非対応段階は条件を回避しません。",
+    "de": "Talisras ursprüngliche Dunkel-/Lichthinweise und Reihenfolge auf Global auch ohne bekannte Stufe wiederhergestellt. Zusätzliche Stufenanweisungen bleiben geschützt; unbekannte Regionen, mehrdeutige Auslöser und ausdrücklich nicht unterstützte Stufen umgehen keine Prüfung.",
+    "fr": "Rappels sombre/lumière et ordre de Talisra rétablis sur Global si le palier est inconnu. Les consignes supplémentaires par palier restent protégées ; régions inconnues, déclencheurs ambigus et paliers explicitement non pris en charge ne contournent pas les contrôles.",
+    "es": "Restaurados los avisos de oscuridad/luz y el orden de Talisra en Global sin etapa conocida. Las instrucciones adicionales por etapa siguen protegidas; regiones desconocidas, señales ambiguas y etapas no compatibles no omiten los controles.",
+    "pt": "Restaurados os avisos de escuridão/luz e a ordem de Talisra no Global sem etapa conhecida. As instruções extras por etapa continuam protegidas; regiões desconhecidas, sinais ambíguos e etapas incompatíveis não ignoram as verificações.",
+    "ru": "На Global восстановлены исходные подсказки тьмы/света и порядок Талисры при неизвестном этапе. Дополнительные инструкции по этапам защищены; неизвестные регионы, неоднозначные сигналы и явно неподдерживаемые этапы не обходят проверки.",
+    "zh-Hant": "Global 在階段未知時也會恢復塔利斯拉原有的暗／光提醒與順序顯示。階段限定的額外指示仍受條件保護；未知地區、歧義觸發與明確不支援的階段不會繞過檢查。",
+    "zh-Hans": "Global 在阶段未知时也会恢复塔利斯拉原有的暗／光提醒与顺序显示。阶段限定的额外指示仍受条件保护；未知地区、歧义触发与明确不支持的阶段不会绕过检查。"
+  },
+  {
     "version": "0.2.0",
     "en": "Expanded Global mechanics and retained KR guides with strict region, mode and stage checks. Added scope-labelled previews, ten-language instructions and English audio. Manual encounter choices reset on travel; unverified or ambiguous events stay neutral.",
     "ko": "글로벌 기믹 안내를 확대하고 한국 공략은 지역·모드·단계 조건에 따라 유지합니다. 적용 조건이 표시되는 미리보기, 10개 언어 지침과 영어 음성을 추가했습니다. 수동 전투 설정은 이동 시 초기화되며, 미확인·불명확 이벤트는 중립적으로 안내합니다.",
@@ -50,18 +63,5 @@
     "ru": "Обновлено по патчу игры от 4 ноября: русские и французские реплики в нынешней формулировке игры и новый навык Вакрона.",
     "zh-Hant": "依 11 月 4 日的遊戲更新：俄文與法文台詞改為遊戲目前的用語，並加入巴克隆的新技能。",
     "zh-Hans": "依 11 月 4 日的游戏更新：俄文与法文台词改为游戏目前的用语，并加入巴克隆的新技能。"
-  },
-  {
-    "version": "0.1.8",
-    "en": "Enhanced Boss Telegraph is now called Boss Callouts. Your settings and your own words for calls are kept.",
-    "ko": "Enhanced Boss Telegraph의 이름이 보스 알림(Boss Callouts)으로 바뀌었습니다. 설정과 직접 입력한 알림 문구는 그대로 유지됩니다.",
-    "ja": "Enhanced Boss Telegraph は Boss Callouts(ボスコールアウト)に名前が変わりました。設定と自分で入力した呼びかけはそのままです。",
-    "de": "Enhanced Boss Telegraph heißt jetzt Boss Callouts (Boss-Ansagen). Deine Einstellungen und eigenen Ansagen bleiben erhalten.",
-    "fr": "Enhanced Boss Telegraph s'appelle désormais Boss Callouts (Annonces de boss). Vos réglages et vos propres textes sont conservés.",
-    "es": "Enhanced Boss Telegraph ahora se llama Boss Callouts (Avisos de jefes). Se conservan tus ajustes y tus propios textos.",
-    "pt": "Enhanced Boss Telegraph agora se chama Boss Callouts (Avisos de chefes). Suas configurações e seus próprios textos são mantidos.",
-    "ru": "Enhanced Boss Telegraph теперь называется Boss Callouts (Подсказки боссов). Настройки и ваши собственные фразы сохраняются.",
-    "zh-Hant": "Enhanced Boss Telegraph 已更名為 Boss Callouts（首領提示）。你的設定與自訂提示文字都會保留。",
-    "zh-Hans": "Enhanced Boss Telegraph 已更名为 Boss Callouts（首领提示）。你的设置与自定义提示文字都会保留。"
   }
 ]

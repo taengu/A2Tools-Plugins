@@ -340,8 +340,19 @@ const engine = BossLogic.create(DATA, {
   lang: () => lang,
   actions: window.BOSS_ACTIONS,
   instruction: (call, options) => {
-    const result = activation.resolve(call, guideContext(), options);
+    const context = guideContext();
+    const result = activation.resolve(call, context, options);
     if (result.eligible) return { text: result.text, scopeLabel: scopeLabel(result.scopeBadge), suppressLegacy: true };
+    // The expansion must not silence the original hand-checked sign sequence
+    // merely because its added guide needs a stage. Restore only these exact
+    // Global reminders, not any stage-specific directions or phase additions.
+    const sign = call.k === "talisra-dark-spear" && call.id === 1801730
+      || call.k === "talisra-light-spear" && call.id === 1801735;
+    if (sign && call.b === "talisra-of-the-void" && call.t === "use" && call.mark === "talisra-spears"
+        && !call.uncertain && !options?.uncertain && !options?.preview
+        && context.region === "Global" && context.stage == null && result.reason === "unknown-context") {
+      return { text: window.BOSS_ACTIONS.calls[call.k], suppressLegacy: true };
+    }
     return managedKeys.has(call.k) ? { text: null, suppressLegacy: true } : null;
   },
   say,
