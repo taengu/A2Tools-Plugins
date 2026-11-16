@@ -253,11 +253,13 @@ function renderList(g) {
     const hasHp = typeof d.hp === "number";
     const hpColor = hasHp ? (d.hp > 50 ? "95, 191, 134" : d.hp > 20 ? "224, 186, 74" : "214, 86, 76") : "95, 191, 134";
     fill.style.width = hasHp ? `${Math.max(0, Math.min(100, d.hp))}%` : d.running ? "100%" : "0";
-    fill.style.background = `rgba(${hpColor}, ${hasHp ? 0.32 : 0.14})`;
+    fill.style.background = `rgba(${hpColor}, calc(${hasHp ? 0.32 : 0.14} * var(--bg, 1)))`;
     sub.style.color = hasHp ? `rgb(${hpColor})` : "";
     row.dataset.copy = d.copy || "";
     row.title = d.tip || d.name || "";
-    row.style.opacity = typeof d.opacity === "number" ? String(d.opacity) : "";
+    // Settings' opacity, in the list: the row's background and bar only, the
+    // text stays solid.
+    row.style.setProperty("--bg", typeof d.opacity === "number" ? String(d.opacity) : "1");
   }
   // While placing: every row's place outlined.
   const places = g.setup ? g.rows : 0;

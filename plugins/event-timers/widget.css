@@ -64,9 +64,11 @@ body.locked .pin { cursor: default; }
   padding: 0 8px 0 9px;
   overflow: hidden;
   border-radius: 4px;
-  background: rgba(14, 18, 27, 0.78);
+  background: rgba(14, 18, 27, calc(0.78 * var(--bg, 1)));
   box-shadow: inset 2px 0 0 var(--edge, #5a95d6);
   font: 500 12px/1.35 "Segoe UI", system-ui, sans-serif;
+  /* The text keeps a shadow, so it reads with the background faded out. */
+  text-shadow: 0 0 3px #000, 0 1px 2px #000;
   color: rgba(232, 237, 245, 0.92);
   cursor: grab;
 }
@@ -95,7 +97,7 @@ body.locked .lrow { cursor: default; }
 .lrow .ltp[hidden], .lrow .lsub[hidden] { display: none; }
 .lrow .ltime { flex: none; font-variant-numeric: tabular-nums; font-weight: 600; color: rgba(232, 237, 245, 0.85); }
 .lrow.running .ltime { color: #7fd3a0; }
-.lrow.enemy { background: rgba(34, 12, 15, 0.8); }
+.lrow.enemy { background: rgba(34, 12, 15, calc(0.8 * var(--bg, 1))); }
 /* Due: the edge and the row brighten and fade, quietly. */
 .lrow.due { animation: rowDue 1.4s ease-in-out infinite; }
 @keyframes rowDue {
