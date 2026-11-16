@@ -303,7 +303,7 @@
   const savePrefs = () => a2.storage.set(CPREFS_KEY, cprefs).catch(() => {});
 
   // ---- Tabs -------------------------------------------------------------------
-  const TABS = ["pets", "kinah", "drops", "skins"];
+  const TABS = ["pets", "kinah", "drops", "gathering", "skins"];
   function showTab(tab) {
     cprefs.tab = TABS.includes(tab) ? tab : "pets";
     for (const name of TABS) document.body.classList.toggle(`tab-${name}`, cprefs.tab === name);
@@ -319,6 +319,7 @@
     if (cprefs.tab === "kinah") renderKinah();
     else if (cprefs.tab === "drops") renderDrops();
     else if (cprefs.tab === "skins") renderSkins();
+    else if (cprefs.tab === "gathering") globalThis.renderGathering?.();
   }
   els.tabs.addEventListener("click", (e) => {
     const b = e.target.closest("button[data-tab]");
@@ -1041,6 +1042,13 @@
     document.body.classList.toggle("popped", popped);
   });
   observer.observe(document.body, { attributes: true, attributeFilter: ["class"] });
+
+  // What gathering.js (the Gathering tab) borrows.
+  globalThis.ledger = {
+    node, num, t, dayOf, me, itemName,
+    prefs: () => cprefs,
+    setPref: (k, v) => { cprefs[k] = v; savePrefs(); },
+  };
 
   ready.then(() => {
     renderTabs();

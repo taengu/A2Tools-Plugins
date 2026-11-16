@@ -1,5 +1,18 @@
 [
   {
+    "version": "0.8.0",
+    "en": "New Gathering tab: per node, how often a gather is upgraded as it starts (Fresh, or ×3 for Mela), how often Appraiser upgrades a base gather (with the range the true rate is likely in), Plentiful Harvest doubles, failures and your recent gathers.",
+    "ko": "새 채집 탭: 재료별로 시작 시 등급 상승(신선함, 멜라는 3배) 확률, 기본 등급 채집을 감정사가 올린 확률(실제 확률의 예상 범위 포함), 풍요로운 수확, 실패, 최근 채집을 보여줍니다.",
+    "ja": "新しい採集タブ：素材ごとに開始時の品質上昇（新鮮、メラは3倍）の確率、基本品質の採集を鑑定士が上げた確率（本当の確率の推定範囲つき）、豊かな収穫、失敗、最近の採集を表示します。",
+    "de": "Neuer Tab Sammeln: pro Vorkommen, wie oft ein Sammeln schon beim Start aufgewertet wird (frisch, bei Mela ×3), wie oft der Gutachter ein Sammeln in Grundqualität aufwertet (mit dem wahrscheinlichen Bereich der wahren Rate), Reichhaltige Ernte, Fehlschläge und deine letzten Sammelvorgänge.",
+    "fr": "Nouvel onglet Récolte : pour chaque ressource, la fréquence d'une récolte améliorée dès le départ (Frais, ou ×3 pour le Mela), la fréquence à laquelle l'Expert améliore une récolte de base (avec la plage probable du vrai taux), Récolte Abondante, les échecs et vos dernières récoltes.",
+    "es": "Nueva pestaña Recolección: por recurso, cuántas veces una recolección se mejora al inicio (Fresca, o ×3 para Mela), cuántas veces el Tasador mejora una recolección base (con el rango probable de la tasa real), Cosecha abundante, fallos y tus últimas recolecciones.",
+    "pt": "Nova aba Coleta: por recurso, com que frequência uma coleta melhora no início (Fresca, ou ×3 para Mela), com que frequência o Classificador melhora uma coleta base (com a faixa provável da taxa real), Colheita Abundante, falhas e suas coletas recentes.",
+    "ru": "Новая вкладка «Сбор»: для каждого ресурса — как часто сбор улучшается с самого начала (свежее, у Мелы ×3), как часто Оценщик улучшает базовый сбор (с вероятным диапазоном настоящего шанса), Богатый урожай, неудачи и последние сборы.",
+    "zh-Hant": "新的採集分頁：每種材料開始時品質提升（新鮮，梅拉為 3 倍）的機率、鑑定師提升基本品質採集的機率（含真實機率的可能範圍）、豐饒的收穫、失敗與最近的採集。",
+    "zh-Hans": "新的采集分页：每种材料开始时品质提升（新鲜，梅拉为 3 倍）的概率、鉴定师提升基本品质采集的概率（含真实概率的可能范围）、丰饶的收获、失败与最近的采集。"
+  },
+  {
     "version": "0.7.3",
     "en": "Skins: your Closet is shared by your characters on the same server, so a character you haven't logged in since the update shows its server's skins too.",
     "ko": "스킨: 옷장은 같은 서버의 캐릭터끼리 공유되므로, 업데이트 후 아직 접속하지 않은 캐릭터도 그 서버의 스킨이 표시됩니다.",
@@ -50,18 +63,5 @@
     "ru": "Теперь Shugo's Ledger, с новыми вкладками. Кина: время до дневного 1 000 000 и уникальная добыча. Добыча: ваши шансы рядом с игровыми (счётчик 2.0.98). Облики: все против вашего гардероба и где взять остальные.",
     "zh-Hant": "更名為 Shugo's Ledger,新增分頁。基納:達到每日 100 萬的用時與獨特掉落。掉落:你的掉落率與遊戲標示機率(計量器 2.0.98)。外觀:所有外觀與衣櫃比較,以及其餘從哪裡取得。",
     "zh-Hans": "更名为 Shugo's Ledger,新增分页。基纳:达到每日 100 万的用时与独特掉落。掉落:你的掉落率与游戏标示概率(计量器 2.0.98)。外观:所有外观与衣柜比较,以及其余从哪里获取。"
-  },
-  {
-    "version": "0.6.3",
-    "en": "Black Market: what you bought leaves the list at once and counts as owned; with meter 2.0.95 also what you bought before (the game's Sold Out). Grades in the game's colours (Common, Rare, Epic, Unique), and the window pops up once per stock.",
-    "ko": "암시장: 구입한 상품은 바로 목록에서 빠지고 보유로 표시됩니다. 미터 2.0.95부터는 이전에 산 상품(게임의 품절 표시)도 반영됩니다. 등급은 게임 색상(일반·희귀·영웅·유일)으로 표시되며, 창은 판매 목록마다 한 번만 뜹니다.",
-    "ja": "ブラックマーケット：買った商品はすぐ一覧から消え、所持として数えます。メーター2.0.95からは以前に買った商品（ゲームの売り切れ表示）も反映。等級はゲームの色（コモン・レア・エピック・ユニーク）で、ウィンドウは品揃えごとに一度だけ開きます。",
-    "de": "Schwarzmarkt: Gekauftes verschwindet sofort und zählt als vorhanden, ab Meter 2.0.95 auch früher Gekauftes (das Ausverkauft des Spiels). Qualitäten in den Farben des Spiels (Gewöhnlich, Selten, Episch, Einzigartig), und das Fenster öffnet sich einmal pro Angebot.",
-    "fr": "Marché noir : vos achats quittent aussitôt la liste et comptent comme possédés ; avec le meter 2.0.95, aussi ceux d'avant (le « Épuisé » du jeu). Qualités aux couleurs du jeu (commun, rare, épique, unique), et la fenêtre s'ouvre une fois par stock.",
-    "es": "Mercado negro: lo que compras sale de la lista al instante y cuenta como tuyo; con el meter 2.0.95, también lo comprado antes (el «Agotado» del juego). Grados con los colores del juego (común, raro, épico, único), y la ventana se abre una vez por existencias.",
-    "pt": "Mercado negro: o que você compra sai da lista na hora e conta como seu; com o meter 2.0.95, também o que comprou antes (o «Esgotado» do jogo). Graus nas cores do jogo (comum, raro, épico, único), e a janela abre uma vez por estoque.",
-    "ru": "Чёрный рынок: купленное сразу исчезает из списка и считается вашим; с meter 2.0.95 — и купленное раньше («Распродано» в игре). Качество в цветах игры (обычное, редкое, эпическое, уникальное), окно открывается раз на ассортимент.",
-    "zh-Hant": "黑市：買下的商品會立刻從清單消失並算作已擁有；計量器 2.0.95 起，之前買的（遊戲的售完標示）也會反映。品質以遊戲顏色（一般、稀有、史詩、獨特）顯示，視窗每輪貨品只彈出一次。",
-    "zh-Hans": "黑市：买下的商品会立刻从列表消失并算作已拥有；计量器 2.0.95 起，之前买的（游戏的售完标示）也会反映。品质以游戏颜色（一般、稀有、史诗、独特）显示，窗口每轮货品只弹出一次。"
   }
 ]
