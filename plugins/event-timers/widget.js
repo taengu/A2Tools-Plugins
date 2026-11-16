@@ -206,7 +206,8 @@ function renderList(g) {
   while (rows.length < cells.length) {
     const row = document.createElement("div");
     row.className = "lrow";
-    row.innerHTML = '<span class="fill"></span><span class="lname"></span><span class="ltp"></span><span class="lsub"></span><span class="ltime"></span>';
+    row.innerHTML = '<span class="fill"></span><span class="licon"><img class="art" alt="" hidden /><span class="glyph"></span></span>'
+      + '<span class="lname"></span><span class="ltp"></span><span class="lsub"></span><span class="ltime"></span>';
     listBox.append(row);
     rows.push(row);
   }
@@ -221,6 +222,22 @@ function renderList(g) {
     const edge = d.enemy ? "#c8262b" : d.abyss ? "#a985e0" : d.running ? "#5fbf86" : KIND_EDGE[d.kind] || KIND_EDGE.event;
     row.style.setProperty("--edge", edge);
     row.className = `lrow${d.running ? " running" : ""}${d.due ? " due" : ""}${d.enemy ? " enemy" : ""}`;
+    // A small icon (Placement: Icons in the list): the game's, or the
+    // initials, as on the icons.
+    const icon = row.querySelector(".licon");
+    icon.hidden = g.icons === false;
+    if (!icon.hidden) {
+      const src = (d.icon && document.querySelector(`.icons img[data-icon="${d.icon}"]`)?.getAttribute("src")) || "";
+      const art = icon.querySelector(".art");
+      if (art.getAttribute("src") !== src) {
+        if (src) art.setAttribute("src", src);
+        else art.removeAttribute("src");
+      }
+      art.hidden = !src;
+      const glyph = icon.querySelector(".glyph");
+      glyph.hidden = !!src;
+      glyph.textContent = d.kind === "more" ? "+" : d.glyph || initials(d.name);
+    }
     row.querySelector(".lname").textContent = d.name || "";
     const tp = row.querySelector(".ltp");
     tp.textContent = d.tp ? `#${d.tp}` : "";

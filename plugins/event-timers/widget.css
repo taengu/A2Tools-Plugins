@@ -74,6 +74,21 @@ body.locked .lrow { cursor: default; }
 .lrow[hidden] { display: none; }
 .lrow .fill { position: absolute; left: 0; top: 0; bottom: 0; width: 0; pointer-events: none; transition: width 0.6s ease; }
 .lrow > :not(.fill) { position: relative; }
+.lrow .licon {
+  flex: none;
+  width: 16px;
+  height: 16px;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  margin-left: -2px;
+}
+.lrow .licon[hidden] { display: none; }
+.lrow .licon .art { width: 16px; height: 16px; object-fit: contain; filter: drop-shadow(0 1px 1px #000); }
+.lrow .licon .glyph { font-size: 8px; font-weight: 700; letter-spacing: 0; text-shadow: none; color: rgba(232, 237, 245, 0.9); }
+/* No art: the initials on a small disc in the kind's colour. */
+.lrow .licon:has(.art[hidden]) { background: color-mix(in srgb, var(--edge, #5a95d6) 45%, #10141c); }
+.lrow.enemy .licon .art { filter: drop-shadow(0 1px 1px #000) brightness(0.55) sepia(1) saturate(14) hue-rotate(-38deg) brightness(1.25); }
 .lrow .lname { flex: 1; min-width: 0; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
 .lrow .ltp { flex: none; font-size: 10px; color: rgba(232, 237, 245, 0.55); }
 .lrow .lsub { flex: none; font-size: 11px; font-weight: 600; color: #e6cf7a; }
