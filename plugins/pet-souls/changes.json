@@ -1,5 +1,18 @@
 [
   {
+    "version": "0.8.1",
+    "en": "Skins: the search also finds where skins drop, e.g. a dungeon's name.",
+    "ko": "외형: 검색이 획득처도 찾습니다. 예: 던전 이름.",
+    "ja": "外見：検索で入手先も探せます（ダンジョン名など）。",
+    "de": "Aussehen: Die Suche findet auch, wo sie fallen, z. B. den Namen eines Dungeons.",
+    "fr": "Apparences : la recherche trouve aussi leur provenance, par exemple le nom d'un donjon.",
+    "es": "Aspectos: la búsqueda también encuentra dónde caen, por ejemplo el nombre de una mazmorra.",
+    "pt": "Visuais: a busca também encontra onde caem, por exemplo o nome de uma masmorra.",
+    "ru": "Облики: поиск находит и места добычи, например название подземелья.",
+    "zh-Hant": "外觀：搜尋也能找取得處，例如副本名稱。",
+    "zh-Hans": "外观：搜索也能找获取处，例如副本名称。"
+  },
+  {
     "version": "0.8.0",
     "en": "New Gathering tab: per node, how often a gather is upgraded as it starts (Fresh, or ×3 for Mela), how often Appraiser upgrades a base gather (with the range the true rate is likely in), Plentiful Harvest doubles, failures and your recent gathers.",
     "ko": "새 채집 탭: 재료별로 시작 시 등급 상승(신선함, 멜라는 3배) 확률, 기본 등급 채집을 감정사가 올린 확률(실제 확률의 예상 범위 포함), 풍요로운 수확, 실패, 최근 채집을 보여줍니다.",
@@ -50,18 +63,5 @@
     "ru": "Облики: гардероб при входе относится к нужному персонажу, итог больше не показывает 0 или чужой список. Для обликов из извлечения снаряжения указаны подземелья. Питомцы: места добычи во Внешней хаотической Решанте.",
     "zh-Hant": "外觀：登入時會把衣櫃記在正確的角色上，總數不再顯示 0 或其他角色的清單。從裝備萃取的外觀會標示該裝備掉落的副本。寵物：混沌外部雷珊塔的掉落位置。",
     "zh-Hans": "外观：登录时会把衣柜记在正确的角色上，总数不再显示 0 或其他角色的列表。从装备萃取的外观会标示该装备掉落的副本。宠物：混沌外部雷珊塔的掉落位置。"
-  },
-  {
-    "version": "0.7.0",
-    "en": "Now Shugo's Ledger, with new tabs. Kinah: time to the daily 1,000,000 and Unique drops on the way. Drops: your drop rates beside the game's chances (meter 2.0.98). Skins: every skin against your Closet, and where to get the rest.",
-    "ko": "이제 Shugo's Ledger입니다. 새 탭: 키나(하루 100만 도달 시간과 유일 획득), 드롭(내 드롭 확률과 게임 표기 확률, 미터 2.0.98), 외형(모든 외형과 옷장 비교, 얻는 곳).",
-    "ja": "Shugo's Ledgerになりました。新しいタブ:キナ(1日100万までの時間と唯一入手)、ドロップ(自分のドロップ率とゲームの表記確率、メーター2.0.98)、外見(全外見とクローゼットの比較、入手方法)。",
-    "de": "Jetzt Shugo's Ledger, mit neuen Tabs. Kinah: Zeit bis zu den täglichen 1.000.000 und einzigartige Beute. Beute: deine Raten neben den Chancen des Spiels (Meter 2.0.98). Aussehen: alle gegen deinen Kleiderschrank, und woher der Rest kommt.",
-    "fr": "Devient Shugo's Ledger, avec de nouveaux onglets. Kinah : temps jusqu'au 1 000 000 quotidien et butin unique. Butin : vos taux face aux chances du jeu (compteur 2.0.98). Apparences : toutes face à votre garde-robe, et où obtenir le reste.",
-    "es": "Ahora es Shugo's Ledger, con pestañas nuevas. Kinah: tiempo hasta el 1.000.000 diario y botín único. Botín: tus tasas junto a las del juego (medidor 2.0.98). Aspectos: todos frente a tu armario, y dónde conseguir el resto.",
-    "pt": "Agora é Shugo's Ledger, com abas novas. Kinah: tempo até o 1.000.000 diário e saque único. Saque: suas taxas ao lado das chances do jogo (medidor 2.0.98). Visuais: todos comparados ao seu guarda-roupa, e onde conseguir o resto.",
-    "ru": "Теперь Shugo's Ledger, с новыми вкладками. Кина: время до дневного 1 000 000 и уникальная добыча. Добыча: ваши шансы рядом с игровыми (счётчик 2.0.98). Облики: все против вашего гардероба и где взять остальные.",
-    "zh-Hant": "更名為 Shugo's Ledger,新增分頁。基納:達到每日 100 萬的用時與獨特掉落。掉落:你的掉落率與遊戲標示機率(計量器 2.0.98)。外觀:所有外觀與衣櫃比較,以及其餘從哪裡取得。",
-    "zh-Hans": "更名为 Shugo's Ledger,新增分页。基纳:达到每日 100 万的用时与独特掉落。掉落:你的掉落率与游戏标示概率(计量器 2.0.98)。外观:所有外观与衣柜比较,以及其余从哪里获取。"
   }
 ]
