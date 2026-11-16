@@ -54,7 +54,7 @@ def main():
     texts = spoken(data)
     from actions import build_actions
     actions = build_actions(data, check=True)
-    texts = sorted(set(texts) | {actions["watch"]["en"]} | {t["en"] for t in actions["calls"].values()})
+    texts = sorted(set(texts) | {actions["watch"]["en"], actions["order"]["en"]} | {t["en"] for t in actions["calls"].values()})
     from mechanics import build_mechanics
     mechanics = build_mechanics(data, check=True)
     texts = sorted(set(texts) | {entry["text"]["en"] for entry in mechanics["entries"]})

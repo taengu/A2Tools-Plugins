@@ -108,6 +108,57 @@ test("Global Talisra dark/light retains its original reminders and order without
   assert.equal(h.context().stage,null); assert.equal(h.context().category,"auto");
 });
 
+test("the full captured-cadence order stays visible when other boss calls arrive", async () => {
+  const h = await page({registry: "real", stored: {guideRegion: "Global"}});
+  await h.emit("talisra-dark-spear"); await h.advance(1952); await h.emit("talisra-dark-spear");
+  await h.advance(1945); await h.emit("talisra-light-spear");
+  const calls=h.data.calls.filter(c=>c.b==='talisra-of-the-void'&&!c.mark&&['cast','use'].includes(c.t)).slice(0,3);
+  assert.equal(calls.length,3);
+  for(const call of calls){await h.advance(10);await h.emit(call.k);}
+  const displayed=h.engine.items().slice(0,2);
+  assert.equal(displayed[0].text,'Dark → Dark → Light');
+  assert.equal(displayed[0].sub,h.engine.items().find(item=>item.key.startsWith('m:')).sub);
+  await h.advance(13000); assert.ok(!h.engine.items().some(item=>item.key.startsWith('m:')));
+});
+
+test("sequence priority neither merges separate casters nor survives an encounter reset", async () => {
+  const h=await page({registry:'real',stored:{guideRegion:'Global'}});
+  await h.emit('talisra-dark-spear',{entity:101});await h.advance(1952);await h.emit('talisra-light-spear',{entity:202});
+  const sequences=h.engine.items().filter(item=>item.key.startsWith('m:'));
+  assert.equal(sequences.length,2);assert.deepEqual(Array.from(sequences,item=>item.text),['Light','Dark']);
+  h.handlers.get('decoded:boss-map')({count:1,map:1010},{at:h.now()});await h.advance();
+  assert.equal(h.engine.items().length,0);
+});
+
+test("Talisra speaks the shield action once after the signs pause, retaining the full order", async () => {
+  const h=await page({registry:'real',stored:{guideRegion:'Global'}});
+  await h.emit('talisra-dark-spear'); await h.advance(1952); await h.emit('talisra-dark-spear');
+  await h.advance(1945); await h.emit('talisra-light-spear');
+  const instruction='When the pulses begin, use matching shields in this order.';
+  assert.equal(h.spoken.filter(s=>s===instruction).length,0);
+  await h.advance(2499); assert.equal(h.spoken.at(-1),'Remember light shield');
+  await h.advance(1); assert.equal(h.spoken.at(-1),instruction);
+  assert.equal(h.engine.items()[0].text,'Dark → Dark → Light');
+  await h.advance(1000); assert.equal(h.spoken.filter(s=>s===instruction).length,1);
+  await h.advance(6000); await h.emit('talisra-light-spear'); await h.advance(2500);
+  assert.equal(h.spoken.filter(s=>s===instruction).length,2);
+  const clips=JSON.parse(source('voice.js').slice(source('voice.js').indexOf('{'),source('voice.js').lastIndexOf('}')+1));
+  assert.ok(clips[instruction], 'the built-in voice must include the action instruction');
+});
+
+test("delayed sequence speech respects reset, disabled calls, custom wording and action opt-out", async () => {
+  for(const mode of ['reset','disabled','custom','opt-out','stale']) {
+    const h=await page({registry:'real',stored:{guideRegion:'Global'}});
+    await h.emit('talisra-dark-spear'); const count=h.spoken.length;
+    if(mode==='reset') h.engine.clear(h.now());
+    if(mode==='disabled') h.prefs().offCall={'talisra-dark-spear':true};
+    if(mode==='custom') h.prefs().custom={'talisra-dark-spear':'My sign'};
+    if(mode==='opt-out') h.prefs().tellMeWhatToDo=false;
+    await h.advance(mode==='stale'?13000:2500);
+    assert.equal(h.spoken.length,count,mode);
+  }
+});
+
 test("the missing-stage exception cannot enable other mechanics, wrong regions or explicitly unsupported stages", async () => {
   const h = await page({registry: "real", stored: {guideRegion: "Global"}});
   const entry=h.registry.entries.find(e=>e.id===1801780&&e.scope.regions.includes("Global"));

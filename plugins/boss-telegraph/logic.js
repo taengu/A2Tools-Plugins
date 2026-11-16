@@ -27,6 +27,7 @@
   const BIND_MS = 30 * 60 * 1000;
   const MARK_GAP_MS = 6000; // a sign this long after the last starts a new order
   const ORDER_SHOW_MS = 12000; // the order stays up while it plays out
+  const ORDER_VOICE_GAP_MS = 2500; // let the roughly two-second sign cadence finish
 
   function create(data, hooks) {
     const D = data;
@@ -150,7 +151,13 @@
 
     function show(item) {
       item.id = ++seq;
-      items = [item, ...items.filter((x) => x.key !== item.key)].slice(0, 3);
+      const time = now();
+      const priority = (x) => x.until <= time ? 0 : x.kind === "phase" ? 2 : x.sequence === true ? 1 : 0;
+      // The widget shows two items. New boss lines must not push a remembered
+      // sign order out of those slots before it expires. A live phase warning
+      // still takes precedence; speech continues to announce every new call.
+      items = [item, ...items.filter((x) => x.key !== item.key)]
+        .sort((a, b) => priority(b) - priority(a)).slice(0, 3);
       hooks.show(items);
       return item;
     }
@@ -170,6 +177,7 @@
       const word = own(c) || T(c.act);
       order.words.push(word);
       order.at = at;
+      order.call = c;
       orders.set(key, order);
       if (orders.size > 20) for (const [k, o] of orders) if (at - o.at > 60_000) orders.delete(k);
       lastCall.set(callKey(c, entity), at);
@@ -178,7 +186,7 @@
       const instruction = shortSign ? actionText(actions.calls?.[c.k]) : actionText(resolved?.text) || actionText(actions.calls?.[c.k]);
       hooks.say(own(c) || (actionMode() && instruction) || word, "high");
       const sub = [preview ? resolved?.scopeLabel : "", actionMode() ? actionText(actions.order) : ""].filter(Boolean).join(" · ");
-      show({ key: `m:${c.mark}:${entity}`, kind: "call", text: order.words.join(" → "), sub, end: 0, until: at + ORDER_SHOW_MS });
+      show({ key: `m:${c.mark}:${entity}`, kind: "call", sequence: true, text: order.words.join(" → "), sub, end: 0, until: at + ORDER_SHOW_MS });
     }
 
     function fire(c, entity, at, preview = false) {
@@ -299,6 +307,16 @@
     // Every 100 ms: expired estimates and old items go quietly.
     function tick() {
       const t = now();
+      for (const order of orders.values()) {
+        if (order.advised || t - order.at < ORDER_VOICE_GAP_MS) continue;
+        // Explain the action once after a pause, without declaring the order
+        // complete or inventing a pulse timer. A suspended page must not speak
+        // an expired order when it resumes. Reset/disabled/custom calls stay quiet.
+        order.advised = true;
+        if (t - order.at >= ORDER_SHOW_MS || !on(order.call) || own(order.call) || !actionMode()) continue;
+        const instruction = actionText(actions.order);
+        if (instruction) hooks.say(instruction, "high");
+      }
       for (const [key, p] of phases) if (p.end <= t) endPhase(key, p.end);
       const n = items.length;
       items = items.filter((x) => x.until > t);

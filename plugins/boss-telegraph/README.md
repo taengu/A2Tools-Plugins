@@ -60,7 +60,7 @@ Map loads and game-process transitions clear learned entities, repeats, phases, 
 
 The earlier `actions.json` is retained for neutral reminders, compact color-sequence speech and source provenance. Its unrestricted entries cannot bypass the regional registry. Live triggers shared by several bosses stay neutral because the available events do not reliably identify the caster. The short Talisra signs retain their two-second cadence after their regional scope has been verified.
 
-Talisra's dark and light signs still build the upcoming order. Instruction mode says to **remember** each sign; the display explains that matching shields are used in that order **when the pulses begin**. It does not tell you to move immediately or predict the next sign.
+Talisra's dark and light signs still build the upcoming order. Instruction mode says to **remember** each sign; the display explains that matching shields are used in that order **when the pulses begin**. It does not tell you to move immediately or predict the next sign. The accumulated order stays ahead of ordinary boss lines for its normal display lifetime; live phase warnings remain higher priority. Each sign is still spoken separately.
 
 `bosses.js` is built from the game's tables by `tools/boss-telegraph/build.py`, with the hand-checked mechanics from `tools/boss-telegraph/curated.json`:
 
@@ -75,3 +75,5 @@ It keeps NpcBehaviorCase rows of named bosses whose Casting, SkillUse or Abnorma
 ## A mechanic missing or wrong?
 
 Open an issue at https://github.com/taengu/A2Tools-Plugins/issues with the dungeon, the boss, what the game shows (the line, the colour, the buff) and, if you can, a packet log of that fight (turn on **Packet logging** in the meter's settings before it).
+
+Talisra’s accumulated sign order stays visible when ordinary boss lines arrive. After a 2.5-second pause between signs, action mode also speaks the matching-shield instruction once per sequence. This pause does not confirm the sequence is complete or predict the first pulse. Encounter resets and expired or disabled calls cancel the pending instruction.
