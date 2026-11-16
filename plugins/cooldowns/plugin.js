@@ -624,13 +624,22 @@ function checkAway() {
 const widgetsWanted = () => prefs.show && gameOpen;
 let openNow = new Set();
 let lastSizes = "";
-// Centered (saved to prevent rounding errors)
+// Centered (saved to prevent rounding errors).
 const middles = new Map();
-// Text size correction per widget (from widget.js)
-// Windows' Text size draws pages bigger than the widow the meter gives them 
-// which pushes the last icon into nothingness
+// Text size correction per widget (from widget.js).
+// Windows' Text size draws pages bigger than the window the meter gives them,
+// which pushes the last icon into nothingness.
 const fits = new Map(); // name -> { x, y }
-// The size each widget's window was last given (incl the correction)
+// Saved between sessions, so after a restart the first open already has the
+// right size (otherwise Centered and Up moved the bar on every start).
+const saveFits = () => a2.storage.set("fits", Object.fromEntries(fits)).catch(() => {});
+function useSavedFits(saved) {
+  if (!saved || typeof saved !== "object") return;
+  for (const [name, fit] of Object.entries(saved)) {
+    if (fit && fit.x >= 1 && fit.x <= 3 && fit.y >= 1 && fit.y <= 3) fits.set(name, { x: fit.x, y: fit.y });
+  }
+}
+// The size each widget's window was last given (incl. the correction).
 const asked = new Map();
 
 // The widgets' windows sized for every icon that may show (a skill set to
@@ -692,15 +701,17 @@ async function placeWidgets() {
 }
 
 // widget.js reports how much room its page really has. If that's < its
-// window size, windows get enlarged by that ratio from now on
-// Changes under 0.5% are ignored (rounding)
+// window size, windows get enlarged by that ratio from now on.
+// Ignored: growing under 0.5% and shrinking under 2%. Rounding to whole pixels
+// can make the measurement wobble, and without the margin the size kept flipping.
 function onRoom(name, room, size) {
   if (!room || !size || !(room.width > 0) || !(room.height > 0) || !(size.width > 0) || !(size.height > 0)) return;
   const x = Math.min(3, Math.max(1, size.width / room.width));
   const y = Math.min(3, Math.max(1, size.height / room.height));
   const had = fits.get(name) || { x: 1, y: 1 };
-  if (Math.abs(x - had.x) <= had.x * 0.005 && Math.abs(y - had.y) <= had.y * 0.005) return;
+  if (x <= had.x * 1.005 && x >= had.x * 0.98 && y <= had.y * 1.005 && y >= had.y * 0.98) return;
   fits.set(name, { x, y });
+  saveFits();
   return placeWidgets();
 }
 
@@ -1076,6 +1087,7 @@ a2.on("widget-message", ({ name, data }) => {
 (async () => {
   const stored = await a2.storage.get("prefs").catch(() => null);
   if (stored && typeof stored === "object") prefs = { ...DEFAULTS, ...stored };
+  useSavedFits(await a2.storage.get("fits").catch(() => null));
   setSoundVolume(prefs.volume);
   const before = await a2.storage.get(charStoreKey("?")).catch(() => null);
   // Only while no character has come yet: the meter can name one before this
