@@ -42,8 +42,10 @@ def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--tables", required=True)
     ap.add_argument("--tw-l10n", default=None)
+    ap.add_argument("--out", default=OUT)
     args = ap.parse_args()
     T = args.tables
+    out_path = args.out
 
     langs = {}
     for code, folder in LANG_DIRS.items():
@@ -92,6 +94,21 @@ def main():
             skin = skin_by_name.get(str(item["UseEffectValues"][0]))
             if skin:
                 items_of_skin[skin["ID"]["Value"]].append(item)
+    # Equipment whose look can be extracted as the skin (Item.ExtractionSkins;
+    # the skin's own ItemGetRoute.SkinInfo names one of them): the skin comes
+    # from wherever the equipment drops, e.g. Skyfeather Guardian from the
+    # Divine Canyon gear of Urugugu Canyon Conquest.
+    extract_items_of_skin = defaultdict(list)
+    for item in items:
+        for name in item.get("ExtractionSkins") or []:
+            skin = skin_by_name.get(name)
+            if skin and item not in extract_items_of_skin[skin["ID"]["Value"]]:
+                extract_items_of_skin[skin["ID"]["Value"]].append(item)
+
+    def extraction_rate(item):
+        """The chance extracting the item gives its skin (ExtractionSkinRate,
+        out of 10,000: 1000, 2000, 2500 or 10000)."""
+        return (item.get("ExtractionSkinRate") or 10000) / 10000
 
     # Boxes: the package each box opens (BoxReward), and what each package
     # holds with its odds (RewardPackageItem).
@@ -116,10 +133,12 @@ def main():
     routes = {r["ItemId"]["Value"]: r for r in load(T, "ItemGetRoute")}
     coin_shops = {}
 
-    def sources_of(item):
+    def sources_of(item, rate=1.0):
+        """Where the item comes from; a box's chance times `rate`, the chance
+        the item gives the skin (an extraction's ExtractionSkinRate)."""
         out = []
         for box_id, pct in box_odds.get(item["Name"], []):
-            out.append(["box", box_id, pct])
+            out.append(["box", box_id, round(pct * rate, 4)])
         r = routes.get(item["ID"]["Value"]) or {}
         if r.get("RandomShopInfo"):
             out.append(["market"])
@@ -137,6 +156,9 @@ def main():
         for d in r.get("PartyDungeonGetRoutes") or []:
             for t in d["Value"]["TableIds"]:
                 out.append(["dungeon", t["Value"]])
+        # Raids are dungeons too (Abyssal Forge: Ludra).
+        for t in r.get("RaidInfo") or []:
+            out.append(["dungeon", t["Value"]])
         seen, unique = set(), []
         for s in out:
             k = json.dumps(s)
@@ -148,24 +170,61 @@ def main():
     skins = {}
     for skin in skin_rows:
         sid = skin["ID"]["Value"]
-        if not skin.get("bShow") or sid not in items_of_skin:
+        if not skin.get("bShow") or sid not in items_of_skin and sid not in extract_items_of_skin:
             continue
         light = text(skin["DescLight"]["Key"])
         dark = text(skin["DescDark"]["Key"])
         if light is None and dark is None:
             continue
         sources = []
-        for item in items_of_skin[sid]:
-            for s in sources_of(item):
+        for item, rate in ([(i, 1.0) for i in items_of_skin.get(sid, [])]
+                           + [(i, extraction_rate(i)) for i in extract_items_of_skin.get(sid, [])]):
+            for s in sources_of(item, rate):
                 if s not in sources:
                     sources.append(s)
         row = {"n": light if light is not None else dark, "g": SKIN_GRADES.get(skin.get("Grade"), 0),
                "s": skin["SkinCategory"].split("::")[-1], "o": skin.get("Order", 0)}
         if dark is not None and dark != row["n"]:
             row["d"] = dark
+        # Dungeons in id order (each dungeon's Exploration, Conquest Normal, Hard).
+        at = [i for i, s in enumerate(sources) if s[0] == "dungeon"]
+        for i, s in zip(at, sorted((sources[i] for i in at), key=lambda s: s[1])):
+            sources[i] = s
         if sources:
             row["src"] = sources
         skins[sid] = row
+
+    # The dungeons and raids the skins come from (Dungeon id -> n: name, m:
+    # a party dungeon's mode, Exploration or Conquest, d: Conquest's and a
+    # raid's difficulty, Normal or Hard), worded as the game's dungeon window.
+    # The difficulty is read from the dungeon's own name (_Easy, _Normal,
+    # _Hard): older .usmap files don't know the tables' Hard enum value.
+    dungeon_rows = {r["ID"]["Value"]: r for r in load(T, "Dungeon")}
+    map_rows = {r["ID"]["Value"]: r for r in load(T, "Map")}
+    dungeons = {}
+    for row in skins.values():
+        for s in row.get("src", []):
+            if s[0] != "dungeon" or s[1] in dungeons:
+                continue
+            d = dungeon_rows.get(s[1]) or {}
+            title = (d.get("Title") or {}).get("Key")
+            name = text("String_%s_body" % title) if title else None
+            if name is None and s[1] in map_rows:
+                key = map_rows[s[1]]["Desc"]["Key"]
+                name = text(key) if key in langs["en"] else text("String_%s_body" % key)
+            entry = {"n": name}
+            level = (d.get("Name") or "").rsplit("_", 1)[-1]
+            if d.get("DungeonType") == "EDungeonType::Raid":
+                k = {"Normal": "NORMAL", "Hard": "ADVANCED"}.get(level)
+                if k:
+                    entry["d"] = text("String_UI_PARTYDUNGEON_RAID_DIFFICULTY_%s_body" % k)
+            elif level == "Easy":
+                entry["m"] = text("String_UI_PARTYDUNGEON_DIFFICULTY_EXPLORER_body")
+            elif level in ("Normal", "Hard"):
+                entry["m"] = text("String_UI_PARTYDUNGEON_DIFFICULTY_CONQUER_body")
+                entry["d"] = text("String_UI_PARTYDUNGEON_CONQUER_DIFFICULTY_%s_body"
+                                  % ("NORMAL" if level == "Normal" else "ADVANCED"))
+            dungeons[s[1]] = {k: x for k, x in entry.items() if x is not None}
 
     # The boxes the skins come from, by item id: name, and for gathering's
     # Poko's Skin Bundle the node types that drop it.
@@ -307,7 +366,7 @@ def main():
     def lines(d):
         return ",\n".join(f"  {k}: {json.dumps(v, ensure_ascii=False, separators=(',', ':'))}" for k, v in sorted(d.items()))
 
-    with open(OUT, "w", encoding="utf-8", newline="\n") as f:
+    with open(out_path, "w", encoding="utf-8", newline="\n") as f:
         f.write(
             "// Skins, the boxes they come from, and Unique items, for Shugo's Ledger.\n"
             "// Generated by tools/game-souls/collection.py from the game's tables: don't\n"
@@ -315,10 +374,14 @@ def main():
             "// Each skin (Skin id -> n: name in COLLECTION_TEXT, d: the Asmodian name when\n"
             "// it differs, g: grade 0 Common to 4, s: slot, o: the game's order, src:\n"
             "// [\"box\", item id, chance %] | [\"market\"] | [\"coin\", shop] | [\"cube\"] |\n"
-            "// [\"ranking\"] | [\"dungeon\", id]).\n"
+            "// [\"ranking\"] | [\"dungeon\", id in SKIN_DUNGEONS]). Gear whose look can be\n"
+            "// extracted as the skin counts too: its boxes' chance is times the extraction's.\n"
             f"const SKINS = {{\n{lines(skins)},\n}};\n"
             "// The boxes (item id -> n: name, g: grade, nodes: the gathering node types that drop it).\n"
             f"const SKIN_BOXES = {{\n{lines(boxes)},\n}};\n"
+            "// The dungeons and raids (Dungeon id -> n: name, m: mode, Exploration or\n"
+            "// Conquest, d: difficulty, Normal or Hard; each in COLLECTION_TEXT).\n"
+            f"const SKIN_DUNGEONS = {{\n{lines(dungeons)},\n}};\n"
             "// The coin shops (key -> name in COLLECTION_TEXT, or null).\n"
             f"const COIN_SHOPS = {json.dumps(coin_shops, separators=(',', ':'))};\n"
             "// Unique and Epic items (item id -> [grade 3 Unique / 4 Epic, name]).\n"
@@ -336,9 +399,9 @@ def main():
         )
     by_src = Counter(s[0] for r in skins.values() for s in r.get("src", []))
     print(f"{len(skins)} skins ({sum(1 for r in skins.values() if 'src' not in r)} with no known source), "
-          f"sources {dict(by_src)}, {len(boxes)} boxes, {len(coin_shops)} coin shops, {len(uniques)} Unique/Epic items, "
+          f"sources {dict(by_src)}, {len(boxes)} boxes, {len(dungeons)} dungeons, {len(coin_shops)} coin shops, {len(uniques)} Unique/Epic items, "
           f"{len(drop_items)} drop items, {len(drop_lists)} reward lists for {len(mob_lists)} monsters, "
-          f"{len(texts)} names, {os.path.getsize(OUT) // 1024} KB")
+          f"{len(texts)} names, {os.path.getsize(out_path) // 1024} KB")
 
 
 if __name__ == "__main__":

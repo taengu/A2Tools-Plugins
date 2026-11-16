@@ -819,8 +819,10 @@
   };
   const SOURCE_KINDS = ["box", "market", "coin", "cube", "ranking", "dungeon", "other"];
   const ALL_SKINS = Object.entries(SKINS).map(([id, s]) => ({ id: Number(id), ...s }));
+  // The account's Closet (plugin.js, closetSkins): the same for every
+  // character; a character's own list from before 0.7.1 otherwise.
   const ownedSkins = () => {
-    const list = owned[me()]?.skins;
+    const list = owned[CLOSET]?.skins || owned[me()]?.skins;
     return Array.isArray(list) ? new Set(list.map(Number)) : null;
   };
   const skinName = (s) => words(sideOf(me()) === "asmodian" && s.d != null ? s.d : s.n);
@@ -846,6 +848,42 @@
       return game && own ? `${game} (${own})` : game || own || t("coin");
     }
     return t(kind);
+  }
+
+  // A skin's sources, as one line. Its dungeons by name, each one's modes
+  // and difficulties together ("Urugugu Canyon (Conquest Normal, Hard)"), the
+  // first DUNGEONS_SHOWN of them and "+N" (gear dropped everywhere has up to
+  // 19); the rest as sourceText says, each once.
+  const DUNGEONS_SHOWN = 4;
+  function sourcesText(srcs) {
+    const out = [];
+    const dungeons = new Map();
+    for (const src of srcs) {
+      const dungeon = src[0] === "dungeon" && typeof SKIN_DUNGEONS === "object" ? SKIN_DUNGEONS[src[1]] : null;
+      if (!dungeon) {
+        out.push(sourceText(src));
+        continue;
+      }
+      const name = words(dungeon.n) || t("dungeon");
+      if (!dungeons.has(name)) {
+        dungeons.set(name, new Map());
+        out.push({ dungeon: name });
+      }
+      const modes = dungeons.get(name);
+      const mode = words(dungeon.m) || "";
+      if (!modes.has(mode)) modes.set(mode, []);
+      const level = words(dungeon.d);
+      if (level && !modes.get(mode).includes(level)) modes.get(mode).push(level);
+    }
+    const shownDungeons = out.filter((x) => typeof x === "object");
+    const texts = out.flatMap((x) => {
+      if (typeof x !== "object") return [x];
+      const at = shownDungeons.indexOf(x);
+      if (at >= DUNGEONS_SHOWN) return at === DUNGEONS_SHOWN ? [`+${shownDungeons.length - DUNGEONS_SHOWN}`] : [];
+      const kinds = [...dungeons.get(x.dungeon)].map(([mode, levels]) => [mode, levels.join(", ")].filter(Boolean).join(" ")).filter(Boolean);
+      return [kinds.length ? `${x.dungeon} (${kinds.join(", ")})` : x.dungeon];
+    });
+    return [...new Set(texts)].join(" · ");
   }
 
   function renderSkins() {
@@ -918,7 +956,7 @@
       const name = node("div", "sName");
       name.append(node("span", `gName g${s.g}`, skinName(s)));
       if (sale.has(s.id) && !mine) name.append(node("span", "sTag", t("onSale")));
-      const how = node("div", "sHow", mine ? t("ownedTag") : s.src?.length ? s.src.map(sourceText).join(" · ") : t("noSource"));
+      const how = node("div", "sHow", mine ? t("ownedTag") : s.src?.length ? sourcesText(s.src) : t("noSource"));
       body.append(name, how);
       const boxes = (s.src || []).filter((x) => x[0] === "box" && SKIN_BOXES[x[1]]?.nodes);
       if (boxes.length && !mine) {

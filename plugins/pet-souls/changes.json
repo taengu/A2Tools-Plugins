@@ -1,5 +1,18 @@
 [
   {
+    "version": "0.7.1",
+    "en": "Skins: your Closet is shared by all your characters, so every character shows the same skins (one could show 0). Skins from extracting gear name the dungeons it drops in. Pets: drop hints for Chaotic Outer Reshanta.",
+    "ko": "스킨: 옷장은 모든 캐릭터가 공유하므로 어느 캐릭터든 같은 스킨이 표시됩니다 (0으로 표시될 수 있었음). 장비 추출로 얻는 스킨에 그 장비가 나오는 던전이 표시됩니다. 펫: 혼돈의 바깥 레샨타 드롭 위치.",
+    "ja": "スキン：クローゼットは全キャラクター共通なので、どのキャラクターでも同じスキンを表示します（0になることがありました）。装備の抽出で得るスキンに、その装備が出るダンジョンを表示。ペット：混沌の外部レシャンタのドロップ場所。",
+    "de": "Skins: Der Kleiderschrank gehört allen Charakteren, also zeigt jeder dieselben Skins (einer konnte 0 zeigen). Skins aus extrahierter Ausrüstung nennen deren Dungeons. Begleiter: Fundorte im Chaotischen Äußeren Reshanta.",
+    "fr": "Apparences : la garde-robe est commune à tous tes personnages, chacun affiche donc les mêmes (l'un pouvait afficher 0). Celles extraites d'un équipement nomment ses donjons. Familiers : lieux de butin dans la Reshanta extérieure chaotique.",
+    "es": "Aspectos: el armario es común a todos tus personajes, así que todos muestran los mismos (uno podía mostrar 0). Los que se extraen de equipo nombran sus mazmorras. Mascotas: dónde caen en la Reshanta exterior caótica.",
+    "pt": "Visuais: o guarda-roupa é comum a todos os personagens, então todos mostram os mesmos (um podia mostrar 0). Os extraídos de equipamento citam suas masmorras. Mascotes: onde caem na Reshanta Exterior Caótica.",
+    "ru": "Облики: гардероб общий для всех персонажей, поэтому у всех одинаковые облики (у кого-то мог быть 0). Для обликов из извлечения снаряжения указаны подземелья. Питомцы: места добычи во Внешней хаотической Решанте.",
+    "zh-Hant": "外觀：衣櫃由所有角色共用，因此每個角色都顯示相同外觀（之前可能顯示 0）。從裝備萃取的外觀會標示該裝備掉落的副本。寵物：混沌外部雷珊塔的掉落位置。",
+    "zh-Hans": "外观：衣柜由所有角色共用，因此每个角色都显示相同外观（之前可能显示 0）。从装备萃取的外观会标示该装备掉落的副本。宠物：混沌外部雷珊塔的掉落位置。"
+  },
+  {
     "version": "0.7.0",
     "en": "Now Shugo's Ledger, with new tabs. Kinah: time to the daily 1,000,000 and Unique drops on the way. Drops: your drop rates beside the game's chances (meter 2.0.98). Skins: every skin against your Closet, and where to get the rest.",
     "ko": "이제 Shugo's Ledger입니다. 새 탭: 키나(하루 100만 도달 시간과 유일 획득), 드롭(내 드롭 확률과 게임 표기 확률, 미터 2.0.98), 외형(모든 외형과 옷장 비교, 얻는 곳).",
@@ -50,18 +63,5 @@
     "ru": "Чёрный рынок: купленный питомец пропадает из списка до смены товаров, ведь каждый товар продаётся один раз.",
     "zh-Hant": "黑市：每件商品每輪只能買一次，買下的寵物會從清單消失，直到貨品更新。",
     "zh-Hans": "黑市：每件商品每轮只能买一次，买下的宠物会从列表消失，直到货品更新。"
-  },
-  {
-    "version": "0.6.0",
-    "en": "Black Market: open the Black Cloud Merchants' shop and the window lists the pets on sale, those you don't have yet first, with each one's level and souls (meter 2.0.93).",
-    "ko": "암시장: 검은 구름 무역단 상점을 열면 판매 중인 펫을 보여 줍니다. 아직 없는 펫이 먼저 나오고, 각 펫의 레벨과 영혼이 함께 표시됩니다 (미터 2.0.93).",
-    "ja": "ブラックマーケット：黒雲商団のショップを開くと、販売中のペットを一覧表示します。まだ持っていないペットが先頭で、各ペットのレベルと魂も表示します（メーター 2.0.93）。",
-    "de": "Schwarzmarkt: Öffne den Laden der Schwarzwolken-Händler, und das Fenster zeigt die angebotenen Begleiter, die dir noch fehlenden zuerst, mit Stufe und Seelen (Meter 2.0.93).",
-    "fr": "Marché noir : ouvrez la boutique des Marchands du Nuage noir et la fenêtre liste les familiers en vente, ceux que vous n'avez pas d'abord, avec leur niveau et leurs âmes (meter 2.0.93).",
-    "es": "Mercado negro: abre la tienda de los Mercaderes de la Nube Negra y la ventana muestra las mascotas en venta, primero las que aún no tienes, con su nivel y almas (meter 2.0.93).",
-    "pt": "Mercado negro: abra a loja dos Mercadores da Nuvem Negra e a janela lista os mascotes à venda, primeiro os que você ainda não tem, com nível e almas (meter 2.0.93).",
-    "ru": "Чёрный рынок: откройте лавку торговцев Чёрного облака, и окно покажет питомцев на продаже — сначала тех, кого у вас ещё нет, — с их уровнем и душами (meter 2.0.93).",
-    "zh-Hant": "黑市：打開黑雲商團的商店，視窗會列出販售中的寵物，尚未擁有的排在最前，並顯示每隻的等級與靈魂（計量器 2.0.93）。",
-    "zh-Hans": "黑市：打开黑云商团的商店，窗口会列出出售中的宠物，尚未拥有的排在最前，并显示每只的等级与灵魂（计量器 2.0.93）。"
   }
 ]
