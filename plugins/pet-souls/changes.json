@@ -1,16 +1,16 @@
 [
   {
     "version": "0.7.1",
-    "en": "Skins: your Closet is shared by all your characters, so every character shows the same skins (one could show 0). Skins from extracting gear name the dungeons it drops in. Pets: drop hints for Chaotic Outer Reshanta.",
-    "ko": "스킨: 옷장은 모든 캐릭터가 공유하므로 어느 캐릭터든 같은 스킨이 표시됩니다 (0으로 표시될 수 있었음). 장비 추출로 얻는 스킨에 그 장비가 나오는 던전이 표시됩니다. 펫: 혼돈의 바깥 레샨타 드롭 위치.",
-    "ja": "スキン：クローゼットは全キャラクター共通なので、どのキャラクターでも同じスキンを表示します（0になることがありました）。装備の抽出で得るスキンに、その装備が出るダンジョンを表示。ペット：混沌の外部レシャンタのドロップ場所。",
-    "de": "Skins: Der Kleiderschrank gehört allen Charakteren, also zeigt jeder dieselben Skins (einer konnte 0 zeigen). Skins aus extrahierter Ausrüstung nennen deren Dungeons. Begleiter: Fundorte im Chaotischen Äußeren Reshanta.",
-    "fr": "Apparences : la garde-robe est commune à tous tes personnages, chacun affiche donc les mêmes (l'un pouvait afficher 0). Celles extraites d'un équipement nomment ses donjons. Familiers : lieux de butin dans la Reshanta extérieure chaotique.",
-    "es": "Aspectos: el armario es común a todos tus personajes, así que todos muestran los mismos (uno podía mostrar 0). Los que se extraen de equipo nombran sus mazmorras. Mascotas: dónde caen en la Reshanta exterior caótica.",
-    "pt": "Visuais: o guarda-roupa é comum a todos os personagens, então todos mostram os mesmos (um podia mostrar 0). Os extraídos de equipamento citam suas masmorras. Mascotes: onde caem na Reshanta Exterior Caótica.",
-    "ru": "Облики: гардероб общий для всех персонажей, поэтому у всех одинаковые облики (у кого-то мог быть 0). Для обликов из извлечения снаряжения указаны подземелья. Питомцы: места добычи во Внешней хаотической Решанте.",
-    "zh-Hant": "外觀：衣櫃由所有角色共用，因此每個角色都顯示相同外觀（之前可能顯示 0）。從裝備萃取的外觀會標示該裝備掉落的副本。寵物：混沌外部雷珊塔的掉落位置。",
-    "zh-Hans": "外观：衣柜由所有角色共用，因此每个角色都显示相同外观（之前可能显示 0）。从装备萃取的外观会标示该装备掉落的副本。宠物：混沌外部雷珊塔的掉落位置。"
+    "en": "Skins: each character's Closet is now read for that character at login, so the totals no longer show 0 or another character's list. Skins from extracting gear name the dungeons it drops in. Pets: drop hints for Chaotic Outer Reshanta.",
+    "ko": "스킨: 로그인할 때 각 캐릭터의 옷장을 그 캐릭터 것으로 읽어, 합계가 0이나 다른 캐릭터의 목록으로 표시되지 않습니다. 장비 추출로 얻는 스킨에 그 장비가 나오는 던전이 표시됩니다. 펫: 혼돈의 바깥 레샨타 드롭 위치.",
+    "ja": "スキン：ログイン時に各キャラクターのクローゼットをそのキャラクターの分として読むので、合計が0や別キャラクターの一覧になりません。装備の抽出で得るスキンに、その装備が出るダンジョンを表示。ペット：混沌の外部レシャンタのドロップ場所。",
+    "de": "Skins: Der Kleiderschrank wird beim Login dem richtigen Charakter zugeordnet, die Summe zeigt nicht mehr 0 oder die Liste eines anderen. Skins aus extrahierter Ausrüstung nennen deren Dungeons. Begleiter: Fundorte im Chaotischen Äußeren Reshanta.",
+    "fr": "Apparences : la garde-robe est attribuée au bon personnage à la connexion, le total n'affiche plus 0 ni la liste d'un autre. Celles extraites d'un équipement nomment ses donjons. Familiers : lieux de butin dans la Reshanta extérieure chaotique.",
+    "es": "Aspectos: el armario se asigna al personaje correcto al conectarse, así que el total ya no muestra 0 ni la lista de otro. Los extraídos de equipo nombran sus mazmorras. Mascotas: dónde caen en la Reshanta exterior caótica.",
+    "pt": "Visuais: o guarda-roupa vai para o personagem certo ao entrar, então o total não mostra mais 0 nem a lista de outro. Os extraídos de equipamento citam suas masmorras. Mascotes: onde caem na Reshanta Exterior Caótica.",
+    "ru": "Облики: гардероб при входе относится к нужному персонажу, итог больше не показывает 0 или чужой список. Для обликов из извлечения снаряжения указаны подземелья. Питомцы: места добычи во Внешней хаотической Решанте.",
+    "zh-Hant": "外觀：登入時會把衣櫃記在正確的角色上，總數不再顯示 0 或其他角色的清單。從裝備萃取的外觀會標示該裝備掉落的副本。寵物：混沌外部雷珊塔的掉落位置。",
+    "zh-Hans": "外观：登录时会把衣柜记在正确的角色上，总数不再显示 0 或其他角色的列表。从装备萃取的外观会标示该装备掉落的副本。宠物：混沌外部雷珊塔的掉落位置。"
   },
   {
     "version": "0.7.0",

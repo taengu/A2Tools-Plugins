@@ -546,15 +546,8 @@ function marketItems(kind, now = Date.now()) {
 const OWNED_KEY = "closetOwned";
 let owned = {};
 const ownedNow = () => owned[marketChar] || null;
-// The Closet is the account's, not a character's: each character of an
-// account gets the same list at login (#195: a Chanter's and a Templar's,
-// the same 522 skins). It is kept once, the newest login's. Kept per
-// character, it came before the meter knew who had logged in, so it was
-// filed under the last character or under none: the Skins tab showed
-// another character's older list, or 0.
-const CLOSET = "_closet";
 const closetSkins = () => {
-  const list = owned[CLOSET]?.skins || ownedNow()?.skins;
+  const list = ownedNow()?.skins;
   return Array.isArray(list) ? list : null;
 };
 // Whether the character owns a shop item: true, false, or null not known.
@@ -565,20 +558,37 @@ function ownsItem(g) {
   if (item[0] === "skin") return closetSkins() ? closetSkins().includes(item[3]) : null;
   return o?.stones ? (o.stones[item[3]] || 0) > 0 : null;
 }
-const noteOwned = (meta, part, value) => queued(async () => {
-  // Skins: the account's Closet, whoever is playing.
-  const k = part === "skins" ? CLOSET : meta?.character ? marketKeyOf(meta.character) : marketChar;
+const noteOwned = (meta, part, value) => noteOwnedBy(meta?.character ? marketKeyOf(meta.character) : marketChar, part, value);
+const noteOwnedBy = (k, part, value) => queued(async () => {
   if (!k) return;
   owned[k] = { ...(owned[k] || {}), [part]: value, at: Date.now() };
-  // The newest characters only (the Closet kept).
-  const keys = Object.keys(owned).filter((c) => c !== CLOSET);
+  // The newest characters only.
+  const keys = Object.keys(owned);
   for (const old of keys.slice(0, Math.max(0, keys.length - 30))) delete owned[old];
   await a2.storage.set(OWNED_KEY, owned).catch(() => {});
   renderMarket();
 });
+// The Closet comes at login before the meter names who logged in, so it
+// was filed under the last character, or under none (#195: one character
+// showed another's older list, another 0). It is kept aside and filed under
+// the character the meter names next, within CLOSET_WAIT_MS; with none named
+// by then (the same character again), under the one it came with. Per
+// character, not once for all: two game accounts on one PC have two Closets.
+const CLOSET_WAIT_MS = 15_000;
+let pendingCloset = null;
+function fileCloset(k) {
+  const p = pendingCloset;
+  if (!p) return;
+  clearTimeout(p.timer);
+  pendingCloset = null;
+  noteOwnedBy(k || p.from, "skins", p.ids);
+}
 a2.on("decoded:skins-owned", (d, meta) => {
   const ids = (d?.skins || []).map((s) => Number(s.skin)).filter((id) => id > 0);
-  if (ids.length) noteOwned(meta, "skins", ids);
+  if (!ids.length) return;
+  clearTimeout(pendingCloset?.timer);
+  const from = meta?.character ? marketKeyOf(meta.character) : marketChar;
+  pendingCloset = { ids, from, timer: setTimeout(() => fileCloset(null), CLOSET_WAIT_MS) };
 });
 a2.on("decoded:theostones-owned", (d, meta) => {
   const stones = {};
@@ -775,9 +785,9 @@ a2.on("blackMarket", (m, meta) => queued(async () => {
     if (!g.soldOut || !(refreshAt > now)) continue;
     marketBought[k] = { ...(marketBought[k] || {}), [`i${g.itemId}`]: refreshAt };
     const item = SHOP_ITEMS[g.itemId];
-    const have = closetSkins();
-    if (item?.[0] === "skin" && item[3] && have && !have.includes(item[3])) {
-      owned[CLOSET] = { ...(owned[CLOSET] || {}), skins: [...have, item[3]], at: Date.now() };
+    const have = owned[k]?.skins;
+    if (item?.[0] === "skin" && item[3] && Array.isArray(have) && !have.includes(item[3])) {
+      owned[k] = { ...owned[k], skins: [...have, item[3]] };
       await a2.storage.set(OWNED_KEY, owned).catch(() => {});
     }
   }
@@ -853,11 +863,10 @@ a2.on("decoded:item-gained", (d, meta) => {
   forgetOldBought(now);
   a2.storage.set(BOUGHT_KEY, marketBought).catch(() => {});
   const item = SHOP_ITEMS[itemId];
-  if (item?.[3]) {
-    const skins = closetSkins();
-    if (item[0] === "skin" && skins && !skins.includes(item[3])) {
-      noteOwned(meta, "skins", [...skins, item[3]]);
-    } else if (item[0] === "theostone" && owned[k]?.stones) {
+  if (item?.[3] && owned[k]) {
+    if (item[0] === "skin" && Array.isArray(owned[k].skins) && !owned[k].skins.includes(item[3])) {
+      noteOwned(meta, "skins", [...owned[k].skins, item[3]]);
+    } else if (item[0] === "theostone" && owned[k].stones) {
       noteOwned(meta, "stones", { ...owned[k].stones, [item[3]]: (owned[k].stones[item[3]] || 0) + 1 });
     }
   }
@@ -865,8 +874,9 @@ a2.on("decoded:item-gained", (d, meta) => {
 });
 // A skin into the Closet, bought or not: owned from then on.
 a2.on("decoded:skin-added", (d, meta) => {
-  const have = closetSkins();
-  if (!have) return;
+  const k = meta?.character ? marketKeyOf(meta.character) : marketChar;
+  const have = owned[k]?.skins;
+  if (!Array.isArray(have)) return;
   const added = (d?.skins || []).map((s) => Number(s.skin)).filter((id) => id > 0 && !have.includes(id));
   if (added.length) noteOwned(meta, "skins", [...have, ...added]);
 });
@@ -1792,6 +1802,8 @@ for (const event of Object.keys(handle)) {
 // Who is playing as the window opens.
 a2.on("character", (character) => queued(async () => {
   marketChar = marketKeyOf(character);
+  // A Closet that came at this login: this character's.
+  if (character && characterKey(character)) fileCloset(marketChar);
   marketName = character?.name || "";
   const k = keyFor(character);
   await adopt(k, character);
