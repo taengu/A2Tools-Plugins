@@ -1,5 +1,18 @@
 [
   {
+    "version": "0.8.1",
+    "en": "The anchor can be dragged again after switching Layout between Icons and List in Settings (one of them stopped taking the mouse).",
+    "ko": "설정에서 배치를 아이콘과 목록 사이에서 바꾼 뒤에도 앵커를 끌 수 있습니다 (한쪽이 마우스에 반응하지 않았음).",
+    "ja": "設定でレイアウトをアイコンとリストで切り替えた後も、アンカーをドラッグできます（片方がマウスに反応しなくなっていました）。",
+    "de": "Der Anker lässt sich nach dem Wechsel der Darstellung zwischen Symbolen und Liste wieder ziehen (eine von beiden reagierte nicht auf die Maus).",
+    "fr": "L'ancre se déplace de nouveau après avoir changé la disposition entre Icônes et Liste dans les réglages (l'une des deux ne réagissait plus à la souris).",
+    "es": "El ancla se puede arrastrar de nuevo tras cambiar el diseño entre Iconos y Lista en los ajustes (uno de los dos dejaba de responder al ratón).",
+    "pt": "A âncora volta a poder ser arrastada depois de trocar o layout entre Ícones e Lista nas configurações (um dos dois deixava de responder ao mouse).",
+    "ru": "Якорь снова можно перетаскивать после переключения вида между значками и списком в настройках (один из них переставал реагировать на мышь).",
+    "zh-Hant": "在設定中將版面在圖示與清單之間切換後，錨點又能拖曳了（其中一種先前不回應滑鼠）。",
+    "zh-Hans": "在设置中将布局在图标与列表之间切换后，锚点又能拖动了（其中一种之前不响应鼠标）。"
+  },
+  {
     "version": "0.8.0",
     "en": "A short tour of how alerts can show (Settings, Take the tour). Anchor mode's new List layout: one slim row per boss. Show the icon (off: pins show name and time only). Icons is now Overlay. Asmodian Kashapa's teleport is 50.",
     "ko": "알림 표시 방식 간단 안내 (설정 → 안내 다시 보기). 앵커 모드의 새 목록 배치: 보스마다 한 줄. 아이콘 표시 (끄면 이름과 시간만). '아이콘'은 이제 '오버레이'입니다. 마족 카샤파의 텔레포트는 50번입니다.",
@@ -50,18 +63,5 @@
     "ru": "Разлом: вражеские боссы, чьё снаряжение просит ваша доска снабжения боссов, отмечены ★, а кнопка выбирает их всех (метр 2.0.99 или новее).",
     "zh-Hant": "時空裂縫：會掉落你的首領補給委託所需裝備的敵方首領標上★，並可一鍵全選（需計量器 2.0.99 或更新版本）。",
     "zh-Hans": "时空裂缝：会掉落你的首领补给委托所需装备的敌方首领标上★，并可一键全选（需计量器 2.0.99 或更新版本）。"
-  },
-  {
-    "version": "0.7.1",
-    "en": "Spacetime Rift on the Bosses tab: any free enemy boss or only the ones you pick, an alert before each rift, picked bosses as red icons, and World Boss Train leaves out common bosses while a rift is open.",
-    "ko": "보스 탭의 시공의 균열: 비어 있는 적 보스 전부 또는 고른 보스만, 균열 전 알림, 고른 보스는 빨간 아이콘으로 표시, 균열이 열려 있는 동안 월드 보스 트레인은 흔한 보스를 뺍니다.",
-    "ja": "ボスタブの時空の亀裂：空いている敵ボスすべてか選んだボスのみ、亀裂前の通知、選んだボスは赤いアイコン、亀裂が開いている間はワールドボストレインから一般的なボスを除外。",
-    "de": "Raum-Zeit-Riss im Boss-Tab: jeder freie gegnerische Boss oder nur deine Auswahl, ein Alarm vor jedem Riss, gewählte Bosse als rote Symbole, und der Weltboss-Zug lässt häufige Bosse weg, solange ein Riss offen ist.",
-    "fr": "Faille spatio-temporelle dans l'onglet Boss : tout boss ennemi libre ou seulement ta sélection, une alerte avant chaque faille, les boss choisis en icônes rouges, et le train des boss mondiaux omet les boss courants pendant une faille.",
-    "es": "Grieta espaciotemporal en la pestaña Jefes: cualquier jefe enemigo libre o solo los que elijas, una alerta antes de cada grieta, los elegidos como iconos rojos, y el tren de jefes omite los comunes mientras hay una grieta abierta.",
-    "pt": "Fenda espaço-temporal na aba Chefes: qualquer chefe inimigo livre ou só os escolhidos, um alerta antes de cada fenda, os escolhidos como ícones vermelhos, e o trem de chefes omite os comuns enquanto uma fenda está aberta.",
-    "ru": "Разлом во вкладке боссов: любой свободный вражеский босс или только выбранные, оповещение перед каждым разломом, выбранные — красными значками, а поезд мировых боссов пропускает частых боссов, пока разлом открыт.",
-    "zh-Hant": "首領分頁的時空裂縫：任何空著的敵方首領或只顯示你選的，每次裂縫前提醒，選中的首領以紅色圖示顯示，裂縫開啟期間世界首領列車略過常見首領。",
-    "zh-Hans": "首领分页的时空裂缝：任何空着的敌方首领或只显示你选的，每次裂缝前提醒，选中的首领以红色图标显示，裂缝开启期间世界首领列车略过常见首领。"
   }
 ]
