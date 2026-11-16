@@ -52,6 +52,44 @@ body.locked .pin { cursor: default; }
   pointer-events: none;
 }
 .ghost[hidden] { display: none; }
+/* The list (widget.js renderList): slim dark rows, the kind a thin edge on
+   the left, HP a faint bar behind the text, the time on the right. */
+.grid[hidden] { display: none; }
+.lrow {
+  position: absolute;
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 0 8px 0 9px;
+  overflow: hidden;
+  border-radius: 4px;
+  background: rgba(14, 18, 27, 0.78);
+  box-shadow: inset 2px 0 0 var(--edge, #5a95d6);
+  font: 500 12px/1 "Segoe UI", system-ui, sans-serif;
+  color: rgba(232, 237, 245, 0.92);
+  cursor: grab;
+}
+body.locked .lrow { cursor: default; }
+.lrow[hidden] { display: none; }
+.lrow .fill { position: absolute; left: 0; top: 0; bottom: 0; width: 0; pointer-events: none; transition: width 0.6s ease; }
+.lrow > :not(.fill) { position: relative; }
+.lrow .lname { flex: 1; min-width: 0; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.lrow .ltp { flex: none; font-size: 10px; color: rgba(232, 237, 245, 0.55); }
+.lrow .lsub { flex: none; font-size: 11px; font-weight: 600; color: #e6cf7a; }
+.lrow .ltp[hidden], .lrow .lsub[hidden] { display: none; }
+.lrow .ltime { flex: none; font-variant-numeric: tabular-nums; font-weight: 600; color: rgba(232, 237, 245, 0.85); }
+.lrow.running .ltime { color: #7fd3a0; }
+.lrow.enemy { background: rgba(34, 12, 15, 0.8); }
+/* Due: the edge and the row brighten and fade, quietly. */
+.lrow.due { animation: rowDue 1.4s ease-in-out infinite; }
+@keyframes rowDue {
+  0%, 100% { box-shadow: inset 2px 0 0 var(--edge, #5a95d6); }
+  50% { box-shadow: inset 3px 0 0 var(--edge, #5a95d6), inset 0 0 0 1px var(--edge, #5a95d6); }
+}
+.lrow.copied { animation: rowCopied 0.9s ease-out; }
+@keyframes rowCopied { 0% { box-shadow: inset 0 0 0 2px rgba(255, 255, 255, 0.9); } 100% { box-shadow: inset 0 0 0 2px rgba(255, 255, 255, 0); } }
+.list .ghost { border-radius: 4px; }
 /* "+N": the icons past the grid's room, named in its tooltip. */
 .pin.more .badge { --ring: #9aa4b2; }
 .pin.more .glyph { font-size: 16px; }

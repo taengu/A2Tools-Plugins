@@ -491,9 +491,9 @@ const TELEPORTS = {
  "field:111023": [
   {
    "asmodian": {
-    "dist": 265,
-    "name": "1052031",
-    "tp": 54
+    "dist": 281,
+    "name": "1052042",
+    "tp": 50
    }
   }
  ],
@@ -939,6 +939,18 @@ const TELEPORT_TEXT = {
   "ru": "Рабочий лагерь стального молота",
   "zh-Hans": "钢铁之锤作业场",
   "zh-Hant": "鋼鐵之錘作業場"
+ },
+ "1052042": {
+  "de": "Amuntas Versteck",
+  "en": "Amunta's Hideout",
+  "es": "Escondite de Amunta",
+  "fr": "Refuge d'Amunta",
+  "ja": "アムンタの隠れ家",
+  "ko": "아문타의 은신처",
+  "pt": "Esconderijo de Amunta",
+  "ru": "Убежище Амунта",
+  "zh-Hans": "阿蒙塔藏身处",
+  "zh-Hant": "阿蒙塔藏身處"
  },
  "1052043": {
   "de": "Provisorischer Handelsposten von Stahlhammer",

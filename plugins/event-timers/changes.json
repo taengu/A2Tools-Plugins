@@ -1,5 +1,18 @@
 [
   {
+    "version": "0.8.0",
+    "en": "Anchor mode's new List layout: one slim row per boss with its name, teleport and time, no icons (Placement, Layout). Asmodian Kashapa's teleport is 50, Amunta's Hideout.",
+    "ko": "앵커 모드의 새 목록 배치: 보스마다 이름, 텔레포트, 시간만 담은 한 줄, 아이콘 없음 (배치 설정). 마족 카샤파의 텔레포트는 50번, 아문타의 은신처입니다.",
+    "ja": "アンカーモードに新しいリスト表示：ボスごとに名前、テレポート、時間の1行でアイコンなし（配置の設定）。魔族側カシャパのテレポートは50番、アムンタの隠れ家です。",
+    "de": "Neue Listen-Darstellung im Ankermodus: eine schmale Zeile pro Boss mit Name, Teleport und Zeit, ohne Symbole (Platzierung, Darstellung). Asmodier-Kashapa: Teleport 50, Amuntas Versteck.",
+    "fr": "Nouvelle disposition en liste du mode ancre : une ligne fine par boss avec son nom, son téléport et l'heure, sans icône (Placement, Disposition). Kashapa côté Asmodien : téléport 50, Refuge d'Amunta.",
+    "es": "Nuevo diseño de lista en el modo ancla: una fila fina por jefe con nombre, teletransporte y hora, sin iconos (Colocación, Diseño). Kashapa asmodiano: teletransporte 50, Escondite de Amunta.",
+    "pt": "Novo layout em lista no modo âncora: uma linha fina por chefe com nome, teleporte e horário, sem ícones (Posição, Layout). Kashapa asmodiano: teleporte 50, Esconderijo de Amunta.",
+    "ru": "Новый вид «Список» в режиме якоря: одна узкая строка на босса с именем, телепортом и временем, без значков (Размещение, Вид). Телепорт асмодианской Кашапы — 50, Убежище Амунта.",
+    "zh-Hant": "錨點模式新增清單版面：每個首領一列細行，只顯示名稱、傳送點與時間，不顯示圖示（放置設定）。魔族卡夏帕的傳送點改為 50 號，阿蒙塔藏身處。",
+    "zh-Hans": "锚点模式新增列表布局：每个首领一行细条，只显示名称、传送点与时间，不显示图标（放置设置）。魔族卡夏帕的传送点改为 50 号，阿蒙塔藏身处。"
+  },
+  {
     "version": "0.7.4",
     "en": "Spacetime Rift: the enemy's bosses show their HP live while the rift is near or open, as that server's meters and your own report it.",
     "ko": "시공의 균열: 균열이 가까워지거나 열려 있는 동안 적 보스의 HP가 그 서버의 미터와 내 미터가 보고하는 대로 실시간으로 표시됩니다.",
@@ -50,18 +63,5 @@
     "ru": "Разлом во вкладке боссов: любой свободный вражеский босс или только выбранные, оповещение перед каждым разломом, выбранные — красными значками, а поезд мировых боссов пропускает частых боссов, пока разлом открыт.",
     "zh-Hant": "首領分頁的時空裂縫：任何空著的敵方首領或只顯示你選的，每次裂縫前提醒，選中的首領以紅色圖示顯示，裂縫開啟期間世界首領列車略過常見首領。",
     "zh-Hans": "首领分页的时空裂缝：任何空着的敌方首领或只显示你选的，每次裂缝前提醒，选中的首领以红色图标显示，裂缝开启期间世界首领列车略过常见首领。"
-  },
-  {
-    "version": "0.7.0",
-    "en": "Spacetime Rift (Settings): the world bosses of the server yours is matched against, up or due while a rift is open. Needs meter 2.0.99 or newer.",
-    "ko": "시공의 균열(설정): 매칭된 상대 서버의 월드 보스 중 균열이 열려 있는 동안 출현 중이거나 출현할 보스를 보여 줍니다. 미터 2.0.99 이상이 필요합니다.",
-    "ja": "時空の亀裂（設定）：マッチングした相手サーバーのワールドボスのうち、亀裂が開いている間に出現中・出現予定のものを表示。メーター2.0.99以降が必要です。",
-    "de": "Raum-Zeit-Riss (Einstellungen): die Weltbosse des gegnerischen Servers, die da sind oder kommen, solange ein Riss offen ist. Benötigt Meter 2.0.99 oder neuer.",
-    "fr": "Faille spatio-temporelle (Réglages) : les boss mondiaux du serveur adverse, présents ou attendus pendant qu'une faille est ouverte. Nécessite le compteur 2.0.99 ou plus récent.",
-    "es": "Grieta espaciotemporal (Ajustes): los jefes mundiales del servidor rival que están o aparecerán mientras una grieta está abierta. Necesita el medidor 2.0.99 o posterior.",
-    "pt": "Fenda espaço-temporal (Configurações): os chefes mundiais do servidor rival ativos ou previstos enquanto uma fenda está aberta. Requer o medidor 2.0.99 ou mais recente.",
-    "ru": "Пространственно-временной разлом (настройки): мировые боссы сервера-соперника, которые есть или появятся, пока разлом открыт. Нужен метр 2.0.99 или новее.",
-    "zh-Hant": "時空裂縫（設定）：配對敵方伺服器在裂縫開啟期間已出現或將出現的世界首領。需要計量器 2.0.99 或更新版本。",
-    "zh-Hans": "时空裂缝（设置）：配对敌方服务器在裂缝开启期间已出现或将出现的世界首领。需要计量器 2.0.99 或更新版本。"
   }
 ]

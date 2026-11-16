@@ -894,6 +894,7 @@ body.alertOnly .openFull:hover {
   border-radius: 3px;
   background: rgba(0, 0, 0, 0.25);
 }
+.mini.list .cells { grid-template-columns: 64px; grid-auto-rows: 7px; gap: 2px; }
 .placement:not(.on) .mini { opacity: 0.4; }
 /* A corner: where the anchor can sit. The chosen one is the anchor itself;
    the others are small targets. */
