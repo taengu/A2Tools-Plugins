@@ -18,7 +18,7 @@ a2.on("widget", (d) => {
   $(".killedBy").textContent = d.killedBy;
   $(".name").textContent = d.name;
   // The strip has the least room: level and legion only.
-  const parts = d.style === "strip" ? [d.level, d.legion] : [d.className && d.level ? `${d.className} ${d.level}` : d.className || d.level, d.legion, d.server];
+  const parts = d.style === "strip" ? [d.rank, d.level, d.legion] : [d.rank, d.className && d.level ? `${d.className} ${d.level}` : d.className || d.level, d.legion, d.server];
   $(".sub").textContent = parts.filter(Boolean).join(" · ");
   $(".cp").textContent = d.cp;
   $(".cpBox").title = d.cpLabel;

@@ -93,7 +93,7 @@ globalThis.KdaLogic = (() => {
     if (kind === "kill" || kind === "assist") {
       const v = event.victim || {};
       const at = Number(event.at) || Date.now();
-      const entry = { at, kind, name: v.name || null, serverId: v.serverId ?? null, class: v.class || null, level: v.level ?? null, legion: v.legion || null, ap: null };
+      const entry = { at, kind, name: v.name || null, serverId: v.serverId ?? null, class: v.class || null, level: v.level ?? null, legion: v.legion || null, rank: v.abyssGrade ?? null, ap: null };
       // A gain that came first and no kill took yet.
       const gain = list.pendingGain;
       if (gain && Math.abs(at - gain.at) <= PAIR_MS) {
