@@ -819,9 +819,10 @@
   };
   const SOURCE_KINDS = ["box", "market", "coin", "cube", "ranking", "dungeon", "other"];
   const ALL_SKINS = Object.entries(SKINS).map(([id, s]) => ({ id: Number(id), ...s }));
+  // The character's Closet, or its server's (plugin.js, skinsOf).
   const ownedSkins = () => {
-    const list = owned[me()]?.skins;
-    return Array.isArray(list) ? new Set(list.map(Number)) : null;
+    const list = skinsOf(me());
+    return list ? new Set(list.map(Number)) : null;
   };
   const skinName = (s) => words(sideOf(me()) === "asmodian" && s.d != null ? s.d : s.n);
   // The skins on the Black Market for this character now.

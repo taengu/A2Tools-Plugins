@@ -546,10 +546,18 @@ function marketItems(kind, now = Date.now()) {
 const OWNED_KEY = "closetOwned";
 let owned = {};
 const ownedNow = () => owned[marketChar] || null;
-const closetSkins = () => {
-  const list = ownedNow()?.skins;
+// The Closet is shared by an account's characters on one server: each
+// login's list is kept for its character and for its server, and a
+// character with none of its own yet (not logged in since) shows its
+// server's. Its own comes first, so two accounts on one server stay apart
+// once each character has logged in.
+const serverOfKey = (k) => /^char-(\d+)-/.exec(k || "")?.[1] || null;
+const serverCloset = (k) => (serverOfKey(k) ? `closet-${serverOfKey(k)}` : null);
+const skinsOf = (k) => {
+  const list = owned[k]?.skins || owned[serverCloset(k)]?.skins;
   return Array.isArray(list) ? list : null;
 };
+const closetSkins = () => skinsOf(marketChar);
 // Whether the character owns a shop item: true, false, or null not known.
 function ownsItem(g) {
   const o = ownedNow();
@@ -562,8 +570,9 @@ const noteOwned = (meta, part, value) => noteOwnedBy(meta?.character ? marketKey
 const noteOwnedBy = (k, part, value) => queued(async () => {
   if (!k) return;
   owned[k] = { ...(owned[k] || {}), [part]: value, at: Date.now() };
-  // The newest characters only.
-  const keys = Object.keys(owned);
+  if (part === "skins" && serverCloset(k)) owned[serverCloset(k)] = { skins: value, at: Date.now() };
+  // The newest characters only (the servers' Closets kept).
+  const keys = Object.keys(owned).filter((c) => !c.startsWith("closet-"));
   for (const old of keys.slice(0, Math.max(0, keys.length - 30))) delete owned[old];
   await a2.storage.set(OWNED_KEY, owned).catch(() => {});
   renderMarket();
@@ -786,11 +795,8 @@ a2.on("blackMarket", (m, meta) => queued(async () => {
     if (!g.soldOut || !(refreshAt > now)) continue;
     marketBought[k] = { ...(marketBought[k] || {}), [`i${g.itemId}`]: refreshAt };
     const item = SHOP_ITEMS[g.itemId];
-    const have = owned[k]?.skins;
-    if (item?.[0] === "skin" && item[3] && Array.isArray(have) && !have.includes(item[3])) {
-      owned[k] = { ...owned[k], skins: [...have, item[3]] };
-      await a2.storage.set(OWNED_KEY, owned).catch(() => {});
-    }
+    const have = skinsOf(k);
+    if (item?.[0] === "skin" && item[3] && have && !have.includes(item[3])) noteOwnedBy(k, "skins", [...have, item[3]]);
   }
   if ((m?.goods || []).some((g) => g.soldOut)) {
     forgetOldBought(now);
@@ -864,10 +870,11 @@ a2.on("decoded:item-gained", (d, meta) => {
   forgetOldBought(now);
   a2.storage.set(BOUGHT_KEY, marketBought).catch(() => {});
   const item = SHOP_ITEMS[itemId];
-  if (item?.[3] && owned[k]) {
-    if (item[0] === "skin" && Array.isArray(owned[k].skins) && !owned[k].skins.includes(item[3])) {
-      noteOwned(meta, "skins", [...owned[k].skins, item[3]]);
-    } else if (item[0] === "theostone" && owned[k].stones) {
+  if (item?.[3]) {
+    const skins = skinsOf(k);
+    if (item[0] === "skin" && skins && !skins.includes(item[3])) {
+      noteOwnedBy(k, "skins", [...skins, item[3]]);
+    } else if (item[0] === "theostone" && owned[k]?.stones) {
       noteOwned(meta, "stones", { ...owned[k].stones, [item[3]]: (owned[k].stones[item[3]] || 0) + 1 });
     }
   }
@@ -876,10 +883,10 @@ a2.on("decoded:item-gained", (d, meta) => {
 // A skin into the Closet, bought or not: owned from then on.
 a2.on("decoded:skin-added", (d, meta) => {
   const k = meta?.character ? marketKeyOf(meta.character) : marketChar;
-  const have = owned[k]?.skins;
-  if (!Array.isArray(have)) return;
+  const have = skinsOf(k);
+  if (!have) return;
   const added = (d?.skins || []).map((s) => Number(s.skin)).filter((id) => id > 0 && !have.includes(id));
-  if (added.length) noteOwned(meta, "skins", [...have, ...added]);
+  if (added.length) noteOwnedBy(k, "skins", [...have, ...added]);
 });
 setInterval(() => { if (view === "market" || !els.toMarket.hidden) renderMarket(); }, 30_000);
 
