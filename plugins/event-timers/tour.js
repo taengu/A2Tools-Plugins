@@ -69,12 +69,23 @@ const TOUR_UI = {
 };
 const tourUi = () => TOUR_UI[language] || TOUR_UI.en;
 
-// Each step's drawing: icons over a game scene; a grid beside its anchor; a
-// list's rows.
+// Each step's drawing, made of the pins' own parts (widget.css's look, at a
+// smaller size): pins over a game scene; a grid of them beside its anchor;
+// a list's rows.
+const tourIcon = (name) => document.querySelector(`.tourIcons img[data-icon="${name}"]`)?.getAttribute("src") || "";
+const tourPin = (kind, icon, time, name, extra = "") => {
+  const src = tourIcon(icon);
+  const art = src ? `<img src="${src}" alt="" />` : "";
+  return `<div class="tPin ${kind} ${extra}"><div class="tBadge">${art}</div><div class="tTime">${time}</div>${name ? `<div class="tName">${name}</div>` : ""}</div>`;
+};
+const tourRow = (edge, icon, name, time, extra = "") => {
+  const src = tourIcon(icon);
+  return `<div class="tRow ${extra}" style="--edge:${edge}"><span class="tRowIcon">${src ? `<img src="${src}" alt="" />` : ""}</span><span class="tRowName">${name}</span><span class="tRowTime">${time}</span></div>`;
+};
 const TOUR_ART = [
-  `<div class="tourScene"><span class="tourPin field">7:12</span><span class="tourPin event due">2:41</span><span class="tourPin boss">14:05</span></div>`,
-  `<div class="tourScene"><div class="tourGrid"><span class="tourAnchor">⚓</span><span class="tourPin field">Up</span><span class="tourPin event">2:41</span><span class="tourPin boss">4:12</span><span class="tourPin field">11:05</span><span class="tourPin event">26:30</span></div></div>`,
-  `<div class="tourScene"><div class="tourList"><span class="tourRow running"><i></i>Soul Ruler Kashapa<b>64%</b></span><span class="tourRow due"><i></i>Dimensional Invasion<b>2:41</b></span><span class="tourRow"><i></i>Kaira the Watcher<b>4:12</b></span></div></div>`,
+  () => `<div class="tourScene">${tourPin("field running hp", "boss", "Fighting", "Kashapa")}${tourPin("event due", "invasion", "2:41", "Invasion")}${tourPin("event", "shugo", "26:30", "Shugo Festa")}</div>`,
+  () => `<div class="tourScene"><div class="tGrid"><span class="tAnchor">⚓</span>${tourPin("field running", "boss", "Up", "")}${tourPin("event due", "invasion", "2:41", "")}${tourPin("boss", "boss", "4:12", "")}${tourPin("field", "boss", "11:05", "")}${tourPin("event", "shugo", "26:30", "")}${tourPin("field", "boss", "38:20", "")}</div></div>`,
+  () => `<div class="tourScene"><div class="tList">${tourRow("#5fbf86", "boss", "Soul Ruler Kashapa", "64%", "hp")}${tourRow("#5a95d6", "invasion", "Dimensional Invasion", "2:41", "due")}${tourRow("#d9705f", "boss", "Drana Var", "11:05")}</div></div>`,
 ];
 
 let tourStep = 0;
@@ -121,7 +132,7 @@ function renderTour() {
   const last = tourStep === steps.length - 1;
   tourBox.querySelector(".tourTitle").textContent = u.title;
   tourBox.querySelector(".tourCount").textContent = u.step(tourStep + 1, steps.length);
-  tourBox.querySelector(".tourArt").innerHTML = TOUR_ART[tourStep];
+  tourBox.querySelector(".tourArt").innerHTML = TOUR_ART[tourStep]();
   tourBox.querySelector(".tourHead").textContent = steps[tourStep][0];
   tourBox.querySelector(".tourText").textContent = steps[tourStep][1];
   tourBox.querySelector(".tourSkip").textContent = u.skip;
