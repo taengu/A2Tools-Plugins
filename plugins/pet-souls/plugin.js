@@ -551,7 +551,7 @@ const ownedNow = () => owned[marketChar] || null;
 // character with none of its own yet (not logged in since) shows its
 // server's. Its own comes first, so two accounts on one server stay apart
 // once each character has logged in.
-const serverOfKey = (k) => /^char-(\d+)-/.exec(k || "")?.[1] || null;
+const serverOfKey = (k) => /^char-([1-9]\d*)-/.exec(k || "")?.[1] || null;
 const serverCloset = (k) => (serverOfKey(k) ? `closet-${serverOfKey(k)}` : null);
 const skinsOf = (k) => {
   const list = owned[k]?.skins || owned[serverCloset(k)]?.skins;
