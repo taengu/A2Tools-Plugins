@@ -571,8 +571,9 @@ const noteOwnedBy = (k, part, value) => queued(async () => {
 // The Closet comes at login before the meter names who logged in, so it
 // was filed under the last character, or under none (#195: one character
 // showed another's older list, another 0). It is kept aside and filed under
-// the character the meter names next, within CLOSET_WAIT_MS; with none named
-// by then (the same character again), under the one it came with. Per
+// the next character the meter names that isn't the one it came with,
+// within CLOSET_WAIT_MS; with none named by then (the same character
+// again), under the one it came with. Per
 // character, not once for all: two game accounts on one PC have two Closets.
 const CLOSET_WAIT_MS = 15_000;
 let pendingCloset = null;
@@ -1802,8 +1803,10 @@ for (const event of Object.keys(handle)) {
 // Who is playing as the window opens.
 a2.on("character", (character) => queued(async () => {
   marketChar = marketKeyOf(character);
-  // A Closet that came at this login: this character's.
-  if (character && characterKey(character)) fileCloset(marketChar);
+  // A Closet that came at this login: the character's the meter names next.
+  // Not an update about the one it came with (Kinah today can come for the
+  // last character after the new login's list): only another, or the wait.
+  if (pendingCloset && characterKey(character) && marketChar !== pendingCloset.from) fileCloset(marketChar);
   marketName = character?.name || "";
   const k = keyFor(character);
   await adopt(k, character);
