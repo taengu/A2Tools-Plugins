@@ -74,9 +74,19 @@ function renderPin(pin, d) {
 
 // The grid: the frame's size, the grip in its corner, and each icon in its
 // place, filling from the grip's side.
+// The other layout's box, hidden: not placing either. It kept its "setup"
+// mark, and its hidden grip was the one found for the mouse, so the list
+// shown after the icons (Layout changed in Settings) could not be moved by
+// its anchor.
+function hideBox(box) {
+  if (!box) return;
+  box.hidden = true;
+  box.classList.remove("setup");
+}
+
 function renderGrid(g) {
   single.hidden = true;
-  if (listBox) listBox.hidden = true;
+  hideBox(listBox);
   if (gridBox) gridBox.hidden = false;
   if (!gridBox) {
     gridBox = document.createElement("div");
@@ -178,7 +188,7 @@ function renderGrid(g) {
 const KIND_EDGE = { field: "#d9705f", boss: "#a985e0", event: "#5a95d6", more: "#7d8794" };
 function renderList(g) {
   single.hidden = true;
-  if (gridBox) gridBox.hidden = true;
+  hideBox(gridBox);
   if (!listBox) {
     listBox = document.createElement("div");
     listBox.className = "grid list";
@@ -299,7 +309,7 @@ a2.on("widget", (d) => {
 // takes several (a2.widget.areas, 2.0.77), else the box around them all.
 const PARTS = ".badge, .time, .sub, .name";
 // What can be grabbed: the grip in setup, and the parts of each icon shown.
-const SHOWN = ".setup > .grip, .pin:not([hidden]) .badge, .pin:not([hidden]) .time, .pin:not([hidden]) .sub, .pin:not([hidden]) .name, .lrow:not([hidden])";
+const SHOWN = ".grid:not([hidden]).setup > .grip, .pin:not([hidden]) .badge, .pin:not([hidden]) .time, .pin:not([hidden]) .sub, .pin:not([hidden]) .name, .lrow:not([hidden])";
 let lastArea = "";
 function partsOf(el, rect) {
   const r = el.getBoundingClientRect();
@@ -324,7 +334,7 @@ function reportArea() {
   const several = typeof a2.widget.areas === "function";
   if (!several && typeof a2.widget.area !== "function") return;
   const boxes = [];
-  const grip = document.querySelector(".setup > .grip");
+  const grip = document.querySelector(".grid:not([hidden]).setup > .grip");
   if (grip) {
     const b = partsOf(grip, null);
     if (b) boxes.push(b);
