@@ -125,13 +125,17 @@
       x.append(node("b", null, value), node("small", null, label));
       return x;
     };
+    // Upgraded at start: of the gathers whose start was seen.
+    const seenStarts = s.startedFresh + s.appraiserOf;
     rates.append(rate(s.gathers ? pc(s.fresh / s.gathers) : "—", g("fresh")),
+      rate(seenStarts ? pc(s.startedFresh / seenStarts) : "—", g("startedFresh"), "listed"),
       rate(s.appraiserOf ? pc(s.appraiser / s.appraiserOf) : "—", g("appraiser"), "listed"));
     top.append(rates);
     const bits = [`${ledger.num(s.gathers)} ${g("gathers")}`];
     const r = range(s.appraiser, s.appraiserOf);
     if (s.appraiserOf) bits.push(`${g("appraiser")} ${g("of")(ledger.num(s.appraiser), ledger.num(s.appraiserOf))}${r ? ` (${g("likely")(pc(r[0]), pc(r[1]))})` : ""}`);
-    if (s.startedFresh) bits.push(`${g("startedFresh")} ${ledger.num(s.startedFresh)}`);
+    const rs = range(s.startedFresh, seenStarts);
+    if (seenStarts) bits.push(`${g("startedFresh")} ${g("of")(ledger.num(s.startedFresh), ledger.num(seenStarts))}${rs ? ` (${g("likely")(pc(rs[0]), pc(rs[1]))})` : ""}`);
     if (s.gathers) bits.push(`${g("extra")} ${pc(s.extra / s.gathers)}`);
     if (s.failed) bits.push(`${g("failed")} ${ledger.num(s.failed)}`);
     const sub = node("div", "dSub");

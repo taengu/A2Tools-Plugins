@@ -1,5 +1,18 @@
 [
   {
+    "version": "0.8.2",
+    "en": "Gathering: each herb shows how often it's upgraded at the start of a gather, with the likely range. The Appraiser's reroll succeeds at this same rate.",
+    "ko": "채집: 재료마다 채집 시작 시 등급이 오르는 확률을 예상 범위와 함께 보여줍니다. 감정사의 재선택도 같은 확률로 성공합니다.",
+    "ja": "採集：素材ごとに採集開始時に品質が上がる確率を推定範囲つきで表示します。鑑定士の再選択も同じ確率で成功します。",
+    "de": "Sammeln: Jedes Kraut zeigt, wie oft es beim Start aufgewertet wird, mit dem wahrscheinlichen Bereich. Der neue Wurf des Gutachters gelingt mit derselben Rate.",
+    "fr": "Récolte : chaque herbe montre à quelle fréquence elle est améliorée dès le départ, avec la plage probable. Le nouveau tirage de l'Expert réussit au même taux.",
+    "es": "Recolección: cada hierba muestra con qué frecuencia mejora al inicio, con el rango probable. La nueva tirada del Tasador acierta con esa misma tasa.",
+    "pt": "Coleta: cada erva mostra com que frequência melhora no início, com a faixa provável. A nova rolagem do Classificador acerta nessa mesma taxa.",
+    "ru": "Сбор: для каждой травы показано, как часто она улучшается с самого начала, с вероятным диапазоном. Повторный бросок Оценщика удаётся с тем же шансом.",
+    "zh-Hant": "採集：每種材料顯示開始時品質提升的機率與可能範圍。鑑定師的重新選擇也以同樣機率成功。",
+    "zh-Hans": "采集：每种材料显示开始时品质提升的概率与可能范围。鉴定师的重新选择也以同样概率成功。"
+  },
+  {
     "version": "0.8.1",
     "en": "Skins: the search also finds where skins drop, e.g. a dungeon's name.",
     "ko": "외형: 검색이 획득처도 찾습니다. 예: 던전 이름.",
@@ -50,18 +63,5 @@
     "ru": "Облики: гардероб относится к нужному персонажу, даже если во время входа приходят данные о предыдущем.",
     "zh-Hant": "外觀：即使登入時還收到前一個角色的更新，衣櫃也會記在正確的角色上。",
     "zh-Hans": "外观：即使登录时还收到前一个角色的更新，衣柜也会记在正确的角色上。"
-  },
-  {
-    "version": "0.7.1",
-    "en": "Skins: each character's Closet is now read for that character at login, so the totals no longer show 0 or another character's list. Skins from extracting gear name the dungeons it drops in. Pets: drop hints for Chaotic Outer Reshanta.",
-    "ko": "스킨: 로그인할 때 각 캐릭터의 옷장을 그 캐릭터 것으로 읽어, 합계가 0이나 다른 캐릭터의 목록으로 표시되지 않습니다. 장비 추출로 얻는 스킨에 그 장비가 나오는 던전이 표시됩니다. 펫: 혼돈의 바깥 레샨타 드롭 위치.",
-    "ja": "スキン：ログイン時に各キャラクターのクローゼットをそのキャラクターの分として読むので、合計が0や別キャラクターの一覧になりません。装備の抽出で得るスキンに、その装備が出るダンジョンを表示。ペット：混沌の外部レシャンタのドロップ場所。",
-    "de": "Skins: Der Kleiderschrank wird beim Login dem richtigen Charakter zugeordnet, die Summe zeigt nicht mehr 0 oder die Liste eines anderen. Skins aus extrahierter Ausrüstung nennen deren Dungeons. Begleiter: Fundorte im Chaotischen Äußeren Reshanta.",
-    "fr": "Apparences : la garde-robe est attribuée au bon personnage à la connexion, le total n'affiche plus 0 ni la liste d'un autre. Celles extraites d'un équipement nomment ses donjons. Familiers : lieux de butin dans la Reshanta extérieure chaotique.",
-    "es": "Aspectos: el armario se asigna al personaje correcto al conectarse, así que el total ya no muestra 0 ni la lista de otro. Los extraídos de equipo nombran sus mazmorras. Mascotas: dónde caen en la Reshanta exterior caótica.",
-    "pt": "Visuais: o guarda-roupa vai para o personagem certo ao entrar, então o total não mostra mais 0 nem a lista de outro. Os extraídos de equipamento citam suas masmorras. Mascotes: onde caem na Reshanta Exterior Caótica.",
-    "ru": "Облики: гардероб при входе относится к нужному персонажу, итог больше не показывает 0 или чужой список. Для обликов из извлечения снаряжения указаны подземелья. Питомцы: места добычи во Внешней хаотической Решанте.",
-    "zh-Hant": "外觀：登入時會把衣櫃記在正確的角色上，總數不再顯示 0 或其他角色的清單。從裝備萃取的外觀會標示該裝備掉落的副本。寵物：混沌外部雷珊塔的掉落位置。",
-    "zh-Hans": "外观：登录时会把衣柜记在正确的角色上，总数不再显示 0 或其他角色的列表。从装备萃取的外观会标示该装备掉落的副本。宠物：混沌外部雷珊塔的掉落位置。"
   }
 ]
