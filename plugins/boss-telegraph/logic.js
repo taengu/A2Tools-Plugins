@@ -137,10 +137,9 @@
       const buff = c.t === "abnormal" ? T(c.n) : "";
       if (actionMode()) {
         const resolved = hooks.instruction?.(c, { preview, uncertain: !!c.uncertain });
-        const action = (!c.uncertain && (actionText(resolved?.text) || (!resolved?.suppressLegacy && actionText(actions.calls?.[c.k])))) || actionText(actions.watch);
-        // Unknown mechanics get a neutral advisory, never an inferred dodge,
-        // shield or target. Keep the game context visible, without reading it.
-        return { big: action, sub: [preview ? resolved?.scopeLabel : "", line || act || buff].filter(Boolean).join(" · "), say: [action] };
+        const instruction = !c.uncertain && (actionText(resolved?.text) || (!hooks.instruction && actionText(actions.calls?.[c.k])));
+        const action = instruction || act || line || buff;
+        return { big: action, sub: [preview ? resolved?.scopeLabel : "", line && line !== action ? line : ""].filter(Boolean).join(" · "), say: [action] };
       }
       if (style === "line") return { big: line || act || buff, sub: "", say: [line || act || buff] };
       if (style === "act") return { big: act || line || buff, sub: act ? "" : buff, say: [act || line || buff] };
@@ -193,7 +192,7 @@
       if (!fresh(at)) return;
       if (c.mark) {
         const resolved = actionMode() && !own(c) ? hooks.instruction?.(c, { preview, uncertain: !!c.uncertain }) : null;
-        if (!resolved?.suppressLegacy || resolved.text) return mark(c, entity, at, preview, resolved);
+        return mark(c, entity, at, preview, resolved);
       }
       const w = words(c, preview);
       lastCall.set(callKey(c, entity), at);
@@ -262,13 +261,9 @@
       const p = phases.get(key);
       if (!p) return;
       drop(p.item.key);
-      // Hide an elapsed estimate quietly, retaining its exact instance briefly
-      // for a real removal arriving after the countdown (native batches add a
-      // small delay). An estimate alone never confirms the effect ended.
-      if (!confirmed) {
-        if (now() > p.end + REMOVAL_GRACE_MS) phases.delete(key);
-        return;
-      }
+      // Preserve the original countdown completion cue. A delayed page tick
+      // must not announce an old estimate as a current safe window.
+      if (!confirmed && now() > p.end + REMOVAL_GRACE_MS) { phases.delete(key); return; }
       phases.delete(key);
       if (now() > p.end + REMOVAL_GRACE_MS || !fresh(at) || !on(p.call)) return;
       // Any other active or awaiting-confirmation hazard on this entity keeps

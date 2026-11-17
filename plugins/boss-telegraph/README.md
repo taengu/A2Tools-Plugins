@@ -4,12 +4,12 @@
 
 An accessibility plugin, asked for by Nyx, a visually impaired player. Some boss mechanics show only on screen: the boss's line in the middle of the screen, the colour it glows, a buff icon on it and its time. Boss Callouts speaks them aloud and shows them in big, high-contrast text you place anywhere over the game.
 
-- **Calls:** when a boss starts a cast, uses a skill or gets a buff that the game marks with a line, you hear it and see it. A cast shows its cast bar's time left. For the mechanics checked by hand (below) you also get a short call ("Purple — stop magic attacks") and a buff countdown ("Stop magic — 7.0 s"). "Safe to attack" requires a matching effect-removal event, with no other tracked phase still blocking that boss. An estimated countdown ending alone stays silent.
-- **Tell me what to do:** on by default, including for existing settings. Speaks a supported instruction instead of the boss's line, and keeps the original context on screen. For a mechanic without a verified instruction it says "Watch the boss"; this is a general advisory, not a claimed safe direction. Your own words still take priority. Untick it to return to your saved **Call style**: the short call and the boss's line, the short call only, or the boss's line only.
+- **Calls:** speaks and displays boss mechanics, with cast and buff countdowns. The original “Safe to attack” cue returns when a tracked countdown ends or its effect is removed, provided no overlapping tracked phase remains. Countdown completion is an estimate, not proof of the boss’s actual state. A page resuming more than three seconds late stays quiet.
+- **Call mode:** Instructions is the default. Matching scoped guides replace the spoken call; otherwise the original short call is spoken with the boss line on screen. Boss lines restores the saved Call style. Custom wording takes priority in both modes.
 - **Bosses:** every boss and mechanic can be turned off, grouped by dungeon. Each call has **▶ to play it** as a fight would (its words, countdown and phase), and can have **your own words** (✎), said and shown instead of it, whatever the call style; the built-in English voice has only its own words, so yours are said by the computer's voice. Vakron's jump can beep on each wave.
 - **Look:** text size (32 to 80 px), text, "safe" and background colours (yellow on black by default; **High contrast colours** puts them back), background opacity. **Big text on screen** off: spoken only. **Lock in place**: clicks go through to the game.
 - **Voice:** volume (for the beep too), voice (any of your computer's voices, or **Built-in**; Default is the first in the meter's language), speech speed. A computer with no voices (Linux) uses the built-in voice: every line in English, made with [Kokoro](https://huggingface.co/hexgrad/Kokoro-82M) (voice `af_heart`; the model and its voices are Apache 2.0) by `tools/boss-telegraph/voice.py`. Calls that come together queue, two at most; a new mechanic cuts off a boss's line still being read.
-- **Test** plays a made-up purple phase: the call and a 5 s countdown, which expires silently.
+- **Test** previews a purple phase with its five-second countdown and completion cue.
 
 ## What it does and doesn't do
 
@@ -19,9 +19,9 @@ It knows only the bosses in its list (`bosses.js`). A boss or a mechanic that is
 
 ## Guide context
 
-Choose **Global** or **Korea (KR)** in Guide context before using the additional instructions. The game region is saved separately from the meter's display language. Activity, difficulty and stage are temporary encounter choices; they reset on map travel and game-process changes. Auto difficulty uses only an exact observed map entry from the official dungeon dictionary. It does not infer activity, stage, boss identity or player assignments.
+Global is the default region; select Korea (KR) for the Korean game. Display language never changes region. Explicit activity, difficulty and stage choices are saved until changed, including across map and game-process resets. Auto difficulty uses only exact observed map metadata and does not infer activity or stage.
 
-Version 0.2.0 includes 45 Global and 98 KR regional rules, covering 118 distinct trigger tuples. These are not 143 unique mechanics or a claim of complete boss coverage. Every instruction requires its supported region and any recorded mode/stage restrictions. Uncertain shared triggers, unsupported contexts and mappings without adequate evidence keep the neutral advisory. Held Global rows cannot fall through to old unrestricted instructions. With an unknown region, managed instruction calls remain neutral. On Global, the original hand-checked Talisra dark/light reminders and displayed sign order remain available when stage is unknown. This exception does not enable other stage-specific instructions, bypass ambiguous triggers, or override an explicitly unsupported stage. The plugin does not treat the meter’s NPC tier label as proof of the current live stage.
+Version 0.2.0 includes 45 Global and 98 KR guide rules across 118 trigger tuples. Added guides require their supported region and mode/stage. When none matches, the original short call remains available; this fallback is not a claim that a regional guide was verified. Talisra’s signs and accumulated order remain available in every region.
 
 Per-call previews require the selected region. They may demonstrate a supported instruction outside its mode/stage context, with the scope shown on screen. They do not claim that the preview matches the current encounter. Custom wording remains the player's explicit override, and turning off Tell me what to do retains the original call styles.
 
@@ -52,13 +52,13 @@ All decoders are in `manifest.json`, none with `"self"`: a boss's casts and buff
 
 A boss's lines aren't in its traffic: the client plays them itself from its NpcBehaviorCase table (`Casting <skill>`, `SkillUse <skill>`, `Abnormal <id>`). So the plugin hears the trigger and says the line the game shows for it. An entity is remembered (for half an hour) only once it casts one of a boss's own skills, to tell which boss got a buff any monster can get (Frenzy, Stagger). Events more than 3 s old (queued while the window was shut) are not spoken. Nothing is sent anywhere: no network, settings in the meter's storage.
 
-Map loads and game-process transitions clear learned entities, repeats, phases, sign sequences, pending previews and queued audio. Disabling Callouts also cancels audio that is still decoding. A vanished countdown retains its exact effect instance for up to three seconds to accept a delayed confirmed removal, then is discarded silently. Region, activity, stage, HP percentage and player assignments are not automatically detected; difficulty is available only for exact map entries with explicit metadata.
+Map loads and game-process transitions clear encounter observations, phases, sign sequences, pending previews and queued audio. Explicit guide settings are preserved. Disabling Callouts cancels pending audio. Region, activity, stage, HP percentage and assignments are not automatically detected; exact map metadata can supply difficulty.
 
 ## Data
 
 `tools/boss-telegraph/mechanics.json` contains the active regional registry, all ten instruction locales, exact source guards, evidence and review receipts. `python tools/boss-telegraph/mechanics.py --check` verifies the generated `mechanics.js` and rejects changed triggers, supporting dialogue, incomplete translations or broadened scopes. English clips are built for every registered instruction.
 
-The earlier `actions.json` is retained for neutral reminders, compact color-sequence speech and source provenance. Its unrestricted entries cannot bypass the regional registry. Live triggers shared by several bosses stay neutral because the available events do not reliably identify the caster. The short Talisra signs retain their two-second cadence after their regional scope has been verified.
+The earlier `actions.json` remains for compact sign speech and source provenance. New scoped instructions cannot bypass registry checks. The original game short calls remain the fallback.
 
 Talisra's dark and light signs still build the upcoming order. Instruction mode says to **remember** each sign; the display explains that matching shields are used in that order **when the pulses begin**. It does not tell you to move immediately or predict the next sign. The accumulated order stays ahead of ordinary boss lines for its normal display lifetime; live phase warnings remain higher priority. Each sign is still spoken separately.
 

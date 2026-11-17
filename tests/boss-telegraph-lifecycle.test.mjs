@@ -171,38 +171,18 @@ test("each buff instance keeps its own countdown until its exact removal", () =>
   h.removed(1, 2); assert.equal(h.spoken.at(-1), "Safe to attack");
 });
 
-test("duration expiry quietly removes the estimate without claiming it is safe to attack", () => {
-  const h = harness(); h.added(101, 1, 1, h.now(), 1000); h.advance(1000);
-  assert.deepEqual(h.spoken, ["Stop magic"]); assert.equal(h.engine.items().length, 0);
-  h.advance(3001); h.removed();
-  assert.deepEqual(h.spoken, ["Stop magic"], "unconfirmed grace expiry is silent and eventually discards the instance");
-  const p = harness(); p.engine.preview("phase-a"); p.advance(1000); p.advance(5000);
-  assert.ok(!p.spoken.includes("Safe to attack"), "preview duration is not a confirmed buff removal either");
+test("countdown completion announces safety once and late removal cannot duplicate it",()=>{
+ const h=harness();h.added(101,1,1,h.now(),1000);h.advance(1000);
+ assert.deepEqual(h.spoken,["Stop magic","Safe to attack"]);assert.equal(h.engine.items()[0].kind,"safe");
+ h.advance(40);h.removed();h.removed();assert.equal(h.spoken.filter(s=>s==="Safe to attack").length,1);
 });
-
-test("a fresh exact removal 40 ms after estimated expiry confirms completion once", () => {
-  const h = harness(); h.added(101, 1, 1, h.now(), 1000); h.advance(1000);
-  assert.equal(h.engine.items().length, 0, "expired instance is retained without a visible countdown");
-  h.removed(1, 1, h.now() - 3001);
-  assert.deepEqual(h.spoken, ["Stop magic"], "stale removal cannot mutate retained confirmation state");
-  h.advance(40); h.removed();
-  assert.deepEqual(h.spoken, ["Stop magic", "Safe to attack"]);
-  h.removed(); assert.equal(h.spoken.length, 2, "duplicate removal cannot complete twice");
+test("suspended expired countdown stays quiet rather than announcing an old window",()=>{
+ const h=harness();h.added(101,1,1,h.now(),1000);h.advance(5000);assert.deepEqual(h.spoken,["Stop magic"]);
 });
-
-test("different hazards on the same entity prevent resume until both removals are confirmed", () => {
-  for (const expiredFirst of [false, true]) {
-    const D = data(); D.texts.push({ en: "Stop physical" });
-    D.calls.push({ k: "physical", t: "cast", id: 14, b: "a", act: 9, phase: { a: 102, ms: 10000, label: 9 } });
-    const h = harness(D); h.added(101, 1, 1, h.now(), 1000); h.added(102, 1, 2);
-    if (expiredFirst) h.advance(1000);
-    // Test both an active overlapping phase and an expired, retained one.
-    h.removed(1, 2);
-    assert.deepEqual(h.spoken, ["Stop magic", "Stop physical"], "another mechanic still blocks an attack-resume announcement");
-    h.advance(40); h.removed(1, 1);
-    assert.equal(h.spoken.at(-1), "Safe to attack");
-    assert.equal(h.spoken.filter((text) => text === "Safe to attack").length, 1);
-  }
+test("overlapping hazards suppress completion until every active hazard has ended",()=>{
+ const D=data();D.texts.push({en:"Stop physical"});D.calls.push({k:"physical",t:"cast",id:14,b:"a",act:9,phase:{a:102,ms:10000,label:9}});
+ const h=harness(D);h.added(101,1,1,h.now(),1000);h.added(102,1,2);h.advance(1000);
+ assert.deepEqual(h.spoken,["Stop magic","Stop physical"]);h.removed(1,2);assert.equal(h.spoken.at(-1),"Safe to attack");
 });
 
 test("shared phase IDs never pick the first boss or use disabled candidates to guess", () => {

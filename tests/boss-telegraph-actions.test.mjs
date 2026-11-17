@@ -64,9 +64,9 @@ test("unknown mechanics announce a neutral advisory with original context on scr
   const h = harness();
   const c = call("cast:1808880:basilus-the-false");
   h.trigger(c);
-  assert.deepEqual(h.spoken.map((s) => s.text), ["Watch the boss"]);
-  assert.equal(h.engine.items()[0].text, "Watch the boss");
-  assert.equal(h.engine.items()[0].sub, english(c.line));
+  assert.deepEqual(h.spoken.map((s) => s.text), [english(c.act) || english(c.line)]);
+  assert.equal(h.engine.items()[0].text, english(c.act) || english(c.line));
+  assert.equal(h.engine.items()[0].sub, "");
 });
 
 test("instructions backed by explicit game dialogue use their exact reviewed trigger", () => {
@@ -85,11 +85,11 @@ test("a live shared trigger stays neutral even after another boss-specific skill
   h.trigger(call("vakron-jump"));
   h.advance(2000);
   h.engine.cast({ caster: 1, skill: 1604500 }, h.now());
-  assert.equal(h.spoken.at(-1).text, "Watch the boss");
+  assert.equal(h.spoken.at(-1).text, "Don't touch those flowers, unless you wish to be poisoned!");
   h.engine.clear();
   h.advance(2000);
   h.engine.cast({ caster: 1, skill: 1604500 }, h.now());
-  assert.equal(h.spoken.at(-1).text, "Watch the boss");
+  assert.equal(h.spoken.at(-1).text, "Don't touch those flowers, unless you wish to be poisoned!");
   assert.ok(!h.spoken.some((s) => s.text === ACTIONS.calls["cast:1604500:vakron"].en));
 });
 
@@ -115,8 +115,8 @@ test("instruction phases retain buff countdown without claiming safety from elap
   assert.equal(h.engine.items()[0].end, h.now() + 8000);
   assert.equal(h.spoken.length, 1, "a cast just heard is not repeated for its buff");
   h.advance(8000);
-  assert.equal(h.spoken.length, 1, "an elapsed countdown is not a confirmed buff removal");
-  assert.equal(h.engine.items().length, 0);
+  assert.equal(h.spoken.at(-1).text, "Safe to attack");
+  assert.equal(h.engine.items()[0].kind, "safe");
 });
 
 test("stale casts, skills and phase removal are silent; duplicate events do not repeat", () => {
@@ -177,8 +177,8 @@ test("Test and individual previews use the chosen mode and expire silently", () 
   const h = harness({ style: "line" }); h.engine.test();
   assert.equal(h.spoken[0].text, "Stop magic");
   h.advance(1800); assert.equal(h.engine.items()[0].text, "Stop magic");
-  h.advance(5000); assert.equal(h.spoken.at(-1).text, "Stop magic");
-  assert.equal(h.engine.items().length, 0);
+  h.advance(5000); assert.equal(h.spoken.at(-1).text, "Safe to attack");
+  assert.equal(h.engine.items()[0].kind, "safe");
   const p = harness({ tellMeWhatToDo: false, style: "line" }); p.engine.preview("thamon-violet");
   assert.equal(p.spoken[0].text, english(call("thamon-violet").line));
 });
@@ -233,14 +233,14 @@ test("old saved preferences receive the default-on setting, preserve custom/styl
   assert.equal(p.prefs().tellMeWhatToDo, true);
   assert.equal(p.prefs().style, "line");
   assert.equal(p.prefs().custom["thamon-violet"], "Careful");
-  assert.equal(p.elements.get(".tellMeWhatToDo").checked, true);
+  assert.equal(p.elements.get(".tellMeWhatToDo").value, "instructions");
   assert.equal(p.elements.get(".style").disabled, true);
-  const checkbox = p.elements.get(".tellMeWhatToDo"); checkbox.checked = false; checkbox.events.change();
+  const checkbox = p.elements.get(".tellMeWhatToDo"); checkbox.value = "lines"; checkbox.events.change();
   assert.equal(p.saved.at(-1).tellMeWhatToDo, false);
   assert.equal(p.elements.get(".style").disabled, false);
   const again = await page(p.saved.at(-1));
   assert.equal(again.prefs().tellMeWhatToDo, false);
-  assert.equal(again.elements.get(".tellMeWhatToDo").checked, false);
+  assert.equal(again.elements.get(".tellMeWhatToDo").value, "lines");
   assert.equal(again.prefs().style, "line");
 });
 

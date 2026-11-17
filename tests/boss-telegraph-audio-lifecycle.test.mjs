@@ -179,7 +179,7 @@ test("map and subsequent cast delivered in one batch use captured ordering, not 
   h.handlers.get("decoded:boss-cast")({ caster: 1, skill: 1604670 }, { at: h.now() - 20 });
   await flush();
   assert.equal(h.started.length, 1, "the cast captured after the map belongs to the new encounter");
-  assert.equal(h.engine.items()[0].text, "Watch the boss", "map reset leaves unselected encounter scope neutral");
+  assert.equal(h.engine.items()[0].text, "Purple — stop magic attacks", "unselected guide scope retains the original short call");
 });
 
 test("unchanged running-state notifications do not cancel speech and closed-game map events do not reopen context", async () => {

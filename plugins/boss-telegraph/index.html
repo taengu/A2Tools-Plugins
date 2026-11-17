@@ -11,8 +11,8 @@
       <label class="switch"><span data-t="showWidget">Big text on screen</span><input type="checkbox" class="widget" /></label>
       <p class="note sub" data-t="showWidgetNote">Off: spoken only.</p>
       <label class="switch"><span data-t="lock">Lock in place</span><input type="checkbox" class="lock" /></label>
-      <label class="switch"><span data-t="tellMeWhatToDo">Tell me what to do</span><input type="checkbox" class="tellMeWhatToDo" aria-describedby="actionsNote" /></label>
-      <p class="note info" id="actionsNote" data-t="actionsNote">On by default: speaks supported instructions. Unknown mechanics say “Watch the boss”; the original line stays on screen. Your own words take priority. Off: uses Call style.</p>
+      <label><span data-t="callMode">Call mode</span><select class="tellMeWhatToDo" aria-describedby="actionsNote"><option value="instructions" data-t="instructions">Instructions</option><option value="lines" data-t="bossLines">Boss lines</option></select></label>
+      <p class="note info" id="actionsNote" data-t="actionsNote">On by default: speaks supported instructions. Unmatched mechanics use the original short call; the original line stays on screen. Your own words take priority. Off: uses Call style.</p>
       <div class="row">
         <span data-t="style" id="styleLabel">Call style</span>
         <select class="style" aria-labelledby="styleLabel">
@@ -71,7 +71,7 @@
             </select>
           </label>
         </div>
-        <p class="note guideScopeHelp" id="guideScopeHelp" data-t="guideScopeHelp">Choose region manually; language never sets it. Auto uses observed map difficulty only. Manual encounter choices reset on travel; unknown context keeps neutral calls.</p>
+        <p class="note guideScopeHelp" id="guideScopeHelp" data-t="guideScopeHelp">Choose region manually; language never sets it. Auto uses observed map difficulty only. Manual choices persist until changed; unmatched instructions use the original short call.</p>
       </details>
       <div class="inline wide">
         <input type="search" class="filter" data-tp="filter" placeholder="Filter" />

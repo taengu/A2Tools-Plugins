@@ -14,15 +14,14 @@ const DEFAULTS = {
   offBoss: {}, offCall: {}, waves: {}, custom: {},
   // This window's own text size (Look): the whole page scaled, for reduced vision.
   menuSize: "1",
-  guideRegion: "unknown",
+  guideRegion: "Global",
 };
 let prefs = { ...DEFAULTS };
 let lang = "en";
 let words = UI.en;
 let gameOpen = false;
 let locked = false;
-// Encounter selections are temporary. They never enter saved preferences and
-// cannot carry a previous dungeon's stage or mode into a later map or launch.
+// Explicit guide choices persist until changed; observed encounter state resets separately.
 let manualGuide = { category: "auto", difficulty: "auto", stage: 0 };
 const GUIDE_KEYS = { guideCategory: "category", guideDifficulty: "difficulty", guideStage: "stage" };
 
@@ -49,6 +48,7 @@ function scopeLabel(badge) {
 }
 function clearManualGuide() {
   manualGuide = { category: "auto", difficulty: "auto", stage: 0 };
+  for (const [setting, field] of Object.entries(GUIDE_KEYS)) prefs[setting] = manualGuide[field];
   showPrefs();
   renderBosses();
 }
@@ -343,17 +343,8 @@ const engine = BossLogic.create(DATA, {
     const context = guideContext();
     const result = activation.resolve(call, context, options);
     if (result.eligible) return { text: result.text, scopeLabel: scopeLabel(result.scopeBadge), suppressLegacy: true };
-    // The expansion must not silence the original hand-checked sign sequence
-    // merely because its added guide needs a stage. Restore only these exact
-    // Global reminders, not any stage-specific directions or phase additions.
-    const sign = call.k === "talisra-dark-spear" && call.id === 1801730
-      || call.k === "talisra-light-spear" && call.id === 1801735;
-    if (sign && call.b === "talisra-of-the-void" && call.t === "use" && call.mark === "talisra-spears"
-        && !call.uncertain && !options?.uncertain && !options?.preview
-        && context.region === "Global" && context.stage == null && result.reason === "unknown-context") {
-      return { text: window.BOSS_ACTIONS.calls[call.k], suppressLegacy: true };
-    }
-    return managedKeys.has(call.k) ? { text: null, suppressLegacy: true } : null;
+    // Preserve the original short calls and sign order when no guide matches.
+    return null;
   },
   say,
   beep,
@@ -448,7 +439,8 @@ function showPrefs() {
   for (const [key, el] of Object.entries(els)) {
     if (key === "voiceName") continue;
     if (GUIDE_KEYS[key]) { el.value = String(manualGuide[GUIDE_KEYS[key]]); continue; }
-    if (el.type === "checkbox") el.checked = !!prefs[key];
+    if (key === "tellMeWhatToDo") el.value = prefs[key] === false ? "lines" : "instructions";
+    else if (el.type === "checkbox") el.checked = !!prefs[key];
     else el.value = String(prefs[key]);
   }
   els.voiceName.value = prefs.voiceName;
@@ -700,11 +692,13 @@ $(".test").addEventListener("click", () => engine.test());
 
 for (const [key, el] of Object.entries(els)) {
   el.addEventListener(el.type === "range" || el.type === "color" ? "input" : "change", () => {
-    let v = el.type === "checkbox" ? el.checked : el.value;
+    let v = key === "tellMeWhatToDo" ? el.value === "instructions" : el.type === "checkbox" ? el.checked : el.value;
     if (GUIDE_KEYS[key]) {
       if (key === "guideStage") v = Number.isInteger(Number(v)) && Number(v) >= 0 && Number(v) <= 24 ? Number(v) : 0;
       if (key === "guideCategory") manualGuide = { category: v, difficulty: "auto", stage: 0 };
       else manualGuide[GUIDE_KEYS[key]] = v;
+      for (const [setting, field] of Object.entries(GUIDE_KEYS)) prefs[setting] = manualGuide[field];
+      save();
       showPrefs();
       resetLifecycle();
       renderBosses();
@@ -748,7 +742,6 @@ function updateEncounter(change, at) {
   change();
   if (encounterContext.snapshot().generation !== before) {
     resetLifecycle(at);
-    clearManualGuide();
   }
 }
 a2.on("decoded:boss-map", (d, meta) => {
@@ -772,7 +765,6 @@ a2.on("game", (d) => {
   gameOpen = open;
   encounterContext.reset();
   resetLifecycle();
-  clearManualGuide();
   placeWidget();
 });
 a2.on("locked", (on) => {
@@ -788,8 +780,13 @@ a2.on("widget-message", ({ data }) => {
   if (stored && typeof stored === "object") {
     prefs = { ...DEFAULTS, ...stored };
     prefs.tellMeWhatToDo = stored.tellMeWhatToDo !== false;
-    prefs.guideRegion = ["Global", "KR"].includes(stored.guideRegion) ? stored.guideRegion : "unknown";
-    for (const key of Object.keys(GUIDE_KEYS)) delete prefs[key];
+    prefs.guideRegion = ["Global", "KR"].includes(stored.guideRegion) ? stored.guideRegion : "Global";
+    for (const [setting, field] of Object.entries(GUIDE_KEYS)) {
+      const value = stored[setting];
+      if (field === "stage") manualGuide.stage = Number.isInteger(value) && value >= 0 && value <= 24 ? value : 0;
+      else if (field === "category" && ["auto", "conquest", "transcendence", "trial", "nightmare", "sanctuary"].includes(value)) manualGuide.category = value;
+      else if (field === "difficulty" && ["auto", "normal", "hard", "exploration"].includes(value)) manualGuide.difficulty = value;
+    }
     for (const k of ["offBoss", "offCall", "waves", "custom"]) prefs[k] = { ...(stored[k] || {}) };
   }
   locked = await a2.widgets.locked().catch(() => false);
