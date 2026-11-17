@@ -5,7 +5,7 @@ const vm = require("node:vm");
 const test = require("node:test");
 
 const sandbox = vm.createContext({});
-vm.runInContext(fs.readFileSync(path.join(__dirname, "../../plugins/boss-telegraph/detection.js"), "utf8"), sandbox);
+vm.runInContext(fs.readFileSync(path.join(__dirname, "detection.js"), "utf8"), sandbox);
 const create = sandbox.BossDetection.create;
 const action = (id, key = "move-away", extras = {}) => ({
   key, audience: "all", timing: "now", verified: true, covers: [id], ...extras,
