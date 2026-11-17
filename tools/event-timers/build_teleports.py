@@ -59,6 +59,8 @@ SPREAD_M = 300
 PREFERRED = {
     # Black Tentacle Lawa: from 44, Ancient Zumion Temple Site, not 38 (2026-10-30).
     "field:101011": {"elyos": 1051060},
+    # Kashapa (Asmodian): from 50, not 54 (2026-11-17).
+    "field:111023": {"asmodian": 1052042},
 }
 
 

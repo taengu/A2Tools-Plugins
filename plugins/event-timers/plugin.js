@@ -445,6 +445,7 @@ let gameRunning = null;
 // speak: alerts also said out loud (voices.js), in voiceName ("": the first
 // of voiceType, "any" / "female" / "male", in the meter's language), at
 // voiceRate.
+let prefsLoaded = false;
 let prefs = { region: "auto", hidden: [], alerts: {}, leads: {}, closedLeads: {}, sound: "chime", repeat: 1, volume: 100, pop: false,
   tab: "events", display: "system", lastServer: 0, scale: 1, defaultLead: DEFAULT_LEAD, defaultClosedLead: DEFAULT_CLOSED_LEAD,
   alertColor: "orange", alsoAtStart: false, folded: {}, speak: false, voiceName: "", voiceType: "any", voiceRate: 1, bossOffset: 0 };
@@ -2610,6 +2611,8 @@ a2.on("compact", (on) => document.body.classList.toggle("compact", !!on));
   applyColor();
   renderStatic();
   render();
+  // Saved settings in: the tour (tour.js) knows whether it was seen.
+  prefsLoaded = true;
   lastCheck = Date.now();
   // Each part on its own: one that threw (a feature this WebView lacks, a
   // state after a zone change) stopped the tick there every second, and

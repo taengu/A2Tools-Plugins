@@ -137,6 +137,17 @@ const GRIP = 40;
 const TRAIN_LEADS = [1, 2, 3, 5, 10, 15, 30];
 const trainLead = () => (TRAIN_LEADS.includes(Number(prefs.anchorTrainLead)) ? Number(prefs.anchorTrainLead) : 5);
 
+// List layout (Placement, Layout): one slim row per boss instead of icons,
+// LIST_ROW_H px each, `listRows` of them, `listWidth` wide; the same sort,
+// train and anchor as the grid.
+const LIST_ROW_H = 22;
+const LIST_GAP = 2;
+const LIST_ROWS_MAX = 30;
+const LIST_WIDTHS = [160, 200, 240, 280, 320, 360];
+const listOn = () => prefs.anchorLayout === "list";
+const listRows = () => Math.max(1, Math.min(LIST_ROWS_MAX, Number(prefs.listRows) || 8));
+const listWidth = () => (LIST_WIDTHS.includes(Number(prefs.listWidth)) ? Number(prefs.listWidth) : 240);
+
 // The frame is a widget; keeping its grip still while it resizes needs
 // a2.widgets.where and place (meter 2.0.72), and is skipped without them.
 const canPlace = () => canPin();
@@ -221,7 +232,7 @@ function anchorCompare(a, b) {
 function anchorPlan(wanted) {
   if (!anchorOn()) return wanted;
   const entries = [...wanted.entries()].sort((a, b) => anchorCompare(a[1], b[1]));
-  const room = gridSize(prefs.anchorCols, 4) * gridRows();
+  const room = listOn() ? listRows() : gridSize(prefs.anchorCols, 4) * gridRows();
   if (entries.length <= room) return new Map(entries);
   const shown = entries.slice(0, room - 1);
   const rest = entries.slice(room - 1);
@@ -235,6 +246,15 @@ function anchorPlan(wanted) {
 // The frame: its size (CSS px) for the grid as set, and where in it the
 // grip sits, which is the corner the grid grows from.
 function frameLayout(named) {
+  if (listOn()) {
+    const dir = DIRECTIONS.includes(prefs.anchorExpand) ? prefs.anchorExpand : "left-down";
+    const rows = listRows();
+    const cellH = LIST_ROW_H + LIST_GAP;
+    const width = listWidth() + GRIP;
+    const height = Math.max(rows * cellH, GRIP);
+    const grip = { x: dir.startsWith("left") ? width - GRIP : 0, y: dir.endsWith("up") ? height - GRIP : 0 };
+    return { cols: 1, rows, dir, cellW: listWidth(), cellH, gapX: 0, gapY: LIST_GAP, width, height, grip, gripSize: GRIP, top: 0 };
+  }
   const cols = gridSize(prefs.anchorCols, 4);
   const rows = gridRows();
   const dir = DIRECTIONS.includes(prefs.anchorExpand) ? prefs.anchorExpand : "left-down";
@@ -330,7 +350,8 @@ async function anchorShow(wanted) {
       }
       frameSize = { ...size, grip: layout.grip };
     }
-    a2.widgets.send(ANCHOR, { kind: "grid", label: anchorUi().anchor, ...layout, cells, setup: placing() }).catch(() => {});
+    a2.widgets.send(ANCHOR, { kind: listOn() ? "list" : "grid", label: anchorUi().anchor, ...layout, cells, setup: placing(),
+      icons: prefs.listIcons !== false }).catch(() => {});
     return true;
   } finally {
     frameBusy = false;
@@ -345,25 +366,25 @@ async function anchorShow(wanted) {
 // players want, so it leads.
 const SETUP_UI = {
   en: { onScreen: "On screen", display: "Time and display", across: "Across", down: "Down", fewer: "Fewer", more: "More", trainLead: "Spawning within", mins: n => `${n} min`, trainNote: n => `Every world boss up, or spawning within ${n} min, alert or not.`, gapX: "Column gap", gapY: "Row gap", gridLock: "Lock the grid", gridLockNote: "Clicks pass through to the game. Unlock to move the anchor.",
-        corner: "Click a corner to set where the anchor sits.", pitch: "Line the icons up in a grid beside an anchor you place." },
+        corner: "Click a corner to set where the anchor sits.", pitch: "Line the icons up in a grid beside an anchor you place.", layout: "Layout", icons: "Icons", list: "List", rows: "Rows", width: "Width", listNote: "One slim row per boss: its name, teleport and time.", listIcons: "Icons in the list" },
   ko: { onScreen: "화면 표시", display: "시간과 표시", across: "가로", down: "세로", fewer: "줄이기", more: "늘리기", trainLead: "출현까지 남은 시간", mins: n => `${n}분`, trainNote: n => `출현 중이거나 ${n}분 안에 출현하는 모든 월드 보스.`, gapX: "열 간격", gapY: "행 간격", gridLock: "격자 잠금", gridLockNote: "클릭이 게임으로 통과됩니다. 앵커를 옮기려면 잠금을 푸세요.",
-        corner: "모서리를 눌러 앵커 위치를 정하세요.", pitch: "직접 놓은 앵커 옆에 아이콘을 격자로 정렬합니다." },
+        corner: "모서리를 눌러 앵커 위치를 정하세요.", pitch: "직접 놓은 앵커 옆에 아이콘을 격자로 정렬합니다.", layout: "배치", icons: "아이콘", list: "목록", rows: "줄 수", width: "너비", listNote: "보스마다 한 줄: 이름, 텔레포트, 시간을 표시합니다.", listIcons: "목록에 아이콘 표시" },
   ja: { onScreen: "画面表示", display: "時刻と表示", across: "横", down: "縦", fewer: "減らす", more: "増やす", trainLead: "出現までの時間", mins: n => `${n}分`, trainNote: n => `出現中か${n}分以内に出現するすべてのワールドボス。`, gapX: "列の間隔", gapY: "行の間隔", gridLock: "格子をロック", gridLockNote: "クリックはゲームに通ります。アンカーを動かすにはロックを外します。",
-        corner: "角をクリックしてアンカーの位置を決めます。", pitch: "置いたアンカーの横にアイコンを格子状に並べます。" },
+        corner: "角をクリックしてアンカーの位置を決めます。", pitch: "置いたアンカーの横にアイコンを格子状に並べます。", layout: "レイアウト", icons: "アイコン", list: "リスト", rows: "行数", width: "幅", listNote: "ボスごとに細い1行：名前、テレポート、時間。", listIcons: "リストにアイコンを表示" },
   de: { onScreen: "Auf dem Bildschirm", display: "Zeit und Anzeige", across: "Breite", down: "Höhe", fewer: "Weniger", more: "Mehr", trainLead: "Erscheint innerhalb von", mins: n => `${n} Min.`, trainNote: n => `Jeder Weltboss, der da ist oder in ${n} Min. erscheint.`, gapX: "Spaltenabstand", gapY: "Zeilenabstand", gridLock: "Raster sperren", gridLockNote: "Klicks gehen zum Spiel durch. Zum Verschieben des Ankers entsperren.",
-        corner: "Eine Ecke anklicken, um den Platz des Ankers zu wählen.", pitch: "Die Symbole in einem Raster neben einem Anker aufreihen, den du platzierst." },
+        corner: "Eine Ecke anklicken, um den Platz des Ankers zu wählen.", pitch: "Die Symbole in einem Raster neben einem Anker aufreihen, den du platzierst.", layout: "Darstellung", icons: "Symbole", list: "Liste", rows: "Zeilen", width: "Breite", listNote: "Eine schmale Zeile pro Boss: Name, Teleport und Zeit.", listIcons: "Symbole in der Liste" },
   fr: { onScreen: "À l'écran", display: "Heure et affichage", across: "Largeur", down: "Hauteur", fewer: "Moins", more: "Plus", trainLead: "Apparition dans", mins: n => `${n} min`, trainNote: n => `Chaque boss mondial présent, ou qui apparaît dans ${n} min.`, gapX: "Écart des colonnes", gapY: "Écart des lignes", gridLock: "Verrouiller la grille", gridLockNote: "Les clics passent vers le jeu. Déverrouillez pour déplacer l'ancre.",
-        corner: "Cliquez sur un coin pour placer l'ancre.", pitch: "Aligner les icônes en grille à côté d'une ancre que vous placez." },
+        corner: "Cliquez sur un coin pour placer l'ancre.", pitch: "Aligner les icônes en grille à côté d'une ancre que vous placez.", layout: "Disposition", icons: "Icônes", list: "Liste", rows: "Lignes", width: "Largeur", listNote: "Une ligne fine par boss : son nom, son téléport et l'heure.", listIcons: "Icônes dans la liste" },
   es: { onScreen: "En pantalla", display: "Hora y vista", across: "Ancho", down: "Alto", fewer: "Menos", more: "Más", trainLead: "Aparece en", mins: n => `${n} min`, trainNote: n => `Todo jefe mundial activo, o que aparezca en ${n} min.`, gapX: "Espacio entre columnas", gapY: "Espacio entre filas", gridLock: "Bloquear la cuadrícula", gridLockNote: "Los clics pasan al juego. Desbloquéala para mover el ancla.",
-        corner: "Haz clic en una esquina para situar el ancla.", pitch: "Alinea los iconos en una cuadrícula junto a un ancla que colocas tú." },
+        corner: "Haz clic en una esquina para situar el ancla.", pitch: "Alinea los iconos en una cuadrícula junto a un ancla que colocas tú.", layout: "Diseño", icons: "Iconos", list: "Lista", rows: "Filas", width: "Ancho", listNote: "Una fila fina por jefe: su nombre, teletransporte y hora.", listIcons: "Iconos en la lista" },
   pt: { onScreen: "Na tela", display: "Hora e exibição", across: "Largura", down: "Altura", fewer: "Menos", more: "Mais", trainLead: "Surge em até", mins: n => `${n} min`, trainNote: n => `Todo chefe mundial ativo, ou que surja em até ${n} min.`, gapX: "Espaço entre colunas", gapY: "Espaço entre linhas", gridLock: "Travar a grade", gridLockNote: "Os cliques passam para o jogo. Destrave para mover a âncora.",
-        corner: "Clique num canto para posicionar a âncora.", pitch: "Alinhe os ícones em uma grade ao lado de uma âncora que você posiciona." },
+        corner: "Clique num canto para posicionar a âncora.", pitch: "Alinhe os ícones em uma grade ao lado de uma âncora que você posiciona.", layout: "Layout", icons: "Ícones", list: "Lista", rows: "Linhas", width: "Largura", listNote: "Uma linha fina por chefe: nome, teleporte e horário.", listIcons: "Ícones na lista" },
   ru: { onScreen: "На экране", display: "Время и вид", across: "В ширину", down: "В высоту", fewer: "Меньше", more: "Больше", trainLead: "Появится в течение", mins: n => `${n} мин`, trainNote: n => `Каждый мировой босс на месте или в течение ${n} мин.`, gapX: "Между столбцами", gapY: "Между рядами", gridLock: "Зафиксировать сетку", gridLockNote: "Клики проходят в игру. Снимите фиксацию, чтобы двигать якорь.",
-        corner: "Щёлкните угол, чтобы выбрать место якоря.", pitch: "Выстроить значки сеткой рядом с якорем, который вы ставите сами." },
+        corner: "Щёлкните угол, чтобы выбрать место якоря.", pitch: "Выстроить значки сеткой рядом с якорем, который вы ставите сами.", layout: "Вид", icons: "Значки", list: "Список", rows: "Строки", width: "Ширина", listNote: "Одна узкая строка на босса: имя, телепорт и время.", listIcons: "Значки в списке" },
   "zh-Hant": { onScreen: "畫面顯示", display: "時間與顯示", across: "橫向", down: "縱向", fewer: "減少", more: "增加", trainLead: "出現前", mins: n => `${n} 分鐘`, trainNote: n => `已出現或 ${n} 分鐘內出現的所有世界首領。`, gapX: "欄距", gapY: "列距", gridLock: "鎖定網格", gridLockNote: "點擊會穿透到遊戲。解除鎖定才能移動錨點。",
-        corner: "點擊角落以設定錨點位置。", pitch: "將圖示以網格排在你放置的錨點旁。" },
+        corner: "點擊角落以設定錨點位置。", pitch: "將圖示以網格排在你放置的錨點旁。", layout: "版面", icons: "圖示", list: "清單", rows: "列數", width: "寬度", listNote: "每個首領一列細行：名稱、傳送點與時間。", listIcons: "清單中顯示圖示" },
   "zh-Hans": { onScreen: "画面显示", display: "时间与显示", across: "横向", down: "纵向", fewer: "减少", more: "增加", trainLead: "出现前", mins: n => `${n} 分钟`, trainNote: n => `已出现或 ${n} 分钟内出现的所有世界首领。`, gapX: "列距", gapY: "行距", gridLock: "锁定网格", gridLockNote: "点击会穿透到游戏。解除锁定才能移动锚点。",
-        corner: "点击角落以设置锚点位置。", pitch: "将图标以网格排在你放置的锚点旁。" },
+        corner: "点击角落以设置锚点位置。", pitch: "将图标以网格排在你放置的锚点旁。", layout: "布局", icons: "图标", list: "列表", rows: "行数", width: "宽度", listNote: "每个首领一行细条：名称、传送点与时间。", listIcons: "列表中显示图标" },
 };
 const setupUi = () => SETUP_UI[language] || SETUP_UI.en;
 // The corner the anchor sits in, for each direction the grid grows.
@@ -431,6 +452,14 @@ function renderAnchorSettings(box) {
     mode.type = "checkbox";
     mode.setAttribute("role", "switch");
     top.append(el("span", "placementTitle"), mode);
+    const layoutRow = el("div", "setting layoutRow");
+    layoutRow.append(el("span", "iconSettingLabel"), el("div", "seg layoutSeg"));
+    const listIconsRow = el("label", "setting listIconsRow");
+    const listIcons = el("input", "listIcons switch");
+    listIcons.type = "checkbox";
+    listIcons.setAttribute("role", "switch");
+    listIconsRow.append(el("span", "iconSettingLabel"), listIcons);
+    listIcons.addEventListener("change", () => { prefs.listIcons = listIcons.checked; save(); });
     const stage = el("div", "stage");
     const mini = el("div", "mini");
     const steps = el("div", "steps");
@@ -444,7 +473,7 @@ function renderAnchorSettings(box) {
     trainRow.append(el("span", "iconSettingLabel"), train);
     const leadRow = el("label", "setting trainLeadRow");
     leadRow.append(el("span", "iconSettingLabel"), el("select", "anchorTrainLead"));
-    card.append(top, el("p", "note placementNote"), stage, el("p", "note cornerNote"),
+    card.append(top, el("p", "note placementNote"), layoutRow, el("p", "note layoutNote"), listIconsRow, stage, el("p", "note cornerNote"),
       sortRow, el("p", "note sortNote"), trainRow, leadRow, el("p", "note trainNote"));
     card.querySelector(".anchorTrainLead").addEventListener("change", (e) => { prefs.anchorTrainLead = Number(e.target.value); save(); });
     (styleRow || box.firstChild).after(card);
@@ -476,15 +505,39 @@ function renderAnchorSettings(box) {
   mode.disabled = !canPlace();
   card.querySelector(".placementNote").textContent = !canPlace() ? u.needsMeter : on ? u.anchorNote : s.pitch;
 
-  // The miniature: the grid as set, the anchor in its corner. A corner
-  // picks the direction; it is drawn even off, dimmed, to show what it does.
-  const cols = gridSize(prefs.anchorCols, 4);
-  const rows = gridRows();
+  // Layout: icons in a grid, or a list of rows.
+  card.querySelector(".layoutRow .iconSettingLabel").textContent = s.layout;
+  card.querySelector(".layoutSeg").replaceChildren(...[["icons", s.icons], ["list", s.list]].map(([value, label]) => {
+    const b = el("button", "segBtn", label);
+    b.type = "button";
+    b.setAttribute("role", "radio");
+    b.setAttribute("aria-checked", String((value === "list") === listOn()));
+    b.disabled = !on;
+    b.addEventListener("click", () => {
+      if ((value === "list") === listOn()) return;
+      prefs.anchorLayout = value;
+      save();
+    });
+    return b;
+  }));
+  card.querySelector(".layoutNote").textContent = s.listNote;
+  card.querySelector(".layoutNote").hidden = !on || !listOn();
+  card.querySelector(".listIconsRow .iconSettingLabel").textContent = s.listIcons;
+  card.querySelector(".listIcons").checked = prefs.listIcons !== false;
+  card.querySelector(".listIconsRow").hidden = !on || !listOn();
+  card.querySelector(".layoutRow").hidden = !on;
+
+  // The miniature: the grid as set (or the list's rows, up to 8 of them),
+  // the anchor in its corner. A corner picks the direction; it is drawn even
+  // off, dimmed, to show what it does.
+  const cols = listOn() ? 1 : gridSize(prefs.anchorCols, 4);
+  const rows = listOn() ? Math.min(listRows(), 8) : gridRows();
   const dir = DIRECTIONS.includes(prefs.anchorExpand) ? prefs.anchorExpand : "left-down";
   const mini = card.querySelector(".mini");
   mini.style.setProperty("--cols", cols);
   mini.style.setProperty("--rows", rows);
   mini.dataset.corner = CORNERS[dir];
+  mini.classList.toggle("list", listOn());
   const cells = el("div", "cells");
   for (let i = 0; i < cols * rows; i++) cells.append(el("span", "cell"));
   const corners = Object.entries(CORNERS).map(([d, c]) => {
@@ -516,12 +569,15 @@ function renderAnchorSettings(box) {
     return row;
   };
   const counts = (max) => Array.from({ length: max }, (_, i) => i + 1);
-  card.querySelector(".steps").replaceChildren(
+  card.querySelector(".steps").replaceChildren(...(listOn() ? [
+    stepper(s.rows, listRows(), counts(LIST_ROWS_MAX), (v) => { prefs.listRows = v; }),
+    stepper(s.width, listWidth(), LIST_WIDTHS, (v) => { prefs.listWidth = v; }, (v) => `${v}`),
+  ] : [
     stepper(s.across, cols, counts(GRID_MAX), (v) => { prefs.anchorCols = v; }),
     stepper(s.down, rows, counts(ROWS_MAX), (v) => { prefs.anchorRows = v; }),
     stepper(s.gapX, gapOf(prefs.anchorGapX), GAPS, (v) => { prefs.anchorGapX = v; }, (v) => `${v}`),
     stepper(s.gapY, gapOf(prefs.anchorGapY), GAPS, (v) => { prefs.anchorGapY = v; }, (v) => `${v}`),
-  );
+  ]));
   card.querySelector(".cornerNote").textContent = s.corner;
 
   const sort = card.querySelector(".anchorSort");

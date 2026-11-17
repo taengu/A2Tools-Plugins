@@ -40,7 +40,7 @@
       kinahNote: "\"Took\" runs from the day's first Kinah to the limit; time away from the game counts. Unique drops are the Unique and Heroic items picked up in that time. The bars are each day's time to the limit (shorter is faster).",
       kinahStartNote: "The meter was started after this character's first Kinah today: the start shown is when it was first seen.",
       uniqueLog: "Unique drops today", none: "None yet",
-      skinsOf: "skins", missing: "Missing", owned: "Owned", search: "Search skins",
+      skinsOf: "skins", missing: "Missing", owned: "Owned", search: "Search skins or where they drop",
       anySlot: "Any slot", armour: "Armour", weapons: "Weapons", accessories: "Accessories",
       box: "Boxes", market: "Black Market", coin: "Coin shops", cube: "Hidden Cubes", ranking: "Rankings", dungeon: "Dungeons", other: "Other",
       onSale: "Black Market now", ownedTag: "Owned", whereTo: "Where to get it", gatherFor: "Gather for the bundle",
@@ -63,7 +63,7 @@
       kinahNote: "\"소요\"는 그날 첫 키나부터 한도까지의 시간이며, 게임을 쉰 시간도 포함됩니다. 유일 획득은 그동안 얻은 유일·영웅 등급 아이템입니다. 막대는 날마다 한도까지 걸린 시간입니다(짧을수록 빠름).",
       kinahStartNote: "오늘 이 캐릭터의 첫 키나 이후에 미터가 시작되어, 처음 확인된 시각을 시작으로 표시합니다.",
       uniqueLog: "오늘의 유일 획득", none: "아직 없음",
-      skinsOf: "외형", missing: "미보유", owned: "보유", search: "외형 검색",
+      skinsOf: "외형", missing: "미보유", owned: "보유", search: "외형 또는 획득처 검색",
       anySlot: "모든 부위", armour: "방어구", weapons: "무기", accessories: "장신구",
       box: "상자", market: "검은 구름 상단", coin: "주화 상점", cube: "숨겨진 큐브", ranking: "랭킹", dungeon: "던전", other: "기타",
       onSale: "지금 검은 구름 상단", ownedTag: "보유", whereTo: "획득처", gatherFor: "꾸러미를 위한 채집",
@@ -86,7 +86,7 @@
       kinahNote: "「所要」はその日最初のキナから上限までの時間で、ゲームを離れた時間も含みます。唯一入手はその間に拾った唯一・英雄等級のアイテムです。棒は各日の上限までの時間です(短いほど速い)。",
       kinahStartNote: "今日このキャラクターが最初のキナを得た後にメーターが起動したため、最初に確認した時刻を開始としています。",
       uniqueLog: "今日の唯一入手", none: "まだありません",
-      skinsOf: "外見", missing: "未所持", owned: "所持", search: "外見を検索",
+      skinsOf: "外見", missing: "未所持", owned: "所持", search: "外見や入手先を検索",
       anySlot: "すべての部位", armour: "防具", weapons: "武器", accessories: "アクセサリー",
       box: "箱", market: "黒雲商会", coin: "コインショップ", cube: "隠されたキューブ", ranking: "ランキング", dungeon: "ダンジョン", other: "その他",
       onSale: "黒雲商会で販売中", ownedTag: "所持", whereTo: "入手方法", gatherFor: "袋のための採集",
@@ -109,7 +109,7 @@
       kinahNote: "„Dauer“ läuft vom ersten Kinah des Tages bis zur Grenze; Zeit außerhalb des Spiels zählt mit. Einzigartige Beute sind die einzigartigen und legendären Gegenstände aus dieser Zeit. Die Balken zeigen die Zeit bis zur Grenze je Tag (kürzer ist schneller).",
       kinahStartNote: "Der Meter wurde nach dem ersten Kinah dieses Charakters heute gestartet: Als Beginn gilt, wann er zuerst gesehen wurde.",
       uniqueLog: "Einzigartige Beute heute", none: "Noch keine",
-      skinsOf: "Aussehen", missing: "Fehlend", owned: "Vorhanden", search: "Aussehen suchen",
+      skinsOf: "Aussehen", missing: "Fehlend", owned: "Vorhanden", search: "Aussehen oder Fundort suchen",
       anySlot: "Alle Plätze", armour: "Rüstung", weapons: "Waffen", accessories: "Schmuck",
       box: "Kisten", market: "Schwarzmarkt", coin: "Münzläden", cube: "Verborgene Würfel", ranking: "Ranglisten", dungeon: "Dungeons", other: "Sonstige",
       onSale: "Jetzt auf dem Schwarzmarkt", ownedTag: "Vorhanden", whereTo: "Woher", gatherFor: "Für das Bündel sammeln",
@@ -132,7 +132,7 @@
       kinahNote: "La « durée » va du premier kinah du jour à la limite ; le temps hors du jeu compte. Le butin unique regroupe les objets uniques et héroïques ramassés pendant ce temps. Les barres montrent le temps jusqu'à la limite chaque jour (plus court = plus rapide).",
       kinahStartNote: "Le compteur a démarré après le premier kinah de ce personnage aujourd'hui : le début indiqué est le moment où il a été vu.",
       uniqueLog: "Butin unique du jour", none: "Aucun pour l'instant",
-      skinsOf: "apparences", missing: "Manquantes", owned: "Possédées", search: "Rechercher une apparence",
+      skinsOf: "apparences", missing: "Manquantes", owned: "Possédées", search: "Rechercher une apparence ou sa provenance",
       anySlot: "Tous les emplacements", armour: "Armure", weapons: "Armes", accessories: "Accessoires",
       box: "Coffres", market: "Marché noir", coin: "Boutiques de pièces", cube: "Cubes cachés", ranking: "Classements", dungeon: "Donjons", other: "Autres",
       onSale: "Au marché noir", ownedTag: "Possédée", whereTo: "Où l'obtenir", gatherFor: "Récolter pour le paquet",
@@ -155,7 +155,7 @@
       kinahNote: "El «tiempo» va desde el primer kinah del día hasta el límite; cuenta el tiempo fuera del juego. El botín único son los objetos únicos y épicos recogidos en ese tiempo. Las barras muestran el tiempo hasta el límite de cada día (más corto es más rápido).",
       kinahStartNote: "El medidor empezó después del primer kinah de hoy de este personaje: el inicio mostrado es cuando se vio por primera vez.",
       uniqueLog: "Botín único de hoy", none: "Ninguno aún",
-      skinsOf: "aspectos", missing: "Faltan", owned: "Tienes", search: "Buscar aspectos",
+      skinsOf: "aspectos", missing: "Faltan", owned: "Tienes", search: "Buscar aspectos o dónde caen",
       anySlot: "Cualquier ranura", armour: "Armadura", weapons: "Armas", accessories: "Accesorios",
       box: "Cofres", market: "Mercado negro", coin: "Tiendas de monedas", cube: "Cubos ocultos", ranking: "Clasificaciones", dungeon: "Mazmorras", other: "Otros",
       onSale: "En el mercado negro ahora", ownedTag: "Lo tienes", whereTo: "Dónde conseguirlo", gatherFor: "Recolectar para el paquete",
@@ -178,7 +178,7 @@
       kinahNote: "O \"tempo\" vai do primeiro kinah do dia até o limite; o tempo fora do jogo conta. Saque único são os itens únicos e heroicos coletados nesse tempo. As barras mostram o tempo até o limite de cada dia (mais curto é mais rápido).",
       kinahStartNote: "O medidor começou depois do primeiro kinah de hoje deste personagem: o início mostrado é quando foi visto pela primeira vez.",
       uniqueLog: "Saque único de hoje", none: "Nenhum ainda",
-      skinsOf: "visuais", missing: "Faltando", owned: "Possuídos", search: "Buscar visuais",
+      skinsOf: "visuais", missing: "Faltando", owned: "Possuídos", search: "Buscar visuais ou onde caem",
       anySlot: "Qualquer espaço", armour: "Armadura", weapons: "Armas", accessories: "Acessórios",
       box: "Baús", market: "Mercado Negro", coin: "Lojas de moedas", cube: "Cubos Ocultos", ranking: "Rankings", dungeon: "Masmorras", other: "Outros",
       onSale: "No Mercado Negro agora", ownedTag: "Possuído", whereTo: "Onde conseguir", gatherFor: "Coletar para o pacote",
@@ -201,7 +201,7 @@
       kinahNote: "«Время» — от первой кины за день до лимита; время вне игры тоже считается. Уникальная добыча — уникальные и героические предметы, подобранные за это время. Столбцы — время до лимита по дням (короче — быстрее).",
       kinahStartNote: "Счётчик запущен после первой кины этого персонажа сегодня: началом считается момент, когда он был замечен.",
       uniqueLog: "Уникальная добыча сегодня", none: "Пока нет",
-      skinsOf: "обликов", missing: "Нет", owned: "Есть", search: "Поиск обликов",
+      skinsOf: "обликов", missing: "Нет", owned: "Есть", search: "Поиск обликов или мест добычи",
       anySlot: "Любой слот", armour: "Броня", weapons: "Оружие", accessories: "Украшения",
       box: "Сундуки", market: "Чёрный рынок", coin: "Лавки монет", cube: "Скрытые кубы", ranking: "Рейтинги", dungeon: "Подземелья", other: "Прочее",
       onSale: "Сейчас на чёрном рынке", ownedTag: "Есть", whereTo: "Где получить", gatherFor: "Собирать ради свёртка",
@@ -224,7 +224,7 @@
       kinahNote: "「用時」從當日第一筆基納算到上限,離開遊戲的時間也算在內。獨特掉落是這段時間撿到的獨特與英雄物品。長條為每天達到上限的時間(越短越快)。",
       kinahStartNote: "計量器在此角色今日第一筆基納之後才啟動:顯示的開始時間為首次看到的時刻。",
       uniqueLog: "今日獨特掉落", none: "尚無",
-      skinsOf: "外觀", missing: "未擁有", owned: "已擁有", search: "搜尋外觀",
+      skinsOf: "外觀", missing: "未擁有", owned: "已擁有", search: "搜尋外觀或取得處",
       anySlot: "所有部位", armour: "防具", weapons: "武器", accessories: "飾品",
       box: "箱子", market: "黑雲商會", coin: "代幣商店", cube: "隱藏方塊", ranking: "排行", dungeon: "副本", other: "其他",
       onSale: "黑雲商會販售中", ownedTag: "已擁有", whereTo: "取得方式", gatherFor: "為包裹採集",
@@ -247,7 +247,7 @@
       kinahNote: "“用时”从当日第一笔基纳算到上限,离开游戏的时间也算在内。独特掉落是这段时间捡到的独特与英雄物品。长条为每天达到上限的时间(越短越快)。",
       kinahStartNote: "计量器在此角色今日第一笔基纳之后才启动:显示的开始时间为首次看到的时刻。",
       uniqueLog: "今日独特掉落", none: "尚无",
-      skinsOf: "外观", missing: "未拥有", owned: "已拥有", search: "搜索外观",
+      skinsOf: "外观", missing: "未拥有", owned: "已拥有", search: "搜索外观或获取处",
       anySlot: "所有部位", armour: "防具", weapons: "武器", accessories: "饰品",
       box: "箱子", market: "黑云商会", coin: "代币商店", cube: "隐藏方块", ranking: "排行", dungeon: "副本", other: "其他",
       onSale: "黑云商会出售中", ownedTag: "已拥有", whereTo: "获取方式", gatherFor: "为包裹采集",
@@ -303,7 +303,7 @@
   const savePrefs = () => a2.storage.set(CPREFS_KEY, cprefs).catch(() => {});
 
   // ---- Tabs -------------------------------------------------------------------
-  const TABS = ["pets", "kinah", "drops", "skins"];
+  const TABS = ["pets", "kinah", "drops", "gathering", "skins"];
   function showTab(tab) {
     cprefs.tab = TABS.includes(tab) ? tab : "pets";
     for (const name of TABS) document.body.classList.toggle(`tab-${name}`, cprefs.tab === name);
@@ -319,6 +319,7 @@
     if (cprefs.tab === "kinah") renderKinah();
     else if (cprefs.tab === "drops") renderDrops();
     else if (cprefs.tab === "skins") renderSkins();
+    else if (cprefs.tab === "gathering") globalThis.renderGathering?.();
   }
   els.tabs.addEventListener("click", (e) => {
     const b = e.target.closest("button[data-tab]");
@@ -819,9 +820,10 @@
   };
   const SOURCE_KINDS = ["box", "market", "coin", "cube", "ranking", "dungeon", "other"];
   const ALL_SKINS = Object.entries(SKINS).map(([id, s]) => ({ id: Number(id), ...s }));
+  // The character's Closet, or its server's (plugin.js, skinsOf).
   const ownedSkins = () => {
-    const list = owned[me()]?.skins;
-    return Array.isArray(list) ? new Set(list.map(Number)) : null;
+    const list = skinsOf(me());
+    return list ? new Set(list.map(Number)) : null;
   };
   const skinName = (s) => words(sideOf(me()) === "asmodian" && s.d != null ? s.d : s.n);
   // The skins on the Black Market for this character now.
@@ -846,6 +848,62 @@
       return game && own ? `${game} (${own})` : game || own || t("coin");
     }
     return t(kind);
+  }
+
+  // A skin's sources, as one line. Its dungeons by name, each one's modes
+  // and difficulties together ("Urugugu Canyon (Conquest Normal, Hard)"), the
+  // first DUNGEONS_SHOWN of them and "+N" (gear dropped everywhere has up to
+  // 19); the rest as sourceText says, each once.
+  const DUNGEONS_SHOWN = 4;
+  // Everything a skin's sources say, every dungeon and mode (the line shows
+  // a few), in the meter's language and English: what a search also matches.
+  const sourceSearch = new Map();
+  function sourceSearchText(s) {
+    const key = `${language}|${s.id}`;
+    if (!sourceSearch.has(key)) {
+      const parts = [];
+      for (const src of s.src || []) {
+        const dungeon = src[0] === "dungeon" && typeof SKIN_DUNGEONS === "object" ? SKIN_DUNGEONS[src[1]] : null;
+        if (dungeon) {
+          for (const i of [dungeon.n, dungeon.m, dungeon.d]) parts.push(words(i), COLLECTION_TEXT[i]?.en || "");
+        } else {
+          parts.push(sourceText(src));
+        }
+      }
+      sourceSearch.set(key, parts.join(" ").toLowerCase());
+    }
+    return sourceSearch.get(key);
+  }
+
+  function sourcesText(srcs) {
+    const out = [];
+    const dungeons = new Map();
+    for (const src of srcs) {
+      const dungeon = src[0] === "dungeon" && typeof SKIN_DUNGEONS === "object" ? SKIN_DUNGEONS[src[1]] : null;
+      if (!dungeon) {
+        out.push(sourceText(src));
+        continue;
+      }
+      const name = words(dungeon.n) || t("dungeon");
+      if (!dungeons.has(name)) {
+        dungeons.set(name, new Map());
+        out.push({ dungeon: name });
+      }
+      const modes = dungeons.get(name);
+      const mode = words(dungeon.m) || "";
+      if (!modes.has(mode)) modes.set(mode, []);
+      const level = words(dungeon.d);
+      if (level && !modes.get(mode).includes(level)) modes.get(mode).push(level);
+    }
+    const shownDungeons = out.filter((x) => typeof x === "object");
+    const texts = out.flatMap((x) => {
+      if (typeof x !== "object") return [x];
+      const at = shownDungeons.indexOf(x);
+      if (at >= DUNGEONS_SHOWN) return at === DUNGEONS_SHOWN ? [`+${shownDungeons.length - DUNGEONS_SHOWN}`] : [];
+      const kinds = [...dungeons.get(x.dungeon)].map(([mode, levels]) => [mode, levels.join(", ")].filter(Boolean).join(" ")).filter(Boolean);
+      return [kinds.length ? `${x.dungeon} (${kinds.join(", ")})` : x.dungeon];
+    });
+    return [...new Set(texts)].join(" · ");
   }
 
   function renderSkins() {
@@ -903,7 +961,8 @@
       if (cprefs.skinStatus === "owned" && !mine) return false;
       if (slots && !slots.has(s.s)) return false;
       if (picked.size && !kindsOf(s).some((k) => picked.has(k))) return false;
-      if (q && !skinName(s).toLowerCase().includes(q) && !(COLLECTION_TEXT[s.n]?.en || "").toLowerCase().includes(q)) return false;
+      if (q && !skinName(s).toLowerCase().includes(q) && !(COLLECTION_TEXT[s.n]?.en || "").toLowerCase().includes(q)
+        && !sourceSearchText(s).includes(q)) return false;
       return true;
     // On sale now first, then the ones the game says where to get, the best first.
     }).sort((a, b) => (sale.has(b.id) - sale.has(a.id)) || (!!b.src - !!a.src) || b.g - a.g || a.o - b.o);
@@ -918,7 +977,7 @@
       const name = node("div", "sName");
       name.append(node("span", `gName g${s.g}`, skinName(s)));
       if (sale.has(s.id) && !mine) name.append(node("span", "sTag", t("onSale")));
-      const how = node("div", "sHow", mine ? t("ownedTag") : s.src?.length ? s.src.map(sourceText).join(" · ") : t("noSource"));
+      const how = node("div", "sHow", mine ? t("ownedTag") : s.src?.length ? sourcesText(s.src) : t("noSource"));
       body.append(name, how);
       const boxes = (s.src || []).filter((x) => x[0] === "box" && SKIN_BOXES[x[1]]?.nodes);
       if (boxes.length && !mine) {
@@ -1004,6 +1063,13 @@
     document.body.classList.toggle("popped", popped);
   });
   observer.observe(document.body, { attributes: true, attributeFilter: ["class"] });
+
+  // What gathering.js (the Gathering tab) borrows.
+  globalThis.ledger = {
+    node, num, t, dayOf, me, itemName,
+    prefs: () => cprefs,
+    setPref: (k, v) => { cprefs[k] = v; savePrefs(); },
+  };
 
   ready.then(() => {
     renderTabs();

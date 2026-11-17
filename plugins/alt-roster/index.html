@@ -60,13 +60,14 @@
         <option value="cp">Combat power</option>
         <option value="gs">Gear score</option>
         <option value="energy">Basic energy</option>
+        <option value="charged">Charged</option>
         <option value="full">Full soonest</option>
         <option value="seen">Last played</option>
       </select>
       <span class="count"></span>
     </div>
-    <div class="head" aria-hidden="true">
-      <span>Character</span><span class="num">Combat</span><span class="num">Gear</span><span>Basic energy</span><span class="num">Charged</span><span class="num">Full in</span>
+    <div class="head">
+      <button type="button" data-sort="name">Character</button><button type="button" class="num" data-sort="cp">Combat</button><button type="button" class="num" data-sort="gs">Gear</button><button type="button" data-sort="energy">Basic energy</button><button type="button" class="num" data-sort="charged">Charged</button><button type="button" class="num" data-sort="full">Full in</button>
     </div>
     <ol class="list"></ol>
     <p class="empty" hidden></p>

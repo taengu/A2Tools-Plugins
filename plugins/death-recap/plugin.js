@@ -51,9 +51,10 @@ const when = (at) => {
   return new Intl.DateTimeFormat(lang, today ? { timeStyle: "short" } : { dateStyle: "medium", timeStyle: "short" }).format(d);
 };
 const fightText = (ms) => (typeof ms === "number" ? words.seconds((ms / 1000).toLocaleString(lang, { maximumFractionDigits: 1 })) : "–");
-// "DISSONATA · Lumiel · Gladiator · Lv 45", leaving out what isn't known.
+// "First-Class Soldier · DISSONATA · Lumiel · Gladiator · Lv 45", leaving
+// out what isn't known (the Abyss rank from meter 2.1.0 on).
 const subline = (h) =>
-  [h.legion || words.noLegion, serverName(h.serverId), className(h.class), h.level ? words.lv(h.level) : ""].filter(Boolean).join(" · ");
+  [rankName(h.rank, lang), h.legion || words.noLegion, serverName(h.serverId), className(h.class), h.level ? words.lv(h.level) : ""].filter(Boolean).join(" · ");
 
 function translate() {
   for (const e of document.querySelectorAll("[data-t]")) {
@@ -153,7 +154,7 @@ function renderLast() {
       const text = el("div", "rowText");
       text.append(
         el("div", "rowName", a.name || "?"),
-        el("div", "rowSub", [a.legion, serverName(a.serverId), className(a.class), a.level ? words.lv(a.level) : ""].filter(Boolean).join(" · ")),
+        el("div", "rowSub", [rankName(a.rank, lang), a.legion, serverName(a.serverId), className(a.class), a.level ? words.lv(a.level) : ""].filter(Boolean).join(" · ")),
       );
       const right = el("div", "rowRight");
       right.append(el("div", "rowNum", num(a.damage)), el("div", null, words.hitCount(a.hits)));
@@ -272,6 +273,7 @@ function popupData(h) {
     className: className(h.class),
     level: h.level ? words.lv(h.level) : "",
     legion: h.legion || "",
+    rank: rankName(h.rank, lang),
     server: serverName(h.serverId),
     cp: L.cpText(h.cp, lang),
     cpLabel: words.cp,
@@ -320,7 +322,7 @@ async function showPopup(h) {
 
 // A made-up death to place the popup by, when none is kept yet.
 const SAMPLE = {
-  at: Date.now(), name: "NotYourSnack", serverId: 2304, legion: "DISSONATA", class: "gladiator", level: 45, gs: 2783, cp: 170738,
+  at: Date.now(), name: "NotYourSnack", serverId: 2304, legion: "DISSONATA", class: "gladiator", level: 45, gs: 2783, cp: 170738, rank: 10,
   damage: 22042, hits: 13, durationMs: 1898, dps: 11613, skills: [{ id: 11440000, name: "Upward Strike", damage: 6436, hits: 1 }],
   assists: [{ name: "Tewy", class: "ranger", level: 45, gs: 2690, cp: 152300, damage: 8120, hits: 6 }],
 };
@@ -517,7 +519,7 @@ function kdaDrawVictims() {
       const who = el("div", "who");
       const name = el("div", "rowName", v.name || "?");
       name.append(el("span", `badge is-${v.kind}`, v.kind === "kill" ? kdaWords.kill : kdaWords.assist));
-      who.append(name, el("div", "rowSub", [v.legion || words.noLegion, serverName(v.serverId), className(v.class), v.level ? words.lv(v.level) : ""].filter(Boolean).join(" · ")));
+      who.append(name, el("div", "rowSub", [rankName(v.rank, lang), v.legion || words.noLegion, serverName(v.serverId), className(v.class), v.level ? words.lv(v.level) : ""].filter(Boolean).join(" · ")));
       const side = el("div", "side");
       side.append(el("div", "ap", v.ap > 0 ? `+${v.ap.toLocaleString(lang)}` : ""), el("div", "when", when(v.at)));
       row.append(who, side);

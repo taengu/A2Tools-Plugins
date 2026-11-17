@@ -1,5 +1,18 @@
 [
   {
+    "version": "0.4.0",
+    "en": "The Abyss rank of who killed you, those who helped, and each player you killed or helped kill, in the popup, the Last death tab and the records (meter 2.1.0 or newer).",
+    "ko": "나를 처치한 플레이어, 도운 플레이어, 내가 처치하거나 처치를 도운 각 플레이어의 어비스 계급을 팝업, 마지막 사망 탭, 기록에 표시합니다 (미터 2.1.0 이상).",
+    "ja": "自分を倒した相手、加勢した相手、自分が倒したか撃破を助けた各プレイヤーのアビス階級を、ポップアップ、最後の死亡タブ、記録に表示（メーター2.1.0以降）。",
+    "de": "Der Abyss-Rang dessen, der dich getötet hat, seiner Helfer und jedes Spielers, den du getötet oder mitgetötet hast, im Popup, im Tab Letzter Tod und in den Einträgen (Meter 2.1.0 oder neuer).",
+    "fr": "Le rang des Abysses de qui t'a tué, de ceux qui l'ont aidé et de chaque joueur que tu as tué ou aidé à tuer, dans la popup, l'onglet Dernière mort et l'historique (compteur 2.1.0 ou plus récent).",
+    "es": "El rango del Abismo de quien te mató, de quienes ayudaron y de cada jugador que mataste o ayudaste a matar, en el aviso, la pestaña Última muerte y el historial (medidor 2.1.0 o posterior).",
+    "pt": "A patente do Abismo de quem te matou, de quem ajudou e de cada jogador que você matou ou ajudou a matar, no pop-up, na aba Última morte e no histórico (medidor 2.1.0 ou mais recente).",
+    "ru": "Ранг Бездны того, кто вас убил, его помощников и каждого игрока, которого вы убили или помогли убить, — во всплывающем окне, на вкладке «Последняя смерть» и в записях (метр 2.1.0 или новее).",
+    "zh-Hant": "在彈出視窗、最近一次死亡分頁與紀錄中，顯示擊殺你的玩家、協助者，以及你擊殺或協助擊殺的每位玩家的深淵階級（需計量器 2.1.0 或更新版本）。",
+    "zh-Hans": "在弹出窗口、最近一次死亡分页与记录中，显示击杀你的玩家、协助者，以及你击杀或协助击杀的每位玩家的深渊阶级（需计量器 2.1.0 或更新版本）。"
+  },
+  {
     "version": "0.3.0",
     "en": "A list of the players you killed or helped kill, with the Abyss Points each earned; the week's Abyss Points against their cap. Assists count only on enemies (meter 2.0.98).",
     "ko": "처치하거나 처치를 도운 플레이어 목록과 각각 얻은 어비스 포인트, 이번 주 어비스 포인트와 한도를 보여 줍니다. 어시스트는 적에게만 셉니다 (미터 2.0.98).",

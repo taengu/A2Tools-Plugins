@@ -50,6 +50,7 @@ globalThis.ROSTER_UI = {
     alertTestTip: "Show the alert now, as it will look", alertTitle: "Odyle energy", alertHint: "Click to dismiss · drag to move", alertFull: "full: refills are being wasted",
     alertWastes: (w) => `next refill wasted at ${w}`, alertFullIn: (t) => `full in ${t}`, alertMore: (n) => `and ${n} more`, serverN: (id) => `Server ${id}`,
     names: { nightmare: "Nightmare", shugo: "Shugo Festival", invasion: "Dimensional Invasion", duty: "Daily Duty", ascension: "Ascension Trial", dungeon: "Daily Dungeon", odyleCraft: "Odyle Energy crafts", buyOdyle: "Buy Odyle Energy", buyRift: "Buy Rift Stones", kinah: "Kinah gained", abyss: "Abyss Points", corridors: "Abyss Corridors" },
+    corrDone: "Done this siege: every corridor your side holds", corrTodo: (n) => `${n} corridor${n === 1 ? "" : "s"} still to run this siege`, corrUnknown: "Not known since the last siege: play this character to see",
     classes: ["Gladiator", "Templar", "Assassin", "Ranger", "Sorcerer", "Spiritmaster", "Cleric", "Chanter", "Brawler"],
   },
   ko: {
@@ -98,6 +99,7 @@ globalThis.ROSTER_UI = {
     alertTestTip: "알림이 어떻게 보이는지 지금 표시", alertTitle: "오드 에너지", alertHint: "클릭하여 닫기 · 드래그하여 이동", alertFull: "가득 참: 충전이 낭비되는 중",
     alertWastes: (w) => `${w}에 다음 충전 낭비`, alertFullIn: (t) => `${t} 후 가득 참`, alertMore: (n) => `외 ${n}명`, serverN: (id) => `서버 ${id}`,
     names: { nightmare: "악몽", shugo: "슈고 페스타", invasion: "차원 침공", duty: "일일 임무", ascension: "각성전", dungeon: "일일 던전", odyleCraft: "오드 에너지 제작", buyOdyle: "오드 에너지 구매", buyRift: "균열석 구매", kinah: "획득한 키나", abyss: "어비스 포인트", corridors: "어비스 회랑" },
+    corrDone: "이번 공성: 우리 진영이 보유한 회랑을 모두 완료", corrTodo: (n) => `이번 공성에 남은 회랑 ${n}개`, corrUnknown: "지난 공성 이후 알 수 없음: 이 캐릭터로 접속하면 표시됩니다",
     classes: ["검성", "수호성", "살성", "궁성", "마도성", "정령성", "치유성", "호법성", "권성"],
   },
   ja: {
@@ -146,6 +148,7 @@ globalThis.ROSTER_UI = {
     alertTestTip: "通知の見た目を今すぐ表示", alertTitle: "オードエネルギー", alertHint: "クリックで閉じる · ドラッグで移動", alertFull: "満タン：回復が無駄になっています",
     alertWastes: (w) => `${w}の回復が無駄に`, alertFullIn: (t) => `満タンまで ${t}`, alertMore: (n) => `ほか ${n} 人`, serverN: (id) => `サーバー ${id}`,
     names: { nightmare: "悪夢", shugo: "シューゴ フェスタ", invasion: "次元侵攻", duty: "デイリー任務", ascension: "覚醒戦", dungeon: "デイリーダンジョン", odyleCraft: "オードエネルギー製作", buyOdyle: "オードエネルギー購入", buyRift: "亀裂石購入", kinah: "獲得キナ", abyss: "アビスポイント", corridors: "アビス回廊" },
+    corrDone: "今回の攻城戦：自陣営が保有する回廊をすべて完了", corrTodo: (n) => `今回の攻城戦で残りの回廊 ${n}`, corrUnknown: "前回の攻城戦以降は不明：このキャラクターでプレイすると表示されます",
     classes: ["グラディエーター", "テンプラー", "アサシン", "レンジャー", "ソーサラー", "スピリットマスター", "クレリック", "チャンター", "ファイター"],
   },
   de: {
@@ -194,6 +197,7 @@ globalThis.ROSTER_UI = {
     alertTestTip: "Den Hinweis jetzt so zeigen, wie er aussehen wird", alertTitle: "Odyle-Energie", alertHint: "Klicken zum Schließen · ziehen zum Verschieben", alertFull: "voll: Aufladungen verfallen",
     alertWastes: (w) => `nächste Aufladung verfällt um ${w}`, alertFullIn: (t) => `voll in ${t}`, alertMore: (n) => `und ${n} weitere`, serverN: (id) => `Server ${id}`,
     names: { nightmare: "Albtraum", shugo: "Shugofesta", invasion: "Dimensionale Invasion", duty: "Tägliche Pflicht", ascension: "Aszensusritus", dungeon: "Tägliches Verlies", odyleCraft: "Odyle-Energie herstellen", buyOdyle: "Odyle-Energie kaufen", buyRift: "Risssteine kaufen", kinah: "Erhaltene Kinah", abyss: "Abyss-Punkte", corridors: "Abyss-Korridore" },
+    corrDone: "Diese Belagerung erledigt: alle Korridore, die deine Seite hält", corrTodo: (n) => `Noch ${n} Korridor${n === 1 ? "" : "e"} in dieser Belagerung`, corrUnknown: "Seit der letzten Belagerung unbekannt: Spiele diesen Charakter, um es zu sehen",
     classes: ["Gladiator", "Templer", "Assassine", "Waldläufer", "Magier", "Beschwörer", "Kleriker", "Kantor", "Faustkämpfer"],
   },
   fr: {
@@ -242,6 +246,7 @@ globalThis.ROSTER_UI = {
     alertTestTip: "Afficher l'alerte maintenant, telle qu'elle apparaîtra", alertTitle: "Énergie d'Odyle", alertHint: "Cliquez pour fermer · faites glisser pour déplacer", alertFull: "pleine : les recharges sont perdues",
     alertWastes: (w) => `prochaine recharge perdue à ${w}`, alertFullIn: (t) => `pleine dans ${t}`, alertMore: (n) => `et ${n} de plus`, serverN: (id) => `Serveur ${id}`,
     names: { nightmare: "Cauchemar", shugo: "Festival des Shugos", invasion: "Invasion dimensionnelle", duty: "Mission quotidienne", ascension: "Épreuve d'Éveil", dungeon: "Donjon quotidien", odyleCraft: "Fabrication d'énergie d'Odyle", buyOdyle: "Achat d'énergie d'Odyle", buyRift: "Achat de pierres de faille", kinah: "Kinah gagnés", abyss: "Points abyssaux", corridors: "Couloirs abyssaux" },
+    corrDone: "Fait pour ce siège : tous les couloirs que ton camp détient", corrTodo: (n) => `Encore ${n} couloir${n === 1 ? "" : "s"} pour ce siège`, corrUnknown: "Inconnu depuis le dernier siège : joue ce personnage pour le voir",
     classes: ["Gladiateur", "Templier", "Assassin", "Rôdeur", "Sorcier", "Spiritualiste", "Clerc", "Aède", "Pugiliste"],
   },
   es: {
@@ -290,6 +295,7 @@ globalThis.ROSTER_UI = {
     alertTestTip: "Mostrar el aviso ahora, tal como se verá", alertTitle: "Energía de Odyle", alertHint: "Clic para cerrar · arrastra para mover", alertFull: "lleno: se pierden las recargas",
     alertWastes: (w) => `la próxima recarga se pierde a las ${w}`, alertFullIn: (t) => `lleno en ${t}`, alertMore: (n) => `y ${n} más`, serverN: (id) => `Servidor ${id}`,
     names: { nightmare: "Pesadilla", shugo: "Festival de Shugo", invasion: "Invasión dimensional", duty: "Deber diario", ascension: "Prueba de ascenso", dungeon: "Mazmorra diaria", odyleCraft: "Fabricar energía de Odyle", buyOdyle: "Comprar energía de Odyle", buyRift: "Comprar piedras de grieta", kinah: "Kinah obtenidos", abyss: "Puntos del Abismo", corridors: "Corredores del Abismo" },
+    corrDone: "Hecho en este asedio: todos los corredores que tu bando tiene", corrTodo: (n) => `Falta${n === 1 ? "" : "n"} ${n} corredor${n === 1 ? "" : "es"} en este asedio`, corrUnknown: "Desconocido desde el último asedio: juega este personaje para verlo",
     classes: ["Gladiador", "Templario", "Sicario", "Ranger", "Hechicero", "Espiritualista", "Clérigo", "Conjurador", "Luchador"],
   },
   pt: {
@@ -338,6 +344,7 @@ globalThis.ROSTER_UI = {
     alertTestTip: "Mostrar o alerta agora, como vai aparecer", alertTitle: "Energia de Odyle", alertHint: "Clique para fechar · arraste para mover", alertFull: "cheio: as recargas estão sendo desperdiçadas",
     alertWastes: (w) => `próxima recarga desperdiçada às ${w}`, alertFullIn: (t) => `cheio em ${t}`, alertMore: (n) => `e mais ${n}`, serverN: (id) => `Servidor ${id}`,
     names: { nightmare: "Pesadelo", shugo: "Shugo Festa", invasion: "Invasão Dimensional", duty: "Dever diário", ascension: "Rito de Ascensão", dungeon: "Masmorra diária", odyleCraft: "Criar energia de Odyle", buyOdyle: "Comprar energia de Odyle", buyRift: "Comprar pedras de fenda", kinah: "Kinah obtidos", abyss: "Pontos do Abismo", corridors: "Corredores do Abismo" },
+    corrDone: "Feito neste cerco: todos os corredores que seu lado tem", corrTodo: (n) => `Falta${n === 1 ? "" : "m"} ${n} corredor${n === 1 ? "" : "es"} neste cerco`, corrUnknown: "Desconhecido desde o último cerco: jogue com este personagem para ver",
     classes: ["Gladiador", "Templário", "Assassino", "Arqueiro", "Mago", "Espiritualista", "Clérigo", "Encantador", "Lutador"],
   },
   ru: {
@@ -386,6 +393,7 @@ globalThis.ROSTER_UI = {
     alertTestTip: "Показать оповещение сейчас, как оно будет выглядеть", alertTitle: "Энергия Одила", alertHint: "Щелчок — закрыть · перетащите, чтобы переместить", alertFull: "полная: пополнения пропадают",
     alertWastes: (w) => `следующее пополнение пропадёт в ${w}`, alertFullIn: (t) => `полная через ${t}`, alertMore: (n) => `и ещё ${n}`, serverN: (id) => `Сервер ${id}`,
     names: { nightmare: "Кошмары", shugo: "Фестиваль шиго", invasion: "Межпространственное вторжение", duty: "Ежедневное поручение", ascension: "Битва пробуждения", dungeon: "Ежедневное подземелье", odyleCraft: "Создание энергии Одила", buyOdyle: "Покупка энергии Одила", buyRift: "Покупка камней разлома", kinah: "Кинары за сегодня", abyss: "Очки Бездны", corridors: "Коридоры Бездны" },
+    corrDone: "Пройдено в эту осаду: все коридоры, которые держит ваша сторона", corrTodo: (n) => `Осталось коридоров в эту осаду: ${n}`, corrUnknown: "Неизвестно с прошлой осады: зайдите этим персонажем",
     classes: ["Гладиатор", "Страж", "Убийца", "Стрелок", "Волшебник", "Заклинатель", "Целитель", "Чародей", "Мастер кулака"],
   },
   "zh-Hans": {
@@ -434,6 +442,7 @@ globalThis.ROSTER_UI = {
     alertTestTip: "立即显示提醒的样子", alertTitle: "奥德能量", alertHint: "点击关闭 · 拖动移动", alertFull: "已满：补充正在被浪费",
     alertWastes: (w) => `${w} 的补充会被浪费`, alertFullIn: (t) => `${t} 后已满`, alertMore: (n) => `还有 ${n} 个`, serverN: (id) => `服务器 ${id}`,
     names: { nightmare: "恶梦", shugo: "树古庆典", invasion: "次元进攻", duty: "每日任务", ascension: "觉醒战", dungeon: "每日副本", odyleCraft: "制作奥德能量", buyOdyle: "购买奥德能量", buyRift: "购买裂缝石", kinah: "获得基纳", abyss: "深渊点数", corridors: "深渊回廊" },
+    corrDone: "本次攻城：已完成我方持有的所有回廊", corrTodo: (n) => `本次攻城还剩 ${n} 个回廊`, corrUnknown: "上次攻城后未知：用此角色登录即可看到",
     classes: ["剑圣", "守护圣", "杀圣", "弓圣", "魔道圣", "精灵圣", "治愈圣", "护法圣", "拳圣"],
   },
   "zh-Hant": {
@@ -482,6 +491,7 @@ globalThis.ROSTER_UI = {
     alertTestTip: "立即顯示提醒的樣子", alertTitle: "奧德能量", alertHint: "點擊關閉 · 拖曳移動", alertFull: "已滿：補充正在被浪費",
     alertWastes: (w) => `${w} 的補充會被浪費`, alertFullIn: (t) => `${t} 後已滿`, alertMore: (n) => `還有 ${n} 個`, serverN: (id) => `伺服器 ${id}`,
     names: { nightmare: "惡夢", shugo: "樹古慶典", invasion: "次元進攻", duty: "每日任務", ascension: "覺醒戰", dungeon: "每日副本", odyleCraft: "製作奧德能量", buyOdyle: "購買奧德能量", buyRift: "購買裂縫石", kinah: "獲得基納", abyss: "深淵點數", corridors: "深淵迴廊" },
+    corrDone: "本次攻城：已完成我方持有的所有迴廊", corrTodo: (n) => `本次攻城還剩 ${n} 個迴廊`, corrUnknown: "上次攻城後未知：用此角色登入即可看到",
     classes: ["劍聖", "守護聖", "殺聖", "弓聖", "魔道聖", "精靈聖", "治癒聖", "護法聖", "拳聖"],
   },
 };
