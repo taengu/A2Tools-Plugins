@@ -287,16 +287,32 @@ function view(key, ch, now) {
   return { key, ch, cap, est, full, playing: key === current && gameRunning };
 }
 
+// Each order as it first comes (#125): the character by server then name,
+// soonest full first, the numbers largest first. A header clicked again
+// turns it around (prefs.sortDir "flip").
+const byName = (a, b) => a.ch.name.localeCompare(b.ch.name);
+const ORDERS = {
+  name: (a, b) => (serverName(a.ch.serverId) || "").localeCompare(serverName(b.ch.serverId) || "") || byName(a, b),
+  cp: (a, b) => (b.ch.cp || 0) - (a.ch.cp || 0),
+  gs: (a, b) => (b.ch.gs || 0) - (a.ch.gs || 0),
+  energy: (a, b) => (b.est?.basic ?? -1) - (a.est?.basic ?? -1),
+  charged: (a, b) => (b.est?.charged ?? -1) - (a.est?.charged ?? -1),
+  full: (a, b) => (a.est?.full ? 0 : a.full ?? Infinity) - (b.est?.full ? 0 : b.full ?? Infinity),
+  seen: (a, b) => (b.playing - a.playing) || (b.ch.seen || 0) - (a.ch.seen || 0),
+};
 function sorted(rows) {
-  const by = {
-    name: (a, b) => a.ch.name.localeCompare(b.ch.name),
-    cp: (a, b) => (b.ch.cp || 0) - (a.ch.cp || 0),
-    gs: (a, b) => (b.ch.gs || 0) - (a.ch.gs || 0),
-    energy: (a, b) => (b.est?.basic ?? -1) - (a.est?.basic ?? -1),
-    full: (a, b) => (a.est?.full ? 0 : a.full ?? Infinity) - (b.est?.full ? 0 : b.full ?? Infinity),
-    seen: (a, b) => (b.playing - a.playing) || (b.ch.seen || 0) - (a.ch.seen || 0),
-  }[state.prefs.sort] || ((a, b) => a.ch.name.localeCompare(b.ch.name));
-  return rows.sort((a, b) => by(a, b) || a.ch.name.localeCompare(b.ch.name));
+  const by = ORDERS[state.prefs.sort] || ORDERS.name;
+  const dir = state.prefs.sortDir === "flip" ? -1 : 1;
+  return rows.sort((a, b) => dir * by(a, b) || byName(a, b));
+}
+
+// The headers: which one sorts, and which way.
+function renderHead() {
+  for (const b of document.querySelectorAll(".head button")) {
+    const on = b.dataset.sort === state.prefs.sort;
+    b.classList.toggle("on", on);
+    b.dataset.dir = on ? (state.prefs.sortDir === "flip" ? "flip" : "first") : "";
+  }
 }
 
 // Display filtering never removes saved characters or changes their totals.
@@ -346,6 +362,7 @@ function render() {
     );
   }
 
+  renderHead();
   const list = $(".list");
   list.replaceChildren(...rows.map(rowOf));
   const empty = $(".empty");
@@ -607,6 +624,20 @@ function rowOf(r) {
   const sub = [className, ch.level ? t.lv(ch.level) : null, serverName(ch.serverId)].filter(Boolean).join(" · ");
   names.append(nameLine, el("div", "sub", sub));
   if (!playing && ch.seen) names.append(el("div", "seen", t.playedAgo(ago(ch.seen, now))));
+  // The Abyss Corridors this siege (corridors()): done of the ones its side
+  // holds; ≈ a guess (passages not handed out yet), ? not known since the
+  // siege; none shown when the side holds none.
+  const corr = CONTENT.find((x) => x.name === "corridors");
+  const seenCorr = ch.counts?.["abyss:corridors"];
+  if (seenCorr && seenCorr.cap !== 0) {
+    const n = countNow(corr, seenCorr, now);
+    const cap = seenCorr.cap ?? corr.cap;
+    const done = n ? Math.min(n.left, cap) : null;
+    const pill = el("span", `corr${done == null ? " unknown" : done >= cap ? " done" : " todo"}`,
+      `${t.names.corridors} ${done == null ? "?" : `${seenCorr.guess ? "≈" : ""}${done}/${cap}`}`);
+    pill.title = done == null ? t.corrUnknown : done >= cap ? t.corrDone : t.corrTodo(cap - done);
+    names.append(pill);
+  }
   const remove = el("button", "remove", "×");
   remove.type = "button";
   remove.title = t.removeTip;
@@ -700,6 +731,17 @@ $(".list").addEventListener("click", (e) => {
 $(".search").addEventListener("input", render);
 $(".sort").addEventListener("change", (e) => {
   state.prefs.sort = e.target.value;
+  state.prefs.sortDir = "";
+  save();
+  render();
+});
+$(".head").addEventListener("click", (e) => {
+  const b = e.target.closest("button[data-sort]");
+  if (!b) return;
+  const again = state.prefs.sort === b.dataset.sort;
+  state.prefs.sort = b.dataset.sort;
+  state.prefs.sortDir = again && state.prefs.sortDir !== "flip" ? "flip" : "";
+  $(".sort").value = state.prefs.sort;
   save();
   render();
 });
@@ -839,9 +881,9 @@ function applyLanguage() {
   $(".alertTest").textContent = t.alertTest;
   $(".alertTest").title = t.alertTestTip;
   for (const o of $(".display").options) o.textContent = t.display[o.value];
-  for (const o of $(".sort").options) o.textContent = t.sort[o.value] ?? o.textContent;
+  for (const o of $(".sort").options) o.textContent = t.sort[o.value] ?? (o.value === "charged" ? t.colCharged : o.textContent);
   const cols = [t.colChar, t.colCombat, t.colGear, t.colBasic, t.colCharged, t.colFullIn];
-  document.querySelectorAll(".head span").forEach((s, i) => (s.textContent = cols[i] ?? s.textContent));
+  document.querySelectorAll(".head button").forEach((s, i) => (s.textContent = cols[i] ?? s.textContent));
 }
 
 // ── Start ──────────────────────────────────────────────────────────────────

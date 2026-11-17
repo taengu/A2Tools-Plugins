@@ -346,6 +346,60 @@ const PET_SOURCES = {
      "String_STR_Subzone_SulfurTreeIsland_B_body",
      "String_STR_Subzone_SulfurTreeIsland_C_body"
     ]
+   },
+   {
+    "bySide": {
+     "asmodian": {
+      "at": [
+       843,
+       -810
+      ],
+      "m": 627,
+      "name": "EnvObjData_E_AR4_PrimumLanding_TeleportArtifact_001_desc",
+      "teleport": 1,
+      "to": [
+       45,
+       -63550
+      ]
+     },
+     "elyos": {
+      "at": [
+       843,
+       -810
+      ],
+      "m": 575,
+      "name": "EnvObjData_E_AR4_TeminonLanding_TeleportArtifact_001_desc",
+      "teleport": 1,
+      "to": [
+       44,
+       56715
+      ]
+     }
+    },
+    "chance": "100%",
+    "kibelisk": {
+     "at": [
+      843,
+      -810
+     ],
+     "m": 575,
+     "name": "EnvObjData_E_AR4_TeminonLanding_TeleportArtifact_001_desc",
+     "teleport": 1,
+     "to": [
+      44,
+      56715
+     ]
+    },
+    "level": 45,
+    "map": "String_STR_Map_Abyss_Reshanta_D_body",
+    "mapId": 23,
+    "npc": "String_STR_M_AR4_STI_Neuth_01_001_body",
+    "npcId": 2600688,
+    "region": "Chaotic Outer Reshanta",
+    "spawns": 30,
+    "zones": [
+     "String_STR_Subzone_AR4_SulfurTreeIsland_body"
+    ]
    }
   ],
   "title": "String_STR_ITEM_VEHICLESOUL_NEUTH_01_A_01_B_body"
@@ -1409,6 +1463,276 @@ const PET_SOURCES = {
      "String_STR_Subzone_SulfurTreeIsland_A_body",
      "String_STR_Subzone_SulfurTreeIsland_B_body",
      "String_STR_Subzone_SulfurTreeIsland_C_body"
+    ]
+   },
+   {
+    "bySide": {
+     "asmodian": {
+      "at": [
+       -43350,
+       -31415
+      ],
+      "m": 540,
+      "name": "EnvObjData_E_AR4_PrimumLanding_TeleportArtifact_001_desc",
+      "teleport": 1,
+      "to": [
+       45,
+       -63550
+      ]
+     },
+     "elyos": {
+      "at": [
+       -43350,
+       -31415
+      ],
+      "m": 982,
+      "name": "EnvObjData_E_AR4_TeminonLanding_TeleportArtifact_001_desc",
+      "teleport": 1,
+      "to": [
+       44,
+       56715
+      ]
+     }
+    },
+    "chance": "100%",
+    "kibelisk": {
+     "at": [
+      -43350,
+      -31415
+     ],
+     "m": 540,
+     "name": "EnvObjData_E_AR4_PrimumLanding_TeleportArtifact_001_desc",
+     "teleport": 1,
+     "to": [
+      45,
+      -63550
+     ]
+    },
+    "level": 45,
+    "map": "String_STR_Map_Abyss_Reshanta_D_body",
+    "mapId": 23,
+    "npc": "String_STR_M_AR4_DD_01_AbyssSwarm_01_001_body",
+    "npcId": 2600601,
+    "region": "Chaotic Outer Reshanta",
+    "spawns": 63,
+    "zones": [
+     "String_STR_Subzone_AR4_DestroyedDebris_01_body"
+    ]
+   },
+   {
+    "bySide": {
+     "asmodian": {
+      "at": [
+       44097,
+       25055
+      ],
+      "m": 990,
+      "name": "EnvObjData_E_AR4_PrimumLanding_TeleportArtifact_001_desc",
+      "teleport": 1,
+      "to": [
+       45,
+       -63550
+      ]
+     },
+     "elyos": {
+      "at": [
+       44097,
+       25055
+      ],
+      "m": 542,
+      "name": "EnvObjData_E_AR4_TeminonLanding_TeleportArtifact_001_desc",
+      "teleport": 1,
+      "to": [
+       44,
+       56715
+      ]
+     }
+    },
+    "chance": "100%",
+    "kibelisk": {
+     "at": [
+      44097,
+      25055
+     ],
+     "m": 542,
+     "name": "EnvObjData_E_AR4_TeminonLanding_TeleportArtifact_001_desc",
+     "teleport": 1,
+     "to": [
+      44,
+      56715
+     ]
+    },
+    "level": 45,
+    "map": "String_STR_Map_Abyss_Reshanta_D_body",
+    "mapId": 23,
+    "npc": "String_STR_M_AR4_DD_02_AbyssSwarm_01_001_body",
+    "npcId": 2600621,
+    "region": "Chaotic Outer Reshanta",
+    "spawns": 63,
+    "zones": [
+     "String_STR_Subzone_AR4_DestroyedDebris_02_body"
+    ]
+   },
+   {
+    "bySide": {
+     "asmodian": {
+      "at": [
+       -36297,
+       21519
+      ],
+      "m": 925,
+      "name": "EnvObjData_E_AR4_PrimumLanding_TeleportArtifact_001_desc",
+      "teleport": 1,
+      "to": [
+       45,
+       -63550
+      ]
+     },
+     "elyos": {
+      "at": [
+       -36297,
+       21519
+      ],
+      "m": 506,
+      "name": "EnvObjData_E_AR4_TeminonLanding_TeleportArtifact_001_desc",
+      "teleport": 1,
+      "to": [
+       44,
+       56715
+      ]
+     }
+    },
+    "chance": "100%",
+    "kibelisk": {
+     "at": [
+      -36297,
+      21519
+     ],
+     "m": 506,
+     "name": "EnvObjData_E_AR4_TeminonLanding_TeleportArtifact_001_desc",
+     "teleport": 1,
+     "to": [
+      44,
+      56715
+     ]
+    },
+    "level": 45,
+    "map": "String_STR_Map_Abyss_Reshanta_D_body",
+    "mapId": 23,
+    "npc": "String_STR_M_AR4_BSZ_01_AbyssSwarm_01_001_body",
+    "npcId": 2600641,
+    "region": "Chaotic Outer Reshanta",
+    "spawns": 63,
+    "zones": [
+     "String_STR_Subzone_AR4_BlackShardZone_01_body"
+    ]
+   },
+   {
+    "bySide": {
+     "asmodian": {
+      "at": [
+       37031,
+       -28043
+      ],
+      "m": 513,
+      "name": "EnvObjData_E_AR4_PrimumLanding_TeleportArtifact_001_desc",
+      "teleport": 1,
+      "to": [
+       45,
+       -63550
+      ]
+     },
+     "elyos": {
+      "at": [
+       37031,
+       -28043
+      ],
+      "m": 925,
+      "name": "EnvObjData_E_AR4_TeminonLanding_TeleportArtifact_001_desc",
+      "teleport": 1,
+      "to": [
+       44,
+       56715
+      ]
+     }
+    },
+    "chance": "100%",
+    "kibelisk": {
+     "at": [
+      37031,
+      -28043
+     ],
+     "m": 513,
+     "name": "EnvObjData_E_AR4_PrimumLanding_TeleportArtifact_001_desc",
+     "teleport": 1,
+     "to": [
+      45,
+      -63550
+     ]
+    },
+    "level": 45,
+    "map": "String_STR_Map_Abyss_Reshanta_D_body",
+    "mapId": 23,
+    "npc": "String_STR_M_AR4_BSZ_02_AbyssSwarm_01_001_body",
+    "npcId": 2600661,
+    "region": "Chaotic Outer Reshanta",
+    "spawns": 63,
+    "zones": [
+     "String_STR_Subzone_AR4_BlackShardZone_02_body"
+    ]
+   },
+   {
+    "bySide": {
+     "asmodian": {
+      "at": [
+       -6789,
+       4349
+      ],
+      "m": 682,
+      "name": "EnvObjData_E_AR4_PrimumLanding_TeleportArtifact_001_desc",
+      "teleport": 1,
+      "to": [
+       45,
+       -63550
+      ]
+     },
+     "elyos": {
+      "at": [
+       -6789,
+       4349
+      ],
+      "m": 528,
+      "name": "EnvObjData_E_AR4_TeminonLanding_TeleportArtifact_001_desc",
+      "teleport": 1,
+      "to": [
+       44,
+       56715
+      ]
+     }
+    },
+    "chance": "100%",
+    "kibelisk": {
+     "at": [
+      -6789,
+      4349
+     ],
+     "m": 528,
+     "name": "EnvObjData_E_AR4_TeminonLanding_TeleportArtifact_001_desc",
+     "teleport": 1,
+     "to": [
+      44,
+      56715
+     ]
+    },
+    "level": 43,
+    "map": "String_STR_Map_Abyss_Reshanta_D_body",
+    "mapId": 23,
+    "npc": "String_STR_M_AR4_STI_AbyssSwarm_01_001_body",
+    "npcId": 2600681,
+    "region": "Chaotic Outer Reshanta",
+    "spawns": 84,
+    "zones": [
+     "String_STR_Subzone_AR4_SulfurTreeIsland_body"
     ]
    }
   ],
@@ -2768,6 +3092,222 @@ const PET_SOURCES = {
      "String_STR_Subzone_BlackShardZone_A_body",
      "String_STR_Subzone_BlackShardZone_D_body"
     ]
+   },
+   {
+    "bySide": {
+     "asmodian": {
+      "at": [
+       -39648,
+       -32986
+      ],
+      "m": 501,
+      "name": "EnvObjData_E_AR4_PrimumLanding_TeleportArtifact_001_desc",
+      "teleport": 1,
+      "to": [
+       45,
+       -63550
+      ]
+     },
+     "elyos": {
+      "at": [
+       -39648,
+       -32986
+      ],
+      "m": 981,
+      "name": "EnvObjData_E_AR4_TeminonLanding_TeleportArtifact_001_desc",
+      "teleport": 1,
+      "to": [
+       44,
+       56715
+      ]
+     }
+    },
+    "chance": "100%",
+    "kibelisk": {
+     "at": [
+      -39648,
+      -32986
+     ],
+     "m": 501,
+     "name": "EnvObjData_E_AR4_PrimumLanding_TeleportArtifact_001_desc",
+     "teleport": 1,
+     "to": [
+      45,
+      -63550
+     ]
+    },
+    "level": 46,
+    "map": "String_STR_Map_Abyss_Reshanta_D_body",
+    "mapId": 23,
+    "npc": "String_STR_M_AR4_DD_01_Neuth_02_001_body",
+    "npcId": 2600602,
+    "region": "Chaotic Outer Reshanta",
+    "spawns": 28,
+    "zones": [
+     "String_STR_Subzone_AR4_DestroyedDebris_01_body"
+    ]
+   },
+   {
+    "bySide": {
+     "asmodian": {
+      "at": [
+       40431,
+       26934
+      ],
+      "m": 991,
+      "name": "EnvObjData_E_AR4_PrimumLanding_TeleportArtifact_001_desc",
+      "teleport": 1,
+      "to": [
+       45,
+       -63550
+      ]
+     },
+     "elyos": {
+      "at": [
+       40431,
+       26934
+      ],
+      "m": 502,
+      "name": "EnvObjData_E_AR4_TeminonLanding_TeleportArtifact_001_desc",
+      "teleport": 1,
+      "to": [
+       44,
+       56715
+      ]
+     }
+    },
+    "chance": "100%",
+    "kibelisk": {
+     "at": [
+      40431,
+      26934
+     ],
+     "m": 502,
+     "name": "EnvObjData_E_AR4_TeminonLanding_TeleportArtifact_001_desc",
+     "teleport": 1,
+     "to": [
+      44,
+      56715
+     ]
+    },
+    "level": 46,
+    "map": "String_STR_Map_Abyss_Reshanta_D_body",
+    "mapId": 23,
+    "npc": "String_STR_M_AR4_DD_02_Neuth_02_001_body",
+    "npcId": 2600622,
+    "region": "Chaotic Outer Reshanta",
+    "spawns": 28,
+    "zones": [
+     "String_STR_Subzone_AR4_DestroyedDebris_02_body"
+    ]
+   },
+   {
+    "bySide": {
+     "asmodian": {
+      "at": [
+       -37912,
+       26735
+      ],
+      "m": 979,
+      "name": "EnvObjData_E_AR4_PrimumLanding_TeleportArtifact_001_desc",
+      "teleport": 1,
+      "to": [
+       45,
+       -63550
+      ]
+     },
+     "elyos": {
+      "at": [
+       -37912,
+       26735
+      ],
+      "m": 484,
+      "name": "EnvObjData_E_AR4_TeminonLanding_TeleportArtifact_001_desc",
+      "teleport": 1,
+      "to": [
+       44,
+       56715
+      ]
+     }
+    },
+    "chance": "100%",
+    "kibelisk": {
+     "at": [
+      -37912,
+      26735
+     ],
+     "m": 484,
+     "name": "EnvObjData_E_AR4_TeminonLanding_TeleportArtifact_001_desc",
+     "teleport": 1,
+     "to": [
+      44,
+      56715
+     ]
+    },
+    "level": 46,
+    "map": "String_STR_Map_Abyss_Reshanta_D_body",
+    "mapId": 23,
+    "npc": "String_STR_M_AR4_BSZ_01_Neuth_02_001_body",
+    "npcId": 2600642,
+    "region": "Chaotic Outer Reshanta",
+    "spawns": 28,
+    "zones": [
+     "String_STR_Subzone_AR4_BlackShardZone_01_body"
+    ]
+   },
+   {
+    "bySide": {
+     "asmodian": {
+      "at": [
+       38646,
+       -33258
+      ],
+      "m": 491,
+      "name": "EnvObjData_E_AR4_PrimumLanding_TeleportArtifact_001_desc",
+      "teleport": 1,
+      "to": [
+       45,
+       -63550
+      ]
+     },
+     "elyos": {
+      "at": [
+       38646,
+       -33258
+      ],
+      "m": 979,
+      "name": "EnvObjData_E_AR4_TeminonLanding_TeleportArtifact_001_desc",
+      "teleport": 1,
+      "to": [
+       44,
+       56715
+      ]
+     }
+    },
+    "chance": "100%",
+    "kibelisk": {
+     "at": [
+      38646,
+      -33258
+     ],
+     "m": 491,
+     "name": "EnvObjData_E_AR4_PrimumLanding_TeleportArtifact_001_desc",
+     "teleport": 1,
+     "to": [
+      45,
+      -63550
+     ]
+    },
+    "level": 46,
+    "map": "String_STR_Map_Abyss_Reshanta_D_body",
+    "mapId": 23,
+    "npc": "String_STR_M_AR4_BSZ_02_Neuth_02_001_body",
+    "npcId": 2600662,
+    "region": "Chaotic Outer Reshanta",
+    "spawns": 28,
+    "zones": [
+     "String_STR_Subzone_AR4_BlackShardZone_02_body"
+    ]
    }
   ],
   "title": "String_STR_ITEM_VEHICLESOUL_NEUTH_02_A_01_B_body"
@@ -2889,6 +3429,60 @@ const PET_SOURCES = {
     "spawns": 5,
     "zones": [
      "String_STR_Subzone_SulfurTreeIsland_B_body"
+    ]
+   },
+   {
+    "bySide": {
+     "asmodian": {
+      "at": [
+       -12690,
+       4543
+      ],
+      "m": 693,
+      "name": "EnvObjData_E_AR4_PrimumLanding_TeleportArtifact_001_desc",
+      "teleport": 1,
+      "to": [
+       45,
+       -63550
+      ]
+     },
+     "elyos": {
+      "at": [
+       -12690,
+       4543
+      ],
+      "m": 537,
+      "name": "EnvObjData_E_AR4_TeminonLanding_TeleportArtifact_001_desc",
+      "teleport": 1,
+      "to": [
+       44,
+       56715
+      ]
+     }
+    },
+    "chance": "100%",
+    "kibelisk": {
+     "at": [
+      -12690,
+      4543
+     ],
+     "m": 537,
+     "name": "EnvObjData_E_AR4_TeminonLanding_TeleportArtifact_001_desc",
+     "teleport": 1,
+     "to": [
+      44,
+      56715
+     ]
+    },
+    "level": 47,
+    "map": "String_STR_Map_Abyss_Reshanta_D_body",
+    "mapId": 23,
+    "npc": "String_STR_M_AR4_STI_NagaElite_04_001_body",
+    "npcId": 2600692,
+    "region": "Chaotic Outer Reshanta",
+    "spawns": 12,
+    "zones": [
+     "String_STR_Subzone_AR4_SulfurTreeIsland_body"
     ]
    }
   ],
@@ -5622,6 +6216,60 @@ const PET_SOURCES = {
      "String_STR_Subzone_SulfurTreeIsland_B_body",
      "String_STR_Subzone_SulfurTreeIsland_C_body"
     ]
+   },
+   {
+    "bySide": {
+     "asmodian": {
+      "at": [
+       -6659,
+       3287
+      ],
+      "m": 672,
+      "name": "EnvObjData_E_AR4_PrimumLanding_TeleportArtifact_001_desc",
+      "teleport": 1,
+      "to": [
+       45,
+       -63550
+      ]
+     },
+     "elyos": {
+      "at": [
+       -6659,
+       3287
+      ],
+      "m": 538,
+      "name": "EnvObjData_E_AR4_TeminonLanding_TeleportArtifact_001_desc",
+      "teleport": 1,
+      "to": [
+       44,
+       56715
+      ]
+     }
+    },
+    "chance": "100%",
+    "kibelisk": {
+     "at": [
+      -6659,
+      3287
+     ],
+     "m": 538,
+     "name": "EnvObjData_E_AR4_TeminonLanding_TeleportArtifact_001_desc",
+     "teleport": 1,
+     "to": [
+      44,
+      56715
+     ]
+    },
+    "level": 43,
+    "map": "String_STR_Map_Abyss_Reshanta_D_body",
+    "mapId": 23,
+    "npc": "String_STR_M_AR4_STI_Slime_02_001_body",
+    "npcId": 2600683,
+    "region": "Chaotic Outer Reshanta",
+    "spawns": 44,
+    "zones": [
+     "String_STR_Subzone_AR4_SulfurTreeIsland_body"
+    ]
    }
   ],
   "title": "String_STR_ITEM_VEHICLESOUL_SLIME_02_A_01_B_body"
@@ -7398,6 +8046,60 @@ const PET_SOURCES = {
      "String_STR_Subzone_SulfurTreeIsland_B_body",
      "String_STR_Subzone_SulfurTreeIsland_A_body"
     ]
+   },
+   {
+    "bySide": {
+     "asmodian": {
+      "at": [
+       -404,
+       -11489
+      ],
+      "m": 521,
+      "name": "EnvObjData_E_AR4_PrimumLanding_TeleportArtifact_001_desc",
+      "teleport": 1,
+      "to": [
+       45,
+       -63550
+      ]
+     },
+     "elyos": {
+      "at": [
+       -404,
+       -11489
+      ],
+      "m": 682,
+      "name": "EnvObjData_E_AR4_TeminonLanding_TeleportArtifact_001_desc",
+      "teleport": 1,
+      "to": [
+       44,
+       56715
+      ]
+     }
+    },
+    "chance": "100%",
+    "kibelisk": {
+     "at": [
+      -404,
+      -11489
+     ],
+     "m": 521,
+     "name": "EnvObjData_E_AR4_PrimumLanding_TeleportArtifact_001_desc",
+     "teleport": 1,
+     "to": [
+      45,
+      -63550
+     ]
+    },
+    "level": 44,
+    "map": "String_STR_Map_Abyss_Reshanta_D_body",
+    "mapId": 23,
+    "npc": "String_STR_M_AR4_STI_Fish_01_V01_001_body",
+    "npcId": 2600684,
+    "region": "Chaotic Outer Reshanta",
+    "spawns": 18,
+    "zones": [
+     "String_STR_Subzone_AR4_SulfurTreeIsland_body"
+    ]
    }
   ],
   "title": "String_STR_ITEM_VEHICLESOUL_FISH_01_V01_A_01_B_body"
@@ -8337,6 +9039,654 @@ const PET_SOURCES = {
      "String_STR_Subzone_BlackShardZone_A_body",
      "String_STR_Subzone_BlackShardZone_C_body",
      "String_STR_Subzone_BlackShardZone_D_body"
+    ]
+   },
+   {
+    "bySide": {
+     "asmodian": {
+      "at": [
+       -43389,
+       -33518
+      ],
+      "m": 528,
+      "name": "EnvObjData_E_AR4_PrimumLanding_TeleportArtifact_001_desc",
+      "teleport": 1,
+      "to": [
+       45,
+       -63550
+      ]
+     },
+     "elyos": {
+      "at": [
+       -43389,
+       -33518
+      ],
+      "m": 1001,
+      "name": "EnvObjData_E_AR4_TeminonLanding_TeleportArtifact_001_desc",
+      "teleport": 1,
+      "to": [
+       44,
+       56715
+      ]
+     }
+    },
+    "chance": "100%",
+    "kibelisk": {
+     "at": [
+      -43389,
+      -33518
+     ],
+     "m": 528,
+     "name": "EnvObjData_E_AR4_PrimumLanding_TeleportArtifact_001_desc",
+     "teleport": 1,
+     "to": [
+      45,
+      -63550
+     ]
+    },
+    "level": 46,
+    "map": "String_STR_Map_Abyss_Reshanta_D_body",
+    "mapId": 23,
+    "npc": "String_STR_M_AR4_DD_01_Kalnif_02_001_body",
+    "npcId": 2600605,
+    "region": "Chaotic Outer Reshanta",
+    "spawns": 22,
+    "zones": [
+     "String_STR_Subzone_AR4_DestroyedDebris_01_body"
+    ]
+   },
+   {
+    "bySide": {
+     "asmodian": {
+      "at": [
+       -41164,
+       -46788
+      ],
+      "m": 445,
+      "name": "EnvObjData_E_AR4_PrimumLanding_TeleportArtifact_001_desc",
+      "teleport": 1,
+      "to": [
+       45,
+       -63550
+      ]
+     },
+     "elyos": {
+      "at": [
+       -41164,
+       -46788
+      ],
+      "m": 1114,
+      "name": "EnvObjData_E_AR4_TeminonLanding_TeleportArtifact_001_desc",
+      "teleport": 1,
+      "to": [
+       44,
+       56715
+      ]
+     }
+    },
+    "chance": "100%",
+    "kibelisk": {
+     "at": [
+      -41164,
+      -46788
+     ],
+     "m": 445,
+     "name": "EnvObjData_E_AR4_PrimumLanding_TeleportArtifact_001_desc",
+     "teleport": 1,
+     "to": [
+      45,
+      -63550
+     ]
+    },
+    "level": 46,
+    "map": "String_STR_Map_Abyss_Reshanta_D_body",
+    "mapId": 23,
+    "npc": "String_STR_M_AR4_DD_01_Kalnif_02_002_body",
+    "npcId": 2600606,
+    "region": "Chaotic Outer Reshanta",
+    "spawns": 12,
+    "zones": [
+     "String_STR_Subzone_AR4_DestroyedDebris_01_body"
+    ]
+   },
+   {
+    "bySide": {
+     "asmodian": {
+      "at": [
+       -24392,
+       -33982
+      ],
+      "m": 384,
+      "name": "EnvObjData_E_AR4_PrimumLanding_TeleportArtifact_001_desc",
+      "teleport": 1,
+      "to": [
+       45,
+       -63550
+      ]
+     },
+     "elyos": {
+      "at": [
+       -24392,
+       -33982
+      ],
+      "m": 939,
+      "name": "EnvObjData_E_AR4_TeminonLanding_TeleportArtifact_001_desc",
+      "teleport": 1,
+      "to": [
+       44,
+       56715
+      ]
+     }
+    },
+    "chance": "100%",
+    "kibelisk": {
+     "at": [
+      -24392,
+      -33982
+     ],
+     "m": 384,
+     "name": "EnvObjData_E_AR4_PrimumLanding_TeleportArtifact_001_desc",
+     "teleport": 1,
+     "to": [
+      45,
+      -63550
+     ]
+    },
+    "level": 46,
+    "map": "String_STR_Map_Abyss_Reshanta_D_body",
+    "mapId": 23,
+    "npc": "String_STR_M_AR4_DD_01_Kalnif_02_003_body",
+    "npcId": 2600607,
+    "region": "Chaotic Outer Reshanta",
+    "spawns": 8,
+    "zones": [
+     "String_STR_Subzone_AR4_DestroyedDebris_01_body"
+    ]
+   },
+   {
+    "bySide": {
+     "asmodian": {
+      "at": [
+       44172,
+       27466
+      ],
+      "m": 1011,
+      "name": "EnvObjData_E_AR4_PrimumLanding_TeleportArtifact_001_desc",
+      "teleport": 1,
+      "to": [
+       45,
+       -63550
+      ]
+     },
+     "elyos": {
+      "at": [
+       44172,
+       27466
+      ],
+      "m": 529,
+      "name": "EnvObjData_E_AR4_TeminonLanding_TeleportArtifact_001_desc",
+      "teleport": 1,
+      "to": [
+       44,
+       56715
+      ]
+     }
+    },
+    "chance": "100%",
+    "kibelisk": {
+     "at": [
+      44172,
+      27466
+     ],
+     "m": 529,
+     "name": "EnvObjData_E_AR4_TeminonLanding_TeleportArtifact_001_desc",
+     "teleport": 1,
+     "to": [
+      44,
+      56715
+     ]
+    },
+    "level": 46,
+    "map": "String_STR_Map_Abyss_Reshanta_D_body",
+    "mapId": 23,
+    "npc": "String_STR_M_AR4_DD_02_Kalnif_02_001_body",
+    "npcId": 2600625,
+    "region": "Chaotic Outer Reshanta",
+    "spawns": 22,
+    "zones": [
+     "String_STR_Subzone_AR4_DestroyedDebris_02_body"
+    ]
+   },
+   {
+    "bySide": {
+     "asmodian": {
+      "at": [
+       41962,
+       40371
+      ],
+      "m": 1121,
+      "name": "EnvObjData_E_AR4_PrimumLanding_TeleportArtifact_001_desc",
+      "teleport": 1,
+      "to": [
+       45,
+       -63550
+      ]
+     },
+     "elyos": {
+      "at": [
+       41962,
+       40371
+      ],
+      "m": 450,
+      "name": "EnvObjData_E_AR4_TeminonLanding_TeleportArtifact_001_desc",
+      "teleport": 1,
+      "to": [
+       44,
+       56715
+      ]
+     }
+    },
+    "chance": "100%",
+    "kibelisk": {
+     "at": [
+      41962,
+      40371
+     ],
+     "m": 450,
+     "name": "EnvObjData_E_AR4_TeminonLanding_TeleportArtifact_001_desc",
+     "teleport": 1,
+     "to": [
+      44,
+      56715
+     ]
+    },
+    "level": 46,
+    "map": "String_STR_Map_Abyss_Reshanta_D_body",
+    "mapId": 23,
+    "npc": "String_STR_M_AR4_DD_02_Kalnif_02_002_body",
+    "npcId": 2600626,
+    "region": "Chaotic Outer Reshanta",
+    "spawns": 12,
+    "zones": [
+     "String_STR_Subzone_AR4_DestroyedDebris_02_body"
+    ]
+   },
+   {
+    "bySide": {
+     "asmodian": {
+      "at": [
+       25175,
+       27930
+      ],
+      "m": 949,
+      "name": "EnvObjData_E_AR4_PrimumLanding_TeleportArtifact_001_desc",
+      "teleport": 1,
+      "to": [
+       45,
+       -63550
+      ]
+     },
+     "elyos": {
+      "at": [
+       25175,
+       27930
+      ],
+      "m": 382,
+      "name": "EnvObjData_E_AR4_TeminonLanding_TeleportArtifact_001_desc",
+      "teleport": 1,
+      "to": [
+       44,
+       56715
+      ]
+     }
+    },
+    "chance": "100%",
+    "kibelisk": {
+     "at": [
+      25175,
+      27930
+     ],
+     "m": 382,
+     "name": "EnvObjData_E_AR4_TeminonLanding_TeleportArtifact_001_desc",
+     "teleport": 1,
+     "to": [
+      44,
+      56715
+     ]
+    },
+    "level": 46,
+    "map": "String_STR_Map_Abyss_Reshanta_D_body",
+    "mapId": 23,
+    "npc": "String_STR_M_AR4_DD_02_Kalnif_02_003_body",
+    "npcId": 2600627,
+    "region": "Chaotic Outer Reshanta",
+    "spawns": 8,
+    "zones": [
+     "String_STR_Subzone_AR4_DestroyedDebris_02_body"
+    ]
+   },
+   {
+    "bySide": {
+     "asmodian": {
+      "at": [
+       -38462,
+       25567
+      ],
+      "m": 971,
+      "name": "EnvObjData_E_AR4_PrimumLanding_TeleportArtifact_001_desc",
+      "teleport": 1,
+      "to": [
+       45,
+       -63550
+      ]
+     },
+     "elyos": {
+      "at": [
+       -38462,
+       25567
+      ],
+      "m": 495,
+      "name": "EnvObjData_E_AR4_TeminonLanding_TeleportArtifact_001_desc",
+      "teleport": 1,
+      "to": [
+       44,
+       56715
+      ]
+     }
+    },
+    "chance": "100%",
+    "kibelisk": {
+     "at": [
+      -38462,
+      25567
+     ],
+     "m": 495,
+     "name": "EnvObjData_E_AR4_TeminonLanding_TeleportArtifact_001_desc",
+     "teleport": 1,
+     "to": [
+      44,
+      56715
+     ]
+    },
+    "level": 46,
+    "map": "String_STR_Map_Abyss_Reshanta_D_body",
+    "mapId": 23,
+    "npc": "String_STR_M_AR4_BSZ_01_Kalnif_02_001_body",
+    "npcId": 2600645,
+    "region": "Chaotic Outer Reshanta",
+    "spawns": 22,
+    "zones": [
+     "String_STR_Subzone_AR4_BlackShardZone_01_body"
+    ]
+   },
+   {
+    "bySide": {
+     "asmodian": {
+      "at": [
+       -27935,
+       29372
+      ],
+      "m": 970,
+      "name": "EnvObjData_E_AR4_PrimumLanding_TeleportArtifact_001_desc",
+      "teleport": 1,
+      "to": [
+       45,
+       -63550
+      ]
+     },
+     "elyos": {
+      "at": [
+       -27935,
+       29372
+      ],
+      "m": 391,
+      "name": "EnvObjData_E_AR4_TeminonLanding_TeleportArtifact_001_desc",
+      "teleport": 1,
+      "to": [
+       44,
+       56715
+      ]
+     }
+    },
+    "chance": "100%",
+    "kibelisk": {
+     "at": [
+      -27935,
+      29372
+     ],
+     "m": 391,
+     "name": "EnvObjData_E_AR4_TeminonLanding_TeleportArtifact_001_desc",
+     "teleport": 1,
+     "to": [
+      44,
+      56715
+     ]
+    },
+    "level": 46,
+    "map": "String_STR_Map_Abyss_Reshanta_D_body",
+    "mapId": 23,
+    "npc": "String_STR_M_AR4_BSZ_01_Kalnif_02_002_body",
+    "npcId": 2600646,
+    "region": "Chaotic Outer Reshanta",
+    "spawns": 12,
+    "zones": [
+     "String_STR_Subzone_AR4_BlackShardZone_01_body"
+    ]
+   },
+   {
+    "bySide": {
+     "asmodian": {
+      "at": [
+       -30057,
+       36674
+      ],
+      "m": 1046,
+      "name": "EnvObjData_E_AR4_PrimumLanding_TeleportArtifact_001_desc",
+      "teleport": 1,
+      "to": [
+       45,
+       -63550
+      ]
+     },
+     "elyos": {
+      "at": [
+       -30057,
+       36674
+      ],
+      "m": 362,
+      "name": "EnvObjData_E_AR4_TeminonLanding_TeleportArtifact_001_desc",
+      "teleport": 1,
+      "to": [
+       44,
+       56715
+      ]
+     }
+    },
+    "chance": "100%",
+    "kibelisk": {
+     "at": [
+      -30057,
+      36674
+     ],
+     "m": 362,
+     "name": "EnvObjData_E_AR4_TeminonLanding_TeleportArtifact_001_desc",
+     "teleport": 1,
+     "to": [
+      44,
+      56715
+     ]
+    },
+    "level": 46,
+    "map": "String_STR_Map_Abyss_Reshanta_D_body",
+    "mapId": 23,
+    "npc": "String_STR_M_AR4_BSZ_01_Kalnif_02_003_body",
+    "npcId": 2600647,
+    "region": "Chaotic Outer Reshanta",
+    "spawns": 8,
+    "zones": [
+     "String_STR_Subzone_AR4_BlackShardZone_01_body"
+    ]
+   },
+   {
+    "bySide": {
+     "asmodian": {
+      "at": [
+       39195,
+       -32091
+      ],
+      "m": 502,
+      "name": "EnvObjData_E_AR4_PrimumLanding_TeleportArtifact_001_desc",
+      "teleport": 1,
+      "to": [
+       45,
+       -63550
+      ]
+     },
+     "elyos": {
+      "at": [
+       39195,
+       -32091
+      ],
+      "m": 971,
+      "name": "EnvObjData_E_AR4_TeminonLanding_TeleportArtifact_001_desc",
+      "teleport": 1,
+      "to": [
+       44,
+       56715
+      ]
+     }
+    },
+    "chance": "100%",
+    "kibelisk": {
+     "at": [
+      39195,
+      -32091
+     ],
+     "m": 502,
+     "name": "EnvObjData_E_AR4_PrimumLanding_TeleportArtifact_001_desc",
+     "teleport": 1,
+     "to": [
+      45,
+      -63550
+     ]
+    },
+    "level": 46,
+    "map": "String_STR_Map_Abyss_Reshanta_D_body",
+    "mapId": 23,
+    "npc": "String_STR_M_AR4_BSZ_02_Kalnif_02_001_body",
+    "npcId": 2600665,
+    "region": "Chaotic Outer Reshanta",
+    "spawns": 22,
+    "zones": [
+     "String_STR_Subzone_AR4_BlackShardZone_02_body"
+    ]
+   },
+   {
+    "bySide": {
+     "asmodian": {
+      "at": [
+       28669,
+       -35896
+      ],
+      "m": 398,
+      "name": "EnvObjData_E_AR4_PrimumLanding_TeleportArtifact_001_desc",
+      "teleport": 1,
+      "to": [
+       45,
+       -63550
+      ]
+     },
+     "elyos": {
+      "at": [
+       28669,
+       -35896
+      ],
+      "m": 969,
+      "name": "EnvObjData_E_AR4_TeminonLanding_TeleportArtifact_001_desc",
+      "teleport": 1,
+      "to": [
+       44,
+       56715
+      ]
+     }
+    },
+    "chance": "100%",
+    "kibelisk": {
+     "at": [
+      28669,
+      -35896
+     ],
+     "m": 398,
+     "name": "EnvObjData_E_AR4_PrimumLanding_TeleportArtifact_001_desc",
+     "teleport": 1,
+     "to": [
+      45,
+      -63550
+     ]
+    },
+    "level": 46,
+    "map": "String_STR_Map_Abyss_Reshanta_D_body",
+    "mapId": 23,
+    "npc": "String_STR_M_AR4_BSZ_02_Kalnif_02_002_body",
+    "npcId": 2600666,
+    "region": "Chaotic Outer Reshanta",
+    "spawns": 12,
+    "zones": [
+     "String_STR_Subzone_AR4_BlackShardZone_02_body"
+    ]
+   },
+   {
+    "bySide": {
+     "asmodian": {
+      "at": [
+       30791,
+       -43198
+      ],
+      "m": 369,
+      "name": "EnvObjData_E_AR4_PrimumLanding_TeleportArtifact_001_desc",
+      "teleport": 1,
+      "to": [
+       45,
+       -63550
+      ]
+     },
+     "elyos": {
+      "at": [
+       30791,
+       -43198
+      ],
+      "m": 1045,
+      "name": "EnvObjData_E_AR4_TeminonLanding_TeleportArtifact_001_desc",
+      "teleport": 1,
+      "to": [
+       44,
+       56715
+      ]
+     }
+    },
+    "chance": "100%",
+    "kibelisk": {
+     "at": [
+      30791,
+      -43198
+     ],
+     "m": 369,
+     "name": "EnvObjData_E_AR4_PrimumLanding_TeleportArtifact_001_desc",
+     "teleport": 1,
+     "to": [
+      45,
+      -63550
+     ]
+    },
+    "level": 46,
+    "map": "String_STR_Map_Abyss_Reshanta_D_body",
+    "mapId": 23,
+    "npc": "String_STR_M_AR4_BSZ_02_Kalnif_02_003_body",
+    "npcId": 2600667,
+    "region": "Chaotic Outer Reshanta",
+    "spawns": 8,
+    "zones": [
+     "String_STR_Subzone_AR4_BlackShardZone_02_body"
     ]
    }
   ],
@@ -11188,6 +12538,60 @@ const PET_SOURCES = {
      "String_STR_Subzone_EllunRiverMarsh_body",
      "String_STR_Subzone_EllunRiverMarsh_Eastern_body"
     ]
+   },
+   {
+    "bySide": {
+     "asmodian": {
+      "at": [
+       -8896,
+       -76
+      ],
+      "m": 641,
+      "name": "EnvObjData_E_AR4_PrimumLanding_TeleportArtifact_001_desc",
+      "teleport": 1,
+      "to": [
+       45,
+       -63550
+      ]
+     },
+     "elyos": {
+      "at": [
+       -8896,
+       -76
+      ],
+      "m": 575,
+      "name": "EnvObjData_E_AR4_TeminonLanding_TeleportArtifact_001_desc",
+      "teleport": 1,
+      "to": [
+       44,
+       56715
+      ]
+     }
+    },
+    "chance": "100%",
+    "kibelisk": {
+     "at": [
+      -8896,
+      -76
+     ],
+     "m": 575,
+     "name": "EnvObjData_E_AR4_TeminonLanding_TeleportArtifact_001_desc",
+     "teleport": 1,
+     "to": [
+      44,
+      56715
+     ]
+    },
+    "level": 45,
+    "map": "String_STR_Map_Abyss_Reshanta_D_body",
+    "mapId": 23,
+    "npc": "String_STR_M_AR4_STI_BigMan_01_V02_001_body",
+    "npcId": 2600686,
+    "region": "Chaotic Outer Reshanta",
+    "spawns": 39,
+    "zones": [
+     "String_STR_Subzone_AR4_SulfurTreeIsland_body"
+    ]
    }
   ],
   "title": "String_STR_ITEM_VEHICLESOUL_BIGMAN_01_V02_A_01_B_body"
@@ -11650,6 +13054,59 @@ const PET_SOURCES = {
     "spawns": 7,
     "zones": [
      "String_STR_Subzone_FafniteDeposit_body"
+    ]
+   },
+   {
+    "bySide": {
+     "asmodian": {
+      "at": [
+       2798,
+       -10728
+      ],
+      "m": 529,
+      "name": "EnvObjData_E_AR4_PrimumLanding_TeleportArtifact_001_desc",
+      "teleport": 1,
+      "to": [
+       45,
+       -63550
+      ]
+     },
+     "elyos": {
+      "at": [
+       2798,
+       -10728
+      ],
+      "m": 675,
+      "name": "EnvObjData_E_AR4_TeminonLanding_TeleportArtifact_001_desc",
+      "teleport": 1,
+      "to": [
+       44,
+       56715
+      ]
+     }
+    },
+    "kibelisk": {
+     "at": [
+      2798,
+      -10728
+     ],
+     "m": 529,
+     "name": "EnvObjData_E_AR4_PrimumLanding_TeleportArtifact_001_desc",
+     "teleport": 1,
+     "to": [
+      45,
+      -63550
+     ]
+    },
+    "level": 46,
+    "map": "String_STR_Map_Abyss_Reshanta_D_body",
+    "mapId": 23,
+    "npc": "String_STR_M_AR4_STI_DranaVar_02_CV01_001_body",
+    "npcId": 2600691,
+    "region": "Chaotic Outer Reshanta",
+    "spawns": 26,
+    "zones": [
+     "String_STR_Subzone_AR4_SulfurTreeIsland_body"
     ]
    }
   ],
@@ -13131,6 +14588,59 @@ const PET_SOURCES = {
     "zones": [
      "String_STR_Subzone_FafniteDeposit_body"
     ]
+   },
+   {
+    "bySide": {
+     "asmodian": {
+      "at": [
+       2347,
+       -6473
+      ],
+      "m": 571,
+      "name": "EnvObjData_E_AR4_PrimumLanding_TeleportArtifact_001_desc",
+      "teleport": 1,
+      "to": [
+       45,
+       -63550
+      ]
+     },
+     "elyos": {
+      "at": [
+       2347,
+       -6473
+      ],
+      "m": 632,
+      "name": "EnvObjData_E_AR4_TeminonLanding_TeleportArtifact_001_desc",
+      "teleport": 1,
+      "to": [
+       44,
+       56715
+      ]
+     }
+    },
+    "kibelisk": {
+     "at": [
+      2347,
+      -6473
+     ],
+     "m": 571,
+     "name": "EnvObjData_E_AR4_PrimumLanding_TeleportArtifact_001_desc",
+     "teleport": 1,
+     "to": [
+      45,
+      -63550
+     ]
+    },
+    "level": 46,
+    "map": "String_STR_Map_Abyss_Reshanta_D_body",
+    "mapId": 23,
+    "npc": "String_STR_M_AR4_STI_DranaVar_01_CV01_001_body",
+    "npcId": 2600689,
+    "region": "Chaotic Outer Reshanta",
+    "spawns": 61,
+    "zones": [
+     "String_STR_Subzone_AR4_SulfurTreeIsland_body"
+    ]
    }
   ],
   "title": "String_STR_ITEM_VEHICLESOUL_DRANAVAR_01_CV01_A_01_B_body"
@@ -13915,6 +15425,430 @@ const PET_SOURCES = {
     "zones": [
      "String_STR_Subzone_BlackShardZone_C_body",
      "String_STR_Subzone_BlackShardZone_B_body"
+    ]
+   },
+   {
+    "bySide": {
+     "asmodian": {
+      "at": [
+       -53217,
+       -21769
+      ],
+      "m": 677,
+      "name": "EnvObjData_E_AR4_PrimumLanding_TeleportArtifact_001_desc",
+      "teleport": 1,
+      "to": [
+       45,
+       -63550
+      ]
+     },
+     "elyos": {
+      "at": [
+       -53217,
+       -21769
+      ],
+      "m": 949,
+      "name": "EnvObjData_E_AR4_TeminonLanding_TeleportArtifact_001_desc",
+      "teleport": 1,
+      "to": [
+       44,
+       56715
+      ]
+     }
+    },
+    "kibelisk": {
+     "at": [
+      -53217,
+      -21769
+     ],
+     "m": 677,
+     "name": "EnvObjData_E_AR4_PrimumLanding_TeleportArtifact_001_desc",
+     "teleport": 1,
+     "to": [
+      45,
+      -63550
+     ]
+    },
+    "level": 46,
+    "map": "String_STR_Map_Abyss_Reshanta_D_body",
+    "mapId": 23,
+    "npc": "String_STR_M_AR4_DD_01_Rotan_01_001_body",
+    "npcId": 2600603,
+    "region": "Chaotic Outer Reshanta",
+    "spawns": 10,
+    "zones": [
+     "String_STR_Subzone_AR4_DestroyedDebris_01_body"
+    ]
+   },
+   {
+    "bySide": {
+     "asmodian": {
+      "at": [
+       -39841,
+       -42952
+      ],
+      "m": 449,
+      "name": "EnvObjData_E_AR4_PrimumLanding_TeleportArtifact_001_desc",
+      "teleport": 1,
+      "to": [
+       45,
+       -63550
+      ]
+     },
+     "elyos": {
+      "at": [
+       -39841,
+       -42952
+      ],
+      "m": 1074,
+      "name": "EnvObjData_E_AR4_TeminonLanding_TeleportArtifact_001_desc",
+      "teleport": 1,
+      "to": [
+       44,
+       56715
+      ]
+     }
+    },
+    "kibelisk": {
+     "at": [
+      -39841,
+      -42952
+     ],
+     "m": 449,
+     "name": "EnvObjData_E_AR4_PrimumLanding_TeleportArtifact_001_desc",
+     "teleport": 1,
+     "to": [
+      45,
+      -63550
+     ]
+    },
+    "level": 46,
+    "map": "String_STR_Map_Abyss_Reshanta_D_body",
+    "mapId": 23,
+    "npc": "String_STR_M_AR4_DD_01_Rotan_01_002_body",
+    "npcId": 2600604,
+    "region": "Chaotic Outer Reshanta",
+    "spawns": 10,
+    "zones": [
+     "String_STR_Subzone_AR4_DestroyedDebris_01_body"
+    ]
+   },
+   {
+    "bySide": {
+     "asmodian": {
+      "at": [
+       54000,
+       15717
+      ],
+      "m": 959,
+      "name": "EnvObjData_E_AR4_PrimumLanding_TeleportArtifact_001_desc",
+      "teleport": 1,
+      "to": [
+       45,
+       -63550
+      ]
+     },
+     "elyos": {
+      "at": [
+       54000,
+       15717
+      ],
+      "m": 678,
+      "name": "EnvObjData_E_AR4_TeminonLanding_TeleportArtifact_001_desc",
+      "teleport": 1,
+      "to": [
+       44,
+       56715
+      ]
+     }
+    },
+    "kibelisk": {
+     "at": [
+      54000,
+      15717
+     ],
+     "m": 678,
+     "name": "EnvObjData_E_AR4_TeminonLanding_TeleportArtifact_001_desc",
+     "teleport": 1,
+     "to": [
+      44,
+      56715
+     ]
+    },
+    "level": 46,
+    "map": "String_STR_Map_Abyss_Reshanta_D_body",
+    "mapId": 23,
+    "npc": "String_STR_M_AR4_DD_02_Rotan_01_001_body",
+    "npcId": 2600623,
+    "region": "Chaotic Outer Reshanta",
+    "spawns": 10,
+    "zones": [
+     "String_STR_Subzone_AR4_DestroyedDebris_02_body"
+    ]
+   },
+   {
+    "bySide": {
+     "asmodian": {
+      "at": [
+       40624,
+       36900
+      ],
+      "m": 1083,
+      "name": "EnvObjData_E_AR4_PrimumLanding_TeleportArtifact_001_desc",
+      "teleport": 1,
+      "to": [
+       45,
+       -63550
+      ]
+     },
+     "elyos": {
+      "at": [
+       40624,
+       36900
+      ],
+      "m": 452,
+      "name": "EnvObjData_E_AR4_TeminonLanding_TeleportArtifact_001_desc",
+      "teleport": 1,
+      "to": [
+       44,
+       56715
+      ]
+     }
+    },
+    "kibelisk": {
+     "at": [
+      40624,
+      36900
+     ],
+     "m": 452,
+     "name": "EnvObjData_E_AR4_TeminonLanding_TeleportArtifact_001_desc",
+     "teleport": 1,
+     "to": [
+      44,
+      56715
+     ]
+    },
+    "level": 46,
+    "map": "String_STR_Map_Abyss_Reshanta_D_body",
+    "mapId": 23,
+    "npc": "String_STR_M_AR4_DD_02_Rotan_01_002_body",
+    "npcId": 2600624,
+    "region": "Chaotic Outer Reshanta",
+    "spawns": 10,
+    "zones": [
+     "String_STR_Subzone_AR4_DestroyedDebris_02_body"
+    ]
+   },
+   {
+    "bySide": {
+     "asmodian": {
+      "at": [
+       -42907,
+       7290
+      ],
+      "m": 828,
+      "name": "EnvObjData_E_AR4_PrimumLanding_TeleportArtifact_001_desc",
+      "teleport": 1,
+      "to": [
+       45,
+       -63550
+      ]
+     },
+     "elyos": {
+      "at": [
+       -42907,
+       7290
+      ],
+      "m": 655,
+      "name": "EnvObjData_E_AR4_TeminonLanding_TeleportArtifact_001_desc",
+      "teleport": 1,
+      "to": [
+       44,
+       56715
+      ]
+     }
+    },
+    "kibelisk": {
+     "at": [
+      -42907,
+      7290
+     ],
+     "m": 655,
+     "name": "EnvObjData_E_AR4_TeminonLanding_TeleportArtifact_001_desc",
+     "teleport": 1,
+     "to": [
+      44,
+      56715
+     ]
+    },
+    "level": 46,
+    "map": "String_STR_Map_Abyss_Reshanta_D_body",
+    "mapId": 23,
+    "npc": "String_STR_M_AR4_BSZ_01_Rotan_01_001_body",
+    "npcId": 2600643,
+    "region": "Chaotic Outer Reshanta",
+    "spawns": 10,
+    "zones": [
+     "String_STR_Subzone_AR4_BlackShardZone_01_body"
+    ]
+   },
+   {
+    "bySide": {
+     "asmodian": {
+      "at": [
+       -24168,
+       29466
+      ],
+      "m": 961,
+      "name": "EnvObjData_E_AR4_PrimumLanding_TeleportArtifact_001_desc",
+      "teleport": 1,
+      "to": [
+       45,
+       -63550
+      ]
+     },
+     "elyos": {
+      "at": [
+       -24168,
+       29466
+      ],
+      "m": 365,
+      "name": "EnvObjData_E_AR4_TeminonLanding_TeleportArtifact_001_desc",
+      "teleport": 1,
+      "to": [
+       44,
+       56715
+      ]
+     }
+    },
+    "kibelisk": {
+     "at": [
+      -24168,
+      29466
+     ],
+     "m": 365,
+     "name": "EnvObjData_E_AR4_TeminonLanding_TeleportArtifact_001_desc",
+     "teleport": 1,
+     "to": [
+      44,
+      56715
+     ]
+    },
+    "level": 46,
+    "map": "String_STR_Map_Abyss_Reshanta_D_body",
+    "mapId": 23,
+    "npc": "String_STR_M_AR4_BSZ_01_Rotan_01_002_body",
+    "npcId": 2600644,
+    "region": "Chaotic Outer Reshanta",
+    "spawns": 10,
+    "zones": [
+     "String_STR_Subzone_AR4_BlackShardZone_01_body"
+    ]
+   },
+   {
+    "bySide": {
+     "asmodian": {
+      "at": [
+       43641,
+       -13814
+      ],
+      "m": 661,
+      "name": "EnvObjData_E_AR4_PrimumLanding_TeleportArtifact_001_desc",
+      "teleport": 1,
+      "to": [
+       45,
+       -63550
+      ]
+     },
+     "elyos": {
+      "at": [
+       43641,
+       -13814
+      ],
+      "m": 829,
+      "name": "EnvObjData_E_AR4_TeminonLanding_TeleportArtifact_001_desc",
+      "teleport": 1,
+      "to": [
+       44,
+       56715
+      ]
+     }
+    },
+    "kibelisk": {
+     "at": [
+      43641,
+      -13814
+     ],
+     "m": 661,
+     "name": "EnvObjData_E_AR4_PrimumLanding_TeleportArtifact_001_desc",
+     "teleport": 1,
+     "to": [
+      45,
+      -63550
+     ]
+    },
+    "level": 46,
+    "map": "String_STR_Map_Abyss_Reshanta_D_body",
+    "mapId": 23,
+    "npc": "String_STR_M_AR4_BSZ_02_Rotan_01_001_body",
+    "npcId": 2600663,
+    "region": "Chaotic Outer Reshanta",
+    "spawns": 10,
+    "zones": [
+     "String_STR_Subzone_AR4_BlackShardZone_02_body"
+    ]
+   },
+   {
+    "bySide": {
+     "asmodian": {
+      "at": [
+       24902,
+       -35989
+      ],
+      "m": 371,
+      "name": "EnvObjData_E_AR4_PrimumLanding_TeleportArtifact_001_desc",
+      "teleport": 1,
+      "to": [
+       45,
+       -63550
+      ]
+     },
+     "elyos": {
+      "at": [
+       24902,
+       -35989
+      ],
+      "m": 960,
+      "name": "EnvObjData_E_AR4_TeminonLanding_TeleportArtifact_001_desc",
+      "teleport": 1,
+      "to": [
+       44,
+       56715
+      ]
+     }
+    },
+    "kibelisk": {
+     "at": [
+      24902,
+      -35989
+     ],
+     "m": 371,
+     "name": "EnvObjData_E_AR4_PrimumLanding_TeleportArtifact_001_desc",
+     "teleport": 1,
+     "to": [
+      45,
+      -63550
+     ]
+    },
+    "level": 46,
+    "map": "String_STR_Map_Abyss_Reshanta_D_body",
+    "mapId": 23,
+    "npc": "String_STR_M_AR4_BSZ_02_Rotan_01_002_body",
+    "npcId": 2600664,
+    "region": "Chaotic Outer Reshanta",
+    "spawns": 10,
+    "zones": [
+     "String_STR_Subzone_AR4_BlackShardZone_02_body"
     ]
    }
   ],
@@ -15021,6 +16955,59 @@ const PET_SOURCES = {
      "String_STR_Subzone_SulfurTreeIsland_C_body",
      "String_STR_Subzone_SulfurTreeIsland_B_body"
     ]
+   },
+   {
+    "bySide": {
+     "asmodian": {
+      "at": [
+       -8592,
+       1915
+      ],
+      "m": 660,
+      "name": "EnvObjData_E_AR4_PrimumLanding_TeleportArtifact_001_desc",
+      "teleport": 1,
+      "to": [
+       45,
+       -63550
+      ]
+     },
+     "elyos": {
+      "at": [
+       -8592,
+       1915
+      ],
+      "m": 555,
+      "name": "EnvObjData_E_AR4_TeminonLanding_TeleportArtifact_001_desc",
+      "teleport": 1,
+      "to": [
+       44,
+       56715
+      ]
+     }
+    },
+    "kibelisk": {
+     "at": [
+      -8592,
+      1915
+     ],
+     "m": 555,
+     "name": "EnvObjData_E_AR4_TeminonLanding_TeleportArtifact_001_desc",
+     "teleport": 1,
+     "to": [
+      44,
+      56715
+     ]
+    },
+    "level": 45,
+    "map": "String_STR_Map_Abyss_Reshanta_D_body",
+    "mapId": 23,
+    "npc": "String_STR_M_AR4_STI_Agrint_01_V01_001_body",
+    "npcId": 2600687,
+    "region": "Chaotic Outer Reshanta",
+    "spawns": 23,
+    "zones": [
+     "String_STR_Subzone_AR4_SulfurTreeIsland_body"
+    ]
    }
   ],
   "title": "String_STR_ITEM_VEHICLESOUL_AGRINT_01_V01_A_01_B_body"
@@ -15649,6 +17636,30 @@ const SOURCE_TEXT = {
   "ru": "Западные корни Ратерана",
   "zh-Hans": "拉泰斯兰西方之根",
   "zh-Hant": "拉泰斯蘭西方之根"
+ },
+ "EnvObjData_E_AR4_PrimumLanding_TeleportArtifact_001_desc": {
+  "de": "Krotan-Feste",
+  "en": "Krotan Fortress",
+  "es": "Fortaleza Krotan",
+  "fr": "Forteresse de Krotan",
+  "ja": "クロタン要塞",
+  "ko": "크로탄 요새",
+  "pt": "Fortaleza Krotan",
+  "ru": "Крепость Кротан",
+  "zh-Hans": "克罗坦要塞",
+  "zh-Hant": "克羅坦要塞"
+ },
+ "EnvObjData_E_AR4_TeminonLanding_TeleportArtifact_001_desc": {
+  "de": "Dukysas-Feste",
+  "en": "Dukysas Fortress",
+  "es": "Fortaleza Dukysas",
+  "fr": "Forteresse de Dukysas",
+  "ja": "ドキサス要塞",
+  "ko": "드키사스 요새",
+  "pt": "Fortaleza Dukysas",
+  "ru": "Крепость Дукисас",
+  "zh-Hans": "德奇萨斯要塞",
+  "zh-Hant": "德奇薩斯要塞"
  },
  "EnvObjData_E_D1_AbandonedCampsite_TeleportArtifact_001_desc": {
   "de": "Verlassener Lagerplatz",
@@ -19741,6 +21752,450 @@ const SOURCE_TEXT = {
   "ru": "Берсерк варгов",
   "zh-Hans": "座狼狂战士",
   "zh-Hant": "座狼狂戰士"
+ },
+ "String_STR_M_AR4_BSZ_01_AbyssSwarm_01_001_body": {
+  "de": "Schwarm (Abyss)",
+  "en": "Abyss Swarm",
+  "es": "Swarm del Abismo",
+  "fr": "Essaim d'Abysse",
+  "ja": "アビス スウォーム",
+  "ko": "어비스 스웜",
+  "pt": "Enxame do Abismo",
+  "ru": "Сворм Бездны",
+  "zh-Hans": "深渊虫子",
+  "zh-Hant": "深淵蟲子"
+ },
+ "String_STR_M_AR4_BSZ_01_Kalnif_02_001_body": {
+  "de": "Karnif (Krall) (Makarah)",
+  "en": "Makarah Krall Karnif",
+  "es": "Krall Karnif de Makarah",
+  "fr": "Karnif Krall Makarah",
+  "ja": "マカラフ クラル カルニフ",
+  "ko": "마카라흐 크랄 칼니프",
+  "pt": "Karnif Krall Makarah",
+  "ru": "Каллиф краллов Макарах",
+  "zh-Hans": "马加拉夏克拉尔剑齿豹",
+  "zh-Hant": "馬加拉夏克拉爾劍齒豹"
+ },
+ "String_STR_M_AR4_BSZ_01_Kalnif_02_002_body": {
+  "de": "Karnif (Krall) (Makarah)",
+  "en": "Makarah Krall Karnif",
+  "es": "Krall Karnif de Makarah",
+  "fr": "Karnif Krall Makarah",
+  "ja": "マカラフ クラル カルニフ",
+  "ko": "마카라흐 크랄 칼니프",
+  "pt": "Karnif Krall Makarah",
+  "ru": "Каллиф краллов Макарах",
+  "zh-Hans": "马加拉夏克拉尔剑齿豹",
+  "zh-Hant": "馬加拉夏克拉爾劍齒豹"
+ },
+ "String_STR_M_AR4_BSZ_01_Kalnif_02_003_body": {
+  "de": "Karnif (Krall) (Makarah)",
+  "en": "Makarah Krall Karnif",
+  "es": "Krall Karnif de Makarah",
+  "fr": "Karnif Krall Makarah",
+  "ja": "マカラフ クラル カルニフ",
+  "ko": "마카라흐 크랄 칼니프",
+  "pt": "Karnif Krall Makarah",
+  "ru": "Каллиф краллов Макарах",
+  "zh-Hans": "马加拉夏克拉尔剑齿豹",
+  "zh-Hant": "馬加拉夏克拉爾劍齒豹"
+ },
+ "String_STR_M_AR4_BSZ_01_Neuth_02_001_body": {
+  "de": "Klaw (Abyss)",
+  "en": "Abyss Klaw",
+  "es": "Klaw del Abismo",
+  "fr": "Klaw des Abysses",
+  "ja": "アビス ニュート",
+  "ko": "어비스 뉴트",
+  "pt": "Klaw do Abismo",
+  "ru": "Ньют Бездны",
+  "zh-Hans": "深渊纽特",
+  "zh-Hant": "深淵紐特"
+ },
+ "String_STR_M_AR4_BSZ_01_Rotan_01_001_body": {
+  "de": "Alter Rotan (Abyss)",
+  "en": "Abyss Rusty Rotan",
+  "es": "Rotan oxidado del Abismo",
+  "fr": "Rotan rouillé de l'Abysse",
+  "ja": "アビスの古びたロータン",
+  "ko": "어비스 낡은 로탄",
+  "pt": "Rotan Enferrujado do Abismo",
+  "ru": "Старый рокан Бездны",
+  "zh-Hans": "深渊老旧罗坦",
+  "zh-Hant": "深淵老舊羅坦"
+ },
+ "String_STR_M_AR4_BSZ_01_Rotan_01_002_body": {
+  "de": "Alter Rotan (Abyss)",
+  "en": "Abyss Rusty Rotan",
+  "es": "Rotan oxidado del Abismo",
+  "fr": "Rotan rouillé de l'Abysse",
+  "ja": "アビスの古びたロータン",
+  "ko": "어비스 낡은 로탄",
+  "pt": "Rotan Enferrujado do Abismo",
+  "ru": "Старый рокан Бездны",
+  "zh-Hans": "深渊老旧罗坦",
+  "zh-Hant": "深淵老舊羅坦"
+ },
+ "String_STR_M_AR4_BSZ_02_AbyssSwarm_01_001_body": {
+  "de": "Schwarm (Abyss)",
+  "en": "Abyss Swarm",
+  "es": "Swarm del Abismo",
+  "fr": "Essaim d'Abysse",
+  "ja": "アビス スウォーム",
+  "ko": "어비스 스웜",
+  "pt": "Enxame do Abismo",
+  "ru": "Сворм Бездны",
+  "zh-Hans": "深渊虫子",
+  "zh-Hant": "深淵蟲子"
+ },
+ "String_STR_M_AR4_BSZ_02_Kalnif_02_001_body": {
+  "de": "Karnif (Krall) (Makarah)",
+  "en": "Makarah Krall Karnif",
+  "es": "Krall Karnif de Makarah",
+  "fr": "Karnif Krall Makarah",
+  "ja": "マカラフ クラル カルニフ",
+  "ko": "마카라흐 크랄 칼니프",
+  "pt": "Karnif Krall Makarah",
+  "ru": "Каллиф краллов Макарах",
+  "zh-Hans": "马加拉夏克拉尔剑齿豹",
+  "zh-Hant": "馬加拉夏克拉爾劍齒豹"
+ },
+ "String_STR_M_AR4_BSZ_02_Kalnif_02_002_body": {
+  "de": "Karnif (Krall) (Makarah)",
+  "en": "Makarah Krall Karnif",
+  "es": "Krall Karnif de Makarah",
+  "fr": "Karnif Krall Makarah",
+  "ja": "マカラフ クラル カルニフ",
+  "ko": "마카라흐 크랄 칼니프",
+  "pt": "Karnif Krall Makarah",
+  "ru": "Каллиф краллов Макарах",
+  "zh-Hans": "马加拉夏克拉尔剑齿豹",
+  "zh-Hant": "馬加拉夏克拉爾劍齒豹"
+ },
+ "String_STR_M_AR4_BSZ_02_Kalnif_02_003_body": {
+  "de": "Karnif (Krall) (Makarah)",
+  "en": "Makarah Krall Karnif",
+  "es": "Krall Karnif de Makarah",
+  "fr": "Karnif Krall Makarah",
+  "ja": "マカラフ クラル カルニフ",
+  "ko": "마카라흐 크랄 칼니프",
+  "pt": "Karnif Krall Makarah",
+  "ru": "Каллиф краллов Макарах",
+  "zh-Hans": "马加拉夏克拉尔剑齿豹",
+  "zh-Hant": "馬加拉夏克拉爾劍齒豹"
+ },
+ "String_STR_M_AR4_BSZ_02_Neuth_02_001_body": {
+  "de": "Klaw (Abyss)",
+  "en": "Abyss Klaw",
+  "es": "Klaw del Abismo",
+  "fr": "Klaw des Abysses",
+  "ja": "アビス ニュート",
+  "ko": "어비스 뉴트",
+  "pt": "Klaw do Abismo",
+  "ru": "Ньют Бездны",
+  "zh-Hans": "深渊纽特",
+  "zh-Hant": "深淵紐特"
+ },
+ "String_STR_M_AR4_BSZ_02_Rotan_01_001_body": {
+  "de": "Alter Rotan (Abyss)",
+  "en": "Abyss Rusty Rotan",
+  "es": "Rotan oxidado del Abismo",
+  "fr": "Rotan rouillé de l'Abysse",
+  "ja": "アビスの古びたロータン",
+  "ko": "어비스 낡은 로탄",
+  "pt": "Rotan Enferrujado do Abismo",
+  "ru": "Старый рокан Бездны",
+  "zh-Hans": "深渊老旧罗坦",
+  "zh-Hant": "深淵老舊羅坦"
+ },
+ "String_STR_M_AR4_BSZ_02_Rotan_01_002_body": {
+  "de": "Alter Rotan (Abyss)",
+  "en": "Abyss Rusty Rotan",
+  "es": "Rotan oxidado del Abismo",
+  "fr": "Rotan rouillé de l'Abysse",
+  "ja": "アビスの古びたロータン",
+  "ko": "어비스 낡은 로탄",
+  "pt": "Rotan Enferrujado do Abismo",
+  "ru": "Старый рокан Бездны",
+  "zh-Hans": "深渊老旧罗坦",
+  "zh-Hant": "深淵老舊羅坦"
+ },
+ "String_STR_M_AR4_DD_01_AbyssSwarm_01_001_body": {
+  "de": "Schwarm (Abyss)",
+  "en": "Abyss Swarm",
+  "es": "Swarm del Abismo",
+  "fr": "Essaim d'Abysse",
+  "ja": "アビス スウォーム",
+  "ko": "어비스 스웜",
+  "pt": "Enxame do Abismo",
+  "ru": "Сворм Бездны",
+  "zh-Hans": "深渊虫子",
+  "zh-Hant": "深淵蟲子"
+ },
+ "String_STR_M_AR4_DD_01_Kalnif_02_001_body": {
+  "de": "Karnif (Krall) (Chandala)",
+  "en": "Chandala Krall Karnif",
+  "es": "Krall Karnif de Chandala",
+  "fr": "Karnif Krall Chandala",
+  "ja": "チャンダラ クラル カルニフ",
+  "ko": "찬달라 크랄 칼니프",
+  "pt": "Karnif Krall de Chandala",
+  "ru": "Каллиф краллов Чандала",
+  "zh-Hans": "战达拉克拉尔剑齿豹",
+  "zh-Hant": "戰達拉克拉爾劍齒豹"
+ },
+ "String_STR_M_AR4_DD_01_Kalnif_02_002_body": {
+  "de": "Karnif (Krall) (Chandala)",
+  "en": "Chandala Krall Karnif",
+  "es": "Krall Karnif de Chandala",
+  "fr": "Karnif Krall Chandala",
+  "ja": "チャンダラ クラル カルニフ",
+  "ko": "찬달라 크랄 칼니프",
+  "pt": "Karnif Krall de Chandala",
+  "ru": "Каллиф краллов Чандала",
+  "zh-Hans": "战达拉克拉尔剑齿豹",
+  "zh-Hant": "戰達拉克拉爾劍齒豹"
+ },
+ "String_STR_M_AR4_DD_01_Kalnif_02_003_body": {
+  "de": "Karnif (Krall) (Chandala)",
+  "en": "Chandala Krall Karnif",
+  "es": "Krall Karnif de Chandala",
+  "fr": "Karnif Krall Chandala",
+  "ja": "チャンダラ クラル カルニフ",
+  "ko": "찬달라 크랄 칼니프",
+  "pt": "Karnif Krall de Chandala",
+  "ru": "Каллиф краллов Чандала",
+  "zh-Hans": "战达拉克拉尔剑齿豹",
+  "zh-Hant": "戰達拉克拉爾劍齒豹"
+ },
+ "String_STR_M_AR4_DD_01_Neuth_02_001_body": {
+  "de": "Klaw (Abyss)",
+  "en": "Abyss Klaw",
+  "es": "Klaw del Abismo",
+  "fr": "Klaw des Abysses",
+  "ja": "アビス ニュート",
+  "ko": "어비스 뉴트",
+  "pt": "Klaw do Abismo",
+  "ru": "Ньют Бездны",
+  "zh-Hans": "深渊纽特",
+  "zh-Hant": "深淵紐特"
+ },
+ "String_STR_M_AR4_DD_01_Rotan_01_001_body": {
+  "de": "Alter Rotan (Abyss)",
+  "en": "Abyss Rusty Rotan",
+  "es": "Rotan oxidado del Abismo",
+  "fr": "Rotan rouillé de l'Abysse",
+  "ja": "アビスの古びたロータン",
+  "ko": "어비스 낡은 로탄",
+  "pt": "Rotan Enferrujado do Abismo",
+  "ru": "Старый рокан Бездны",
+  "zh-Hans": "深渊老旧罗坦",
+  "zh-Hant": "深淵老舊羅坦"
+ },
+ "String_STR_M_AR4_DD_01_Rotan_01_002_body": {
+  "de": "Alter Rotan (Abyss)",
+  "en": "Abyss Rusty Rotan",
+  "es": "Rotan oxidado del Abismo",
+  "fr": "Rotan rouillé de l'Abysse",
+  "ja": "アビスの古びたロータン",
+  "ko": "어비스 낡은 로탄",
+  "pt": "Rotan Enferrujado do Abismo",
+  "ru": "Старый рокан Бездны",
+  "zh-Hans": "深渊老旧罗坦",
+  "zh-Hant": "深淵老舊羅坦"
+ },
+ "String_STR_M_AR4_DD_02_AbyssSwarm_01_001_body": {
+  "de": "Schwarm (Abyss)",
+  "en": "Abyss Swarm",
+  "es": "Swarm del Abismo",
+  "fr": "Essaim d'Abysse",
+  "ja": "アビス スウォーム",
+  "ko": "어비스 스웜",
+  "pt": "Enxame do Abismo",
+  "ru": "Сворм Бездны",
+  "zh-Hans": "深渊虫子",
+  "zh-Hant": "深淵蟲子"
+ },
+ "String_STR_M_AR4_DD_02_Kalnif_02_001_body": {
+  "de": "Karnif (Krall) (Chandala)",
+  "en": "Chandala Krall Karnif",
+  "es": "Krall Karnif de Chandala",
+  "fr": "Karnif Krall Chandala",
+  "ja": "チャンダラ クラル カルニフ",
+  "ko": "찬달라 크랄 칼니프",
+  "pt": "Karnif Krall de Chandala",
+  "ru": "Каллиф краллов Чандала",
+  "zh-Hans": "战达拉克拉尔剑齿豹",
+  "zh-Hant": "戰達拉克拉爾劍齒豹"
+ },
+ "String_STR_M_AR4_DD_02_Kalnif_02_002_body": {
+  "de": "Karnif (Krall) (Chandala)",
+  "en": "Chandala Krall Karnif",
+  "es": "Krall Karnif de Chandala",
+  "fr": "Karnif Krall Chandala",
+  "ja": "チャンダラ クラル カルニフ",
+  "ko": "찬달라 크랄 칼니프",
+  "pt": "Karnif Krall de Chandala",
+  "ru": "Каллиф краллов Чандала",
+  "zh-Hans": "战达拉克拉尔剑齿豹",
+  "zh-Hant": "戰達拉克拉爾劍齒豹"
+ },
+ "String_STR_M_AR4_DD_02_Kalnif_02_003_body": {
+  "de": "Karnif (Krall) (Chandala)",
+  "en": "Chandala Krall Karnif",
+  "es": "Krall Karnif de Chandala",
+  "fr": "Karnif Krall Chandala",
+  "ja": "チャンダラ クラル カルニフ",
+  "ko": "찬달라 크랄 칼니프",
+  "pt": "Karnif Krall de Chandala",
+  "ru": "Каллиф краллов Чандала",
+  "zh-Hans": "战达拉克拉尔剑齿豹",
+  "zh-Hant": "戰達拉克拉爾劍齒豹"
+ },
+ "String_STR_M_AR4_DD_02_Neuth_02_001_body": {
+  "de": "Klaw (Abyss)",
+  "en": "Abyss Klaw",
+  "es": "Klaw del Abismo",
+  "fr": "Klaw des Abysses",
+  "ja": "アビス ニュート",
+  "ko": "어비스 뉴트",
+  "pt": "Klaw do Abismo",
+  "ru": "Ньют Бездны",
+  "zh-Hans": "深渊纽特",
+  "zh-Hant": "深淵紐特"
+ },
+ "String_STR_M_AR4_DD_02_Rotan_01_001_body": {
+  "de": "Alter Rotan (Abyss)",
+  "en": "Abyss Rusty Rotan",
+  "es": "Rotan oxidado del Abismo",
+  "fr": "Rotan rouillé de l'Abysse",
+  "ja": "アビスの古びたロータン",
+  "ko": "어비스 낡은 로탄",
+  "pt": "Rotan Enferrujado do Abismo",
+  "ru": "Старый рокан Бездны",
+  "zh-Hans": "深渊老旧罗坦",
+  "zh-Hant": "深淵老舊羅坦"
+ },
+ "String_STR_M_AR4_DD_02_Rotan_01_002_body": {
+  "de": "Alter Rotan (Abyss)",
+  "en": "Abyss Rusty Rotan",
+  "es": "Rotan oxidado del Abismo",
+  "fr": "Rotan rouillé de l'Abysse",
+  "ja": "アビスの古びたロータン",
+  "ko": "어비스 낡은 로탄",
+  "pt": "Rotan Enferrujado do Abismo",
+  "ru": "Старый рокан Бездны",
+  "zh-Hans": "深渊老旧罗坦",
+  "zh-Hant": "深淵老舊羅坦"
+ },
+ "String_STR_M_AR4_STI_AbyssSwarm_01_001_body": {
+  "de": "Schwarm (Abyss)",
+  "en": "Abyss Swarm",
+  "es": "Swarm del Abismo",
+  "fr": "Essaim d'Abysse",
+  "ja": "アビス スウォーム",
+  "ko": "어비스 스웜",
+  "pt": "Enxame do Abismo",
+  "ru": "Сворм Бездны",
+  "zh-Hans": "深渊虫子",
+  "zh-Hant": "深淵蟲子"
+ },
+ "String_STR_M_AR4_STI_Agrint_01_V01_001_body": {
+  "de": "Drana-Gierweide (Abyss)",
+  "en": "Abyss Drana Greedwillow",
+  "es": "Sauce codicioso de Drana del Abismo",
+  "fr": "Saule avide de Drana de l'Abysse",
+  "ja": "アビス ドラナ貪欲獣",
+  "ko": "어비스 드라나 탐욕수",
+  "pt": "Árvore Avarenta de Drana do Abismo",
+  "ru": "Алчное дерево драны Бездны",
+  "zh-Hans": "深渊德拉那贪欲树",
+  "zh-Hant": "深淵德拉那貪欲樹"
+ },
+ "String_STR_M_AR4_STI_BigMan_01_V02_001_body": {
+  "de": "Dranamutant (Abyss)",
+  "en": "Abyss Drana Mutant",
+  "es": "Mutación de Drana del Abismo",
+  "fr": "Mutant de Drana de l'Abysse",
+  "ja": "アビス ドラナ怪獣",
+  "ko": "어비스 드라나 괴수",
+  "pt": "Aberração de Drana do Abismo",
+  "ru": "Мутант драны Бездны",
+  "zh-Hans": "深渊德拉那怪兽",
+  "zh-Hant": "深淵德拉那怪獸"
+ },
+ "String_STR_M_AR4_STI_DranaVar_01_CV01_001_body": {
+  "de": "Dranamutant (Abyss)",
+  "en": "Abyss Drana Mutant",
+  "es": "Mutación de Drana del Abismo",
+  "fr": "Mutant de Drana de l'Abysse",
+  "ja": "アビス ドラナ変異体",
+  "ko": "어비스 드라나 변이체",
+  "pt": "Aberração de Drana do Abismo",
+  "ru": "Мутант драны Бездны",
+  "zh-Hans": "深渊德拉那变异体",
+  "zh-Hant": "深淵德拉那變異體"
+ },
+ "String_STR_M_AR4_STI_DranaVar_02_CV01_001_body": {
+  "de": "Riesiger Dranamutant (Abyss)",
+  "en": "Abyss Drana Giant Mutant",
+  "es": "Mutación gigante de Drana del Abismo",
+  "fr": "Mutant Géant de Drana de l'Abysse",
+  "ja": "アビス ドラナ巨大変異体",
+  "ko": "어비스 드라나 거대 변이체",
+  "pt": "Aberração Gigante de Drana do Abismo",
+  "ru": "Гигантский мутант драны Бездны",
+  "zh-Hans": "深渊德拉那巨大变异体",
+  "zh-Hant": "深淵德拉那巨大變異體"
+ },
+ "String_STR_M_AR4_STI_Fish_01_V01_001_body": {
+  "de": "Drana-Skama (Abyss)",
+  "en": "Abyss Drana Skama",
+  "es": "Skama de Drana del Abismo",
+  "fr": "Skama de Drana de l'Abysse",
+  "ja": "アビス ドラナ スカマ",
+  "ko": "어비스 드라나 스카마",
+  "pt": "Skama de Drana do Abismo",
+  "ru": "Скама драны Бездны",
+  "zh-Hans": "深渊德拉那斯卡马",
+  "zh-Hant": "深淵德拉那斯卡馬"
+ },
+ "String_STR_M_AR4_STI_NagaElite_04_001_body": {
+  "de": "Prätorianer (Nagarant) (Unavarun)",
+  "en": "Unavarun Nagarant Praetorian",
+  "es": "Nagarant pretoriano de Unavarun",
+  "fr": "Prétorien d'Unavarun Nagarant",
+  "ja": "ウナバルン ナーガラント親衛隊",
+  "ko": "우나바룬 나가란트 친위대",
+  "pt": "Pretoriano Nagarante Unavarun",
+  "ru": "Нагарратский преторианец Унаварун",
+  "zh-Hans": "乌纳巴伦纳迦兰特亲卫队",
+  "zh-Hant": "烏納巴倫納迦蘭特親衛隊"
+ },
+ "String_STR_M_AR4_STI_Neuth_01_001_body": {
+  "de": "Klawmutant (Abyss)",
+  "en": "Abyss Mutated Klaw",
+  "es": "Klaw mutado del Abismo",
+  "fr": "Klaw altéré d'Abysse",
+  "ja": "アビス変異ニュート",
+  "ko": "어비스 변이 뉴트",
+  "pt": "Mutação de Klaw do Abismo",
+  "ru": "Мутант ньютов Бездны",
+  "zh-Hans": "深渊变异纽特",
+  "zh-Hant": "深淵變異紐特"
+ },
+ "String_STR_M_AR4_STI_Slime_02_001_body": {
+  "de": "Dranaschleim (Abyss)",
+  "en": "Abyss Drana Slime",
+  "es": "Slime de Drana del Abismo",
+  "fr": "Slime de Drana d'Abysse",
+  "ja": "アビス ドラナ スライム",
+  "ko": "어비스 드라나 슬라임",
+  "pt": "Slime de Drana do Abismo",
+  "ru": "Слизень драны Бездны",
+  "zh-Hans": "深渊德拉那史莱姆",
+  "zh-Hant": "深淵德拉那史萊姆"
  },
  "String_STR_M_Cherubim_03_body": {
   "en": "Kerubiel",
@@ -24177,6 +26632,18 @@ const SOURCE_TEXT = {
   "zh-Hans": "浑沌艾雷修蓝塔下层",
   "zh-Hant": "渾沌艾雷修藍塔下層"
  },
+ "String_STR_Map_Abyss_Reshanta_D_body": {
+  "de": "Chaotisches Äußeres Reshanta",
+  "en": "Chaotic Outer Reshanta",
+  "es": "Piso Exterior de la Reshanta del Caos",
+  "fr": "Reshanta extérieur du Chaos",
+  "ja": "混沌のエレシュランタ表層",
+  "ko": "혼돈의 에레슈란타 표층",
+  "pt": "Piso Exterior da Reshanta do Caos",
+  "ru": "Внешний уровень Арэшурата хаоса",
+  "zh-Hans": "浑沌艾雷修蓝塔表层",
+  "zh-Hant": "渾沌艾雷修藍塔表層"
+ },
  "String_STR_Map_ConqueredTerritory_L_R1_body": {
   "de": "Feldlager der Deserteure",
   "en": "Deserter Encampment",
@@ -24248,6 +26715,66 @@ const SOURCE_TEXT = {
   "ru": "Бертрон",
   "zh-Hans": "斐尔特朗",
   "zh-Hant": "斐爾特朗"
+ },
+ "String_STR_Subzone_AR4_BlackShardZone_01_body": {
+  "de": "Zersplitterte südliche Absturzstelle",
+  "en": "Fractured Southern Crash Site",
+  "es": "Zona de Caída Sur Fracturada",
+  "fr": "Site du crash sud",
+  "ja": "裂けた南の墜落地",
+  "ko": "갈라진 남쪽 추락지",
+  "pt": "Local da Queda Sul da Terra Rachada",
+  "ru": "Разломанная южная зона крушения",
+  "zh-Hans": "裂开的南方坠落地",
+  "zh-Hant": "裂開的南方墜落地"
+ },
+ "String_STR_Subzone_AR4_BlackShardZone_02_body": {
+  "de": "Zersplitterte nördliche Absturzstelle",
+  "en": "Fractured Northern Crash Site",
+  "es": "Zona de Caída Norte Fracturada",
+  "fr": "Site du crash nord",
+  "ja": "裂けた北の墜落地",
+  "ko": "갈라진 북쪽 추락지",
+  "pt": "Local da Queda Norte da Terra Rachada",
+  "ru": "Разломанная северная зона крушения",
+  "zh-Hans": "裂开的北方坠落地",
+  "zh-Hant": "裂開的北方墜落地"
+ },
+ "String_STR_Subzone_AR4_DestroyedDebris_01_body": {
+  "de": "Nördliche Überreste der Festung von La Miren",
+  "en": "La Miren Fortress Northern Remnants",
+  "es": "Remanentes Septentrionales de la Fortaleza La Miren",
+  "fr": "Restes nord de la forteresse de La Miren",
+  "ja": "ラ ミレン要塞北側の残骸",
+  "ko": "라 미렌 요새 북쪽 잔해",
+  "pt": "Remanentes do Norte da Fortaleza La Miren",
+  "ru": "Северные обломки крепости Ла Мирен",
+  "zh-Hans": "拉密伦要塞北方残骸",
+  "zh-Hant": "拉密倫要塞北方殘骸"
+ },
+ "String_STR_Subzone_AR4_DestroyedDebris_02_body": {
+  "de": "Südliche Überreste der Festung von La Miren",
+  "en": "La Miren Fortress Southern Remnants",
+  "es": "Remanentes Meridionales de la Fortaleza La Miren",
+  "fr": "Restes sud de la forteresse de La Miren",
+  "ja": "ラ ミレン要塞南側の残骸",
+  "ko": "라 미렌 요새 남쪽 잔해",
+  "pt": "Remanentes do Sul da Fortaleza La Miren",
+  "ru": "Южные обломки крепости Ла Мирен",
+  "zh-Hans": "拉密伦要塞南方残骸",
+  "zh-Hant": "拉密倫要塞南方殘骸"
+ },
+ "String_STR_Subzone_AR4_SulfurTreeIsland_body": {
+  "de": "Insel der Roten Dornkrone",
+  "en": "Red Thorn Crown Isle",
+  "es": "Isla de la Corona de Espinas Rojas",
+  "fr": "Île de la Couronne des Épines rouges",
+  "ja": "赤い棘の王冠島",
+  "ko": "붉은 가시 왕관섬",
+  "pt": "Ilha da Coroa de Espinhos Vermelhos",
+  "ru": "Остров красного тернового венца",
+  "zh-Hans": "红刺王冠岛",
+  "zh-Hant": "紅刺王冠島"
  },
  "String_STR_Subzone_AltamiaHighland_Eastern_body": {
   "de": "Östliches Artamiahochland",

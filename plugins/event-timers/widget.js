@@ -8,6 +8,7 @@
 const single = document.querySelector(".pin");
 let locked = false;
 let gridBox = null;
+let listBox = null;
 
 // Two letters for the badge: the first of each of the first two words, or the
 // first two of one word ("Shugo" is "SH", "Kaira the Watcher" is "KT").
@@ -61,9 +62,11 @@ function renderPin(pin, d) {
   // The HP in the ring's colour; "Enter" keeps its own.
   sub.style.color = hpColor;
   pin.querySelector(".name").textContent = d.showName ? d.name : "";
+  // Settings, Show the icon: off, the name and time alone.
+  badge.hidden = d.badge === false;
   // An Abyss boss is purple, as a world boss is red, up or not (the class
   // set apart, before this, was wiped here).
-  pin.className = `pin ${d.kind || "event"}${d.running ? " running" : ""}${d.due ? " due" : ""}${d.abyss ? " abyss" : ""}${d.enemy ? " enemy" : ""} ${d.effect || "shake"}`;
+  pin.className = `pin ${d.kind || "event"}${d.running ? " running" : ""}${d.due ? " due" : ""}${d.abyss ? " abyss" : ""}${d.enemy ? " enemy" : ""}${d.badge === false ? " bare" : ""} ${d.effect || "shake"}`;
   pin.title = d.tip || (pin.closest(".grid") && d.name) || "";
   // Settings: Icon opacity.
   pin.style.opacity = typeof d.opacity === "number" ? String(d.opacity) : "";
@@ -71,8 +74,20 @@ function renderPin(pin, d) {
 
 // The grid: the frame's size, the grip in its corner, and each icon in its
 // place, filling from the grip's side.
+// The other layout's box, hidden: not placing either. It kept its "setup"
+// mark, and its hidden grip was the one found for the mouse, so the list
+// shown after the icons (Layout changed in Settings) could not be moved by
+// its anchor.
+function hideBox(box) {
+  if (!box) return;
+  box.hidden = true;
+  box.classList.remove("setup");
+}
+
 function renderGrid(g) {
   single.hidden = true;
+  hideBox(listBox);
+  if (gridBox) gridBox.hidden = false;
   if (!gridBox) {
     gridBox = document.createElement("div");
     gridBox.className = "grid";
@@ -166,9 +181,120 @@ function renderGrid(g) {
   document.title = g.label || "Event Timers";
 }
 
+// The list (Placement, Layout: List): one slim row per timer, its name,
+// teleport, HP or "Enter", and time, with a coloured edge for its kind and a
+// faint bar for its HP (or for being up). Same frame, grip and order as the
+// grid; rows fill from the grip's side.
+const KIND_EDGE = { field: "#d9705f", boss: "#a985e0", event: "#5a95d6", more: "#7d8794" };
+function renderList(g) {
+  single.hidden = true;
+  hideBox(gridBox);
+  if (!listBox) {
+    listBox = document.createElement("div");
+    listBox.className = "grid list";
+    const grip = document.createElement("div");
+    grip.className = "grip";
+    grip.textContent = "⚓";
+    listBox.append(grip);
+    document.body.append(listBox);
+  }
+  listBox.hidden = false;
+  listBox.style.width = `${g.width}px`;
+  listBox.style.height = `${g.height}px`;
+  listBox.classList.toggle("setup", !!g.setup);
+  const gripSize = Number(g.gripSize) || 40;
+  const grip = listBox.querySelector(".grip");
+  grip.style.left = `${g.grip.x}px`;
+  grip.style.top = `${g.grip.y}px`;
+  grip.style.width = grip.style.height = `${gripSize - 4}px`;
+  grip.title = g.label || "";
+  const left = String(g.dir).startsWith("left");
+  const up = String(g.dir).endsWith("up");
+  const x = left ? 0 : gripSize;
+  const rowH = Number(g.cellH) || 24;
+  const top = (i) => (up ? g.height - (i + 1) * rowH : i * rowH);
+  const cells = Array.isArray(g.cells) ? g.cells : [];
+  const rows = [...listBox.querySelectorAll(".lrow")];
+  while (rows.length < cells.length) {
+    const row = document.createElement("div");
+    row.className = "lrow";
+    row.innerHTML = '<span class="fill"></span><span class="licon"><img class="art" alt="" hidden /><span class="glyph"></span></span>'
+      + '<span class="lname"></span><span class="ltp"></span><span class="lsub"></span><span class="ltime"></span>';
+    listBox.append(row);
+    rows.push(row);
+  }
+  for (const [i, row] of rows.entries()) {
+    const d = cells[i];
+    row.hidden = !d;
+    if (!d) continue;
+    row.style.left = `${x}px`;
+    row.style.top = `${top(i)}px`;
+    row.style.width = `${g.cellW}px`;
+    row.style.height = `${rowH - (Number(g.gapY) || 0)}px`;
+    const edge = d.enemy ? "#c8262b" : d.abyss ? "#a985e0" : d.running ? "#5fbf86" : KIND_EDGE[d.kind] || KIND_EDGE.event;
+    row.style.setProperty("--edge", edge);
+    row.className = `lrow${d.running ? " running" : ""}${d.due ? " due" : ""}${d.enemy ? " enemy" : ""}`;
+    // A small icon (Placement: Icons in the list): the game's, or the
+    // initials, as on the icons.
+    const icon = row.querySelector(".licon");
+    icon.hidden = g.icons === false;
+    if (!icon.hidden) {
+      const src = (d.icon && document.querySelector(`.icons img[data-icon="${d.icon}"]`)?.getAttribute("src")) || "";
+      const art = icon.querySelector(".art");
+      if (art.getAttribute("src") !== src) {
+        if (src) art.setAttribute("src", src);
+        else art.removeAttribute("src");
+      }
+      art.hidden = !src;
+      const glyph = icon.querySelector(".glyph");
+      glyph.hidden = !!src;
+      glyph.textContent = d.kind === "more" ? "+" : d.glyph || initials(d.name);
+    }
+    row.querySelector(".lname").textContent = d.name || "";
+    const tp = row.querySelector(".ltp");
+    tp.textContent = d.tp ? `#${d.tp}` : "";
+    tp.hidden = !d.tp;
+    const sub = row.querySelector(".lsub");
+    sub.textContent = d.sub || "";
+    sub.hidden = !d.sub;
+    row.querySelector(".ltime").textContent = d.kind === "more" ? "" : d.countdown || "";
+    // HP: the bar's share of the row; up without HP, a faint full bar.
+    const fill = row.querySelector(".fill");
+    const hasHp = typeof d.hp === "number";
+    const hpColor = hasHp ? (d.hp > 50 ? "95, 191, 134" : d.hp > 20 ? "224, 186, 74" : "214, 86, 76") : "95, 191, 134";
+    fill.style.width = hasHp ? `${Math.max(0, Math.min(100, d.hp))}%` : d.running ? "100%" : "0";
+    fill.style.background = `rgba(${hpColor}, calc(${hasHp ? 0.32 : 0.14} * var(--bg, 1)))`;
+    sub.style.color = hasHp ? `rgb(${hpColor})` : "";
+    row.dataset.copy = d.copy || "";
+    row.title = d.tip || d.name || "";
+    // Settings' opacity, in the list: the row's background and bar only, the
+    // text stays solid.
+    row.style.setProperty("--bg", typeof d.opacity === "number" ? String(d.opacity) : "1");
+  }
+  // While placing: every row's place outlined.
+  const places = g.setup ? g.rows : 0;
+  const ghosts = [...listBox.querySelectorAll(".ghost")];
+  while (ghosts.length < places) {
+    const ghost = document.createElement("div");
+    ghost.className = "ghost";
+    listBox.prepend(ghost);
+    ghosts.push(ghost);
+  }
+  for (const [i, ghost] of ghosts.entries()) {
+    ghost.hidden = i >= places;
+    if (ghost.hidden) continue;
+    ghost.style.left = `${x}px`;
+    ghost.style.top = `${top(i)}px`;
+    ghost.style.width = `${g.cellW}px`;
+    ghost.style.height = `${rowH - (Number(g.gapY) || 0)}px`;
+  }
+  document.title = g.label || "Event Timers";
+}
+
 a2.on("widget", (d) => {
   if (!d) return;
-  if (d.kind === "grid") renderGrid(d);
+  if (d.kind === "list") renderList(d);
+  else if (d.kind === "grid") renderGrid(d);
   else {
     renderPin(single, d);
     document.title = d.name || "Event Timers";
@@ -183,7 +309,7 @@ a2.on("widget", (d) => {
 // takes several (a2.widget.areas, 2.0.77), else the box around them all.
 const PARTS = ".badge, .time, .sub, .name";
 // What can be grabbed: the grip in setup, and the parts of each icon shown.
-const SHOWN = ".setup > .grip, .pin:not([hidden]) .badge, .pin:not([hidden]) .time, .pin:not([hidden]) .sub, .pin:not([hidden]) .name";
+const SHOWN = ".grid:not([hidden]).setup > .grip, .pin:not([hidden]) .badge, .pin:not([hidden]) .time, .pin:not([hidden]) .sub, .pin:not([hidden]) .name, .lrow:not([hidden])";
 let lastArea = "";
 function partsOf(el, rect) {
   const r = el.getBoundingClientRect();
@@ -208,15 +334,20 @@ function reportArea() {
   const several = typeof a2.widget.areas === "function";
   if (!several && typeof a2.widget.area !== "function") return;
   const boxes = [];
-  const grip = document.querySelector(".setup > .grip");
+  const grip = document.querySelector(".grid:not([hidden]).setup > .grip");
   if (grip) {
     const b = partsOf(grip, null);
     if (b) boxes.push(b);
   }
-  for (const pin of document.querySelectorAll(".pin:not([hidden])")) {
+  for (const pin of document.querySelectorAll(".grid:not([hidden]) .pin:not([hidden]), body > .pin:not([hidden])")) {
     let b = null;
     for (const el of pin.querySelectorAll(PARTS)) b = partsOf(el, b);
     if (b && b.right > b.left && b.bottom > b.top) boxes.push(b);
+  }
+  // A list's rows, whole.
+  for (const row of document.querySelectorAll(".list:not([hidden]) .lrow:not([hidden])")) {
+    const b = partsOf(row, null);
+    if (b) boxes.push(b);
   }
   let payload;
   if (several) {
@@ -286,7 +417,7 @@ document.addEventListener("mouseup", (e) => {
 let lastRight = null;
 document.addEventListener("contextmenu", (e) => {
   e.preventDefault();
-  const pin = e.target instanceof Element ? e.target.closest(".pin") : null;
+  const pin = e.target instanceof Element ? e.target.closest(".pin, .lrow") : null;
   const line = pin?.dataset.copy || "";
   const now = Date.now();
   if (line && lastRight && lastRight.line === line && now - lastRight.at <= DOUBLE_MS) {

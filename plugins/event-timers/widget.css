@@ -52,6 +52,61 @@ body.locked .pin { cursor: default; }
   pointer-events: none;
 }
 .ghost[hidden] { display: none; }
+/* The list (widget.js renderList): slim dark rows, the kind a thin edge on
+   the left, HP a faint bar behind the text, the time on the right. */
+.grid[hidden] { display: none; }
+.lrow {
+  position: absolute;
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 0 8px 0 9px;
+  overflow: hidden;
+  border-radius: 4px;
+  background: rgba(14, 18, 27, calc(0.78 * var(--bg, 1)));
+  box-shadow: inset 2px 0 0 var(--edge, #5a95d6);
+  font: 500 12px/1.35 "Segoe UI", system-ui, sans-serif;
+  /* The text keeps a shadow, so it reads with the background faded out. */
+  text-shadow: 0 0 3px #000, 0 1px 2px #000;
+  color: rgba(232, 237, 245, 0.92);
+  cursor: grab;
+}
+body.locked .lrow { cursor: default; }
+.lrow[hidden] { display: none; }
+.lrow .fill { position: absolute; left: 0; top: 0; bottom: 0; width: 0; pointer-events: none; transition: width 0.6s ease; }
+.lrow > :not(.fill) { position: relative; }
+.lrow .licon {
+  flex: none;
+  width: 16px;
+  height: 16px;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  margin-left: -2px;
+}
+.lrow .licon[hidden] { display: none; }
+.lrow .licon .art { width: 16px; height: 16px; object-fit: contain; filter: drop-shadow(0 1px 1px #000); }
+.lrow .licon .glyph { font-size: 8px; font-weight: 700; letter-spacing: 0; text-shadow: none; color: rgba(232, 237, 245, 0.9); }
+/* No art: the initials on a small disc in the kind's colour. */
+.lrow .licon:has(.art[hidden]) { background: color-mix(in srgb, var(--edge, #5a95d6) 45%, #10141c); }
+.lrow.enemy .licon .art { filter: drop-shadow(0 1px 1px #000) brightness(0.55) sepia(1) saturate(14) hue-rotate(-38deg) brightness(1.25); }
+.lrow .lname { flex: 1; min-width: 0; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.lrow .ltp { flex: none; font-size: 10px; color: rgba(232, 237, 245, 0.55); }
+.lrow .lsub { flex: none; font-size: 11px; font-weight: 600; color: #e6cf7a; }
+.lrow .ltp[hidden], .lrow .lsub[hidden] { display: none; }
+.lrow .ltime { flex: none; font-variant-numeric: tabular-nums; font-weight: 600; color: rgba(232, 237, 245, 0.85); }
+.lrow.running .ltime { color: #7fd3a0; }
+.lrow.enemy { background: rgba(34, 12, 15, calc(0.8 * var(--bg, 1))); }
+/* Due: the edge and the row brighten and fade, quietly. */
+.lrow.due { animation: rowDue 1.4s ease-in-out infinite; }
+@keyframes rowDue {
+  0%, 100% { box-shadow: inset 2px 0 0 var(--edge, #5a95d6); }
+  50% { box-shadow: inset 3px 0 0 var(--edge, #5a95d6), inset 0 0 0 1px var(--edge, #5a95d6); }
+}
+.lrow.copied { animation: rowCopied 0.9s ease-out; }
+@keyframes rowCopied { 0% { box-shadow: inset 0 0 0 2px rgba(255, 255, 255, 0.9); } 100% { box-shadow: inset 0 0 0 2px rgba(255, 255, 255, 0); } }
+.list .ghost { border-radius: 4px; }
 /* "+N": the icons past the grid's room, named in its tooltip. */
 .pin.more .badge { --ring: #9aa4b2; }
 .pin.more .glyph { font-size: 16px; }
@@ -177,6 +232,16 @@ body.locked .pin { cursor: default; }
   .pin.due:is(.shake, .bounce, .throb) .badge.hasHp::after { animation: hpGlow 1.1s ease-in-out infinite; }
 }
 
+/* Settings, Show the icon off: the badge goes, the name and time stay as
+   they are; due, the time glows instead of the badge moving. */
+.badge[hidden] { display: none; }
+.pin.bare { padding-top: 0; }
+.pin.bare .name { order: -1; }
+.pin.bare.due .time { animation: bareDue 1.1s ease-in-out infinite; }
+@keyframes bareDue {
+  0%, 100% { text-shadow: 0 0 3px #000, 0 1px 2px #000, 0 0 1px #000; }
+  50% { text-shadow: 0 0 3px #000, 0 1px 2px #000, 0 0 8px #ffd54a, 0 0 14px #ffd54a; }
+}
 /* Copied (a double right-click): a white flash around the icon. */
 .pin.copied .badge { animation: copied 0.9s ease-out; }
 @keyframes copied {

@@ -1,10 +1,10 @@
 {
   "id": "pet-souls",
   "name": "Shugo's Ledger",
-  "version": "0.7.0",
+  "version": "0.8.2",
   "apiVersion": 2,
   "author": "A2 Tools",
-  "description": "Pets, Kinah, drops and skins in one window. Pets: souls still needed to raise each pet, where each pet's souls drop, the monsters around you that drop them, and the Black Cloud Merchants' pets, skins and Theostones. Kinah: how long each character takes to reach the daily 1,000,000 and the Unique drops along the way. Drops: your drop rates beside the game's listed chances. Skins: your Closet against every skin in the game, and where to get the ones you're missing.",
+  "description": "Pets, Kinah, drops and skins in one window. Pets: souls still needed to raise each pet, where each pet's souls drop, the monsters around you that drop them, and the Black Cloud Merchants' pets, skins and Theostones. Kinah: how long each character takes to reach the daily 1,000,000 and the Unique drops along the way. Drops: your drop rates beside the game's listed chances. Gathering: how often each gather is upgraded as it starts and how often Appraiser upgrades it. Skins: your Closet against every skin in the game, and where to get the ones you're missing.",
   "permissions": [
     "storage",
     "events:character",
@@ -25,7 +25,9 @@
     "decoder:skins-owned",
     "decoder:theostones-owned",
     "decoder:item-gained",
-    "decoder:skin-added"
+    "decoder:skin-added",
+    "decoder:gather-start",
+    "decoder:gather-done"
   ],
   "decoders": [
     {
@@ -404,6 +406,79 @@
               "type": "skip:10"
             }
           ]
+        }
+      ]
+    },
+    {
+      "name": "gather-start",
+      "opcode": "31 8D",
+      "immediate": true,
+      "fields": [
+        {
+          "name": "flag",
+          "type": "u8"
+        },
+        {
+          "name": "mark",
+          "type": "u8"
+        },
+        {
+          "name": "node",
+          "type": "varint"
+        },
+        {
+          "name": "n",
+          "type": "u32"
+        },
+        {
+          "name": "effects",
+          "type": "u8"
+        },
+        {
+          "type": "skip:2"
+        },
+        {
+          "name": "grade",
+          "type": "u32"
+        }
+      ]
+    },
+    {
+      "name": "gather-done",
+      "opcode": "33 8D",
+      "immediate": true,
+      "fields": [
+        {
+          "name": "status",
+          "type": "u8"
+        },
+        {
+          "name": "mark",
+          "type": "u8"
+        },
+        {
+          "name": "node",
+          "type": "varint"
+        },
+        {
+          "name": "item",
+          "type": "u32"
+        },
+        {
+          "name": "count",
+          "type": "u32"
+        },
+        {
+          "name": "bonus",
+          "type": "u32"
+        },
+        {
+          "name": "extraItem",
+          "type": "u32"
+        },
+        {
+          "name": "extraCount",
+          "type": "u32"
         }
       ]
     }

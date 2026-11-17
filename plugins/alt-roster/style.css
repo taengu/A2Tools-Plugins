@@ -215,3 +215,26 @@ body.tab-content .list, body.tab-content .empty, body.tab-content .foot { displa
 .cell.full .cellValue b, .cellNote.isFull { color: var(--full); }
 .cell.full .barSeen { background: var(--full); }
 .cell.full .barGrown { background: repeating-linear-gradient(135deg, var(--full) 0 3px, transparent 3px 6px); }
+
+/* The headers sort the list (#125): click one, again to turn it around.
+   The arrow is drawn (a font may lack the triangles): down for largest or
+   soonest-full first as the numbers start, up for A to Z. */
+.head button { all: unset; cursor: pointer; text-align: left; white-space: nowrap; }
+.head button.num { text-align: right; }
+.head button:hover, .head button:focus-visible { color: var(--text, #fff); }
+.head button.on { color: var(--accent); }
+.head button.on::after {
+  content: ""; display: inline-block; margin-left: 4px; vertical-align: middle;
+  border-left: 3.5px solid transparent; border-right: 3.5px solid transparent; border-top: 4px solid currentColor;
+}
+.head button.on[data-dir="flip"]::after,
+.head button.on[data-sort="name"]:not([data-dir="flip"])::after,
+.head button.on[data-sort="full"]:not([data-dir="flip"])::after { border-top: 0; border-bottom: 4px solid currentColor; }
+.head button.on[data-sort="name"][data-dir="flip"]::after,
+.head button.on[data-sort="full"][data-dir="flip"]::after { border-bottom: 0; border-top: 4px solid currentColor; }
+
+/* The Abyss Corridors this siege, under the name: to do, done, or not known. */
+.corr { display: inline-block; margin-top: 2px; padding: 0 6px; border-radius: 8px; font-size: 10.5px; line-height: 16px;
+  border: 1px solid var(--line); color: var(--dim); white-space: nowrap; }
+.corr.todo { color: var(--accent); border-color: color-mix(in srgb, var(--accent) 45%, transparent); }
+.corr.done { color: #7ee787; border-color: color-mix(in srgb, #7ee787 35%, transparent); }

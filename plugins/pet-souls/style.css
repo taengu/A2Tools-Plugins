@@ -1278,12 +1278,12 @@ body.marketOnly .nearby {
 .tabs button { flex: 1; border: 0; background: none; padding: 4px 0; border-radius: 5px; color: rgba(255, 255, 255, 0.6); font: inherit; font-size: 12px; cursor: pointer; }
 .tabs button:hover { color: #fff; }
 .tabs button[aria-selected="true"] { background: rgba(143, 194, 255, 0.16); color: #fff; font-weight: 600; }
-.kinahView, .dropsView, .skinsView { display: none; }
-body.tab-kinah .kinahView, body.tab-drops .dropsView, body.tab-skins .skinsView { display: block; }
+.kinahView, .dropsView, .gatheringView, .skinsView { display: none; }
+body.tab-kinah .kinahView, body.tab-drops .dropsView, body.tab-gathering .gatheringView, body.tab-skins .skinsView { display: block; }
 body.tab-kinah:not(.popped) :is(.controls, .nearby, .head, .pets, .empty, .foot),
 body.tab-drops:not(.popped) :is(.controls, .nearby, .head, .pets, .empty, .foot),
 body.tab-skins:not(.popped) :is(.controls, .nearby, .head, .pets:not(.sList), .empty, .foot) { display: none; }
-body.popped .tabs, body.popped .kinahView, body.popped .dropsView, body.popped .skinsView { display: none; }
+body.popped .tabs, body.popped .kinahView, body.popped .dropsView, body.popped .gatheringView, body.popped .skinsView { display: none; }
 body.compact .tabs { display: none; }
 
 .overall.gold span { background: linear-gradient(90deg, #c99a2e, var(--gold)); }

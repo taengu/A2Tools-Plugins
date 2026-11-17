@@ -1,5 +1,31 @@
 [
   {
+    "version": "1.4.12",
+    "en": "Each character shows its Abyss Corridors for this siege under its name: done (green), still to run, or ? when you haven't played it since the siege.",
+    "ko": "각 캐릭터 이름 아래에 이번 공성의 어비스 회랑 진행을 표시합니다: 완료(초록), 남음, 공성 이후 접속하지 않았다면 ?.",
+    "ja": "各キャラクターの名前の下に今回の攻城戦のアビス回廊を表示します：完了（緑）、未完了、攻城戦以降プレイしていなければ ?。",
+    "de": "Unter jedem Charakter stehen seine Abyss-Korridore dieser Belagerung: erledigt (grün), noch offen oder ?, wenn du ihn seit der Belagerung nicht gespielt hast.",
+    "fr": "Sous chaque personnage, ses Couloirs abyssaux pour ce siège : faits (vert), à faire, ou ? si tu ne l'as pas joué depuis le siège.",
+    "es": "Bajo cada personaje se ven sus Corredores del Abismo de este asedio: hechos (verde), pendientes, o ? si no lo has jugado desde el asedio.",
+    "pt": "Abaixo de cada personagem aparecem os Corredores do Abismo deste cerco: feitos (verde), pendentes, ou ? se você não jogou com ele desde o cerco.",
+    "ru": "Под каждым персонажем — его Коридоры Бездны в эту осаду: пройдены (зелёным), ещё нет, или ?, если вы не играли им с осады.",
+    "zh-Hant": "每個角色名稱下方顯示本次攻城的深淵迴廊：已完成（綠色）、未完成，若攻城後未登入則顯示 ?。",
+    "zh-Hans": "每个角色名称下方显示本次攻城的深渊回廊：已完成（绿色）、未完成，若攻城后未登录则显示 ?。"
+  },
+  {
+    "version": "1.4.11",
+    "en": "Click a column header to sort the list by it, and again to reverse: Character by server then name, the numbers largest first. The order menu has Charged too.",
+    "ko": "열 제목을 누르면 그 기준으로 정렬하고, 다시 누르면 반대로 정렬합니다. 캐릭터는 서버, 이름 순이고 숫자는 큰 순서입니다. 정렬 메뉴에 충전도 추가했습니다.",
+    "ja": "列の見出しをクリックするとその列で並べ替え、もう一度で逆順になります。キャラクターはサーバー、名前の順、数値は大きい順です。並べ替えメニューにチャージも追加しました。",
+    "de": "Ein Klick auf eine Spaltenüberschrift sortiert danach, ein weiterer kehrt die Reihenfolge um: Charakter nach Server, dann Name, die Zahlen größte zuerst. Das Sortiermenü hat jetzt auch Geladen.",
+    "fr": "Clique sur un en-tête de colonne pour trier par celle-ci, et encore pour inverser : Personnage par serveur puis nom, les nombres du plus grand au plus petit. Le menu de tri propose aussi Chargée.",
+    "es": "Haz clic en un encabezado para ordenar por esa columna, y otra vez para invertir: Personaje por servidor y luego nombre, los números de mayor a menor. El menú de orden también tiene Cargada.",
+    "pt": "Clique no cabeçalho de uma coluna para ordenar por ela, e de novo para inverter: Personagem por servidor e depois nome, os números do maior para o menor. O menu de ordem também tem Carregada.",
+    "ru": "Нажмите на заголовок столбца, чтобы сортировать по нему, и ещё раз, чтобы развернуть: персонаж по серверу, затем по имени, числа по убыванию. В меню сортировки появилась и Заряженная.",
+    "zh-Hant": "點欄位標題即依該欄排序，再點一次反向：角色依伺服器再依名稱，數字由大到小。排序選單也新增了充能。",
+    "zh-Hans": "点栏位标题即按该栏排序，再点一次反向：角色按服务器再按名称，数字由大到小。排序菜单也新增了充能。"
+  },
+  {
     "version": "1.4.10",
     "en": "The folded view shows each character's charged Odyle energy too, next to the basic energy.",
     "ko": "접은 보기에서도 기본 에너지 옆에 각 캐릭터의 충전된 오드 에너지가 표시됩니다.",
@@ -37,31 +63,5 @@
     "ru": "Базовая энергия становится янтарной, когда следующее пополнение пропадёт, а подсказка говорит, до какого времени её потратить.",
     "zh-Hant": "下次補充會被浪費時，基本能量會變成琥珀色，提示會說明要在何時前使用。",
     "zh-Hans": "下次补充会被浪费时，基本能量会变成琥珀色，提示会说明要在何时前使用。"
-  },
-  {
-    "version": "1.4.7",
-    "en": "Choose to show all characters or only the current faction, server or character. Saved characters, shared totals and full-energy warnings are kept.",
-    "ko": "모든 캐릭터를 보거나 현재 진영, 서버, 캐릭터만 볼 수 있습니다. 저장된 캐릭터, 공유 합계, 에너지 가득 참 경고는 그대로 유지됩니다.",
-    "ja": "すべてのキャラクター、または現在の陣営・サーバー・キャラクターだけを表示できます。保存したキャラクター、共有の合計、エネルギー満タンの警告はそのままです。",
-    "de": "Wähle, ob alle Charaktere oder nur die aktuelle Fraktion, der Server oder der Charakter angezeigt werden. Gespeicherte Charaktere, gemeinsame Summen und Warnungen bei voller Energie bleiben erhalten.",
-    "fr": "Choisissez d'afficher tous les personnages, ou seulement la faction, le serveur ou le personnage actuel. Les personnages enregistrés, les totaux partagés et les alertes d'énergie pleine sont conservés.",
-    "es": "Elige mostrar todos los personajes o solo la facción, el servidor o el personaje actual. Los personajes guardados, los totales compartidos y los avisos de energía llena se mantienen.",
-    "pt": "Escolha mostrar todos os personagens ou só a facção, o servidor ou o personagem atual. Personagens salvos, totais compartilhados e avisos de energia cheia são mantidos.",
-    "ru": "Можно показывать всех персонажей или только текущую фракцию, сервер или персонажа. Сохранённые персонажи, общие итоги и предупреждения о полной энергии сохраняются.",
-    "zh-Hant": "可選擇顯示所有角色，或只顯示目前的陣營、伺服器或角色。已儲存的角色、共用總計與能量已滿提醒都會保留。",
-    "zh-Hans": "可选择显示所有角色，或只显示当前的阵营、服务器或角色。已保存的角色、共享总计与能量已满提醒都会保留。"
-  },
-  {
-    "version": "1.4.6",
-    "en": "Buy Odyle Energy follows the shop again: 4 per character and 16 per server a week. Buy Rift Stones is gone from the shop, so from the list too.",
-    "ko": "오드 에너지 구매가 다시 상점과 같아졌습니다: 주간 캐릭터당 4개, 서버당 16개. 균열석 구매는 상점에서 빠져 목록에서도 빠졌습니다.",
-    "ja": "オードエネルギー購入がショップに合わせて戻りました：週にキャラクターごと4個、サーバーごと16個。亀裂石購入はショップからなくなったため、一覧からも外しました。",
-    "de": "Odyle-Energie kaufen folgt wieder dem Shop: 4 pro Charakter und 16 pro Server pro Woche. Risssteine kaufen gibt es im Shop nicht mehr, daher auch nicht in der Liste.",
-    "fr": "L'achat d'énergie d'Odyle suit de nouveau la boutique : 4 par personnage et 16 par serveur chaque semaine. L'achat de pierres de faille a quitté la boutique, donc la liste aussi.",
-    "es": "Comprar energía de Odyle vuelve a seguir la tienda: 4 por personaje y 16 por servidor a la semana. Comprar piedras de grieta ya no está en la tienda, así que tampoco en la lista.",
-    "pt": "Comprar energia de Odyle volta a seguir a loja: 4 por personagem e 16 por servidor por semana. Comprar pedras de fenda saiu da loja, então saiu da lista também.",
-    "ru": "Покупка энергии Одила снова как в магазине: 4 на персонажа и 16 на сервер в неделю. Покупки камней разлома больше нет в магазине, поэтому и в списке.",
-    "zh-Hant": "購買奧德能量再次與商店一致：每週每個角色 4 個、每個伺服器 16 個。購買裂縫石已從商店移除，因此也從列表移除。",
-    "zh-Hans": "购买奥德能量再次与商店一致：每周每个角色 4 个、每个服务器 16 个。购买裂缝石已从商店移除，因此也从列表移除。"
   }
 ]
