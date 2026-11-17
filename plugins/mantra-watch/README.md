@@ -43,3 +43,6 @@ the meter knows isn't a Chanter there is no alert at all.
 
 Checked against a capture from 2026-10-14 (22:15, a party of five): your 14
 ticks over 7 s, 4 party members reached, 26 fight hits.
+
+If your own mantra stops while another Chanter supplies the same mantra on you,
+there is deliberately no alert; your own uptime still records the gap.

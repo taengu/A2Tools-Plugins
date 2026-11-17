@@ -68,7 +68,6 @@ select option, select optgroup { background: var(--a2-panel, #0e1420); color: #f
 /* A mantra dropped in a fight: hard to miss. A click dismisses it. */
 .banner {
   display: block; width: 100%; border: 0; font: inherit; cursor: pointer;
-  font-size: 12px;
   margin: 0 0 4px; padding: 4px 8px; border-radius: 4px; text-align: center;
   font-weight: 700; color: #fff; background: rgba(220, 50, 50, 0.85);
   animation: pulse 0.8s ease-in-out infinite alternate;

@@ -10,11 +10,23 @@
   // Mantras are skills 1816xxxx (Sprint) and 1819xxxx (Undefeated); the last
   // digits are the skill's level.
   const MANTRAS = [1816, 1819];
-  const mantraOf = (skill) => (MANTRAS.includes(Math.floor(skill / 10_000)) ? Math.floor(skill / 10_000) : null);
+  const mantraOf = (skill) =>
+    MANTRAS.includes(Math.floor(skill / 10_000))
+      ? Math.floor(skill / 10_000)
+      : null;
   function tickOf(d) {
-    if (!d || !Number.isInteger(d.kind) || !(d.kind & 0x02) || d.q !== 2
-        || !Number.isSafeInteger(d.on) || d.on<=0 || !Number.isSafeInteger(d.caster) || d.caster<=0
-        || !Number.isSafeInteger(d.skill)) return null;
+    if (
+      !d ||
+      !Number.isInteger(d.kind) ||
+      !(d.kind & 0x02) ||
+      d.q !== 2 ||
+      !Number.isSafeInteger(d.on) ||
+      d.on <= 0 ||
+      !Number.isSafeInteger(d.caster) ||
+      d.caster <= 0 ||
+      !Number.isSafeInteger(d.skill)
+    )
+      return null;
     const mantra = mantraOf(d.skill);
     return mantra ? { mantra, onMe: d.on === d.caster, on: d.on } : null;
   }
@@ -24,7 +36,11 @@
   // no fight), with a skill that isn't a mantra (mantras show up as your own
   // records too).
   const isFightHit = (d, allies = () => false) =>
-    !!d && d.target !== d.actor && !allies(d.target) && !mantraOf(d.skill) && d.skill > 0;
+    !!d &&
+    d.target !== d.actor &&
+    !allies(d.target) &&
+    !mantraOf(d.skill) &&
+    d.skill > 0;
 
   // A tick keeps its mantra up for this long; one missing tick (1 s apart)
   // is a drop. A little over two, for records that arrive in bunches.
@@ -69,10 +85,24 @@
       const len = this.last - this.start;
       if (len <= 0) return 0;
       let sum = 0;
-      for (const [a, b] of this.covered[mantra] || []) sum += Math.max(0, Math.min(b, this.last) - Math.max(a, this.start));
+      for (const [a, b] of this.covered[mantra] || [])
+        sum += Math.max(0, Math.min(b, this.last) - Math.max(a, this.start));
       return Math.min(1, sum / len);
     }
   }
 
-  globalThis.MantraLogic = { MANTRAS, mantraOf, tickOf, isFightHit, Fight, TICK_MS, DROP_MS, FIGHT_IDLE_MS, MIN_FIGHT_MS, LANDED_QUIET_MS, LOAD_QUIET_MS, BEFORE_FIGHT_MS };
+  globalThis.MantraLogic = {
+    MANTRAS,
+    mantraOf,
+    tickOf,
+    isFightHit,
+    Fight,
+    TICK_MS,
+    DROP_MS,
+    FIGHT_IDLE_MS,
+    MIN_FIGHT_MS,
+    LANDED_QUIET_MS,
+    LOAD_QUIET_MS,
+    BEFORE_FIGHT_MS,
+  };
 })();
