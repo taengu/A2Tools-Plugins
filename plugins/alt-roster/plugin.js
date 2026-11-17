@@ -624,6 +624,20 @@ function rowOf(r) {
   const sub = [className, ch.level ? t.lv(ch.level) : null, serverName(ch.serverId)].filter(Boolean).join(" · ");
   names.append(nameLine, el("div", "sub", sub));
   if (!playing && ch.seen) names.append(el("div", "seen", t.playedAgo(ago(ch.seen, now))));
+  // The Abyss Corridors this siege (corridors()): done of the ones its side
+  // holds; ≈ a guess (passages not handed out yet), ? not known since the
+  // siege; none shown when the side holds none.
+  const corr = CONTENT.find((x) => x.name === "corridors");
+  const seenCorr = ch.counts?.["abyss:corridors"];
+  if (seenCorr && seenCorr.cap !== 0) {
+    const n = countNow(corr, seenCorr, now);
+    const cap = seenCorr.cap ?? corr.cap;
+    const done = n ? Math.min(n.left, cap) : null;
+    const pill = el("span", `corr${done == null ? " unknown" : done >= cap ? " done" : " todo"}`,
+      `${t.names.corridors} ${done == null ? "?" : `${seenCorr.guess ? "≈" : ""}${done}/${cap}`}`);
+    pill.title = done == null ? t.corrUnknown : done >= cap ? t.corrDone : t.corrTodo(cap - done);
+    names.append(pill);
+  }
   const remove = el("button", "remove", "×");
   remove.type = "button";
   remove.title = t.removeTip;

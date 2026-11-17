@@ -232,3 +232,9 @@ body.tab-content .list, body.tab-content .empty, body.tab-content .foot { displa
 .head button.on[data-sort="full"]:not([data-dir="flip"])::after { border-top: 0; border-bottom: 4px solid currentColor; }
 .head button.on[data-sort="name"][data-dir="flip"]::after,
 .head button.on[data-sort="full"][data-dir="flip"]::after { border-bottom: 0; border-top: 4px solid currentColor; }
+
+/* The Abyss Corridors this siege, under the name: to do, done, or not known. */
+.corr { display: inline-block; margin-top: 2px; padding: 0 6px; border-radius: 8px; font-size: 10.5px; line-height: 16px;
+  border: 1px solid var(--line); color: var(--dim); white-space: nowrap; }
+.corr.todo { color: var(--accent); border-color: color-mix(in srgb, var(--accent) 45%, transparent); }
+.corr.done { color: #7ee787; border-color: color-mix(in srgb, #7ee787 35%, transparent); }

@@ -1,5 +1,18 @@
 [
   {
+    "version": "1.4.12",
+    "en": "Each character shows its Abyss Corridors for this siege under its name: done (green), still to run, or ? when you haven't played it since the siege.",
+    "ko": "각 캐릭터 이름 아래에 이번 공성의 어비스 회랑 진행을 표시합니다: 완료(초록), 남음, 공성 이후 접속하지 않았다면 ?.",
+    "ja": "各キャラクターの名前の下に今回の攻城戦のアビス回廊を表示します：完了（緑）、未完了、攻城戦以降プレイしていなければ ?。",
+    "de": "Unter jedem Charakter stehen seine Abyss-Korridore dieser Belagerung: erledigt (grün), noch offen oder ?, wenn du ihn seit der Belagerung nicht gespielt hast.",
+    "fr": "Sous chaque personnage, ses Couloirs abyssaux pour ce siège : faits (vert), à faire, ou ? si tu ne l'as pas joué depuis le siège.",
+    "es": "Bajo cada personaje se ven sus Corredores del Abismo de este asedio: hechos (verde), pendientes, o ? si no lo has jugado desde el asedio.",
+    "pt": "Abaixo de cada personagem aparecem os Corredores do Abismo deste cerco: feitos (verde), pendentes, ou ? se você não jogou com ele desde o cerco.",
+    "ru": "Под каждым персонажем — его Коридоры Бездны в эту осаду: пройдены (зелёным), ещё нет, или ?, если вы не играли им с осады.",
+    "zh-Hant": "每個角色名稱下方顯示本次攻城的深淵迴廊：已完成（綠色）、未完成，若攻城後未登入則顯示 ?。",
+    "zh-Hans": "每个角色名称下方显示本次攻城的深渊回廊：已完成（绿色）、未完成，若攻城后未登录则显示 ?。"
+  },
+  {
     "version": "1.4.11",
     "en": "Click a column header to sort the list by it, and again to reverse: Character by server then name, the numbers largest first. The order menu has Charged too.",
     "ko": "열 제목을 누르면 그 기준으로 정렬하고, 다시 누르면 반대로 정렬합니다. 캐릭터는 서버, 이름 순이고 숫자는 큰 순서입니다. 정렬 메뉴에 충전도 추가했습니다.",
@@ -50,18 +63,5 @@
     "ru": "Базовая энергия становится янтарной, когда следующее пополнение пропадёт, а подсказка говорит, до какого времени её потратить.",
     "zh-Hant": "下次補充會被浪費時，基本能量會變成琥珀色，提示會說明要在何時前使用。",
     "zh-Hans": "下次补充会被浪费时，基本能量会变成琥珀色，提示会说明要在何时前使用。"
-  },
-  {
-    "version": "1.4.7",
-    "en": "Choose to show all characters or only the current faction, server or character. Saved characters, shared totals and full-energy warnings are kept.",
-    "ko": "모든 캐릭터를 보거나 현재 진영, 서버, 캐릭터만 볼 수 있습니다. 저장된 캐릭터, 공유 합계, 에너지 가득 참 경고는 그대로 유지됩니다.",
-    "ja": "すべてのキャラクター、または現在の陣営・サーバー・キャラクターだけを表示できます。保存したキャラクター、共有の合計、エネルギー満タンの警告はそのままです。",
-    "de": "Wähle, ob alle Charaktere oder nur die aktuelle Fraktion, der Server oder der Charakter angezeigt werden. Gespeicherte Charaktere, gemeinsame Summen und Warnungen bei voller Energie bleiben erhalten.",
-    "fr": "Choisissez d'afficher tous les personnages, ou seulement la faction, le serveur ou le personnage actuel. Les personnages enregistrés, les totaux partagés et les alertes d'énergie pleine sont conservés.",
-    "es": "Elige mostrar todos los personajes o solo la facción, el servidor o el personaje actual. Los personajes guardados, los totales compartidos y los avisos de energía llena se mantienen.",
-    "pt": "Escolha mostrar todos os personagens ou só a facção, o servidor ou o personagem atual. Personagens salvos, totais compartilhados e avisos de energia cheia são mantidos.",
-    "ru": "Можно показывать всех персонажей или только текущую фракцию, сервер или персонажа. Сохранённые персонажи, общие итоги и предупреждения о полной энергии сохраняются.",
-    "zh-Hant": "可選擇顯示所有角色，或只顯示目前的陣營、伺服器或角色。已儲存的角色、共用總計與能量已滿提醒都會保留。",
-    "zh-Hans": "可选择显示所有角色，或只显示当前的阵营、服务器或角色。已保存的角色、共享总计与能量已满提醒都会保留。"
   }
 ]
