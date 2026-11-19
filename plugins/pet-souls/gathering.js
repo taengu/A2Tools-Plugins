@@ -21,7 +21,9 @@
 // the true rate likely lies in (95%, Wilson).
 (() => {
   const LOG_KEY = "gatherLog";
+  const INDEX_KEY = "gatherLogPages";
   const KEEP = 20_000;
+  const PAGE_ROWS = 4_000;
   const RECENT = 12;
   const F_STARTED_FRESH = 0x04;
   const F_UPGRADED = 0x02;
@@ -50,17 +52,64 @@
   let pairs = { ...SEED_PAIRS };
   const starts = new Map(); // node -> { at, grade, effects }
   const nodeBase = new Map(); // node -> base item seen on it
-  const loaded = (async () => {
-    const kept = await a2.storage.get(LOG_KEY).catch(() => null);
-    if (kept && Array.isArray(kept.log)) log = kept.log;
-    if (kept?.pairs) pairs = { ...SEED_PAIRS, ...kept.pairs };
-  })();
+  const pageKey = (bank, i) => `gatherLog_${bank}_${i}`;
+  const writtenPages = new Map();
+  let bank = 0, loaded = false, loading = null, saving = false;
   let dirty = false;
-  setInterval(() => {
-    if (!dirty) return;
+
+  function load() {
+    if (loaded) return Promise.resolve();
+    if (!loading) loading = readHistory().catch(() => {}).finally(() => { loading = null; });
+    return loading;
+  }
+
+  async function readHistory() {
+    const index = await a2.storage.get(INDEX_KEY);
+    let kept;
+    if (index == null) {
+      kept = await a2.storage.get(LOG_KEY);
+    } else {
+      if (![0, 1].includes(index.bank) || !Number.isInteger(index.pages)
+        || index.pages < 1 || index.pages > Math.ceil(KEEP / PAGE_ROWS)) return;
+      const pages = await Promise.all(Array.from({ length: index.pages },
+        (_, i) => a2.storage.get(pageKey(index.bank, i))));
+      if (pages.some((rows) => !Array.isArray(rows) || rows.length > PAGE_ROWS)) return;
+      kept = { log: pages.flat(), pairs: index.pairs };
+      bank = index.bank;
+    }
+    if (Array.isArray(kept?.log)) log = [...kept.log, ...log].slice(-KEEP);
+    if (kept?.pairs) pairs = { ...pairs, ...kept.pairs };
+    loaded = true;
+  }
+
+  async function saveHistory() {
+    if (!dirty || saving) return;
+    saving = true;
+    await load();
+    if (!loaded) { saving = false; return; }
     dirty = false;
-    a2.storage.set(LOG_KEY, { log, pairs }).catch(() => {});
-  }, 5_000);
+    const snapshot = log.slice();
+    const next = { bank: 1 - bank, pages: Math.ceil(snapshot.length / PAGE_ROWS), pairs: { ...pairs } };
+    try {
+      // The index points to the last complete write while the other bank is saved.
+      for (let i = 0; i < next.pages; i++) {
+        const key = pageKey(next.bank, i);
+        const page = snapshot.slice(i * PAGE_ROWS, (i + 1) * PAGE_ROWS);
+        const content = JSON.stringify(page);
+        if (writtenPages.get(key) === content) continue;
+        await a2.storage.set(key, page);
+        writtenPages.set(key, content);
+      }
+      await a2.storage.set(INDEX_KEY, next);
+      bank = next.bank;
+    } catch {
+      dirty = true;
+    } finally {
+      saving = false;
+    }
+  }
+  load();
+  setInterval(saveHistory, 5_000);
 
   const charOf = (meta) => (meta?.character ? marketKeyOf(meta.character) : marketChar) || "char-unknown";
 
@@ -68,7 +117,7 @@
     if (Number(d?.flag) !== 0 || Number(d?.mark) !== 0) return;
     starts.set(Number(d.node), { at: Date.now(), grade: Number(d.grade), effects: Number(d.effects) });
   });
-  a2.on("decoded:gather-done", (d, meta) => loaded.then(() => {
+  a2.on("decoded:gather-done", (d, meta) => load().then(() => {
     const status = Number(d?.status);
     const node = Number(d?.node);
     const item = Number(d?.item);
@@ -215,5 +264,5 @@
     render();
   });
   a2.on("language", () => { if (document.body.classList.contains("tab-gathering")) render(); });
-  globalThis.renderGathering = () => loaded.then(render);
+  globalThis.renderGathering = () => load().then(render);
 })();
