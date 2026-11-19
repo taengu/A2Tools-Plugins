@@ -4,13 +4,13 @@ For Chanters. A small window with your mantras (Sprint Mantra, Undefeated
 Mantra): a green dot while one runs, and how many party members it reaches
 (+3). Green means your aura is currently observed, including pulses on allies.
 Blue means another Chanter supplies the effect on you while your own activity
-is not observed; your own toggle state remains unknown. If neither is currently
-detected in a fight, a red banner and a sound, and the
-window comes up on top without taking focus; it goes again on its own when
-the mantra is back. The same alert comes at the first hit of a fight if a
-mantra you ran in the minute before it is no longer detected; one you switched off earlier
-is your choice, and gives none. A click on the banner dismisses it until
-that mantra is on again.
+is not observed; your own toggle state remains unknown. If neither is
+currently detected in a fight, a red banner appears, a sound plays, and the
+window comes up on top without taking focus; it goes again on its own when the
+mantra is back. The same alert comes at the first hit of a fight if a mantra
+you ran in the minute before it is no longer detected; one you switched off
+earlier is your choice, and gives none. A click on the banner dismisses it
+until that mantra is on again.
 
 Below: the current fight's length and each mantra's uptime, and after it the
 last fight's, with the average of the last 10 (per character). A fight runs
