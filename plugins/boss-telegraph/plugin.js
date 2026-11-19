@@ -5,7 +5,6 @@ const $ = (s) => document.querySelector(s);
 const DATA = window.BOSS_CALLOUTS || { langs: ["en"], texts: [], groups: {}, bosses: {}, calls: [] };
 const MECHANICS = Array.isArray(window.BOSS_MECHANICS?.entries) ? window.BOSS_MECHANICS : { entries: [], dungeons: {} };
 const activation = BossActivation.create(MECHANICS);
-const managedKeys = new Set([...DATA.calls.map((call) => call.k), ...Object.values(MECHANICS.managedKeys || {}).flat()]);
 
 const DEFAULTS = {
   enabled: true, widget: true, style: "both", tellMeWhatToDo: true,
@@ -28,7 +27,7 @@ const GUIDE_KEYS = { guideCategory: "category", guideDifficulty: "difficulty", g
 function guideContext() {
   const map = encounterContext.snapshot().map;
   return {
-    region: ["Global", "KR"].includes(prefs.guideRegion) ? prefs.guideRegion : null,
+    region: prefs.guideRegion,
     category: manualGuide.category,
     difficulty: manualGuide.difficulty === "auto" ? map?.difficulty : manualGuide.difficulty,
     stage: manualGuide.stage || null,
@@ -445,7 +444,6 @@ function showPrefs() {
   }
   els.voiceName.value = prefs.voiceName;
   els.style.disabled = prefs.tellMeWhatToDo !== false;
-  if (prefs.guideRegion === "unknown") $(".guideContext").open = true;
   sizeMenu();
 }
 
@@ -705,9 +703,9 @@ for (const [key, el] of Object.entries(els)) {
       return;
     }
     if (key === "volume" || key === "bgOpacity") v = Number(v);
+    if (key === "guideRegion" && !["Global", "KR"].includes(v)) return;
     prefs[key] = v;
     if (key === "guideRegion") {
-      if (!["Global", "KR"].includes(v)) prefs.guideRegion = "unknown";
       clearManualGuide();
       resetLifecycle();
     }

@@ -1,16 +1,16 @@
 [
   {
     "version": "0.2.0",
-    "en": "Adds Instructions/Boss lines modes, scoped Global/KR guides, ten-language previews and English audio. Unmatched guides keep original short calls and Talisra order. Global is default; activity/stage persist. Countdown completion cues are restored.",
-    "ko": "지침/보스 대사 모드, 지역 조건이 있는 Global/KR 공략, 10개 언어 미리보기와 영어 음성을 추가합니다. 지침이 없으면 기존 짧은 알림과 탈리스라 순서를 유지합니다. Global이 기본이며 활동·단계는 저장됩니다. 카운트다운 종료 알림을 복원합니다.",
-    "ja": "指示／ボス台詞モード、地域別Global/KR攻略、10言語プレビューと英語音声を追加。指示が一致しなければ従来の短い通知とタリスラの順序を維持。既定はGlobalで活動・段階を保存し、カウント終了の通知を復元します。",
-    "de": "Anweisungen/Bosszeilen, regionale Global/KR-Guides, Vorschauen in zehn Sprachen und englisches Audio. Ohne passende Anleitung bleiben Kurzrufe und Talisras Folge. Global ist Standard; Aktivität/Stufe bleiben gespeichert. Countdown-Endansagen sind wieder da.",
-    "fr": "Modes Consignes/Répliques, guides Global/KR ciblés, aperçus en dix langues et audio anglais. Sans guide adapté, annonces courtes et ordre de Talisra conservés. Global par défaut ; activité/étape mémorisées. Annonces de fin de compte à rebours rétablies.",
-    "es": "Modos Instrucciones/Frases, guías Global/KR, vistas en diez idiomas y audio inglés. Sin guía aplicable, mantiene avisos cortos y orden de Talisra. Global por defecto; actividad y etapa se guardan. Se restauran los avisos al terminar la cuenta.",
-    "pt": "Modos Instruções/Falas, guias Global/KR, prévias em dez idiomas e áudio inglês. Sem guia aplicável, mantém avisos curtos e ordem de Talisra. Global por padrão; atividade e etapa ficam salvas. Avisos ao fim da contagem restaurados.",
-    "ru": "Режимы инструкций и реплик, гайды Global/KR, предпросмотр на десяти языках и английская озвучка. Без подходящего гайда сохраняются короткие сигналы и порядок Талисры. По умолчанию Global; режим и этап сохраняются. Возвращён сигнал конца отсчёта.",
-    "zh-Hant": "新增指引／首領台詞模式、Global/KR條件攻略、十語言預覽與英文語音。無適用攻略時保留原本簡短提示及塔利斯拉順序。預設Global，活動與階段會儲存，並恢復倒數結束提示。",
-    "zh-Hans": "新增指引／首领台词模式、Global/KR条件攻略、十语言预览与英文语音。无适用攻略时保留原本简短提示及塔利斯拉顺序。默认Global，活动与阶段会保存，并恢复倒数结束提示。"
+    "en": "Calls can now tell you what to do (Instructions), or read the boss's lines as before (Boss lines, in Settings). Guides cover Global and Korea. Choose your region, activity and stage under Guide context.",
+    "ko": "알림이 해야 할 행동을 안내합니다(행동 안내). 설정에서 보스 대사 모드를 선택하면 이전처럼 대사를 읽습니다. 글로벌과 한국 공략을 지원합니다. 공략 조건에서 지역, 활동, 단계를 선택하세요.",
+    "ja": "通知が取るべき行動を伝えるようになりました（行動指示）。設定で「ボスの台詞」を選ぶと従来どおり台詞を読み上げます。Global版と韓国版に対応。ガイド条件で地域、コンテンツ、ステージを選べます。",
+    "de": "Ansagen können jetzt sagen, was zu tun ist (Anweisungen). Unter Bosszeilen in den Einstellungen kannst du weiterhin die Bossdialoge hören. Guides gibt es für Global und Korea. Wähle Region, Aktivität und Stufe im Guide-Kontext.",
+    "fr": "Les annonces peuvent maintenant indiquer quoi faire (Consignes). Dans les réglages, le mode Répliques du boss lit les dialogues comme avant. Les guides couvrent Global et la Corée. Choisissez la région, l'activité et le palier dans le contexte du guide.",
+    "es": "Los avisos ahora pueden decirte qué hacer (Instrucciones). En Ajustes, Frases del jefe lee el diálogo como antes. Hay guías para Global y Corea. Elige la región, la actividad y la etapa en el contexto de la guía.",
+    "pt": "Os avisos agora podem dizer o que fazer (Instruções). Em Configurações, Falas do chefe lê o diálogo como antes. Há guias para Global e Coreia. Escolha a região, a atividade e a etapa no contexto do guia.",
+    "ru": "Подсказки теперь могут объяснять, что делать (Инструкции). В настройках можно выбрать Реплики босса, чтобы слышать диалоги как раньше. Есть гайды для Global и Кореи. Выберите регион, активность и этап в контексте гайда.",
+    "zh-Hant": "提示現在可以告訴你該怎麼做（行動指引）。在設定中選擇「首領台詞」，即可像以前一樣朗讀台詞。提供 Global 與韓版攻略。請在指引條件中選擇地區、活動與階段。",
+    "zh-Hans": "提示现在可以告诉你该怎么做（行动指引）。在设置中选择“首领台词”，即可像以前一样朗读台词。提供 Global 与韩版攻略。请在指引条件中选择地区、活动与阶段。"
   },
   {
     "version": "0.1.9",

@@ -185,6 +185,10 @@ def build_mechanics(data=None, check=False, *, source_path=None, output_path=Non
         data = read_js(Path(bosses_path) if bosses_path is not None else PLUGIN / "bosses.js")
     source = json.loads(source_path.read_text(encoding="utf-8"))
     payload = validate_mechanics(source, data)
+    # Keep review evidence in mechanics.json, outside the runtime payload.
+    payload.pop("contextProvenance", None)
+    for entry in payload["entries"]:
+        entry.pop("evidence", None)
     body = "// Built by tools/boss-telegraph/mechanics.py from reviewed mechanics.json.\n"
     body += "// Exact triggers and source text checked against bosses.js; do not edit by hand.\n"
     body += "window.BOSS_MECHANICS = " + json.dumps(payload, ensure_ascii=False, separators=(",", ":")) + ";\n"

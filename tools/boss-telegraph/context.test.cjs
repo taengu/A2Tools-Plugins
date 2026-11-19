@@ -4,7 +4,7 @@ const path = require("node:path");
 const vm = require("node:vm");
 const test = require("node:test");
 const sandbox = vm.createContext({});
-vm.runInContext(fs.readFileSync(path.join(__dirname, "../../plugins/boss-telegraph/context.js"), "utf8"), sandbox);
+vm.runInContext(fs.readFileSync(path.join(__dirname, "context.js"), "utf8"), sandbox);
 
 // Exact entries at official v2.0.97 / 1df3a64; 600003 has no difficulty.
 const dungeons = {

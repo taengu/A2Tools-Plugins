@@ -162,7 +162,7 @@ test("delayed sequence speech respects reset, disabled calls, custom wording and
 
 const shortCall=(h,key)=>{const c=h.data.calls.find(c=>c.k===key);return h.data.texts[c.act??c.line??c.n]?.en;};
 test("fallback preserves original short calls and Talisra signs in every region",async()=>{
- for(const region of ["Global","KR","unknown"]){
+ for(const region of ["Global","KR"]){
   const h=await page({registry:"real"});await h.choose(".guideRegion",region);
   for(const key of ["thamon-violet","vakron-jump"]){await h.emit(key);assert.equal(h.spoken.at(-1),shortCall(h,key));}
   await h.emit("talisra-dark-spear");await h.advance(1500);await h.emit("talisra-dark-spear");await h.advance(1500);await h.emit("talisra-light-spear");
@@ -177,7 +177,7 @@ test("scoped added instructions require matching region and difficulty, otherwis
  }
 });
 test("Global default is independent of language and explicit KR remains selected",async()=>{
- const h=await page();assert.equal(h.context().region,"Global");h.handlers.get("language")("ko");assert.equal(h.context().region,"Global");
+ const h=await page({stored:{guideRegion:"unknown"}});assert.equal(h.context().region,"Global");h.handlers.get("language")("ko");assert.equal(h.context().region,"Global");
  await h.choose(".guideRegion","KR");h.handlers.get("language")("en");assert.equal(h.context().region,"KR");
 });
 test("activity and stage survive map, process boundaries and saved preference reload",async()=>{

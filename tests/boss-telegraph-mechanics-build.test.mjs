@@ -53,13 +53,13 @@ function fixture(t) {
   return { paths, data, entry, source, run, rejects, scoped };
 }
 
-test("builder preserves all reviewed metadata and checks freshness without writing", (t) => {
+test("builder preserves runtime rules and checks freshness without writing", (t) => {
   const f = fixture(t);
   assert.equal(f.run().status, 0);
   const body = fs.readFileSync(f.paths.output, "utf8");
   const context = vm.createContext({ window: {} });
   vm.runInContext(body, context);
-  assert.deepEqual(JSON.parse(JSON.stringify(context.window.BOSS_MECHANICS)), f.source);
+  assert.deepEqual(JSON.parse(JSON.stringify(context.window.BOSS_MECHANICS)), { ...f.source, entries: f.source.entries.map(({ evidence, ...entry }) => entry) });
   assert.equal(f.run({ check: true }).status, 0);
   fs.appendFileSync(f.paths.output, "// stale\n");
   const staleBody = fs.readFileSync(f.paths.output, "utf8");
@@ -79,7 +79,7 @@ test("--check rejects missing output without creating it", (t) => {
   assert.equal(fs.existsSync(f.paths.output), false);
 });
 
-test("optional official dungeon metadata and context provenance are preserved without inferring modes", (t) => {
+test("runtime keeps exact dungeon metadata and leaves review provenance in the source", (t) => {
   const f = fixture(t);
   f.source.dungeons = { "123": { name: "An ominous _HARD suffix" }, "124": { name: "Known map", difficulty: "hard" } };
   f.source.contextProvenance = { source: "official dictionary", revision: "fixture" };
@@ -88,11 +88,12 @@ test("optional official dungeon metadata and context provenance are preserved wi
   vm.runInContext(fs.readFileSync(f.paths.output, "utf8"), context);
   const payload = JSON.parse(JSON.stringify(context.window.BOSS_MECHANICS));
   assert.deepEqual(payload.dungeons, f.source.dungeons);
-  assert.deepEqual(payload.contextProvenance, f.source.contextProvenance);
+  assert.equal(payload.contextProvenance, undefined);
+  assert.ok(payload.entries.every((entry) => !Object.hasOwn(entry, "evidence")));
   assert.equal(Object.hasOwn(payload.dungeons["123"], "difficulty"), false);
 });
 
-test("factual build and version provenance remains intact in eligible guidance", (t) => {
+test("factual build and version evidence stays in source while eligibility metadata ships", (t) => {
   const f = fixture(t);
   Object.assign(f.entry.evidence[0], {
     build: "Global client 2.0.10", version: "2.0.10", versions: ["2.0.9", "2.0.10"],
@@ -102,7 +103,9 @@ test("factual build and version provenance remains intact in eligible guidance",
   assert.equal(f.run().status, 0);
   const context = vm.createContext({ window: {} });
   vm.runInContext(fs.readFileSync(f.paths.output, "utf8"), context);
-  assert.deepEqual(JSON.parse(JSON.stringify(context.window.BOSS_MECHANICS.entries[0])), f.entry);
+  const { evidence, ...runtimeEntry } = f.entry;
+  assert.deepEqual(JSON.parse(JSON.stringify(context.window.BOSS_MECHANICS.entries[0])), runtimeEntry);
+  assert.deepEqual(JSON.parse(fs.readFileSync(f.paths.source, "utf8")).entries[0].evidence, evidence);
 });
 
 for (const flag of ["historicalRemovedMode", "requiresExplicitHistoricalContext", "requiresVersionContext", "referenceOnly", "unknownScope"]) {
@@ -155,7 +158,7 @@ test("same exact trigger permits separately reviewed KR and Global variants with
   assert.equal(f.run().status, 0);
   const context = vm.createContext({ window: {} });
   vm.runInContext(fs.readFileSync(f.paths.output, "utf8"), context);
-  assert.deepEqual(JSON.parse(JSON.stringify(context.window.BOSS_MECHANICS.entries)), f.source.entries);
+  assert.deepEqual(JSON.parse(JSON.stringify(context.window.BOSS_MECHANICS.entries)), f.source.entries.map(({ evidence, ...entry }) => entry));
 });
 
 for (const change of ["overlap", "multiRegionOverlap", "universal", "missingRegion"]) {
