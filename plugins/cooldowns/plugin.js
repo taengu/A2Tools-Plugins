@@ -164,6 +164,7 @@ const saveMine = () => {
 // first two digits (entity/job_class.rs from_prefix).
 const CLASS_IDS = { "검성": "11", "수호성": "12", "살성": "13", "궁성": "14", "마도성": "15", "정령성": "16", "치유성": "17", "호법성": "18", "권성": "19" };
 let charName = null;
+let loadingCharacter = null;
 
 // The class the meter knows, over the one learnt from the last skill cast:
 // so the right skills show from login, before anything is cast (Hirai).
@@ -190,33 +191,44 @@ async function loadCharacter(c) {
   // the class and the ticked skills on entering a dungeon or the Shugo
   // Festival (Plexas, Hirai, 2026-10-22).
   if (!c || !c.name) return;
-  const server = Number(c.serverId) || 0;
+  const serverOf = (key) => Number(key.slice(key.lastIndexOf("@") + 1)) || 0;
+  // An incomplete identity keeps the server already known for this name.
+  // A different known server has its own saved profile.
+  const server = Number(c.serverId) || (loadingCharacter?.character.name === c.name
+    ? serverOf(loadingCharacter.key) : c.name === charName ? serverOf(charKey) : 0);
   const key = `${c.name}@${server || ""}`;
-  // The same name with another server is the same character, its server
-  // reported again as the meter relearns it; it moves only from a server
-  // not known yet (0) to the real one, whose setup is the one saved.
-  const knownServer = Number(charKey.split("@")[1]) || 0;
-  if (c.name === charName && (key === charKey || knownServer || !server)) {
+  if (loadingCharacter?.key === key) {
+    loadingCharacter.character = c;
+    return;
+  }
+  if (key === charKey) {
+    loadingCharacter = null;
     takeClass(c);
     takeCdr(c);
     return;
   }
-  const sameCharacter = c.name === charName;
-  charName = c.name;
+  const request = { key, character: c };
+  loadingCharacter = request;
+  const carry = charKey === "?" || (c.name === charName && !serverOf(charKey));
   clearTimeout(saving);
-  if (charKey !== "?" && !sameCharacter) await storeMine(charKey, mine);
+  if (charKey !== "?" && !carry) await storeMine(charKey, mine);
+  if (loadingCharacter !== request) return;
   const stored = await a2.storage.get(charStoreKey(key)).catch(() => null);
+  if (loadingCharacter !== request) return;
+  loadingCharacter = null;
   // A first character takes what was set up before its name came, and one
   // whose server just became known what was set up meanwhile.
-  const carried = (charKey === "?" || sameCharacter) && !stored ? mine : null;
+  const carried = carry && !stored ? mine : null;
   charKey = key;
+  charName = request.character.name;
   mine = fresh({ cls: null, skills: {}, buffs: {}, learned: {}, ...(stored || carried || {}) });
-  takeClass(c);
-  takeCdr(c);
-  live.cd.clear();
-  live.charges.clear();
-  live.buffs.clear();
-  $(".char").textContent = c && c.name ? c.name : "";
+  takeClass(request.character);
+  takeCdr(request.character);
+  for (const state of [live.cd, live.used, live.unsure, live.changed, live.charges, live.samples, live.early, live.buffs]) {
+    state.clear();
+  }
+  live.clock = null;
+  $(".char").textContent = charName;
   renderAll();
 }
 
