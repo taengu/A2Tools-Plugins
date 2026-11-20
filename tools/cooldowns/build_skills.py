@@ -47,7 +47,27 @@ PROXY = os.environ.get("CDN_PROXY", "http://192.168.0.113:16005")
 SIZE = 48
 # The tables give Zikel's Blessing and Lunge Stance each other's icon: the
 # game draws Zikel's Blessing with 040 and Lunge Stance with 024 (#130).
-SWAPPED = {"ICON_GL_SKILL_024": "ICON_GL_SKILL_040", "ICON_GL_SKILL_040": "ICON_GL_SKILL_024"}
+# Two one-way redirects as well, where the build fetches another file from the
+# CDN than the one the tables name:
+# - Prayer of Amplification: the tables give it a shield icon, 043, but the game
+#   shows the praying hands, 044.
+# - Earth's Blessing: the tables name 040_Buff, which the CDN doesn't have (404).
+#   The same picture is on the CDN as 030.
+SWAPPED = {"ICON_GL_SKILL_024": "ICON_GL_SKILL_040", "ICON_GL_SKILL_040": "ICON_GL_SKILL_024",
+           "ICON_CL_SKILL_043": "ICON_CL_SKILL_044", "ICON_CL_SKILL_040_Buff": "ICON_CL_SKILL_030"}
+# Icons set per skill, for skills where the tables name the wrong one. The
+# skill's buffs get the same icon (a buff's id is its skill's id plus one digit).
+# Astralia, which reads the live client, shows the right ones:
+# - Salvation, Power Burst, Absolution and Voice of Doom: the tables this was
+#   built from give them the icon of their later variants, one number too high.
+#   They're set per skill instead of redirected by name, so that newer tables,
+#   where the numbers are already right, don't get shifted down a second time.
+# - Prayer of Concentration: its buff shows Passive_006, not Passive_007.
+# - Survival Willpower: the Cleric's buff shows the Gladiator's picture. The
+#   Cleric copy on the CDN is a different picture.
+PINNED = {17270000: "ICON_CL_SKILL_026", 17280000: "ICON_CL_SKILL_027",
+          17290000: "ICON_CL_SKILL_028", 17300000: "ICON_CL_SKILL_029",
+          17770000: "ICON_CL_SKILL_Passive_006", 17790000: "ICON_GL_SKILL_Passive_009"}
 
 
 def rows(tables, name):
@@ -157,7 +177,7 @@ def main():
         if not n:
             print(f"no name: {group}", file=sys.stderr)
             continue
-        icon = stem(base["SkillIcon"])
+        icon = PINNED.get(group) or stem(base["SkillIcon"])
         icons.add(icon)
         s = {"g": group, "cd": cd, "icon": icon, "n": n}
         if group in charges:
@@ -181,7 +201,8 @@ def main():
         n = named(buff_names, str(r["ID"]["Value"]))
         if not n:
             continue
-        icon = stem(r["AbnormalIcon"])
+        skill = r["ID"]["Value"] // 10
+        icon = PINNED.get(skill - skill % 10000) or stem(r["AbnormalIcon"])
         icons.add(icon)
         buffs[str(r["ID"]["Value"])] = {"icon": icon, "n": n}
 
