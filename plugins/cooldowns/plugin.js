@@ -702,15 +702,19 @@ async function placeWidgets() {
 
 // widget.js reports how much room its page really has. If that's < its
 // window size, windows get enlarged by that ratio from now on.
-// Ignored: growing under 0.5% and shrinking under 2%. Rounding to whole pixels
+// Ignored: growing under 0.1% and shrinking under 2%. Rounding to whole pixels
 // can make the measurement wobble, and without the margin the size kept flipping.
 function onRoom(name, room, size) {
   if (!room || !size || !(room.width > 0) || !(room.height > 0) || !(size.width > 0) || !(size.height > 0)) return;
   const x = Math.min(3, Math.max(1, size.width / room.width));
   const y = Math.min(3, Math.max(1, size.height / room.height));
   const had = fits.get(name) || { x: 1, y: 1 };
-  if (x <= had.x * 1.005 && x >= had.x * 0.98 && y <= had.y * 1.005 && y >= had.y * 0.98) return;
-  fits.set(name, { x, y });
+  // Width and height each decide on their own; together, a change in one
+  // dragged the other along and the two could keep swapping.
+  const keep = (v, was) => v <= was * 1.001 && v >= was * 0.98;
+  const fit = { x: keep(x, had.x) ? had.x : x, y: keep(y, had.y) ? had.y : y };
+  if (fit.x === had.x && fit.y === had.y) return;
+  fits.set(name, fit);
   saveFits();
   return placeWidgets();
 }

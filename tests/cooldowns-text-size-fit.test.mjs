@@ -160,3 +160,31 @@ test("the size settles at every display scale, Text size and icon size (no flipp
   }
   assert.deepEqual(stuck, [], "these setups kept resizing");
 });
+
+test("going from 9 icons to 1 doesn't make the size flip (display 125%, Text size 105%, Medium)", async () => {
+  const m = meter({ display: 1.25, text: 1.05, size: "42" });
+  await m.tick(9);
+  const rounds = await m.tick(1);
+  assert.ok(rounds <= 3, `it took ${rounds} rounds of resizing to settle`);
+});
+
+test("the size settles when the number of icons goes up and down during a session", async () => {
+  const stuck = [];
+  // "extra" varies too: other PCs may give a bit more or less room than the 1.67 px measured on one
+  for (const extra of [-1, 0, 1.67, 3]) for (const display of [1, 1.25, 1.5, 1.75, 2]) for (let percent = 100; percent <= 225; percent += 5) for (const size of ["32", "42", "54", "68"]) {
+    for (const direction of ["right", "up"]) {
+      const m = meter({ display, text: percent / 100, size, direction, extra });
+      for (const n of [9, 1, 6, 2, 12, 1, 3, 10]) {
+        let result;
+        try {
+          const rounds = await m.tick(n);
+          if (rounds > 3) result = `${rounds} rounds`;
+        } catch {
+          result = "never settled";
+        }
+        if (result) stuck.push(`extra ${extra} px / ${display * 100}% / ${percent}% / ${size} px / ${direction} / to ${n} icons: ${result}`);
+      }
+    }
+  }
+  assert.deepEqual(stuck, [], "these setups kept resizing after the number of icons changed");
+});
