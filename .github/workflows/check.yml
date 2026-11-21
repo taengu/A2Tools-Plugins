@@ -1,6 +1,7 @@
 name: Check plugins
 
 on:
+  workflow_dispatch:
   pull_request:
   push:
     branches: [main]
@@ -21,5 +22,9 @@ jobs:
       - name: Check every script parses
         run: |
           for f in $(git ls-files 'plugins/**/*.js'); do node --check "$f"; done
-      - name: Test Cooldowns timers
-        run: node --test tests/*.test.mjs
+      - name: Check generated Boss Callouts instructions
+        run: |
+          python tools/boss-telegraph/actions.py --check
+          python tools/boss-telegraph/mechanics.py --check
+      - name: Test plugin behavior
+        run: node --test tests/*.test.mjs tools/boss-telegraph/*.test.cjs

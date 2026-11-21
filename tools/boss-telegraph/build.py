@@ -39,6 +39,8 @@ from collections import defaultdict
 from pathlib import Path
 
 import ijson
+from actions import build_actions
+from mechanics import build_mechanics
 
 ROOT = Path(__file__).resolve().parent.parent.parent
 OUT = ROOT / "plugins" / "boss-telegraph" / "bosses.js"
@@ -318,6 +320,8 @@ def main():
     print(f"dropped rows: {dict(dropped)}")
     print(f"triggers whose copies have other lines (the normal one kept): {sum(1 for x in lines_seen.values() if len(x) > 1)}")
     print(f"wrote {OUT} ({OUT.stat().st_size // 1024} KB)")
+    build_actions(data)
+    build_mechanics(data)
 
 
 if __name__ == "__main__":

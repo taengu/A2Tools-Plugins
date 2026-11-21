@@ -3,20 +3,54 @@
 // widget. Nothing leaves the computer: no network, only the meter's storage.
 const $ = (s) => document.querySelector(s);
 const DATA = window.BOSS_CALLOUTS || { langs: ["en"], texts: [], groups: {}, bosses: {}, calls: [] };
+const MECHANICS = Array.isArray(window.BOSS_MECHANICS?.entries) ? window.BOSS_MECHANICS : { entries: [], dungeons: {} };
+const activation = BossActivation.create(MECHANICS);
 
 const DEFAULTS = {
-  enabled: true, widget: true, style: "both",
+  enabled: true, widget: true, style: "both", tellMeWhatToDo: true,
   size: "60", fg: "#ffff00", safe: "#66ff66", bg: "#000000", bgOpacity: 85,
   volume: 100, voiceName: "", rate: "1",
   offBoss: {}, offCall: {}, waves: {}, custom: {},
   // This window's own text size (Look): the whole page scaled, for reduced vision.
   menuSize: "1",
+  guideRegion: "Global",
 };
 let prefs = { ...DEFAULTS };
 let lang = "en";
 let words = UI.en;
 let gameOpen = false;
 let locked = false;
+// Explicit guide choices persist until changed; observed encounter state resets separately.
+let manualGuide = { category: "auto", difficulty: "auto", stage: 0 };
+const GUIDE_KEYS = { guideCategory: "category", guideDifficulty: "difficulty", guideStage: "stage" };
+
+function guideContext() {
+  const map = encounterContext.snapshot().map;
+  return {
+    region: prefs.guideRegion,
+    category: manualGuide.category,
+    difficulty: manualGuide.difficulty === "auto" ? map?.difficulty : manualGuide.difficulty,
+    stage: manualGuide.stage || null,
+  };
+}
+function scopeLabel(badge) {
+  if (!badge) return "";
+  if (badge.universal) return words.scopeGame;
+  const category = { conquest: "categoryConquest", transcendence: "categoryTranscendence", trial: "categoryTrial", nightmare: "categoryNightmare", sanctuary: "categorySanctuary" };
+  const difficulty = { normal: "difficultyNormal", hard: "difficultyHard", exploration: "difficultyExploration" };
+  return [
+    ...badge.regions.map((value) => words[String(value).toLowerCase() === "kr" ? "regionKR" : "regionGlobal"]),
+    ...badge.categories.map((value) => words[category[value]] || value),
+    ...badge.difficulties.map((value) => words[difficulty[value]] || value),
+    badge.stages.length ? `${words.guideStage} ${badge.stages.join(", ")}` : "",
+  ].filter(Boolean).join(" · ");
+}
+function clearManualGuide() {
+  manualGuide = { category: "auto", difficulty: "auto", stage: 0 };
+  for (const [setting, field] of Object.entries(GUIDE_KEYS)) prefs[setting] = manualGuide[field];
+  showPrefs();
+  renderBosses();
+}
 
 const T = (i) => {
   if (i == null) return "";
@@ -37,6 +71,12 @@ const hasClips = Object.keys(CLIPS).length > 0;
 // Each text in every language, to its English (the clips' keys).
 const toEnglish = new Map();
 for (const t of DATA.texts) if (t && t.en) for (const s of Object.values(t)) if (s) toEnglish.set(s, t.en);
+for (const t of Object.values(window.BOSS_ACTIONS || {})) {
+  // Action text is kept separately from the generated game dialogue.
+  const texts = t.en ? [t] : Object.values(t);
+  for (const entry of texts) if (entry?.en) for (const s of Object.values(entry)) if (s) toEnglish.set(s, entry.en);
+}
+for (const entry of MECHANICS.entries) for (const text of Object.values(entry.text)) toEnglish.set(text, entry.text.en);
 for (const w of Object.values(UI)) if (w.preview) toEnglish.set(w.preview, UI.en.preview);
 let voices = [];
 function loadVoices() {
@@ -132,6 +172,8 @@ const decoded = new Map(); // English text -> Promise<AudioBuffer>
 const stretched = new Map(); // "rate|text" -> AudioBuffer
 let playing = null; // { node, prio, until }
 let waiting = []; // [{ text, prio }]
+let audioGeneration = 0;
+const activeBeeps = new Set();
 function clip(text) {
   const en = CLIPS[text] ? text : toEnglish.get(text);
   if (!en || !CLIPS[en]) return null;
@@ -169,16 +211,31 @@ function stopPlaying() {
     }
   }
 }
+function resetAudio() {
+  audioGeneration++;
+  waiting = [];
+  stopPlaying();
+  for (const node of activeBeeps) {
+    node.onended = null;
+    try { node.stop(); } catch { /* already ended */ }
+    node.disconnect?.();
+  }
+  activeBeeps.clear();
+  for (const utterance of saying.keys()) utterance.onend = utterance.onerror = null;
+  saying.clear();
+  try { synth?.cancel(); } catch { /* speech device unavailable */ }
+}
 async function playNext() {
   const next = waiting.shift();
   if (!next) return;
   const c = clip(next.text);
   const rate = Number(prefs.rate) || 1;
-  const slot = { node: null, prio: next.prio, until: Date.now() + 5000 };
+  const slot = { node: null, prio: next.prio, until: Date.now() + 5000, generation: audioGeneration };
   playing = slot;
   let buffer;
   try {
     buffer = await c.buffer;
+    if (playing !== slot || slot.generation !== audioGeneration) return;
     if (rate !== 1) {
       const key = `${rate}|${c.en}`;
       if (!stretched.has(key)) stretched.set(key, stretch(context(), buffer, rate));
@@ -187,7 +244,7 @@ async function playNext() {
   } catch {
     buffer = null;
   }
-  if (playing !== slot) return; // cut off while it decoded
+  if (playing !== slot || slot.generation !== audioGeneration) return; // cut off while it decoded
   if (!buffer) {
     playing = null;
     return playNext();
@@ -201,7 +258,8 @@ async function playNext() {
   slot.node = node;
   slot.until = Date.now() + (buffer.duration * 1000) + 1000;
   node.onended = () => {
-    if (playing === slot) playing = null;
+    if (playing !== slot || slot.generation !== audioGeneration) return;
+    playing = null;
     playNext();
   };
   node.start();
@@ -263,6 +321,8 @@ function beep() {
     gain.gain.exponentialRampToValueAtTime(0.25 * volumeGain(prefs.volume) + 0.0001, t + 0.01);
     gain.gain.exponentialRampToValueAtTime(0.0001, t + 0.12);
     osc.connect(gain).connect(audio.destination);
+    activeBeeps.add(osc);
+    osc.onended = () => { activeBeeps.delete(osc); osc.disconnect?.(); gain.disconnect?.(); };
     osc.start(t);
     osc.stop(t + 0.14);
   } catch {
@@ -277,6 +337,14 @@ const engine = BossLogic.create(DATA, {
   now: () => Date.now(),
   prefs: () => prefs,
   lang: () => lang,
+  actions: window.BOSS_ACTIONS,
+  instruction: (call, options) => {
+    const context = guideContext();
+    const result = activation.resolve(call, context, options);
+    if (result.eligible) return { text: result.text, scopeLabel: scopeLabel(result.scopeBadge), suppressLegacy: true };
+    // Preserve the original short calls and sign order when no guide matches.
+    return null;
+  },
   say,
   beep,
   show: (items) => {
@@ -284,6 +352,13 @@ const engine = BossLogic.create(DATA, {
     send();
   },
 });
+
+// Every page-level encounter reset also invalidates audio already decoding.
+// Deliberate Test/preview calls remain available even while Callouts is off.
+function resetLifecycle(at) {
+  resetAudio();
+  engine.clear(at);
+}
 
 let widgetOpen = false;
 let lastSize = "";
@@ -317,10 +392,12 @@ function send() {
 // ---- The page ----------------------------------------------------------
 
 const els = {
-  enabled: $(".enabled"), widget: $(".widget"), style: $(".style"),
+  enabled: $(".enabled"), widget: $(".widget"), style: $(".style"), tellMeWhatToDo: $(".tellMeWhatToDo"),
   size: $(".size"), fg: $(".fg"), safe: $(".safe"), bg: $(".bg"), bgOpacity: $(".bgOpacity"),
   volume: $(".volume"), voiceName: $(".voiceName"), rate: $(".rate"),
   menuSize: $(".menuSize"),
+  guideRegion: $(".guideRegion"), guideCategory: $(".guideCategory"),
+  guideDifficulty: $(".guideDifficulty"), guideStage: $(".guideStage"),
 };
 // The page at the size picked: zoom scales text, controls and spacing alike,
 // so nothing overlaps or is cut off at 175%.
@@ -360,10 +437,13 @@ function fillVoices() {
 function showPrefs() {
   for (const [key, el] of Object.entries(els)) {
     if (key === "voiceName") continue;
-    if (el.type === "checkbox") el.checked = !!prefs[key];
+    if (GUIDE_KEYS[key]) { el.value = String(manualGuide[GUIDE_KEYS[key]]); continue; }
+    if (key === "tellMeWhatToDo") el.value = prefs[key] === false ? "lines" : "instructions";
+    else if (el.type === "checkbox") el.checked = !!prefs[key];
     else el.value = String(prefs[key]);
   }
   els.voiceName.value = prefs.voiceName;
+  els.style.disabled = prefs.tellMeWhatToDo !== false;
   sizeMenu();
 }
 
@@ -390,6 +470,14 @@ function callRow(c) {
   main.className = c.act ? "act" : "said";
   main.textContent = T(c.act) || T(c.line) || T(c.n);
   what.append(main);
+  const guide = activation.describe(c, guideContext());
+  const demonstration = activation.resolve(c, guideContext(), { preview: true });
+  if (demonstration.eligible) {
+    const instruction = document.createElement("span");
+    instruction.className = "guideInstruction";
+    instruction.textContent = demonstration.text[lang] || demonstration.text.en;
+    what.append(instruction);
+  }
   if (c.act && T(c.line)) {
     const line = document.createElement("span");
     line.className = "line";
@@ -405,6 +493,10 @@ function callRow(c) {
   const trig = c.t === "cast" ? words.trigCast : c.t === "use" ? words.trigUse : words.trigBuff;
   const tag = (text, cls = "") => Object.assign(document.createElement("span"), { className: `tag ${cls}`.trim(), textContent: text });
   tags.append(tag(trig));
+  if (demonstration.eligible) {
+    tags.append(tag(guide.eligible ? (demonstration.entry.verification === "game-explicit" ? words.scopeGame : words.scopeGuide) : words.scopeNeedsContext, "scopeTag"));
+    tags.append(tag(scopeLabel(demonstration.scopeBadge), "scopeTag"));
+  }
   if (c.t === "abnormal" && T(c.n)) tags.append(tag(T(c.n)));
   if (c.lead) tags.append(tag(`${(c.lead / 1000).toFixed(1).replace(/\.0$/, "")} s`));
   if (c.act) tags.append(tag(words.tagCall, "isCall"));
@@ -598,14 +690,31 @@ $(".test").addEventListener("click", () => engine.test());
 
 for (const [key, el] of Object.entries(els)) {
   el.addEventListener(el.type === "range" || el.type === "color" ? "input" : "change", () => {
-    let v = el.type === "checkbox" ? el.checked : el.value;
+    let v = key === "tellMeWhatToDo" ? el.value === "instructions" : el.type === "checkbox" ? el.checked : el.value;
+    if (GUIDE_KEYS[key]) {
+      if (key === "guideStage") v = Number.isInteger(Number(v)) && Number(v) >= 0 && Number(v) <= 24 ? Number(v) : 0;
+      if (key === "guideCategory") manualGuide = { category: v, difficulty: "auto", stage: 0 };
+      else manualGuide[GUIDE_KEYS[key]] = v;
+      for (const [setting, field] of Object.entries(GUIDE_KEYS)) prefs[setting] = manualGuide[field];
+      save();
+      showPrefs();
+      resetLifecycle();
+      renderBosses();
+      return;
+    }
     if (key === "volume" || key === "bgOpacity") v = Number(v);
+    if (key === "guideRegion" && !["Global", "KR"].includes(v)) return;
     prefs[key] = v;
+    if (key === "guideRegion") {
+      clearManualGuide();
+      resetLifecycle();
+    }
+    if (key === "tellMeWhatToDo") els.style.disabled = v;
     save();
     if (key === "menuSize") return sizeMenu();
     if (key === "enabled" || key === "widget" || key === "size") placeWidget();
     else send();
-    if (key === "enabled" && !v) engine.clear();
+    if (key === "enabled" && !v) resetLifecycle();
     if (key === "voiceName" || key === "rate") say(words.preview);
   });
 }
@@ -622,6 +731,20 @@ setInterval(() => engine.tick(), 100);
 // ---- The meter ---------------------------------------------------------
 
 const atOf = (meta) => (meta && typeof meta.at === "number" ? meta.at : Date.now());
+// A map load is an encounter boundary even when its map ID is unchanged.
+// Only exact official dictionary values can supply an observed difficulty.
+// Region, category and stage remain explicit choices; HP is not registered.
+const encounterContext = BossContext.create({ now: Date.now, dungeons: MECHANICS.dungeons || {} });
+function updateEncounter(change, at) {
+  const before = encounterContext.snapshot().generation;
+  change();
+  if (encounterContext.snapshot().generation !== before) {
+    resetLifecycle(at);
+  }
+}
+a2.on("decoded:boss-map", (d, meta) => {
+  if (gameOpen) updateEncounter(() => encounterContext.mapLoad(d, meta?.at), meta?.at);
+});
 a2.on("decoded:boss-cast", (d, meta) => engine.cast(d, atOf(meta)));
 a2.on("decoded:boss-skill", (d, meta) => engine.use(d, atOf(meta)));
 a2.on("decoded:boss-wave", (d, meta) => engine.wave(d, atOf(meta)));
@@ -638,7 +761,8 @@ a2.on("game", (d) => {
   const open = !!(d && d.running);
   if (open === gameOpen) return;
   gameOpen = open;
-  if (!open) engine.clear();
+  encounterContext.reset();
+  resetLifecycle();
   placeWidget();
 });
 a2.on("locked", (on) => {
@@ -653,6 +777,14 @@ a2.on("widget-message", ({ data }) => {
   const stored = await a2.storage.get("prefs").catch(() => null);
   if (stored && typeof stored === "object") {
     prefs = { ...DEFAULTS, ...stored };
+    prefs.tellMeWhatToDo = stored.tellMeWhatToDo !== false;
+    prefs.guideRegion = ["Global", "KR"].includes(stored.guideRegion) ? stored.guideRegion : "Global";
+    for (const [setting, field] of Object.entries(GUIDE_KEYS)) {
+      const value = stored[setting];
+      if (field === "stage") manualGuide.stage = Number.isInteger(value) && value >= 0 && value <= 24 ? value : 0;
+      else if (field === "category" && ["auto", "conquest", "transcendence", "trial", "nightmare", "sanctuary"].includes(value)) manualGuide.category = value;
+      else if (field === "difficulty" && ["auto", "normal", "hard", "exploration"].includes(value)) manualGuide.difficulty = value;
+    }
     for (const k of ["offBoss", "offCall", "waves", "custom"]) prefs[k] = { ...(stored[k] || {}) };
   }
   locked = await a2.widgets.locked().catch(() => false);
