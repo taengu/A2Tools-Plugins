@@ -19,6 +19,21 @@
 // start it and log in). The sound repeats as often as chosen, until muted from
 // the alert's banner.
 
+// Now, in real time: the PC's clock corrected by the meter (meter 2.1.4 on),
+// for everything compared with the game server's times (a boss's next spawn,
+// the schedules, alerts). A PC clock 14 s slow showed bosses spawning 12 s
+// before their countdown ended. Elapsed time (idle, sounds) keeps Date.now().
+// Older meters have no a2.now: the PC's clock, as before.
+const serverNow = () => (typeof a2.now === "function" ? a2.now() : Date.now());
+// The clock corrected again (measured, or the PC's clock changed): the list
+// and icons at once, not at the next tick.
+a2.on("clock", () => {
+  try {
+    render();
+    if (typeof updatePins === "function") updatePins(serverNow());
+  } catch {}
+});
+
 const $ = (selector) => document.querySelector(selector);
 const els = {
   status: $(".status"),
@@ -770,7 +785,7 @@ const fieldTimer = (id) => {
   const b = FIELD_BOSSES[id];
   if (b?.schedule && (!t || (t.state === "dead" && !t.nextSpawn))) return scheduledTimer(b, t);
   if (t?.state === "dead" && !t.nextSpawn) return t;
-  if (t?.state === "dead" && t.nextSpawn && Date.now() >= t.nextSpawn * 1000) {
+  if (t?.state === "dead" && t.nextSpawn && serverNow() >= t.nextSpawn * 1000) {
     return { ...t, state: "up", upSince: t.nextSpawn, nextSpawn: null, hp: null, hpAt: null };
   }
   return t;
@@ -802,7 +817,7 @@ for (const [evId, ids] of Object.entries(ABYSS_SPAWNS)) {
 const scheduledTimer = (b, t) => {
   const ev = EVENTS.find((e) => e.id === b.schedule);
   const tz = timeZone() || "UTC";
-  const now = Date.now();
+  const now = serverNow();
   let next = ev && nextOf(ev, tz, now);
   if (!next) return t;
   const killed = t?.state === "dead" && Number(t.reportedAt) * 1000 >= next.start + 60_000;
@@ -1257,9 +1272,9 @@ async function readEnemyFeed() {
     for (const [id, entry] of Object.entries(have)) {
       if (typeof mergeEntry === "function") bosses[id] = bosses[id] ? mergeEntry(entry, bosses[id]) : entry;
     }
-    enemyFeed = { server, bosses, at: Date.now() };
+    enemyFeed = { server, bosses, at: serverNow() };
   } catch {
-    enemyFeed = { server, bosses: enemyFeed?.server === server ? enemyFeed.bosses : {}, error: true, at: Date.now() };
+    enemyFeed = { server, bosses: enemyFeed?.server === server ? enemyFeed.bosses : {}, error: true, at: serverNow() };
   } finally {
     enemyReading = false;
   }
@@ -1305,7 +1320,7 @@ const onBossBoard = (id, board = bossBoard()) => typeof BOSS_REQUESTS === "objec
 // lead before it opens (15 minutes without an alert) until it closes.
 function riftPins(out, cfg) {
   if (!prefs.rift) return;
-  const now = Date.now();
+  const now = serverNow();
   const lead = (Number(prefs.riftAlert) || 15) * 60_000;
   const win = riftWindow(now + lead);
   if (!win || now < win.from - lead) return;
@@ -1423,7 +1438,7 @@ els.riftPicker.addEventListener("change", (e) => {
   else picks.delete(id);
   prefs.riftPicks = { ...(prefs.riftPicks || {}), [side]: [...picks] };
   savePrefs();
-  renderRift(Date.now());
+  renderRift(serverNow());
 });
 
 // The enemy side's world bosses up now, or back before the rift closes.
@@ -1535,7 +1550,7 @@ function fieldItems(bosses, now, withHeads) {
 }
 
 function render() {
-  const now = Date.now();
+  const now = serverNow();
   renderHeader(now);
   renderHidden(renderSchedule(els.events, scheduled("event"), now, { hideable: true }));
   // Not while a row's button is pressed; a focused one keeps its focus.
@@ -2139,7 +2154,7 @@ els.dismiss.addEventListener("click", clearBanner);
 // Alerts: each goes off once, when its moment (the start less its lead)
 // passes between one check and the next. Opening the window after the
 // moment doesn't sound it late.
-let lastCheck = Date.now();
+let lastCheck = serverNow();
 const fired = new Set();
 // An alert's leads in minutes: its own, and 0 as well with "Also alert as it
 // starts".
@@ -2335,16 +2350,16 @@ async function readFeed() {
   try {
     const data = await a2.bossTimers(server);
     const held = feed?.server === server ? feed.bosses : null;
-    feed = { server, bosses: mergeOwn(keepNewerHp(data?.bosses || {}, held)), at: Date.now() };
+    feed = { server, bosses: mergeOwn(keepNewerHp(data?.bosses || {}, held)), at: serverNow() };
   } catch {
-    feed = { server, bosses: mergeOwn(feed?.server === server ? feed.bosses || {} : {}), error: true, at: Date.now() };
+    feed = { server, bosses: mergeOwn(feed?.server === server ? feed.bosses || {} : {}), error: true, at: serverNow() };
   } finally {
     feedReading = false;
   }
   // Sooner while it changes fast, and every few seconds while a pinned boss
   // is being waited for or fought.
-  const pinned = typeof pinnedBossLive === "function" ? pinnedBossLive(Date.now()) : "";
-  if (pinned || feedBusy(Date.now())) {
+  const pinned = typeof pinnedBossLive === "function" ? pinnedBossLive(serverNow()) : "";
+  if (pinned || feedBusy(serverNow())) {
     clearTimeout(feedTimer);
     // Pushed live (pins.js): the feed only as a fallback.
     const live = typeof liveUp !== "undefined" && liveUp;
@@ -2556,7 +2571,7 @@ a2.on("bossMap", (m) => {
   if (ownMap.server !== server) ownMap = { server, bosses: {} };
   Object.assign(ownMap.bosses, m.bosses);
   const base = feed?.server === server ? feed.bosses || {} : {};
-  feed = { ...(feed?.server === server ? feed : {}), server, bosses: mergeOwn(base), at: Date.now(), error: false };
+  feed = { ...(feed?.server === server ? feed : {}), server, bosses: mergeOwn(base), at: serverNow(), error: false };
   render();
 });
 
@@ -2613,18 +2628,19 @@ a2.on("compact", (on) => document.body.classList.toggle("compact", !!on));
   render();
   // Saved settings in: the tour (tour.js) knows whether it was seen.
   prefsLoaded = true;
-  lastCheck = Date.now();
+  lastCheck = serverNow();
   // Each part on its own: one that threw (a feature this WebView lacks, a
   // state after a zone change) stopped the tick there every second, and
   // the countdowns and icons froze until the plugins were reloaded (#185).
   let lastTick = Date.now();
   setInterval(() => {
-    const now = Date.now();
+    const now = serverNow();
     // The once-a-second tick that didn't come for a while: the page was paused
     // (its window hidden, the web engine slowing it). Noted, so a report
-    // tells a pause from an error (#185).
-    if (now - lastTick > 15_000) noteError("tick", `paused ${Math.round((now - lastTick) / 1000)} s (window hidden: ${document.hidden})`);
-    lastTick = now;
+    // tells a pause from an error (#185). Elapsed time: the PC's clock.
+    const local = Date.now();
+    if (local - lastTick > 15_000) noteError("tick", `paused ${Math.round((local - lastTick) / 1000)} s (window hidden: ${document.hidden})`);
+    lastTick = local;
     tickStep("alerts", () => checkAlerts(now), () => { lastCheck = now; });
     tickStep("list", () => render());
     if (typeof updatePins === "function") tickStep("icons", () => updatePins(now));

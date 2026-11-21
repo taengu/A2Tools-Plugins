@@ -506,19 +506,49 @@ let marketBought = {};
 const POPPED_KEY = "marketPopped";
 let marketPopped = {};
 
+// One listing of the stock: a tab's entry. The same pet or item can be on
+// sale in two tabs at once, each sold once: buying one left the other on
+// sale, but both left the list (2026-11-22). So a purchase is kept per
+// listing: `g<tab>:<goodsId>:<itemId>` in marketBought.
+const listingKey = (tab, g, i) => `g${tab}:${g.goodsId ?? `x${i}`}:${g.itemId}`;
+// The character's listings in stock now: { tab, at (when its tab was seen),
+// key, g }.
+function listings(k = marketChar, now = Date.now()) {
+  const out = [];
+  for (const [tab, t] of Object.entries(market[k] || {})) {
+    if (!(t.refreshAt > now)) continue;
+    (t.goods || []).forEach((g, i) => out.push({ tab, at: Number(t.at) || 0, key: listingKey(tab, g, i), g }));
+  }
+  return out;
+}
+// Whether a listing was bought from this stock: itself, or (as versions
+// before 0.8.3 kept it) any listing of its pet or item.
+function listingBought(l, k = marketChar, now = Date.now()) {
+  const gone = marketBought[k] || {};
+  const pet = SHOP_PETS[l.g.itemId];
+  return gone[l.key] > now || gone[`i${l.g.itemId}`] > now || (pet != null && gone[pet] > now);
+}
+// A purchase seen without its listing (a pet's first souls, a new item in
+// the bag): one listing of it not bought yet, in the tab opened last (the
+// one bought from). The game's own sold-out marks, as a tab is opened again,
+// put it right if that was the other one. False when none is left.
+function markBought(k, match, refresh, now) {
+  const open = listings(k, now).filter((l) => match(l.g) && !listingBought(l, k, now)).sort((a, b) => b.at - a.at);
+  if (!open.length) return false;
+  marketBought[k] = { ...(marketBought[k] || {}), [open[0].key]: refresh };
+  return true;
+}
+
 // The pets on sale to the character now, each once; with `bought`, the
-// ones bought from this stock too.
+// ones bought from this stock too. A pet listed twice stays while one of
+// its listings isn't bought.
 function marketPets(now = Date.now(), { bought = false } = {}) {
   const seen = new Map();
-  const gone = marketBought[marketChar] || {};
-  for (const tab of Object.values(market[marketChar] || {})) {
-    if (!(tab.refreshAt > now)) continue;
-    for (const g of tab.goods || []) {
-      const pet = SHOP_PETS[g.itemId];
-      if (!pet || seen.has(String(pet))) continue;
-      if (!bought && (gone[pet] > now || gone[`i${g.itemId}`] > now)) continue;
-      seen.set(String(pet), { ...g, pet: String(pet) });
-    }
+  for (const l of listings(marketChar, now)) {
+    const pet = SHOP_PETS[l.g.itemId];
+    if (!pet || seen.has(String(pet))) continue;
+    if (!bought && listingBought(l, marketChar, now)) continue;
+    seen.set(String(pet), { ...l.g, pet: String(pet) });
   }
   return [...seen.values()];
 }
@@ -528,13 +558,10 @@ const boughtUntil = (key) => (marketBought[marketChar] || {})[key] || 0;
 // those bought from it.
 function marketItems(kind, now = Date.now()) {
   const seen = new Map();
-  for (const tab of Object.values(market[marketChar] || {})) {
-    if (!(tab.refreshAt > now)) continue;
-    for (const g of tab.goods || []) {
-      const item = SHOP_ITEMS[g.itemId];
-      if (!item || item[0] !== kind || seen.has(g.itemId) || boughtUntil(`i${g.itemId}`) > now) continue;
-      seen.set(g.itemId, { ...g, grade: item[1], text: SHOP_TEXT[item[2]] });
-    }
+  for (const l of listings(marketChar, now)) {
+    const item = SHOP_ITEMS[l.g.itemId];
+    if (!item || item[0] !== kind || seen.has(l.g.itemId) || listingBought(l, marketChar, now)) continue;
+    seen.set(l.g.itemId, { ...l.g, grade: item[1], text: SHOP_TEXT[item[2]] });
   }
   return [...seen.values()];
 }
@@ -654,7 +681,7 @@ function boughtCount(now = Date.now(), kind = "pet") {
   let n = 0;
   for (const [key, until] of Object.entries(marketBought[marketChar] || {})) {
     if (!(until > now)) continue;
-    const item = key.startsWith("i") ? Number(key.slice(1)) : null;
+    const item = key.startsWith("i") ? Number(key.slice(1)) : key.startsWith("g") ? Number(key.split(":").pop()) : null;
     const of = item == null ? "pet" : SHOP_PETS[item] ? "pet" : SHOP_ITEMS[item]?.[0];
     if (of === kind) n += 1;
   }
@@ -784,21 +811,33 @@ function showMarket() {
 }
 
 a2.on("blackMarket", (m, meta) => queued(async () => {
-  const goods = (m?.goods || []).map((g) => ({ itemId: g.itemId, tier: g.tier, price: g.price, originalPrice: g.originalPrice }));
+  const goods = (m?.goods || []).map((g) => ({ goodsId: g.goodsId, itemId: g.itemId, tier: g.tier, price: g.price, originalPrice: g.originalPrice }));
   const k = marketKeyOf(meta?.character);
   const now = Date.now();
   const refreshAt = Number(m?.refreshAt) || 0;
+  const tab = m?.kind ?? 0;
   // What the game says is sold out (meter 2.0.95 on): bought by this
-  // character from this stock, before this plugin saw it or not. Out of the
-  // list as any purchase, and a skin is owned from then on.
-  for (const g of m?.goods || []) {
-    if (!g.soldOut || !(refreshAt > now)) continue;
-    marketBought[k] = { ...(marketBought[k] || {}), [`i${g.itemId}`]: refreshAt };
+  // character from this stock, before this plugin saw it or not. Each
+  // listing as the game marks it, which also puts right a purchase put on the
+  // other listing of the same pet (markBought); a skin is owned from then on.
+  let marked = false;
+  (m?.goods || []).forEach((g, i) => {
+    if (typeof g.soldOut !== "boolean" || !(refreshAt > now)) return;
+    const key = listingKey(tab, g, i);
+    const was = (marketBought[k] || {})[key] > now;
+    if (g.soldOut && !was) {
+      marketBought[k] = { ...(marketBought[k] || {}), [key]: refreshAt };
+      marked = true;
+    } else if (!g.soldOut && was) {
+      delete marketBought[k][key];
+      marked = true;
+    }
+    if (!g.soldOut) return;
     const item = SHOP_ITEMS[g.itemId];
     const have = skinsOf(k);
     if (item?.[0] === "skin" && item[3] && have && !have.includes(item[3])) noteOwnedBy(k, "skins", [...have, item[3]]);
-  }
-  if ((m?.goods || []).some((g) => g.soldOut)) {
+  });
+  if (marked) {
     forgetOldBought(now);
     await a2.storage.set(BOUGHT_KEY, marketBought).catch(() => {});
   }
@@ -837,8 +876,8 @@ a2.on("decoded:soul-gained", (data, meta) => {
   let changed = false;
   for (const { pet, amount } of soulsIn(data)) {
     if (Number(amount) !== BOUGHT_SOULS || (state.levels[pet] || 0) !== 0 || !onSale.has(String(pet)) || !Number.isFinite(refresh)) continue;
-    marketBought[k] = { ...(marketBought[k] || {}), [pet]: refresh };
-    changed = true;
+    // One listing of it: a pet listed in two tabs stays on sale in the other.
+    changed = markBought(k, (g) => String(SHOP_PETS[g.itemId]) === String(pet), refresh, now) || changed;
   }
   if (!changed) return;
   // Only stock not changed yet is kept.
@@ -866,7 +905,8 @@ a2.on("decoded:item-gained", (d, meta) => {
   const onSale = Object.values(market[k] || {}).some((t) => t.refreshAt > now && (t.goods || []).some((g) => g.itemId === itemId));
   const refresh = marketRefresh(now);
   if (!onSale || !Number.isFinite(refresh)) return;
-  marketBought[k] = { ...(marketBought[k] || {}), [`i${itemId}`]: refresh };
+  // One listing of it: an item listed in two tabs stays on sale in the other.
+  markBought(k, (g) => g.itemId === itemId, refresh, now);
   forgetOldBought(now);
   a2.storage.set(BOUGHT_KEY, marketBought).catch(() => {});
   const item = SHOP_ITEMS[itemId];

@@ -1,5 +1,18 @@
 [
   {
+    "version": "0.9.0",
+    "en": "Countdowns are right even when your PC's clock is off: with meter 2.1.4 or newer they follow real time, so a boss no longer spawns before its countdown ends.",
+    "ko": "PC 시계가 맞지 않아도 카운트다운이 정확합니다: 미터 2.1.4 이상에서는 실제 시간을 따르므로, 보스가 카운트다운이 끝나기 전에 나타나지 않습니다.",
+    "ja": "PCの時計がずれていてもカウントダウンが正確になりました。メーター2.1.4以降では実際の時刻に合わせるため、カウントダウンが終わる前にボスが出現することはなくなります。",
+    "de": "Countdowns stimmen auch, wenn die Uhr deines PCs falsch geht: Ab Meter 2.1.4 folgen sie der echten Zeit, ein Boss erscheint also nicht mehr vor dem Ende seines Countdowns.",
+    "fr": "Les comptes à rebours sont justes même si l'horloge de ton PC est décalée : avec le meter 2.1.4 ou plus récent, ils suivent l'heure réelle, et un boss n'apparaît plus avant la fin de son compte à rebours.",
+    "es": "Las cuentas atrás son correctas aunque el reloj de tu PC vaya mal: con el medidor 2.1.4 o posterior siguen la hora real, así que un jefe ya no aparece antes de que termine su cuenta atrás.",
+    "pt": "As contagens regressivas ficam certas mesmo com o relógio do PC errado: com o medidor 2.1.4 ou mais recente elas seguem a hora real, e um chefe não aparece mais antes do fim da contagem.",
+    "ru": "Обратный отсчёт верен, даже если часы ПК спешат или отстают: с метром 2.1.4 и новее он идёт по реальному времени, и босс больше не появляется до конца отсчёта.",
+    "zh-Hant": "即使電腦時鐘不準，倒數也正確：搭配 2.1.4 以上版本的計量器會依照實際時間，首領不會再在倒數結束前出現。",
+    "zh-Hans": "即使电脑时钟不准，倒计时也正确：配合 2.1.4 及以上版本的计量器会按照实际时间，首领不会再在倒计时结束前出现。"
+  },
+  {
     "version": "0.8.1",
     "en": "The anchor can be dragged again after switching Layout between Icons and List in Settings (one of them stopped taking the mouse).",
     "ko": "설정에서 배치를 아이콘과 목록 사이에서 바꾼 뒤에도 앵커를 끌 수 있습니다 (한쪽이 마우스에 반응하지 않았음).",
@@ -50,18 +63,5 @@
     "ru": "Разлом: и в режиме «Любой свободный босс» вражеские боссы, которые на месте или вернутся до закрытия разлома, показываются красными значками за 15 минут до открытия (раньше — только выбранные).",
     "zh-Hant": "時空裂縫：選「任何空著的首領」時，裂縫關閉前在場或會重生的敵方首領，也會從開啟前 15 分鐘起以紅色圖示顯示（以前只有選中的首領）。",
     "zh-Hans": "时空裂缝：选「任何空着的首领」时，裂缝关闭前在场或会重生的敌方首领，也会从开启前 15 分钟起以红色图标显示（以前只有选中的首领）。"
-  },
-  {
-    "version": "0.7.2",
-    "en": "Spacetime Rift: enemy bosses whose gear your Boss supply board asks for are marked ★, with a button to pick them all (meter 2.0.99 or newer).",
-    "ko": "시공의 균열: 내 보스 보급 의뢰가 요구하는 장비를 드롭하는 적 보스에 ★ 표시가 붙고, 한 번에 모두 고르는 버튼이 생겼습니다 (미터 2.0.99 이상).",
-    "ja": "時空の亀裂：ボス補給依頼が求める装備を落とす敵ボスに★を表示し、まとめて選ぶボタンを追加（メーター2.0.99以降）。",
-    "de": "Raum-Zeit-Riss: Gegnerische Bosse, deren Ausrüstung dein Boss-Versorgungsbrett verlangt, sind mit ★ markiert, mit einem Knopf, um alle zu wählen (Meter 2.0.99 oder neuer).",
-    "fr": "Faille spatio-temporelle : les boss ennemis dont ton tableau d'approvisionnement des boss demande l'équipement sont marqués ★, avec un bouton pour tous les choisir (compteur 2.0.99 ou plus récent).",
-    "es": "Grieta espaciotemporal: los jefes enemigos cuyo equipo pide tu tablón de suministros de jefes se marcan con ★, con un botón para elegirlos todos (medidor 2.0.99 o posterior).",
-    "pt": "Fenda espaço-temporal: os chefes inimigos cujo equipamento o seu quadro de suprimentos de chefes pede ficam marcados com ★, com um botão para escolher todos (medidor 2.0.99 ou mais recente).",
-    "ru": "Разлом: вражеские боссы, чьё снаряжение просит ваша доска снабжения боссов, отмечены ★, а кнопка выбирает их всех (метр 2.0.99 или новее).",
-    "zh-Hant": "時空裂縫：會掉落你的首領補給委託所需裝備的敵方首領標上★，並可一鍵全選（需計量器 2.0.99 或更新版本）。",
-    "zh-Hans": "时空裂缝：会掉落你的首领补给委托所需装备的敌方首领标上★，并可一键全选（需计量器 2.0.99 或更新版本）。"
   }
 ]
