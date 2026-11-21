@@ -1,5 +1,18 @@
 [
   {
+    "version": "0.8.3",
+    "en": "Gathering history saves in smaller pages so long logs fit the meter's storage limit. Temporary write failures are retried, and existing history is retained.",
+    "ko": "채집 기록을 작은 페이지로 나누어 긴 기록도 미터의 저장 한도에 맞춥니다. 일시적인 저장 실패는 다시 시도하며 기존 기록은 유지합니다.",
+    "ja": "採集履歴を小さなページに分け、長い履歴もメーターの保存上限に収めます。一時的な書き込み失敗は再試行し、既存の履歴を保持します。",
+    "de": "Der Sammelverlauf wird in kleinen Seiten gespeichert, damit auch lange Verläufe ins Speicherlimit passen. Vorübergehend fehlgeschlagene Schreibvorgänge werden wiederholt; der vorhandene Verlauf bleibt erhalten.",
+    "fr": "L’historique de récolte est enregistré par petites pages pour respecter la limite du compteur. Les écritures qui échouent temporairement sont réessayées et l’historique existant est conservé.",
+    "es": "El historial de recolección se guarda en páginas pequeñas para ajustarse al límite del medidor. Se reintentan los fallos temporales de escritura y se conserva el historial existente.",
+    "pt": "O histórico de coleta é salvo em páginas menores para caber no limite do medidor. Falhas temporárias de gravação são tentadas novamente e o histórico existente é preservado.",
+    "ru": "История сбора сохраняется небольшими страницами, чтобы длинные журналы помещались в лимит счётчика. Временные ошибки записи повторяются, существующая история сохраняется.",
+    "zh-Hant": "採集歷史以較小的分頁儲存，長篇紀錄也能符合計量器的儲存上限。暫時寫入失敗時會重試，並保留現有歷史。",
+    "zh-Hans": "采集历史以较小的分页保存，使较长的记录也能符合统计器的存储上限。暂时写入失败时会重试，并保留已有历史。"
+  },
+  {
     "version": "0.8.2",
     "en": "Gathering: each herb shows how often it's upgraded at the start of a gather, with the likely range. The Appraiser's reroll succeeds at this same rate.",
     "ko": "채집: 재료마다 채집 시작 시 등급이 오르는 확률을 예상 범위와 함께 보여줍니다. 감정사의 재선택도 같은 확률로 성공합니다.",
@@ -50,18 +63,5 @@
     "ru": "Облики: гардероб общий для персонажей на одном сервере, поэтому персонаж, не входивший с обновления, тоже показывает облики своего сервера.",
     "zh-Hant": "外觀：衣櫃由同一伺服器的角色共用，因此更新後尚未登入的角色也會顯示該伺服器的外觀。",
     "zh-Hans": "外观：衣柜由同一服务器的角色共用，因此更新后尚未登录的角色也会显示该服务器的外观。"
-  },
-  {
-    "version": "0.7.2",
-    "en": "Skins: your Closet is filed under the right character even when an update about the previous character comes in during login.",
-    "ko": "스킨: 로그인 중에 이전 캐릭터에 대한 업데이트가 와도 옷장이 올바른 캐릭터에 기록됩니다.",
-    "ja": "スキン：ログイン中に前のキャラクターの更新が届いても、クローゼットを正しいキャラクターに記録します。",
-    "de": "Skins: Der Kleiderschrank landet beim richtigen Charakter, auch wenn beim Login noch eine Meldung zum vorigen kommt.",
-    "fr": "Apparences : la garde-robe va au bon personnage même si une mise à jour du personnage précédent arrive pendant la connexion.",
-    "es": "Aspectos: el armario se asigna al personaje correcto aunque llegue una actualización del anterior durante la conexión.",
-    "pt": "Visuais: o guarda-roupa vai para o personagem certo mesmo se chegar uma atualização do anterior durante a entrada.",
-    "ru": "Облики: гардероб относится к нужному персонажу, даже если во время входа приходят данные о предыдущем.",
-    "zh-Hant": "外觀：即使登入時還收到前一個角色的更新，衣櫃也會記在正確的角色上。",
-    "zh-Hans": "外观：即使登录时还收到前一个角色的更新，衣柜也会记在正确的角色上。"
   }
 ]
