@@ -96,8 +96,9 @@ const isOn = (m, now) => now - (lastTick[m] || 0) < DROP_MS;
 const isCovered = (m, now) => !!lastPeerTick[m] && now - lastPeerTick[m] >= 0 && now - lastPeerTick[m] < DROP_MS;
 const inFight = (now) => fight && now - lastHit < FIGHT_IDLE_MS;
 const eventAt = (meta) => {
-  const at = meta?.at;
   const now = Date.now();
+  // Older meters send no time with an event: it happened now, as before 0.1.4.
+  const at = meta?.at ?? now;
   const observed = meta?.character;
   if (observed?.name && who && `${observed.name}@${observed.serverId}` !== who) return null;
   return Number.isFinite(at) && at > 0 && at >= epoch && at <= now && now - at <= STALE_MS ? at : null;
