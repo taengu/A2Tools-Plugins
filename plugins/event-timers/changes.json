@@ -1,5 +1,18 @@
 [
   {
+    "version": "0.9.1",
+    "en": "The Dimensional Invasion shows as a chance at :30, as the game opens it at random, not as a sure start; its alerts say it may open.",
+    "ko": "차원 침공은 게임이 무작위로 열기 때문에, 확정된 시작이 아니라 30분의 가능성으로 표시됩니다. 알림도 열릴 수 있다고 알려 줍니다.",
+    "ja": "次元侵攻はゲームがランダムに開くため、確定した開始ではなく30分の可能性として表示されます。通知も「開くかも」と伝えます。",
+    "de": "Die Dimensionale Invasion erscheint als Chance um :30, da das Spiel sie zufällig öffnet, nicht als sicherer Start; ihre Alarme sagen, dass sie öffnen kann.",
+    "fr": "L'Invasion dimensionnelle s'affiche comme une chance à :30, car le jeu l'ouvre au hasard, et non comme un début certain ; ses alertes disent qu'elle peut s'ouvrir.",
+    "es": "La Invasión dimensional se muestra como una posibilidad a las :30, ya que el juego la abre al azar, no como un inicio seguro; sus alertas dicen que puede abrirse.",
+    "pt": "A Invasão Dimensional aparece como uma chance às :30, já que o jogo a abre ao acaso, não como um início certo; os alertas dizem que ela pode abrir.",
+    "ru": "Межпространственное вторжение показано как шанс в :30, ведь игра открывает его случайно, а не как точное начало; оповещения говорят, что оно может открыться.",
+    "zh-Hant": "次元進攻改以 30 分的可能機會顯示，因為遊戲會隨機開啟，而非確定的開始；提醒也會說它可能開啟。",
+    "zh-Hans": "次元进攻改以 30 分的可能机会显示，因为游戏会随机开启，而非确定的开始；提醒也会说它可能开启。"
+  },
+  {
     "version": "0.9.0",
     "en": "Countdowns are right even when your PC's clock is off: with meter 2.1.4 or newer they follow real time, so a boss no longer spawns before its countdown ends.",
     "ko": "PC 시계가 맞지 않아도 카운트다운이 정확합니다: 미터 2.1.4 이상에서는 실제 시간을 따르므로, 보스가 카운트다운이 끝나기 전에 나타나지 않습니다.",
@@ -50,18 +63,5 @@
     "ru": "Разлом: у вражеских боссов видно HP в реальном времени, пока разлом скоро откроется или открыт, — как сообщают метры того сервера и ваш.",
     "zh-Hant": "時空裂縫：裂縫即將開啟或開啟期間，敵方首領的 HP 會依該伺服器的計量器與你的計量器回報即時顯示。",
     "zh-Hans": "时空裂缝：裂缝即将开启或开启期间，敌方首领的 HP 会按该服务器的计量器与你的计量器回报实时显示。"
-  },
-  {
-    "version": "0.7.3",
-    "en": "Spacetime Rift: with \"Any free boss\", the enemy bosses that are up or due back before the rift closes show as red icons too, from 15 minutes before it opens (before, only picked ones did).",
-    "ko": "시공의 균열: \"비어 있는 보스 전부\"에서도 균열이 닫히기 전에 살아 있거나 다시 나오는 적 보스가 균열 열리기 15분 전부터 빨간 아이콘으로 표시됩니다 (이전에는 고른 보스만).",
-    "ja": "時空の亀裂：「空いているボスすべて」でも、亀裂が閉じる前に出現中または再出現する敵ボスが、開く15分前から赤いアイコンで表示されます（以前は選んだボスのみ）。",
-    "de": "Raum-Zeit-Riss: Auch mit „Jeder freie Boss“ erscheinen gegnerische Bosse, die vor dem Schließen des Risses da sind oder wiederkommen, ab 15 Minuten vor dem Öffnen als rote Symbole (bisher nur gewählte).",
-    "fr": "Faille spatio-temporelle : avec « Tout boss libre », les boss ennemis présents ou de retour avant la fermeture de la faille s'affichent aussi en icônes rouges, dès 15 minutes avant l'ouverture (avant, seulement les boss choisis).",
-    "es": "Grieta espaciotemporal: con «Cualquier jefe libre», los jefes enemigos presentes o que vuelven antes de que cierre la grieta también salen como iconos rojos, desde 15 minutos antes de que abra (antes, solo los elegidos).",
-    "pt": "Fenda espaço-temporal: com \"Qualquer chefe livre\", os chefes inimigos presentes ou que voltam antes de a fenda fechar também aparecem como ícones vermelhos, a partir de 15 minutos antes de abrir (antes, só os escolhidos).",
-    "ru": "Разлом: и в режиме «Любой свободный босс» вражеские боссы, которые на месте или вернутся до закрытия разлома, показываются красными значками за 15 минут до открытия (раньше — только выбранные).",
-    "zh-Hant": "時空裂縫：選「任何空著的首領」時，裂縫關閉前在場或會重生的敵方首領，也會從開啟前 15 分鐘起以紅色圖示顯示（以前只有選中的首領）。",
-    "zh-Hans": "时空裂缝：选「任何空着的首领」时，裂缝关闭前在场或会重生的敌方首领，也会从开启前 15 分钟起以红色图标显示（以前只有选中的首领）。"
   }
 ]

@@ -232,6 +232,25 @@ const ENTER = { en: "Enter", ko: "입장", ja: "入場", de: "Betreten", fr: "En
   "zh-Hant": "進入", "zh-Hans": "进入" };
 const enterWord = () => ENTER[language] || ENTER.en;
 
+// The Dimensional Invasion: the game lists it every hour at :30, but opens it
+// at random (the game's own info says so; in the logs, about half of those
+// hours). Its timer shows a chance, not a sure start, and its alerts say it
+// may open.
+const isChance = (ev) => ev.id.startsWith("invasion");
+const CHANCE = {
+  en: { possible: "Possible", open: "May be open", soon: (name, n) => `${name} may open in ${n} min`, now: (name) => `${name} may be opening now` },
+  ko: { possible: "가능성", open: "열렸을 수 있음", soon: (name, n) => `${n}분 후 ${name} 열릴 수 있음`, now: (name) => `${name} 지금 열릴 수 있음` },
+  ja: { possible: "可能性", open: "開放中かも", soon: (name, n) => `${name}：あと${n}分で開くかも`, now: (name) => `${name}が今開くかも` },
+  de: { possible: "Möglich", open: "Evtl. offen", soon: (name, n) => `${name} öffnet evtl. in ${n} Min.`, now: (name) => `${name} öffnet evtl. jetzt` },
+  fr: { possible: "Possible", open: "Peut-être ouverte", soon: (name, n) => `${name} peut s'ouvrir dans ${n} min`, now: (name) => `${name} s'ouvre peut-être maintenant` },
+  es: { possible: "Posible", open: "Quizá abierta", soon: (name, n) => `${name} puede abrirse en ${n} min`, now: (name) => `${name} quizá se abre ahora` },
+  pt: { possible: "Possível", open: "Talvez aberta", soon: (name, n) => `${name} pode abrir em ${n} min`, now: (name) => `${name} talvez esteja abrindo agora` },
+  ru: { possible: "Возможно", open: "Возможно, открыто", soon: (name, n) => `${name}: возможно, через ${n} мин`, now: (name) => `${name}: возможно, открывается сейчас` },
+  "zh-Hant": { possible: "可能", open: "可能已開啟", soon: (name, n) => `${name} 可能在 ${n} 分鐘後開啟`, now: (name) => `${name} 可能正在開啟` },
+  "zh-Hans": { possible: "可能", open: "可能已开启", soon: (name, n) => `${name} 可能在 ${n} 分钟后开启`, now: (name) => `${name} 可能正在开启` },
+};
+const chanceWords = () => CHANCE[language] || CHANCE.en;
+
 // The alerts' words, in each of the meter's languages.
 const ALERT_UI = {
   en: { closed: "If AION2 is closed", settings: "Settings", server: "Server", showIn: "Show times in", systemTime: (z) => `This computer's time (${z})`, serverTime: "Server time", enable: "Alert",
@@ -494,6 +513,8 @@ const SPOKEN = {
   name: (k) => EVENT_TEXT[k]?.en ?? null,
   soon: (n) => (n === 1 ? "in 1 minute" : `in ${n} minutes`),
   now: "is starting",
+  maySoon: (n) => (n === 1 ? "may open in 1 minute" : `may open in ${n} minutes`),
+  mayNow: "may be opening now",
   bossSoon: (n) => (n === 1 ? "back in 1 minute" : `back in ${n} minutes`),
   bossNow: "is back",
   fought: "is being fought, go join!",
@@ -1211,7 +1232,9 @@ function renderSchedule(list, events, now, { hideable, actions = false }) {
     return row({
       id: ev.id, name: eventName(ev), where: ev.where.map(text).join(", "), running, hide, actions,
       soon: next.start - now <= SOON_MS,
-      countdown: running ? `${ev.enter ? enterWord() : words.now} · ${words.left(span(next.end - now))}` : words.in(span(next.start - now)),
+      countdown: isChance(ev)
+        ? running ? `${chanceWords().open} · ${words.left(span(next.end - now))}` : `${chanceWords().possible} · ${words.in(span(next.start - now))}`
+        : running ? `${ev.enter ? enterWord() : words.now} · ${words.left(span(next.end - now))}` : words.in(span(next.start - now)),
       at: fmt.format(new Date(next.start)),
     });
   }));
@@ -1572,19 +1595,18 @@ function render() {
 // bosses), and its own sound, repeats and icon (pins.js). Opened in place
 // under its line in Your alerts.
 // A note on the Dimensional Invasion's alert: the game lists it every hour
-// at :30, and that is what the timer shows; some players sometimes get none
-// (a game bug, 0.6.6 took those hours out and 0.6.12 put them back).
+// at :30 but opens it at random (isChance).
 const INVASION_NOTE = {
-  en: "Every hour at :30, as the game schedules it. Sometimes it doesn't appear for some players: that's a game bug, not a change to the schedule.",
-  ko: "게임 일정대로 매시 30분에 열립니다. 가끔 일부 플레이어에게 나타나지 않는 경우가 있는데, 일정 변경이 아니라 게임 버그입니다.",
-  ja: "ゲームのスケジュールどおり毎時30分に始まります。一部のプレイヤーに現れないことがありますが、スケジュールの変更ではなくゲームの不具合です。",
-  de: "Jede Stunde um :30, wie das Spiel es plant. Manchmal erscheint sie bei manchen Spielern nicht: ein Fehler im Spiel, keine Änderung des Zeitplans.",
-  fr: "Toutes les heures à :30, comme le prévoit le jeu. Il arrive qu'elle n'apparaisse pas pour certains joueurs : c'est un bug du jeu, pas un changement d'horaire.",
-  es: "Cada hora a las :30, según el horario del juego. A veces no aparece para algunos jugadores: es un error del juego, no un cambio de horario.",
-  pt: "Toda hora às :30, como o jogo programa. Às vezes não aparece para alguns jogadores: é um bug do jogo, não uma mudança de horário.",
-  ru: "Каждый час в :30, по расписанию игры. Иногда у некоторых игроков оно не появляется: это ошибка игры, а не изменение расписания.",
-  "zh-Hant": "依遊戲排程，每小時 30 分開啟。有時部分玩家看不到它出現：這是遊戲的錯誤，不是排程變更。",
-  "zh-Hans": "按游戏排程，每小时 30 分开启。有时部分玩家看不到它出现：这是游戏的错误，不是排程变更。",
+  en: "It may open at :30 each hour, but the game picks at random: in our logs it opened in about half of those hours. The timer counts down to the next chance, not a sure start.",
+  ko: "매시 30분에 열릴 수 있지만, 게임이 무작위로 정합니다. 기록상 그 시각의 약 절반에만 열렸습니다. 타이머는 확정된 시작이 아니라 다음 기회까지의 시간을 셉니다.",
+  ja: "毎時30分に開く可能性がありますが、ゲームがランダムに決めます。記録では、その時間のおよそ半分で開きました。タイマーは確定した開始ではなく、次の機会までを数えます。",
+  de: "Sie kann jede Stunde um :30 öffnen, aber das Spiel wählt zufällig: In unseren Logs öffnete sie in etwa der Hälfte dieser Stunden. Der Timer zählt bis zur nächsten Chance, nicht bis zu einem sicheren Start.",
+  fr: "Elle peut s'ouvrir toutes les heures à :30, mais le jeu choisit au hasard : dans nos journaux, elle s'est ouverte environ une heure sur deux. Le minuteur compte jusqu'à la prochaine chance, pas jusqu'à un début certain.",
+  es: "Puede abrirse cada hora a las :30, pero el juego lo decide al azar: en nuestros registros se abrió en cerca de la mitad de esas horas. El temporizador cuenta hasta la próxima oportunidad, no hasta un inicio seguro.",
+  pt: "Ela pode abrir toda hora às :30, mas o jogo decide ao acaso: nos nossos registros abriu em cerca de metade dessas horas. O temporizador conta até a próxima chance, não até um início certo.",
+  ru: "Оно может открыться каждый час в :30, но игра выбирает случайно: по нашим журналам оно открывалось примерно в половине этих часов. Таймер считает до следующего шанса, а не до точного начала.",
+  "zh-Hant": "可能在每小時 30 分開啟，但由遊戲隨機決定：在我們的紀錄中，約有一半的時段有開啟。計時器倒數的是下一次機會，而不是確定的開始。",
+  "zh-Hans": "可能在每小时 30 分开启，但由游戏随机决定：在我们的记录中，约有一半的时段有开启。计时器倒数的是下一次机会，而不是确定的开始。",
 };
 
 function alertEditor(id, label) {
@@ -2196,8 +2218,14 @@ function checkAlerts(now) {
       const next = nextOf(ev, tz || "UTC", lastCheck + minutes * 60_000 - 1);
       if (next && due(`${ev.id}+${minutes}`, next.start, minutes)) {
         const name = text(ev.name);
-        announce(ev.id, minutes ? a.soon(name, minutes) : a.now(name), ev.id,
-          [SPOKEN.name(ev.name), minutes ? SPOKEN.soon(minutes) : SPOKEN.now]);
+        if (isChance(ev)) {
+          const c = chanceWords();
+          announce(ev.id, minutes ? c.soon(name, minutes) : c.now(name), ev.id,
+            [SPOKEN.name(ev.name), minutes ? SPOKEN.maySoon(minutes) : SPOKEN.mayNow]);
+        } else {
+          announce(ev.id, minutes ? a.soon(name, minutes) : a.now(name), ev.id,
+            [SPOKEN.name(ev.name), minutes ? SPOKEN.soon(minutes) : SPOKEN.now]);
+        }
       }
     }
   }
