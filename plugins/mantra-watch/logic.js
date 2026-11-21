@@ -12,7 +12,9 @@
   const MANTRAS = [1816, 1819];
   const mantraOf = (skill) => (MANTRAS.includes(Math.floor(skill / 10_000)) ? Math.floor(skill / 10_000) : null);
   function tickOf(d) {
-    if (!d || !(d.kind & 0x02) || d.q !== 2) return null;
+    if (!d || !Number.isInteger(d.kind) || !(d.kind & 0x02) || d.q !== 2
+        || !Number.isSafeInteger(d.on) || d.on <= 0 || !Number.isSafeInteger(d.caster) || d.caster <= 0
+        || !Number.isSafeInteger(d.skill)) return null;
     const mantra = mantraOf(d.skill);
     return mantra ? { mantra, onMe: d.on === d.caster, on: d.on } : null;
   }

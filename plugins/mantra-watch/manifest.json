@@ -1,7 +1,7 @@
 {
   "id": "mantra-watch",
   "name": "Mantra Watch",
-  "version": "0.1.3",
+  "version": "0.1.4",
   "apiVersion": 2,
   "author": "Nullception",
   "description": "For Chanters: your mantras on or off, how many party members they reach, an alert the moment one drops in a fight, and each fight's uptime.",
@@ -12,7 +12,8 @@
     "decoder:mantra-tick",
     "decoder:my-hit",
     "decoder:map-load",
-    "decoder:landed"
+    "decoder:landed",
+    "decoder:mantra-cover"
   ],
   "decoders": [
     {
@@ -97,6 +98,49 @@
       "opcode": "23 36",
       "immediate": true,
       "fields": []
+    },
+    {
+      "name": "mantra-cover",
+      "opcode": "2B 38",
+      "self": "on",
+      "fields": [
+        {
+          "name": "on",
+          "type": "varint"
+        },
+        {
+          "name": "kind",
+          "type": "u8"
+        },
+        {
+          "name": "seq",
+          "type": "varint"
+        },
+        {
+          "name": "effect",
+          "type": "u32"
+        },
+        {
+          "type": "skip:16"
+        },
+        {
+          "name": "caster",
+          "type": "varint"
+        },
+        {
+          "name": "p",
+          "type": "u8"
+        },
+        {
+          "name": "skill",
+          "type": "u32"
+        },
+        {
+          "name": "q",
+          "type": "u8"
+        }
+      ],
+      "immediate": true
     }
   ],
   "ui": {
