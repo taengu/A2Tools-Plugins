@@ -1,16 +1,16 @@
 [
   {
     "version": "0.9.1",
-    "en": "The Dimensional Invasion shows as a chance at :30, as the game opens it at random, not as a sure start; its alerts say it may open.",
-    "ko": "차원 침공은 게임이 무작위로 열기 때문에, 확정된 시작이 아니라 30분의 가능성으로 표시됩니다. 알림도 열릴 수 있다고 알려 줍니다.",
-    "ja": "次元侵攻はゲームがランダムに開くため、確定した開始ではなく30分の可能性として表示されます。通知も「開くかも」と伝えます。",
-    "de": "Die Dimensionale Invasion erscheint als Chance um :30, da das Spiel sie zufällig öffnet, nicht als sicherer Start; ihre Alarme sagen, dass sie öffnen kann.",
-    "fr": "L'Invasion dimensionnelle s'affiche comme une chance à :30, car le jeu l'ouvre au hasard, et non comme un début certain ; ses alertes disent qu'elle peut s'ouvrir.",
-    "es": "La Invasión dimensional se muestra como una posibilidad a las :30, ya que el juego la abre al azar, no como un inicio seguro; sus alertas dicen que puede abrirse.",
-    "pt": "A Invasão Dimensional aparece como uma chance às :30, já que o jogo a abre ao acaso, não como um início certo; os alertas dizem que ela pode abrir.",
-    "ru": "Межпространственное вторжение показано как шанс в :30, ведь игра открывает его случайно, а не как точное начало; оповещения говорят, что оно может открыться.",
-    "zh-Hant": "次元進攻改以 30 分的可能機會顯示，因為遊戲會隨機開啟，而非確定的開始；提醒也會說它可能開啟。",
-    "zh-Hans": "次元进攻改以 30 分的可能机会显示，因为游戏会随机开启，而非确定的开始；提醒也会说它可能开启。"
+    "en": "The Dimensional Invasion shows as a chance at :30, as the game opens it at random. When the game announces it, it shows as open and its alert says so; a slot it skips shows as not opened.",
+    "ko": "차원 침공은 게임이 무작위로 열기 때문에 30분의 가능성으로 표시됩니다. 게임이 열림을 알리면 열림으로 표시되고 알림도 그렇게 알려 주며, 건너뛴 시간은 열리지 않음으로 표시됩니다.",
+    "ja": "次元侵攻はゲームがランダムに開くため、30分の可能性として表示されます。ゲームが開放を知らせると開放中と表示され、通知もそう伝えます。開かなかった回は「開かず」と表示されます。",
+    "de": "Die Dimensionale Invasion erscheint als Chance um :30, da das Spiel sie zufällig öffnet. Kündigt das Spiel sie an, wird sie als offen gezeigt und ihr Alarm sagt es; ein ausgelassener Termin zeigt Nicht geöffnet.",
+    "fr": "L'Invasion dimensionnelle s'affiche comme une chance à :30, car le jeu l'ouvre au hasard. Quand le jeu l'annonce, elle s'affiche ouverte et son alerte le dit ; un créneau sauté s'affiche Pas ouverte.",
+    "es": "La Invasión dimensional se muestra como una posibilidad a las :30, ya que el juego la abre al azar. Cuando el juego la anuncia, se muestra abierta y su alerta lo dice; un turno saltado se muestra No se abrió.",
+    "pt": "A Invasão Dimensional aparece como uma chance às :30, já que o jogo a abre ao acaso. Quando o jogo a anuncia, ela aparece aberta e o alerta avisa; um horário pulado aparece como Não abriu.",
+    "ru": "Межпространственное вторжение показано как шанс в :30, ведь игра открывает его случайно. Когда игра объявляет его, оно показано открытым и оповещение об этом говорит; пропущенный раз показан как Не открылось.",
+    "zh-Hant": "次元進攻改以 30 分的可能機會顯示，因為遊戲會隨機開啟。遊戲宣布開啟時會顯示為已開啟，提醒也會告知；跳過的時段會顯示未開啟。",
+    "zh-Hans": "次元进攻改以 30 分的可能机会显示，因为游戏会随机开启。游戏宣布开启时会显示为已开启，提醒也会告知；跳过的时段会显示未开启。"
   },
   {
     "version": "0.9.0",

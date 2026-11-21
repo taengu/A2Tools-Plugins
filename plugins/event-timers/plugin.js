@@ -27,7 +27,9 @@
 const serverNow = () => (typeof a2.now === "function" ? a2.now() : Date.now());
 // The clock corrected again (measured, or the PC's clock changed): the list
 // and icons at once, not at the next tick.
-a2.on("clock", () => {
+a2.on("clock", (c) => {
+  // Measured: the invasion's skipped slots are called sooner (skipGraceMs).
+  clockKnown = !!c?.known;
   try {
     render();
     if (typeof updatePins === "function") updatePins(serverNow());
@@ -238,18 +240,53 @@ const enterWord = () => ENTER[language] || ENTER.en;
 // may open.
 const isChance = (ev) => ev.id.startsWith("invasion");
 const CHANCE = {
-  en: { possible: "Possible", open: "May be open", soon: (name, n) => `${name} may open in ${n} min`, now: (name) => `${name} may be opening now` },
-  ko: { possible: "가능성", open: "열렸을 수 있음", soon: (name, n) => `${n}분 후 ${name} 열릴 수 있음`, now: (name) => `${name} 지금 열릴 수 있음` },
-  ja: { possible: "可能性", open: "開放中かも", soon: (name, n) => `${name}：あと${n}分で開くかも`, now: (name) => `${name}が今開くかも` },
-  de: { possible: "Möglich", open: "Evtl. offen", soon: (name, n) => `${name} öffnet evtl. in ${n} Min.`, now: (name) => `${name} öffnet evtl. jetzt` },
-  fr: { possible: "Possible", open: "Peut-être ouverte", soon: (name, n) => `${name} peut s'ouvrir dans ${n} min`, now: (name) => `${name} s'ouvre peut-être maintenant` },
-  es: { possible: "Posible", open: "Quizá abierta", soon: (name, n) => `${name} puede abrirse en ${n} min`, now: (name) => `${name} quizá se abre ahora` },
-  pt: { possible: "Possível", open: "Talvez aberta", soon: (name, n) => `${name} pode abrir em ${n} min`, now: (name) => `${name} talvez esteja abrindo agora` },
-  ru: { possible: "Возможно", open: "Возможно, открыто", soon: (name, n) => `${name}: возможно, через ${n} мин`, now: (name) => `${name}: возможно, открывается сейчас` },
-  "zh-Hant": { possible: "可能", open: "可能已開啟", soon: (name, n) => `${name} 可能在 ${n} 分鐘後開啟`, now: (name) => `${name} 可能正在開啟` },
-  "zh-Hans": { possible: "可能", open: "可能已开启", soon: (name, n) => `${name} 可能在 ${n} 分钟后开启`, now: (name) => `${name} 可能正在开启` },
+  en: { possible: "Possible", open: "May be open", soon: (name, n) => `${name} may open in ${n} min`, now: (name) => `${name} may be opening now`, missed: "Didn't open · next chance", opened: (name) => `${name} is open now` },
+  ko: { possible: "가능성", open: "열렸을 수 있음", soon: (name, n) => `${n}분 후 ${name} 열릴 수 있음`, now: (name) => `${name} 지금 열릴 수 있음`, missed: "열리지 않음 · 다음 기회", opened: (name) => `${name} 열림` },
+  ja: { possible: "可能性", open: "開放中かも", soon: (name, n) => `${name}：あと${n}分で開くかも`, now: (name) => `${name}が今開くかも`, missed: "開かず · 次の機会", opened: (name) => `${name}が開きました` },
+  de: { possible: "Möglich", open: "Evtl. offen", soon: (name, n) => `${name} öffnet evtl. in ${n} Min.`, now: (name) => `${name} öffnet evtl. jetzt`, missed: "Nicht geöffnet · nächste Chance", opened: (name) => `${name} ist jetzt offen` },
+  fr: { possible: "Possible", open: "Peut-être ouverte", soon: (name, n) => `${name} peut s'ouvrir dans ${n} min`, now: (name) => `${name} s'ouvre peut-être maintenant`, missed: "Pas ouverte · prochaine chance", opened: (name) => `${name} est ouverte` },
+  es: { possible: "Posible", open: "Quizá abierta", soon: (name, n) => `${name} puede abrirse en ${n} min`, now: (name) => `${name} quizá se abre ahora`, missed: "No se abrió · próxima oportunidad", opened: (name) => `${name} está abierta` },
+  pt: { possible: "Possível", open: "Talvez aberta", soon: (name, n) => `${name} pode abrir em ${n} min`, now: (name) => `${name} talvez esteja abrindo agora`, missed: "Não abriu · próxima chance", opened: (name) => `${name} está aberta` },
+  ru: { possible: "Возможно", open: "Возможно, открыто", soon: (name, n) => `${name}: возможно, через ${n} мин`, now: (name) => `${name}: возможно, открывается сейчас`, missed: "Не открылось · следующий шанс", opened: (name) => `${name}: открыто` },
+  "zh-Hant": { possible: "可能", open: "可能已開啟", soon: (name, n) => `${name} 可能在 ${n} 分鐘後開啟`, now: (name) => `${name} 可能正在開啟`, missed: "未開啟 · 下次機會", opened: (name) => `${name} 已開啟` },
+  "zh-Hans": { possible: "可能", open: "可能已开启", soon: (name, n) => `${name} 可能在 ${n} 分钟后开启`, now: (name) => `${name} 可能正在开启`, missed: "未开启 · 下次机会", opened: (name) => `${name} 已开启` },
 };
 const chanceWords = () => CHANCE[language] || CHANCE.en;
+
+// Whether it opened: the game announces each opening (01 60, kind 3 state 1,
+// about 4 s before its 3-minute entry window; decoded:timed-event, ids 12xxxx
+// Elyos, 22xxxx Asmodian) and sends nothing for a slot it skips. Listening
+// (game open, a character in) through a slot with no announcement 30 s in, it
+// didn't open. Not listening, it stays a chance.
+const OPENED_SIDE = { 12: "elyos", 22: "asmodian" };
+const opened = { elyos: [], asmodian: [] }; // window starts announced (ms)
+let listeningSince = 0;
+const listening = () => character && gameRunning !== false;
+function noteListening() {
+  if (!listening()) listeningSince = 0;
+  else if (!listeningSince) listeningSince = serverNow();
+}
+const openedAt = (ev, start) => (opened[ev.side] || []).some((t) => Math.abs(t - start) < 120_000);
+// How long after a slot's start with no announcement it counts as skipped:
+// 30 s on a clock the meter has corrected to real time (a2.now), 60 s while
+// it hasn't (older meters, or not measured yet), where a PC clock off by
+// seconds could otherwise call it too early. The announcement itself comes
+// about 4 s before the start.
+let clockKnown = false;
+const skipGraceMs = () => (clockKnown ? 30_000 : 60_000);
+const skipped = (ev, start, now) =>
+  !openedAt(ev, start) && listeningSince > 0 && listeningSince <= start - 10_000 && now >= start + skipGraceMs();
+// An event's showing as the list and icons use it: for the invasion, a slot
+// that didn't open gives way to the next, and one that did says so.
+function showingOf(ev, zone, now) {
+  const next = nextOf(ev, zone, now);
+  if (!next || !isChance(ev)) return next;
+  if (next.start <= now && skipped(ev, next.start, now)) {
+    const after = nextOf(ev, zone, next.end + 1);
+    return after && { ...after, skipped: true };
+  }
+  return { ...next, opened: openedAt(ev, next.start) };
+}
 
 // The alerts' words, in each of the meter's languages.
 const ALERT_UI = {
@@ -515,6 +552,7 @@ const SPOKEN = {
   now: "is starting",
   maySoon: (n) => (n === 1 ? "may open in 1 minute" : `may open in ${n} minutes`),
   mayNow: "may be opening now",
+  opened: "is open now",
   bossSoon: (n) => (n === 1 ? "back in 1 minute" : `back in ${n} minutes`),
   bossNow: "is back",
   fought: "is being fought, go join!",
@@ -1212,7 +1250,7 @@ function renderSchedule(list, events, now, { hideable, actions = false }) {
   const words = ui();
   const tz = timeZone();
   const fmt = clock();
-  const shown = events.filter((ev) => tz || ev.utc).map((ev) => ({ ev, next: nextOf(ev, tz || "UTC", now) })).filter((x) => x.next);
+  const shown = events.filter((ev) => tz || ev.utc).map((ev) => ({ ev, next: showingOf(ev, tz || "UTC", now) })).filter((x) => x.next);
   const visible = shown.filter((x) => !hideable || !prefs.hidden.includes(x.ev.id)).sort((a, b) => a.next.start - b.next.start);
   list.replaceChildren(...visible.map(({ ev, next }) => {
     const running = next.start <= now;
@@ -1233,7 +1271,9 @@ function renderSchedule(list, events, now, { hideable, actions = false }) {
       id: ev.id, name: eventName(ev), where: ev.where.map(text).join(", "), running, hide, actions,
       soon: next.start - now <= SOON_MS,
       countdown: isChance(ev)
-        ? running ? `${chanceWords().open} · ${words.left(span(next.end - now))}` : `${chanceWords().possible} · ${words.in(span(next.start - now))}`
+        ? running
+          ? `${next.opened ? enterWord() : chanceWords().open} · ${words.left(span(next.end - now))}`
+          : `${next.skipped ? chanceWords().missed : chanceWords().possible} · ${words.in(span(next.start - now))}`
         : running ? `${ev.enter ? enterWord() : words.now} · ${words.left(span(next.end - now))}` : words.in(span(next.start - now)),
       at: fmt.format(new Date(next.start)),
     });
@@ -2219,6 +2259,9 @@ function checkAlerts(now) {
       if (next && due(`${ev.id}+${minutes}`, next.start, minutes)) {
         const name = text(ev.name);
         if (isChance(ev)) {
+          // As it starts, while listening: said when the game announces it
+          // (decoded:timed-event), or not at all if it doesn't.
+          if (!minutes && listening()) continue;
           const c = chanceWords();
           announce(ev.id, minutes ? c.soon(name, minutes) : c.now(name), ev.id,
             [SPOKEN.name(ev.name), minutes ? SPOKEN.maySoon(minutes) : SPOKEN.mayNow]);
@@ -2577,6 +2620,7 @@ a2.on("pairings", (p) => {
 a2.on("character", (c) => {
   const before = serverId();
   character = c || null;
+  noteListening();
   const id = Number(character?.serverId);
   if (id >= 1000 && id !== Number(prefs.lastServer)) {
     prefs.lastServer = id;
@@ -2606,6 +2650,34 @@ a2.on("bossMap", (m) => {
 // Whether AION2 is open (meter 2.0.65 on).
 a2.on("game", (g) => {
   gameRunning = typeof g?.running === "boolean" ? g.running : null;
+  noteListening();
+});
+// The game announcing an invasion's opening (meter 2.0.97 on): its slot is
+// confirmed, and an alert set for its start says it's open.
+const toldOpen = new Set();
+a2.on("decoded:timed-event", (d) => {
+  if (Number(d?.kind) !== 3 || Number(d?.state) !== 1) return;
+  const side = OPENED_SIDE[Math.floor(Number(d.event) / 10000)];
+  const start = Number(d.windowStart) || Number(d.start);
+  if (!side || !(start > 0)) return;
+  opened[side] = [...opened[side].filter((t) => serverNow() - t < 6 * 3_600_000), start];
+  const ev = EVENTS.find((e) => isChance(e) && e.side === side);
+  const key = `${side}@${start}`;
+  if (ev && ev.id in prefs.alerts && !toldOpen.has(key)) {
+    // Heard only with the game open: the lead is the alert's own.
+    const lead = Number(prefs.alerts[ev.id]);
+    if (lead >= 0 && alsoAtStart(lead).includes(0)) {
+      toldOpen.add(key);
+      const name = text(ev.name);
+      const announceOpen = (id, message, k, parts) => {
+        if (typeof pinnedIconOnly === "function" && pinnedIconOnly(id)) soundAlert(k);
+        else alertBanner(message, { key: k });
+        speakAlert(message, k, parts);
+      };
+      announceOpen(ev.id, chanceWords().opened(name), ev.id, [SPOKEN.name(ev.name), SPOKEN.opened]);
+    }
+  }
+  render();
 });
 a2.on("compact", (on) => document.body.classList.toggle("compact", !!on));
 

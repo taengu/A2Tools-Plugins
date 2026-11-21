@@ -238,7 +238,7 @@ function pinState(id, now) {
   if (!ev) return null;
   const tz = timeZone();
   if (!tz && !ev.utc) return { name: text(ev.name), kind: ev.kind === "boss" ? "boss" : "event", start: null, running: false, end: null };
-  const next = nextOf(ev, tz || "UTC", now);
+  const next = (typeof showingOf === "function" ? showingOf : nextOf)(ev, tz || "UTC", now);
   return {
     name: text(ev.name),
     kind: ev.kind === "boss" ? "boss" : "event",

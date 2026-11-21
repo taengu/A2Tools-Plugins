@@ -10,9 +10,42 @@
     "events:character",
     "window",
     "feed:boss-timers",
-    "widgets"
+    "widgets",
+    "decoder:timed-event"
   ],
-  "decoders": [],
+  "decoders": [
+    {
+      "name": "timed-event",
+      "opcode": "01 60",
+      "immediate": true,
+      "fields": [
+        {
+          "name": "kind",
+          "type": "u8"
+        },
+        {
+          "name": "event",
+          "type": "varint"
+        },
+        {
+          "name": "state",
+          "type": "u8"
+        },
+        {
+          "name": "start",
+          "type": "u64"
+        },
+        {
+          "name": "windowStart",
+          "type": "u64"
+        },
+        {
+          "name": "windowEnd",
+          "type": "u64"
+        }
+      ]
+    }
+  ],
   "ui": {
     "panel": {
       "width": 420,
