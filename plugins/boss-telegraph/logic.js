@@ -364,15 +364,20 @@
       tick,
       test,
       items: () => items,
-      clear(at = now()) {
+      // `keepBosses`: a guide setting changed mid-fight; which entity is
+      // which boss, and its phase, stay known (forgetting them silenced the
+      // fight until the boss was seen again).
+      clear(at = now(), { keepBosses = false } = {}) {
         const boundary = fresh(at) ? at : now();
         generation++;
         resetAt = Math.max(resetAt, boundary);
         for (const timer of previewTimers) if (typeof clearTimeout === "function") clearTimeout(timer);
         previewTimers.clear();
-        entities.clear();
+        if (!keepBosses) {
+          entities.clear();
+          phases.clear();
+        }
         recent.clear();
-        phases.clear();
         waveFrom.clear();
         lastCall.clear();
         orders.clear();

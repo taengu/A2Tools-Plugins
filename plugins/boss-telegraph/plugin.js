@@ -355,9 +355,9 @@ const engine = BossLogic.create(DATA, {
 
 // Every page-level encounter reset also invalidates audio already decoding.
 // Deliberate Test/preview calls remain available even while Callouts is off.
-function resetLifecycle(at) {
+function resetLifecycle(at, keepBosses = false) {
   resetAudio();
-  engine.clear(at);
+  engine.clear(at, { keepBosses });
 }
 
 let widgetOpen = false;
@@ -698,7 +698,8 @@ for (const [key, el] of Object.entries(els)) {
       for (const [setting, field] of Object.entries(GUIDE_KEYS)) prefs[setting] = manualGuide[field];
       save();
       showPrefs();
-      resetLifecycle();
+      // A guide change keeps the bosses already known (logic.js clear).
+      resetLifecycle(undefined, true);
       renderBosses();
       return;
     }
@@ -707,7 +708,7 @@ for (const [key, el] of Object.entries(els)) {
     prefs[key] = v;
     if (key === "guideRegion") {
       clearManualGuide();
-      resetLifecycle();
+      resetLifecycle(undefined, true);
     }
     if (key === "tellMeWhatToDo") els.style.disabled = v;
     save();
