@@ -697,7 +697,7 @@ const sampleEn = () => {
 };
 
 // What has alerted, so each alerts once: "g:<end>", "b:<instance>:<end>".
-const alerted = new Set();
+const alerted = new Map();
 setInterval(() => {
   const now = Date.now();
   let any = false;
@@ -705,7 +705,7 @@ setInterval(() => {
     if (c.end > now || now - c.end > 3000) continue;
     const key = `g:${g}:${c.end}`;
     if (alerted.has(key)) continue;
-    alerted.add(key);
+    alerted.set(key, c.end + 3000);
     any = true;
     const o = mine.skills[g];
     if (o?.sound) ding();
@@ -720,12 +720,14 @@ setInterval(() => {
     if (b.end - now > lead || b.end - b.start <= lead) continue;
     const key = `b:${instance}:${b.end}`;
     if (alerted.has(key)) continue;
-    alerted.add(key);
+    alerted.set(key, b.end);
     const o = mine.buffs[b.a];
     if (o?.sound) ding();
     if (o?.voice) speak(buffName(b.a), DATA.buffNames?.[DATA.buffs?.[b.a]?.t]?.en);
   }
-  if (alerted.size > 500) alerted.clear();
+  for (const [key, until] of alerted) {
+    if (now > until) alerted.delete(key);
+  }
   checkAway();
   // Icons that just ran out go (or turn ready).
   if (any) changed();
