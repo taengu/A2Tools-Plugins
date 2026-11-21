@@ -357,7 +357,7 @@ function fightControl(id) {
     if (s.value === "on") prefs.fought[id] = true;
     else delete prefs.fought[id];
     savePrefs();
-    updatePins(Date.now());
+    updatePins(serverNow());
   });
   row.append(label, s);
   return row;
@@ -432,7 +432,7 @@ function pinControls(id) {
     else delete overrides()[id];
     fill();
     savePrefs();
-    updatePins(Date.now());
+    updatePins(serverNow());
   };
   for (const control of [sound, repeat, keep, effect, name, tp]) control.addEventListener("change", save);
   sound.addEventListener("change", () => {
@@ -525,7 +525,7 @@ function enemyTake(entries) {
   const bosses = { ...(enemyFeed.bosses || {}) };
   for (const [id, entry] of entries) bosses[id] = mergeEntry(bosses[id], entry);
   enemyFeed = { ...enemyFeed, bosses };
-  updatePins(Date.now());
+  updatePins(serverNow());
   if (typeof render === "function") render();
 }
 const isEnemy = (server) => typeof enemyServer === "function" && Number(server) > 0
@@ -543,7 +543,7 @@ a2.on("bossLive", (m) => {
     liveUp = !!m.connected;
     return;
   }
-  const base = feed?.server === serverId() ? feed : { server: serverId(), bosses: {}, at: Date.now() };
+  const base = feed?.server === serverId() ? feed : { server: serverId(), bosses: {}, at: serverNow() };
   let bosses = { ...(base.bosses || {}) };
   const take = (id, entry) => { bosses[id] = mergeEntry(bosses[id], entry); };
   if (m.type === "state" && m.bosses && typeof m.bosses === "object") for (const [id, e] of Object.entries(m.bosses)) take(id, e);
@@ -552,7 +552,7 @@ a2.on("bossLive", (m) => {
   bosses = mergeOwn(bosses);
   liveUp = true;
   feed = { ...base, bosses };
-  updatePins(Date.now());
+  updatePins(serverNow());
 });
 
 // The player's own fight (meter 2.0.93 on): the HP their meter reads, at
@@ -562,7 +562,7 @@ a2.on("bossLive", (m) => {
 a2.on("bossHp", (m) => {
   // Hitting the enemy's boss in the rift: its HP, at once, too.
   if (m && isEnemy(m.server) && Array.isArray(m.bosses)) {
-    const at = Math.floor(Date.now() / 1000);
+    const at = Math.floor(serverNow() / 1000);
     enemyTake(m.bosses.filter((b) => b?.id != null && Number.isFinite(Number(b?.hp))).map((b) => {
       const have = enemyFeed?.bosses?.[String(b.id)];
       const hp = Number(b.hp);
@@ -573,9 +573,9 @@ a2.on("bossHp", (m) => {
     return;
   }
   if (!m || Number(m.server) !== serverId() || !Array.isArray(m.bosses)) return;
-  const base = feed?.server === serverId() ? feed : { server: serverId(), bosses: {}, at: Date.now() };
+  const base = feed?.server === serverId() ? feed : { server: serverId(), bosses: {}, at: serverNow() };
   const bosses = { ...(base.bosses || {}) };
-  const at = Math.floor(Date.now() / 1000);
+  const at = Math.floor(serverNow() / 1000);
   for (const b of m.bosses) {
     const hp = Number(b?.hp);
     if (b?.id == null || !Number.isFinite(hp)) continue;
@@ -588,7 +588,7 @@ a2.on("bossHp", (m) => {
           reportedAt: Math.max(Number(have?.reportedAt) || 0, at) };
   }
   feed = { ...base, bosses: mergeOwn(bosses) };
-  updatePins(Date.now());
+  updatePins(serverNow());
   if (typeof render === "function") render();
 });
 
@@ -763,38 +763,38 @@ function renderPinLock() {
       prefs.alertStyle = style.value;
       savePrefs();
       renderStatic();
-      updatePins(Date.now());
+      updatePins(serverNow());
     });
     keep.addEventListener("change", () => {
       prefs.iconAlways = keep.checked;
       savePrefs();
-      updatePins(Date.now());
+      updatePins(serverNow());
     });
     effect.addEventListener("change", () => {
       prefs.iconEffect = effect.value;
       savePrefs();
-      updatePins(Date.now());
+      updatePins(serverNow());
     });
     badge.addEventListener("change", () => {
       prefs.iconBadge = badge.checked;
       savePrefs();
       renderPinLock();
-      updatePins(Date.now());
+      updatePins(serverNow());
     });
     name.addEventListener("change", () => {
       prefs.iconName = name.checked;
       savePrefs();
-      updatePins(Date.now());
+      updatePins(serverNow());
     });
     tp.addEventListener("change", () => {
       prefs.iconTp = tp.checked;
       savePrefs();
-      updatePins(Date.now());
+      updatePins(serverNow());
     });
     opacity.addEventListener("change", () => {
       prefs.iconOpacity = Number(opacity.value);
       savePrefs();
-      updatePins(Date.now());
+      updatePins(serverNow());
     });
     lock.addEventListener("change", () => {
       a2.widgets.lock(lock.checked).catch(() => {});

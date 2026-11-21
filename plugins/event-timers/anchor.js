@@ -171,7 +171,7 @@ const inRift = (now) => {
 };
 function trainPins(out, cfg) {
   if (!trainOn()) return;
-  const rift = inRift(Date.now());
+  const rift = inRift(serverNow());
   for (const b of fieldBosses()) {
     const id = `field:${b.id}`;
     if (rift && respawnOf(id) < RIFT_TRAIN_MIN) continue;
@@ -278,14 +278,14 @@ const placing = () => windowShown && document.visibilityState === "visible"
   && document.querySelector(".view.settings")?.hidden === false;
 a2.on("visible", (shown) => {
   windowShown = shown !== false;
-  updatePins(Date.now());
+  updatePins(serverNow());
 });
 // Into Settings or out of it: the anchor shows or goes at once, not at the
 // next second's update.
 document.addEventListener("click", (e) => {
-  if (e.target instanceof Element && e.target.closest(".tab")) setTimeout(() => updatePins(Date.now()), 0);
+  if (e.target instanceof Element && e.target.closest(".tab")) setTimeout(() => updatePins(serverNow()), 0);
 });
-document.addEventListener("visibilitychange", () => updatePins(Date.now()));
+document.addEventListener("visibilitychange", () => updatePins(serverNow()));
 
 let frameOpen = false;
 let frameSize = null;
@@ -403,7 +403,7 @@ function renderAnchorSettings(box) {
   const save = () => {
     savePrefs();
     renderAnchorSettings(box);
-    updatePins(Date.now());
+    updatePins(serverNow());
   };
 
   // Headings: "On screen" over this box, "Time and display" over the rest.

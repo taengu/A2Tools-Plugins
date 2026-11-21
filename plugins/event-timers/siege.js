@@ -130,7 +130,7 @@ function takeHolders(artifacts, at) {
 
 async function readSiege() {
   const server = serverId();
-  siege.readAt = Date.now();
+  siege.readAt = serverNow();
   if (!server || typeof a2.abyssSiege !== "function") return;
   if (server !== siege.server) {
     siege.holders.clear();
@@ -174,7 +174,7 @@ function renderSiege() {
     view.prepend(box);
   }
   const u = siegeUi();
-  const now = Date.now();
+  const now = serverNow();
   const on = siegeOn(now);
   const nowS = now / 1000;
   let elyos = 0, asmodian = 0, newest = 0;
@@ -249,7 +249,7 @@ function renderSiege() {
 
 // Read at start, then as often as the siege needs.
 setInterval(() => {
-  const now = Date.now();
+  const now = serverNow();
   const every = siegeOn(now) ? SIEGE_FAST_MS : SIEGE_SLOW_MS;
   if (now - siege.readAt >= every) readSiege();
   else renderSiege();
