@@ -2068,6 +2068,8 @@ function soundAlert(key) {
 // play, without the HP in brackets. The computer's voices come a moment
 // after the page opens, and the Voice list is filled again then.
 let voice = null;
+// Whether alerts are spoken (the invasion's then come only as it opens).
+const speaksAlerts = () => !!prefs.speak && !!voice?.available;
 voice = typeof makeVoices === "function" ? makeVoices({ lang: () => language, prefs: () => prefs, onChange: () => renderVoice() }) : null;
 const speakTimers = new Set();
 function speakAlert(message, key, parts) {
@@ -2259,9 +2261,10 @@ function checkAlerts(now) {
       if (next && due(`${ev.id}+${minutes}`, next.start, minutes)) {
         const name = text(ev.name);
         if (isChance(ev)) {
-          // As it starts, while listening: said when the game announces it
-          // (decoded:timed-event), or not at all if it doesn't.
-          if (!minutes && listening()) continue;
+          // With voice alerts on, only the game's announcement is said (as
+          // it opens, decoded:timed-event): no "may open" at all. Otherwise,
+          // as it starts while listening, the announcement says it too.
+          if (speaksAlerts() || (!minutes && listening())) continue;
           const c = chanceWords();
           announce(ev.id, minutes ? c.soon(name, minutes) : c.now(name), ev.id,
             [SPOKEN.name(ev.name), minutes ? SPOKEN.maySoon(minutes) : SPOKEN.mayNow]);
@@ -2664,9 +2667,10 @@ a2.on("decoded:timed-event", (d) => {
   const ev = EVENTS.find((e) => isChance(e) && e.side === side);
   const key = `${side}@${start}`;
   if (ev && ev.id in prefs.alerts && !toldOpen.has(key)) {
-    // Heard only with the game open: the lead is the alert's own.
+    // Heard only with the game open: the lead is the alert's own. With voice
+    // alerts on, an opening is always said, whatever the lead.
     const lead = Number(prefs.alerts[ev.id]);
-    if (lead >= 0 && alsoAtStart(lead).includes(0)) {
+    if (lead >= 0 && (speaksAlerts() || alsoAtStart(lead).includes(0))) {
       toldOpen.add(key);
       const name = text(ev.name);
       const announceOpen = (id, message, k, parts) => {
