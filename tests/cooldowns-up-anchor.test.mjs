@@ -14,7 +14,7 @@ function bar({ scale = 1, layout = "combined", direction = "up" } = {}) {
       const at = windows.get(name) || { x: 120, y: 600 };
       windows.set(name, { ...at, width: Math.round(size.width * scale), height: Math.round(size.height * scale) });
     },
-    async close(name) { calls.push(["close", name]); },
+    async close(name) { calls.push(["close", name]); windows.delete(name); },
     async where(name) { calls.push(["where", name]); return { ...windows.get(name) }; },
     async place(name, at) {
       assert.ok(Number.isInteger(at.x) && Number.isInteger(at.y));
@@ -90,4 +90,31 @@ test("missing placement APIs, failed bounds and failed opens do not move", async
     await b.resize({}, 7, 3);
     assert.equal(b.calls.some(([action]) => action === "place"), false);
   }
+});
+
+test("an unchanged layout retries after a failed open", async () => {
+  const b = bar();
+  const open = b.widgets.open;
+  b.widgets.open = async () => { throw new Error("host busy"); };
+  await b.resize();
+  assert.equal(b.windows.size, 0);
+  b.widgets.open = open;
+  await b.resize();
+  assert.deepEqual(b.calls, [["open", "bar"]]);
+  assert.equal(b.windows.size, 1);
+});
+
+test("disabling while an open is pending closes the widget when it arrives", async () => {
+  const b = bar();
+  const open = b.widgets.open;
+  let release;
+  b.widgets.open = (...args) => new Promise((resolve) => {
+    release = async () => { await open(...args); resolve(); };
+  });
+  const opening = b.resize();
+  await b.resize({ show: false });
+  await release();
+  await opening;
+  assert.deepEqual(b.calls, [["open", "bar"], ["close", "bar"]]);
+  assert.equal(b.windows.size, 0);
 });
