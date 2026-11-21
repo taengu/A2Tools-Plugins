@@ -9,10 +9,13 @@ html, body {
 body { padding: 10px 12px 14px; }
 .top {
   display: grid;
+  min-width: 0;
   gap: 2px;
   padding-bottom: 8px;
   border-bottom: 1px solid rgba(255, 255, 255, 0.12);
 }
+.top > * { min-width: 0; }
+.row > span, .switch > span { min-width: 0; overflow-wrap: anywhere; }
 .switch, .row {
   display: flex;
   align-items: center;
@@ -77,6 +80,7 @@ select {
   appearance: none;
   -webkit-appearance: none;
   box-sizing: border-box;
+  min-width: 0;
   min-height: 30px;
   max-width: 62%;
   padding: 4px 28px 4px 9px;
@@ -104,6 +108,18 @@ select option { background: var(--a2-panel, #0e1420); color: #fff; }
 .btn:hover { background: rgba(255, 255, 255, 0.14); }
 
 /* The bosses, by dungeon. */
+.guideContext {
+  margin: 0 0 8px;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 6px;
+  padding: 0 8px;
+}
+.guideContext > summary { padding: 5px 0; cursor: pointer; font-size: 14px; font-weight: 600; }
+.guideContextGrid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 5px 10px; padding: 3px 0; }
+.guideContextGrid label { display: grid; gap: 2px; min-width: 0; font-size: 13px; }
+.guideContextGrid select { width: 100%; max-width: 100%; min-width: 0; font-size: 13px; }
+.guideContext .guideScopeHelp { margin: 5px 0 7px; font-size: 12.5px; overflow-wrap: anywhere; }
+@media (max-width: 350px) { .guideContextGrid { grid-template-columns: minmax(0, 1fr); } }
 .groups { margin-top: 6px; }
 .group { border-bottom: 1px solid rgba(255, 255, 255, 0.08); }
 .group > summary {
@@ -148,6 +164,8 @@ select option { background: var(--a2-panel, #0e1420); color: #fff; }
 .tag[hidden] { display: none; }
 .tag.isOffTag { background: rgba(255, 140, 120, 0.18); color: #ffb4a6; font-weight: 600; }
 .tag.isCall { background: color-mix(in srgb, var(--a2-accent, #8fc2ff) 20%, transparent); color: var(--a2-accent, #8fc2ff); }
+.guideInstruction { font-size: 14px; color: var(--a2-accent, #8fc2ff); overflow-wrap: anywhere; }
+.scopeTag { white-space: normal; overflow-wrap: anywhere; }
 .pen {
   width: 34px;
   height: 34px;

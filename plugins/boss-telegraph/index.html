@@ -11,6 +11,8 @@
       <label class="switch"><span data-t="showWidget">Big text on screen</span><input type="checkbox" class="widget" /></label>
       <p class="note sub" data-t="showWidgetNote">Off: spoken only.</p>
       <label class="switch"><span data-t="lock">Lock in place</span><input type="checkbox" class="lock" /></label>
+      <label><span data-t="callMode">Call mode</span><select class="tellMeWhatToDo" aria-describedby="actionsNote"><option value="instructions" data-t="instructions">Instructions</option><option value="lines" data-t="bossLines">Boss lines</option></select></label>
+      <p class="note info" id="actionsNote" data-t="actionsNote">On by default: speaks supported instructions. Unmatched mechanics use the original short call; the original line stays on screen. Your own words take priority. Off: uses Call style.</p>
       <div class="row">
         <span data-t="style" id="styleLabel">Call style</span>
         <select class="style" aria-labelledby="styleLabel">
@@ -29,6 +31,47 @@
     </nav>
 
     <section class="pane" data-pane="bosses" id="pane-bosses" role="tabpanel" aria-labelledby="tab-bosses">
+      <details class="guideContext">
+        <summary data-t="guideContext">Guide context</summary>
+        <div class="guideContextGrid">
+          <label><span data-t="guideRegion">Game region</span>
+            <select class="guideRegion" aria-describedby="guideScopeHelp">
+              <option value="Global" data-t="regionGlobal" selected>Global</option>
+              <option value="KR" data-t="regionKR">Korea (KR)</option>
+            </select>
+          </label>
+          <label><span data-t="guideCategory">Activity</span>
+            <select class="guideCategory" aria-describedby="guideScopeHelp">
+              <option value="auto" data-t="regionUnknown" selected>Unknown</option>
+              <option value="conquest" data-t="categoryConquest">Conquest</option>
+              <option value="transcendence" data-t="categoryTranscendence">Transcendence</option>
+              <option value="trial" data-t="categoryTrial">Trial</option>
+              <option value="nightmare" data-t="categoryNightmare">Nightmare</option>
+              <option value="sanctuary" data-t="categorySanctuary">Sanctuary</option>
+            </select>
+          </label>
+          <label><span data-t="guideDifficulty">Difficulty</span>
+            <select class="guideDifficulty" aria-describedby="guideScopeHelp">
+              <option value="auto" data-t="guideAuto" selected>Auto (observed map mode)</option>
+              <option value="normal" data-t="difficultyNormal">Normal</option>
+              <option value="hard" data-t="difficultyHard">Hard</option>
+              <option value="exploration" data-t="difficultyExploration">Exploration</option>
+            </select>
+          </label>
+          <label><span data-t="guideStage">Stage</span>
+            <select class="guideStage" aria-describedby="guideScopeHelp">
+              <option value="0" data-t="regionUnknown" selected>Unknown</option>
+              <option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option>
+              <option value="5">5</option><option value="6">6</option><option value="7">7</option><option value="8">8</option>
+              <option value="9">9</option><option value="10">10</option><option value="11">11</option><option value="12">12</option>
+              <option value="13">13</option><option value="14">14</option><option value="15">15</option><option value="16">16</option>
+              <option value="17">17</option><option value="18">18</option><option value="19">19</option><option value="20">20</option>
+              <option value="21">21</option><option value="22">22</option><option value="23">23</option><option value="24">24</option>
+            </select>
+          </label>
+        </div>
+        <p class="note guideScopeHelp" id="guideScopeHelp" data-t="guideScopeHelp">Choose region manually; language never sets it. Auto uses observed map difficulty only. Manual choices persist until changed; unmatched instructions use the original short call.</p>
+      </details>
       <div class="inline wide">
         <input type="search" class="filter" data-tp="filter" placeholder="Filter" />
         <button type="button" class="btn allOn" data-t="allOn">All on</button>
@@ -82,7 +125,11 @@
 
     <script src="/_sdk/a2.js"></script>
     <script src="bosses.js"></script>
+    <script src="actions.js"></script>
     <script src="i18n.js"></script>
+    <script src="context.js"></script>
+    <script src="mechanics.js"></script>
+    <script src="activation.js"></script>
     <script src="logic.js"></script>
     <script src="voice.js"></script>
     <script src="plugin.js"></script>

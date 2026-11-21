@@ -1,0 +1,353 @@
+{
+  "_comment": "Instructions keyed by the existing call setting key. source is the exact bundled game line or hand-checked curated call that supports it; actions.py rejects source drift. No inferred directions for other mechanics.",
+  "watch": {
+    "en": "Watch the boss",
+    "ko": "보스를 주시하세요",
+    "ja": "ボスをよく見て",
+    "de": "Achte auf den Boss",
+    "fr": "Surveillez le boss",
+    "es": "Vigila al jefe",
+    "pt": "Observe o chefe",
+    "ru": "Следите за боссом",
+    "zh-Hant": "注意首領動作",
+    "zh-Hans": "注意首领动作"
+  },
+  "order": {
+    "en": "When the pulses begin, use matching shields in this order.",
+    "ko": "파동이 시작되면 이 순서대로 같은 속성의 보호막에 들어가세요.",
+    "ja": "波動が始まったら、この順で同じ属性のシールドに入って。",
+    "de": "Wenn die Wellen beginnen, nutze passende Schilde in dieser Reihenfolge.",
+    "fr": "Au début des pulsations, utilisez les boucliers correspondants dans cet ordre.",
+    "es": "Cuando empiecen los pulsos, usa los escudos correspondientes en este orden.",
+    "pt": "Quando os pulsos começarem, use os escudos correspondentes nesta ordem.",
+    "ru": "Когда начнутся импульсы, используйте соответствующие щиты в этом порядке.",
+    "zh-Hant": "脈衝開始時，依此順序進入對應的護盾。",
+    "zh-Hans": "脉冲开始时，依此顺序进入对应的护盾。"
+  },
+  "calls": {
+    "thamon-violet": {
+      "source": {
+        "field": "act",
+        "en": "Purple — stop magic attacks"
+      },
+      "text": {
+        "en": "Stop magic",
+        "ko": "마법 중지",
+        "ja": "魔法停止",
+        "de": "Keine Magie",
+        "fr": "Pas de magie",
+        "es": "Sin magia",
+        "pt": "Sem magia",
+        "ru": "Без магии",
+        "zh-Hant": "停止魔法",
+        "zh-Hans": "停止魔法"
+      }
+    },
+    "thamon-red": {
+      "source": {
+        "field": "act",
+        "en": "Red — stop physical attacks"
+      },
+      "text": {
+        "en": "Stop physical",
+        "ko": "물리 중지",
+        "ja": "物理停止",
+        "de": "Nicht physisch",
+        "fr": "Pas de physique",
+        "es": "Sin físicos",
+        "pt": "Sem físico",
+        "ru": "Без физ. атак",
+        "zh-Hant": "停止物理",
+        "zh-Hans": "停止物理"
+      }
+    },
+    "lakshmi-reflect": {
+      "source": {
+        "field": "act",
+        "en": "Reflect — stop attacking"
+      },
+      "text": {
+        "en": "Stop attacking",
+        "ko": "공격 중지",
+        "ja": "攻撃停止",
+        "de": "Nicht angreifen",
+        "fr": "N'attaquez pas",
+        "es": "No ataques",
+        "pt": "Não ataque",
+        "ru": "Не атакуйте",
+        "zh-Hant": "停止攻擊",
+        "zh-Hans": "停止攻击"
+      }
+    },
+    "vakron-jump": {
+      "source": {
+        "field": "act",
+        "en": "Jump!"
+      },
+      "text": {
+        "en": "Jump!",
+        "ko": "점프!",
+        "ja": "ジャンプ！",
+        "de": "Springen!",
+        "fr": "Sautez !",
+        "es": "¡Salta!",
+        "pt": "Pule!",
+        "ru": "Прыгайте!",
+        "zh-Hant": "跳！",
+        "zh-Hans": "跳！"
+      }
+    },
+    "talisra-dark-spear": {
+      "source": {
+        "field": "act",
+        "en": "Dark"
+      },
+      "text": {
+        "en": "Remember dark shield",
+        "ko": "어둠 보호막을 기억하세요",
+        "ja": "闇のシールドを覚えて",
+        "de": "Merke dir den dunklen Schild",
+        "fr": "Retenez le bouclier d'ombre",
+        "es": "Recuerda el escudo oscuro",
+        "pt": "Lembre-se do escudo escuro",
+        "ru": "Запомните тёмный щит",
+        "zh-Hant": "記住暗護盾",
+        "zh-Hans": "记住暗护盾"
+      }
+    },
+    "talisra-light-spear": {
+      "source": {
+        "field": "act",
+        "en": "Light"
+      },
+      "text": {
+        "en": "Remember light shield",
+        "ko": "빛 보호막을 기억하세요",
+        "ja": "光のシールドを覚えて",
+        "de": "Merke dir den hellen Schild",
+        "fr": "Retenez le bouclier de lumière",
+        "es": "Recuerda el escudo de luz",
+        "pt": "Lembre-se do escudo de luz",
+        "ru": "Запомните светлый щит",
+        "zh-Hant": "記住光護盾",
+        "zh-Hans": "记住光护盾"
+      }
+    },
+    "cast:1604426:vakron": {
+      "source": {
+        "field": "line",
+        "en": "Vakron will attack after trapping you! Destroy the rocks and escape, kru!"
+      },
+      "text": {
+        "en": "Destroy the rocks and escape",
+        "ko": "바위를 부수고 탈출하세요",
+        "ja": "岩を壊して脱出して",
+        "de": "Zerstöre die Felsen und entkomme",
+        "fr": "Détruisez les rochers et échappez-vous",
+        "es": "Destruye las rocas y escapa",
+        "pt": "Destrua as rochas e escape",
+        "ru": "Разбейте камни и выберитесь",
+        "zh-Hant": "摧毀岩石並逃離",
+        "zh-Hans": "摧毁岩石并逃离"
+      }
+    },
+    "cast:1604500:vakron": {
+      "source": {
+        "field": "line",
+        "en": "Tiere will create poison clouds! Defeating the Rafflesia will neutralize the poison clouds, kru!"
+      },
+      "text": {
+        "en": "Defeat the Rafflesia to clear the poison clouds",
+        "ko": "라플레시아를 처치해 독구름을 없애세요",
+        "ja": "ラフレシアを倒して毒雲を消して",
+        "de": "Besiege die Rafflesia, um die Giftwolken aufzulösen",
+        "fr": "Éliminez la Rafflesia pour dissiper les nuages toxiques",
+        "es": "Derrota a la Rafflesia para disipar las nubes de veneno",
+        "pt": "Derrote a Rafflesia para dissipar as nuvens de veneno",
+        "ru": "Победите раффлезию, чтобы убрать ядовитые облака",
+        "zh-Hant": "擊敗大王花以清除毒雲",
+        "zh-Hans": "击败大王花以清除毒云"
+      }
+    },
+    "use:1604330:decaying-durvati": {
+      "source": {
+        "field": "line",
+        "en": "Destroy the eggs before the Dratona are born, kru!"
+      },
+      "text": {
+        "en": "Destroy the eggs before they hatch",
+        "ko": "알이 부화하기 전에 파괴하세요",
+        "ja": "孵化する前に卵を壊して",
+        "de": "Zerstöre die Eier, bevor sie schlüpfen",
+        "fr": "Détruisez les œufs avant leur éclosion",
+        "es": "Destruye los huevos antes de que eclosionen",
+        "pt": "Destrua os ovos antes que eclodam",
+        "ru": "Разбейте яйца до вылупления",
+        "zh-Hant": "在孵化前摧毀蛋",
+        "zh-Hans": "在孵化前摧毁蛋"
+      }
+    },
+    "cast:1805115:decaying-durvati": {
+      "source": {
+        "field": "line",
+        "en": "Climb to the top of the stone pillar, kru!"
+      },
+      "text": {
+        "en": "Climb onto the stone pillar",
+        "ko": "돌기둥 위로 올라가세요",
+        "ja": "石柱の上に登って",
+        "de": "Klettere auf die Steinsäule",
+        "fr": "Montez sur le pilier de pierre",
+        "es": "Sube al pilar de piedra",
+        "pt": "Suba no pilar de pedra",
+        "ru": "Заберитесь на каменный столб",
+        "zh-Hant": "爬上石柱頂端",
+        "zh-Hans": "爬上石柱顶端"
+      }
+    },
+    "cast:1801451:atiel": {
+      "source": {
+        "field": "line",
+        "en": "Take the hits together to receive less damage, kru!"
+      },
+      "text": {
+        "en": "Take the hit together",
+        "ko": "함께 맞아 피해를 나누세요",
+        "ja": "集まってダメージを分担して",
+        "de": "Fangt den Treffer gemeinsam ab",
+        "fr": "Encaissez le coup ensemble",
+        "es": "Recibid el golpe juntos",
+        "pt": "Recebam o golpe juntos",
+        "ru": "Примите удар вместе",
+        "zh-Hant": "一起承受攻擊以分攤傷害",
+        "zh-Hans": "一起承受攻击以分摊伤害"
+      }
+    },
+    "use:1605975:phantasmal-lakshmi": {
+      "source": {
+        "field": "line",
+        "en": "Lakshmi's Handmaiden has been summoned! Take her down first before she heals Lakshmi, kru!"
+      },
+      "text": {
+        "en": "Defeat the handmaiden before she heals the boss",
+        "ko": "시녀가 보스를 치유하기 전에 처치하세요",
+        "ja": "侍女がボスを回復する前に倒して",
+        "de": "Besiege die Dienerin, bevor sie den Boss heilt",
+        "fr": "Éliminez la servante avant qu'elle ne soigne le boss",
+        "es": "Derrota a la doncella antes de que cure al jefe",
+        "pt": "Derrote a serva antes que ela cure o chefe",
+        "ru": "Победите служанку, прежде чем она исцелит босса",
+        "zh-Hant": "在侍女治療首領前擊敗她",
+        "zh-Hans": "在侍女治疗首领前击败她"
+      }
+    },
+    "cast:1800656:transcendent-bakarma": {
+      "source": {
+        "field": "line",
+        "en": "Use Stagger skills on Bakarma, kru!"
+      },
+      "text": {
+        "en": "Use Stagger skills on the boss",
+        "ko": "보스에게 무력화 스킬을 사용하세요",
+        "ja": "ボスに無力化スキルを使って",
+        "de": "Nutze Taumel-Fertigkeiten gegen den Boss",
+        "fr": "Utilisez des compétences de déstabilisation sur le boss",
+        "es": "Usa habilidades de aturdimiento contra el jefe",
+        "pt": "Use habilidades de desequilíbrio no chefe",
+        "ru": "Используйте навыки ошеломления на боссе",
+        "zh-Hant": "對首領使用削韌技能",
+        "zh-Hans": "对首领使用削韧技能"
+      }
+    },
+    "cast:1801185:kromede-s-desire": {
+      "source": {
+        "field": "line",
+        "en": "Sprint between the flame walls, kru!"
+      },
+      "text": {
+        "en": "Sprint between the flame walls",
+        "ko": "화염 벽 사이로 질주하세요",
+        "ja": "炎の壁の間を駆け抜けて",
+        "de": "Sprinte zwischen den Flammenwänden hindurch",
+        "fr": "Sprintez entre les murs de flammes",
+        "es": "Corre entre los muros de fuego",
+        "pt": "Corra entre as paredes de fogo",
+        "ru": "Пробегите между стенами пламени",
+        "zh-Hant": "從火牆之間衝過去",
+        "zh-Hans": "从火墙之间冲过去"
+      }
+    },
+    "cast:1607011:necromancer-duanka": {
+      "source": {
+        "field": "line",
+        "en": "Before they are absorbed, collect the soul orbs on the altar and defeat the Mau souls, kru!"
+      },
+      "text": {
+        "en": "Collect the altar's soul orbs and defeat the Mau souls before absorption",
+        "ko": "흡수되기 전에 제단의 영혼 구슬을 모으고 Mau의 영혼을 처치하세요",
+        "ja": "吸収される前に祭壇の魂の玉を集めてMauの魂を倒して",
+        "de": "Sammle die Seelenkugeln am Altar und besiege die Mau-Seelen vor der Absorption",
+        "fr": "Avant leur absorption, ramassez les orbes de l'autel et éliminez les âmes Mau",
+        "es": "Antes de la absorción, recoge los orbes del altar y derrota a las almas Mau",
+        "pt": "Antes da absorção, colete os orbes do altar e derrote as almas Mau",
+        "ru": "До поглощения соберите сферы душ на алтаре и победите души мау",
+        "zh-Hant": "在吸收前收集祭壇的靈魂珠並擊敗Mau靈魂",
+        "zh-Hans": "在吸收前收集祭坛的灵魂珠并击败Mau灵魂"
+      }
+    },
+    "cast:1606932:watchdog-kwapo": {
+      "source": {
+        "field": "line",
+        "en": "Before Kwapo starts howling, burst as many lightning orbs as possible, kru!"
+      },
+      "text": {
+        "en": "Burst as many lightning orbs as possible before the howl",
+        "ko": "울부짖기 전에 번개 구슬을 최대한 많이 터뜨리세요",
+        "ja": "遠吠えの前に雷の玉をできるだけ多く壊して",
+        "de": "Zerstöre vor dem Heulen möglichst viele Blitzkugeln",
+        "fr": "Faites éclater le plus d'orbes de foudre possible avant le hurlement",
+        "es": "Destruye tantos orbes de rayo como puedas antes del aullido",
+        "pt": "Estoure o máximo de orbes elétricos antes do uivo",
+        "ru": "До воя уничтожьте как можно больше грозовых сфер",
+        "zh-Hant": "在嚎叫前盡量擊破更多雷電球",
+        "zh-Hans": "在嚎叫前尽量击破更多雷电球"
+      }
+    },
+    "cast:1800050:ultimate-berk": {
+      "source": {
+        "field": "line",
+        "en": "Quickly, hide behind the rock!"
+      },
+      "text": {
+        "en": "Hide behind the rock",
+        "ko": "바위 뒤에 숨으세요",
+        "ja": "岩の後ろに隠れて",
+        "de": "Verstecke dich hinter dem Felsen",
+        "fr": "Cachez-vous derrière le rocher",
+        "es": "Escóndete detrás de la roca",
+        "pt": "Esconda-se atrás da rocha",
+        "ru": "Спрячьтесь за камнем",
+        "zh-Hant": "躲到岩石後面",
+        "zh-Hans": "躲到岩石后面"
+      }
+    },
+    "cast:1601035:divine-auldor": {
+      "source": {
+        "field": "line",
+        "en": "Get close to the party member that Auldor is watching and take the hit together, kru!"
+      },
+      "text": {
+        "en": "Gather near the watched party member and share the hit",
+        "ko": "주시받는 파티원 곁에 모여 함께 맞으세요",
+        "ja": "狙われているパーティメンバーに集まって攻撃を分担して",
+        "de": "Sammelt euch beim anvisierten Gruppenmitglied und teilt den Treffer",
+        "fr": "Regroupez-vous près du membre visé et partagez le coup",
+        "es": "Reuníos junto al compañero señalado y compartid el golpe",
+        "pt": "Juntem-se ao membro marcado e dividam o golpe",
+        "ru": "Соберитесь у отмеченного союзника и разделите удар",
+        "zh-Hant": "靠近被注視的隊友並分攤攻擊",
+        "zh-Hans": "靠近被注视的队友并分摊攻击"
+      }
+    }
+  }
+}

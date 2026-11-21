@@ -1,5 +1,18 @@
 [
   {
+    "version": "0.2.0",
+    "en": "Calls can now tell you what to do (Instructions), or read the boss's lines as before (Boss lines, in Settings). Guides cover Global and Korea. Choose your region, activity and stage under Guide context.",
+    "ko": "알림이 해야 할 행동을 안내합니다(행동 안내). 설정에서 보스 대사 모드를 선택하면 이전처럼 대사를 읽습니다. 글로벌과 한국 공략을 지원합니다. 공략 조건에서 지역, 활동, 단계를 선택하세요.",
+    "ja": "通知が取るべき行動を伝えるようになりました（行動指示）。設定で「ボスの台詞」を選ぶと従来どおり台詞を読み上げます。Global版と韓国版に対応。ガイド条件で地域、コンテンツ、ステージを選べます。",
+    "de": "Ansagen können jetzt sagen, was zu tun ist (Anweisungen). Unter Bosszeilen in den Einstellungen kannst du weiterhin die Bossdialoge hören. Guides gibt es für Global und Korea. Wähle Region, Aktivität und Stufe im Guide-Kontext.",
+    "fr": "Les annonces peuvent maintenant indiquer quoi faire (Consignes). Dans les réglages, le mode Répliques du boss lit les dialogues comme avant. Les guides couvrent Global et la Corée. Choisissez la région, l'activité et le palier dans le contexte du guide.",
+    "es": "Los avisos ahora pueden decirte qué hacer (Instrucciones). En Ajustes, Frases del jefe lee el diálogo como antes. Hay guías para Global y Corea. Elige la región, la actividad y la etapa en el contexto de la guía.",
+    "pt": "Os avisos agora podem dizer o que fazer (Instruções). Em Configurações, Falas do chefe lê o diálogo como antes. Há guias para Global e Coreia. Escolha a região, a atividade e a etapa no contexto do guia.",
+    "ru": "Подсказки теперь могут объяснять, что делать (Инструкции). В настройках можно выбрать Реплики босса, чтобы слышать диалоги как раньше. Есть гайды для Global и Кореи. Выберите регион, активность и этап в контексте гайда.",
+    "zh-Hant": "提示現在可以告訴你該怎麼做（行動指引）。在設定中選擇「首領台詞」，即可像以前一樣朗讀台詞。提供 Global 與韓版攻略。請在指引條件中選擇地區、活動與階段。",
+    "zh-Hans": "提示现在可以告诉你该怎么做（行动指引）。在设置中选择“首领台词”，即可像以前一样朗读台词。提供 Global 与韩版攻略。请在指引条件中选择地区、活动与阶段。"
+  },
+  {
     "version": "0.1.9",
     "en": "Updated from the game's November 4 patch: Russian and French lines as the game now words them, and Vakron's new skill.",
     "ko": "11월 4일 게임 패치 반영: 러시아어와 프랑스어 대사를 게임의 현재 표현으로, 바크론의 새 스킬 추가.",
@@ -50,18 +63,5 @@
     "ru": "Окно настроек для слабовидящих: размер текста окна, повышенный контраст, заметная рамка фокуса и «Выкл.» словами.",
     "zh-Hant": "為弱視玩家改善設定視窗：視窗文字大小、更高對比、清楚的焦點框，並以文字標示「已關閉」。",
     "zh-Hans": "为弱视玩家改善设置窗口：窗口文字大小、更高对比、清楚的焦点框，并以文字标示“已关闭”。"
-  },
-  {
-    "version": "0.1.5",
-    "en": "▶ on each call plays it now, as a fight would.",
-    "ko": "각 알림의 ▶로 전투 때처럼 바로 재생해 볼 수 있습니다.",
-    "ja": "各呼びかけの ▶ で、戦闘中と同じように今すぐ再生できます。",
-    "de": "▶ bei jedem Ruf spielt ihn sofort ab, wie im Kampf.",
-    "fr": "▶ sur chaque appel le joue tout de suite, comme en combat.",
-    "es": "▶ en cada aviso lo reproduce ya, como en un combate.",
-    "pt": "▶ em cada aviso o toca agora, como numa luta.",
-    "ru": "▶ у каждого сигнала проигрывает его сразу, как в бою.",
-    "zh-Hant": "每個提示的 ▶ 可立即播放，就像戰鬥中一樣。",
-    "zh-Hans": "每个提示的 ▶ 可立即播放，就像战斗中一样。"
   }
 ]
