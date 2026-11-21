@@ -192,11 +192,15 @@ async function loadCharacter(c) {
   // Festival (Plexas, Hirai, 2026-10-22).
   if (!c || !c.name) return;
   const serverOf = (key) => Number(key.slice(key.lastIndexOf("@") + 1)) || 0;
-  // An incomplete identity keeps the server already known for this name.
-  // A different known server has its own saved profile.
-  const server = Number(c.serverId) || (loadingCharacter?.character.name === c.name
-    ? serverOf(loadingCharacter.key) : c.name === charName ? serverOf(charKey) : 0);
-  const key = `${c.name}@${server || ""}`;
+  // The same name with another server is the same character, its server
+  // reported again as the meter relearns it between zones (0.1.2); it moves
+  // only from a server not known yet (0) to the real one, whose setup is the
+  // one saved. Checked against the character being loaded first, then the
+  // one shown.
+  const server = Number(c.serverId) || 0;
+  const sameAs = (known) => known && known.slice(0, known.lastIndexOf("@")) === c.name
+    && (serverOf(known) || !server) ? known : null;
+  const key = sameAs(loadingCharacter?.key) || sameAs(charKey) || `${c.name}@${server || ""}`;
   if (loadingCharacter?.key === key) {
     loadingCharacter.character = c;
     return;

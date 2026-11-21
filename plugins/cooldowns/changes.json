@@ -1,16 +1,16 @@
 [
   {
     "version": "0.2.16",
-    "en": "The last icon no longer disappears when every icon shows at once with certain Windows Text sizes. New Grows option: Centered, keeping the middle where you put it. Several Cleric icons were corrected.",
-    "ko": "일부 Windows 텍스트 크기에서 모든 아이콘이 한꺼번에 보일 때 마지막 아이콘이 더 이상 사라지지 않습니다. '늘어나는 방향'의 새 옵션 '가운데': 놓아둔 가운데를 그대로 둡니다. 여러 치유성 아이콘이 수정되었습니다.",
-    "ja": "一部のWindowsのテキストのサイズで、すべてのアイコンが同時に出たときに最後のアイコンが消えなくなりました。「伸びる方向」に新しい選択肢「中央」：置いた中央を保ちます。いくつかのクレリックのアイコンを修正しました。",
-    "de": "Das letzte Symbol verschwindet bei manchen Windows-Textgrößen nicht mehr, wenn alle Symbole zugleich sichtbar sind. Neue Option bei „Wächst nach“: Beide Seiten, die Mitte bleibt, wo du sie hingesetzt hast. Mehrere Kleriker-Symbole wurden korrigiert.",
-    "fr": "La dernière icône ne disparaît plus quand toutes s'affichent à la fois, avec certaines tailles du texte de Windows. Nouvelle option pour « S'étend vers » : Les deux côtés, le milieu restant où vous l'avez mis. Plusieurs icônes du Clerc ont été corrigées.",
-    "es": "El último icono ya no desaparece cuando se muestran todos a la vez con ciertos tamaños de texto de Windows. Nueva opción en «Crece hacia»: Ambos lados, con el centro donde lo dejaste. Se corrigieron varios iconos de Clérigo.",
-    "pt": "O último ícone não some mais quando todos aparecem ao mesmo tempo com certos tamanhos de texto do Windows. Nova opção em “Cresce para”: Ambos os lados, mantendo o meio onde você o deixou. Vários ícones de Clérigo foram corrigidos.",
-    "ru": "Последний значок больше не пропадает, когда видны все значки сразу, при некоторых размерах текста Windows. Новый вариант для «Растёт»: «От центра», середина остаётся там, где вы её поставили. Исправлено несколько значков Целителя.",
-    "zh-Hant": "在某些 Windows 文字大小下，所有圖示同時顯示時，最後一個圖示不再消失。「延伸方向」新增選項「置中」：中心維持在你放的位置。修正了多個治癒聖圖示。",
-    "zh-Hans": "在某些 Windows 文本大小下，所有图标同时显示时，最后一个图标不再消失。“延伸方向”新增选项“居中”：中心保持在你放的位置。修正了多个治愈圣图标。"
+    "en": "Icons no longer drop off with a larger Windows Text size. New Grows option: Centered. Several Cleric icons fixed. Switching characters quickly no longer loads the wrong setup. Icons come back after a widget failed to open. Each alert sounds only once.",
+    "ko": "Windows 텍스트 크기가 커도 아이콘이 사라지지 않습니다. '늘어나는 방향'에 '가운데' 추가. 여러 치유성 아이콘 수정. 캐릭터를 빠르게 바꿔도 다른 설정을 불러오지 않습니다. 위젯 창이 열리지 않았을 때도 아이콘이 다시 나타납니다. 알림은 한 번만 울립니다.",
+    "ja": "Windowsのテキストのサイズが大きくてもアイコンが消えなくなりました。「伸びる方向」に「中央」を追加。いくつかのクレリックのアイコンを修正。キャラクターをすばやく切り替えても別の設定を読み込みません。ウィジェットが開けなかったときもアイコンが戻ります。通知は一度だけ鳴ります。",
+    "de": "Symbole fallen bei größerer Windows-Textgröße nicht mehr weg. „Wächst nach“: neu Beide Seiten. Mehrere Kleriker-Symbole korrigiert. Schneller Charakterwechsel lädt keine falschen Einstellungen mehr. Symbole kommen zurück, wenn ein Widget nicht aufging. Jeder Hinweis ertönt nur einmal.",
+    "fr": "Les icônes ne disparaissent plus avec un texte Windows plus grand. « S'étend vers » : Les deux côtés, nouveau. Icônes du Clerc corrigées. Changer vite de personnage ne charge plus le mauvais réglage. Les icônes reviennent si un widget n'a pas pu s'ouvrir. Chaque alerte sonne une fois.",
+    "es": "Los iconos ya no se pierden con un texto de Windows más grande. «Crece hacia»: nuevo Ambos lados. Iconos de Clérigo corregidos. Cambiar rápido de personaje ya no carga la configuración equivocada. Los iconos vuelven si un widget no pudo abrirse. Cada alerta suena una vez.",
+    "pt": "Os ícones não somem mais com um texto do Windows maior. “Cresce para”: novo Ambos os lados. Ícones de Clérigo corrigidos. Trocar de personagem rápido não carrega mais a configuração errada. Os ícones voltam se um widget não abriu. Cada alerta toca só uma vez.",
+    "ru": "Значки больше не пропадают при крупном тексте Windows. «Растёт»: новый вариант «От центра». Исправлены значки Целителя. Быстрая смена персонажа больше не загружает чужие настройки. Значки возвращаются, если виджет не открылся. Каждое оповещение звучит один раз.",
+    "zh-Hant": "Windows 文字大小較大時圖示不再消失。「延伸方向」新增「置中」。修正多個治癒聖圖示。快速切換角色時不再載入錯誤的設定。小工具開啟失敗後圖示會重新出現。每個提醒只響一次。",
+    "zh-Hans": "Windows 文本大小较大时图标不再消失。“延伸方向”新增“居中”。修正多个治愈圣图标。快速切换角色时不再加载错误的设置。小组件打开失败后图标会重新出现。每个提醒只响一次。"
   },
   {
     "version": "0.2.15",

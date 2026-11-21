@@ -22,17 +22,38 @@ function setup(initial = "Example@1") {
     profile: () => vm.runInContext("mine.id", ctx) };
 }
 
-test("same-name characters on different known servers restore different profiles", async () => {
+test("the same name with another server stays the same character and profile", async () => {
   const h = setup();
-  const update = h.load({ name: "Example", serverId: 2 });
+  await h.load({ name: "Example", serverId: 2 });
+  assert.equal(h.key(), "Example@1");
+  assert.equal(h.profile(), "old");
+  assert.equal(h.reads.size, 0);
+  assert.deepEqual(h.writes, []);
+  assert.equal(h.live.used.size, 1);
+});
+
+test("the same name with another server while it loads stays the character being loaded", async () => {
+  const h = setup();
+  const update = h.load({ name: "Other", serverId: 3 });
   await turn();
-  h.reads.get("Example@2")({ id: "server2" });
+  await h.load({ name: "Other", serverId: 5 });
+  h.reads.get("Other@3")({ id: "other" });
   await update;
-  assert.equal(h.key(), "Example@2");
-  assert.equal(h.profile(), "server2");
+  assert.equal(h.key(), "Other@3");
+  assert.equal(h.profile(), "other");
+  assert.equal(h.reads.size, 1);
+});
+
+test("another character restores its own profile and clears what was happening", async () => {
+  const h = setup();
+  const update = h.load({ name: "Other", serverId: 2 });
+  await turn();
+  h.reads.get("Other@2")({ id: "other" });
+  await update;
+  assert.equal(h.key(), "Other@2");
+  assert.equal(h.profile(), "other");
   assert.deepEqual(h.writes, [["Example@1", "old"]]);
-  assert.equal(h.live.used.size, 0);
-  assert.equal(h.live.samples.size, 0);
+  for (const state of Object.values(h.live)) if (state instanceof Map) assert.equal(state.size, 0);
 });
 
 test("late reads cannot replace a newer character or undo a return to the current character", async () => {
