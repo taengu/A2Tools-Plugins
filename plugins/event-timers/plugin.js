@@ -1649,6 +1649,20 @@ const INVASION_NOTE = {
   "zh-Hans": "可能在每小时 30 分开启，但由游戏随机决定：在我们的记录中，约有一半的时段有开启。计时器倒数的是下一次机会，而不是确定的开始。",
 };
 
+// The invasion's "may open" alert, chosen under its alert (off by default).
+const PRE_ALERT = {
+  "en": "Also alert before a possible opening (it often doesn't open)",
+  "ko": "열릴 수 있는 시간 전에도 알림 (열리지 않는 경우가 많음)",
+  "ja": "開く可能性がある前にも通知（開かないことも多い）",
+  "de": "Auch vor einer möglichen Öffnung alarmieren (sie öffnet oft nicht)",
+  "fr": "Alerter aussi avant une ouverture possible (souvent, elle ne s'ouvre pas)",
+  "es": "Avisar también antes de una posible apertura (a menudo no se abre)",
+  "pt": "Avisar também antes de uma possível abertura (muitas vezes não abre)",
+  "ru": "Оповещать и перед возможным открытием (часто оно не открывается)",
+  "zh-Hant": "可能開啟前也提醒（常常不會開啟）",
+  "zh-Hans": "可能开启前也提醒（常常不会开启）",
+};
+
 function alertEditor(id, label) {
   const words = ui();
   const a = aui();
@@ -1723,7 +1737,17 @@ function alertEditor(id, label) {
       const note = document.createElement("p");
       note.className = "note alertNote";
       note.textContent = INVASION_NOTE[language] || INVASION_NOTE.en;
-      li.append(note);
+      const pre = document.createElement("label");
+      pre.className = "alertNote";
+      const box = document.createElement("input");
+      box.type = "checkbox";
+      box.checked = prefs.invasionPreAlert === true;
+      box.addEventListener("change", () => {
+        prefs.invasionPreAlert = box.checked;
+        savePrefs();
+      });
+      pre.append(box, " ", PRE_ALERT[language] || PRE_ALERT.en);
+      li.append(note, pre);
     }
     li.append(leads);
     return li;
@@ -2068,8 +2092,6 @@ function soundAlert(key) {
 // play, without the HP in brackets. The computer's voices come a moment
 // after the page opens, and the Voice list is filled again then.
 let voice = null;
-// Whether alerts are spoken (the invasion's then come only as it opens).
-const speaksAlerts = () => !!prefs.speak && !!voice?.available;
 voice = typeof makeVoices === "function" ? makeVoices({ lang: () => language, prefs: () => prefs, onChange: () => renderVoice() }) : null;
 const speakTimers = new Set();
 function speakAlert(message, key, parts) {
@@ -2261,10 +2283,10 @@ function checkAlerts(now) {
       if (next && due(`${ev.id}+${minutes}`, next.start, minutes)) {
         const name = text(ev.name);
         if (isChance(ev)) {
-          // With voice alerts on, only the game's announcement is said (as
-          // it opens, decoded:timed-event): no "may open" at all. Otherwise,
-          // as it starts while listening, the announcement says it too.
-          if (speaksAlerts() || (!minutes && listening())) continue;
+          // "May open" alerts only when the player asked for them (off by
+          // default: it opens at random). Its opening is said when the game
+          // announces it (decoded:timed-event), so not here while listening.
+          if (prefs.invasionPreAlert !== true || (!minutes && listening())) continue;
           const c = chanceWords();
           announce(ev.id, minutes ? c.soon(name, minutes) : c.now(name), ev.id,
             [SPOKEN.name(ev.name), minutes ? SPOKEN.maySoon(minutes) : SPOKEN.mayNow]);
@@ -2667,10 +2689,10 @@ a2.on("decoded:timed-event", (d) => {
   const ev = EVENTS.find((e) => isChance(e) && e.side === side);
   const key = `${side}@${start}`;
   if (ev && ev.id in prefs.alerts && !toldOpen.has(key)) {
-    // Heard only with the game open: the lead is the alert's own. With voice
-    // alerts on, an opening is always said, whatever the lead.
+    // With its alert on, an opening is always said, whatever the lead (the
+    // lead is only for the "may open" alert, if chosen).
     const lead = Number(prefs.alerts[ev.id]);
-    if (lead >= 0 && (speaksAlerts() || alsoAtStart(lead).includes(0))) {
+    if (lead >= 0) {
       toldOpen.add(key);
       const name = text(ev.name);
       const announceOpen = (id, message, k, parts) => {
