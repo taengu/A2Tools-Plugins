@@ -2,12 +2,15 @@
 
 For Chanters. A small window with your mantras (Sprint Mantra, Undefeated
 Mantra): a green dot while one runs, and how many party members it reaches
-(+3). The moment one stops in a fight, a red banner and a sound, and the
-window comes up on top without taking focus; it goes again on its own when
-the mantra is back. The same alert comes at the first hit of a fight if a
-mantra you ran in the minute before it is off; one you switched off earlier
-is your choice, and gives none. A click on the banner dismisses it until
-that mantra is on again.
+(+3). Green means your aura is currently observed, including pulses on allies.
+Blue means another Chanter supplies the effect on you while your own activity
+is not observed; your own toggle state remains unknown. If neither is
+currently detected in a fight, a red banner appears, a sound plays, and the
+window comes up on top without taking focus; it goes again on its own when the
+mantra is back. The same alert comes at the first hit of a fight if a mantra
+you ran in the minute before it is no longer detected; one you switched off
+earlier is your choice, and gives none. A click on the banner dismisses it
+until that mantra is on again.
 
 Below: the current fight's length and each mantra's uptime, and after it the
 last fight's, with the average of the last 10 (per character). A fight runs
@@ -25,9 +28,12 @@ the meter knows isn't a Chanter there is no alert at all.
 
 - `2B 38`, a mantra ticking (`self: caster`): a mantra ticks once a second
   on everyone it reaches, carrying who it is on and who keeps it up. Only
-  yours reach the plugin. A kind with bit 2 (the skill is there; `13` in the
+  yours reach the own-activity channel. A separate `self: on` decoder observes
+  incoming coverage on you from another Chanter; it does not add your own uptime
+  or party reach. A kind with bit 2 (the skill is there; `13` in the
   captures), `q` 2, skills 1816xxxx and 1819xxxx.
-  A missed tick (2.2 s without one) is a drop.
+  A gap of 2.2 s without either own activity or received coverage can alert.
+  This is observed effect coverage, not authoritative toggle state.
 - `04 38`, a hit (`self: actor`): the start of the record (target, flags,
   a value, who hit, the skill), only your own hits. A hit on something else
   with a skill that isn't a mantra means a fight.
@@ -37,3 +43,6 @@ the meter knows isn't a Chanter there is no alert at all.
 
 Checked against a capture from 2026-10-14 (22:15, a party of five): your 14
 ticks over 7 s, 4 party members reached, 26 fight hits.
+
+If your own mantra stops while another Chanter supplies the same mantra on you,
+there is deliberately no alert; your own uptime still records the gap.
