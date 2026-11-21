@@ -1,5 +1,18 @@
 [
   {
+    "version": "0.8.4",
+    "en": "Gathering history saves in smaller pages so long logs fit the meter's storage limit. Temporary write failures are retried, and existing history is retained.",
+    "ko": "채집 기록을 작은 페이지로 나누어 긴 기록도 미터의 저장 한도에 맞춥니다. 일시적인 저장 실패는 다시 시도하며 기존 기록은 유지합니다.",
+    "ja": "採集履歴を小さなページに分け、長い履歴もメーターの保存上限に収めます。一時的な書き込み失敗は再試行し、既存の履歴を保持します。",
+    "de": "Der Sammelverlauf wird in kleinen Seiten gespeichert, damit auch lange Verläufe ins Speicherlimit passen. Vorübergehend fehlgeschlagene Schreibvorgänge werden wiederholt; der vorhandene Verlauf bleibt erhalten.",
+    "fr": "L’historique de récolte est enregistré par petites pages pour respecter la limite du compteur. Les écritures qui échouent temporairement sont réessayées et l’historique existant est conservé.",
+    "es": "El historial de recolección se guarda en páginas pequeñas para ajustarse al límite del medidor. Se reintentan los fallos temporales de escritura y se conserva el historial existente.",
+    "pt": "O histórico de coleta é salvo em páginas menores para caber no limite do medidor. Falhas temporárias de gravação são tentadas novamente e o histórico existente é preservado.",
+    "ru": "История сбора сохраняется небольшими страницами, чтобы длинные журналы помещались в лимит счётчика. Временные ошибки записи повторяются, существующая история сохраняется.",
+    "zh-Hant": "採集歷史以較小的分頁儲存，長篇紀錄也能符合計量器的儲存上限。暫時寫入失敗時會重試，並保留現有歷史。",
+    "zh-Hans": "采集历史以较小的分页保存，使较长的记录也能符合统计器的存储上限。暂时写入失败时会重试，并保留已有历史。"
+  },
+  {
     "version": "0.8.3",
     "en": "Black Market: a pet or item on sale in two tabs at once stays on the list after you buy one of them, until the other is bought too.",
     "ko": "검은 구름 무역단: 두 탭에 동시에 나온 펫이나 아이템은 하나를 사도 다른 하나를 살 때까지 목록에 남습니다.",
@@ -50,18 +63,5 @@
     "ru": "Новая вкладка «Сбор»: для каждого ресурса — как часто сбор улучшается с самого начала (свежее, у Мелы ×3), как часто Оценщик улучшает базовый сбор (с вероятным диапазоном настоящего шанса), Богатый урожай, неудачи и последние сборы.",
     "zh-Hant": "新的採集分頁：每種材料開始時品質提升（新鮮，梅拉為 3 倍）的機率、鑑定師提升基本品質採集的機率（含真實機率的可能範圍）、豐饒的收穫、失敗與最近的採集。",
     "zh-Hans": "新的采集分页：每种材料开始时品质提升（新鲜，梅拉为 3 倍）的概率、鉴定师提升基本品质采集的概率（含真实概率的可能范围）、丰饶的收获、失败与最近的采集。"
-  },
-  {
-    "version": "0.7.3",
-    "en": "Skins: your Closet is shared by your characters on the same server, so a character you haven't logged in since the update shows its server's skins too.",
-    "ko": "스킨: 옷장은 같은 서버의 캐릭터끼리 공유되므로, 업데이트 후 아직 접속하지 않은 캐릭터도 그 서버의 스킨이 표시됩니다.",
-    "ja": "スキン：クローゼットは同じサーバーのキャラクターで共有されるので、更新後まだログインしていないキャラクターにもそのサーバーのスキンを表示します。",
-    "de": "Skins: Der Kleiderschrank gilt für deine Charaktere auf demselben Server, also zeigt auch ein seit dem Update nicht eingeloggter Charakter die Skins seines Servers.",
-    "fr": "Apparences : la garde-robe est partagée par tes personnages d'un même serveur, un personnage pas connecté depuis la mise à jour affiche donc aussi celles de son serveur.",
-    "es": "Aspectos: el armario lo comparten tus personajes del mismo servidor, así que uno sin conectar desde la actualización también muestra los de su servidor.",
-    "pt": "Visuais: o guarda-roupa é compartilhado pelos personagens do mesmo servidor, então um personagem sem entrar desde a atualização também mostra os do servidor.",
-    "ru": "Облики: гардероб общий для персонажей на одном сервере, поэтому персонаж, не входивший с обновления, тоже показывает облики своего сервера.",
-    "zh-Hant": "外觀：衣櫃由同一伺服器的角色共用，因此更新後尚未登入的角色也會顯示該伺服器的外觀。",
-    "zh-Hans": "外观：衣柜由同一服务器的角色共用，因此更新后尚未登录的角色也会显示该服务器的外观。"
   }
 ]
