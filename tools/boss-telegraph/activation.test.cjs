@@ -57,7 +57,7 @@ test("unknown region with several regional entries uses them only when every tex
   assert.equal(r.resolve(call, { category: "nightmare", stage: 9 }).reason, "scope-mismatch");
   assert.equal(r.resolve(call, { category: "trial" }).reason, "scope-mismatch");
   assert.equal(r.resolve(call, {}, { preview: true }).reason, "preview-region-needed");
-  assert.equal(r.resolve(call, { category: "nightmare" }, { uncertain: true }).eligible, false);
+  assert.equal(r.resolve(call, { category: "nightmare" }, { uncertain: true }).eligible, true, "one text for the trigger");
   const different = create({ entries: regionalVariants() });
   for (const facts of [{}, { category: "nightmare" }, { category: "nightmare", stage: 2 }]) {
     const result = different.resolve(call, facts);
@@ -105,11 +105,12 @@ test("combined categories preserve every required difficulty and stage dimension
 });
 
 test("live uncertain/shared triggers remain neutral while explicit preview demonstrates the chosen scope", () => {
-  const r = resolver();
+  const otherText = Object.fromEntries(locales.map((locale) => [locale, `Boss B ${locale}`]));
+  const r = create({ entries: [entry(), entry({ k: "b", bossKey: "boss-b", text: otherText })] });
   assert.equal(r.resolve(call, context, { uncertain: true }).reason, "uncertain-trigger");
   assert.equal(r.resolve({ ...call, uncertain: true }, context).eligible, false);
   assert.equal(r.resolve({ ...call, uncertain: "true" }, context).eligible, false);
-  const shared = create({ entries: [entry(), entry({ k: "b", bossKey: "boss-b" })] });
+  const shared = r;
   assert.equal(shared.resolve(call, context).reason, "shared-trigger");
   assert.equal(shared.resolve(call, { region: "global" }, { preview: true }).eligible, true);
   assert.equal(shared.resolve(call, { region: "global" }, { preview: true }).scopeBadge.preview, true);
@@ -292,4 +293,17 @@ test("a single KR literal preview cannot activate under Global or an unknown reg
   }
   assert.equal(r.resolve(call, { region: "Global" }, { preview: true }).reason, "scope-mismatch");
   assert.equal(r.resolve(call, { region: "KR" }, { preview: true }).eligible, true);
+});
+
+test("a shared or uncertain trigger activates only when every boss's entry has the same text", () => {
+  const same = create({ entries: [entry(), entry({ k: "b", bossKey: "boss-b" })] });
+  assert.equal(same.resolve(call, context).reason, "active");
+  assert.equal(same.resolve(call, context, { uncertain: true }).eligible, true);
+  assert.equal(same.resolve({ ...call, uncertain: true }, {}).reason, "active-assumed");
+  assert.equal(same.resolve(call, { ...context, difficulty: "hard" }).reason, "scope-mismatch");
+  const other = entry({ k: "b", bossKey: "boss-b", text: Object.fromEntries(locales.map((locale) => [locale, `Other ${locale}`])) });
+  const different = create({ entries: [entry(), other] });
+  assert.equal(different.resolve(call, context).reason, "shared-trigger");
+  assert.equal(different.resolve(call, context, { uncertain: true }).reason, "uncertain-trigger");
+  assert.equal(different.resolve({ k: "c", b: "boss-c", t: call.t, id: call.id }, context).reason, "not-found");
 });

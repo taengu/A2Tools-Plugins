@@ -137,7 +137,8 @@
       const buff = c.t === "abnormal" ? T(c.n) : "";
       if (actionMode()) {
         const resolved = hooks.instruction?.(c, { preview, uncertain: !!c.uncertain });
-        const instruction = !c.uncertain && (actionText(resolved?.text) || (!hooks.instruction && actionText(actions.calls?.[c.k])));
+        // The registry decides when a shared trigger's instruction is safe.
+        const instruction = actionText(resolved?.text) || (!c.uncertain && !hooks.instruction && actionText(actions.calls?.[c.k]));
         // No instruction and no short call: a neutral call, never the boss's
         // line read out as if it were a direction. The line stays below it.
         const action = instruction || act || actionText(actions.watch) || line || buff;

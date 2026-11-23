@@ -214,3 +214,16 @@ test("real regional guide resolver never substitutes a different region's added 
   if(other.eligible)assert.ok(h.registry.entries.some(e=>e.k===entry.k&&e.scope.regions?.includes(region==="Global"?"KR":"Global")&&e.text.en===other.text.en));
  }
 });
+test("Frenzy, shared by many bosses with one instruction, is said for a known boss and an unknown entity",async()=>{
+ const h=await page({registry:"real",stored:{guideRegion:"Global"}});
+ const frenzy=h.registry.entries.filter(e=>e.t==="abnormal"&&e.id===10000008);
+ assert.ok(frenzy.length>=10);assert.equal(new Set(frenzy.map(e=>e.text.en)).size,1);
+ const atiel=h.data.calls.find(c=>c.b==="atiel"&&c.t==="cast"&&!c.uncertain);
+ h.handlers.get("decoded:boss-cast")({caster:303,skill:atiel.id},{at:h.now()});await h.advance(2000);
+ h.handlers.get("decoded:boss-buff-added")({entity:303,abnormal:10000008,instance:4,length:10000},{at:h.now()});await h.advance();
+ assert.equal(h.spoken.at(-1),frenzy[0].text.en);
+ const differing=h.registry.entries.filter(e=>e.k==="cast:1604500:vakron");
+ assert.ok(differing.length>0,"a shared trigger with different texts stays neutral");
+ h.handlers.get("decoded:boss-cast")({caster:404,skill:1604500},{at:h.now()});await h.advance();
+ assert.ok(!h.registry.entries.some(e=>e.id===1604500&&e.text.en===h.spoken.at(-1)));
+});

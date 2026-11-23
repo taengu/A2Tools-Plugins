@@ -13366,6 +13366,4184 @@
         "liveVerified": false
       },
       "scopeNote": "KR original Urugugu Canyon Conquest Guardian Captain Raur; Exploration, Hard, Global and later renamed Raur excluded."
+    },
+    {
+      "k": "use:1801940:abyssal-wings-ketu",
+      "bossKey": "abyssal-wings-ketu",
+      "t": "use",
+      "id": 1801940,
+      "source": {
+        "field": "line",
+        "en": "Sink silently... and perish!"
+      },
+      "verification": "guide-exact",
+      "enabled": true,
+      "referenceOnly": false,
+      "actionId": "mechanic-7875814867bef8a1",
+      "text": {
+        "en": "Jump to catch the falling orbs",
+        "ko": "점프해서 떨어지는 구슬을 받으세요",
+        "ja": "ジャンプして落ちてくる球を取って",
+        "de": "Spring und fang die fallenden Kugeln",
+        "fr": "Sautez pour attraper les orbes qui tombent",
+        "es": "Salta para atrapar los orbes que caen",
+        "pt": "Pule para pegar os orbes que caem",
+        "ru": "Прыгайте, чтобы поймать падающие сферы",
+        "zh-Hant": "跳起接住落下的光球",
+        "zh-Hans": "跳起接住落下的光球"
+      },
+      "scope": {
+        "regions": [
+          "KR",
+          "Global"
+        ],
+        "categories": [
+          "sanctuary"
+        ],
+        "difficulties": [
+          "normal",
+          "hard",
+          "exploration"
+        ],
+        "stages": []
+      },
+      "evidence": [
+        {
+          "kind": "guide",
+          "url": "https://game.savetip.co.kr/aion2-rudra-sanctuary-2nd-boss-guide/",
+          "date": "2026-11-24",
+          "support": "KR line '소리 없이 소멸해라!' starts the orb catch: two orbs fall onto the platforms; two non-tank players each jump into one before it lands (one player can take both), or it explodes."
+        },
+        {
+          "kind": "guide",
+          "url": "https://aion2-meta.com/dungeons/abyssal-forge-ludra/",
+          "date": "2026-11-24"
+        },
+        {
+          "kind": "guide",
+          "url": "https://vtomes.com/aion2/guides/ludra-raid-guide/",
+          "date": "2026-11-24"
+        },
+        {
+          "kind": "guide",
+          "url": "https://www.aion2guidance.com/en/dungeons/ludra/",
+          "date": "2026-11-24"
+        }
+      ],
+      "review": {
+        "decision": "approve_scoped",
+        "date": "2026-11-24",
+        "basis": "boss guide research",
+        "confidence": "high",
+        "researchEn": "Jump to catch the falling orbs",
+        "scopeWidestForBoss": true
+      },
+      "provenance": {
+        "language": "en",
+        "sourceField": "line",
+        "sourceKind": "guide-research",
+        "liveVerified": false
+      }
+    },
+    {
+      "k": "cast:1801970:abyssal-wings-ketu",
+      "bossKey": "abyssal-wings-ketu",
+      "t": "cast",
+      "id": 1801970,
+      "source": {
+        "field": "line",
+        "en": "Will any soul come to your rescue?"
+      },
+      "verification": "guide-exact",
+      "enabled": true,
+      "referenceOnly": false,
+      "actionId": "mechanic-406bd86651612fe3",
+      "text": {
+        "en": "Break your soul stone just before the hit",
+        "ko": "공격 직전에 자신의 영혼석을 깨세요",
+        "ja": "攻撃の直前に自分の魂石を壊して",
+        "de": "Zerstör deinen Seelenstein kurz vor dem Treffer",
+        "fr": "Brisez votre pierre d'âme juste avant le coup",
+        "es": "Rompe tu piedra de alma justo antes del golpe",
+        "pt": "Quebre sua pedra de alma logo antes do golpe",
+        "ru": "Разбейте свой камень души прямо перед ударом",
+        "zh-Hant": "在攻擊前一刻擊破你的靈魂石",
+        "zh-Hans": "在攻击前一刻击破你的灵魂石"
+      },
+      "scope": {
+        "regions": [
+          "KR",
+          "Global"
+        ],
+        "categories": [
+          "sanctuary"
+        ],
+        "difficulties": [
+          "normal",
+          "hard",
+          "exploration"
+        ],
+        "stages": []
+      },
+      "evidence": [
+        {
+          "kind": "guide",
+          "url": "https://game.savetip.co.kr/aion2-rudra-sanctuary-2nd-boss-guide/",
+          "date": "2026-11-24",
+          "support": "KR line '널 구할 영혼이 있을까' = Power Burst: Mortal Soul Stones rise, then an unavoidable raid-wide hit about 3.5 s later; a broken stone gives about 4-5 s invulnerability. Leave one for the healer, who revives anyone who dies."
+        },
+        {
+          "kind": "guide",
+          "url": "https://game.savetip.co.kr/aion2-rudra-abyss-raid-guide/",
+          "date": "2026-11-24"
+        },
+        {
+          "kind": "guide",
+          "url": "https://aion2-meta.com/dungeons/abyssal-forge-ludra/",
+          "date": "2026-11-24"
+        },
+        {
+          "kind": "guide",
+          "url": "https://vtomes.com/aion2/guides/ludra-raid-guide/",
+          "date": "2026-11-24"
+        },
+        {
+          "kind": "guide",
+          "url": "https://aion2tierlist.com/guides/aion-2-ludra-raid-guide",
+          "date": "2026-11-24"
+        }
+      ],
+      "review": {
+        "decision": "approve_scoped",
+        "date": "2026-11-24",
+        "basis": "boss guide research",
+        "confidence": "high",
+        "researchEn": "Break your soul stone just before the hit",
+        "scopeWidestForBoss": true
+      },
+      "provenance": {
+        "language": "en",
+        "sourceField": "line",
+        "sourceKind": "guide-research",
+        "liveVerified": false
+      }
+    },
+    {
+      "k": "abnormal:18019631:abyssal-wings-ketu",
+      "bossKey": "abyssal-wings-ketu",
+      "t": "abnormal",
+      "id": 18019631,
+      "source": {
+        "field": "line",
+        "en": "Hide and seek in the Abyss! Haha!"
+      },
+      "verification": "guide-exact",
+      "enabled": true,
+      "referenceOnly": false,
+      "actionId": "mechanic-0a6049677fff5fb6",
+      "text": {
+        "en": "Go to 6 o'clock, kill spirits northward",
+        "ko": "6시 방향으로 가서 북쪽으로 정령을 처치하세요",
+        "ja": "6時方向へ行き、北へ向かって精霊を倒して",
+        "de": "Geh auf 6 Uhr, töte die Geister Richtung Norden",
+        "fr": "Allez à 6 h, tuez les esprits vers le nord",
+        "es": "Ve a las 6, mata los espíritus hacia el norte",
+        "pt": "Vá para as 6 horas, mate os espíritos rumo ao norte",
+        "ru": "Идите на 6 часов, убивайте духов к северу",
+        "zh-Hant": "前往6點鐘方向，往北擊殺精靈",
+        "zh-Hans": "前往6点钟方向，往北击杀精灵"
+      },
+      "scope": {
+        "regions": [
+          "KR",
+          "Global"
+        ],
+        "categories": [
+          "sanctuary"
+        ],
+        "difficulties": [
+          "normal",
+          "hard",
+          "exploration"
+        ],
+        "stages": []
+      },
+      "evidence": [
+        {
+          "kind": "guide",
+          "url": "https://game.savetip.co.kr/aion2-rudra-sanctuary-2nd-boss-guide/",
+          "date": "2026-11-24",
+          "support": "KR line '심연과의 숨바꼭질이다' = hide and seek: dodge the laser from 6 o'clock, split left and right and kill spirits toward 12 o'clock before the white wall reaches them (else group fear), then gather on the centre sigil and heal through the hit."
+        },
+        {
+          "kind": "guide",
+          "url": "https://aion2-meta.com/dungeons/abyssal-forge-ludra/",
+          "date": "2026-11-24"
+        },
+        {
+          "kind": "guide",
+          "url": "https://vtomes.com/aion2/guides/ludra-raid-guide/",
+          "date": "2026-11-24"
+        },
+        {
+          "kind": "guide",
+          "url": "https://www.aion2guidance.com/en/dungeons/ludra/",
+          "date": "2026-11-24"
+        },
+        {
+          "kind": "guide",
+          "url": "https://aion2tierlist.com/guides/aion-2-ludra-raid-guide",
+          "date": "2026-11-24"
+        }
+      ],
+      "review": {
+        "decision": "approve_scoped",
+        "date": "2026-11-24",
+        "basis": "boss guide research",
+        "confidence": "high",
+        "researchEn": "Go to 6 o'clock, kill spirits northward",
+        "scopeWidestForBoss": true
+      },
+      "provenance": {
+        "language": "en",
+        "sourceField": "line",
+        "sourceKind": "guide-research",
+        "liveVerified": false
+      }
+    },
+    {
+      "k": "abnormal:10000008:afflicted-bakarma",
+      "bossKey": "afflicted-bakarma",
+      "t": "abnormal",
+      "id": 10000008,
+      "source": {
+        "field": "line",
+        "en": "Strength that has transcended all limits!"
+      },
+      "verification": "guide-exact",
+      "enabled": true,
+      "referenceOnly": false,
+      "actionId": "mechanic-71836be06f65a3fb",
+      "text": {
+        "en": "Enraged: burn it down, use defensives",
+        "ko": "광폭화: 방어 스킬을 쓰고 빠르게 처치하세요",
+        "ja": "激昂：防御スキルを使い、一気に倒して",
+        "de": "Raserei: Verteidigung nutzen, schnell erledigen",
+        "fr": "Enragé : défenses actives, achevez-le vite",
+        "es": "Enfurecido: usa defensas y acaba con él",
+        "pt": "Enfurecido: use defesas e acabe com ele",
+        "ru": "Ярость: защитные умения, добивайте быстро",
+        "zh-Hant": "狂暴：使用防禦技能，迅速擊殺",
+        "zh-Hans": "狂暴：使用防御技能，迅速击杀"
+      },
+      "scope": {
+        "regions": [
+          "KR",
+          "Global"
+        ],
+        "categories": [
+          "conquest"
+        ],
+        "difficulties": [
+          "normal",
+          "hard",
+          "exploration"
+        ],
+        "stages": []
+      },
+      "evidence": [
+        {
+          "kind": "guide",
+          "url": "https://aion2data.com/dungeons/cradle-of-nihility/guide",
+          "date": "2026-11-24",
+          "support": "Frenzy at 5:00 combat time (Conquest and Hard): +200% damage, +100% move and combat speed. Shugo hint: 'Bakarma is enraged, kru! Hurry up and finish him off!' Use defensives and finish him."
+        }
+      ],
+      "review": {
+        "decision": "approve_scoped",
+        "date": "2026-11-24",
+        "basis": "boss guide research",
+        "confidence": "high",
+        "researchEn": "Enraged: burn it down now",
+        "scopeWidestForBoss": true
+      },
+      "provenance": {
+        "language": "en",
+        "sourceField": "line",
+        "sourceKind": "guide-research",
+        "liveVerified": false
+      }
+    },
+    {
+      "k": "cast:1801510:atiel",
+      "bossKey": "atiel",
+      "t": "cast",
+      "id": 1801510,
+      "source": {
+        "field": "line",
+        "en": "Frail world, crumble!"
+      },
+      "verification": "guide-exact",
+      "enabled": true,
+      "referenceOnly": false,
+      "actionId": "mechanic-0096737de99c841e",
+      "text": {
+        "en": "Move toward the center, off the edge",
+        "ko": "가장자리에서 벗어나 중앙으로 이동하세요",
+        "ja": "外周から離れて中央へ移動して",
+        "de": "Geh weg vom Rand, Richtung Mitte",
+        "fr": "Quittez le bord, allez vers le centre",
+        "es": "Sal del borde, ve hacia el centro",
+        "pt": "Saia da borda, vá para o centro",
+        "ru": "Уходите от края к центру",
+        "zh-Hant": "離開邊緣，往中央移動",
+        "zh-Hans": "离开边缘，往中央移动"
+      },
+      "scope": {
+        "regions": [
+          "KR",
+          "Global"
+        ],
+        "categories": [
+          "transcendence"
+        ],
+        "difficulties": [],
+        "stages": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10
+        ]
+      },
+      "evidence": [
+        {
+          "kind": "guide",
+          "url": "https://aion2.gg/guides/deus-research-base-guide",
+          "date": "2026-11-24",
+          "support": "Terrain destruction at about 75% HP: 5 s cast, the outer ring (35-60 m from Atiel) collapses after a push to the edge; a fall cannot be revived. Stay central but out of the 5 m circle at the boss."
+        },
+        {
+          "kind": "guide",
+          "url": "https://www.gametoc.co.kr/news/articleView.html?idxno=104301",
+          "date": "2026-11-24"
+        },
+        {
+          "kind": "guide",
+          "url": "https://www.inven.co.kr/webzine/news/?news=311706&site=aion2",
+          "date": "2026-11-24"
+        },
+        {
+          "kind": "guide",
+          "url": "https://dbaion2.ru/en/guides/mekhaniki-deus/",
+          "date": "2026-11-24"
+        }
+      ],
+      "review": {
+        "decision": "approve_scoped",
+        "date": "2026-11-24",
+        "basis": "boss guide research",
+        "confidence": "high",
+        "researchEn": "Move toward the centre, off the edge",
+        "scopeWidestForBoss": true
+      },
+      "provenance": {
+        "language": "en",
+        "sourceField": "line",
+        "sourceKind": "guide-research",
+        "liveVerified": false
+      }
+    },
+    {
+      "k": "cast:1801520:atiel",
+      "bossKey": "atiel",
+      "t": "cast",
+      "id": 1801520,
+      "source": {
+        "field": "line",
+        "en": "I will crush you all!"
+      },
+      "verification": "guide-exact",
+      "enabled": true,
+      "referenceOnly": false,
+      "actionId": "mechanic-441ff39652699956",
+      "text": {
+        "en": "Move in close, stand at his side",
+        "ko": "가까이 붙어 보스 옆에 서세요",
+        "ja": "近づいてボスの横に立って",
+        "de": "Geh nah ran, stell dich an seine Seite",
+        "fr": "Approchez-vous, placez-vous sur son flanc",
+        "es": "Acércate y ponte a su costado",
+        "pt": "Chegue perto e fique ao lado dele",
+        "ru": "Подойдите вплотную, встаньте сбоку",
+        "zh-Hant": "靠近並站在首領側面",
+        "zh-Hans": "靠近并站在首领侧面"
+      },
+      "scope": {
+        "regions": [
+          "KR",
+          "Global"
+        ],
+        "categories": [
+          "transcendence"
+        ],
+        "difficulties": [],
+        "stages": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10
+        ]
+      },
+      "evidence": [
+        {
+          "kind": "guide",
+          "url": "https://aion2.gg/guides/deus-research-base-guide",
+          "date": "2026-11-24",
+          "support": "Second terrain destruction (about 35% HP): 5 s cast, the ring 25-35 m around Atiel breaks, plus a 5 m circle just in front of him. aion2.gg: walk in and stand at his side or back, not in front."
+        },
+        {
+          "kind": "guide",
+          "url": "https://www.gametoc.co.kr/news/articleView.html?idxno=104301",
+          "date": "2026-11-24"
+        },
+        {
+          "kind": "guide",
+          "url": "https://www.inven.co.kr/webzine/news/?news=311706&site=aion2",
+          "date": "2026-11-24"
+        },
+        {
+          "kind": "guide",
+          "url": "https://dbaion2.ru/en/guides/mekhaniki-deus/",
+          "date": "2026-11-24"
+        }
+      ],
+      "review": {
+        "decision": "approve_scoped",
+        "date": "2026-11-24",
+        "basis": "boss guide research",
+        "confidence": "high",
+        "researchEn": "Move in close, stand at his side",
+        "scopeWidestForBoss": true
+      },
+      "provenance": {
+        "language": "en",
+        "sourceField": "line",
+        "sourceKind": "guide-research",
+        "liveVerified": false
+      }
+    },
+    {
+      "k": "abnormal:10000008:atiel",
+      "bossKey": "atiel",
+      "t": "abnormal",
+      "id": 10000008,
+      "source": {
+        "field": "line",
+        "en": "No more games!"
+      },
+      "verification": "guide-exact",
+      "enabled": true,
+      "referenceOnly": false,
+      "actionId": "mechanic-ef0ef72580d5185f",
+      "text": {
+        "en": "Enraged: burn it down, use defensives",
+        "ko": "광폭화: 방어 스킬을 쓰고 빠르게 처치하세요",
+        "ja": "激昂：防御スキルを使い、一気に倒して",
+        "de": "Raserei: Verteidigung nutzen, schnell erledigen",
+        "fr": "Enragé : défenses actives, achevez-le vite",
+        "es": "Enfurecido: usa defensas y acaba con él",
+        "pt": "Enfurecido: use defesas e acabe com ele",
+        "ru": "Ярость: защитные умения, добивайте быстро",
+        "zh-Hant": "狂暴：使用防禦技能，迅速擊殺",
+        "zh-Hans": "狂暴：使用防御技能，迅速击杀"
+      },
+      "scope": {
+        "regions": [
+          "KR",
+          "Global"
+        ],
+        "categories": [
+          "transcendence"
+        ],
+        "difficulties": [],
+        "stages": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10
+        ]
+      },
+      "evidence": [
+        {
+          "kind": "guide",
+          "url": "https://aion2.gg/guides/deus-research-base-guide",
+          "date": "2026-11-24",
+          "support": "Frenzy (enrage) at 05:00 on every stage: +200% damage, +100% combat speed. aion2.gg treats 5:00 as the run's damage check; no other counter given."
+        }
+      ],
+      "review": {
+        "decision": "approve_scoped",
+        "date": "2026-11-24",
+        "basis": "boss guide research",
+        "confidence": "medium",
+        "researchEn": "Enraged: use defensives, burn it down",
+        "scopeWidestForBoss": true
+      },
+      "provenance": {
+        "language": "en",
+        "sourceField": "line",
+        "sourceKind": "guide-research",
+        "liveVerified": false
+      }
+    },
+    {
+      "k": "use:1806100:awakened-alturadon",
+      "bossKey": "awakened-alturadon",
+      "t": "use",
+      "id": 1806100,
+      "source": {
+        "field": "line",
+        "en": "Come, Azure Breath!"
+      },
+      "verification": "guide-exact",
+      "enabled": true,
+      "referenceOnly": false,
+      "actionId": "mechanic-c5c65be7577bc32f",
+      "text": {
+        "en": "Grab the orbs before the boss does",
+        "ko": "보스보다 먼저 구슬을 먹으세요",
+        "ja": "ボスより先に球を取って",
+        "de": "Schnapp dir die Kugeln vor dem Boss",
+        "fr": "Prenez les orbes avant le boss",
+        "es": "Coge los orbes antes que el jefe",
+        "pt": "Pegue os orbes antes do chefe",
+        "ru": "Заберите сферы раньше босса",
+        "zh-Hant": "搶在首領之前拿取光球",
+        "zh-Hans": "抢在首领之前拿取光球"
+      },
+      "scope": {
+        "regions": [
+          "KR",
+          "Global"
+        ],
+        "categories": [
+          "conquest",
+          "sanctuary"
+        ],
+        "difficulties": [
+          "normal",
+          "hard",
+          "exploration"
+        ],
+        "stages": []
+      },
+      "evidence": [
+        {
+          "kind": "guide",
+          "url": "https://aion2data.com/dungeons/azure-breath-island/guide",
+          "date": "2026-11-24",
+          "support": "Boss absorbs uncollected lightning orbs (Shugo: 'The Alturadon swallowed something... big problem if he gets all of them'); each adds an Azure Breath stack, 10 stacks = wipe. Spread pickups: each orb gives a stacking DoT."
+        },
+        {
+          "kind": "guide",
+          "url": "https://www.gametoc.co.kr/news/articleView.html?idxno=107997",
+          "date": "2026-11-24"
+        },
+        {
+          "kind": "guide",
+          "url": "https://aion2t.com/guides/azure-breath-island-hard",
+          "date": "2026-11-24"
+        }
+      ],
+      "review": {
+        "decision": "approve_scoped",
+        "date": "2026-11-24",
+        "basis": "boss guide research",
+        "confidence": "high",
+        "researchEn": "Grab the orbs before the boss does",
+        "scopeWidestForBoss": true
+      },
+      "provenance": {
+        "language": "en",
+        "sourceField": "line",
+        "sourceKind": "guide-research",
+        "liveVerified": false
+      }
+    },
+    {
+      "k": "cast:1806170:awakened-alturadon",
+      "bossKey": "awakened-alturadon",
+      "t": "cast",
+      "id": 1806170,
+      "source": {
+        "field": "line",
+        "en": "Lightning floods the earth! Are you as fast as lightning?"
+      },
+      "verification": "guide-exact",
+      "enabled": true,
+      "referenceOnly": false,
+      "actionId": "mechanic-848b714260ab9701",
+      "text": {
+        "en": "Dodge the charging clones and lightning",
+        "ko": "돌진하는 분신과 번개를 피하세요",
+        "ja": "突進する分身と雷を避けて",
+        "de": "Weich den anstürmenden Klonen und Blitzen aus",
+        "fr": "Esquivez les clones qui chargent et la foudre",
+        "es": "Esquiva los clones que embisten y los rayos",
+        "pt": "Desvie dos clones em investida e dos raios",
+        "ru": "Уклоняйтесь от бегущих клонов и молний",
+        "zh-Hant": "閃避衝鋒的分身與雷電",
+        "zh-Hans": "闪避冲锋的分身与雷电"
+      },
+      "scope": {
+        "regions": [
+          "KR",
+          "Global"
+        ],
+        "categories": [
+          "conquest",
+          "sanctuary"
+        ],
+        "difficulties": [
+          "normal",
+          "hard",
+          "exploration"
+        ],
+        "stages": []
+      },
+      "evidence": [
+        {
+          "kind": "guide",
+          "url": "https://aion2data.com/dungeons/azure-breath-island/guide",
+          "date": "2026-11-24",
+          "support": "Thunder charge: boss goes to the centre, lightning covers 12 and 6 o'clock and clones charge across the map (knockback); a marked player is also charged. Stay off the flickering ground and out of the charge lanes."
+        },
+        {
+          "kind": "guide",
+          "url": "https://www.gametoc.co.kr/news/articleView.html?idxno=107997",
+          "date": "2026-11-24"
+        }
+      ],
+      "review": {
+        "decision": "approve_scoped",
+        "date": "2026-11-24",
+        "basis": "boss guide research",
+        "confidence": "high",
+        "researchEn": "Dodge the charging clones and lightning",
+        "scopeWidestForBoss": true
+      },
+      "provenance": {
+        "language": "en",
+        "sourceField": "line",
+        "sourceKind": "guide-research",
+        "liveVerified": false
+      }
+    },
+    {
+      "k": "use:1806190:awakened-alturadon",
+      "bossKey": "awakened-alturadon",
+      "t": "use",
+      "id": 1806190,
+      "source": {
+        "field": "line",
+        "en": "Veins brimming with Azure Breath, burst forth!"
+      },
+      "verification": "guide-exact",
+      "enabled": true,
+      "referenceOnly": false,
+      "actionId": "mechanic-9e4863e79ab846ce",
+      "text": {
+        "en": "Marked: lead the charge away from crystals",
+        "ko": "표식 대상: 돌진을 수정에서 먼 곳으로 유도하세요",
+        "ja": "マーク対象：突進を水晶から離れた所へ誘導",
+        "de": "Markiert: lenk den Ansturm weg von den Kristallen",
+        "fr": "Marqué : menez la charge loin des cristaux",
+        "es": "Marcado: lleva la carga lejos de los cristales",
+        "pt": "Marcado: leve a investida longe dos cristais",
+        "ru": "Отмеченный: уведите рывок от кристаллов",
+        "zh-Hant": "被標記：將衝鋒引離水晶",
+        "zh-Hans": "被标记：将冲锋引离水晶"
+      },
+      "scope": {
+        "regions": [
+          "KR",
+          "Global"
+        ],
+        "categories": [
+          "conquest",
+          "sanctuary"
+        ],
+        "difficulties": [
+          "normal",
+          "hard",
+          "exploration"
+        ],
+        "stages": []
+      },
+      "evidence": [
+        {
+          "kind": "guide",
+          "url": "https://aion2data.com/dungeons/azure-breath-island/guide",
+          "date": "2026-11-24",
+          "support": "Crystal phase (KR '푸른빛을 품은 광석이여 솟아라!', about 25% per aion2t): crystals spawn and the boss charges a marked player; a crystal hit explodes and drops orbs. Shugo: 'That ore! Don't smash it!' Others then grab the dropped orbs before the boss absorbs them."
+        },
+        {
+          "kind": "guide",
+          "url": "https://www.gametoc.co.kr/news/articleView.html?idxno=107997",
+          "date": "2026-11-24"
+        },
+        {
+          "kind": "guide",
+          "url": "https://aion2t.com/guides/azure-breath-island-hard",
+          "date": "2026-11-24"
+        }
+      ],
+      "review": {
+        "decision": "approve_scoped",
+        "date": "2026-11-24",
+        "basis": "boss guide research",
+        "confidence": "high",
+        "researchEn": "Marked: lead the charge away from crystals",
+        "scopeWidestForBoss": true
+      },
+      "provenance": {
+        "language": "en",
+        "sourceField": "line",
+        "sourceKind": "guide-research",
+        "liveVerified": false
+      }
+    },
+    {
+      "k": "abnormal:10000008:awakened-alturadon",
+      "bossKey": "awakened-alturadon",
+      "t": "abnormal",
+      "id": 10000008,
+      "source": {
+        "field": "line",
+        "en": "None can stop the awakened wrath!"
+      },
+      "verification": "guide-exact",
+      "enabled": true,
+      "referenceOnly": false,
+      "actionId": "mechanic-0e05a63f36c6ca27",
+      "text": {
+        "en": "Enraged: burn it down, use defensives",
+        "ko": "광폭화: 방어 스킬을 쓰고 빠르게 처치하세요",
+        "ja": "激昂：防御スキルを使い、一気に倒して",
+        "de": "Raserei: Verteidigung nutzen, schnell erledigen",
+        "fr": "Enragé : défenses actives, achevez-le vite",
+        "es": "Enfurecido: usa defensas y acaba con él",
+        "pt": "Enfurecido: use defesas e acabe com ele",
+        "ru": "Ярость: защитные умения, добивайте быстро",
+        "zh-Hant": "狂暴：使用防禦技能，迅速擊殺",
+        "zh-Hans": "狂暴：使用防御技能，迅速击杀"
+      },
+      "scope": {
+        "regions": [
+          "KR",
+          "Global"
+        ],
+        "categories": [
+          "conquest",
+          "sanctuary"
+        ],
+        "difficulties": [
+          "normal",
+          "hard",
+          "exploration"
+        ],
+        "stages": []
+      },
+      "evidence": [
+        {
+          "kind": "guide",
+          "url": "https://aion2data.com/dungeons/azure-breath-island/guide",
+          "date": "2026-11-24",
+          "support": "Frenzy at 5:00 combat time (Conquest and Hard): +200% damage, +100% move, spell and combat speed. No counter listed beyond finishing the boss first."
+        }
+      ],
+      "review": {
+        "decision": "approve_scoped",
+        "date": "2026-11-24",
+        "basis": "boss guide research",
+        "confidence": "medium",
+        "researchEn": "Enraged: use defensives, burn it down",
+        "scopeWidestForBoss": true
+      },
+      "provenance": {
+        "language": "en",
+        "sourceField": "line",
+        "sourceKind": "guide-research",
+        "liveVerified": false
+      }
+    },
+    {
+      "k": "use:1808955:basilus-the-false",
+      "bossKey": "basilus-the-false",
+      "t": "use",
+      "id": 1808955,
+      "source": {
+        "field": "line",
+        "en": "The dark magic corrupts... No!"
+      },
+      "verification": "guide-exact",
+      "enabled": true,
+      "referenceOnly": false,
+      "actionId": "mechanic-19719dcb2626cb65",
+      "text": {
+        "en": "Your color may change, recheck it",
+        "ko": "색이 바뀔 수 있으니 다시 확인하세요",
+        "ja": "色が変わることがあるので再確認して",
+        "de": "Deine Farbe kann wechseln, prüf sie erneut",
+        "fr": "Votre couleur peut changer, revérifiez-la",
+        "es": "Tu color puede cambiar, compruébalo otra vez",
+        "pt": "Sua cor pode mudar, confira de novo",
+        "ru": "Ваш цвет может смениться, проверьте снова",
+        "zh-Hant": "你的顏色可能改變，請再確認",
+        "zh-Hans": "你的颜色可能改变，请再确认"
+      },
+      "scope": {
+        "regions": [
+          "KR",
+          "Global"
+        ],
+        "categories": [
+          "conquest"
+        ],
+        "difficulties": [
+          "normal",
+          "hard",
+          "exploration"
+        ],
+        "stages": []
+      },
+      "evidence": [
+        {
+          "kind": "guide",
+          "url": "https://aion2data.com/dungeons/citadel-of-the-fallen-daeva/guide",
+          "date": "2026-11-24",
+          "support": "KR line '흑마법이 침식을...안 돼!' (below 50%): a black floor appears and your colour can change; check your feet before the next colour mechanic. aion2t: about 90% of deaths come from colour mix-ups."
+        },
+        {
+          "kind": "guide",
+          "url": "https://www.inven.co.kr/board/aion2/6493/205",
+          "date": "2026-11-24"
+        },
+        {
+          "kind": "guide",
+          "url": "https://aion2t.com/guides/citadel-of-the-fallen-daeva-hard",
+          "date": "2026-11-24"
+        }
+      ],
+      "review": {
+        "decision": "approve_scoped",
+        "date": "2026-11-24",
+        "basis": "boss guide research",
+        "confidence": "medium",
+        "researchEn": "Your colour may change, recheck it",
+        "scopeWidestForBoss": true
+      },
+      "provenance": {
+        "language": "en",
+        "sourceField": "line",
+        "sourceKind": "guide-research",
+        "liveVerified": false
+      }
+    },
+    {
+      "k": "use:1804560:black-blood-blatt",
+      "bossKey": "black-blood-blatt",
+      "t": "use",
+      "id": 1804560,
+      "source": {
+        "field": "line",
+        "en": "Violet death crashes down, burning red!"
+      },
+      "verification": "guide-exact",
+      "enabled": true,
+      "referenceOnly": false,
+      "actionId": "mechanic-d21f2ed2788bc084",
+      "text": {
+        "en": "Take purple first, then red",
+        "ko": "보라색을 먼저, 그다음 빨간색을 받으세요",
+        "ja": "先に紫、次に赤を取って",
+        "de": "Zuerst Lila, dann Rot",
+        "fr": "D'abord le violet, puis le rouge",
+        "es": "Primero el morado, luego el rojo",
+        "pt": "Primeiro o roxo, depois o vermelho",
+        "ru": "Сначала фиолетовый, затем красный",
+        "zh-Hant": "先拿紫色，再拿紅色",
+        "zh-Hans": "先拿紫色，再拿红色"
+      },
+      "scope": {
+        "regions": [
+          "KR",
+          "Global"
+        ],
+        "categories": [
+          "sanctuary"
+        ],
+        "difficulties": [
+          "normal",
+          "hard",
+          "exploration"
+        ],
+        "stages": []
+      },
+      "evidence": [
+        {
+          "kind": "guide",
+          "url": "https://lounge.plaync.com/feed/61855",
+          "date": "2026-11-24",
+          "support": "75% colour phase, KR '보랏빛 죽음이 덮치고 붉게 폭발한다': stand on the tentacle of the called colour and eat its bead for a shield against the wipe; order here is purple then red. His shots break tentacles they touch, so dodge them away."
+        },
+        {
+          "kind": "guide",
+          "url": "https://www.inven.co.kr/webzine/news/?news=314577&site=aion2",
+          "date": "2026-11-24"
+        },
+        {
+          "kind": "guide",
+          "url": "https://game.savetip.co.kr/aion2-sanctuary-of-erosion-guide/",
+          "date": "2026-11-24"
+        },
+        {
+          "kind": "guide",
+          "url": "https://aion2t.com/guides/sanctuary-corroded-decontamination",
+          "date": "2026-11-24"
+        },
+        {
+          "kind": "guide",
+          "url": "https://aion2data.com/dungeons/corroded-decontamination-facility/guide",
+          "date": "2026-11-24"
+        }
+      ],
+      "review": {
+        "decision": "approve_scoped",
+        "date": "2026-11-24",
+        "basis": "boss guide research",
+        "confidence": "high",
+        "researchEn": "Take purple first, then red",
+        "scopeWidestForBoss": true
+      },
+      "provenance": {
+        "language": "en",
+        "sourceField": "line",
+        "sourceKind": "guide-research",
+        "liveVerified": false
+      }
+    },
+    {
+      "k": "use:1804561:black-blood-blatt",
+      "bossKey": "black-blood-blatt",
+      "t": "use",
+      "id": 1804561,
+      "source": {
+        "field": "line",
+        "en": "Flee from the filth, suffer the cost!"
+      },
+      "verification": "guide-exact",
+      "enabled": true,
+      "referenceOnly": false,
+      "actionId": "mechanic-cddf369884d29a5b",
+      "text": {
+        "en": "Step on one purple patch each, once",
+        "ko": "각자 보라색 장판을 한 번씩만 밟으세요",
+        "ja": "各自紫の床を1回ずつ踏んで",
+        "de": "Jeder betritt ein lila Feld, nur einmal",
+        "fr": "Chacun marche une fois sur une zone violette",
+        "es": "Pisad una zona morada cada uno, una vez",
+        "pt": "Cada um pisa uma vez numa área roxa",
+        "ru": "Каждый наступает на одно фиолетовое пятно, один раз",
+        "zh-Hant": "每人各踩一次紫色地板",
+        "zh-Hans": "每人各踩一次紫色地板"
+      },
+      "scope": {
+        "regions": [
+          "KR",
+          "Global"
+        ],
+        "categories": [
+          "sanctuary"
+        ],
+        "difficulties": [
+          "normal",
+          "hard",
+          "exploration"
+        ],
+        "stages": []
+      },
+      "evidence": [
+        {
+          "kind": "guide",
+          "url": "https://lounge.plaync.com/feed/61855",
+          "date": "2026-11-24",
+          "support": "KR '더러운 땅을 피한다면 대가를 치러야 한다': purple floor patches appear; split them, each player steps on one once (twice is instant death); left alone they grow tentacles that root. Step on a tentacle to free a rooted player."
+        },
+        {
+          "kind": "guide",
+          "url": "https://www.inven.co.kr/webzine/news/?news=314577&site=aion2",
+          "date": "2026-11-24"
+        },
+        {
+          "kind": "guide",
+          "url": "https://aion2data.com/dungeons/corroded-decontamination-facility/guide",
+          "date": "2026-11-24"
+        }
+      ],
+      "review": {
+        "decision": "approve_scoped",
+        "date": "2026-11-24",
+        "basis": "boss guide research",
+        "confidence": "high",
+        "researchEn": "Step on one purple patch each, once",
+        "scopeWidestForBoss": true
+      },
+      "provenance": {
+        "language": "en",
+        "sourceField": "line",
+        "sourceKind": "guide-research",
+        "liveVerified": false
+      }
+    },
+    {
+      "k": "use:1804568:black-blood-blatt",
+      "bossKey": "black-blood-blatt",
+      "t": "use",
+      "id": 1804568,
+      "source": {
+        "field": "line",
+        "en": "Red blood bursts forth, and violet chaos writhes!"
+      },
+      "verification": "guide-exact",
+      "enabled": true,
+      "referenceOnly": false,
+      "actionId": "mechanic-b987ac8fbf6dcf1c",
+      "text": {
+        "en": "Take red first, then purple",
+        "ko": "빨간색을 먼저, 그다음 보라색을 받으세요",
+        "ja": "先に赤、次に紫を取って",
+        "de": "Zuerst Rot, dann Lila",
+        "fr": "D'abord le rouge, puis le violet",
+        "es": "Primero el rojo, luego el morado",
+        "pt": "Primeiro o vermelho, depois o roxo",
+        "ru": "Сначала красный, затем фиолетовый",
+        "zh-Hant": "先拿紅色，再拿紫色",
+        "zh-Hans": "先拿红色，再拿紫色"
+      },
+      "scope": {
+        "regions": [
+          "KR",
+          "Global"
+        ],
+        "categories": [
+          "sanctuary"
+        ],
+        "difficulties": [
+          "normal",
+          "hard",
+          "exploration"
+        ],
+        "stages": []
+      },
+      "evidence": [
+        {
+          "kind": "guide",
+          "url": "https://lounge.plaync.com/feed/61855",
+          "date": "2026-11-24",
+          "support": "Colour phase, KR '붉은 피가 터지고, 보랏빛이 요동친다': same as 1804560 with the order reversed: red tentacle bead first, then purple."
+        },
+        {
+          "kind": "guide",
+          "url": "https://www.inven.co.kr/webzine/news/?news=314577&site=aion2",
+          "date": "2026-11-24"
+        },
+        {
+          "kind": "guide",
+          "url": "https://game.savetip.co.kr/aion2-sanctuary-of-erosion-guide/",
+          "date": "2026-11-24"
+        },
+        {
+          "kind": "guide",
+          "url": "https://aion2t.com/guides/sanctuary-corroded-decontamination",
+          "date": "2026-11-24"
+        },
+        {
+          "kind": "guide",
+          "url": "https://aion2data.com/dungeons/corroded-decontamination-facility/guide",
+          "date": "2026-11-24"
+        }
+      ],
+      "review": {
+        "decision": "approve_scoped",
+        "date": "2026-11-24",
+        "basis": "boss guide research",
+        "confidence": "high",
+        "researchEn": "Take red first, then purple",
+        "scopeWidestForBoss": true
+      },
+      "provenance": {
+        "language": "en",
+        "sourceField": "line",
+        "sourceKind": "guide-research",
+        "liveVerified": false
+      }
+    },
+    {
+      "k": "use:1605370:broodkeeper-nayatman",
+      "bossKey": "broodkeeper-nayatman",
+      "t": "use",
+      "id": 1605370,
+      "source": {
+        "field": "line",
+        "en": "Crimson blood and azure shell... shall we test mixing them?"
+      },
+      "verification": "guide-exact",
+      "enabled": true,
+      "referenceOnly": false,
+      "actionId": "mechanic-eb9bd9b5c6d95b12",
+      "text": {
+        "en": "Linked: run apart, then touch your partner",
+        "ko": "연결 대상: 멀어졌다가 짝에게 닿으세요",
+        "ja": "リンク対象：離れてから相方に触れて",
+        "de": "Verbunden: lauft auseinander, dann berühr deinen Partner",
+        "fr": "Liés : écartez-vous, puis touchez votre partenaire",
+        "es": "Enlazados: separaos y luego toca a tu compañero",
+        "pt": "Ligados: afastem-se, depois toque seu parceiro",
+        "ru": "Связанные: разбегитесь, затем коснитесь напарника",
+        "zh-Hant": "被連結：先分開，再碰觸你的夥伴",
+        "zh-Hans": "被连接：先分开，再碰触你的伙伴"
+      },
+      "scope": {
+        "regions": [
+          "KR",
+          "Global"
+        ],
+        "categories": [
+          "conquest"
+        ],
+        "difficulties": [
+          "normal",
+          "hard",
+          "exploration"
+        ],
+        "stages": []
+      },
+      "evidence": [
+        {
+          "kind": "guide",
+          "url": "https://www.gametoc.co.kr/news/articleView.html?idxno=105694",
+          "date": "2026-11-24",
+          "support": "KR '붉은 피와 푸른 껍질... 섞어서 시험해 볼까?': two players are linked; separate to break it, then each holds red or blue; regroup within about 3 s to clear the colours (Shugo: collide with another colour), else heavy damage and stun."
+        },
+        {
+          "kind": "guide",
+          "url": "https://www.inven.co.kr/webzine/news/?news=313154&site=aion2",
+          "date": "2026-11-24"
+        },
+        {
+          "kind": "guide",
+          "url": "https://aion2data.com/dungeons/dying-dramatas-nest/guide",
+          "date": "2026-11-24"
+        }
+      ],
+      "review": {
+        "decision": "approve_scoped",
+        "date": "2026-11-24",
+        "basis": "boss guide research",
+        "confidence": "high",
+        "researchEn": "Linked: run apart, then touch your partner",
+        "scopeWidestForBoss": true
+      },
+      "provenance": {
+        "language": "en",
+        "sourceField": "line",
+        "sourceKind": "guide-research",
+        "liveVerified": false
+      }
+    },
+    {
+      "k": "cast:1604230:decaying-durvati",
+      "bossKey": "decaying-durvati",
+      "t": "cast",
+      "id": 1604230,
+      "source": {
+        "field": "line",
+        "en": "Face my poison rain!"
+      },
+      "verification": "guide-exact",
+      "enabled": true,
+      "referenceOnly": false,
+      "actionId": "mechanic-5a81c88964e6361e",
+      "text": {
+        "en": "Drop your poison on eggs, then hug the boss",
+        "ko": "독을 알 위에 떨어뜨린 뒤 보스에게 붙으세요",
+        "ja": "毒を卵に置き、ボスに密着して",
+        "de": "Leg dein Gift auf die Eier, dann ran an den Boss",
+        "fr": "Posez votre poison sur les œufs, puis collez au boss",
+        "es": "Suelta tu veneno sobre los huevos y pégate al jefe",
+        "pt": "Solte seu veneno nos ovos e cole no chefe",
+        "ru": "Сбросьте яд на яйца, затем прижмитесь к боссу",
+        "zh-Hant": "把毒放在蛋上，再貼近首領",
+        "zh-Hans": "把毒放在蛋上，再贴近首领"
+      },
+      "scope": {
+        "regions": [
+          "KR",
+          "Global"
+        ],
+        "categories": [
+          "conquest"
+        ],
+        "difficulties": [
+          "normal",
+          "hard",
+          "exploration"
+        ],
+        "stages": []
+      },
+      "evidence": [
+        {
+          "kind": "guide",
+          "url": "https://www.inven.co.kr/webzine/news/?news=313154&site=aion2",
+          "date": "2026-11-24",
+          "support": "KR '독의 비를 뒤집어쓰거라!': 4 poison drops on each player; spread and break eggs (small first, 1 hit; big 3), never on the climbing rocks; a fear roar follows for anyone far from Durvati."
+        },
+        {
+          "kind": "guide",
+          "url": "https://www.gametoc.co.kr/news/articleView.html?idxno=105694",
+          "date": "2026-11-24"
+        },
+        {
+          "kind": "guide",
+          "url": "https://aion2data.com/dungeons/dying-dramatas-nest/guide",
+          "date": "2026-11-24"
+        }
+      ],
+      "review": {
+        "decision": "approve_scoped",
+        "date": "2026-11-24",
+        "basis": "boss guide research",
+        "confidence": "high",
+        "researchEn": "Drop your poison on eggs, then hug the boss",
+        "scopeWidestForBoss": true
+      },
+      "provenance": {
+        "language": "en",
+        "sourceField": "line",
+        "sourceKind": "guide-research",
+        "liveVerified": false
+      }
+    },
+    {
+      "k": "cast:1604330:decaying-durvati",
+      "bossKey": "decaying-durvati",
+      "t": "cast",
+      "id": 1604330,
+      "source": {
+        "field": "line",
+        "en": "Awaken, my children!"
+      },
+      "verification": "guide-exact",
+      "enabled": true,
+      "referenceOnly": false,
+      "actionId": "mechanic-56229746a803cd7b",
+      "text": {
+        "en": "Kill the small hatchlings first",
+        "ko": "작은 새끼부터 처치하세요",
+        "ja": "小さい幼体を先に倒して",
+        "de": "Töte zuerst die kleinen Jungtiere",
+        "fr": "Tuez d'abord les petits nouveau-nés",
+        "es": "Mata primero a las crías pequeñas",
+        "pt": "Mate primeiro os filhotes pequenos",
+        "ru": "Сначала убейте мелких детёнышей",
+        "zh-Hant": "先擊殺小型幼體",
+        "zh-Hans": "先击杀小型幼体"
+      },
+      "scope": {
+        "regions": [
+          "KR",
+          "Global"
+        ],
+        "categories": [
+          "conquest"
+        ],
+        "difficulties": [
+          "normal",
+          "hard",
+          "exploration"
+        ],
+        "stages": []
+      },
+      "evidence": [
+        {
+          "kind": "guide",
+          "url": "https://www.inven.co.kr/webzine/news/?news=313154&site=aion2",
+          "date": "2026-11-24",
+          "support": "KR '깨어나라, 나의 아이들아!' at about 30%: unbroken eggs hatch; small-egg Remnants destroy the safety rocks, so kill them first; big-egg Brutes attack players."
+        },
+        {
+          "kind": "guide",
+          "url": "https://www.gametoc.co.kr/news/articleView.html?idxno=105694",
+          "date": "2026-11-24"
+        },
+        {
+          "kind": "guide",
+          "url": "https://aion2data.com/dungeons/dying-dramatas-nest/guide",
+          "date": "2026-11-24"
+        }
+      ],
+      "review": {
+        "decision": "approve_scoped",
+        "date": "2026-11-24",
+        "basis": "boss guide research",
+        "confidence": "high",
+        "researchEn": "Kill the small hatchlings first",
+        "scopeWidestForBoss": true
+      },
+      "provenance": {
+        "language": "en",
+        "sourceField": "line",
+        "sourceKind": "guide-research",
+        "liveVerified": false
+      }
+    },
+    {
+      "k": "cast:1805110:decaying-durvati",
+      "bossKey": "decaying-durvati",
+      "t": "cast",
+      "id": 1805110,
+      "source": {
+        "field": "line",
+        "en": "This poisoned land will be your grave."
+      },
+      "verification": "guide-exact",
+      "enabled": true,
+      "referenceOnly": false,
+      "actionId": "mechanic-9874f17f2473f99a",
+      "text": {
+        "en": "Climb a rock now",
+        "ko": "지금 바위 위로 올라가세요",
+        "ja": "今すぐ岩に登って",
+        "de": "Kletter jetzt auf einen Felsen",
+        "fr": "Grimpez sur un rocher maintenant",
+        "es": "Sube a una roca ya",
+        "pt": "Suba numa rocha agora",
+        "ru": "Немедленно залезьте на скалу",
+        "zh-Hant": "立刻爬上岩石",
+        "zh-Hans": "立刻爬上岩石"
+      },
+      "scope": {
+        "regions": [
+          "KR",
+          "Global"
+        ],
+        "categories": [
+          "conquest"
+        ],
+        "difficulties": [
+          "normal",
+          "hard",
+          "exploration"
+        ],
+        "stages": []
+      },
+      "evidence": [
+        {
+          "kind": "guide",
+          "url": "https://www.inven.co.kr/webzine/news/?news=313154&site=aion2",
+          "date": "2026-11-24",
+          "support": "Poison Swamp, KR '독에 물든 대지가 너희의 무덤이 되리라', 4 s: climb an edge rock at least 2 levels high. Hard: one player per rock (the debuff hurts neighbours)."
+        },
+        {
+          "kind": "guide",
+          "url": "https://www.gametoc.co.kr/news/articleView.html?idxno=105694",
+          "date": "2026-11-24"
+        },
+        {
+          "kind": "guide",
+          "url": "https://aion2data.com/dungeons/dying-dramatas-nest/guide",
+          "date": "2026-11-24"
+        }
+      ],
+      "review": {
+        "decision": "approve_scoped",
+        "date": "2026-11-24",
+        "basis": "boss guide research",
+        "confidence": "high",
+        "researchEn": "Climb a rock now",
+        "scopeWidestForBoss": true
+      },
+      "provenance": {
+        "language": "en",
+        "sourceField": "line",
+        "sourceKind": "guide-research",
+        "liveVerified": false
+      }
+    },
+    {
+      "k": "cast:1805120:decaying-durvati",
+      "bossKey": "decaying-durvati",
+      "t": "cast",
+      "id": 1805120,
+      "source": {
+        "field": "line",
+        "en": "Struggle all you want! The poison will consume you all the same!"
+      },
+      "verification": "guide-exact",
+      "enabled": true,
+      "referenceOnly": false,
+      "actionId": "mechanic-2177ac9c858198a7",
+      "text": {
+        "en": "Climb to the very top of a rock",
+        "ko": "바위 꼭대기까지 올라가세요",
+        "ja": "岩のてっぺんまで登って",
+        "de": "Kletter ganz nach oben auf einen Felsen",
+        "fr": "Grimpez tout en haut d'un rocher",
+        "es": "Sube a lo más alto de una roca",
+        "pt": "Suba ao ponto mais alto de uma rocha",
+        "ru": "Заберитесь на самую вершину скалы",
+        "zh-Hant": "爬到岩石最頂端",
+        "zh-Hans": "爬到岩石最顶端"
+      },
+      "scope": {
+        "regions": [
+          "KR",
+          "Global"
+        ],
+        "categories": [
+          "conquest"
+        ],
+        "difficulties": [
+          "normal",
+          "hard",
+          "exploration"
+        ],
+        "stages": []
+      },
+      "evidence": [
+        {
+          "kind": "guide",
+          "url": "https://www.inven.co.kr/webzine/news/?news=313154&site=aion2",
+          "date": "2026-11-24",
+          "support": "Rising (Surging) Poison Swamp at about 10% HP / after hatching: like the swamp but wider, only the top of a rock is safe. Hard: one player per rock."
+        },
+        {
+          "kind": "guide",
+          "url": "https://www.gametoc.co.kr/news/articleView.html?idxno=105694",
+          "date": "2026-11-24"
+        },
+        {
+          "kind": "guide",
+          "url": "https://aion2data.com/dungeons/dying-dramatas-nest/guide",
+          "date": "2026-11-24"
+        }
+      ],
+      "review": {
+        "decision": "approve_scoped",
+        "date": "2026-11-24",
+        "basis": "boss guide research",
+        "confidence": "high",
+        "researchEn": "Climb to the very top of a rock",
+        "scopeWidestForBoss": true
+      },
+      "provenance": {
+        "language": "en",
+        "sourceField": "line",
+        "sourceKind": "guide-research",
+        "liveVerified": false
+      }
+    },
+    {
+      "k": "abnormal:10000008:decaying-durvati",
+      "bossKey": "decaying-durvati",
+      "t": "abnormal",
+      "id": 10000008,
+      "source": {
+        "field": "line",
+        "en": "Your lives will fade away in this cradle."
+      },
+      "verification": "guide-exact",
+      "enabled": true,
+      "referenceOnly": false,
+      "actionId": "mechanic-99d019f27c514213",
+      "text": {
+        "en": "Enraged: burn it down, use defensives",
+        "ko": "광폭화: 방어 스킬을 쓰고 빠르게 처치하세요",
+        "ja": "激昂：防御スキルを使い、一気に倒して",
+        "de": "Raserei: Verteidigung nutzen, schnell erledigen",
+        "fr": "Enragé : défenses actives, achevez-le vite",
+        "es": "Enfurecido: usa defensas y acaba con él",
+        "pt": "Enfurecido: use defesas e acabe com ele",
+        "ru": "Ярость: защитные умения, добивайте быстро",
+        "zh-Hant": "狂暴：使用防禦技能，迅速擊殺",
+        "zh-Hans": "狂暴：使用防御技能，迅速击杀"
+      },
+      "scope": {
+        "regions": [
+          "KR",
+          "Global"
+        ],
+        "categories": [
+          "conquest"
+        ],
+        "difficulties": [
+          "normal",
+          "hard",
+          "exploration"
+        ],
+        "stages": []
+      },
+      "evidence": [
+        {
+          "kind": "guide",
+          "url": "https://aion2data.com/dungeons/dying-dramatas-nest/guide",
+          "date": "2026-11-24",
+          "support": "Frenzy after 5:00 combat time (Conquest and Hard): +200% damage, +100% move, spell and combat speed. No specific counter listed."
+        }
+      ],
+      "review": {
+        "decision": "approve_scoped",
+        "date": "2026-11-24",
+        "basis": "boss guide research",
+        "confidence": "medium",
+        "researchEn": "Enraged: use defensives, burn it down",
+        "scopeWidestForBoss": true
+      },
+      "provenance": {
+        "language": "en",
+        "sourceField": "line",
+        "sourceKind": "guide-research",
+        "liveVerified": false
+      }
+    },
+    {
+      "k": "cast:1805820:devouring-klawfly",
+      "bossKey": "devouring-klawfly",
+      "t": "cast",
+      "id": 1805820,
+      "source": {
+        "field": "line",
+        "en": "Grashira'khna!"
+      },
+      "verification": "guide-exact",
+      "enabled": true,
+      "referenceOnly": false,
+      "actionId": "mechanic-62323552259d558d",
+      "text": {
+        "en": "Eat purple orbs one at a time, in order",
+        "ko": "보라색 구슬을 순서대로 하나씩 먹으세요",
+        "ja": "紫の球を順番に1つずつ取って",
+        "de": "Nehmt lila Kugeln einzeln, der Reihe nach",
+        "fr": "Prenez les orbes violets un par un, dans l'ordre",
+        "es": "Coged los orbes morados de uno en uno, en orden",
+        "pt": "Peguem os orbes roxos um de cada vez, em ordem",
+        "ru": "Берите фиолетовые сферы по одной, по порядку",
+        "zh-Hant": "依序一次吃一顆紫色光球",
+        "zh-Hans": "依序一次吃一颗紫色光球"
+      },
+      "scope": {
+        "regions": [
+          "KR",
+          "Global"
+        ],
+        "categories": [
+          "sanctuary"
+        ],
+        "difficulties": [
+          "normal",
+          "hard",
+          "exploration"
+        ],
+        "stages": []
+      },
+      "evidence": [
+        {
+          "kind": "guide",
+          "url": "https://lounge.plaync.com/feed/61855",
+          "date": "2026-11-24",
+          "support": "Unstable Venom Sphere, 20 s cast; KR '글루쉬나흐나!' at 50%: 8 purple orbs drift outward and any leaving the arena wipes; eat them in the set order, purple only; red orbs hurt the party; a second purple orb too soon kills."
+        },
+        {
+          "kind": "guide",
+          "url": "https://www.inven.co.kr/webzine/news/?news=314522&site=aion2",
+          "date": "2026-11-24"
+        },
+        {
+          "kind": "guide",
+          "url": "https://www.inven.co.kr/webzine/news/?news=314577&site=aion2",
+          "date": "2026-11-24"
+        },
+        {
+          "kind": "guide",
+          "url": "https://aion2t.com/guides/sanctuary-corroded-decontamination",
+          "date": "2026-11-24"
+        },
+        {
+          "kind": "guide",
+          "url": "https://aion2data.com/dungeons/corroded-decontamination-facility/guide",
+          "date": "2026-11-24"
+        }
+      ],
+      "review": {
+        "decision": "approve_scoped",
+        "date": "2026-11-24",
+        "basis": "boss guide research",
+        "confidence": "high",
+        "researchEn": "Eat purple orbs one at a time, in order",
+        "scopeWidestForBoss": true
+      },
+      "provenance": {
+        "language": "en",
+        "sourceField": "line",
+        "sourceKind": "guide-research",
+        "liveVerified": false
+      }
+    },
+    {
+      "k": "use:1607010:dhakan",
+      "bossKey": "dhakan",
+      "t": "use",
+      "id": 1607010,
+      "source": {
+        "field": "line",
+        "en": "Feast, my friends! For we bring offerings aplenty to the altar!"
+      },
+      "verification": "guide-exact",
+      "enabled": true,
+      "referenceOnly": false,
+      "actionId": "mechanic-9e1ff18f844d1fe0",
+      "text": {
+        "en": "Grab the altar orb, kill the souls",
+        "ko": "제단 구슬을 먹고 영혼을 처치하세요",
+        "ja": "祭壇の球を取り、魂を倒して",
+        "de": "Altarkugel nehmen, Seelen töten",
+        "fr": "Prenez l'orbe de l'autel, tuez les âmes",
+        "es": "Coge el orbe del altar, mata las almas",
+        "pt": "Pegue o orbe do altar, mate as almas",
+        "ru": "Возьмите сферу алтаря, убейте души",
+        "zh-Hant": "拿取祭壇光球，擊殺靈魂",
+        "zh-Hans": "拿取祭坛光球，击杀灵魂"
+      },
+      "scope": {
+        "regions": [
+          "KR",
+          "Global"
+        ],
+        "categories": [
+          "conquest"
+        ],
+        "difficulties": [
+          "normal",
+          "hard",
+          "exploration"
+        ],
+        "stages": []
+      },
+      "evidence": [
+        {
+          "kind": "guide",
+          "url": "https://aion2data.com/dungeons/abyssal-horn-den/guide",
+          "date": "2026-11-24",
+          "support": "Dhakan reuses Duanka's Lycan Necromancy: souls spawn and heal the boss if they reach him; one player eats the altar orb (only they can hit souls) and kills them all within about 15 s."
+        },
+        {
+          "kind": "guide",
+          "url": "https://aion2t.com/guides/abyssal-horn-den-t4",
+          "date": "2026-11-24"
+        },
+        {
+          "kind": "guide",
+          "url": "https://www.inven.co.kr/webzine/news/?news=312152&site=aion2",
+          "date": "2026-11-24"
+        },
+        {
+          "kind": "guide",
+          "url": "https://www.gametoc.co.kr/news/articleView.html?idxno=104574",
+          "date": "2026-11-24"
+        }
+      ],
+      "review": {
+        "decision": "approve_scoped",
+        "date": "2026-11-24",
+        "basis": "boss guide research",
+        "confidence": "medium",
+        "researchEn": "Take the altar orb, kill the souls",
+        "scopeWidestForBoss": true
+      },
+      "provenance": {
+        "language": "en",
+        "sourceField": "line",
+        "sourceKind": "guide-research",
+        "liveVerified": false
+      }
+    },
+    {
+      "k": "cast:1607051:dhakan",
+      "bossKey": "dhakan",
+      "t": "cast",
+      "id": 1607051,
+      "source": {
+        "field": "line",
+        "en": "Let's see if you can run from this lightning!"
+      },
+      "verification": "guide-exact",
+      "enabled": true,
+      "referenceOnly": false,
+      "actionId": "mechanic-007d33a33ab6f47c",
+      "text": {
+        "en": "Run to the edge, dodge the orbs",
+        "ko": "가장자리로 달리고 구슬을 피하세요",
+        "ja": "外周へ走り、球を避けて",
+        "de": "Lauf zum Rand, weich den Kugeln aus",
+        "fr": "Courez au bord, esquivez les orbes",
+        "es": "Corre al borde, esquiva los orbes",
+        "pt": "Corra para a borda, desvie dos orbes",
+        "ru": "Бегите к краю, уклоняйтесь от сфер",
+        "zh-Hant": "跑到邊緣，閃避光球",
+        "zh-Hans": "跑到边缘，闪避光球"
+      },
+      "scope": {
+        "regions": [
+          "KR",
+          "Global"
+        ],
+        "categories": [
+          "conquest"
+        ],
+        "difficulties": [
+          "normal",
+          "hard",
+          "exploration"
+        ],
+        "stages": []
+      },
+      "evidence": [
+        {
+          "kind": "guide",
+          "url": "https://aion2data.com/dungeons/abyssal-horn-den/guide",
+          "date": "2026-11-24",
+          "support": "Soul Caller (same skill as Duanka's): boss pulls everyone to the centre, lightning orbs converge (stun on touch), then a big explosion on him about 8 s later; run outward before it hits."
+        },
+        {
+          "kind": "guide",
+          "url": "https://aion2t.com/guides/abyssal-horn-den-t4",
+          "date": "2026-11-24"
+        },
+        {
+          "kind": "guide",
+          "url": "https://www.inven.co.kr/webzine/news/?news=312152&site=aion2",
+          "date": "2026-11-24"
+        },
+        {
+          "kind": "guide",
+          "url": "https://www.gametoc.co.kr/news/articleView.html?idxno=104574",
+          "date": "2026-11-24"
+        }
+      ],
+      "review": {
+        "decision": "approve_scoped",
+        "date": "2026-11-24",
+        "basis": "boss guide research",
+        "confidence": "medium",
+        "researchEn": "Run to the edge, dodge the orbs",
+        "scopeWidestForBoss": true
+      },
+      "provenance": {
+        "language": "en",
+        "sourceField": "line",
+        "sourceKind": "guide-research",
+        "liveVerified": false
+      }
+    },
+    {
+      "k": "abnormal:10000008:divine-auldor",
+      "bossKey": "divine-auldor",
+      "t": "abnormal",
+      "id": 10000008,
+      "source": {
+        "field": "line",
+        "en": "You will pay for invading the sanctuary."
+      },
+      "verification": "guide-exact",
+      "enabled": true,
+      "referenceOnly": false,
+      "actionId": "mechanic-6fa55b5fcabf5859",
+      "text": {
+        "en": "Enraged: burn it down, use defensives",
+        "ko": "광폭화: 방어 스킬을 쓰고 빠르게 처치하세요",
+        "ja": "激昂：防御スキルを使い、一気に倒して",
+        "de": "Raserei: Verteidigung nutzen, schnell erledigen",
+        "fr": "Enragé : défenses actives, achevez-le vite",
+        "es": "Enfurecido: usa defensas y acaba con él",
+        "pt": "Enfurecido: use defesas e acabe com ele",
+        "ru": "Ярость: защитные умения, добивайте быстро",
+        "zh-Hant": "狂暴：使用防禦技能，迅速擊殺",
+        "zh-Hans": "狂暴：使用防御技能，迅速击杀"
+      },
+      "scope": {
+        "regions": [
+          "KR",
+          "Global"
+        ],
+        "categories": [
+          "conquest"
+        ],
+        "difficulties": [
+          "normal",
+          "hard",
+          "exploration"
+        ],
+        "stages": []
+      },
+      "evidence": [
+        {
+          "kind": "guide",
+          "url": "https://aion2.gg/guides/urugugu-canyon-guide",
+          "date": "2026-11-24",
+          "support": "Frenzy: +200% damage, +100% combat speed. Conquest 5:00, Hard 4:00 per aion2.gg's client table (its text is inconsistent); Exploration has none."
+        }
+      ],
+      "review": {
+        "decision": "approve_scoped",
+        "date": "2026-11-24",
+        "basis": "boss guide research",
+        "confidence": "medium",
+        "researchEn": "Enraged: use defensives, burn it down",
+        "scopeWidestForBoss": true
+      },
+      "provenance": {
+        "language": "en",
+        "sourceField": "line",
+        "sourceKind": "guide-research",
+        "liveVerified": false
+      }
+    },
+    {
+      "k": "use:1803010:eternal-ludra",
+      "bossKey": "eternal-ludra",
+      "t": "use",
+      "id": 1803010,
+      "source": {
+        "field": "line",
+        "en": "Power is meant to be wielded like this."
+      },
+      "verification": "guide-exact",
+      "enabled": true,
+      "referenceOnly": false,
+      "actionId": "mechanic-1467c541493d4cb9",
+      "text": {
+        "en": "Reveal tiles, gather on the safe tile",
+        "ko": "타일을 확인하고 안전한 타일에 모이세요",
+        "ja": "床を確認し、安全な床に集合",
+        "de": "Felder aufdecken, auf dem sicheren Feld sammeln",
+        "fr": "Révélez les dalles, groupez-vous sur la dalle sûre",
+        "es": "Revela las baldosas, reuníos en la segura",
+        "pt": "Revelem os ladrilhos, juntem-se no seguro",
+        "ru": "Откройте плиты, соберитесь на безопасной",
+        "zh-Hant": "揭開地板，在安全地板集合",
+        "zh-Hans": "揭开地板，在安全地板集合"
+      },
+      "scope": {
+        "regions": [
+          "KR",
+          "Global"
+        ],
+        "categories": [
+          "sanctuary"
+        ],
+        "difficulties": [
+          "normal",
+          "hard",
+          "exploration"
+        ],
+        "stages": []
+      },
+      "evidence": [
+        {
+          "kind": "guide",
+          "url": "https://aion2maps.com/guides/ludra/",
+          "date": "2026-11-24",
+          "support": "aion2maps places this line at the bingo board (50% and 25%): 6x6 grid with a 15 s wipe cast; reveal tiles with your AoE, call the safe tile and all stand on it; Ludra is then staggered 10 s. At 25% jump the circles first."
+        },
+        {
+          "kind": "guide",
+          "url": "https://aion2tierlist.com/guides/aion-2-ludra-raid-guide",
+          "date": "2026-11-24"
+        },
+        {
+          "kind": "guide",
+          "url": "https://aion2t.com/guides/sanctuary-ludra",
+          "date": "2026-11-24"
+        },
+        {
+          "kind": "guide",
+          "url": "https://aion2-meta.com/dungeons/abyssal-forge-ludra/",
+          "date": "2026-11-24"
+        },
+        {
+          "kind": "guide",
+          "url": "https://vtomes.com/aion2/guides/ludra-raid-guide/",
+          "date": "2026-11-24"
+        }
+      ],
+      "review": {
+        "decision": "approve_scoped",
+        "date": "2026-11-24",
+        "basis": "boss guide research",
+        "confidence": "medium",
+        "researchEn": "Reveal tiles, gather on the safe tile",
+        "scopeWidestForBoss": true
+      },
+      "provenance": {
+        "language": "en",
+        "sourceField": "line",
+        "sourceKind": "guide-research",
+        "liveVerified": false
+      }
+    },
+    {
+      "k": "use:1803020:eternal-ludra",
+      "bossKey": "eternal-ludra",
+      "t": "use",
+      "id": 1803020,
+      "source": {
+        "field": "line",
+        "en": "Within the Abyss, I am complete."
+      },
+      "verification": "guide-exact",
+      "enabled": true,
+      "referenceOnly": false,
+      "actionId": "mechanic-d57b217e48196dd9",
+      "text": {
+        "en": "Break the boss's barrier first",
+        "ko": "보스의 보호막을 먼저 깨세요",
+        "ja": "ボスのバリアを先に壊して",
+        "de": "Zerstör zuerst die Barriere des Bosses",
+        "fr": "Brisez d'abord la barrière du boss",
+        "es": "Rompe primero la barrera del jefe",
+        "pt": "Quebre primeiro a barreira do chefe",
+        "ru": "Сначала разбейте барьер босса",
+        "zh-Hant": "先擊破首領的屏障",
+        "zh-Hans": "先击破首领的屏障"
+      },
+      "scope": {
+        "regions": [
+          "KR",
+          "Global"
+        ],
+        "categories": [
+          "sanctuary"
+        ],
+        "difficulties": [
+          "normal",
+          "hard",
+          "exploration"
+        ],
+        "stages": []
+      },
+      "evidence": [
+        {
+          "kind": "guide",
+          "url": "https://aion2.gg/guides/abyssal-forge-ludra-guide",
+          "date": "2026-11-24",
+          "support": "Condensed Forcefield (1.83 s, raid alert): Ludra gains a barrier that absorbs damage until broken; aion2.gg says break it first and hold burst until it's gone. Only one source."
+        }
+      ],
+      "review": {
+        "decision": "approve_scoped",
+        "date": "2026-11-24",
+        "basis": "boss guide research",
+        "confidence": "medium",
+        "researchEn": "Break the boss's barrier first",
+        "scopeWidestForBoss": true
+      },
+      "provenance": {
+        "language": "en",
+        "sourceField": "line",
+        "sourceKind": "guide-research",
+        "liveVerified": false
+      }
+    },
+    {
+      "k": "abnormal:10000008:eternal-ludra",
+      "bossKey": "eternal-ludra",
+      "t": "abnormal",
+      "id": 10000008,
+      "source": {
+        "field": "line",
+        "en": "A strength that has withstood eternity!"
+      },
+      "verification": "guide-exact",
+      "enabled": true,
+      "referenceOnly": false,
+      "actionId": "mechanic-89f884ff2a8455db",
+      "text": {
+        "en": "Enraged: burn it down, use defensives",
+        "ko": "광폭화: 방어 스킬을 쓰고 빠르게 처치하세요",
+        "ja": "激昂：防御スキルを使い、一気に倒して",
+        "de": "Raserei: Verteidigung nutzen, schnell erledigen",
+        "fr": "Enragé : défenses actives, achevez-le vite",
+        "es": "Enfurecido: usa defensas y acaba con él",
+        "pt": "Enfurecido: use defesas e acabe com ele",
+        "ru": "Ярость: защитные умения, добивайте быстро",
+        "zh-Hant": "狂暴：使用防禦技能，迅速擊殺",
+        "zh-Hans": "狂暴：使用防御技能，迅速击杀"
+      },
+      "scope": {
+        "regions": [
+          "KR",
+          "Global"
+        ],
+        "categories": [
+          "sanctuary"
+        ],
+        "difficulties": [
+          "normal",
+          "hard",
+          "exploration"
+        ],
+        "stages": []
+      },
+      "evidence": [
+        {
+          "kind": "guide",
+          "url": "https://aion2.gg/guides/abyssal-forge-ludra-guide",
+          "date": "2026-11-24",
+          "support": "Frenzy (berserk) after 10:00 of combat: +200% damage, +100% combat speed. No counter beyond finishing him."
+        },
+        {
+          "kind": "guide",
+          "url": "https://aion2tierlist.com/guides/aion-2-ludra-raid-guide",
+          "date": "2026-11-24"
+        },
+        {
+          "kind": "guide",
+          "url": "https://vtomes.com/aion2/guides/ludra-raid-guide/",
+          "date": "2026-11-24"
+        }
+      ],
+      "review": {
+        "decision": "approve_scoped",
+        "date": "2026-11-24",
+        "basis": "boss guide research",
+        "confidence": "medium",
+        "researchEn": "Enraged: use defensives, burn it down",
+        "scopeWidestForBoss": true
+      },
+      "provenance": {
+        "language": "en",
+        "sourceField": "line",
+        "sourceKind": "guide-research",
+        "liveVerified": false
+      }
+    },
+    {
+      "k": "use:1607950:expanding-xyrepe",
+      "bossKey": "expanding-xyrepe",
+      "t": "use",
+      "id": 1607950,
+      "source": {
+        "field": "line",
+        "en": "Fungie, arise! Go forth!"
+      },
+      "verification": "guide-exact",
+      "enabled": true,
+      "referenceOnly": false,
+      "actionId": "mechanic-48afd3f05e2013fc",
+      "text": {
+        "en": "Avoid the moving Fungie",
+        "ko": "움직이는 버섯을 피하세요",
+        "ja": "動くキノコを避けて",
+        "de": "Weich den wandernden Pilzen aus",
+        "fr": "Évitez les champignons mobiles",
+        "es": "Evita los hongos que se mueven",
+        "pt": "Evite os fungos em movimento",
+        "ru": "Избегайте движущихся грибов",
+        "zh-Hant": "避開移動的蘑菇",
+        "zh-Hans": "避开移动的蘑菇"
+      },
+      "scope": {
+        "regions": [
+          "KR",
+          "Global"
+        ],
+        "categories": [
+          "conquest",
+          "sanctuary"
+        ],
+        "difficulties": [
+          "normal",
+          "hard",
+          "exploration"
+        ],
+        "stages": []
+      },
+      "evidence": [
+        {
+          "kind": "guide",
+          "url": "https://aion2data.com/dungeons/azure-breath-island/guide",
+          "date": "2026-11-24",
+          "support": "Summons Fungie (instant, 60 s cooldown); Shugo: 'Look out for the moving Fungie, kru!' No guide describes them further."
+        }
+      ],
+      "review": {
+        "decision": "approve_scoped",
+        "date": "2026-11-24",
+        "basis": "boss guide research",
+        "confidence": "medium",
+        "researchEn": "Avoid the moving Fungie",
+        "scopeWidestForBoss": true
+      },
+      "provenance": {
+        "language": "en",
+        "sourceField": "line",
+        "sourceKind": "guide-research",
+        "liveVerified": false
+      }
+    },
+    {
+      "k": "cast:1607970:expanding-xyrepe",
+      "bossKey": "expanding-xyrepe",
+      "t": "cast",
+      "id": 1607970,
+      "source": {
+        "field": "line",
+        "en": "Spread, spores, spread! Spread and spread and spread!"
+      },
+      "verification": "guide-exact",
+      "enabled": true,
+      "referenceOnly": false,
+      "actionId": "mechanic-b90d1dcb4f755b10",
+      "text": {
+        "en": "Dodge spores not your color",
+        "ko": "자신의 색이 아닌 포자를 피하세요",
+        "ja": "自分の色でない胞子を避けて",
+        "de": "Weich Sporen aus, die nicht deine Farbe haben",
+        "fr": "Esquivez les spores d'une autre couleur",
+        "es": "Esquiva las esporas que no son de tu color",
+        "pt": "Desvie dos esporos que não são da sua cor",
+        "ru": "Уклоняйтесь от спор не своего цвета",
+        "zh-Hant": "閃避非你顏色的孢子",
+        "zh-Hans": "闪避非你颜色的孢子"
+      },
+      "scope": {
+        "regions": [
+          "KR",
+          "Global"
+        ],
+        "categories": [
+          "conquest",
+          "sanctuary"
+        ],
+        "difficulties": [
+          "normal",
+          "hard",
+          "exploration"
+        ],
+        "stages": []
+      },
+      "evidence": [
+        {
+          "kind": "guide",
+          "url": "https://www.gametoc.co.kr/news/articleView.html?idxno=107997",
+          "date": "2026-11-24",
+          "support": "Spore barrage, KR '포자야. 퍼져라...': boss jumps to the centre and fires green and red spores; a spore not matching your spore buff hurts. Move to the edge and dodge until it ends."
+        },
+        {
+          "kind": "guide",
+          "url": "https://aion2t.com/guides/azure-breath-island-hard",
+          "date": "2026-11-24"
+        },
+        {
+          "kind": "guide",
+          "url": "https://aion2data.com/dungeons/azure-breath-island/guide",
+          "date": "2026-11-24"
+        }
+      ],
+      "review": {
+        "decision": "approve_scoped",
+        "date": "2026-11-24",
+        "basis": "boss guide research",
+        "confidence": "high",
+        "researchEn": "Dodge spores not your colour",
+        "scopeWidestForBoss": true
+      },
+      "provenance": {
+        "language": "en",
+        "sourceField": "line",
+        "sourceKind": "guide-research",
+        "liveVerified": false
+      }
+    },
+    {
+      "k": "cast:1802164:ferocious-horn-nuakum",
+      "bossKey": "ferocious-horn-nuakum",
+      "t": "cast",
+      "id": 1802164,
+      "source": {
+        "field": "line",
+        "en": "Show your willingness to be sacrificed!"
+      },
+      "verification": "guide-exact",
+      "enabled": true,
+      "referenceOnly": false,
+      "actionId": "mechanic-a67a271460976003",
+      "text": {
+        "en": "Unmarked: take turns blocking the hits",
+        "ko": "표식 없음: 번갈아 공격을 막으세요",
+        "ja": "マークなし：交代で攻撃を防御",
+        "de": "Unmarkiert: blockt die Treffer abwechselnd",
+        "fr": "Non marqués : bloquez les coups à tour de rôle",
+        "es": "Sin marca: bloquead los golpes por turnos",
+        "pt": "Sem marca: bloqueiem os golpes em turnos",
+        "ru": "Без метки: блокируйте удары по очереди",
+        "zh-Hant": "未標記者：輪流格擋攻擊",
+        "zh-Hans": "未标记者：轮流格挡攻击"
+      },
+      "scope": {
+        "regions": [
+          "KR",
+          "Global"
+        ],
+        "categories": [
+          "conquest"
+        ],
+        "difficulties": [
+          "normal",
+          "hard",
+          "exploration"
+        ],
+        "stages": []
+      },
+      "evidence": [
+        {
+          "kind": "guide",
+          "url": "https://aion2.gg/guides/ferocious-horn-den-guide",
+          "date": "2026-11-24",
+          "support": "Same line as twin strike 1802162: a rooted target faces two heavy hits / red orbs; players without the mark step in and each take one, rotating; the target getting hit dies."
+        },
+        {
+          "kind": "guide",
+          "url": "https://www.inven.co.kr/webzine/news/?news=312152&site=aion2",
+          "date": "2026-11-24"
+        },
+        {
+          "kind": "guide",
+          "url": "https://www.gametoc.co.kr/news/articleView.html?idxno=104574",
+          "date": "2026-11-24"
+        }
+      ],
+      "review": {
+        "decision": "approve_scoped",
+        "date": "2026-11-24",
+        "basis": "boss guide research",
+        "confidence": "medium",
+        "researchEn": "Unmarked: take turns blocking the hits",
+        "scopeWidestForBoss": true
+      },
+      "provenance": {
+        "language": "en",
+        "sourceField": "line",
+        "sourceKind": "guide-research",
+        "liveVerified": false
+      }
+    },
+    {
+      "k": "abnormal:10000008:ferocious-horn-nuakum",
+      "bossKey": "ferocious-horn-nuakum",
+      "t": "abnormal",
+      "id": 10000008,
+      "source": {
+        "field": "line",
+        "en": "Ever fiercer, ever sharper!"
+      },
+      "verification": "guide-exact",
+      "enabled": true,
+      "referenceOnly": false,
+      "actionId": "mechanic-80fd3e32cca21e85",
+      "text": {
+        "en": "Enraged: burn it down, use defensives",
+        "ko": "광폭화: 방어 스킬을 쓰고 빠르게 처치하세요",
+        "ja": "激昂：防御スキルを使い、一気に倒して",
+        "de": "Raserei: Verteidigung nutzen, schnell erledigen",
+        "fr": "Enragé : défenses actives, achevez-le vite",
+        "es": "Enfurecido: usa defensas y acaba con él",
+        "pt": "Enfurecido: use defesas e acabe com ele",
+        "ru": "Ярость: защитные умения, добивайте быстро",
+        "zh-Hant": "狂暴：使用防禦技能，迅速擊殺",
+        "zh-Hans": "狂暴：使用防御技能，迅速击杀"
+      },
+      "scope": {
+        "regions": [
+          "KR",
+          "Global"
+        ],
+        "categories": [
+          "conquest"
+        ],
+        "difficulties": [
+          "normal",
+          "hard",
+          "exploration"
+        ],
+        "stages": []
+      },
+      "evidence": [
+        {
+          "kind": "guide",
+          "url": "https://aion2.gg/guides/ferocious-horn-den-guide",
+          "date": "2026-11-24",
+          "support": "Frenzy (Conquest only) after 05:00: +200% damage, +100% combat speed. Exploration has no enrage."
+        }
+      ],
+      "review": {
+        "decision": "approve_scoped",
+        "date": "2026-11-24",
+        "basis": "boss guide research",
+        "confidence": "medium",
+        "researchEn": "Enraged: use defensives, burn it down",
+        "scopeWidestForBoss": true
+      },
+      "provenance": {
+        "language": "en",
+        "sourceField": "line",
+        "sourceKind": "guide-research",
+        "liveVerified": false
+      }
+    },
+    {
+      "k": "cast:1609011:forbidden-hexbeast-griosa",
+      "bossKey": "forbidden-hexbeast-griosa",
+      "t": "cast",
+      "id": 1609011,
+      "source": {
+        "field": "line",
+        "en": "The heavens shall tear you asunder! You cannot withstand this alone!"
+      },
+      "verification": "guide-exact",
+      "enabled": true,
+      "referenceOnly": false,
+      "actionId": "mechanic-11159ba586db7e8e",
+      "text": {
+        "en": "Stack together to share the hit",
+        "ko": "모여서 피해를 나눠 받으세요",
+        "ja": "集合して頭割り",
+        "de": "Sammelt euch und teilt den Treffer",
+        "fr": "Groupez-vous pour partager le coup",
+        "es": "Agrupaos para repartir el golpe",
+        "pt": "Juntem-se para dividir o golpe",
+        "ru": "Соберитесь, чтобы разделить удар",
+        "zh-Hant": "集合分攤傷害",
+        "zh-Hans": "集合分摊伤害"
+      },
+      "scope": {
+        "regions": [
+          "KR",
+          "Global"
+        ],
+        "categories": [
+          "conquest"
+        ],
+        "difficulties": [
+          "normal",
+          "hard",
+          "exploration"
+        ],
+        "stages": []
+      },
+      "evidence": [
+        {
+          "kind": "guide",
+          "url": "https://aion2data.com/dungeons/citadel-of-the-fallen-daeva/guide",
+          "date": "2026-11-24",
+          "support": "Commence Hunt, 3 s cast, stun and electrocution; the line says you can't withstand it alone. aion2t: damage-share explosion, everyone inside the indicator; anyone apart takes the full hit and dies."
+        },
+        {
+          "kind": "guide",
+          "url": "https://aion2t.com/guides/citadel-of-the-fallen-daeva-hard",
+          "date": "2026-11-24"
+        }
+      ],
+      "review": {
+        "decision": "approve_scoped",
+        "date": "2026-11-24",
+        "basis": "boss guide research",
+        "confidence": "medium",
+        "researchEn": "Stack together to share the hit",
+        "scopeWidestForBoss": true
+      },
+      "provenance": {
+        "language": "en",
+        "sourceField": "line",
+        "sourceKind": "guide-research",
+        "liveVerified": false
+      }
+    },
+    {
+      "k": "use:1808520:gargaum",
+      "bossKey": "gargaum",
+      "t": "use",
+      "id": 1808520,
+      "source": {
+        "field": "line",
+        "en": "Will you be torn to shreds alone, or die standing together?"
+      },
+      "verification": "guide-exact",
+      "enabled": true,
+      "referenceOnly": false,
+      "actionId": "mechanic-9303b4064f696bce",
+      "text": {
+        "en": "Block the clone; stack on small circles",
+        "ko": "분신을 막고 작은 원에 모이세요",
+        "ja": "分身を防御し、小円に集合",
+        "de": "Klon blocken; in kleinen Kreisen sammeln",
+        "fr": "Bloquez le clone ; groupez dans les petits cercles",
+        "es": "Bloquea al clon; agrupaos en círculos pequeños",
+        "pt": "Bloqueie o clone; juntem nos círculos pequenos",
+        "ru": "Блокируйте клона; собирайтесь в малых кругах",
+        "zh-Hant": "格擋分身；在小圈集合",
+        "zh-Hans": "格挡分身；在小圈集合"
+      },
+      "scope": {
+        "regions": [
+          "KR",
+          "Global"
+        ],
+        "categories": [
+          "transcendence"
+        ],
+        "difficulties": [],
+        "stages": [
+          4
+        ]
+      },
+      "evidence": [
+        {
+          "kind": "guide",
+          "url": "https://aion2data.com/dungeons/abyssal-horn-den/guide",
+          "date": "2026-11-24",
+          "support": "Gargaum reuses Nuakum's prey kit (Nuakum: 'Will you fight together, or go it alone?'): rooted target; an unmarked player blocks the clone; small circle = everyone stacks, big = target alone. aion2data labels it a stack attack."
+        },
+        {
+          "kind": "guide",
+          "url": "https://aion2t.com/guides/abyssal-horn-den-t4",
+          "date": "2026-11-24"
+        },
+        {
+          "kind": "guide",
+          "url": "https://www.inven.co.kr/webzine/news/?news=312152&site=aion2",
+          "date": "2026-11-24"
+        },
+        {
+          "kind": "guide",
+          "url": "https://www.gametoc.co.kr/news/articleView.html?idxno=104574",
+          "date": "2026-11-24"
+        }
+      ],
+      "review": {
+        "decision": "approve_scoped",
+        "date": "2026-11-24",
+        "basis": "boss guide research",
+        "confidence": "medium",
+        "researchEn": "Block the clone; stack on small circles",
+        "scopeWidestForBoss": true
+      },
+      "provenance": {
+        "language": "en",
+        "sourceField": "line",
+        "sourceKind": "guide-research",
+        "liveVerified": false
+      }
+    },
+    {
+      "k": "cast:1802900:isolation-specialist-rahu",
+      "bossKey": "isolation-specialist-rahu",
+      "t": "cast",
+      "id": 1802900,
+      "source": {
+        "field": "line",
+        "en": "Suffer within the wheel of torment!"
+      },
+      "verification": "guide-exact",
+      "enabled": true,
+      "referenceOnly": false,
+      "actionId": "mechanic-5a2776df475a121b",
+      "text": {
+        "en": "Run back and stack on the marker",
+        "ko": "뒤로 달려가 표식 위치에 모이세요",
+        "ja": "後ろへ走り、マーカーに集合",
+        "de": "Lauf zurück und sammelt euch an der Markierung",
+        "fr": "Reculez et groupez-vous sur le marqueur",
+        "es": "Corre atrás y agrupaos en el marcador",
+        "pt": "Corra para trás e juntem-se no marcador",
+        "ru": "Бегите назад и соберитесь у метки",
+        "zh-Hant": "往後跑並在標記處集合",
+        "zh-Hans": "往后跑并在标记处集合"
+      },
+      "scope": {
+        "regions": [
+          "KR",
+          "Global"
+        ],
+        "categories": [
+          "sanctuary"
+        ],
+        "difficulties": [
+          "normal",
+          "hard",
+          "exploration"
+        ],
+        "stages": []
+      },
+      "evidence": [
+        {
+          "kind": "guide",
+          "url": "https://game.savetip.co.kr/aion2-rudra-abyss-raid-guide/",
+          "date": "2026-11-24",
+          "support": "KR '고통의 굴레 안에서 맴돌아라!' (~75%): everyone is thrown to the edges; run back in and stack on the marked player while dodging AoEs, then drop personal puddles at the arena edge."
+        },
+        {
+          "kind": "guide",
+          "url": "https://aion2-meta.com/dungeons/abyssal-forge-ludra/",
+          "date": "2026-11-24"
+        },
+        {
+          "kind": "guide",
+          "url": "https://vtomes.com/aion2/guides/ludra-raid-guide/",
+          "date": "2026-11-24"
+        },
+        {
+          "kind": "guide",
+          "url": "https://www.aion2guidance.com/en/dungeons/ludra/",
+          "date": "2026-11-24"
+        },
+        {
+          "kind": "guide",
+          "url": "https://aion2tierlist.com/guides/aion-2-ludra-raid-guide",
+          "date": "2026-11-24"
+        }
+      ],
+      "review": {
+        "decision": "approve_scoped",
+        "date": "2026-11-24",
+        "basis": "boss guide research",
+        "confidence": "high",
+        "researchEn": "Run back and stack on the marker",
+        "scopeWidestForBoss": true
+      },
+      "provenance": {
+        "language": "en",
+        "sourceField": "line",
+        "sourceKind": "guide-research",
+        "liveVerified": false
+      }
+    },
+    {
+      "k": "use:1802980:isolation-specialist-rahu",
+      "bossKey": "isolation-specialist-rahu",
+      "t": "use",
+      "id": 1802980,
+      "source": {
+        "field": "line",
+        "en": "The Abyss hungers."
+      },
+      "verification": "guide-exact",
+      "enabled": true,
+      "referenceOnly": false,
+      "actionId": "mechanic-ce41233b3f2971f2",
+      "text": {
+        "en": "Aim your red line through the predators",
+        "ko": "빨간 직선이 포식자를 지나가게 조준하세요",
+        "ja": "赤い直線を捕食者に通して",
+        "de": "Richte deine rote Linie durch die Räuber",
+        "fr": "Faites passer votre ligne rouge par les prédateurs",
+        "es": "Apunta tu línea roja a través de los depredadores",
+        "pt": "Mire sua linha vermelha através dos predadores",
+        "ru": "Направьте красную линию через хищников",
+        "zh-Hant": "讓你的紅色直線穿過掠食者",
+        "zh-Hans": "让你的红色直线穿过掠食者"
+      },
+      "scope": {
+        "regions": [
+          "KR",
+          "Global"
+        ],
+        "categories": [
+          "sanctuary"
+        ],
+        "difficulties": [
+          "normal",
+          "hard",
+          "exploration"
+        ],
+        "stages": []
+      },
+      "evidence": [
+        {
+          "kind": "guide",
+          "url": "https://aion2maps.com/guides/ludra/",
+          "date": "2026-11-24",
+          "support": "Feeding Time (~25-30%): Rahu centres and four Abyss Predators appear; the targeted player lines Rahu's laser through them. Each survivor adds a black pool; three pools wipe."
+        },
+        {
+          "kind": "guide",
+          "url": "https://aion2-meta.com/dungeons/abyssal-forge-ludra/",
+          "date": "2026-11-24"
+        },
+        {
+          "kind": "guide",
+          "url": "https://vtomes.com/aion2/guides/ludra-raid-guide/",
+          "date": "2026-11-24"
+        },
+        {
+          "kind": "guide",
+          "url": "https://www.aion2guidance.com/en/dungeons/ludra/",
+          "date": "2026-11-24"
+        },
+        {
+          "kind": "guide",
+          "url": "https://aion2tierlist.com/guides/aion-2-ludra-raid-guide",
+          "date": "2026-11-24"
+        },
+        {
+          "kind": "guide",
+          "url": "https://game.savetip.co.kr/aion2-rudra-abyss-raid-guide/",
+          "date": "2026-11-24"
+        }
+      ],
+      "review": {
+        "decision": "approve_scoped",
+        "date": "2026-11-24",
+        "basis": "boss guide research",
+        "confidence": "high",
+        "researchEn": "Aim your red line through the predators",
+        "scopeWidestForBoss": true
+      },
+      "provenance": {
+        "language": "en",
+        "sourceField": "line",
+        "sourceKind": "guide-research",
+        "liveVerified": false
+      }
+    },
+    {
+      "k": "cast:1806630:kaldrix",
+      "bossKey": "kaldrix",
+      "t": "cast",
+      "id": 1806630,
+      "source": {
+        "field": "line",
+        "en": "I will not hesitate to eliminate any nuisances!"
+      },
+      "verification": "guide-exact",
+      "enabled": true,
+      "referenceOnly": false,
+      "actionId": "mechanic-a462fbde546c3738",
+      "text": {
+        "en": "Match each orb to your lane's color",
+        "ko": "각 구슬을 자기 구역의 색에 맞추세요",
+        "ja": "各球を自分のレーンの色に合わせて",
+        "de": "Ordne jede Kugel der Farbe deiner Bahn zu",
+        "fr": "Associez chaque orbe à la couleur de votre couloir",
+        "es": "Empareja cada orbe con el color de tu carril",
+        "pt": "Combine cada orbe com a cor da sua faixa",
+        "ru": "Сопоставьте каждую сферу с цветом своей дорожки",
+        "zh-Hant": "讓每顆光球對應你路線的顏色",
+        "zh-Hans": "让每颗光球对应你路线的颜色"
+      },
+      "scope": {
+        "regions": [
+          "KR",
+          "Global"
+        ],
+        "categories": [
+          "sanctuary"
+        ],
+        "difficulties": [
+          "normal",
+          "hard",
+          "exploration"
+        ],
+        "stages": []
+      },
+      "evidence": [
+        {
+          "kind": "guide",
+          "url": "https://lounge.plaync.com/feed/70652",
+          "date": "2026-11-24",
+          "support": "Burning Order, the traffic-light phase at ~75% and ~30-35%: the NC guide quotes this exact line ('하나라도 거슬리면 전부 으깨버리겠다'); boss raises red/green/blue shields and each player sends orbs in their lane matching the outer ring; 2+ wrong colors wipe. Burn stacks need a cleanse or potion; the second run gives some players two lanes."
+        },
+        {
+          "kind": "guide",
+          "url": "https://aion2t.com/guides/sanctuary-3-hard",
+          "date": "2026-11-24"
+        },
+        {
+          "kind": "guide",
+          "url": "https://aion2data.com/dungeons/chalice-of-muspel/guide",
+          "date": "2026-11-24"
+        }
+      ],
+      "review": {
+        "decision": "approve_scoped",
+        "date": "2026-11-24",
+        "basis": "boss guide research",
+        "confidence": "high",
+        "researchEn": "Match each orb to your lane's color",
+        "scopeWidestForBoss": true
+      },
+      "provenance": {
+        "language": "en",
+        "sourceField": "line",
+        "sourceKind": "guide-research",
+        "liveVerified": false
+      }
+    },
+    {
+      "k": "cast:1806640:kaldrix",
+      "bossKey": "kaldrix",
+      "t": "cast",
+      "id": 1806640,
+      "source": {
+        "field": "line",
+        "en": "Brilliant flames, reach ever higher! Everything will burn!"
+      },
+      "verification": "guide-exact",
+      "enabled": true,
+      "referenceOnly": false,
+      "actionId": "mechanic-55d6c05948acf4cd",
+      "text": {
+        "en": "Stack behind the bound player, aim lines outward",
+        "ko": "묶인 플레이어 뒤에 모이고 직선을 바깥으로 향하세요",
+        "ja": "拘束者の後ろに集合し、直線を外へ向けて",
+        "de": "Sammelt euch hinter dem Gefesselten, Linien nach außen",
+        "fr": "Groupez-vous derrière le joueur lié, lignes vers l'extérieur",
+        "es": "Agrupaos tras el jugador atado, líneas hacia fuera",
+        "pt": "Juntem-se atrás do jogador preso, linhas para fora",
+        "ru": "Соберитесь за связанным, линии наружу",
+        "zh-Hant": "在被束縛者身後集合，直線朝外",
+        "zh-Hans": "在被束缚者身后集合，直线朝外"
+      },
+      "scope": {
+        "regions": [
+          "KR",
+          "Global"
+        ],
+        "categories": [
+          "sanctuary"
+        ],
+        "difficulties": [
+          "normal",
+          "hard",
+          "exploration"
+        ],
+        "stages": []
+      },
+      "evidence": [
+        {
+          "kind": "guide",
+          "url": "https://aion2t.com/guides/sanctuary-3-hard",
+          "date": "2026-11-24",
+          "support": "Undying Flames ('Brilliant flames...', the '불길' step in Korean pattern orders): a random player is bound, then nine lines fire outward and leave lava puddles; the raid stacks behind the bound player so every line points away to the outer wall. Matched by the guide's 'Brilliant Flames' name."
+        },
+        {
+          "kind": "guide",
+          "url": "https://aion2data.com/dungeons/chalice-of-muspel/guide",
+          "date": "2026-11-24"
+        },
+        {
+          "kind": "guide",
+          "url": "https://www.inven.co.kr/board/aion2/6444/1978",
+          "date": "2026-11-24"
+        }
+      ],
+      "review": {
+        "decision": "approve_scoped",
+        "date": "2026-11-24",
+        "basis": "boss guide research",
+        "confidence": "medium",
+        "researchEn": "Stack behind the bound player, aim lines outward",
+        "scopeWidestForBoss": true
+      },
+      "provenance": {
+        "language": "en",
+        "sourceField": "line",
+        "sourceKind": "guide-research",
+        "liveVerified": false
+      }
+    },
+    {
+      "k": "cast:1806690:kaldrix",
+      "bossKey": "kaldrix",
+      "t": "cast",
+      "id": 1806690,
+      "source": {
+        "field": "line",
+        "en": "The aura of fire swirls into my body!"
+      },
+      "verification": "guide-exact",
+      "enabled": true,
+      "referenceOnly": false,
+      "actionId": "mechanic-c58a05c535615a34",
+      "text": {
+        "en": "Destroy every fire vein orb within 42 seconds",
+        "ko": "42초 안에 화염 광맥 구슬을 모두 파괴하세요",
+        "ja": "42秒以内に炎の鉱脈の球をすべて壊して",
+        "de": "Zerstör alle Feueradern-Kugeln binnen 42 Sekunden",
+        "fr": "Détruisez tous les orbes de veine de feu en 42 secondes",
+        "es": "Destruye todos los orbes de veta de fuego en 42 segundos",
+        "pt": "Destrua todos os orbes de veio de fogo em 42 segundos",
+        "ru": "Уничтожьте все сферы огненной жилы за 42 секунды",
+        "zh-Hant": "在42秒內摧毀所有火焰礦脈光球",
+        "zh-Hans": "在42秒内摧毁所有火焰矿脉光球"
+      },
+      "scope": {
+        "regions": [
+          "KR",
+          "Global"
+        ],
+        "categories": [
+          "sanctuary"
+        ],
+        "difficulties": [
+          "normal",
+          "hard",
+          "exploration"
+        ],
+        "stages": []
+      },
+      "evidence": [
+        {
+          "kind": "guide",
+          "url": "https://aion2t.com/guides/sanctuary-3-hard",
+          "date": "2026-11-24",
+          "support": "Conqueror of the Depths (once per fight, 600 s cooldown): at ~5-15% the boss sinks, eight fire veins tether to him and a 42 s wipe cast runs; split East/West, rotate along the edge breaking veins and dash through lava-wave gaps. Matched by skill name ('Conger of the Depth' in aion2t), not by a quoted line."
+        },
+        {
+          "kind": "guide",
+          "url": "https://lounge.plaync.com/feed/70652",
+          "date": "2026-11-24"
+        },
+        {
+          "kind": "guide",
+          "url": "https://aion2data.com/dungeons/chalice-of-muspel/guide",
+          "date": "2026-11-24"
+        }
+      ],
+      "review": {
+        "decision": "approve_scoped",
+        "date": "2026-11-24",
+        "basis": "boss guide research",
+        "confidence": "medium",
+        "researchEn": "Destroy every fire vein orb within 42 seconds",
+        "scopeWidestForBoss": true
+      },
+      "provenance": {
+        "language": "en",
+        "sourceField": "line",
+        "sourceKind": "guide-research",
+        "liveVerified": false
+      }
+    },
+    {
+      "k": "abnormal:10000008:kaldrix",
+      "bossKey": "kaldrix",
+      "t": "abnormal",
+      "id": 10000008,
+      "source": {
+        "field": "line",
+        "en": "Finally! I have absorbed all of the chalice's power!"
+      },
+      "verification": "guide-exact",
+      "enabled": true,
+      "referenceOnly": false,
+      "actionId": "mechanic-697c1346b603fb14",
+      "text": {
+        "en": "Enraged: burn it down, use defensives",
+        "ko": "광폭화: 방어 스킬을 쓰고 빠르게 처치하세요",
+        "ja": "激昂：防御スキルを使い、一気に倒して",
+        "de": "Raserei: Verteidigung nutzen, schnell erledigen",
+        "fr": "Enragé : défenses actives, achevez-le vite",
+        "es": "Enfurecido: usa defensas y acaba con él",
+        "pt": "Enfurecido: use defesas e acabe com ele",
+        "ru": "Ярость: защитные умения, добивайте быстро",
+        "zh-Hant": "狂暴：使用防禦技能，迅速擊殺",
+        "zh-Hans": "狂暴：使用防御技能，迅速击杀"
+      },
+      "scope": {
+        "regions": [
+          "KR",
+          "Global"
+        ],
+        "categories": [
+          "sanctuary"
+        ],
+        "difficulties": [
+          "normal",
+          "hard",
+          "exploration"
+        ],
+        "stages": []
+      },
+      "evidence": [
+        {
+          "kind": "guide",
+          "url": "https://aion2data.com/dungeons/chalice-of-muspel/guide",
+          "date": "2026-11-24",
+          "support": "Hard enrage at 8:00 of combat (normal and hard): +100% speeds and +200% damage, effectively a wipe; finish the boss or save cooldowns to survive the last seconds."
+        },
+        {
+          "kind": "guide",
+          "url": "https://www.inven.co.kr/board/aion2/6444/2187",
+          "date": "2026-11-24"
+        }
+      ],
+      "review": {
+        "decision": "approve_scoped",
+        "date": "2026-11-24",
+        "basis": "boss guide research",
+        "confidence": "high",
+        "researchEn": "Enraged: burn it down, use defensives",
+        "scopeWidestForBoss": true
+      },
+      "provenance": {
+        "language": "en",
+        "sourceField": "line",
+        "sourceKind": "guide-research",
+        "liveVerified": false
+      }
+    },
+    {
+      "k": "use:1606930:kapu",
+      "bossKey": "kapu",
+      "t": "use",
+      "id": 1606930,
+      "source": {
+        "field": "line",
+        "en": "Krauugh! T'shhhz!"
+      },
+      "verification": "guide-exact",
+      "enabled": true,
+      "referenceOnly": false,
+      "actionId": "mechanic-adffb6b6d2bb5b2b",
+      "text": {
+        "en": "Spread out and grab the lightning orbs",
+        "ko": "산개해서 번개 구슬을 먹으세요",
+        "ja": "散開して雷の球を取って",
+        "de": "Verteilt euch und schnappt die Blitzkugeln",
+        "fr": "Dispersez-vous et prenez les orbes de foudre",
+        "es": "Separaos y coged los orbes de rayo",
+        "pt": "Espalhem-se e peguem os orbes de raio",
+        "ru": "Разойдитесь и соберите сферы молний",
+        "zh-Hant": "散開並拿取雷電光球",
+        "zh-Hans": "散开并拿取雷电光球"
+      },
+      "scope": {
+        "regions": [
+          "KR",
+          "Global"
+        ],
+        "categories": [
+          "conquest"
+        ],
+        "difficulties": [
+          "normal",
+          "hard",
+          "exploration"
+        ],
+        "stages": []
+      },
+      "evidence": [
+        {
+          "kind": "guide",
+          "url": "https://www.inven.co.kr/webzine/news/?news=312152&site=aion2",
+          "date": "2026-11-24",
+          "support": "Same skill id and near-identical line as Watchdog Kwapo's orb drop ('크라악! 투쉬이잇!'): lightning orbs drop around the arena; spread and run over them before the howl, as leftovers explode. Kapu itself has no guide; matched by the shared skill."
+        },
+        {
+          "kind": "guide",
+          "url": "https://v.daum.net/v/20251208102538502",
+          "date": "2026-11-24"
+        },
+        {
+          "kind": "guide",
+          "url": "https://aion2.gg/guides/ferocious-horn-den-guide",
+          "date": "2026-11-24"
+        }
+      ],
+      "review": {
+        "decision": "approve_scoped",
+        "date": "2026-11-24",
+        "basis": "boss guide research",
+        "confidence": "medium",
+        "researchEn": "Spread out and grab the lightning orbs",
+        "scopeWidestForBoss": true
+      },
+      "provenance": {
+        "language": "en",
+        "sourceField": "line",
+        "sourceKind": "guide-research",
+        "liveVerified": false
+      }
+    },
+    {
+      "k": "abnormal:10000002:kromede-s-desire",
+      "bossKey": "kromede-s-desire",
+      "t": "abnormal",
+      "id": 10000002,
+      "source": {
+        "field": "line",
+        "en": "How... dare you..."
+      },
+      "verification": "guide-exact",
+      "enabled": true,
+      "referenceOnly": false,
+      "actionId": "mechanic-eae5395b3b9a086c",
+      "text": {
+        "en": "Boss staggered, burst it now",
+        "ko": "보스 무력화, 지금 집중 공격하세요",
+        "ja": "ボスがよろめいた、今すぐ集中攻撃",
+        "de": "Boss taumelt, jetzt voller Schaden",
+        "fr": "Boss déséquilibré, frappez fort maintenant",
+        "es": "Jefe desequilibrado, ataca a fondo ya",
+        "pt": "Chefe desequilibrado, ataque com tudo agora",
+        "ru": "Босс потерял равновесие, бейте изо всех сил",
+        "zh-Hant": "首領失衡，立即全力輸出",
+        "zh-Hans": "首领失衡，立即全力输出"
+      },
+      "scope": {
+        "regions": [
+          "KR",
+          "Global"
+        ],
+        "categories": [
+          "conquest"
+        ],
+        "difficulties": [
+          "normal",
+          "hard",
+          "exploration"
+        ],
+        "stages": []
+      },
+      "evidence": [
+        {
+          "kind": "guide",
+          "url": "https://aion2data.com/dungeons/fire-temple/guide",
+          "date": "2026-11-24",
+          "support": "Stagger: the boss is Incapacitated for 5 s after its stagger gauge breaks ('How... dare you...'); it is the free damage window, so use your biggest skills."
+        },
+        {
+          "kind": "guide",
+          "url": "https://www.inven.co.kr/webzine/news/?news=311631&site=aion2",
+          "date": "2026-11-24"
+        }
+      ],
+      "review": {
+        "decision": "approve_scoped",
+        "date": "2026-11-24",
+        "basis": "boss guide research",
+        "confidence": "high",
+        "researchEn": "Boss staggered, burst it now",
+        "scopeWidestForBoss": true
+      },
+      "provenance": {
+        "language": "en",
+        "sourceField": "line",
+        "sourceKind": "guide-research",
+        "liveVerified": false
+      }
+    },
+    {
+      "k": "abnormal:10000008:kromede-s-desire",
+      "bossKey": "kromede-s-desire",
+      "t": "abnormal",
+      "id": 10000008,
+      "source": {
+        "field": "line",
+        "en": "Let desire consume you!"
+      },
+      "verification": "guide-exact",
+      "enabled": true,
+      "referenceOnly": false,
+      "actionId": "mechanic-7065fb14883fe266",
+      "text": {
+        "en": "Enraged: burn it down, use defensives",
+        "ko": "광폭화: 방어 스킬을 쓰고 빠르게 처치하세요",
+        "ja": "激昂：防御スキルを使い、一気に倒して",
+        "de": "Raserei: Verteidigung nutzen, schnell erledigen",
+        "fr": "Enragé : défenses actives, achevez-le vite",
+        "es": "Enfurecido: usa defensas y acaba con él",
+        "pt": "Enfurecido: use defesas e acabe com ele",
+        "ru": "Ярость: защитные умения, добивайте быстро",
+        "zh-Hant": "狂暴：使用防禦技能，迅速擊殺",
+        "zh-Hans": "狂暴：使用防御技能，迅速击杀"
+      },
+      "scope": {
+        "regions": [
+          "KR",
+          "Global"
+        ],
+        "categories": [
+          "conquest"
+        ],
+        "difficulties": [
+          "normal",
+          "hard",
+          "exploration"
+        ],
+        "stages": []
+      },
+      "evidence": [
+        {
+          "kind": "guide",
+          "url": "https://aion2data.com/dungeons/fire-temple/guide",
+          "date": "2026-11-24",
+          "support": "Frenzy at 5:00 of combat in Conquest, 4:00 in Conquest Hard: +100% speeds and +200% damage; low-damage groups wipe here, so finish her or survive with cooldowns."
+        }
+      ],
+      "review": {
+        "decision": "approve_scoped",
+        "date": "2026-11-24",
+        "basis": "boss guide research",
+        "confidence": "high",
+        "researchEn": "Enraged: burn it down, use defensives",
+        "scopeWidestForBoss": true
+      },
+      "provenance": {
+        "language": "en",
+        "sourceField": "line",
+        "sourceKind": "guide-research",
+        "liveVerified": false
+      }
+    },
+    {
+      "k": "use:1807100:kromede-s-desolation",
+      "bossKey": "kromede-s-desolation",
+      "t": "use",
+      "id": 1807100,
+      "source": {
+        "field": "line",
+        "en": "Can you feel my broken heart?"
+      },
+      "verification": "guide-exact",
+      "enabled": true,
+      "referenceOnly": false,
+      "actionId": "mechanic-4ca6ee3207277ce9",
+      "text": {
+        "en": "Marked: drop your zone away from the group",
+        "ko": "표식 대상: 장판을 파티에서 먼 곳에 놓으세요",
+        "ja": "マーク対象：床を味方から離れた所に置いて",
+        "de": "Markiert: leg deine Zone abseits der Gruppe ab",
+        "fr": "Marqué : posez votre zone loin du groupe",
+        "es": "Marcado: suelta tu zona lejos del grupo",
+        "pt": "Marcado: solte sua zona longe do grupo",
+        "ru": "Отмеченный: сбросьте зону подальше от группы",
+        "zh-Hant": "被標記：把範圍放在遠離隊伍處",
+        "zh-Hans": "被标记：把范围放在远离队伍处"
+      },
+      "scope": {
+        "regions": [
+          "KR",
+          "Global"
+        ],
+        "categories": [
+          "transcendence"
+        ],
+        "difficulties": [],
+        "stages": [
+          4
+        ]
+      },
+      "evidence": [
+        {
+          "kind": "guide",
+          "url": "https://www.inven.co.kr/webzine/news/?news=316526&site=aion2",
+          "date": "2026-11-24",
+          "support": "Fragmented Heart (조각난 마음, named like the line '내 조각난 마음이 느껴져?'): two clones each mark a player and spawn floors on them; place them apart and away from the group to keep room to fight. One Korean source; matched by the pattern's name."
+        },
+        {
+          "kind": "guide",
+          "url": "https://aion2data.com/dungeons/mirror-of-scarlet-desire/guide",
+          "date": "2026-11-24"
+        }
+      ],
+      "review": {
+        "decision": "approve_scoped",
+        "date": "2026-11-24",
+        "basis": "boss guide research",
+        "confidence": "medium",
+        "researchEn": "Marked: drop your zone away from the group",
+        "scopeWidestForBoss": true
+      },
+      "provenance": {
+        "language": "en",
+        "sourceField": "line",
+        "sourceKind": "guide-research",
+        "liveVerified": false
+      }
+    },
+    {
+      "k": "abnormal:10000008:kromede-s-desolation",
+      "bossKey": "kromede-s-desolation",
+      "t": "abnormal",
+      "id": 10000008,
+      "source": {
+        "field": "line",
+        "en": "Die, die, all of you, die!"
+      },
+      "verification": "guide-exact",
+      "enabled": true,
+      "referenceOnly": false,
+      "actionId": "mechanic-f93ad60d0d126f06",
+      "text": {
+        "en": "Enraged: burn it down, use defensives",
+        "ko": "광폭화: 방어 스킬을 쓰고 빠르게 처치하세요",
+        "ja": "激昂：防御スキルを使い、一気に倒して",
+        "de": "Raserei: Verteidigung nutzen, schnell erledigen",
+        "fr": "Enragé : défenses actives, achevez-le vite",
+        "es": "Enfurecido: usa defensas y acaba con él",
+        "pt": "Enfurecido: use defesas e acabe com ele",
+        "ru": "Ярость: защитные умения, добивайте быстро",
+        "zh-Hant": "狂暴：使用防禦技能，迅速擊殺",
+        "zh-Hans": "狂暴：使用防御技能，迅速击杀"
+      },
+      "scope": {
+        "regions": [
+          "KR",
+          "Global"
+        ],
+        "categories": [
+          "transcendence"
+        ],
+        "difficulties": [],
+        "stages": [
+          4
+        ]
+      },
+      "evidence": [
+        {
+          "kind": "guide",
+          "url": "https://aion2data.com/dungeons/mirror-of-scarlet-desire/guide",
+          "date": "2026-11-24",
+          "support": "Frenzy at 5:00 of combat: +100% speeds and +200% damage; finish Kromede before it lands or survive it with cooldowns."
+        }
+      ],
+      "review": {
+        "decision": "approve_scoped",
+        "date": "2026-11-24",
+        "basis": "boss guide research",
+        "confidence": "high",
+        "researchEn": "Enraged: burn it down, use defensives",
+        "scopeWidestForBoss": true
+      },
+      "provenance": {
+        "language": "en",
+        "sourceField": "line",
+        "sourceKind": "guide-research",
+        "liveVerified": false
+      }
+    },
+    {
+      "k": "cast:1606200:manager-nasium",
+      "bossKey": "manager-nasium",
+      "t": "cast",
+      "id": 1606200,
+      "source": {
+        "field": "line",
+        "en": "My blade will cut you clean through!"
+      },
+      "verification": "guide-exact",
+      "enabled": true,
+      "referenceOnly": false,
+      "actionId": "mechanic-1d40ec335c0fe2d1",
+      "text": {
+        "en": "Lead the blade into a stone pillar",
+        "ko": "칼날을 돌기둥으로 유도하세요",
+        "ja": "刃を石柱へ誘導して",
+        "de": "Lenk die Klinge in eine Steinsäule",
+        "fr": "Menez la lame dans un pilier de pierre",
+        "es": "Lleva la hoja a un pilar de piedra",
+        "pt": "Leve a lâmina até um pilar de pedra",
+        "ru": "Направьте клинок в каменную колонну",
+        "zh-Hant": "將刀刃引向石柱",
+        "zh-Hans": "将刀刃引向石柱"
+      },
+      "scope": {
+        "regions": [
+          "KR",
+          "Global"
+        ],
+        "categories": [
+          "conquest"
+        ],
+        "difficulties": [
+          "normal",
+          "hard",
+          "exploration"
+        ],
+        "stages": []
+      },
+      "evidence": [
+        {
+          "kind": "guide",
+          "url": "https://www.inven.co.kr/webzine/news/?news=313154&site=aion2",
+          "date": "2026-11-24",
+          "support": "'막을 수 없는 칼날' (Unstoppable Blade): a blade chases each player; get a pillar between you and it, in a straight line, so it crashes into the pillar. If it follows you round, run to the far pillar; don't cross other players' paths."
+        },
+        {
+          "kind": "guide",
+          "url": "https://www.gametoc.co.kr/news/articleView.html?idxno=105694",
+          "date": "2026-11-24"
+        },
+        {
+          "kind": "guide",
+          "url": "https://www.gamechosun.co.kr/webzine/article/view.php?no=219645",
+          "date": "2026-11-24"
+        },
+        {
+          "kind": "guide",
+          "url": "https://aion2data.com/dungeons/dying-dramatas-nest/guide",
+          "date": "2026-11-24"
+        }
+      ],
+      "review": {
+        "decision": "approve_scoped",
+        "date": "2026-11-24",
+        "basis": "boss guide research",
+        "confidence": "high",
+        "researchEn": "Lead the blade into a stone pillar",
+        "scopeWidestForBoss": true
+      },
+      "provenance": {
+        "language": "en",
+        "sourceField": "line",
+        "sourceKind": "guide-research",
+        "liveVerified": false
+      }
+    },
+    {
+      "k": "abnormal:10000008:nathara",
+      "bossKey": "nathara",
+      "t": "abnormal",
+      "id": 10000008,
+      "source": {
+        "field": "line",
+        "en": "Must you deprive me...?"
+      },
+      "verification": "guide-exact",
+      "enabled": true,
+      "referenceOnly": false,
+      "actionId": "mechanic-8e3ed08c8af97d66",
+      "text": {
+        "en": "Enraged: burn it down, use defensives",
+        "ko": "광폭화: 방어 스킬을 쓰고 빠르게 처치하세요",
+        "ja": "激昂：防御スキルを使い、一気に倒して",
+        "de": "Raserei: Verteidigung nutzen, schnell erledigen",
+        "fr": "Enragé : défenses actives, achevez-le vite",
+        "es": "Enfurecido: usa defensas y acaba con él",
+        "pt": "Enfurecido: use defesas e acabe com ele",
+        "ru": "Ярость: защитные умения, добивайте быстро",
+        "zh-Hant": "狂暴：使用防禦技能，迅速擊殺",
+        "zh-Hans": "狂暴：使用防御技能，迅速击杀"
+      },
+      "scope": {
+        "regions": [
+          "KR",
+          "Global"
+        ],
+        "categories": [
+          "conquest"
+        ],
+        "difficulties": [
+          "normal",
+          "hard",
+          "exploration"
+        ],
+        "stages": []
+      },
+      "evidence": [
+        {
+          "kind": "guide",
+          "url": "https://aion2data.com/dungeons/hall-of-illusion/guide",
+          "date": "2026-11-24",
+          "support": "Frenzy at 5:00 of combat: +100% speeds and +200% damage; the in-game guide says Nathara is enraged, finish her quickly."
+        }
+      ],
+      "review": {
+        "decision": "approve_scoped",
+        "date": "2026-11-24",
+        "basis": "boss guide research",
+        "confidence": "high",
+        "researchEn": "Enraged: burn it down, use defensives",
+        "scopeWidestForBoss": true
+      },
+      "provenance": {
+        "language": "en",
+        "sourceField": "line",
+        "sourceKind": "guide-research",
+        "liveVerified": false
+      }
+    },
+    {
+      "k": "abnormal:10000002:scribe-vellum",
+      "bossKey": "scribe-vellum",
+      "t": "abnormal",
+      "id": 10000002,
+      "source": {
+        "field": "line",
+        "en": "If I cannot have it, no one shall!"
+      },
+      "verification": "guide-exact",
+      "enabled": true,
+      "referenceOnly": false,
+      "actionId": "mechanic-770a1f8bb2d948e6",
+      "text": {
+        "en": "Boss staggered, burst it now",
+        "ko": "보스 무력화, 지금 집중 공격하세요",
+        "ja": "ボスがよろめいた、今すぐ集中攻撃",
+        "de": "Boss taumelt, jetzt voller Schaden",
+        "fr": "Boss déséquilibré, frappez fort maintenant",
+        "es": "Jefe desequilibrado, ataca a fondo ya",
+        "pt": "Chefe desequilibrado, ataque com tudo agora",
+        "ru": "Босс потерял равновесие, бейте изо всех сил",
+        "zh-Hant": "首領失衡，立即全力輸出",
+        "zh-Hans": "首领失衡，立即全力输出"
+      },
+      "scope": {
+        "regions": [
+          "KR",
+          "Global"
+        ],
+        "categories": [
+          "conquest",
+          "sanctuary"
+        ],
+        "difficulties": [
+          "normal",
+          "hard",
+          "exploration"
+        ],
+        "stages": []
+      },
+      "evidence": [
+        {
+          "kind": "guide",
+          "url": "https://aion2data.com/dungeons/fire-temple/guide",
+          "date": "2026-11-24",
+          "support": "Generic stagger buff (id 10000002, 5 s Incapacitated on AION 2 bosses): the free damage window. No Scribe Vellum guide found; the action follows from the buff, not a boss-specific source."
+        }
+      ],
+      "review": {
+        "decision": "approve_scoped",
+        "date": "2026-11-24",
+        "basis": "boss guide research",
+        "confidence": "medium",
+        "researchEn": "Boss staggered, burst it now",
+        "scopeWidestForBoss": true
+      },
+      "provenance": {
+        "language": "en",
+        "sourceField": "line",
+        "sourceKind": "guide-research",
+        "liveVerified": false
+      }
+    },
+    {
+      "k": "abnormal:10000008:submerged-emon",
+      "bossKey": "submerged-emon",
+      "t": "abnormal",
+      "id": 10000008,
+      "source": {
+        "field": "line",
+        "en": "There will be no mercy."
+      },
+      "verification": "guide-exact",
+      "enabled": true,
+      "referenceOnly": false,
+      "actionId": "mechanic-83c6182a1d8efbd2",
+      "text": {
+        "en": "Enraged: burn it down, use defensives",
+        "ko": "광폭화: 방어 스킬을 쓰고 빠르게 처치하세요",
+        "ja": "激昂：防御スキルを使い、一気に倒して",
+        "de": "Raserei: Verteidigung nutzen, schnell erledigen",
+        "fr": "Enragé : défenses actives, achevez-le vite",
+        "es": "Enfurecido: usa defensas y acaba con él",
+        "pt": "Enfurecido: use defesas e acabe com ele",
+        "ru": "Ярость: защитные умения, добивайте быстро",
+        "zh-Hant": "狂暴：使用防禦技能，迅速擊殺",
+        "zh-Hans": "狂暴：使用防御技能，迅速击杀"
+      },
+      "scope": {
+        "regions": [
+          "KR",
+          "Global"
+        ],
+        "categories": [
+          "transcendence"
+        ],
+        "difficulties": [],
+        "stages": [
+          1,
+          2,
+          3,
+          4
+        ]
+      },
+      "evidence": [
+        {
+          "kind": "guide",
+          "url": "https://aion2data.com/dungeons/submerged-life-temple/guide",
+          "date": "2026-11-24",
+          "support": "Frenzy at 5:00 of combat: +100% speeds and +200% damage; finish Emon or survive it with cooldowns."
+        }
+      ],
+      "review": {
+        "decision": "approve_scoped",
+        "date": "2026-11-24",
+        "basis": "boss guide research",
+        "confidence": "high",
+        "researchEn": "Enraged: burn it down, use defensives",
+        "scopeWidestForBoss": true
+      },
+      "provenance": {
+        "language": "en",
+        "sourceField": "line",
+        "sourceKind": "guide-research",
+        "liveVerified": false
+      }
+    },
+    {
+      "k": "abnormal:10000008:talisra-of-the-void",
+      "bossKey": "talisra-of-the-void",
+      "t": "abnormal",
+      "id": 10000008,
+      "source": {
+        "field": "line",
+        "en": "Now, the void will consume you!"
+      },
+      "verification": "guide-exact",
+      "enabled": true,
+      "referenceOnly": false,
+      "actionId": "mechanic-d5a2b63223cf71f3",
+      "text": {
+        "en": "Enraged: burn it down, use defensives",
+        "ko": "광폭화: 방어 스킬을 쓰고 빠르게 처치하세요",
+        "ja": "激昂：防御スキルを使い、一気に倒して",
+        "de": "Raserei: Verteidigung nutzen, schnell erledigen",
+        "fr": "Enragé : défenses actives, achevez-le vite",
+        "es": "Enfurecido: usa defensas y acaba con él",
+        "pt": "Enfurecido: use defesas e acabe com ele",
+        "ru": "Ярость: защитные умения, добивайте быстро",
+        "zh-Hant": "狂暴：使用防禦技能，迅速擊殺",
+        "zh-Hans": "狂暴：使用防御技能，迅速击杀"
+      },
+      "scope": {
+        "regions": [
+          "KR",
+          "Global"
+        ],
+        "categories": [
+          "transcendence"
+        ],
+        "difficulties": [],
+        "stages": [
+          1,
+          2,
+          3,
+          4
+        ]
+      },
+      "evidence": [
+        {
+          "kind": "guide",
+          "url": "https://aion2data.com/dungeons/shattered-arkanis/guide",
+          "date": "2026-11-24",
+          "support": "Frenzy at 5:00 of combat: +100% speeds and +200% damage; finish Talisra or survive it with cooldowns."
+        }
+      ],
+      "review": {
+        "decision": "approve_scoped",
+        "date": "2026-11-24",
+        "basis": "boss guide research",
+        "confidence": "high",
+        "researchEn": "Enraged: burn it down, use defensives",
+        "scopeWidestForBoss": true
+      },
+      "provenance": {
+        "language": "en",
+        "sourceField": "line",
+        "sourceKind": "guide-research",
+        "liveVerified": false
+      }
+    },
+    {
+      "k": "use:1805701:terminator-bargott",
+      "bossKey": "terminator-bargott",
+      "t": "use",
+      "id": 1805701,
+      "source": {
+        "field": "line",
+        "en": "Pathetic creatures. Come to me!"
+      },
+      "verification": "guide-exact",
+      "enabled": true,
+      "referenceOnly": false,
+      "actionId": "mechanic-dea44d6db2351a0e",
+      "text": {
+        "en": "Grab a bomb, target the boss, throw",
+        "ko": "폭탄을 들고 보스를 대상으로 던지세요",
+        "ja": "爆弾を持ち、ボスを狙って投げて",
+        "de": "Bombe nehmen, Boss anvisieren, werfen",
+        "fr": "Prenez une bombe, ciblez le boss, lancez",
+        "es": "Coge una bomba, apunta al jefe, lánzala",
+        "pt": "Pegue uma bomba, mire no chefe, arremesse",
+        "ru": "Возьмите бомбу, нацельтесь на босса, бросайте",
+        "zh-Hant": "拿起炸彈，鎖定首領，投擲",
+        "zh-Hans": "拿起炸弹，锁定首领，投掷"
+      },
+      "scope": {
+        "regions": [
+          "KR",
+          "Global"
+        ],
+        "categories": [
+          "sanctuary"
+        ],
+        "difficulties": [
+          "normal",
+          "hard",
+          "exploration"
+        ],
+        "stages": []
+      },
+      "evidence": [
+        {
+          "kind": "guide",
+          "url": "https://lounge.plaync.com/feed/61884",
+          "date": "2026-11-24",
+          "support": "50% bomb phase: the whole party is pulled in (200 m range fits the 'Come to me' line), then each player picks up a bomb (F), targets Bargott (Tab) and throws, avoiding fire and poison floors. Untargeted throws miss."
+        },
+        {
+          "kind": "guide",
+          "url": "https://game.savetip.co.kr/aion2-sanctuary-of-erosion-guide/",
+          "date": "2026-11-24"
+        },
+        {
+          "kind": "guide",
+          "url": "https://aion2codex.com/dungeons/corroded-facility",
+          "date": "2026-11-24"
+        }
+      ],
+      "review": {
+        "decision": "approve_scoped",
+        "date": "2026-11-24",
+        "basis": "boss guide research",
+        "confidence": "medium",
+        "researchEn": "Grab a bomb, target the boss, throw",
+        "scopeWidestForBoss": true
+      },
+      "provenance": {
+        "language": "en",
+        "sourceField": "line",
+        "sourceKind": "guide-research",
+        "liveVerified": false
+      }
+    },
+    {
+      "k": "use:1805730:terminator-bargott",
+      "bossKey": "terminator-bargott",
+      "t": "use",
+      "id": 1805730,
+      "source": {
+        "field": "line",
+        "en": "With a flash, it will dazzle your eyes!"
+      },
+      "verification": "guide-exact",
+      "enabled": true,
+      "referenceOnly": false,
+      "actionId": "mechanic-7c1bf50f014f3a40",
+      "text": {
+        "en": "Turn your back to the boss",
+        "ko": "보스에게 등을 돌리세요",
+        "ja": "ボスに背を向けて",
+        "de": "Dreh dem Boss den Rücken zu",
+        "fr": "Tournez le dos au boss",
+        "es": "Dale la espalda al jefe",
+        "pt": "Vire as costas para o chefe",
+        "ru": "Повернитесь к боссу спиной",
+        "zh-Hant": "背對首領",
+        "zh-Hans": "背对首领"
+      },
+      "scope": {
+        "regions": [
+          "KR",
+          "Global"
+        ],
+        "categories": [
+          "sanctuary"
+        ],
+        "difficulties": [
+          "normal",
+          "hard",
+          "exploration"
+        ],
+        "stages": []
+      },
+      "evidence": [
+        {
+          "kind": "guide",
+          "url": "https://lounge.plaync.com/feed/61884",
+          "date": "2026-11-24",
+          "support": "Flashbang: the NC guide quotes this exact line ('번쩍 터지고 나면 똑바로 못 볼 거다!'); the boss jumps and drops a black orb that blinds anyone facing it. Turn your character (not just the camera), then run from the rectangles that follow. aion2t pairs the line with the laser instead."
+        },
+        {
+          "kind": "guide",
+          "url": "https://game.savetip.co.kr/aion2-sanctuary-of-erosion-guide/",
+          "date": "2026-11-24"
+        },
+        {
+          "kind": "guide",
+          "url": "https://aion2codex.com/dungeons/corroded-facility",
+          "date": "2026-11-24"
+        },
+        {
+          "kind": "guide",
+          "url": "https://aion2t.com/guides/sanctuary-corroded-decontamination",
+          "date": "2026-11-24"
+        }
+      ],
+      "review": {
+        "decision": "approve_scoped",
+        "date": "2026-11-24",
+        "basis": "boss guide research",
+        "confidence": "high",
+        "researchEn": "Turn your back to the boss",
+        "scopeWidestForBoss": true
+      },
+      "provenance": {
+        "language": "en",
+        "sourceField": "line",
+        "sourceKind": "guide-research",
+        "liveVerified": false
+      }
+    },
+    {
+      "k": "cast:1805761:terminator-bargott",
+      "bossKey": "terminator-bargott",
+      "t": "cast",
+      "id": 1805761,
+      "source": {
+        "field": "line",
+        "en": "You will all die together!"
+      },
+      "verification": "guide-exact",
+      "enabled": true,
+      "referenceOnly": false,
+      "actionId": "mechanic-d3c9f778f6b68258",
+      "text": {
+        "en": "Grab a bomb, target the boss, throw",
+        "ko": "폭탄을 들고 보스를 대상으로 던지세요",
+        "ja": "爆弾を持ち、ボスを狙って投げて",
+        "de": "Bombe nehmen, Boss anvisieren, werfen",
+        "fr": "Prenez une bombe, ciblez le boss, lancez",
+        "es": "Coge una bomba, apunta al jefe, lánzala",
+        "pt": "Pegue uma bomba, mire no chefe, arremesse",
+        "ru": "Возьмите бомбу, нацельтесь на босса, бросайте",
+        "zh-Hant": "拿起炸彈，鎖定首領，投擲",
+        "zh-Hans": "拿起炸弹，锁定首领，投掷"
+      },
+      "scope": {
+        "regions": [
+          "KR",
+          "Global"
+        ],
+        "categories": [
+          "sanctuary"
+        ],
+        "difficulties": [
+          "normal",
+          "hard",
+          "exploration"
+        ],
+        "stages": []
+      },
+      "evidence": [
+        {
+          "kind": "guide",
+          "url": "https://aion2t.com/guides/sanctuary-corroded-decontamination",
+          "date": "2026-11-24",
+          "support": "aion2t quotes 'You will all die together!' for the bomb-throw phase: the boss leaves the platform, players collect bombs (F), dodge fireballs and throw them at him before the timer. 200 m range."
+        },
+        {
+          "kind": "guide",
+          "url": "https://lounge.plaync.com/feed/61884",
+          "date": "2026-11-24"
+        }
+      ],
+      "review": {
+        "decision": "approve_scoped",
+        "date": "2026-11-24",
+        "basis": "boss guide research",
+        "confidence": "medium",
+        "researchEn": "Grab a bomb, target the boss, throw",
+        "scopeWidestForBoss": true
+      },
+      "provenance": {
+        "language": "en",
+        "sourceField": "line",
+        "sourceKind": "guide-research",
+        "liveVerified": false
+      }
+    },
+    {
+      "k": "abnormal:10000008:terminator-bargott",
+      "bossKey": "terminator-bargott",
+      "t": "abnormal",
+      "id": 10000008,
+      "source": {
+        "field": "line",
+        "en": "You're all gonna die!"
+      },
+      "verification": "guide-exact",
+      "enabled": true,
+      "referenceOnly": false,
+      "actionId": "mechanic-97e6939611f9ceef",
+      "text": {
+        "en": "Enraged: burn it down, use defensives",
+        "ko": "광폭화: 방어 스킬을 쓰고 빠르게 처치하세요",
+        "ja": "激昂：防御スキルを使い、一気に倒して",
+        "de": "Raserei: Verteidigung nutzen, schnell erledigen",
+        "fr": "Enragé : défenses actives, achevez-le vite",
+        "es": "Enfurecido: usa defensas y acaba con él",
+        "pt": "Enfurecido: use defesas e acabe com ele",
+        "ru": "Ярость: защитные умения, добивайте быстро",
+        "zh-Hant": "狂暴：使用防禦技能，迅速擊殺",
+        "zh-Hans": "狂暴：使用防御技能，迅速击杀"
+      },
+      "scope": {
+        "regions": [
+          "KR",
+          "Global"
+        ],
+        "categories": [
+          "sanctuary"
+        ],
+        "difficulties": [
+          "normal",
+          "hard",
+          "exploration"
+        ],
+        "stages": []
+      },
+      "evidence": [
+        {
+          "kind": "guide",
+          "url": "https://aion2data.com/dungeons/corroded-decontamination-facility/guide",
+          "date": "2026-11-24",
+          "support": "Hard enrage at 8:00 of combat: +100% speeds and +200% damage; this is the only Corroded boss with an enrage timer."
+        },
+        {
+          "kind": "guide",
+          "url": "https://lounge.plaync.com/feed/61884",
+          "date": "2026-11-24"
+        }
+      ],
+      "review": {
+        "decision": "approve_scoped",
+        "date": "2026-11-24",
+        "basis": "boss guide research",
+        "confidence": "high",
+        "researchEn": "Enraged: burn it down, use defensives",
+        "scopeWidestForBoss": true
+      },
+      "provenance": {
+        "language": "en",
+        "sourceField": "line",
+        "sourceKind": "guide-research",
+        "liveVerified": false
+      }
+    },
+    {
+      "k": "abnormal:10000008:transcendent-bakarma",
+      "bossKey": "transcendent-bakarma",
+      "t": "abnormal",
+      "id": 10000008,
+      "source": {
+        "field": "line",
+        "en": "Your end is nigh."
+      },
+      "verification": "guide-exact",
+      "enabled": true,
+      "referenceOnly": false,
+      "actionId": "mechanic-52cda31c208b5f45",
+      "text": {
+        "en": "Enraged: burn it down, use defensives",
+        "ko": "광폭화: 방어 스킬을 쓰고 빠르게 처치하세요",
+        "ja": "激昂：防御スキルを使い、一気に倒して",
+        "de": "Raserei: Verteidigung nutzen, schnell erledigen",
+        "fr": "Enragé : défenses actives, achevez-le vite",
+        "es": "Enfurecido: usa defensas y acaba con él",
+        "pt": "Enfurecido: use defesas e acabe com ele",
+        "ru": "Ярость: защитные умения, добивайте быстро",
+        "zh-Hant": "狂暴：使用防禦技能，迅速擊殺",
+        "zh-Hans": "狂暴：使用防御技能，迅速击杀"
+      },
+      "scope": {
+        "regions": [
+          "KR",
+          "Global"
+        ],
+        "categories": [
+          "conquest"
+        ],
+        "difficulties": [
+          "normal",
+          "hard",
+          "exploration"
+        ],
+        "stages": []
+      },
+      "evidence": [
+        {
+          "kind": "guide",
+          "url": "https://aion2data.com/dungeons/draupnir/guide",
+          "date": "2026-11-24",
+          "support": "Frenzy at 5:00 of combat in Conquest, 4:00 in Conquest Hard: +100% speeds and +200% damage."
+        }
+      ],
+      "review": {
+        "decision": "approve_scoped",
+        "date": "2026-11-24",
+        "basis": "boss guide research",
+        "confidence": "high",
+        "researchEn": "Enraged: burn it down, use defensives",
+        "scopeWidestForBoss": true
+      },
+      "provenance": {
+        "language": "en",
+        "sourceField": "line",
+        "sourceKind": "guide-research",
+        "liveVerified": false
+      }
+    },
+    {
+      "k": "abnormal:10000008:ultimate-berk",
+      "bossKey": "ultimate-berk",
+      "t": "abnormal",
+      "id": 10000008,
+      "source": {
+        "field": "line",
+        "en": "Only I will remain in the end!"
+      },
+      "verification": "guide-exact",
+      "enabled": true,
+      "referenceOnly": false,
+      "actionId": "mechanic-531e09e67720b463",
+      "text": {
+        "en": "Enraged: burn it down, use defensives",
+        "ko": "광폭화: 방어 스킬을 쓰고 빠르게 처치하세요",
+        "ja": "激昂：防御スキルを使い、一気に倒して",
+        "de": "Raserei: Verteidigung nutzen, schnell erledigen",
+        "fr": "Enragé : défenses actives, achevez-le vite",
+        "es": "Enfurecido: usa defensas y acaba con él",
+        "pt": "Enfurecido: use defesas e acabe com ele",
+        "ru": "Ярость: защитные умения, добивайте быстро",
+        "zh-Hant": "狂暴：使用防禦技能，迅速擊殺",
+        "zh-Hans": "狂暴：使用防御技能，迅速击杀"
+      },
+      "scope": {
+        "regions": [
+          "KR",
+          "Global"
+        ],
+        "categories": [
+          "conquest"
+        ],
+        "difficulties": [
+          "normal",
+          "hard",
+          "exploration"
+        ],
+        "stages": []
+      },
+      "evidence": [
+        {
+          "kind": "guide",
+          "url": "https://aion2data.com/dungeons/krao-cave/guide",
+          "date": "2026-11-24",
+          "support": "Frenzy at 5:00 of combat in Conquest, 4:00 in Conquest Hard: +100% speeds and +200% damage."
+        }
+      ],
+      "review": {
+        "decision": "approve_scoped",
+        "date": "2026-11-24",
+        "basis": "boss guide research",
+        "confidence": "high",
+        "researchEn": "Enraged: burn it down, use defensives",
+        "scopeWidestForBoss": true
+      },
+      "provenance": {
+        "language": "en",
+        "sourceField": "line",
+        "sourceKind": "guide-research",
+        "liveVerified": false
+      }
+    },
+    {
+      "k": "use:1604420:vakron",
+      "bossKey": "vakron",
+      "t": "use",
+      "id": 1604420,
+      "source": {
+        "field": "line",
+        "en": "You who have incurred the wrath of the Spirits shall be bound eternally."
+      },
+      "verification": "guide-exact",
+      "enabled": true,
+      "referenceOnly": false,
+      "actionId": "mechanic-92069d72594058da",
+      "text": {
+        "en": "Break the red rock",
+        "ko": "빨간 바위를 부수세요",
+        "ja": "赤い岩を壊して",
+        "de": "Zerstör den roten Felsen",
+        "fr": "Brisez le rocher rouge",
+        "es": "Rompe la roca roja",
+        "pt": "Quebre a rocha vermelha",
+        "ru": "Разбейте красную скалу",
+        "zh-Hant": "擊破紅色岩石",
+        "zh-Hans": "击破红色岩石"
+      },
+      "scope": {
+        "regions": [
+          "KR",
+          "Global"
+        ],
+        "categories": [
+          "conquest"
+        ],
+        "difficulties": [
+          "normal",
+          "hard",
+          "exploration"
+        ],
+        "stages": []
+      },
+      "evidence": [
+        {
+          "kind": "guide",
+          "url": "https://lounge.plaync.com/feed/53127",
+          "date": "2026-11-24",
+          "support": "Inferred: the Conquest-only instant skill (20 m, 55 s cooldown) next to the exploration Rock Prison cast 1604426; the 'bound eternally' line fits the pull into a ring of rocks, where only the red glowing rock (10 hits) frees you before the wipe hit. No guide quotes the line."
+        },
+        {
+          "kind": "guide",
+          "url": "https://www.inven.co.kr/webzine/news/?news=311735&site=aion2",
+          "date": "2026-11-24"
+        },
+        {
+          "kind": "guide",
+          "url": "https://aion2data.com/dungeons/vakron-sky-island/guide",
+          "date": "2026-11-24"
+        }
+      ],
+      "review": {
+        "decision": "approve_scoped",
+        "date": "2026-11-24",
+        "basis": "boss guide research",
+        "confidence": "medium",
+        "researchEn": "Break the red rock",
+        "scopeWidestForBoss": true
+      },
+      "provenance": {
+        "language": "en",
+        "sourceField": "line",
+        "sourceKind": "guide-research",
+        "liveVerified": false
+      }
+    },
+    {
+      "k": "abnormal:10000008:vakron",
+      "bossKey": "vakron",
+      "t": "abnormal",
+      "id": 10000008,
+      "source": {
+        "field": "line",
+        "en": "All who dirty the earth walking upon two feet shall suffer retribution!"
+      },
+      "verification": "guide-exact",
+      "enabled": true,
+      "referenceOnly": false,
+      "actionId": "mechanic-85e0c6dcfde0c54c",
+      "text": {
+        "en": "Enraged: burn it down, use defensives",
+        "ko": "광폭화: 방어 스킬을 쓰고 빠르게 처치하세요",
+        "ja": "激昂：防御スキルを使い、一気に倒して",
+        "de": "Raserei: Verteidigung nutzen, schnell erledigen",
+        "fr": "Enragé : défenses actives, achevez-le vite",
+        "es": "Enfurecido: usa defensas y acaba con él",
+        "pt": "Enfurecido: use defesas e acabe com ele",
+        "ru": "Ярость: защитные умения, добивайте быстро",
+        "zh-Hant": "狂暴：使用防禦技能，迅速擊殺",
+        "zh-Hans": "狂暴：使用防御技能，迅速击杀"
+      },
+      "scope": {
+        "regions": [
+          "KR",
+          "Global"
+        ],
+        "categories": [
+          "conquest"
+        ],
+        "difficulties": [
+          "normal",
+          "hard",
+          "exploration"
+        ],
+        "stages": []
+      },
+      "evidence": [
+        {
+          "kind": "guide",
+          "url": "https://aion2data.com/dungeons/vakron-sky-island/guide",
+          "date": "2026-11-24",
+          "support": "Frenzy at 5:00 of combat in Conquest, 4:00 in Conquest Hard: +100% speeds and +200% damage; players say to burn it before the timer."
+        }
+      ],
+      "review": {
+        "decision": "approve_scoped",
+        "date": "2026-11-24",
+        "basis": "boss guide research",
+        "confidence": "high",
+        "researchEn": "Enraged: burn it down, use defensives",
+        "scopeWidestForBoss": true
+      },
+      "provenance": {
+        "language": "en",
+        "sourceField": "line",
+        "sourceKind": "guide-research",
+        "liveVerified": false
+      }
     }
   ],
   "managedKeys": {

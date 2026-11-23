@@ -25,7 +25,7 @@
     let entries = [];
     let validData = object(data) && Array.isArray(data.entries);
     try { if (validData) entries = copy(data.entries); } catch (_) { validData = false; }
-    const indexed = new Map(), triggerBosses = new Map();
+    const indexed = new Map(), triggerBosses = new Map(), triggerTexts = new Map();
     for (const entry of entries) {
       if (!object(entry)) continue;
       const key = tuple({ k: entry.k, b: entry.bossKey, t: entry.t, id: entry.id });
@@ -35,6 +35,8 @@
       const trigger = `${entry.t}:${entry.id}`;
       if (!triggerBosses.has(trigger)) triggerBosses.set(trigger, new Set());
       triggerBosses.get(trigger).add(entry.bossKey);
+      if (!triggerTexts.has(trigger)) triggerTexts.set(trigger, new Set());
+      triggerTexts.get(trigger).add(JSON.stringify(entry.text));
     }
 
     function resolve(call, context = {}, { preview = false, uncertain = false } = {}) {
@@ -135,8 +137,12 @@
         }
         return result("preview", true);
       }
-      if (uncertain !== false || (own(call, "uncertain") && call.uncertain !== false)) return result("uncertain-trigger");
-      if ((triggerBosses.get(`${call.t}:${call.id}`)?.size || 0) > 1) return result("shared-trigger");
+      // A trigger several bosses share is told apart only when every boss's
+      // entry for it says the same thing (Frenzy): then which boss it is
+      // doesn't change the words.
+      const uniform = (triggerTexts.get(`${call.t}:${call.id}`)?.size || 0) === 1;
+      if (!uniform && (uncertain !== false || (own(call, "uncertain") && call.uncertain !== false))) return result("uncertain-trigger");
+      if (!uniform && (triggerBosses.get(`${call.t}:${call.id}`)?.size || 0) > 1) return result("shared-trigger");
       // This entry is the trigger's only text for its region, so a dimension
       // the context doesn't know is assumed to match; a known one must match.
       const facts = object(context) ? context : {};
