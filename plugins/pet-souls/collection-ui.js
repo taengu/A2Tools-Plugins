@@ -277,7 +277,7 @@
   };
 
   // ---- State ------------------------------------------------------------------
-  // character key -> { name, server, days: { [day start ms]: day } }, a day being
+  // character key -> { name, server, counted: [instance ids], days: { [day start ms]: day } }, a day being
   // { seen, seenKinah, first, firstSeen, reached, last, lastAt, gainAt, uniques: [[at, item]] }:
   // first is the day's first Kinah (firstSeen: only when it was first seen, the
   // meter started later), reached when it came to the limit.
@@ -295,7 +295,7 @@
     dropsView: document.querySelector(".dropsView"),
   };
   const ready = (async () => {
-    kinah = (await a2.storage.get(KINAH_KEY).catch(() => null)) || {};
+    kinah = dropStacks((await a2.storage.get(KINAH_KEY).catch(() => null)) || {});
     dropStats = { chars: {}, lastRun: {}, ...((await a2.storage.get(DROPS_KEY).catch(() => null)) || {}) };
     cprefs = { ...cprefs, ...((await a2.storage.get(CPREFS_KEY).catch(() => null)) || {}) };
   })();
@@ -329,6 +329,44 @@
   });
 
   // ---- Kinah --------------------------------------------------------------------
+  // ---- Unique drops: counted once per item ----
+  // The game names one piece of gear again and again with the same instance
+  // id: a second time just after it drops (2026-11-12), and on every move
+  // between the bag and the storages (2026-11-24). Each character keeps the
+  // instances already counted (who.counted, the most recent COUNTED_KEEP),
+  // so none of that counts again, after a restart too. UNIQUE_ITEMS holds no
+  // stacks: a stack changes with every use and move.
+  const COUNTED_KEEP = 1000;
+  function noteUnique(who, d, at) {
+    const item = Number(d?.item);
+    if (!UNIQUE_ITEMS[item] || !who) return false;
+    const instance = d?.instance != null && Number(d.instance) > 0 ? String(d.instance) : null;
+    const counted = (who.counted ||= []);
+    if (instance && counted.includes(instance)) return false;
+    const rec = who.days[dayOf(at)];
+    if (rec) {
+      // The meter sends recent records again as the window opens: with no
+      // instance, one item at one moment counts once.
+      if (!instance && rec.uniques.some(([when, id]) => id === item && Math.abs(when - at) < 1000)) return false;
+      rec.uniques.push([at, item]);
+    }
+    if (instance) {
+      counted.push(instance);
+      if (counted.length > COUNTED_KEEP) counted.splice(0, counted.length - COUNTED_KEEP);
+    }
+    return true;
+  }
+  // Unique drops counted before 0.8.5 that are stacks: no longer counted.
+  function dropStacks(all) {
+    for (const who of Object.values(all || {})) {
+      for (const rec of Object.values(who?.days || {})) {
+        if (Array.isArray(rec?.uniques)) rec.uniques = rec.uniques.filter(([, item]) => UNIQUE_ITEMS[item]);
+      }
+    }
+    return all;
+  }
+  // ---- end of Unique drops ----
+
   function noteKinah(character) {
     const count = character?.kinahToday;
     const ck = characterKey(character);
@@ -364,16 +402,9 @@
 
   // A Unique or Epic item picked up: counted for the day of whoever picked it up.
   a2.on("decoded:item-gained", (d, meta) => ready.then(() => {
-    const item = Number(d?.item);
-    if (!UNIQUE_ITEMS[item]) return;
     const ck = characterKey(meta?.character) || me();
     const at = Number(meta?.at) > 0 ? Math.min(Number(meta.at), Date.now()) : Date.now();
-    const rec = kinah[ck]?.days[dayOf(at)];
-    if (!rec) return;
-    // The meter sends recent records again as the window opens: one item at
-    // one moment counts once.
-    if (rec.uniques.some(([when, id]) => id === item && Math.abs(when - at) < 1000)) return;
-    rec.uniques.push([at, item]);
+    if (!noteUnique(kinah[ck], d, at)) return;
     saveKinah();
     if (cprefs.tab === "kinah") renderKinah();
   }));

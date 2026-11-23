@@ -1,5 +1,18 @@
 [
   {
+    "version": "0.8.5",
+    "en": "Kinah: Unique drops count each item once. Moving gear to or from storage, or the game naming new gear twice, no longer adds a drop, and Unique materials such as Amplify Stone Fragments are no longer listed.",
+    "ko": "키나: 유일 획득은 아이템마다 한 번만 셉니다. 장비를 창고에 넣거나 꺼낼 때나 게임이 새 장비를 두 번 알릴 때 더 이상 늘지 않으며, 돌파석 조각 같은 유일 재료는 더 이상 표시하지 않습니다.",
+    "ja": "キナ：唯一入手はアイテムごとに1回だけ数えます。装備を倉庫に出し入れしたときや、ゲームが新しい装備を2回通知したときに増えなくなり、突破石の欠片などの唯一素材は表示しなくなりました。",
+    "de": "Kinah: Einzigartige Beute zählt jeden Gegenstand nur einmal. Ausrüstung ins Lager oder heraus zu legen oder die doppelte Meldung neuer Ausrüstung zählt nicht mehr, und einzigartige Materialien wie Zenitsteinfragmente erscheinen nicht mehr.",
+    "fr": "Kinah : le butin unique compte chaque objet une seule fois. Déplacer un équipement vers ou depuis l'entrepôt, ou le double avis du jeu pour un nouvel équipement, n'ajoute plus de butin, et les matériaux uniques comme les fragments de Pierre de percée ne sont plus listés.",
+    "es": "Kinah: el botín único cuenta cada objeto una sola vez. Mover equipo al almacén o desde él, o el doble aviso del juego por equipo nuevo, ya no suma botín, y los materiales únicos como los pedazos de Piedra de superación ya no aparecen.",
+    "pt": "Kinah: o saque único conta cada item uma só vez. Mover equipamento para o armazém ou dele, ou o aviso duplo do jogo para equipamento novo, não soma mais saque, e materiais únicos como pedaços de Pedra de Superação não aparecem mais.",
+    "ru": "Кина: уникальная добыча учитывает каждый предмет один раз. Перенос снаряжения в хранилище и обратно или двойное оповещение игры о новом снаряжении больше не добавляют добычу, а уникальные материалы вроде фрагментов камня прорыва больше не показываются.",
+    "zh-Hant": "基納：獨特掉落每件物品只計算一次。裝備存入或取出倉庫，或遊戲重複通知新裝備時不再增加，突破石碎片等獨特材料也不再列出。",
+    "zh-Hans": "基纳：独特掉落每件物品只计算一次。装备存入或取出仓库，或游戏重复通知新装备时不再增加，突破石碎片等独特材料也不再列出。"
+  },
+  {
     "version": "0.8.4",
     "en": "Gathering history saves in smaller pages so long logs fit the meter's storage limit. Temporary write failures are retried, and existing history is retained.",
     "ko": "채집 기록을 작은 페이지로 나누어 긴 기록도 미터의 저장 한도에 맞춥니다. 일시적인 저장 실패는 다시 시도하며 기존 기록은 유지합니다.",
@@ -50,18 +63,5 @@
     "ru": "Облики: поиск находит и места добычи, например название подземелья.",
     "zh-Hant": "外觀：搜尋也能找取得處，例如副本名稱。",
     "zh-Hans": "外观：搜索也能找获取处，例如副本名称。"
-  },
-  {
-    "version": "0.8.0",
-    "en": "New Gathering tab: per node, how often a gather is upgraded as it starts (Fresh, or ×3 for Mela), how often Appraiser upgrades a base gather (with the range the true rate is likely in), Plentiful Harvest doubles, failures and your recent gathers.",
-    "ko": "새 채집 탭: 재료별로 시작 시 등급 상승(신선함, 멜라는 3배) 확률, 기본 등급 채집을 감정사가 올린 확률(실제 확률의 예상 범위 포함), 풍요로운 수확, 실패, 최근 채집을 보여줍니다.",
-    "ja": "新しい採集タブ：素材ごとに開始時の品質上昇（新鮮、メラは3倍）の確率、基本品質の採集を鑑定士が上げた確率（本当の確率の推定範囲つき）、豊かな収穫、失敗、最近の採集を表示します。",
-    "de": "Neuer Tab Sammeln: pro Vorkommen, wie oft ein Sammeln schon beim Start aufgewertet wird (frisch, bei Mela ×3), wie oft der Gutachter ein Sammeln in Grundqualität aufwertet (mit dem wahrscheinlichen Bereich der wahren Rate), Reichhaltige Ernte, Fehlschläge und deine letzten Sammelvorgänge.",
-    "fr": "Nouvel onglet Récolte : pour chaque ressource, la fréquence d'une récolte améliorée dès le départ (Frais, ou ×3 pour le Mela), la fréquence à laquelle l'Expert améliore une récolte de base (avec la plage probable du vrai taux), Récolte Abondante, les échecs et vos dernières récoltes.",
-    "es": "Nueva pestaña Recolección: por recurso, cuántas veces una recolección se mejora al inicio (Fresca, o ×3 para Mela), cuántas veces el Tasador mejora una recolección base (con el rango probable de la tasa real), Cosecha abundante, fallos y tus últimas recolecciones.",
-    "pt": "Nova aba Coleta: por recurso, com que frequência uma coleta melhora no início (Fresca, ou ×3 para Mela), com que frequência o Classificador melhora uma coleta base (com a faixa provável da taxa real), Colheita Abundante, falhas e suas coletas recentes.",
-    "ru": "Новая вкладка «Сбор»: для каждого ресурса — как часто сбор улучшается с самого начала (свежее, у Мелы ×3), как часто Оценщик улучшает базовый сбор (с вероятным диапазоном настоящего шанса), Богатый урожай, неудачи и последние сборы.",
-    "zh-Hant": "新的採集分頁：每種材料開始時品質提升（新鮮，梅拉為 3 倍）的機率、鑑定師提升基本品質採集的機率（含真實機率的可能範圍）、豐饒的收穫、失敗與最近的採集。",
-    "zh-Hans": "新的采集分页：每种材料开始时品质提升（新鲜，梅拉为 3 倍）的概率、鉴定师提升基本品质采集的概率（含真实概率的可能范围）、丰饶的收获、失败与最近的采集。"
   }
 ]
