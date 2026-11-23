@@ -44,6 +44,7 @@ body { padding: 10px 12px 14px; }
 .tab.isActive { color: #fff; border-bottom-color: var(--a2-accent, #8fc2ff); }
 .tab:focus-visible, .btn:focus-visible, summary:focus-visible { outline: 2px solid var(--a2-accent, #8fc2ff); outline-offset: 1px; }
 .pane[hidden] { display: none; }
+.customColour[hidden] { display: none; }
 .note {
   margin: 6px 0;
   font-size: 14px;

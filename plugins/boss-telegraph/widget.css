@@ -1,5 +1,6 @@
-/* The callout: big, bold, high-contrast text on a solid box; the countdown
-   in the same size. Colours come from the settings (--fg, --safe, --bg). */
+/* The callout: big text on a box, the countdown in the same size. The base
+   look is High contrast; the themes at the end restyle it. Custom colours
+   come from the settings (--fg, --safe, --bg). */
 :root { --s: 60px; --fg: #ffff00; --safe: #66ff66; --bg: rgba(0, 0, 0, 0.85); }
 html, body {
   margin: 0;
@@ -41,4 +42,50 @@ html, body {
   overflow-wrap: anywhere;
 }
 .second .sub { display: none; }
-.box.preview { color: #fff; outline: 2px dashed rgba(255, 255, 255, 0.6); cursor: grab; }
+.box.preview { color: var(--preview, #fff); outline: 2px dashed var(--dash, rgba(255, 255, 255, 0.6)); cursor: grab; }
+
+/* Themes (body[data-theme], from the settings' Theme). "contrast" is the look
+   above with its fixed yellow on black; "custom" is the look above with the
+   player's colours; the others restyle the box. */
+body[data-theme="contrast"] { --fg: #ffff00; --safe: #66ff66; --bg: rgba(0, 0, 0, 0.85); }
+
+/* Clean: white text on a soft dark card, a coloured edge for the kind. */
+body[data-theme="clean"] { --fg: #f4f6fa; --safe: #7ee2a8; --bg: rgba(18, 22, 30, 0.78); --edge: #f2b84b; }
+body[data-theme="clean"] .box {
+  font-family: "Segoe UI Variable Display", "Segoe UI", "Noto Sans", system-ui, sans-serif;
+  font-weight: 600;
+  letter-spacing: 0.01em;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.55);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-left: calc(var(--s) * 0.07) solid var(--edge);
+  border-radius: calc(var(--s) * 0.12);
+  box-shadow: 0 calc(var(--s) * 0.06) calc(var(--s) * 0.25) rgba(0, 0, 0, 0.35);
+}
+body[data-theme="clean"] .box.safe { --edge: #7ee2a8; }
+body[data-theme="clean"] .box.phase { --edge: #8fb8ff; }
+body[data-theme="clean"] .box.preview { --edge: rgba(255, 255, 255, 0.35); }
+body[data-theme="clean"] .sub { font-weight: 500; color: rgba(244, 246, 250, 0.82); }
+
+/* Minimal: no box, only the words with a soft shadow to keep them readable. */
+body[data-theme="minimal"] { --fg: #ffffff; --safe: #86efac; --bg: transparent; }
+body[data-theme="minimal"] .box {
+  font-family: "Segoe UI Variable Display", "Segoe UI", "Noto Sans", system-ui, sans-serif;
+  font-weight: 600;
+  text-shadow: 0 0 2px rgba(0, 0, 0, 0.9), 0 1px 3px rgba(0, 0, 0, 0.8), 0 0 calc(var(--s) * 0.25) rgba(0, 0, 0, 0.55);
+}
+body[data-theme="minimal"] .sub { font-weight: 500; }
+
+/* Light: dark text on a light card. */
+body[data-theme="light"] { --fg: #15191f; --safe: #0b7a3e; --bg: rgba(250, 251, 253, 0.92); --edge: #d98a00; --preview: #15191f; --dash: rgba(0, 0, 0, 0.35); }
+body[data-theme="light"] .box {
+  font-family: "Segoe UI Variable Display", "Segoe UI", "Noto Sans", system-ui, sans-serif;
+  font-weight: 600;
+  text-shadow: none;
+  border-left: calc(var(--s) * 0.07) solid var(--edge);
+  border-radius: calc(var(--s) * 0.12);
+  box-shadow: 0 calc(var(--s) * 0.06) calc(var(--s) * 0.25) rgba(0, 0, 0, 0.3);
+}
+body[data-theme="light"] .box.safe { --edge: #0b7a3e; }
+body[data-theme="light"] .box.phase { --edge: #2f6fd6; }
+body[data-theme="light"] .box.preview { --edge: rgba(0, 0, 0, 0.25); }
+body[data-theme="light"] .sub { font-weight: 500; color: #3a414c; }

@@ -3,7 +3,8 @@
 // shows so it can be placed; a double-click opens the settings.
 const stack = document.querySelector(".stack");
 let locked = false;
-let look = { size: 60, fg: "#ffff00", safe: "#66ff66", bg: "#000000", bgOpacity: 0.85 };
+let look = { theme: "clean", size: 60, fg: "#ffff00", safe: "#66ff66", bg: "#000000", bgOpacity: 0.85 };
+const THEMES = ["clean", "minimal", "light", "contrast", "custom"];
 let items = [];
 let preview = { text: "Boss Callouts", sub: "" };
 
@@ -24,6 +25,8 @@ function style() {
   r.setProperty("--fg", look.fg);
   r.setProperty("--safe", look.safe);
   r.setProperty("--bg", hex(look.bg, look.bgOpacity ?? 0.85));
+  // The theme's own colours (widget.css) win over these, except for Custom.
+  document.body.dataset.theme = THEMES.includes(look.theme) ? look.theme : "clean";
 }
 
 let lastKey = "";

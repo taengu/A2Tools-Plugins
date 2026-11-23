@@ -1,5 +1,18 @@
 [
   {
+    "version": "0.2.2",
+    "en": "Look → Theme: Clean (new default), Minimal, Light, High contrast (the old look) or Custom colours. Colours you had changed are kept as Custom.",
+    "ko": "모양 → 테마: 깔끔하게(새 기본값), 최소, 밝게, 고대비(이전 모습), 직접 고른 색. 바꿔 둔 색은 '직접 고른 색'으로 유지됩니다.",
+    "ja": "見た目 → テーマ：すっきり（新しい既定）、ミニマル、ライト、高コントラスト（以前の見た目）、カスタムカラー。変更していた色はカスタムとして残ります。",
+    "de": "Aussehen → Design: Klar (neuer Standard), Minimal, Hell, Hoher Kontrast (das alte Aussehen) oder Eigene Farben. Geänderte Farben bleiben als Eigene Farben erhalten.",
+    "fr": "Apparence → Thème : Épuré (nouveau par défaut), Minimal, Clair, Contraste élevé (l'ancien style) ou Couleurs personnalisées. Vos couleurs modifiées sont gardées.",
+    "es": "Aspecto → Tema: Limpio (nuevo predeterminado), Mínimo, Claro, Alto contraste (el aspecto anterior) o Colores propios. Los colores que cambiaste se conservan.",
+    "pt": "Aparência → Tema: Limpo (novo padrão), Mínimo, Claro, Alto contraste (o visual anterior) ou Cores próprias. As cores que você mudou são mantidas.",
+    "ru": "Вид → Тема: Чистая (новая по умолчанию), Минимальная, Светлая, Высокая контрастность (прежний вид) или Свои цвета. Изменённые вами цвета сохраняются.",
+    "zh-Hant": "外觀 → 主題：簡潔（新預設）、極簡、淺色、高對比（原本的樣子）或自訂顏色。改過的顏色會保留為自訂顏色。",
+    "zh-Hans": "外观 → 主题：简洁（新默认）、极简、浅色、高对比（原来的样子）或自定义颜色。改过的颜色会保留为自定义颜色。"
+  },
+  {
     "version": "0.2.1",
     "en": "Instructions now say what to do at each mechanic, rewritten from boss guides. A call without an instruction says Watch the boss instead of the boss's line, which stays below it. With activity or stage on Auto, a mechanic's only instruction is used.",
     "ko": "행동 안내가 보스 공략을 바탕으로 각 기믹에서 할 일을 알려 줍니다. 안내가 없는 알림은 보스 대사 대신 '보스를 주시하세요'라고 말하고, 대사는 아래에 표시됩니다. 활동이나 단계가 자동이면 기믹의 유일한 안내를 사용합니다.",
@@ -50,18 +63,5 @@
     "ru": "Enhanced Boss Telegraph теперь называется Boss Callouts (Подсказки боссов). Настройки и ваши собственные фразы сохраняются.",
     "zh-Hant": "Enhanced Boss Telegraph 已更名為 Boss Callouts（首領提示）。你的設定與自訂提示文字都會保留。",
     "zh-Hans": "Enhanced Boss Telegraph 已更名为 Boss Callouts（首领提示）。你的设置与自定义提示文字都会保留。"
-  },
-  {
-    "version": "0.1.7",
-    "en": "Uses less memory: its sound engine closes after 30 seconds of silence and starts again for the next alert.",
-    "ko": "메모리를 덜 사용합니다. 30초 동안 소리가 없으면 사운드 엔진을 닫고, 다음 알림 때 다시 시작합니다.",
-    "ja": "メモリ使用量が減りました。30秒間音がなければサウンドエンジンを閉じ、次の通知で再び起動します。",
-    "de": "Braucht weniger Speicher: Die Sound-Engine schließt nach 30 Sekunden Stille und startet beim nächsten Alarm neu.",
-    "fr": "Utilise moins de mémoire : son moteur audio se ferme après 30 secondes de silence et redémarre à la prochaine alerte.",
-    "es": "Usa menos memoria: su motor de sonido se cierra tras 30 segundos de silencio y se reinicia con la siguiente alerta.",
-    "pt": "Usa menos memória: o motor de som fecha após 30 segundos de silêncio e reinicia no próximo alerta.",
-    "ru": "Меньше расход памяти: звуковой движок закрывается после 30 секунд тишины и запускается снова при следующем оповещении.",
-    "zh-Hant": "佔用更少記憶體：靜音 30 秒後關閉音效引擎，下次提醒時再重新啟動。",
-    "zh-Hans": "占用更少内存：静音 30 秒后关闭音效引擎，下次提醒时再重新启动。"
   }
 ]

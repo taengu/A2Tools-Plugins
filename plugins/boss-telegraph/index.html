@@ -92,6 +92,15 @@
           <option value="1.75" data-t="menuLargest">Largest</option>
         </select>
       </label>
+      <label class="row"><span data-t="theme">Theme</span>
+        <select class="theme">
+          <option value="clean" data-t="themeClean">Clean</option>
+          <option value="minimal" data-t="themeMinimal">Minimal</option>
+          <option value="light" data-t="themeLight">Light</option>
+          <option value="contrast" data-t="themeContrast">High contrast</option>
+          <option value="custom" data-t="themeCustom">Custom colours</option>
+        </select>
+      </label>
       <label class="row"><span data-t="size">Text size</span>
         <select class="size">
           <option value="32" data-t="small">Small</option>
@@ -100,11 +109,10 @@
           <option value="80" data-t="huge">Huge</option>
         </select>
       </label>
-      <label class="row"><span data-t="fg">Text colour</span><input type="color" class="fg" /></label>
-      <label class="row"><span data-t="safeColour">"Safe" colour</span><input type="color" class="safe" /></label>
-      <label class="row"><span data-t="bg">Background</span><input type="color" class="bg" /></label>
-      <label class="row"><span data-t="bgOpacity">Background opacity</span><input type="range" class="bgOpacity" min="0" max="100" step="5" /></label>
-      <button type="button" class="btn contrast" data-t="contrast">High contrast colours</button>
+      <label class="row customColour"><span data-t="fg">Text colour</span><input type="color" class="fg" /></label>
+      <label class="row customColour"><span data-t="safeColour">"Safe" colour</span><input type="color" class="safe" /></label>
+      <label class="row customColour"><span data-t="bg">Background</span><input type="color" class="bg" /></label>
+      <label class="row customColour"><span data-t="bgOpacity">Background opacity</span><input type="range" class="bgOpacity" min="0" max="100" step="5" /></label>
       <p class="note" data-t="help">Unlocked, drag the text anywhere. Double-click it to open this window.</p>
     </section>
 

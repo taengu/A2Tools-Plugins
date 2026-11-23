@@ -8,7 +8,7 @@ const activation = BossActivation.create(MECHANICS);
 
 const DEFAULTS = {
   enabled: true, widget: true, style: "both", tellMeWhatToDo: true,
-  size: "60", fg: "#ffff00", safe: "#66ff66", bg: "#000000", bgOpacity: 85,
+  theme: "clean", size: "60", fg: "#ffff00", safe: "#66ff66", bg: "#000000", bgOpacity: 85,
   volume: 100, voiceName: "", rate: "1",
   offBoss: {}, offCall: {}, waves: {}, custom: {},
   // This window's own text size (Look): the whole page scaled, for reduced vision.
@@ -384,7 +384,7 @@ async function placeWidget() {
 }
 function send() {
   if (!widgetOpen) return;
-  const look = { size: Number(prefs.size) || 60, fg: prefs.fg, safe: prefs.safe, bg: prefs.bg, bgOpacity: prefs.bgOpacity / 100 };
+  const look = { theme: prefs.theme, size: Number(prefs.size) || 60, fg: prefs.fg, safe: prefs.safe, bg: prefs.bg, bgOpacity: prefs.bgOpacity / 100 };
   const items = shown.slice(0, 2).map(({ kind, text, sub, end, until }) => ({ kind, text, sub, end, until }));
   a2.widgets.send("callout", { look, items, preview: { text: words.preview, sub: words.previewSub } }).catch(() => {});
 }
@@ -393,7 +393,7 @@ function send() {
 
 const els = {
   enabled: $(".enabled"), widget: $(".widget"), style: $(".style"), tellMeWhatToDo: $(".tellMeWhatToDo"),
-  size: $(".size"), fg: $(".fg"), safe: $(".safe"), bg: $(".bg"), bgOpacity: $(".bgOpacity"),
+  theme: $(".theme"), size: $(".size"), fg: $(".fg"), safe: $(".safe"), bg: $(".bg"), bgOpacity: $(".bgOpacity"),
   volume: $(".volume"), voiceName: $(".voiceName"), rate: $(".rate"),
   menuSize: $(".menuSize"),
   guideRegion: $(".guideRegion"), guideCategory: $(".guideCategory"),
@@ -434,6 +434,11 @@ function fillVoices() {
   el.value = prefs.voiceName;
 }
 
+// The colour pickers are the Custom theme's: hidden for the others.
+const THEMES = ["clean", "minimal", "light", "contrast", "custom"];
+function showColours() {
+  for (const el of document.querySelectorAll(".customColour")) el.hidden = prefs.theme !== "custom";
+}
 function showPrefs() {
   for (const [key, el] of Object.entries(els)) {
     if (key === "voiceName") continue;
@@ -444,6 +449,7 @@ function showPrefs() {
   }
   els.voiceName.value = prefs.voiceName;
   els.style.disabled = prefs.tellMeWhatToDo !== false;
+  showColours();
   sizeMenu();
 }
 
@@ -680,12 +686,6 @@ $(".allOff").addEventListener("click", () => {
   save();
   renderBosses();
 });
-$(".contrast").addEventListener("click", () => {
-  for (const k of ["fg", "safe", "bg", "bgOpacity"]) prefs[k] = DEFAULTS[k];
-  showPrefs();
-  save();
-  send();
-});
 $(".test").addEventListener("click", () => engine.test());
 
 for (const [key, el] of Object.entries(els)) {
@@ -711,6 +711,7 @@ for (const [key, el] of Object.entries(els)) {
       resetLifecycle(undefined, true);
     }
     if (key === "tellMeWhatToDo") els.style.disabled = v;
+    if (key === "theme") showColours();
     save();
     if (key === "menuSize") return sizeMenu();
     if (key === "enabled" || key === "widget" || key === "size") placeWidget();
@@ -779,6 +780,14 @@ a2.on("widget-message", ({ data }) => {
   if (stored && typeof stored === "object") {
     prefs = { ...DEFAULTS, ...stored };
     prefs.tellMeWhatToDo = stored.tellMeWhatToDo !== false;
+    // Themes came in 0.2.2: before, the colours were the look. Colours left
+    // as they were (high contrast) get Clean; colours the player changed
+    // stay theirs as Custom.
+    if (!THEMES.includes(stored.theme)) {
+      const changed = ["fg", "safe", "bg"].some((k) => stored[k] && String(stored[k]).toLowerCase() !== DEFAULTS[k])
+        || (stored.bgOpacity != null && Number(stored.bgOpacity) !== DEFAULTS.bgOpacity);
+      prefs.theme = changed ? "custom" : "clean";
+    }
     prefs.guideRegion = ["Global", "KR"].includes(stored.guideRegion) ? stored.guideRegion : "Global";
     for (const [setting, field] of Object.entries(GUIDE_KEYS)) {
       const value = stored[setting];
