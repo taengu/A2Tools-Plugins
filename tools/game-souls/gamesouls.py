@@ -12,7 +12,9 @@ Traditional Chinese, and Simplified Chinese is converted from it (OpenCC).
 --compare <old sources.js> also writes a report of what changed in English
 (--report), --debug the ids behind each row. --only-maps 23 keeps the current
 sources.js (--base, default --out) and only adds this build's drops on those
-maps: a newly opened map from a newer, partial extract laid over a full one.
+maps: a newly opened map from a newer, partial extract laid over a full one
+(--only-maps dungeons: every open dungeon's maps, e.g. after a patch adds souls
+to dungeon monsters).
 
 Chain (all client tables under AION2/Content/Data/Table):
   VehicleList.ID (pet id) .SoulItemName -> Item.Name (soul item; also
@@ -118,7 +120,8 @@ def main():
                     help="keep drops on maps this client has not opened yet (see live_maps)")
     ap.add_argument("--only-maps", default=None,
                     help="comma-separated map ids: keep --base as it is and only add this build's "
-                         "drops on these maps (a newly opened map, without rebuilding the rest)")
+                         "drops on these maps (a newly opened map, without rebuilding the rest); "
+                         "'dungeons' stands for every open dungeon's maps")
     ap.add_argument("--base", default=None, help="the sources.js --only-maps adds to (default: --out)")
     ap.add_argument("--infer-model-key", action="store_true",
                     help="also list Abyss NPCs whose reward_<ResourceKey>_key holds the soul")
@@ -191,18 +194,33 @@ def main():
     # (Eltnen, Morheim and Middle Reshanta came with Global's client ahead of
     # their chapter), but its "where to get it" routes (ItemGetRoute, for every
     # item) only name the open ones: the fields their monster routes are on,
-    # and the dungeons their dungeon and raid routes name.
+    # and the dungeons their party dungeon, raid and daily dungeon routes name.
+    # PartyDungeonGetRoutes holds {Key: difficulty, Value: {TableIds: [...]}},
+    # RaidInfo the dungeon ids themselves ([{Value: 600081}, ...]: Ludra) and
+    # DailyInfo {Key: race, Value: {GrowthDungeonIds, DailyDungeonIds}}.
     dungeons = {v(x["ID"]): x for x in load(T, "Dungeon.json")}
     live_maps = set()
+
+    def route_dungeon_ids(val):
+        if isinstance(val, dict) and "Value" in val:
+            val = val["Value"]
+        if isinstance(val, int):
+            return [val]
+        if isinstance(val, dict):
+            return [v(t) for key in ("TableIds", "GrowthDungeonIds", "DailyDungeonIds") for t in val.get(key, [])]
+        return []
+
     for r in routes.values():
         for m in r.get("MonsterGetRoutes", []):
             live_maps.add(v(m["RegionInfo"]["MapId"]))
-        for key in ("PartyDungeonGetRoutes", "RaidInfo"):
+        for key in ("PartyDungeonGetRoutes", "RaidInfo", "DailyInfo"):
             for kv in r.get(key) or []:
-                val = kv.get("Value") if isinstance(kv, dict) else None
-                for t in (val.get("TableIds", []) if isinstance(val, dict) else []):
-                    if v(t) in dungeons:
-                        live_maps.add(v(dungeons[v(t)]["MapId"]))
+                for t in route_dungeon_ids(kv):
+                    if t in dungeons:
+                        live_maps.add(v(dungeons[t]["MapId"]))
+    # The open dungeons' maps, for --only-maps dungeons.
+    open_dungeon_maps = {v(d["MapId"]) for d in dungeons.values()} & live_maps
+    open_dungeon_maps -= {v(x["RegionInfo"]["MapId"]) for r in routes.values() for x in r.get("MonsterGetRoutes", [])}
     npc_loot = defaultdict(list)
     for x in load(T, "NpcLoot.json"):
         if v(x["VehicleSoulItemId"]):
@@ -547,7 +565,10 @@ def main():
 
     text_out = source_text(TEXT)
     if a.only_maps:
-        data, text_out = add_maps(a.base or a.out, data, text_out, {int(x) for x in a.only_maps.split(",")})
+        only = set()
+        for x in a.only_maps.split(","):
+            only |= open_dungeon_maps if x.strip() == "dungeons" else {int(x)}
+        data, text_out = add_maps(a.base or a.out, data, text_out, only)
     with open(a.out, "w", encoding="utf-8", newline="\n") as f:
         f.write("// Where each pet's souls come from, keyed by pet id: the monsters that drop\n")
         f.write("// them and the chests that hold them, from the game's own tables and map\n")
@@ -573,6 +594,11 @@ def read_sources(path):
     return json.loads(a_[a_.index("{"): a_.rindex("}") + 1]), json.loads(b_[b_.index("{"): b_.rindex("}") + 1])
 
 
+def looks(d):
+    """A drop row as the plugin shows it (no ids)."""
+    return (d.get("npc"), d.get("level"), d.get("chance"), d.get("map"), tuple(d.get("zones", [])), d.get("spawns"))
+
+
 def add_maps(base_path, data, text, maps):
     """The sources.js at base_path as it is, plus this build's drops on `maps`
     (each pet's new rows after its own, a pet no longer unreleased once it has
@@ -586,9 +612,13 @@ def add_maps(base_path, data, text, maps):
         if pid not in base:
             base[pid] = {"title": src["title"], "drops": [], "chests": src["chests"]}
         have = {(d.get("npcId"), d.get("mapId")) for d in base[pid]["drops"]}
+        # A dungeon can field one monster under two NPC ids (Fire Temple Easy's
+        # Spark and Flame Spirits): rows that would read the same are kept once.
+        shown = {looks(d) for d in base[pid]["drops"]}
         for d in rows:
-            if (d.get("npcId"), d.get("mapId")) in have:
+            if (d.get("npcId"), d.get("mapId")) in have or looks(d) in shown:
                 continue
+            shown.add(looks(d))
             base[pid]["drops"].append(d)
             added += 1
             kibs = [d.get("kibelisk") or {}] + list((d.get("bySide") or {}).values())
