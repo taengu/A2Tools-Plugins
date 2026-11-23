@@ -1,5 +1,18 @@
 [
   {
+    "version": "0.8.7",
+    "en": "Filters: pick several genera and levels at once (for example Fera and Natura, level 0 and 1). All clears the row.",
+    "ko": "필터: 종족과 레벨을 여러 개 함께 고를 수 있습니다(예: 야성과 자연, 0레벨과 1레벨). All은 선택을 지웁니다.",
+    "ja": "フィルター：種族とレベルを複数まとめて選べます（例：野性と自然、レベル0と1）。Allで選択を解除します。",
+    "de": "Filter: mehrere Gattungen und Stufen gleichzeitig wählen (etwa Fera und Natura, Stufe 0 und 1). All hebt die Auswahl auf.",
+    "fr": "Filtres : choisissez plusieurs genres et niveaux à la fois (par exemple Bestia et Natura, niveaux 0 et 1). All efface la sélection.",
+    "es": "Filtros: elige varios géneros y niveles a la vez (por ejemplo Feras y Naturas, niveles 0 y 1). All borra la selección.",
+    "pt": "Filtros: escolha vários gêneros e níveis de uma vez (por exemplo Feral e Natural, níveis 0 e 1). All limpa a seleção.",
+    "ru": "Фильтры: можно выбрать сразу несколько родов и уровней (например, Дикие и Вириды, уровни 0 и 1). All сбрасывает выбор.",
+    "zh-Hant": "篩選：可同時選擇多個種族和等級（例如野性和自然、0 級和 1 級）。All 會清除選擇。",
+    "zh-Hans": "筛选：可同时选择多个种族和等级（例如野性和自然、0 级和 1 级）。All 会清除选择。"
+  },
+  {
     "version": "0.8.6",
     "en": "Pets: souls from dungeon monsters are now listed, so 39 pets gain sources, among them Krao Mutant in Krao Cave, and Fire Temple, Draupnir, Urugugu Canyon and other dungeons. Entering these dungeons now shows the monsters you need.",
     "ko": "펫: 던전 몬스터가 주는 영혼을 표시하여 펫 39마리의 획득처가 늘었습니다. 크라오 동굴의 크라오 변이체, 불의 신전, 드라웁니르, 우루구구 협곡 등의 던전이 포함됩니다. 이 던전에 들어가면 필요한 몬스터가 표시됩니다.",
@@ -50,18 +63,5 @@
     "ru": "Чёрный рынок: питомец или предмет, выставленный сразу в двух вкладках, остаётся в списке после покупки одного из них, пока не куплен и второй.",
     "zh-Hant": "黑雲貿易團：同時在兩個分頁上架的寵物或物品，買下其中一個後仍會留在清單上，直到另一個也買下。",
     "zh-Hans": "黑云贸易团：同时在两个分页上架的宠物或物品，买下其中一个后仍会留在列表中，直到另一个也买下。"
-  },
-  {
-    "version": "0.8.2",
-    "en": "Gathering: each herb shows how often it's upgraded at the start of a gather, with the likely range. The Appraiser's reroll succeeds at this same rate.",
-    "ko": "채집: 재료마다 채집 시작 시 등급이 오르는 확률을 예상 범위와 함께 보여줍니다. 감정사의 재선택도 같은 확률로 성공합니다.",
-    "ja": "採集：素材ごとに採集開始時に品質が上がる確率を推定範囲つきで表示します。鑑定士の再選択も同じ確率で成功します。",
-    "de": "Sammeln: Jedes Kraut zeigt, wie oft es beim Start aufgewertet wird, mit dem wahrscheinlichen Bereich. Der neue Wurf des Gutachters gelingt mit derselben Rate.",
-    "fr": "Récolte : chaque herbe montre à quelle fréquence elle est améliorée dès le départ, avec la plage probable. Le nouveau tirage de l'Expert réussit au même taux.",
-    "es": "Recolección: cada hierba muestra con qué frecuencia mejora al inicio, con el rango probable. La nueva tirada del Tasador acierta con esa misma tasa.",
-    "pt": "Coleta: cada erva mostra com que frequência melhora no início, com a faixa provável. A nova rolagem do Classificador acerta nessa mesma taxa.",
-    "ru": "Сбор: для каждой травы показано, как часто она улучшается с самого начала, с вероятным диапазоном. Повторный бросок Оценщика удаётся с тем же шансом.",
-    "zh-Hant": "採集：每種材料顯示開始時品質提升的機率與可能範圍。鑑定師的重新選擇也以同樣機率成功。",
-    "zh-Hans": "采集：每种材料显示开始时品质提升的概率与可能范围。鉴定师的重新选择也以同样概率成功。"
   }
 ]

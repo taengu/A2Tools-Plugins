@@ -82,7 +82,7 @@ let language = "en";
 let openId = null; // the pet whose sources are shown
 // How the list is sorted, and whether maxed pets show; kept across restarts.
 // hiddenRegions: null until the user picks; until then the other side's maps hide.
-let prefs = { sort: "left", desc: false, hideMax: true, genus: "", level: "", pinned: [], hiddenRegions: null, scale: 1, filtersOpen: false, chestOnly: false, layout: "cards", farmPopup: false, marketPopup: true, marketTab: "pets", hideAfter: 20, nearby: false, allNpcs: false, mapZoom: 2, popZoom: 2, popSize: 1, mapPopped: false };
+let prefs = { sort: "left", desc: false, hideMax: true, genus: [], level: [], pinned: [], hiddenRegions: null, scale: 1, filtersOpen: false, chestOnly: false, layout: "cards", farmPopup: false, marketPopup: true, marketTab: "pets", hideAfter: 20, nearby: false, allNpcs: false, mapZoom: 2, popZoom: 2, popSize: 1, mapPopped: false };
 // Text size: the whole page scaled, spacing and controls with the text. 100%
 // is BASE_ZOOM, a little larger than the stylesheet's own sizes.
 const SCALES = [0.9, 1, 1.1, 1.25, 1.5];
@@ -118,6 +118,10 @@ const sideOf = (charKey) => {
   return server >= 1000 && server < 2000 ? "elyos" : server >= 2000 && server < 3000 ? "asmodian" : null;
 };
 // The regions hidden: the user's pick, else the other side's maps.
+// The genera and levels picked (any number; none: all of them). Before
+// 0.8.7 each row held one choice, as a string.
+const picked = (v) => (Array.isArray(v) ? v.map(String) : v ? [String(v)] : []);
+
 const hiddenRegions = () => {
   // regionsPicked: an empty list saved by the version before this one wasn't a choice.
   if (prefs.regionsPicked && Array.isArray(prefs.hiddenRegions)) return prefs.hiddenRegions;
@@ -308,9 +312,9 @@ function render() {
   const sort = byNear ? SORTS.near : prefs.sort === "near" ? SORTS.left : SORTS[prefs.sort] || SORTS.left;
   const dir = prefs.desc ? -1 : 1;
   // Picking level 3 shows those pets even while they are otherwise hidden.
-  const listed = els.hideMax.checked && prefs.level !== String(MAX_LEVEL) ? open : pets;
-  const ofGenus = (p) => !prefs.genus || p.genus === prefs.genus;
-  const ofLevel = (p) => !prefs.level || String(Math.min(p.level, MAX_LEVEL)) === prefs.level;
+  const listed = els.hideMax.checked && !prefs.level.includes(String(MAX_LEVEL)) ? open : pets;
+  const ofGenus = (p) => !prefs.genus.length || prefs.genus.includes(p.genus);
+  const ofLevel = (p) => !prefs.level.length || prefs.level.includes(String(Math.min(p.level, MAX_LEVEL)));
   // With a region turned off, the pets whose souls drop only there leave the
   // list. Chests don't count (nearly every pet has one, from the battle pass);
   // a pet no monster is known to drop stays, as nothing says where it is.
@@ -327,7 +331,7 @@ function render() {
     (p) => String(Math.min(p.level, MAX_LEVEL)),
     NEEDED.map((_, l) => [String(l), `Lv ${l}`]).concat([[String(MAX_LEVEL), `Lv ${MAX_LEVEL}`]]));
   // Pinned pets first, in the order pinned; then the one being farmed; then the chosen sort.
-  const active = Number(!!prefs.chestOnly) + Number(!!prefs.genus) + Number(!!prefs.level) + Number(hidden.size > 0 && !!prefs.regionsPicked);
+  const active = Number(!!prefs.chestOnly) + Number(prefs.genus.length > 0) + Number(prefs.level.length > 0) + Number(hidden.size > 0 && !!prefs.regionsPicked);
   els.filterCount.textContent = active ? String(active) : "";
   els.filtersButton.classList.toggle("active", active > 0);
   els.filters.hidden = !prefs.filtersOpen;
@@ -1633,7 +1637,8 @@ function mapLink(d, k) {
 }
 
 // A filter row (genus or level): All, then each choice with how many of
-// `pets` it holds, given the other filters.
+// `pets` it holds, given the other filters. Any number of choices can be
+// on at once; All (none picked) shows every one.
 function renderChips(row, pref, pets, valueOf, choices) {
   const counts = {};
   for (const p of pets) counts[valueOf(p)] = (counts[valueOf(p)] || 0) + 1;
@@ -1645,7 +1650,7 @@ function renderChips(row, pref, pets, valueOf, choices) {
     n.className = "n";
     n.textContent = `(${count})`;
     b.append(label, " ", n);
-    b.setAttribute("aria-pressed", String(prefs[pref] === value));
+    b.setAttribute("aria-pressed", String(value === "" ? !prefs[pref].length : prefs[pref].includes(value)));
     return b;
   };
   row.dataset.pref = pref;
@@ -1873,7 +1878,13 @@ for (const row of [els.genus, els.levels]) {
   row.addEventListener("click", (e) => {
     const button = e.target.closest("button[data-value]");
     if (!button) return;
-    prefs[row.dataset.pref] = button.dataset.value;
+    // All clears the row; a choice turns on or off beside the others.
+    const value = button.dataset.value;
+    const on = new Set(prefs[row.dataset.pref]);
+    if (!value) on.clear();
+    else if (on.has(value)) on.delete(value);
+    else on.add(value);
+    prefs[row.dataset.pref] = [...on];
     savePrefs();
     render();
   });
@@ -1991,6 +2002,8 @@ els.head.addEventListener("click", (e) => {
 (async () => {
   names = (await a2.storage.get("names").catch(() => null)) || {};
   prefs = { ...prefs, ...((await a2.storage.get("prefs").catch(() => null)) || {}) };
+  prefs.genus = picked(prefs.genus);
+  prefs.level = picked(prefs.level);
   els.hideMax.checked = prefs.hideMax;
   els.chestOnly.checked = !!prefs.chestOnly;
   els.farmPopup.checked = !!prefs.farmPopup;

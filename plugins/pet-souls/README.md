@@ -33,7 +33,7 @@ The skins, their sources and odds are the game's own (its Skin, Item, ItemGetRou
 
 ## Pets
 
-Shows how many souls each of your pets still needs to reach level 3 (Special pets are left out: they come at their highest level). At the top: the souls still needed for every pet, how many pets are left, and a bar of how far along you are. Search by name, or open **Filters** for genus, level, regions, "Hide pets at level 3", the layout and the text size (the button shows how many filters are on).
+Shows how many souls each of your pets still needs to reach level 3 (Special pets are left out: they come at their highest level). At the top: the souls still needed for every pet, how many pets are left, and a bar of how far along you are. Search by name, or open **Filters** for genus, level (pick as many of each as you like; **All** clears the row), regions, "Hide pets at level 3", the layout and the text size (the button shows how many filters are on).
 
 ## Layouts
 
