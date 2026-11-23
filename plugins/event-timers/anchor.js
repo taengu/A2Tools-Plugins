@@ -157,8 +157,12 @@ const trainOn = () => anchorOn() && !!prefs.anchorTrain;
 const gridSize = (v, d) => Math.max(1, Math.min(GRID_MAX, Number(v) || d));
 const gridRows = () => Math.max(1, Math.min(ROWS_MAX, Number(prefs.anchorRows) || 3));
 
-// The train's bosses, for iconPins(): each world boss without an alert of
-// its own, shown while up or within TRAIN_LEAD_MS of spawning (pinVisible).
+// The train's bosses, for iconPins(): every world boss, shown while up or
+// within the train's time of spawning (trainVisible). One without an alert
+// of its own joins as a train pin; one with an alert keeps it (its sound,
+// its look) and is shown from the train's time as well, not only from its
+// alert's (an alert of 1 minute hid a boss the train asked for 5 minutes
+// ahead).
 // While a Spacetime Rift is open with its enemy bosses shown (plugin.js), the
 // train leaves out the bosses back in under 6 hours (or not measured yet):
 // the player is likely across in the enemy's land, where the common ones on
@@ -178,6 +182,7 @@ function trainPins(out, cfg) {
     // Not "Show icons even when not alerting", and no reminder: on the grid only while
     // up or about to spawn, and "Fighting" when it is.
     if (!(id in out)) out[id] = { ...cfg(id), always: false, lead: -1, fought: true, train: true };
+    else out[id].train = true;
   }
 }
 const trainVisible = (pin, state, until) =>
