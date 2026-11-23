@@ -273,11 +273,15 @@ def main():
                 t[code] = re.sub(r"\s*[(（][^()（）]*[)）]\s*$", "", t[code])
 
     # Unique and Epic items that drop (from monsters, dungeons or gathering,
-    # as the game lists them), with their names, for Unique drops.
+    # as the game lists them), with their names, for Unique drops. One piece
+    # each: a stack (a material, a box) changes with every use and move, and
+    # its records can't tell a drop from that.
     uniques = {}
     for item in items:
         g = GRADES.get(item.get("ItemGrade"))
         if g is None or g < 3:
+            continue
+        if (item.get("MaxStackCount") or 0) > 1:
             continue
         r = routes.get(item["ID"]["Value"]) or {}
         if not any(r.get(k) for k in ("MonsterGetRoutes", "PartyDungeonGetRoutes", "GatherGetRoutes")):
@@ -384,7 +388,7 @@ def main():
             f"const SKIN_DUNGEONS = {{\n{lines(dungeons)},\n}};\n"
             "// The coin shops (key -> name in COLLECTION_TEXT, or null).\n"
             f"const COIN_SHOPS = {json.dumps(coin_shops, separators=(',', ':'))};\n"
-            "// Unique and Epic items (item id -> [grade 3 Unique / 4 Epic, name]).\n"
+            "// Unique and Epic items, not stacks (item id -> [grade 3 Unique / 4 Epic, name]).\n"
             f"const UNIQUE_ITEMS = {{\n{lines(uniques)},\n}};\n"
             "// Items that drop or are gathered (item id -> [grade 0 Common to 4, name]).\n"
             f"const DROP_ITEMS = {{\n{lines(drop_items)},\n}};\n"
