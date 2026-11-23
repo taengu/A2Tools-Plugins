@@ -63,10 +63,24 @@ test("explicit opt-out retains all three previous call styles", () => {
 test("unknown mechanics announce a neutral advisory with original context on screen", () => {
   const h = harness();
   const c = call("cast:1808880:basilus-the-false");
+  assert.ok(!c.act && c.line != null, "fixture: a call with a boss line and no short call");
   h.trigger(c);
-  assert.deepEqual(h.spoken.map((s) => s.text), [english(c.act) || english(c.line)]);
-  assert.equal(h.engine.items()[0].text, english(c.act) || english(c.line));
-  assert.equal(h.engine.items()[0].sub, "");
+  assert.deepEqual(h.spoken.map((s) => s.text), [ACTIONS.watch.en]);
+  assert.equal(h.engine.items()[0].text, ACTIONS.watch.en);
+  assert.equal(h.engine.items()[0].sub, english(c.line));
+  const lines = harness({ tellMeWhatToDo: false, style: "line" });
+  lines.trigger(c);
+  assert.deepEqual(lines.spoken.map((s) => s.text), [english(c.line)], "Boss lines mode is unchanged");
+});
+
+test("a call in Instructions mode without an instruction shows Watch the boss in every language", () => {
+  const c = call("cast:1808880:basilus-the-false");
+  for (const lang of DATA.langs) {
+    const h = harness({}, lang);
+    h.trigger(c);
+    assert.equal(h.spoken[0].text, ACTIONS.watch[lang], lang);
+    assert.equal(h.engine.items()[0].sub, DATA.texts[c.line][lang] || english(c.line), lang);
+  }
 });
 
 test("instructions backed by explicit game dialogue use their exact reviewed trigger", () => {
@@ -85,11 +99,12 @@ test("a live shared trigger stays neutral even after another boss-specific skill
   h.trigger(call("vakron-jump"));
   h.advance(2000);
   h.engine.cast({ caster: 1, skill: 1604500 }, h.now());
-  assert.equal(h.spoken.at(-1).text, "Don't touch those flowers, unless you wish to be poisoned!");
+  assert.equal(h.spoken.at(-1).text, ACTIONS.watch.en);
+  assert.equal(h.engine.items()[0].sub, "Don't touch those flowers, unless you wish to be poisoned!");
   h.engine.clear();
   h.advance(2000);
   h.engine.cast({ caster: 1, skill: 1604500 }, h.now());
-  assert.equal(h.spoken.at(-1).text, "Don't touch those flowers, unless you wish to be poisoned!");
+  assert.equal(h.spoken.at(-1).text, ACTIONS.watch.en);
   assert.ok(!h.spoken.some((s) => s.text === ACTIONS.calls["cast:1604500:vakron"].en));
 });
 

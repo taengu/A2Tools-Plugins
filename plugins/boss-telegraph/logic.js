@@ -138,8 +138,11 @@
       if (actionMode()) {
         const resolved = hooks.instruction?.(c, { preview, uncertain: !!c.uncertain });
         const instruction = !c.uncertain && (actionText(resolved?.text) || (!hooks.instruction && actionText(actions.calls?.[c.k])));
-        const action = instruction || act || line || buff;
-        return { big: action, sub: [preview ? resolved?.scopeLabel : "", line && line !== action ? line : ""].filter(Boolean).join(" · "), say: [action] };
+        // No instruction and no short call: a neutral call, never the boss's
+        // line read out as if it were a direction. The line stays below it.
+        const action = instruction || act || actionText(actions.watch) || line || buff;
+        const context = line || buff;
+        return { big: action, sub: [preview ? resolved?.scopeLabel : "", context && context !== action ? context : ""].filter(Boolean).join(" · "), say: [action] };
       }
       if (style === "line") return { big: line || act || buff, sub: "", say: [line || act || buff] };
       if (style === "act") return { big: act || line || buff, sub: act ? "" : buff, say: [act || line || buff] };
