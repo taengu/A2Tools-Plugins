@@ -1,5 +1,18 @@
 [
   {
+    "version": "0.9.2",
+    "en": "The Dimensional Invasion's spoken alerts use the built-in voice like every other alert, not the computer's own voice.",
+    "ko": "차원 침공의 음성 알림도 다른 알림처럼 내장 음성으로 읽어 줍니다. 컴퓨터 자체 음성을 쓰지 않습니다.",
+    "ja": "次元侵攻の音声通知も、ほかの通知と同じく内蔵の音声で読み上げます。パソコン自体の音声は使いません。",
+    "de": "Die Sprachalarme der Dimensionalen Invasion nutzen wie alle anderen die eingebaute Stimme, nicht die Stimme des Computers.",
+    "fr": "Les alertes vocales de l'Invasion dimensionnelle utilisent la voix intégrée, comme toutes les autres, et non la voix de l'ordinateur.",
+    "es": "Las alertas habladas de la Invasión dimensional usan la voz integrada, como las demás, no la voz del ordenador.",
+    "pt": "Os alertas falados da Invasão Dimensional usam a voz integrada, como os demais, e não a voz do computador.",
+    "ru": "Голосовые оповещения о Межпространственном вторжении звучат встроенным голосом, как и остальные, а не голосом компьютера.",
+    "zh-Hant": "次元進攻的語音提醒和其他提醒一樣，使用內建語音，不再使用電腦本身的語音。",
+    "zh-Hans": "次元进攻的语音提醒和其他提醒一样，使用内置语音，不再使用电脑本身的语音。"
+  },
+  {
     "version": "0.9.1",
     "en": "The Dimensional Invasion shows as a chance at :30, as the game opens it at random. When the game announces it, it shows as open and its alert says so; a skipped slot shows as not opened. An alert before a possible opening is optional (off).",
     "ko": "차원 침공은 게임이 무작위로 열기 때문에 30분의 가능성으로 표시됩니다. 게임이 열림을 알리면 열림으로 표시되고 알림도 알려 주며, 건너뛴 시간은 열리지 않음으로 표시됩니다. 열릴 수 있는 시간 전 알림은 선택 사항입니다(기본 끔).",
@@ -50,18 +63,5 @@
     "ru": "Короткий тур по способам показа оповещений (Настройки, Пройти тур). Новый вид «Список» в режиме якоря. «Показывать значок» (выкл.: только имя и время). «Значками» теперь «Поверх игры». Телепорт асмодианской Кашапы — 50.",
     "zh-Hant": "提醒顯示方式的快速導覽（設定→觀看導覽）。錨點模式新增清單版面：每個首領一列。顯示圖示（關閉時只顯示名稱與時間）。「圖示」改名為「覆蓋層」。魔族卡夏帕的傳送點改為 50 號。",
     "zh-Hans": "提醒显示方式的快速导览（设置→观看导览）。锚点模式新增列表布局：每个首领一行。显示图标（关闭时只显示名称与时间）。「图标」改名为「覆盖层」。魔族卡夏帕的传送点改为 50 号。"
-  },
-  {
-    "version": "0.7.4",
-    "en": "Spacetime Rift: the enemy's bosses show their HP live while the rift is near or open, as that server's meters and your own report it.",
-    "ko": "시공의 균열: 균열이 가까워지거나 열려 있는 동안 적 보스의 HP가 그 서버의 미터와 내 미터가 보고하는 대로 실시간으로 표시됩니다.",
-    "ja": "時空の亀裂：亀裂が近いか開いている間、敵ボスのHPを、そのサーバーのメーターと自分のメーターの報告どおりリアルタイムで表示します。",
-    "de": "Raum-Zeit-Riss: Die Bosse des Gegners zeigen ihre HP live, solange der Riss bald öffnet oder offen ist, wie die Meter dieses Servers und dein eigenes sie melden.",
-    "fr": "Faille spatio-temporelle : les boss ennemis affichent leurs PV en direct quand la faille approche ou est ouverte, tels que les compteurs de ce serveur et le tien les signalent.",
-    "es": "Grieta espaciotemporal: los jefes enemigos muestran su vida en directo cuando la grieta está cerca o abierta, según la informan los medidores de ese servidor y el tuyo.",
-    "pt": "Fenda espaço-temporal: os chefes inimigos mostram o HP ao vivo quando a fenda está perto ou aberta, como os medidores desse servidor e o seu informam.",
-    "ru": "Разлом: у вражеских боссов видно HP в реальном времени, пока разлом скоро откроется или открыт, — как сообщают метры того сервера и ваш.",
-    "zh-Hant": "時空裂縫：裂縫即將開啟或開啟期間，敵方首領的 HP 會依該伺服器的計量器與你的計量器回報即時顯示。",
-    "zh-Hans": "时空裂缝：裂缝即将开启或开启期间，敌方首领的 HP 会按该服务器的计量器与你的计量器回报实时显示。"
   }
 ]

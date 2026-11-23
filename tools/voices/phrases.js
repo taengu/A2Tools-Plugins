@@ -29,8 +29,11 @@ if (plugin === "event-timers") {
   for (const n of LEADS.filter((n) => n > 0)) {
     out.add(SPOKEN.soon(n));
     out.add(SPOKEN.bossSoon(n));
+    // The Dimensional Invasion's "may open" alert (0.9.1, optional).
+    if (SPOKEN.maySoon) out.add(SPOKEN.maySoon(n));
   }
-  for (const k of ["now", "bossNow", "fought"]) out.add(SPOKEN[k]);
+  // The invasion as it may open, and as the game says it has (0.9.1).
+  for (const k of ["now", "bossNow", "fought", "mayNow", "opened"]) if (SPOKEN[k]) out.add(SPOKEN[k]);
 } else if (plugin === "cooldowns") {
   // Every skill's and buff's name, and the sample line with no skill shown.
   vm.runInContext(read("skills.js"), ctx);
