@@ -2,15 +2,15 @@
   {
     "version": "0.8.7",
     "en": "Filters: pick several genera and levels at once (for example Fera and Natura, level 0 and 1). All clears the row.",
-    "ko": "필터: 종족과 레벨을 여러 개 함께 고를 수 있습니다(예: 야성과 자연, 0레벨과 1레벨). All은 선택을 지웁니다.",
-    "ja": "フィルター：種族とレベルを複数まとめて選べます（例：野性と自然、レベル0と1）。Allで選択を解除します。",
-    "de": "Filter: mehrere Gattungen und Stufen gleichzeitig wählen (etwa Fera und Natura, Stufe 0 und 1). All hebt die Auswahl auf.",
-    "fr": "Filtres : choisissez plusieurs genres et niveaux à la fois (par exemple Bestia et Natura, niveaux 0 et 1). All efface la sélection.",
-    "es": "Filtros: elige varios géneros y niveles a la vez (por ejemplo Feras y Naturas, niveles 0 y 1). All borra la selección.",
-    "pt": "Filtros: escolha vários gêneros e níveis de uma vez (por exemplo Feral e Natural, níveis 0 e 1). All limpa a seleção.",
-    "ru": "Фильтры: можно выбрать сразу несколько родов и уровней (например, Дикие и Вириды, уровни 0 и 1). All сбрасывает выбор.",
-    "zh-Hant": "篩選：可同時選擇多個種族和等級（例如野性和自然、0 級和 1 級）。All 會清除選擇。",
-    "zh-Hans": "筛选：可同时选择多个种族和等级（例如野性和自然、0 级和 1 级）。All 会清除选择。"
+    "ko": "필터: 종족과 레벨을 여러 개 함께 고를 수 있습니다(예: 야성과 자연, 0레벨과 1레벨). 「전체」는 선택을 지웁니다.",
+    "ja": "フィルター：種族とレベルを複数まとめて選べます（例：野性と自然、レベル0と1）。「すべて」で選択を解除します。",
+    "de": "Filter: mehrere Gattungen und Stufen gleichzeitig wählen (etwa Fera und Natura, Stufe 0 und 1). Alle hebt die Auswahl auf.",
+    "fr": "Filtres : choisissez plusieurs genres et niveaux à la fois (par exemple Bestia et Natura, niveaux 0 et 1). Tous efface la sélection.",
+    "es": "Filtros: elige varios géneros y niveles a la vez (por ejemplo Feras y Naturas, niveles 0 y 1). Todos borra la selección.",
+    "pt": "Filtros: escolha vários gêneros e níveis de uma vez (por exemplo Feral e Natural, níveis 0 e 1). Todos limpa a seleção.",
+    "ru": "Фильтры: можно выбрать сразу несколько родов и уровней (например, Дикие и Вириды, уровни 0 и 1). «Все» сбрасывает выбор.",
+    "zh-Hant": "篩選：可同時選擇多個種族和等級（例如野性和自然、0 級和 1 級）。「全部」會清除選擇。",
+    "zh-Hans": "筛选：可同时选择多个种族和等级（例如野性和自然、0 级和 1 级）。“全部”会清除选择。"
   },
   {
     "version": "0.8.6",
