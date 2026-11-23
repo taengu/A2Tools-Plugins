@@ -1,5 +1,18 @@
 [
   {
+    "version": "0.2.1",
+    "en": "Instructions now say what to do at each mechanic, rewritten from boss guides. A call without an instruction says Watch the boss instead of the boss's line, which stays below it. With activity or stage on Auto, a mechanic's only instruction is used.",
+    "ko": "행동 안내가 보스 공략을 바탕으로 각 기믹에서 할 일을 알려 줍니다. 안내가 없는 알림은 보스 대사 대신 '보스를 주시하세요'라고 말하고, 대사는 아래에 표시됩니다. 활동이나 단계가 자동이면 기믹의 유일한 안내를 사용합니다.",
+    "ja": "行動指示がボス攻略をもとに、各ギミックで何をすべきか伝えるようになりました。指示のない通知はボスの台詞の代わりに「ボスをよく見て」と言い、台詞は下に表示されます。コンテンツやステージが自動のときは、そのギミック唯一の指示を使います。",
+    "de": "Anweisungen sagen jetzt bei jeder Mechanik, was zu tun ist, neu geschrieben nach Boss-Guides. Ohne Anweisung heißt es „Achte auf den Boss“ statt der Bosszeile, die darunter bleibt. Mit Aktivität oder Stufe auf Auto gilt die einzige Anweisung einer Mechanik.",
+    "fr": "Les consignes disent maintenant quoi faire à chaque mécanique, réécrites d'après des guides. Sans consigne, l'annonce dit « Surveillez le boss » au lieu de la réplique, affichée dessous. Avec activité ou palier sur Auto, la seule consigne d'une mécanique est utilisée.",
+    "es": "Las instrucciones ahora dicen qué hacer en cada mecánica, reescritas a partir de guías. Un aviso sin instrucción dice «Vigila al jefe» en vez de la frase del jefe, que queda debajo. Con actividad o etapa en Auto, se usa la única instrucción de la mecánica.",
+    "pt": "As instruções agora dizem o que fazer em cada mecânica, reescritas a partir de guias. Um aviso sem instrução diz «Observe o chefe» em vez da fala do chefe, que fica abaixo. Com atividade ou etapa em Auto, usa-se a única instrução da mecânica.",
+    "ru": "Инструкции теперь говорят, что делать на каждой механике, по гайдам. Без инструкции звучит «Следите за боссом» вместо реплики босса, которая остаётся ниже. Если активность или этап на «Авто», берётся единственная инструкция механики.",
+    "zh-Hant": "行動指引現在依首領攻略告訴你每個機制該怎麼做。沒有指引的提示會說「注意首領動作」而非首領台詞，台詞仍顯示在下方。活動或階段設為自動時，會使用該機制唯一的指引。",
+    "zh-Hans": "行动指引现在依首领攻略告诉你每个机制该怎么做。没有指引的提示会说“注意首领动作”而非首领台词，台词仍显示在下方。活动或阶段设为自动时，会使用该机制唯一的指引。"
+  },
+  {
     "version": "0.2.0",
     "en": "Calls can now tell you what to do (Instructions), or read the boss's lines as before (Boss lines, in Settings). Guides cover Global and Korea. Choose your region, activity and stage under Guide context.",
     "ko": "알림이 해야 할 행동을 안내합니다(행동 안내). 설정에서 보스 대사 모드를 선택하면 이전처럼 대사를 읽습니다. 글로벌과 한국 공략을 지원합니다. 공략 조건에서 지역, 활동, 단계를 선택하세요.",
@@ -50,18 +63,5 @@
     "ru": "Меньше расход памяти: звуковой движок закрывается после 30 секунд тишины и запускается снова при следующем оповещении.",
     "zh-Hant": "佔用更少記憶體：靜音 30 秒後關閉音效引擎，下次提醒時再重新啟動。",
     "zh-Hans": "占用更少内存：静音 30 秒后关闭音效引擎，下次提醒时再重新启动。"
-  },
-  {
-    "version": "0.1.6",
-    "en": "The settings window for reduced vision: a text size for the window, stronger contrast, a clear focus ring, and Off said in words.",
-    "ko": "저시력 사용자를 위한 설정 창: 창 글자 크기, 더 강한 대비, 뚜렷한 포커스 표시, '꺼짐'을 글자로 표시.",
-    "ja": "弱視の方のための設定画面：ウィンドウの文字サイズ、強いコントラスト、はっきりしたフォーカス表示、「オフ」を文字で表示。",
-    "de": "Das Einstellungsfenster für eingeschränktes Sehen: eine Textgröße fürs Fenster, stärkerer Kontrast, ein klarer Fokusrahmen und „Aus“ in Worten.",
-    "fr": "La fenêtre des réglages pour la basse vision : une taille de texte pour la fenêtre, un contraste renforcé, un cadre de focus net et « Désactivé » écrit.",
-    "es": "La ventana de ajustes para baja visión: tamaño de texto de la ventana, más contraste, un marco de foco claro y «Apagado» escrito.",
-    "pt": "A janela de configurações para baixa visão: tamanho de texto da janela, mais contraste, um contorno de foco claro e «Desligado» escrito.",
-    "ru": "Окно настроек для слабовидящих: размер текста окна, повышенный контраст, заметная рамка фокуса и «Выкл.» словами.",
-    "zh-Hant": "為弱視玩家改善設定視窗：視窗文字大小、更高對比、清楚的焦點框，並以文字標示「已關閉」。",
-    "zh-Hans": "为弱视玩家改善设置窗口：窗口文字大小、更高对比、清楚的焦点框，并以文字标示“已关闭”。"
   }
 ]
