@@ -95,6 +95,20 @@ test("new gear announced twice counts once", () => {
   assert.equal(count(who), 1);
 });
 
+test("gear held from before, moved, doesn't count", () => {
+  // The game numbers its items again at each login: a piece owned before is
+  // an instance the plugin never saw, moved with change 1 (2026-11-24's bank
+  // test: 01 01 a1e7060000830200 with 45 56, then 43 56).
+  const who = character();
+  for (const where of ["0f07", "0154"]) {
+    assert.equal(api.noteUnique(who, decode(record({ change: "01", flag: "01", instance: "a1e7060000830200", item: GEAR, where })), AT), false);
+  }
+  assert.equal(count(who), 0);
+  // A new drop of the same item still counts.
+  assert.equal(api.noteUnique(who, decode(record({ change: "00", flag: "01", instance: "8dc61600002a0000", item: GEAR })), AT + 9_000), true);
+  assert.equal(count(who), 1);
+});
+
 test("a move after a restart doesn't count again", () => {
   const who = character();
   api.noteUnique(who, decode(record({ change: "00", flag: "01", instance: "a1e7060000830200", item: GEAR })), AT);
@@ -122,7 +136,7 @@ test("stacks counted before are dropped from the days kept", () => {
 
 test("the instances kept are capped", () => {
   const who = character();
-  for (let i = 1; i <= api.COUNTED_KEEP + 5; i++) api.noteUnique(who, { item: GEAR, instance: i }, AT + i);
+  for (let i = 1; i <= api.COUNTED_KEEP + 5; i++) api.noteUnique(who, { item: GEAR, kind: 0, instance: i }, AT + i);
   assert.equal(who.counted.length, api.COUNTED_KEEP);
   assert.equal(who.counted[0], "6", "the oldest go first");
 });

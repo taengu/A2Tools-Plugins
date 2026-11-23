@@ -334,15 +334,19 @@
   // id: a second time just after it drops (2026-11-12), and on every move
   // between the bag and the storages (2026-11-24). Each character keeps the
   // instances already counted (who.counted, the most recent COUNTED_KEEP),
-  // so none of that counts again, after a restart too. UNIQUE_ITEMS holds no
-  // stacks: a stack changes with every use and move.
+  // so none of that counts again, after a restart too. The game gives every
+  // item a new instance id at each login (its 11 56 list, 2026-11-22), so a
+  // piece also counts only when the record calls it new (change 0): gear held
+  // from before, moved, is change 1. UNIQUE_ITEMS holds no stacks: a stack
+  // changes with every use and move.
   const COUNTED_KEEP = 1000;
+  const NEW_PIECE = 0;
   function noteUnique(who, d, at) {
     const item = Number(d?.item);
     if (!UNIQUE_ITEMS[item] || !who) return false;
     const instance = d?.instance != null && Number(d.instance) > 0 ? String(d.instance) : null;
     const counted = (who.counted ||= []);
-    if (instance && counted.includes(instance)) return false;
+    if (instance && (counted.includes(instance) || Number(d?.kind) !== NEW_PIECE)) return false;
     const rec = who.days[dayOf(at)];
     if (rec) {
       // The meter sends recent records again as the window opens: with no
