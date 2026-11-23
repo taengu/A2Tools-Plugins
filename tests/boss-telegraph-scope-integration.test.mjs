@@ -161,10 +161,19 @@ test("delayed sequence speech respects reset, disabled calls, custom wording and
 
 
 const shortCall=(h,key)=>{const c=h.data.calls.find(c=>c.k===key);return h.data.texts[c.act??c.line??c.n]?.en;};
-test("fallback preserves original short calls and Talisra signs in every region",async()=>{
+test("an unknown activity uses the region's only instruction, and Talisra signs stay in every region",async()=>{
  for(const region of ["Global","KR"]){
   const h=await page({registry:"real"});await h.choose(".guideRegion",region);
-  for(const key of ["thamon-violet","vakron-jump"]){await h.emit(key);assert.equal(h.spoken.at(-1),shortCall(h,key));}
+  assert.equal(h.context().category,"auto");
+  for(const key of ["thamon-violet","vakron-jump"]){
+   const entry=h.registry.entries.find(e=>e.k===key&&e.scope.regions.includes(region));
+   const event=entry.t==="cast"?"boss-cast":"boss-skill";
+   h.handlers.get(`decoded:${event}`)({caster:101,skill:entry.id},{at:h.now()});await h.advance();
+   assert.equal(h.spoken.at(-1),entry.text.en,`${region} ${key}`);
+  }
+  await h.choose(".guideCategory","transcendence");await h.emit("thamon-violet",{entity:202});
+  assert.equal(h.spoken.at(-1),shortCall(h,"thamon-violet"),"a known, different activity keeps the short call");
+  await h.choose(".guideCategory","auto");
   await h.emit("talisra-dark-spear");await h.advance(1500);await h.emit("talisra-dark-spear");await h.advance(1500);await h.emit("talisra-light-spear");
   assert.equal(h.engine.items().find(i=>i.sequence).text,"Dark → Dark → Light");
   assert.equal(h.spoken.at(-1),"Remember light shield");

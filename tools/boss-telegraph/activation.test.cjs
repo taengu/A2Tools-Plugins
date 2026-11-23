@@ -31,14 +31,38 @@ test("every tuple component must match exactly and IDs are not coerced", () => {
   }
 });
 
-test("unknown or mismatching required region/category/difficulty cannot activate", () => {
+test("a single entry is assumed for unknown region/category/difficulty, never for a mismatching one", () => {
   for (const key of ["region", "category", "difficulty"]) {
     for (const value of [undefined, null, "", "auto", "unknown", "NULL", "undefined"]) {
-      assert.equal(resolver().resolve(call, { ...context, [key]: value }).reason, "unknown-context");
+      const result = resolver().resolve(call, { ...context, [key]: value });
+      assert.equal(result.reason, "active-assumed"); assert.equal(result.eligible, true);
+      assert.equal(result.text.en, "Reviewed instruction en");
     }
     assert.equal(resolver().resolve(call, { ...context, [key]: "different" }).reason, "scope-mismatch");
   }
-  assert.equal(resolver().resolve(call, { language: "en" }).eligible, false);
+  assert.equal(resolver().resolve(call, { language: "en" }).reason, "active-assumed");
+  assert.equal(resolver().resolve(call, null).reason, "active-assumed");
+  assert.equal(resolver().resolve(call, { category: "auto", difficulty: "hard" }).reason, "scope-mismatch");
+});
+
+test("unknown region with several regional entries uses them only when every text is the same", () => {
+  const same = ["korea", "global"].map((region) => entry({ scope: { regions: [region], categories: ["nightmare"], stages: region === "korea" ? [7] : [2] } }));
+  const r = create({ entries: same });
+  for (const region of [undefined, null, "auto", "unknown"]) {
+    const result = r.resolve(call, { region, category: "nightmare" });
+    assert.equal(result.eligible, true); assert.equal(result.reason, "active-assumed");
+    assert.equal(result.text.en, "Reviewed instruction en");
+  }
+  assert.equal(r.resolve(call, { category: "nightmare", stage: 2 }).eligible, true);
+  assert.equal(r.resolve(call, { category: "nightmare", stage: 9 }).reason, "scope-mismatch");
+  assert.equal(r.resolve(call, { category: "trial" }).reason, "scope-mismatch");
+  assert.equal(r.resolve(call, {}, { preview: true }).reason, "preview-region-needed");
+  assert.equal(r.resolve(call, { category: "nightmare" }, { uncertain: true }).eligible, false);
+  const different = create({ entries: regionalVariants() });
+  for (const facts of [{}, { category: "nightmare" }, { category: "nightmare", stage: 2 }]) {
+    const result = different.resolve(call, facts);
+    assert.equal(result.eligible, false); assert.equal(result.reason, "unknown-context"); assert.equal(result.text, null);
+  }
 });
 
 test("only literal game-explicit entries may claim universal scope", () => {
@@ -67,7 +91,7 @@ test("stage scopes require explicit matching stages and never derive them from d
   const r = resolver(entry({ scope: { regions: ["global"], categories: ["nightmare"], stages: [2, 3] } }));
   assert.equal(r.resolve(call, { ...context, category: "nightmare", stage: 2 }).eligible, true);
   assert.equal(r.resolve(call, { ...context, category: "nightmare", stage: "2" }).eligible, true);
-  assert.equal(r.resolve(call, { ...context, category: "nightmare", stage: null, difficulty: "Stage2" }).reason, "unknown-context");
+  assert.equal(r.resolve(call, { ...context, category: "nightmare", stage: null, difficulty: "Stage2" }).reason, "active-assumed");
   assert.equal(r.resolve(call, { ...context, category: "nightmare", stage: 4 }).reason, "scope-mismatch");
 });
 
@@ -75,8 +99,9 @@ test("combined categories preserve every required difficulty and stage dimension
   const scope = { regions: ["global"], categories: ["conquest", "nightmare"], difficulties: ["normal"], stages: [2] };
   const r = resolver(entry({ scope }));
   assert.equal(r.resolve(call, context).eligible, true);
-  assert.equal(r.resolve(call, { ...context, stage: null }).eligible, false);
-  assert.equal(r.resolve(call, { ...context, category: "nightmare", difficulty: null }).eligible, false);
+  assert.equal(r.resolve(call, { ...context, stage: null }).reason, "active-assumed");
+  assert.equal(r.resolve(call, { ...context, category: "nightmare", difficulty: null }).reason, "active-assumed");
+  assert.equal(r.resolve(call, { ...context, stage: 5 }).reason, "scope-mismatch");
 });
 
 test("live uncertain/shared triggers remain neutral while explicit preview demonstrates the chosen scope", () => {
@@ -158,7 +183,8 @@ test("disjoint explicit regional variants choose their own text and stage scope"
   const korea = r.resolve(call, { ...facts, region: "korea", stage: 8 });
   assert.equal(korea.eligible, true); assert.equal(korea.text.en, "Korea instruction en");
   assert.equal(r.resolve(call, { ...facts, region: "global", stage: 8 }).reason, "scope-mismatch");
-  assert.equal(r.resolve(call, { ...facts, region: "korea", stage: null }).reason, "unknown-context");
+  const assumed = r.resolve(call, { ...facts, region: "korea", stage: null });
+  assert.equal(assumed.reason, "active-assumed"); assert.equal(assumed.text.en, "Korea instruction en");
 });
 
 test("regional preview requires region first and then demonstrates only that selected scope", () => {
@@ -217,8 +243,8 @@ test("regional literal game instructions require known region without inventing 
   for (const field of ["line", "n"]) {
     const r = resolver(entry({ verification: "game-explicit", source: { field, en: "Literal instruction" },
       scope: { universal: false, regions: ["KR"], categories: [], difficulties: [], stages: [] } }));
-    assert.equal(r.resolve(call, {}).reason, "unknown-context");
-    assert.equal(r.resolve(call, { region: "auto" }).reason, "unknown-context");
+    assert.equal(r.resolve(call, {}).reason, "active-assumed");
+    assert.equal(r.resolve(call, { region: "auto" }).reason, "active-assumed");
     const result = r.resolve(call, { region: "KR" });
     assert.equal(result.eligible, true);
     assert.equal(result.scopeBadge.categories.length, 0);
@@ -230,7 +256,7 @@ test("Global regional literals retain every known explicit category/difficulty/s
   const e = entry({ verification: "game-explicit", scope: { universal: false, regions: ["Global"],
     categories: ["conquest"], difficulties: ["hard"], stages: [2] } });
   const r = resolver(e);
-  assert.equal(r.resolve(call, { region: "Global" }).reason, "unknown-context");
+  assert.equal(r.resolve(call, { region: "Global" }).reason, "active-assumed");
   assert.equal(r.resolve(call, { region: "Global", category: "conquest", difficulty: "normal", stage: 2 }).reason, "scope-mismatch");
   assert.equal(r.resolve(call, { region: "Global", category: "conquest", difficulty: "hard", stage: 2 }).eligible, true);
   assert.equal(r.resolve(call, { region: "Global", category: "conquest", difficulty: "hard", stage: 3 }).eligible, false);

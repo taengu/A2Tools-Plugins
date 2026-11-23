@@ -65,7 +65,19 @@
           }
         }
         const region = object(context) && typeof context.region === "string" ? normalized(context.region) : null;
-        if (region == null) return result(preview === true ? "preview-region-needed" : "unknown-context");
+        if (region == null) {
+          if (preview === true) return result("preview-region-needed");
+          // Region unknown: one text for every region can still be given;
+          // two different texts are never chosen between.
+          const first = JSON.stringify(matches[0].text);
+          if (matches.some((variant) => JSON.stringify(variant.text) !== first)) return result("unknown-context");
+          let tried = result("unknown-context");
+          for (const known of regions.keys()) {
+            tried = resolve(call, { ...(object(context) ? context : {}), region: known }, { preview, uncertain });
+            if (tried.eligible) return { ...tried, reason: "active-assumed" };
+          }
+          return tried;
+        }
         entry = regions.get(region) || null;
         if (!entry) return result("scope-mismatch");
       } else {
@@ -125,15 +137,18 @@
       }
       if (uncertain !== false || (own(call, "uncertain") && call.uncertain !== false)) return result("uncertain-trigger");
       if ((triggerBosses.get(`${call.t}:${call.id}`)?.size || 0) > 1) return result("shared-trigger");
-      if (!object(context)) return result("unknown-context");
+      // This entry is the trigger's only text for its region, so a dimension
+      // the context doesn't know is assumed to match; a known one must match.
+      const facts = object(context) ? context : {};
+      let assumed = false;
       for (const [plural, singular] of Object.entries(DIMENSIONS)) {
         if (!lists[plural].length) continue;
-        const value = singular !== "stage" && typeof context[singular] !== "string"
-          ? null : normalized(context[singular]);
-        if (value == null) return result("unknown-context");
+        const value = singular !== "stage" && typeof facts[singular] !== "string"
+          ? null : normalized(facts[singular]);
+        if (value == null) { assumed = true; continue; }
         if (!lists[plural].includes(value)) return result("scope-mismatch");
       }
-      return result("active", true);
+      return result(assumed ? "active-assumed" : "active", true);
     }
 
     return { resolve, describe: (call, context) => resolve(call, context) };
