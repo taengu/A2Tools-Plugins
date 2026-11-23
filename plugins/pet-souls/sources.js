@@ -400,6 +400,48 @@ const PET_SOURCES = {
     "zones": [
      "String_STR_Subzone_AR4_SulfurTreeIsland_body"
     ]
+   },
+   {
+    "chance": "100%",
+    "level": 45,
+    "map": "String_STR_Map_Draupnir_body",
+    "mapId": 600032,
+    "npc": "String_STR_M_PD_Draupnir_Neuth_01_body",
+    "npcId": 2300425,
+    "region": "Draupnir",
+    "spawns": 16,
+    "zones": [
+     "String_STR_Map_Draupnir_body",
+     "String_STR_Subzone_Draupnir_Subzone_3_body"
+    ]
+   },
+   {
+    "chance": "100%",
+    "level": 45,
+    "map": "String_STR_Map_Draupnir_body",
+    "mapId": 600031,
+    "npc": "String_STR_M_PD_Draupnir_Neuth_01_body",
+    "npcId": 2310425,
+    "region": "Draupnir",
+    "spawns": 9,
+    "zones": [
+     "String_STR_Map_Draupnir_body",
+     "String_STR_Subzone_Draupnir_Subzone_3_body"
+    ]
+   },
+   {
+    "chance": "100%",
+    "level": 68,
+    "map": "String_STR_Map_Draupnir_body",
+    "mapId": 600033,
+    "npc": "String_STR_M_PD_Draupnir_Neuth_01_body",
+    "npcId": 2320425,
+    "region": "Draupnir",
+    "spawns": 16,
+    "zones": [
+     "String_STR_Map_Draupnir_body",
+     "String_STR_Subzone_Draupnir_Subzone_3_body"
+    ]
    }
   ],
   "title": "String_STR_ITEM_VEHICLESOUL_NEUTH_01_A_01_B_body"
@@ -743,6 +785,45 @@ const PET_SOURCES = {
     "spawns": 26,
     "zones": [
      "String_STR_Subzone_IslandofImmortality_body"
+    ]
+   },
+   {
+    "chance": "100%",
+    "level": 63,
+    "map": "String_STR_Map_HornCave_body",
+    "mapId": 600092,
+    "npc": "String_STR_M_PD_FierceHornCave_Crab_01_body",
+    "npcId": 2300920,
+    "region": "Ferocious Horn Den",
+    "spawns": 8,
+    "zones": [
+     "String_STR_Subzone_HornCave_1_body"
+    ]
+   },
+   {
+    "chance": "100%",
+    "level": 63,
+    "map": "String_STR_Map_HornCave_body",
+    "mapId": 600091,
+    "npc": "String_STR_M_PD_FierceHornCave_Crab_01_body",
+    "npcId": 2310920,
+    "region": "Ferocious Horn Den",
+    "spawns": 12,
+    "zones": [
+     "String_STR_Subzone_HornCave_1_body"
+    ]
+   },
+   {
+    "chance": "100%",
+    "level": 72,
+    "map": "String_STR_Map_HornCave_body",
+    "mapId": 600093,
+    "npc": "String_STR_M_PD_FierceHornCave_Crab_01_body",
+    "npcId": 2320920,
+    "region": "Ferocious Horn Den",
+    "spawns": 8,
+    "zones": [
+     "String_STR_Subzone_HornCave_1_body"
     ]
    }
   ],
@@ -1734,6 +1815,48 @@ const PET_SOURCES = {
     "zones": [
      "String_STR_Subzone_AR4_SulfurTreeIsland_body"
     ]
+   },
+   {
+    "chance": "100%",
+    "level": 45,
+    "map": "String_STR_Map_Draupnir_body",
+    "mapId": 600032,
+    "npc": "String_STR_M_PD_Draupnir_AbyssSwarm_01_body",
+    "npcId": 2300421,
+    "region": "Draupnir",
+    "spawns": 15,
+    "zones": [
+     "String_STR_Subzone_Draupnir_Subzone_1_body",
+     "String_STR_Subzone_Draupnir_Subzone_3_body"
+    ]
+   },
+   {
+    "chance": "100%",
+    "level": 45,
+    "map": "String_STR_Map_Draupnir_body",
+    "mapId": 600031,
+    "npc": "String_STR_M_PD_Draupnir_AbyssSwarm_01_body",
+    "npcId": 2310421,
+    "region": "Draupnir",
+    "spawns": 10,
+    "zones": [
+     "String_STR_Subzone_Draupnir_Subzone_1_body",
+     "String_STR_Subzone_Draupnir_Subzone_3_body"
+    ]
+   },
+   {
+    "chance": "100%",
+    "level": 68,
+    "map": "String_STR_Map_Draupnir_body",
+    "mapId": 600033,
+    "npc": "String_STR_M_PD_Draupnir_AbyssSwarm_01_body",
+    "npcId": 2320421,
+    "region": "Draupnir",
+    "spawns": 15,
+    "zones": [
+     "String_STR_Subzone_Draupnir_Subzone_1_body",
+     "String_STR_Subzone_Draupnir_Subzone_3_body"
+    ]
    }
   ],
   "title": "String_STR_ITEM_VEHICLESOUL_ABYSSSWARM_01_A_01_B_body"
@@ -2373,6 +2496,66 @@ const PET_SOURCES = {
     "zones": [
      "String_STR_Subzone_DranaProcessingArea_body"
     ]
+   },
+   {
+    "chance": "100%",
+    "level": 56,
+    "map": "String_STR_Map_DeusCenter_body",
+    "mapId": 600053,
+    "npc": "String_STR_M_PD_DeusCenter_KrallPrst_01_body",
+    "npcId": 2320612,
+    "region": "Deus Research Base",
+    "spawns": 17,
+    "zones": [
+     "String_STR_Subzone_DeusCenter_7_body",
+     "String_STR_Subzone_DeusCenter_2_body",
+     "String_STR_Subzone_DeusCenter_1_body"
+    ]
+   },
+   {
+    "chance": "100%",
+    "level": 60,
+    "map": "String_STR_Map_DeusCenter_body",
+    "mapId": 600055,
+    "npc": "String_STR_M_PD_DeusCenter_KrallPrst_01_body",
+    "npcId": 2340612,
+    "region": "Deus Research Base",
+    "spawns": 17,
+    "zones": [
+     "String_STR_Subzone_DeusCenter_7_body",
+     "String_STR_Subzone_DeusCenter_2_body",
+     "String_STR_Subzone_DeusCenter_1_body"
+    ]
+   },
+   {
+    "chance": "100%",
+    "level": 64,
+    "map": "String_STR_Map_DeusCenter_body",
+    "mapId": 600058,
+    "npc": "String_STR_M_PD_DeusCenter_KrallPrst_01_body",
+    "npcId": 2343612,
+    "region": "Deus Research Base",
+    "spawns": 17,
+    "zones": [
+     "String_STR_Subzone_DeusCenter_7_body",
+     "String_STR_Subzone_DeusCenter_2_body",
+     "String_STR_Subzone_DeusCenter_1_body"
+    ]
+   },
+   {
+    "chance": "100%",
+    "level": 68,
+    "map": "String_STR_Map_DeusCenter_body",
+    "mapId": 610052,
+    "npc": "String_STR_M_PD_DeusCenter_KrallPrst_01_body",
+    "npcId": 2346612,
+    "region": "Deus Research Base",
+    "spawns": 17,
+    "zones": [
+     "String_STR_Subzone_DeusCenter_7_body",
+     "String_STR_Subzone_DeusCenter_2_body",
+     "String_STR_Subzone_DeusCenter_1_body"
+    ]
    }
   ],
   "title": "String_STR_ITEM_VEHICLESOUL_KRALLPRST_01_A_01_B_body"
@@ -2808,6 +2991,70 @@ const PET_SOURCES = {
     "zones": [
      "String_STR_Subzone_NahidArmyGarrison_body"
     ]
+   },
+   {
+    "chance": "100%",
+    "level": 56,
+    "map": "String_STR_Map_DeusCenter_body",
+    "mapId": 600053,
+    "npc": "String_STR_M_PD_DeusCenter_KrallReinforcedWarrior_01_body",
+    "npcId": 2320613,
+    "region": "Deus Research Base",
+    "spawns": 24,
+    "zones": [
+     "String_STR_Subzone_DeusCenter_7_body",
+     "String_STR_Subzone_DeusCenter_2_body",
+     "String_STR_Subzone_DeusCenter_6_body",
+     "String_STR_Subzone_DeusCenter_1_body"
+    ]
+   },
+   {
+    "chance": "100%",
+    "level": 60,
+    "map": "String_STR_Map_DeusCenter_body",
+    "mapId": 600055,
+    "npc": "String_STR_M_PD_DeusCenter_KrallReinforcedWarrior_01_body",
+    "npcId": 2340613,
+    "region": "Deus Research Base",
+    "spawns": 24,
+    "zones": [
+     "String_STR_Subzone_DeusCenter_7_body",
+     "String_STR_Subzone_DeusCenter_2_body",
+     "String_STR_Subzone_DeusCenter_6_body",
+     "String_STR_Subzone_DeusCenter_1_body"
+    ]
+   },
+   {
+    "chance": "100%",
+    "level": 64,
+    "map": "String_STR_Map_DeusCenter_body",
+    "mapId": 600058,
+    "npc": "String_STR_M_PD_DeusCenter_KrallReinforcedWarrior_01_body",
+    "npcId": 2343613,
+    "region": "Deus Research Base",
+    "spawns": 24,
+    "zones": [
+     "String_STR_Subzone_DeusCenter_7_body",
+     "String_STR_Subzone_DeusCenter_2_body",
+     "String_STR_Subzone_DeusCenter_6_body",
+     "String_STR_Subzone_DeusCenter_1_body"
+    ]
+   },
+   {
+    "chance": "100%",
+    "level": 68,
+    "map": "String_STR_Map_DeusCenter_body",
+    "mapId": 610052,
+    "npc": "String_STR_M_PD_DeusCenter_KrallReinforcedWarrior_01_body",
+    "npcId": 2346613,
+    "region": "Deus Research Base",
+    "spawns": 24,
+    "zones": [
+     "String_STR_Subzone_DeusCenter_7_body",
+     "String_STR_Subzone_DeusCenter_2_body",
+     "String_STR_Subzone_DeusCenter_6_body",
+     "String_STR_Subzone_DeusCenter_1_body"
+    ]
    }
   ],
   "title": "String_STR_ITEM_VEHICLESOUL_KRALLWAR_01_A_01_B_body"
@@ -2943,7 +3190,47 @@ const PET_SOURCES = {
     "name": "String_STR_ITEM_BOX_VEHICLESOUL_A_09_B_body"
    }
   ],
-  "drops": [],
+  "drops": [
+   {
+    "chance": "100%",
+    "level": 45,
+    "map": "String_STR_Map_Krao_Cave_body",
+    "mapId": 600001,
+    "npc": "String_STR_M_L1_I2_KraoElite_01_body",
+    "npcId": 2300107,
+    "region": "Krao Cave",
+    "spawns": 11,
+    "zones": [
+     "String_STR_Map_Krao_Cave_body"
+    ]
+   },
+   {
+    "chance": "100%",
+    "level": 22,
+    "map": "String_STR_Map_Krao_Cave_body",
+    "mapId": 600002,
+    "npc": "String_STR_M_L1_I2_KraoElite_01_body",
+    "npcId": 2310107,
+    "region": "Krao Cave",
+    "spawns": 2,
+    "zones": [
+     "String_STR_Map_Krao_Cave_body"
+    ]
+   },
+   {
+    "chance": "100%",
+    "level": 68,
+    "map": "String_STR_Map_Krao_Cave_body",
+    "mapId": 600004,
+    "npc": "String_STR_M_L1_I2_KraoElite_01_body",
+    "npcId": 2320107,
+    "region": "Krao Cave",
+    "spawns": 11,
+    "zones": [
+     "String_STR_Map_Krao_Cave_body"
+    ]
+   }
+  ],
   "title": "String_STR_ITEM_VEHICLESOUL_KRAOELITE_01_A_01_B_body"
  },
  "1029": {
@@ -3484,6 +3771,48 @@ const PET_SOURCES = {
     "zones": [
      "String_STR_Subzone_AR4_SulfurTreeIsland_body"
     ]
+   },
+   {
+    "chance": "100%",
+    "level": 45,
+    "map": "String_STR_Map_Draupnir_body",
+    "mapId": 600032,
+    "npc": "String_STR_M_PD_Draupnir_NagaElite_04_01_body",
+    "npcId": 2300405,
+    "region": "Draupnir",
+    "spawns": 8,
+    "zones": [
+     "String_STR_Subzone_Draupnir_Subzone_1_body",
+     "String_STR_Subzone_Draupnir_Subzone_3_body"
+    ]
+   },
+   {
+    "chance": "100%",
+    "level": 45,
+    "map": "String_STR_Map_Draupnir_body",
+    "mapId": 600031,
+    "npc": "String_STR_M_PD_Draupnir_NagaElite_04_01_body",
+    "npcId": 2310405,
+    "region": "Draupnir",
+    "spawns": 4,
+    "zones": [
+     "String_STR_Subzone_Draupnir_Subzone_1_body",
+     "String_STR_Subzone_Draupnir_Subzone_3_body"
+    ]
+   },
+   {
+    "chance": "100%",
+    "level": 68,
+    "map": "String_STR_Map_Draupnir_body",
+    "mapId": 600033,
+    "npc": "String_STR_M_PD_Draupnir_NagaElite_04_01_body",
+    "npcId": 2320405,
+    "region": "Draupnir",
+    "spawns": 8,
+    "zones": [
+     "String_STR_Subzone_Draupnir_Subzone_1_body",
+     "String_STR_Subzone_Draupnir_Subzone_3_body"
+    ]
    }
   ],
   "title": "String_STR_ITEM_VEHICLESOUL_NAGAELITE_04_A_01_B_body"
@@ -3523,6 +3852,45 @@ const PET_SOURCES = {
     "spawns": 30,
     "zones": [
      "String_STR_Subzone_TolbasForest_Northern_body"
+    ]
+   },
+   {
+    "chance": "100%",
+    "level": 54,
+    "map": "String_STR_Map_Urugugu_Canyon_body",
+    "mapId": 600012,
+    "npc": "String_STR_M_PD_UC_Conuti_01_body",
+    "npcId": 2300212,
+    "region": "Urugugu Canyon",
+    "spawns": 19,
+    "zones": [
+     "String_STR_Subzone_Urugugu_Canyon_2_body"
+    ]
+   },
+   {
+    "chance": "100%",
+    "level": 30,
+    "map": "String_STR_Map_Urugugu_Canyon_body",
+    "mapId": 600011,
+    "npc": "String_STR_M_PD_UC_Conuti_01_body",
+    "npcId": 2310212,
+    "region": "Urugugu Canyon",
+    "spawns": 6,
+    "zones": [
+     "String_STR_Subzone_Urugugu_Canyon_2_body"
+    ]
+   },
+   {
+    "chance": "100%",
+    "level": 70,
+    "map": "String_STR_Map_Urugugu_Canyon_body",
+    "mapId": 600013,
+    "npc": "String_STR_M_PD_UC_Conuti_01_body",
+    "npcId": 2320212,
+    "region": "Urugugu Canyon",
+    "spawns": 19,
+    "zones": [
+     "String_STR_Subzone_Urugugu_Canyon_2_body"
     ]
    }
   ],
@@ -4302,6 +4670,48 @@ const PET_SOURCES = {
     "spawns": 15,
     "zones": [
      "String_STR_Subzone_OwllauVillage_body"
+    ]
+   },
+   {
+    "chance": "100%",
+    "level": 54,
+    "map": "String_STR_Map_Urugugu_Canyon_body",
+    "mapId": 600012,
+    "npc": "String_STR_M_PD_UC_OwlSoldier_02_body",
+    "npcId": 2300202,
+    "region": "Urugugu Canyon",
+    "spawns": 40,
+    "zones": [
+     "String_STR_Subzone_Urugugu_Canyon_1_body",
+     "String_STR_Subzone_Urugugu_Canyon_3_body"
+    ]
+   },
+   {
+    "chance": "100%",
+    "level": 30,
+    "map": "String_STR_Map_Urugugu_Canyon_body",
+    "mapId": 600011,
+    "npc": "String_STR_M_PD_UC_OwlSoldier_02_body",
+    "npcId": 2310202,
+    "region": "Urugugu Canyon",
+    "spawns": 10,
+    "zones": [
+     "String_STR_Subzone_Urugugu_Canyon_1_body",
+     "String_STR_Subzone_Urugugu_Canyon_2_body"
+    ]
+   },
+   {
+    "chance": "100%",
+    "level": 70,
+    "map": "String_STR_Map_Urugugu_Canyon_body",
+    "mapId": 600013,
+    "npc": "String_STR_M_PD_UC_OwlSoldier_02_body",
+    "npcId": 2320202,
+    "region": "Urugugu Canyon",
+    "spawns": 40,
+    "zones": [
+     "String_STR_Subzone_Urugugu_Canyon_1_body",
+     "String_STR_Subzone_Urugugu_Canyon_3_body"
     ]
    }
   ],
@@ -5883,6 +6293,45 @@ const PET_SOURCES = {
     "zones": [
      "String_STR_Subzone_PilgrimsRidgePath_body"
     ]
+   },
+   {
+    "chance": "100%",
+    "level": 54,
+    "map": "String_STR_Map_BakronIsland_body",
+    "mapId": 600072,
+    "npc": "String_STR_M_PD_BakronIsland_Bee_01_001_body",
+    "npcId": 2300815,
+    "region": "Vakron Sky Island",
+    "spawns": 8,
+    "zones": [
+     "String_STR_Subzone_BakronIsland_1_body"
+    ]
+   },
+   {
+    "chance": "100%",
+    "level": 54,
+    "map": "String_STR_Map_BakronIsland_body",
+    "mapId": 600071,
+    "npc": "String_STR_M_PD_BakronIsland_Bee_01_001_body",
+    "npcId": 2310815,
+    "region": "Vakron Sky Island",
+    "spawns": 7,
+    "zones": [
+     "String_STR_Subzone_BakronIsland_1_body"
+    ]
+   },
+   {
+    "chance": "100%",
+    "level": 70,
+    "map": "String_STR_Map_BakronIsland_body",
+    "mapId": 600073,
+    "npc": "String_STR_M_PD_BakronIsland_Bee_01_001_body",
+    "npcId": 2320815,
+    "region": "Vakron Sky Island",
+    "spawns": 8,
+    "zones": [
+     "String_STR_Subzone_BakronIsland_1_body"
+    ]
    }
   ],
   "title": "String_STR_ITEM_VEHICLESOUL_BEE_01_A_01_B_body"
@@ -6888,7 +7337,47 @@ const PET_SOURCES = {
     "name": "String_STR_ITEM_BOX_VEHICLESOUL_A_09_B_body"
    }
   ],
-  "drops": [],
+  "drops": [
+   {
+    "chance": "100%",
+    "level": 45,
+    "map": "String_STR_Map_Krao_Cave_body",
+    "mapId": 600001,
+    "npc": "String_STR_M_L1_I2_KraoWar_01_body",
+    "npcId": 2300102,
+    "region": "Krao Cave",
+    "spawns": 31,
+    "zones": [
+     "String_STR_Map_Krao_Cave_body"
+    ]
+   },
+   {
+    "chance": "100%",
+    "level": 22,
+    "map": "String_STR_Map_Krao_Cave_body",
+    "mapId": 600002,
+    "npc": "String_STR_M_L1_I2_KraoWar_01_body",
+    "npcId": 2310102,
+    "region": "Krao Cave",
+    "spawns": 13,
+    "zones": [
+     "String_STR_Map_Krao_Cave_body"
+    ]
+   },
+   {
+    "chance": "100%",
+    "level": 68,
+    "map": "String_STR_Map_Krao_Cave_body",
+    "mapId": 600004,
+    "npc": "String_STR_M_L1_I2_KraoWar_01_body",
+    "npcId": 2320102,
+    "region": "Krao Cave",
+    "spawns": 31,
+    "zones": [
+     "String_STR_Map_Krao_Cave_body"
+    ]
+   }
+  ],
   "title": "String_STR_ITEM_VEHICLESOUL_KRAOWAR_01_A_01_B_body"
  },
  "1069": {
@@ -7539,7 +8028,34 @@ const PET_SOURCES = {
     "name": "String_STR_ITEM_BOX_VEHICLESOUL_A_06_B_body"
    }
   ],
-  "drops": [],
+  "drops": [
+   {
+    "chance": "100%",
+    "level": 54,
+    "map": "String_STR_Map_Urugugu_Canyon_body",
+    "mapId": 600012,
+    "npc": "String_STR_M_PD_UC_OwlSoldier_06_body",
+    "npcId": 2300213,
+    "region": "Urugugu Canyon",
+    "spawns": 1,
+    "zones": [
+     "String_STR_Subzone_Urugugu_Canyon_3_body"
+    ]
+   },
+   {
+    "chance": "100%",
+    "level": 70,
+    "map": "String_STR_Map_Urugugu_Canyon_body",
+    "mapId": 600013,
+    "npc": "String_STR_M_PD_UC_OwlSoldier_06_body",
+    "npcId": 2320213,
+    "region": "Urugugu Canyon",
+    "spawns": 1,
+    "zones": [
+     "String_STR_Subzone_Urugugu_Canyon_3_body"
+    ]
+   }
+  ],
   "title": "String_STR_ITEM_VEHICLESOUL_OWLSOLDIER_09_A_01_B_body"
  },
  "1079": {
@@ -7591,7 +8107,49 @@ const PET_SOURCES = {
     "name": "String_STR_ITEM_BOX_VEHICLESOUL_A_08_B_body"
    }
   ],
-  "drops": [],
+  "drops": [
+   {
+    "chance": "100%",
+    "level": 63,
+    "map": "String_STR_Map_Fire_Temple_body",
+    "mapId": 600022,
+    "npc": "String_STR_M_PD_Fire_Temple_FireEle_04_body",
+    "npcId": 2300308,
+    "region": "Fire Temple",
+    "spawns": 6,
+    "zones": [
+     "String_STR_Subzone_Fire_Temple_Temple_body",
+     "String_STR_Subzone_Fire_Temple_Cave1_body"
+    ]
+   },
+   {
+    "chance": "100%",
+    "level": 37,
+    "map": "String_STR_Map_Fire_Temple_body",
+    "mapId": 600021,
+    "npc": "String_STR_M_PD_Fire_Temple_FireEle_04_body",
+    "npcId": 2310308,
+    "region": "Fire Temple",
+    "spawns": 3,
+    "zones": [
+     "String_STR_Subzone_Fire_Temple_Temple_body"
+    ]
+   },
+   {
+    "chance": "100%",
+    "level": 72,
+    "map": "String_STR_Map_Fire_Temple_body",
+    "mapId": 600023,
+    "npc": "String_STR_M_PD_Fire_Temple_FireEle_04_body",
+    "npcId": 2320308,
+    "region": "Fire Temple",
+    "spawns": 6,
+    "zones": [
+     "String_STR_Subzone_Fire_Temple_Temple_body",
+     "String_STR_Subzone_Fire_Temple_Cave1_body"
+    ]
+   }
+  ],
   "title": "String_STR_ITEM_VEHICLESOUL_FIREELE_04_A_01_B_body"
  },
  "1083": {
@@ -7911,6 +8469,45 @@ const PET_SOURCES = {
     "zones": [
      "String_STR_Subzone_OwllauVillage_body"
     ]
+   },
+   {
+    "chance": "100%",
+    "level": 54,
+    "map": "String_STR_Map_Urugugu_Canyon_body",
+    "mapId": 600012,
+    "npc": "String_STR_M_PD_UC_Pino_01_body",
+    "npcId": 2300216,
+    "region": "Urugugu Canyon",
+    "spawns": 7,
+    "zones": [
+     "String_STR_Subzone_Urugugu_Canyon_3_body"
+    ]
+   },
+   {
+    "chance": "100%",
+    "level": 30,
+    "map": "String_STR_Map_Urugugu_Canyon_body",
+    "mapId": 600011,
+    "npc": "String_STR_M_PD_UC_Pino_01_body",
+    "npcId": 2310216,
+    "region": "Urugugu Canyon",
+    "spawns": 2,
+    "zones": [
+     "String_STR_Subzone_Urugugu_Canyon_3_body"
+    ]
+   },
+   {
+    "chance": "100%",
+    "level": 70,
+    "map": "String_STR_Map_Urugugu_Canyon_body",
+    "mapId": 600013,
+    "npc": "String_STR_M_PD_UC_Pino_01_body",
+    "npcId": 2320216,
+    "region": "Urugugu Canyon",
+    "spawns": 7,
+    "zones": [
+     "String_STR_Subzone_Urugugu_Canyon_3_body"
+    ]
    }
   ],
   "title": "String_STR_ITEM_VEHICLESOUL_PINO_01_A_01_B_body"
@@ -7950,6 +8547,32 @@ const PET_SOURCES = {
     "spawns": 22,
     "zones": [
      "String_STR_Subzone_OwllauVillage_body"
+    ]
+   },
+   {
+    "chance": "100%",
+    "level": 54,
+    "map": "String_STR_Map_Urugugu_Canyon_body",
+    "mapId": 600012,
+    "npc": "String_STR_M_PD_UC_Pino_02_body",
+    "npcId": 2300217,
+    "region": "Urugugu Canyon",
+    "spawns": 7,
+    "zones": [
+     "String_STR_Subzone_Urugugu_Canyon_3_body"
+    ]
+   },
+   {
+    "chance": "100%",
+    "level": 70,
+    "map": "String_STR_Map_Urugugu_Canyon_body",
+    "mapId": 600013,
+    "npc": "String_STR_M_PD_UC_Pino_02_body",
+    "npcId": 2320217,
+    "region": "Urugugu Canyon",
+    "spawns": 7,
+    "zones": [
+     "String_STR_Subzone_Urugugu_Canyon_3_body"
     ]
    }
   ],
@@ -8114,7 +8737,60 @@ const PET_SOURCES = {
     "name": "String_STR_ITEM_BOX_VEHICLESOUL_A_08_B_body"
    }
   ],
-  "drops": [],
+  "drops": [
+   {
+    "chance": "100%",
+    "level": 56,
+    "map": "String_STR_Map_Arkanis_body",
+    "mapId": 600063,
+    "npc": "String_STR_M_PD_Arkanis_WaterEle_04_body",
+    "npcId": 2330704,
+    "region": "Shattered Arkanis",
+    "spawns": 9,
+    "zones": [
+     "String_STR_Map_Arkanis_2_body"
+    ]
+   },
+   {
+    "chance": "100%",
+    "level": 60,
+    "map": "String_STR_Map_Arkanis_body",
+    "mapId": 600065,
+    "npc": "String_STR_M_PD_Arkanis_WaterEle_04_body",
+    "npcId": 2350704,
+    "region": "Shattered Arkanis",
+    "spawns": 9,
+    "zones": [
+     "String_STR_Map_Arkanis_2_body"
+    ]
+   },
+   {
+    "chance": "100%",
+    "level": 64,
+    "map": "String_STR_Map_Arkanis_body",
+    "mapId": 600068,
+    "npc": "String_STR_M_PD_Arkanis_WaterEle_04_body",
+    "npcId": 2353704,
+    "region": "Shattered Arkanis",
+    "spawns": 9,
+    "zones": [
+     "String_STR_Map_Arkanis_2_body"
+    ]
+   },
+   {
+    "chance": "100%",
+    "level": 68,
+    "map": "String_STR_Map_Arkanis_body",
+    "mapId": 610062,
+    "npc": "String_STR_M_PD_Arkanis_WaterEle_04_body",
+    "npcId": 2356704,
+    "region": "Shattered Arkanis",
+    "spawns": 9,
+    "zones": [
+     "String_STR_Map_Arkanis_2_body"
+    ]
+   }
+  ],
   "title": "String_STR_ITEM_VEHICLESOUL_WATERELE_04_A_01_B_body"
  },
  "1091": {
@@ -8612,6 +9288,48 @@ const PET_SOURCES = {
     "spawns": 4,
     "zones": [
      "String_STR_Subzone_IslandofImmortality_body"
+    ]
+   },
+   {
+    "chance": "100%",
+    "level": 63,
+    "map": "String_STR_Map_Fire_Temple_body",
+    "mapId": 600022,
+    "npc": "String_STR_M_PD_Fire_Temple_FireEle_03_body",
+    "npcId": 2300307,
+    "region": "Fire Temple",
+    "spawns": 32,
+    "zones": [
+     "String_STR_Subzone_Fire_Temple_Cave2_body",
+     "String_STR_Subzone_Fire_Temple_Temple_body"
+    ]
+   },
+   {
+    "chance": "100%",
+    "level": 37,
+    "map": "String_STR_Map_Fire_Temple_body",
+    "mapId": 600021,
+    "npc": "String_STR_M_PD_Fire_Temple_FireEle_03_body",
+    "npcId": 2310307,
+    "region": "Fire Temple",
+    "spawns": 7,
+    "zones": [
+     "String_STR_Subzone_Fire_Temple_Temple_body",
+     "String_STR_Subzone_Fire_Temple_Cave2_body"
+    ]
+   },
+   {
+    "chance": "100%",
+    "level": 72,
+    "map": "String_STR_Map_Fire_Temple_body",
+    "mapId": 600023,
+    "npc": "String_STR_M_PD_Fire_Temple_FireEle_03_body",
+    "npcId": 2320307,
+    "region": "Fire Temple",
+    "spawns": 32,
+    "zones": [
+     "String_STR_Subzone_Fire_Temple_Cave2_body",
+     "String_STR_Subzone_Fire_Temple_Temple_body"
     ]
    }
   ],
@@ -9716,7 +10434,47 @@ const PET_SOURCES = {
     "name": "String_STR_ITEM_BOX_VEHICLESOUL_A_08_B_body"
    }
   ],
-  "drops": [],
+  "drops": [
+   {
+    "chance": "100%",
+    "level": 54,
+    "map": "String_STR_Map_BakronIsland_body",
+    "mapId": 600072,
+    "npc": "String_STR_M_PD_BakronIsland_EarthEle_04_body",
+    "npcId": 2300804,
+    "region": "Vakron Sky Island",
+    "spawns": 6,
+    "zones": [
+     "String_STR_Subzone_BakronIsland_3_body"
+    ]
+   },
+   {
+    "chance": "100%",
+    "level": 54,
+    "map": "String_STR_Map_BakronIsland_body",
+    "mapId": 600071,
+    "npc": "String_STR_M_PD_BakronIsland_EarthEle_04_body",
+    "npcId": 2310804,
+    "region": "Vakron Sky Island",
+    "spawns": 3,
+    "zones": [
+     "String_STR_Subzone_BakronIsland_3_body"
+    ]
+   },
+   {
+    "chance": "100%",
+    "level": 70,
+    "map": "String_STR_Map_BakronIsland_body",
+    "mapId": 600073,
+    "npc": "String_STR_M_PD_BakronIsland_EarthEle_04_body",
+    "npcId": 2320804,
+    "region": "Vakron Sky Island",
+    "spawns": 6,
+    "zones": [
+     "String_STR_Subzone_BakronIsland_3_body"
+    ]
+   }
+  ],
   "title": "String_STR_ITEM_VEHICLESOUL_EARTHELE_04_A_01_B_body"
  },
  "1101": {
@@ -10021,7 +10779,47 @@ const PET_SOURCES = {
     "name": "String_STR_ITEM_BOX_VEHICLESOUL_A_09_B_body"
    }
   ],
-  "drops": [],
+  "drops": [
+   {
+    "chance": "100%",
+    "level": 45,
+    "map": "String_STR_Map_Krao_Cave_body",
+    "mapId": 600001,
+    "npc": "String_STR_M_L1_I2_KraoElite_02_body",
+    "npcId": 2300106,
+    "region": "Krao Cave",
+    "spawns": 1,
+    "zones": [
+     "String_STR_Map_Krao_Cave_body"
+    ]
+   },
+   {
+    "chance": "100%",
+    "level": 22,
+    "map": "String_STR_Map_Krao_Cave_body",
+    "mapId": 600002,
+    "npc": "String_STR_M_L1_I2_KraoElite_02_body",
+    "npcId": 2310106,
+    "region": "Krao Cave",
+    "spawns": 1,
+    "zones": [
+     "String_STR_Map_Krao_Cave_body"
+    ]
+   },
+   {
+    "chance": "100%",
+    "level": 68,
+    "map": "String_STR_Map_Krao_Cave_body",
+    "mapId": 600004,
+    "npc": "String_STR_M_L1_I2_KraoElite_02_body",
+    "npcId": 2320106,
+    "region": "Krao Cave",
+    "spawns": 1,
+    "zones": [
+     "String_STR_Map_Krao_Cave_body"
+    ]
+   }
+  ],
   "title": "String_STR_ITEM_VEHICLESOUL_KRAOELITE_02_A_01_B_body"
  },
  "1108": {
@@ -10287,6 +11085,48 @@ const PET_SOURCES = {
     "spawns": 48,
     "zones": [
      "String_STR_Subzone_MoslanForest_body"
+    ]
+   },
+   {
+    "chance": "100%",
+    "level": 63,
+    "map": "String_STR_Map_Fire_Temple_body",
+    "mapId": 600022,
+    "npc": "String_STR_M_PD_Fire_Temple_OdSpider_02_body",
+    "npcId": 2300304,
+    "region": "Fire Temple",
+    "spawns": 21,
+    "zones": [
+     "String_STR_Subzone_Fire_Temple_Cave2_body",
+     "String_STR_Subzone_Fire_Temple_Cave1_body"
+    ]
+   },
+   {
+    "chance": "100%",
+    "level": 37,
+    "map": "String_STR_Map_Fire_Temple_body",
+    "mapId": 600021,
+    "npc": "String_STR_M_PD_Fire_Temple_OdSpider_02_body",
+    "npcId": 2310304,
+    "region": "Fire Temple",
+    "spawns": 17,
+    "zones": [
+     "String_STR_Subzone_Fire_Temple_Cave1_body",
+     "String_STR_Subzone_Fire_Temple_Cave2_body"
+    ]
+   },
+   {
+    "chance": "100%",
+    "level": 72,
+    "map": "String_STR_Map_Fire_Temple_body",
+    "mapId": 600023,
+    "npc": "String_STR_M_PD_Fire_Temple_OdSpider_02_body",
+    "npcId": 2320304,
+    "region": "Fire Temple",
+    "spawns": 21,
+    "zones": [
+     "String_STR_Subzone_Fire_Temple_Cave2_body",
+     "String_STR_Subzone_Fire_Temple_Cave1_body"
     ]
    }
   ],
@@ -10879,6 +11719,48 @@ const PET_SOURCES = {
     "zones": [
      "String_STR_Subzone_UnnamedCemetery_body",
      "String_STR_Subzone_SilenceHill_body"
+    ]
+   },
+   {
+    "chance": "100%",
+    "level": 54,
+    "map": "String_STR_Map_BakronIsland_body",
+    "mapId": 600072,
+    "npc": "String_STR_M_PD_BakronIsland_Bee_01_002_body",
+    "npcId": 2300816,
+    "region": "Vakron Sky Island",
+    "spawns": 35,
+    "zones": [
+     "String_STR_Subzone_BakronIsland_1_body",
+     "String_STR_Subzone_BakronIsland_2_body"
+    ]
+   },
+   {
+    "chance": "100%",
+    "level": 54,
+    "map": "String_STR_Map_BakronIsland_body",
+    "mapId": 600071,
+    "npc": "String_STR_M_PD_BakronIsland_Bee_01_002_body",
+    "npcId": 2310816,
+    "region": "Vakron Sky Island",
+    "spawns": 28,
+    "zones": [
+     "String_STR_Subzone_BakronIsland_1_body",
+     "String_STR_Subzone_BakronIsland_2_body"
+    ]
+   },
+   {
+    "chance": "100%",
+    "level": 70,
+    "map": "String_STR_Map_BakronIsland_body",
+    "mapId": 600073,
+    "npc": "String_STR_M_PD_BakronIsland_Bee_01_002_body",
+    "npcId": 2320816,
+    "region": "Vakron Sky Island",
+    "spawns": 35,
+    "zones": [
+     "String_STR_Subzone_BakronIsland_1_body",
+     "String_STR_Subzone_BakronIsland_2_body"
     ]
    }
   ],
@@ -11849,6 +12731,32 @@ const PET_SOURCES = {
     "zones": [
      "String_STR_IslandOfSpirit_Subzone_body"
     ]
+   },
+   {
+    "chance": "100%",
+    "level": 54,
+    "map": "String_STR_Map_BakronIsland_body",
+    "mapId": 600072,
+    "npc": "String_STR_M_PD_BakronIsland_EarthEleOd_01_body",
+    "npcId": 2300807,
+    "region": "Vakron Sky Island",
+    "spawns": 1,
+    "zones": [
+     "String_STR_Subzone_BakronIsland_2_body"
+    ]
+   },
+   {
+    "chance": "100%",
+    "level": 70,
+    "map": "String_STR_Map_BakronIsland_body",
+    "mapId": 600073,
+    "npc": "String_STR_M_PD_BakronIsland_EarthEleOd_01_body",
+    "npcId": 2320807,
+    "region": "Vakron Sky Island",
+    "spawns": 1,
+    "zones": [
+     "String_STR_Subzone_BakronIsland_2_body"
+    ]
    }
   ],
   "title": "String_STR_ITEM_VEHICLESOUL_EARTHELEOD_01_CV01_A_01_B_body"
@@ -12128,6 +13036,47 @@ const PET_SOURCES = {
     "spawns": 16,
     "zones": [
      "String_STR_Subzone_WingsofSielArchipelago_B_body"
+    ]
+   },
+   {
+    "chance": "100%",
+    "level": 54,
+    "map": "String_STR_Map_BakronIsland_body",
+    "mapId": 600072,
+    "npc": "String_STR_M_PD_BakronIsland_Coradon_01_V01_body",
+    "npcId": 2300808,
+    "region": "Vakron Sky Island",
+    "spawns": 12,
+    "zones": [
+     "String_STR_Subzone_BakronIsland_1_body"
+    ]
+   },
+   {
+    "chance": "100%",
+    "level": 54,
+    "map": "String_STR_Map_BakronIsland_body",
+    "mapId": 600071,
+    "npc": "String_STR_M_PD_BakronIsland_Coradon_01_V01_body",
+    "npcId": 2310808,
+    "region": "Vakron Sky Island",
+    "spawns": 10,
+    "zones": [
+     "String_STR_Subzone_BakronIsland_1_body",
+     "String_STR_Subzone_BakronIsland_2_body",
+     "String_STR_Subzone_BakronIsland_3_body"
+    ]
+   },
+   {
+    "chance": "100%",
+    "level": 70,
+    "map": "String_STR_Map_BakronIsland_body",
+    "mapId": 600073,
+    "npc": "String_STR_M_PD_BakronIsland_Coradon_01_V01_body",
+    "npcId": 2320808,
+    "region": "Vakron Sky Island",
+    "spawns": 12,
+    "zones": [
+     "String_STR_Subzone_BakronIsland_1_body"
     ]
    }
   ],
@@ -13226,6 +14175,58 @@ const PET_SOURCES = {
     "zones": [
      "String_STR_Subzone_IslandofImmortality_body"
     ]
+   },
+   {
+    "chance": "100%",
+    "level": 56,
+    "map": "String_STR_Map_Arkanis_body",
+    "mapId": 600063,
+    "npc": "String_STR_M_PD_Arkanis_WaterEle_03_001_body",
+    "npcId": 2330703,
+    "region": "Shattered Arkanis",
+    "spawns": 18,
+    "zones": [
+     "String_STR_Map_Arkanis_1_body"
+    ]
+   },
+   {
+    "chance": "100%",
+    "level": 60,
+    "map": "String_STR_Map_Arkanis_body",
+    "mapId": 600065,
+    "npc": "String_STR_M_PD_Arkanis_WaterEle_03_001_body",
+    "npcId": 2350703,
+    "region": "Shattered Arkanis",
+    "spawns": 19,
+    "zones": [
+     "String_STR_Map_Arkanis_1_body"
+    ]
+   },
+   {
+    "chance": "100%",
+    "level": 64,
+    "map": "String_STR_Map_Arkanis_body",
+    "mapId": 600068,
+    "npc": "String_STR_M_PD_Arkanis_WaterEle_03_001_body",
+    "npcId": 2353703,
+    "region": "Shattered Arkanis",
+    "spawns": 23,
+    "zones": [
+     "String_STR_Map_Arkanis_1_body"
+    ]
+   },
+   {
+    "chance": "100%",
+    "level": 68,
+    "map": "String_STR_Map_Arkanis_body",
+    "mapId": 610062,
+    "npc": "String_STR_M_PD_Arkanis_WaterEle_03_001_body",
+    "npcId": 2356703,
+    "region": "Shattered Arkanis",
+    "spawns": 23,
+    "zones": [
+     "String_STR_Map_Arkanis_1_body"
+    ]
    }
   ],
   "title": "String_STR_ITEM_VEHICLESOUL_WATERELE_03_A_01_B_body"
@@ -13410,6 +14411,47 @@ const PET_SOURCES = {
     "spawns": 11,
     "zones": [
      "String_STR_Subzone_FafniteDeposit_body"
+    ]
+   },
+   {
+    "chance": "100%",
+    "level": 45,
+    "map": "String_STR_Map_Draupnir_body",
+    "mapId": 600032,
+    "npc": "String_STR_M_PD_Draupnir_AbyssSwarm_02_body",
+    "npcId": 2300422,
+    "region": "Draupnir",
+    "spawns": 29,
+    "zones": [
+     "String_STR_Subzone_Draupnir_Subzone_1_body",
+     "String_STR_Subzone_Draupnir_Subzone_3_body"
+    ]
+   },
+   {
+    "chance": "100%",
+    "level": 45,
+    "map": "String_STR_Map_Draupnir_body",
+    "mapId": 600031,
+    "npc": "String_STR_M_PD_Draupnir_AbyssSwarm_02_body",
+    "npcId": 2310422,
+    "region": "Draupnir",
+    "spawns": 6,
+    "zones": [
+     "String_STR_Subzone_Draupnir_Subzone_1_body"
+    ]
+   },
+   {
+    "chance": "100%",
+    "level": 68,
+    "map": "String_STR_Map_Draupnir_body",
+    "mapId": 600033,
+    "npc": "String_STR_M_PD_Draupnir_AbyssSwarm_02_body",
+    "npcId": 2320422,
+    "region": "Draupnir",
+    "spawns": 29,
+    "zones": [
+     "String_STR_Subzone_Draupnir_Subzone_1_body",
+     "String_STR_Subzone_Draupnir_Subzone_3_body"
     ]
    }
   ],
@@ -13636,6 +14678,45 @@ const PET_SOURCES = {
     "zones": [
      "String_STR_IslandOfEternity_Subzone4_body"
     ]
+   },
+   {
+    "chance": "100%",
+    "level": 54,
+    "map": "String_STR_Map_BakronIsland_body",
+    "mapId": 600072,
+    "npc": "String_STR_M_PD_BakronIsland_EarthEle_01_body",
+    "npcId": 2300801,
+    "region": "Vakron Sky Island",
+    "spawns": 25,
+    "zones": [
+     "String_STR_Subzone_BakronIsland_1_body"
+    ]
+   },
+   {
+    "chance": "100%",
+    "level": 54,
+    "map": "String_STR_Map_BakronIsland_body",
+    "mapId": 600071,
+    "npc": "String_STR_M_PD_BakronIsland_EarthEle_01_body",
+    "npcId": 2310801,
+    "region": "Vakron Sky Island",
+    "spawns": 14,
+    "zones": [
+     "String_STR_Subzone_BakronIsland_1_body"
+    ]
+   },
+   {
+    "chance": "100%",
+    "level": 70,
+    "map": "String_STR_Map_BakronIsland_body",
+    "mapId": 600073,
+    "npc": "String_STR_M_PD_BakronIsland_EarthEle_01_body",
+    "npcId": 2320801,
+    "region": "Vakron Sky Island",
+    "spawns": 25,
+    "zones": [
+     "String_STR_Subzone_BakronIsland_1_body"
+    ]
    }
   ],
   "title": "String_STR_ITEM_VEHICLESOUL_EARTHELE_01_A_01_B_body"
@@ -13727,6 +14808,48 @@ const PET_SOURCES = {
     "spawns": 7,
     "zones": [
      "String_STR_Subzone_IslandofImmortality_body"
+    ]
+   },
+   {
+    "chance": "100%",
+    "level": 54,
+    "map": "String_STR_Map_BakronIsland_body",
+    "mapId": 600072,
+    "npc": "String_STR_M_PD_BakronIsland_EarthEle_02_body",
+    "npcId": 2300802,
+    "region": "Vakron Sky Island",
+    "spawns": 86,
+    "zones": [
+     "String_STR_Subzone_BakronIsland_1_body",
+     "String_STR_Subzone_BakronIsland_2_body"
+    ]
+   },
+   {
+    "chance": "100%",
+    "level": 54,
+    "map": "String_STR_Map_BakronIsland_body",
+    "mapId": 600071,
+    "npc": "String_STR_M_PD_BakronIsland_EarthEle_02_body",
+    "npcId": 2310802,
+    "region": "Vakron Sky Island",
+    "spawns": 44,
+    "zones": [
+     "String_STR_Subzone_BakronIsland_1_body",
+     "String_STR_Subzone_BakronIsland_2_body"
+    ]
+   },
+   {
+    "chance": "100%",
+    "level": 70,
+    "map": "String_STR_Map_BakronIsland_body",
+    "mapId": 600073,
+    "npc": "String_STR_M_PD_BakronIsland_EarthEle_02_body",
+    "npcId": 2320802,
+    "region": "Vakron Sky Island",
+    "spawns": 86,
+    "zones": [
+     "String_STR_Subzone_BakronIsland_1_body",
+     "String_STR_Subzone_BakronIsland_2_body"
     ]
    }
   ],
@@ -13820,6 +14943,48 @@ const PET_SOURCES = {
     "zones": [
      "String_STR_Subzone_IslandofImmortality_body"
     ]
+   },
+   {
+    "chance": "100%",
+    "level": 54,
+    "map": "String_STR_Map_BakronIsland_body",
+    "mapId": 600072,
+    "npc": "String_STR_M_PD_BakronIsland_EarthEle_03_body",
+    "npcId": 2300803,
+    "region": "Vakron Sky Island",
+    "spawns": 71,
+    "zones": [
+     "String_STR_Subzone_BakronIsland_2_body",
+     "String_STR_Subzone_BakronIsland_3_body"
+    ]
+   },
+   {
+    "chance": "100%",
+    "level": 54,
+    "map": "String_STR_Map_BakronIsland_body",
+    "mapId": 600071,
+    "npc": "String_STR_M_PD_BakronIsland_EarthEle_03_body",
+    "npcId": 2310803,
+    "region": "Vakron Sky Island",
+    "spawns": 47,
+    "zones": [
+     "String_STR_Subzone_BakronIsland_2_body",
+     "String_STR_Subzone_BakronIsland_3_body"
+    ]
+   },
+   {
+    "chance": "100%",
+    "level": 70,
+    "map": "String_STR_Map_BakronIsland_body",
+    "mapId": 600073,
+    "npc": "String_STR_M_PD_BakronIsland_EarthEle_03_body",
+    "npcId": 2320803,
+    "region": "Vakron Sky Island",
+    "spawns": 71,
+    "zones": [
+     "String_STR_Subzone_BakronIsland_2_body",
+     "String_STR_Subzone_BakronIsland_3_body"
+    ]
    }
   ],
   "title": "String_STR_ITEM_VEHICLESOUL_EARTHELE_03_A_01_B_body"
@@ -13834,7 +14999,47 @@ const PET_SOURCES = {
     "name": "String_STR_ITEM_BOX_VEHICLESOUL_A_09_B_body"
    }
   ],
-  "drops": [],
+  "drops": [
+   {
+    "chance": "100%",
+    "level": 63,
+    "map": "String_STR_Map_Fire_Temple_body",
+    "mapId": 600022,
+    "npc": "String_STR_M_PD_Fire_Temple_Gargoyle_01_body",
+    "npcId": 2300313,
+    "region": "Fire Temple",
+    "spawns": 18,
+    "zones": [
+     "String_STR_Subzone_Fire_Temple_Temple_body"
+    ]
+   },
+   {
+    "chance": "100%",
+    "level": 37,
+    "map": "String_STR_Map_Fire_Temple_body",
+    "mapId": 600021,
+    "npc": "String_STR_M_PD_Fire_Temple_Gargoyle_01_body",
+    "npcId": 2310313,
+    "region": "Fire Temple",
+    "spawns": 12,
+    "zones": [
+     "String_STR_Subzone_Fire_Temple_Temple_body"
+    ]
+   },
+   {
+    "chance": "100%",
+    "level": 72,
+    "map": "String_STR_Map_Fire_Temple_body",
+    "mapId": 600023,
+    "npc": "String_STR_M_PD_Fire_Temple_Gargoyle_01_body",
+    "npcId": 2320313,
+    "region": "Fire Temple",
+    "spawns": 18,
+    "zones": [
+     "String_STR_Subzone_Fire_Temple_Temple_body"
+    ]
+   }
+  ],
   "title": "String_STR_ITEM_VEHICLESOUL_GARGOYLE_01_A_01_B_body"
  },
  "1168": {
@@ -13898,6 +15103,58 @@ const PET_SOURCES = {
     "spawns": 10,
     "zones": [
      "String_STR_IslandOfEternity_Subzone4_body"
+    ]
+   },
+   {
+    "chance": "100%",
+    "level": 56,
+    "map": "String_STR_Map_Arkanis_body",
+    "mapId": 600063,
+    "npc": "String_STR_M_PD_Arkanis_WaterEle_01_001_body",
+    "npcId": 2330701,
+    "region": "Shattered Arkanis",
+    "spawns": 21,
+    "zones": [
+     "String_STR_Map_Arkanis_1_body"
+    ]
+   },
+   {
+    "chance": "100%",
+    "level": 60,
+    "map": "String_STR_Map_Arkanis_body",
+    "mapId": 600065,
+    "npc": "String_STR_M_PD_Arkanis_WaterEle_01_001_body",
+    "npcId": 2350701,
+    "region": "Shattered Arkanis",
+    "spawns": 22,
+    "zones": [
+     "String_STR_Map_Arkanis_1_body"
+    ]
+   },
+   {
+    "chance": "100%",
+    "level": 64,
+    "map": "String_STR_Map_Arkanis_body",
+    "mapId": 600068,
+    "npc": "String_STR_M_PD_Arkanis_WaterEle_01_001_body",
+    "npcId": 2353701,
+    "region": "Shattered Arkanis",
+    "spawns": 24,
+    "zones": [
+     "String_STR_Map_Arkanis_1_body"
+    ]
+   },
+   {
+    "chance": "100%",
+    "level": 68,
+    "map": "String_STR_Map_Arkanis_body",
+    "mapId": 610062,
+    "npc": "String_STR_M_PD_Arkanis_WaterEle_01_001_body",
+    "npcId": 2356701,
+    "region": "Shattered Arkanis",
+    "spawns": 24,
+    "zones": [
+     "String_STR_Map_Arkanis_1_body"
     ]
    }
   ],
@@ -14016,6 +15273,62 @@ const PET_SOURCES = {
     "spawns": 11,
     "zones": [
      "String_STR_Subzone_IslandofImmortality_body"
+    ]
+   },
+   {
+    "chance": "100%",
+    "level": 56,
+    "map": "String_STR_Map_Arkanis_body",
+    "mapId": 600063,
+    "npc": "String_STR_M_PD_Arkanis_WaterEle_02_001_body",
+    "npcId": 2330702,
+    "region": "Shattered Arkanis",
+    "spawns": 16,
+    "zones": [
+     "String_STR_Map_Arkanis_2_body",
+     "String_STR_Map_Arkanis_4_body"
+    ]
+   },
+   {
+    "chance": "100%",
+    "level": 60,
+    "map": "String_STR_Map_Arkanis_body",
+    "mapId": 600065,
+    "npc": "String_STR_M_PD_Arkanis_WaterEle_02_001_body",
+    "npcId": 2350702,
+    "region": "Shattered Arkanis",
+    "spawns": 16,
+    "zones": [
+     "String_STR_Map_Arkanis_2_body",
+     "String_STR_Map_Arkanis_4_body"
+    ]
+   },
+   {
+    "chance": "100%",
+    "level": 64,
+    "map": "String_STR_Map_Arkanis_body",
+    "mapId": 600068,
+    "npc": "String_STR_M_PD_Arkanis_WaterEle_02_001_body",
+    "npcId": 2353702,
+    "region": "Shattered Arkanis",
+    "spawns": 16,
+    "zones": [
+     "String_STR_Map_Arkanis_2_body",
+     "String_STR_Map_Arkanis_4_body"
+    ]
+   },
+   {
+    "chance": "100%",
+    "level": 68,
+    "map": "String_STR_Map_Arkanis_body",
+    "mapId": 610062,
+    "npc": "String_STR_M_PD_Arkanis_WaterEle_02_001_body",
+    "npcId": 2356702,
+    "region": "Shattered Arkanis",
+    "spawns": 16,
+    "zones": [
+     "String_STR_Map_Arkanis_2_body",
+     "String_STR_Map_Arkanis_4_body"
     ]
    }
   ],
@@ -14215,6 +15528,73 @@ const PET_SOURCES = {
     "zones": [
      "String_STR_Subzone_BlackClawVillage_body"
     ]
+   },
+   {
+    "chance": "100%",
+    "level": 63,
+    "map": "String_STR_Map_HornCave_body",
+    "mapId": 600092,
+    "npc": "String_STR_M_PD_FierceHornCave_Duduka_01_001_body",
+    "npcId": 2300900,
+    "region": "Ferocious Horn Den",
+    "spawns": 20,
+    "zones": [
+     "String_STR_Subzone_HornCave_3_body"
+    ]
+   },
+   {
+    "chance": "100%",
+    "level": 63,
+    "map": "String_STR_Map_HornCave_body",
+    "mapId": 600092,
+    "npc": "String_STR_M_PD_FierceHornCave_Duduka_01_002_body",
+    "npcId": 2300917,
+    "region": "Ferocious Horn Den",
+    "spawns": 43,
+    "zones": [
+     "String_STR_Subzone_HornCave_1_body",
+     "String_STR_Subzone_HornCave_2_body"
+    ]
+   },
+   {
+    "chance": "100%",
+    "level": 63,
+    "map": "String_STR_Map_HornCave_body",
+    "mapId": 600091,
+    "npc": "String_STR_M_PD_FierceHornCave_Duduka_01_002_body",
+    "npcId": 2310917,
+    "region": "Ferocious Horn Den",
+    "spawns": 46,
+    "zones": [
+     "String_STR_Subzone_HornCave_1_body"
+    ]
+   },
+   {
+    "chance": "100%",
+    "level": 72,
+    "map": "String_STR_Map_HornCave_body",
+    "mapId": 600093,
+    "npc": "String_STR_M_PD_FierceHornCave_Duduka_01_001_body",
+    "npcId": 2320900,
+    "region": "Ferocious Horn Den",
+    "spawns": 20,
+    "zones": [
+     "String_STR_Subzone_HornCave_3_body"
+    ]
+   },
+   {
+    "chance": "100%",
+    "level": 72,
+    "map": "String_STR_Map_HornCave_body",
+    "mapId": 600093,
+    "npc": "String_STR_M_PD_FierceHornCave_Duduka_01_002_body",
+    "npcId": 2320917,
+    "region": "Ferocious Horn Den",
+    "spawns": 43,
+    "zones": [
+     "String_STR_Subzone_HornCave_1_body",
+     "String_STR_Subzone_HornCave_2_body"
+    ]
    }
   ],
   "title": "String_STR_ITEM_VEHICLESOUL_DUDUKA_01_A_01_B_body"
@@ -14254,6 +15634,73 @@ const PET_SOURCES = {
     "spawns": 44,
     "zones": [
      "String_STR_Subzone_BlackClawVillage_body"
+    ]
+   },
+   {
+    "chance": "100%",
+    "level": 63,
+    "map": "String_STR_Map_HornCave_body",
+    "mapId": 600092,
+    "npc": "String_STR_M_PD_FierceHornCave_Duduka_02_001_body",
+    "npcId": 2300901,
+    "region": "Ferocious Horn Den",
+    "spawns": 8,
+    "zones": [
+     "String_STR_Subzone_HornCave_3_body"
+    ]
+   },
+   {
+    "chance": "100%",
+    "level": 63,
+    "map": "String_STR_Map_HornCave_body",
+    "mapId": 600092,
+    "npc": "String_STR_M_PD_FierceHornCave_Duduka_02_002_body",
+    "npcId": 2300918,
+    "region": "Ferocious Horn Den",
+    "spawns": 20,
+    "zones": [
+     "String_STR_Subzone_HornCave_1_body",
+     "String_STR_Subzone_HornCave_2_body"
+    ]
+   },
+   {
+    "chance": "100%",
+    "level": 63,
+    "map": "String_STR_Map_HornCave_body",
+    "mapId": 600091,
+    "npc": "String_STR_M_PD_FierceHornCave_Duduka_02_002_body",
+    "npcId": 2310918,
+    "region": "Ferocious Horn Den",
+    "spawns": 30,
+    "zones": [
+     "String_STR_Subzone_HornCave_1_body"
+    ]
+   },
+   {
+    "chance": "100%",
+    "level": 72,
+    "map": "String_STR_Map_HornCave_body",
+    "mapId": 600093,
+    "npc": "String_STR_M_PD_FierceHornCave_Duduka_02_001_body",
+    "npcId": 2320901,
+    "region": "Ferocious Horn Den",
+    "spawns": 8,
+    "zones": [
+     "String_STR_Subzone_HornCave_3_body"
+    ]
+   },
+   {
+    "chance": "100%",
+    "level": 72,
+    "map": "String_STR_Map_HornCave_body",
+    "mapId": 600093,
+    "npc": "String_STR_M_PD_FierceHornCave_Duduka_02_002_body",
+    "npcId": 2320918,
+    "region": "Ferocious Horn Den",
+    "spawns": 20,
+    "zones": [
+     "String_STR_Subzone_HornCave_1_body",
+     "String_STR_Subzone_HornCave_2_body"
     ]
    }
   ],
@@ -15130,6 +16577,61 @@ const PET_SOURCES = {
     "zones": [
      "String_STR_Subzone_IslandofImmortality_body"
     ]
+   },
+   {
+    "chance": "100%",
+    "level": 63,
+    "map": "String_STR_Map_Fire_Temple_body",
+    "mapId": 600022,
+    "npc": "String_STR_M_PD_Fire_Temple_FireEle_02_body",
+    "npcId": 2300306,
+    "region": "Fire Temple",
+    "spawns": 47,
+    "zones": [
+     "String_STR_Subzone_Fire_Temple_Cave2_body",
+     "String_STR_Subzone_Fire_Temple_Cave1_body"
+    ]
+   },
+   {
+    "chance": "100%",
+    "level": 37,
+    "map": "String_STR_Map_Fire_Temple_body",
+    "mapId": 600021,
+    "npc": "String_STR_M_PD_Fire_Temple_FireEle_02_body",
+    "npcId": 2310306,
+    "region": "Fire Temple",
+    "spawns": 34,
+    "zones": [
+     "String_STR_Subzone_Fire_Temple_Cave2_body",
+     "String_STR_Subzone_Fire_Temple_Cave1_body"
+    ]
+   },
+   {
+    "chance": "100%",
+    "level": 37,
+    "map": "String_STR_Map_Fire_Temple_body",
+    "mapId": 600021,
+    "npc": "String_STR_M_PD_Fire_Temple_FireEle_02_body",
+    "npcId": 2310316,
+    "region": "Fire Temple",
+    "spawns": 1,
+    "zones": [
+     "String_STR_Subzone_Fire_Temple_Cave1_body"
+    ]
+   },
+   {
+    "chance": "100%",
+    "level": 72,
+    "map": "String_STR_Map_Fire_Temple_body",
+    "mapId": 600023,
+    "npc": "String_STR_M_PD_Fire_Temple_FireEle_02_body",
+    "npcId": 2320306,
+    "region": "Fire Temple",
+    "spawns": 47,
+    "zones": [
+     "String_STR_Subzone_Fire_Temple_Cave2_body",
+     "String_STR_Subzone_Fire_Temple_Cave1_body"
+    ]
    }
   ],
   "title": "String_STR_ITEM_VEHICLESOUL_FIREELE_02_A_01_B_body"
@@ -15890,6 +17392,45 @@ const PET_SOURCES = {
     "zones": [
      "String_STR_Subzone_FafniteDeposit_body"
     ]
+   },
+   {
+    "chance": "100%",
+    "level": 63,
+    "map": "String_STR_Map_HornCave_body",
+    "mapId": 600092,
+    "npc": "String_STR_M_PD_FierceHornCave_AddShulack_03_001_body",
+    "npcId": 2300915,
+    "region": "Ferocious Horn Den",
+    "spawns": 2,
+    "zones": [
+     "String_STR_Subzone_HornCave_2_body"
+    ]
+   },
+   {
+    "chance": "100%",
+    "level": 63,
+    "map": "String_STR_Map_HornCave_body",
+    "mapId": 600091,
+    "npc": "String_STR_M_PD_FierceHornCave_AddShulack_03_001_body",
+    "npcId": 2310915,
+    "region": "Ferocious Horn Den",
+    "spawns": 9,
+    "zones": [
+     "String_STR_Subzone_HornCave_2_body"
+    ]
+   },
+   {
+    "chance": "100%",
+    "level": 72,
+    "map": "String_STR_Map_HornCave_body",
+    "mapId": 600093,
+    "npc": "String_STR_M_PD_FierceHornCave_AddShulack_03_001_body",
+    "npcId": 2320915,
+    "region": "Ferocious Horn Den",
+    "spawns": 2,
+    "zones": [
+     "String_STR_Subzone_HornCave_2_body"
+    ]
    }
   ],
   "title": "String_STR_ITEM_VEHICLESOUL_ADDSHULACK_03_A_01_B_body"
@@ -16077,7 +17618,47 @@ const PET_SOURCES = {
     "name": "String_STR_ITEM_BOX_VEHICLESOUL_A_07_B_body"
    }
   ],
-  "drops": [],
+  "drops": [
+   {
+    "chance": "100%",
+    "level": 63,
+    "map": "String_STR_Map_Fire_Temple_body",
+    "mapId": 600022,
+    "npc": "String_STR_M_PD_Fire_Temple_Balgest_01_body",
+    "npcId": 2300309,
+    "region": "Fire Temple",
+    "spawns": 10,
+    "zones": [
+     "String_STR_Subzone_Fire_Temple_Cave1_body"
+    ]
+   },
+   {
+    "chance": "100%",
+    "level": 37,
+    "map": "String_STR_Map_Fire_Temple_body",
+    "mapId": 600021,
+    "npc": "String_STR_M_PD_Fire_Temple_Balgest_01_body",
+    "npcId": 2310309,
+    "region": "Fire Temple",
+    "spawns": 4,
+    "zones": [
+     "String_STR_Subzone_Fire_Temple_Cave1_body"
+    ]
+   },
+   {
+    "chance": "100%",
+    "level": 72,
+    "map": "String_STR_Map_Fire_Temple_body",
+    "mapId": 600023,
+    "npc": "String_STR_M_PD_Fire_Temple_Balgest_01_body",
+    "npcId": 2320309,
+    "region": "Fire Temple",
+    "spawns": 10,
+    "zones": [
+     "String_STR_Subzone_Fire_Temple_Cave1_body"
+    ]
+   }
+  ],
   "title": "String_STR_ITEM_VEHICLESOUL_BALGEST_01_A_01_B_body"
  },
  "1200": {
@@ -16143,6 +17724,94 @@ const PET_SOURCES = {
     "spawns": 7,
     "zones": [
      "String_STR_Subzone_SulfurTreeIsland_B_body"
+    ]
+   },
+   {
+    "chance": "100%",
+    "level": 45,
+    "map": "String_STR_Map_Draupnir_body",
+    "mapId": 600032,
+    "npc": "String_STR_M_PD_Draupnir_NagaElite_03_01_body",
+    "npcId": 2300404,
+    "region": "Draupnir",
+    "spawns": 3,
+    "zones": [
+     "String_STR_Subzone_Draupnir_Subzone_3_body",
+     "String_STR_Subzone_Draupnir_Subzone_1_body"
+    ]
+   },
+   {
+    "chance": "100%",
+    "level": 68,
+    "map": "String_STR_Map_Draupnir_body",
+    "mapId": 600033,
+    "npc": "String_STR_M_PD_Draupnir_NagaElite_03_01_body",
+    "npcId": 2320404,
+    "region": "Draupnir",
+    "spawns": 3,
+    "zones": [
+     "String_STR_Subzone_Draupnir_Subzone_3_body",
+     "String_STR_Subzone_Draupnir_Subzone_1_body"
+    ]
+   },
+   {
+    "chance": "100%",
+    "level": 56,
+    "map": "String_STR_Map_Arkanis_body",
+    "mapId": 600063,
+    "npc": "String_STR_M_PD_Arkanis_NagaElite_03_001_body",
+    "npcId": 2330705,
+    "region": "Shattered Arkanis",
+    "spawns": 8,
+    "zones": [
+     "String_STR_Map_Arkanis_4_body",
+     "String_STR_Map_Arkanis_1_body",
+     "String_STR_Map_Arkanis_2_body"
+    ]
+   },
+   {
+    "chance": "100%",
+    "level": 60,
+    "map": "String_STR_Map_Arkanis_body",
+    "mapId": 600065,
+    "npc": "String_STR_M_PD_Arkanis_NagaElite_03_001_body",
+    "npcId": 2350705,
+    "region": "Shattered Arkanis",
+    "spawns": 8,
+    "zones": [
+     "String_STR_Map_Arkanis_4_body",
+     "String_STR_Map_Arkanis_1_body",
+     "String_STR_Map_Arkanis_2_body"
+    ]
+   },
+   {
+    "chance": "100%",
+    "level": 64,
+    "map": "String_STR_Map_Arkanis_body",
+    "mapId": 600068,
+    "npc": "String_STR_M_PD_Arkanis_NagaElite_03_001_body",
+    "npcId": 2353705,
+    "region": "Shattered Arkanis",
+    "spawns": 8,
+    "zones": [
+     "String_STR_Map_Arkanis_4_body",
+     "String_STR_Map_Arkanis_1_body",
+     "String_STR_Map_Arkanis_2_body"
+    ]
+   },
+   {
+    "chance": "100%",
+    "level": 68,
+    "map": "String_STR_Map_Arkanis_body",
+    "mapId": 610062,
+    "npc": "String_STR_M_PD_Arkanis_NagaElite_03_001_body",
+    "npcId": 2356705,
+    "region": "Shattered Arkanis",
+    "spawns": 8,
+    "zones": [
+     "String_STR_Map_Arkanis_4_body",
+     "String_STR_Map_Arkanis_1_body",
+     "String_STR_Map_Arkanis_2_body"
     ]
    }
   ],
@@ -16382,6 +18051,45 @@ const PET_SOURCES = {
      "String_STR_Subzone_TraneinHill_body",
      "String_STR_Subzone_MoslanForest_body",
      "String_STR_Subzone_MuninBridge_body"
+    ]
+   },
+   {
+    "chance": "100%",
+    "level": 63,
+    "map": "String_STR_Map_HornCave_body",
+    "mapId": 600092,
+    "npc": "String_STR_M_PD_FierceHornCave_Lufilini_01_V01_001_body",
+    "npcId": 2300921,
+    "region": "Ferocious Horn Den",
+    "spawns": 14,
+    "zones": [
+     "String_STR_Subzone_HornCave_1_body"
+    ]
+   },
+   {
+    "chance": "100%",
+    "level": 63,
+    "map": "String_STR_Map_HornCave_body",
+    "mapId": 600091,
+    "npc": "String_STR_M_PD_FierceHornCave_Lufilini_01_V01_001_body",
+    "npcId": 2310921,
+    "region": "Ferocious Horn Den",
+    "spawns": 12,
+    "zones": [
+     "String_STR_Subzone_HornCave_1_body"
+    ]
+   },
+   {
+    "chance": "100%",
+    "level": 72,
+    "map": "String_STR_Map_HornCave_body",
+    "mapId": 600093,
+    "npc": "String_STR_M_PD_FierceHornCave_Lufilini_01_V01_001_body",
+    "npcId": 2320921,
+    "region": "Ferocious Horn Den",
+    "spawns": 14,
+    "zones": [
+     "String_STR_Subzone_HornCave_1_body"
     ]
    }
   ],
@@ -17113,6 +18821,60 @@ const PET_SOURCES = {
     "spawns": 25,
     "zones": [
      "String_STR_Subzone_PurificatoryForest_body"
+    ]
+   },
+   {
+    "chance": "100%",
+    "level": 63,
+    "map": "String_STR_Map_Fire_Temple_body",
+    "mapId": 600022,
+    "npc": "String_STR_M_PD_Fire_Temple_FireEle_01_body",
+    "npcId": 2300305,
+    "region": "Fire Temple",
+    "spawns": 37,
+    "zones": [
+     "String_STR_Subzone_Fire_Temple_Cave1_body",
+     "String_STR_Subzone_Fire_Temple_Cave2_body"
+    ]
+   },
+   {
+    "chance": "100%",
+    "level": 37,
+    "map": "String_STR_Map_Fire_Temple_body",
+    "mapId": 600021,
+    "npc": "String_STR_M_PD_Fire_Temple_FireEle_01_body",
+    "npcId": 2310305,
+    "region": "Fire Temple",
+    "spawns": 30,
+    "zones": [
+     "String_STR_Subzone_Fire_Temple_Cave2_body"
+    ]
+   },
+   {
+    "chance": "100%",
+    "level": 37,
+    "map": "String_STR_Map_Fire_Temple_body",
+    "mapId": 600021,
+    "npc": "String_STR_M_PD_Fire_Temple_FireEle_01_body",
+    "npcId": 2310315,
+    "region": "Fire Temple",
+    "spawns": 2,
+    "zones": [
+     "String_STR_Subzone_Fire_Temple_Cave1_body"
+    ]
+   },
+   {
+    "chance": "100%",
+    "level": 72,
+    "map": "String_STR_Map_Fire_Temple_body",
+    "mapId": 600023,
+    "npc": "String_STR_M_PD_Fire_Temple_FireEle_01_body",
+    "npcId": 2320305,
+    "region": "Fire Temple",
+    "spawns": 37,
+    "zones": [
+     "String_STR_Subzone_Fire_Temple_Cave1_body",
+     "String_STR_Subzone_Fire_Temple_Cave2_body"
     ]
    }
   ],
@@ -25384,6 +27146,30 @@ const SOURCE_TEXT = {
   "zh-Hans": "湖水斯卡马",
   "zh-Hant": "湖水斯卡馬"
  },
+ "String_STR_M_L1_I2_KraoElite_01_body": {
+  "de": "Kraomutant",
+  "en": "Krao Mutant",
+  "es": "Mutación de Krao",
+  "fr": "Mutant Krao",
+  "ja": "クラオ変異体",
+  "ko": "크라오 변이체",
+  "pt": "Aberração de Krao",
+  "ru": "Мутант крао",
+  "zh-Hans": "克劳变异体",
+  "zh-Hant": "克勞變異體"
+ },
+ "String_STR_M_L1_I2_KraoElite_02_body": {
+  "de": "Krao-Siegelhüter",
+  "en": "Krao Seal Guardian",
+  "es": "Protector del sello Krao",
+  "fr": "Gardien du sceau Krao",
+  "ja": "クラオ封印の守護者",
+  "ko": "크라오 봉인 수호자",
+  "pt": "Guardião do Selo Krao",
+  "ru": "Хранитель печати крао",
+  "zh-Hans": "克劳封印守护者",
+  "zh-Hant": "克勞封印守護者"
+ },
  "String_STR_M_L1_I2_KraoElite_03_body": {
   "de": "Verstärkter Harcon",
   "en": "Enhanced Harcon",
@@ -25395,6 +27181,18 @@ const SOURCE_TEXT = {
   "ru": "Усиленный Харкон",
   "zh-Hans": "强化的哈尔坤",
   "zh-Hant": "強化的哈爾坤"
+ },
+ "String_STR_M_L1_I2_KraoWar_01_body": {
+  "de": "Verstärktes Kraoversuchsobjekt",
+  "en": "Enhanced Krao Test Subject",
+  "es": "Sujeto de prueba de Krao mejorado",
+  "fr": "Cobaye Krao amélioré",
+  "ja": "強化されたクラオ実験体",
+  "ko": "강화된 크라오 실험체",
+  "pt": "Cobaia de Krao Aprimorada",
+  "ru": "Усиленный подопытный крао",
+  "zh-Hans": "强化的克劳实验体",
+  "zh-Hant": "強化的克勞實驗體"
  },
  "String_STR_M_L1_IoC_AbyssSwarm_01_CV01_001_body": {
   "de": "Rubinroter Dranaschwarm",
@@ -26560,6 +28358,210 @@ const SOURCE_TEXT = {
   "zh-Hans": "红帽波奇",
   "zh-Hant": "紅帽波奇"
  },
+ "String_STR_M_PD_Arkanis_NagaElite_03_001_body": {
+  "de": "Elitepriester (Arkanis)",
+  "en": "Arkanis Elite Priest",
+  "es": "Sacerdote élite de Arkanis",
+  "fr": "Prêtre d'élite Arkanis",
+  "ja": "アルカニス精鋭司祭",
+  "ko": "아르카니스 정예 사제",
+  "pt": "Sacerdote de Elite de Arcanis",
+  "ru": "Элитный жрец Арканиса",
+  "zh-Hans": "雅尔卡尼斯精锐祭司",
+  "zh-Hant": "雅爾卡尼斯精銳祭司"
+ },
+ "String_STR_M_PD_Arkanis_WaterEle_01_001_body": {
+  "de": "Zersplitterter Wassergeist",
+  "en": "Shattered Water Spirit",
+  "es": "Espíritu de agua fragmentado",
+  "fr": "Esprit de l'eau fragmenté",
+  "ja": "砕けた水の精霊",
+  "ko": "조각난 물의 정령",
+  "pt": "Espírito da Água Fragmentado",
+  "ru": "Расколотый дух воды",
+  "zh-Hans": "破碎的水之精灵",
+  "zh-Hant": "破碎的水之精靈"
+ },
+ "String_STR_M_PD_Arkanis_WaterEle_02_001_body": {
+  "de": "Flüsternder Wassergeist",
+  "en": "Whispering Water Spirit",
+  "es": "Espíritu de agua susurrante",
+  "fr": "Esprit de l'eau chuchotant",
+  "ja": "ささやく水の精霊",
+  "ko": "속삭이는 물의 정령",
+  "pt": "Espírito da Água Sussurrante",
+  "ru": "Шепчущий дух воды",
+  "zh-Hans": "低语的水之精灵",
+  "zh-Hant": "低語的水之精靈"
+ },
+ "String_STR_M_PD_Arkanis_WaterEle_03_001_body": {
+  "de": "Wütender Wassergeist",
+  "en": "Enraged Water Spirit",
+  "es": "Espíritu de agua iracundo",
+  "fr": "Esprit de l'eau enragé",
+  "ja": "怒りの水の精霊",
+  "ko": "분노한 물의 정령",
+  "pt": "Espírito da Água Furioso",
+  "ru": "Разъяренный дух воды",
+  "zh-Hans": "愤怒的水之精灵",
+  "zh-Hant": "憤怒的水之精靈"
+ },
+ "String_STR_M_PD_Arkanis_WaterEle_04_body": {
+  "de": "Leerer Wassergeist",
+  "en": "Void Water Spirit",
+  "es": "Espíritu de agua del vacío",
+  "fr": "Esprit de l'eau du Néant",
+  "ja": "空虚の水の精霊",
+  "ko": "공허의 물의 정령",
+  "pt": "Espírito da Água do Vazio",
+  "ru": "Дух воды пустоты",
+  "zh-Hans": "空虚水之精灵",
+  "zh-Hant": "空虛水之精靈"
+ },
+ "String_STR_M_PD_BakronIsland_Bee_01_001_body": {
+  "de": "Grimmige Bienenkönigin",
+  "en": "Ferocious Queen Bee",
+  "es": "Abeja reina feroz",
+  "fr": "Reine abeille féroce",
+  "ja": "獰猛な女王バチ",
+  "ko": "사나운 여왕 벌",
+  "pt": "Abelha Rainha Feroz",
+  "ru": "Свирепая осиная королева",
+  "zh-Hans": "凶猛的女王蜂",
+  "zh-Hant": "凶猛的女王蜂"
+ },
+ "String_STR_M_PD_BakronIsland_Bee_01_002_body": {
+  "de": "Riesige Honigbiene",
+  "en": "Giant Honeybee",
+  "es": "Abeja gigante",
+  "fr": "Abeille gigantesque",
+  "ja": "巨大なミツバチ",
+  "ko": "거대한 꿀벌",
+  "pt": "Abelha Gigante",
+  "ru": "Гигантская пчела",
+  "zh-Hans": "巨大的蜂",
+  "zh-Hant": "巨大的蜂"
+ },
+ "String_STR_M_PD_BakronIsland_Coradon_01_V01_body": {
+  "de": "Coradon (Wald)",
+  "en": "Forest Coradon",
+  "es": "Coradon del bosque",
+  "fr": "Coradon de la forêt",
+  "ja": "森のコラドン",
+  "ko": "숲의 코라돈",
+  "pt": "Coradon da Floresta",
+  "ru": "Корадон леса",
+  "zh-Hans": "森林可拉敦",
+  "zh-Hant": "森林可拉敦"
+ },
+ "String_STR_M_PD_BakronIsland_EarthEleOd_01_body": {
+  "de": "Odfelsgeist",
+  "en": "Odyle Stone Spirit",
+  "es": "Espíritu de roca de Od",
+  "fr": "Esprit du rocher d'Od",
+  "ja": "オード岩の精霊",
+  "ko": "오드 바위 정령",
+  "pt": "Espírito da Rocha de Od",
+  "ru": "Дух эфирной скалы",
+  "zh-Hans": "奥德岩石精灵",
+  "zh-Hant": "奧德岩石精靈"
+ },
+ "String_STR_M_PD_BakronIsland_EarthEle_01_body": {
+  "de": "Felsgeist",
+  "en": "Rock Spirit",
+  "es": "Espíritu de roca",
+  "fr": "Esprit du rocher",
+  "ja": "岩の精霊",
+  "ko": "바위 정령",
+  "pt": "Espírito da Rocha",
+  "ru": "Дух скалы",
+  "zh-Hans": "岩石精灵",
+  "zh-Hant": "岩石精靈"
+ },
+ "String_STR_M_PD_BakronIsland_EarthEle_02_body": {
+  "de": "Bodengeist",
+  "en": "Earth Spirit",
+  "es": "Espíritu de terreno",
+  "fr": "Esprit de la terre",
+  "ja": "大地の精霊",
+  "ko": "대지 정령",
+  "pt": "Espírito da Terra",
+  "ru": "Дух почвы",
+  "zh-Hans": "大地精灵",
+  "zh-Hant": "大地精靈"
+ },
+ "String_STR_M_PD_BakronIsland_EarthEle_03_body": {
+  "de": "Wütender Felsgeist",
+  "en": "Enraged Rock Spirit",
+  "es": "Espíritu de roca iracundo",
+  "fr": "Esprit du rocher enragé",
+  "ja": "怒りの岩の精霊",
+  "ko": "분노한 바위 정령",
+  "pt": "Espírito da Rocha Furioso",
+  "ru": "Разъяренный дух скалы",
+  "zh-Hans": "愤怒的岩石精灵",
+  "zh-Hant": "憤怒的岩石精靈"
+ },
+ "String_STR_M_PD_BakronIsland_EarthEle_04_body": {
+  "de": "Wütender Bodengeist",
+  "en": "Enraged Earth Spirit",
+  "es": "Espíritu de terreno iracundo",
+  "fr": "Esprit de la terre enragé",
+  "ja": "怒りの大地の精霊",
+  "ko": "분노한 대지 정령",
+  "pt": "Espírito da Terra Furioso",
+  "ru": "Разъяренный дух почвы",
+  "zh-Hans": "愤怒的大地精灵",
+  "zh-Hant": "憤怒的大地精靈"
+ },
+ "String_STR_M_PD_DeusCenter_KrallPrst_01_body": {
+  "de": "Modifizierter Heiler (Krall)",
+  "en": "Modified Krall Healer",
+  "es": "Krall sanador modificado",
+  "fr": "Soldat soigneur Krall modifié",
+  "ja": "改造クラル治癒兵",
+  "ko": "개조 크랄 치유병",
+  "pt": "Curandeiro Krall Modificado",
+  "ru": "Модифицированный целитель краллов",
+  "zh-Hans": "改造克拉尔治愈兵",
+  "zh-Hant": "改造克拉爾治癒兵"
+ },
+ "String_STR_M_PD_DeusCenter_KrallReinforcedWarrior_01_body": {
+  "de": "Modifizierter Kampfsoldat (Krall)",
+  "en": "Modified Krall Combatant",
+  "es": "Krall combatiente modificado",
+  "fr": "Combattant Krall modifié",
+  "ja": "改造クラル戦闘兵",
+  "ko": "개조 크랄 전투병",
+  "pt": "Combatente Krall Modificado",
+  "ru": "Модифицированный борец краллов",
+  "zh-Hans": "改造克拉尔战斗兵",
+  "zh-Hant": "改造克拉爾戰鬥兵"
+ },
+ "String_STR_M_PD_Draupnir_AbyssSwarm_01_body": {
+  "de": "Odfressendes Abgrundinsektoid",
+  "en": "Odyle-eating Abyss Insectoid",
+  "es": "Insectoide abismal consumidor de Od",
+  "fr": "Insecte d'Abîme mangeur d'Od",
+  "ja": "オードを食べる深淵虫",
+  "ko": "오드먹는 심연벌레",
+  "pt": "Insetoide Abissal Devorador de Od",
+  "ru": "Эфироядный инсектоид пропасти",
+  "zh-Hans": "吃奥德的深渊虫",
+  "zh-Hant": "吃奧德的深淵蟲"
+ },
+ "String_STR_M_PD_Draupnir_AbyssSwarm_02_body": {
+  "de": "Verhungertes Leerinsektoid",
+  "en": "Hungry Void Insectoid",
+  "es": "Gusano del vacío famélico",
+  "fr": "Insecte vorace du Néant",
+  "ja": "飢えた空虚虫",
+  "ko": "굶주린 공허벌레",
+  "pt": "Verme do Vazio Faminto",
+  "ru": "Ненасытный инсектоид пустоты",
+  "zh-Hans": "饥饿的空虚虫",
+  "zh-Hant": "飢餓的空虛蟲"
+ },
  "String_STR_M_PD_Draupnir_NagaElite_01_body": {
   "de": "Phantom-Lakshmi",
   "en": "Phantasmal Lakshmi",
@@ -26584,6 +28586,126 @@ const SOURCE_TEXT = {
   "zh-Hans": "捕食者萨拉斯瓦提",
   "zh-Hant": "捕食者薩拉斯瓦提"
  },
+ "String_STR_M_PD_Draupnir_NagaElite_03_01_body": {
+  "de": "Priester (Naga)",
+  "en": "Naga Priest",
+  "es": "Naga sacerdotisa",
+  "fr": "Prêtresse Naga",
+  "ja": "ナーガ司祭",
+  "ko": "나가 사제",
+  "pt": "Sacerdote Naga",
+  "ru": "Жрец нагов",
+  "zh-Hans": "纳迦祭司",
+  "zh-Hant": "納迦祭司"
+ },
+ "String_STR_M_PD_Draupnir_NagaElite_04_01_body": {
+  "de": "Hüterkrieger (Nagarant)",
+  "en": "Nagarant Guardian Warrior",
+  "es": "Guardián guerrero Nagarant",
+  "fr": "Guerrier gardien Nagarant",
+  "ja": "ナーガラント守護戦士",
+  "ko": "나가란트 수호전사",
+  "pt": "Guerreiro Guardião Nagarante",
+  "ru": "Охраняющий воин нагарратов",
+  "zh-Hans": "纳迦兰特守护战士",
+  "zh-Hant": "納迦蘭特守護戰士"
+ },
+ "String_STR_M_PD_Draupnir_Neuth_01_body": {
+  "de": "Putzer (Klaw)",
+  "en": "Klaw Janitor",
+  "es": "Klaw limpiador",
+  "fr": "Nettoyeur Klaw",
+  "ja": "ニュート掃除屋",
+  "ko": "뉴트 청소부",
+  "pt": "Limpador Klaw",
+  "ru": "Падальщик ньютов",
+  "zh-Hans": "纽特清道夫",
+  "zh-Hant": "紐特清道夫"
+ },
+ "String_STR_M_PD_FierceHornCave_AddShulack_03_001_body": {
+  "de": "Mutierter Kärrner (Shulak)",
+  "en": "Mutated Shulak Cart Worker",
+  "es": "Shulak carretero mutado",
+  "fr": "Charretier Shulack muté",
+  "ja": "変異シュラク担夫",
+  "ko": "변이 슈라크 수레꾼",
+  "pt": "Mutação de Carreteiro Shulack",
+  "ru": "Мутировавший возчик шураков",
+  "zh-Hans": "变异斯拉克车夫",
+  "zh-Hant": "變異斯拉克車夫"
+ },
+ "String_STR_M_PD_FierceHornCave_Crab_01_body": {
+  "de": "Mooskrabbe (Abgrund)",
+  "en": "Abyssal Moss Crab",
+  "es": "Cangrejo de musgo abismal",
+  "fr": "Crabe moussu d'Abîme",
+  "ja": "深淵の苔ガニ",
+  "ko": "심연의 이끼 게",
+  "pt": "Caranguejo de Musgo Abissal",
+  "ru": "Моховой краб Бездны",
+  "zh-Hans": "深渊苔蟹",
+  "zh-Hant": "深淵苔蟹"
+ },
+ "String_STR_M_PD_FierceHornCave_Duduka_01_001_body": {
+  "de": "Beschworener Arbeiter (Duduka)",
+  "en": "Summoned Duduka Worker",
+  "es": "Duduka trabajador invocado",
+  "fr": "Travailleur Duduka invoqué",
+  "ja": "召喚されたドゥドゥカ作業員",
+  "ko": "소환된 두두카 일꾼",
+  "pt": "Trabalhador Duduka Invocado",
+  "ru": "Призванный рабочий дудуков",
+  "zh-Hans": "召唤的杜杜卡工人",
+  "zh-Hant": "召喚的杜杜卡工人"
+ },
+ "String_STR_M_PD_FierceHornCave_Duduka_01_002_body": {
+  "de": "Grimmiger Arbeiter (Duduka)",
+  "en": "Ferocious Duduka Worker",
+  "es": "Duduka trabajador feroz",
+  "fr": "Travailleur Duduka féroce",
+  "ja": "獰猛なドゥドゥカ作業員",
+  "ko": "사나운 두두카 일꾼",
+  "pt": "Trabalhador Duduka Feroz",
+  "ru": "Свирепый рабочий дудуков",
+  "zh-Hans": "凶猛的杜杜卡工人",
+  "zh-Hant": "凶猛的杜杜卡工人"
+ },
+ "String_STR_M_PD_FierceHornCave_Duduka_02_001_body": {
+  "de": "Beschworener Schleuderer (Duduka)",
+  "en": "Summoned Duduka Slinger",
+  "es": "Duduka lanzapiedras invocado",
+  "fr": "Catapulteur Duduka invoqué",
+  "ja": "召喚されたドゥドゥカ投石兵",
+  "ko": "소환된 두두카 투석병",
+  "pt": "Soldado Fundeiro Duduka Invocado",
+  "ru": "Призванный пращник дудуков",
+  "zh-Hans": "召唤的杜杜卡投石兵",
+  "zh-Hant": "召喚的杜杜卡投石兵"
+ },
+ "String_STR_M_PD_FierceHornCave_Duduka_02_002_body": {
+  "de": "Grimmiger Schleuderer (Duduka)",
+  "en": "Ferocious Duduka Slinger",
+  "es": "Duduka hondero feroz",
+  "fr": "Catapulteur Duduka féroce",
+  "ja": "獰猛なドゥドゥカ投石兵",
+  "ko": "사나운 두두카 투석병",
+  "pt": "Atirador Duduka Feroz",
+  "ru": "Свирепый дудук-метатель",
+  "zh-Hans": "凶猛的杜杜卡投石兵",
+  "zh-Hant": "凶猛的杜杜卡投石兵"
+ },
+ "String_STR_M_PD_FierceHornCave_Lufilini_01_V01_001_body": {
+  "de": "Lupyllini (Abgrund)",
+  "en": "Abyssal Lupyllini",
+  "es": "Lupyllini abismal",
+  "fr": "Lupyllini d'Abîme",
+  "ja": "深淵のルフィーリニ",
+  "ko": "심연의 루필리니",
+  "pt": "Lupyllini Abissal",
+  "ru": "Руфиллин Бездны",
+  "zh-Hans": "深渊路比利尼",
+  "zh-Hant": "深淵路比利尼"
+ },
  "String_STR_M_PD_Fire_Temple_AshGuard_01_body": {
   "de": "Schwarzrauch Murute",
   "en": "Black Smoke Murute",
@@ -26595,6 +28717,66 @@ const SOURCE_TEXT = {
   "ru": "Мурт черного дыма",
   "zh-Hans": "黑烟穆勒特",
   "zh-Hant": "黑煙穆勒特"
+ },
+ "String_STR_M_PD_Fire_Temple_Balgest_01_body": {
+  "de": "Flammenbalgest",
+  "en": "Flame Barghest",
+  "es": "Balgest de llamas",
+  "fr": "Balgest de flamme",
+  "ja": "火炎バルゲスト",
+  "ko": "화염 발게스트",
+  "pt": "Balgest da Flama",
+  "ru": "Пламенный балгест",
+  "zh-Hans": "火焰地狱犬",
+  "zh-Hant": "火焰地獄犬"
+ },
+ "String_STR_M_PD_Fire_Temple_FireEle_01_body": {
+  "de": "Funkengeist",
+  "en": "Spark Spirit",
+  "es": "Espíritu de fulgor",
+  "fr": "Esprit des étincelles",
+  "ja": "炎の精霊",
+  "ko": "불꽃 정령",
+  "pt": "Espírito da Fagulha",
+  "ru": "Дух языка пламени",
+  "zh-Hans": "火花精灵",
+  "zh-Hant": "火花精靈"
+ },
+ "String_STR_M_PD_Fire_Temple_FireEle_02_body": {
+  "de": "Flammengeist",
+  "en": "Flame Spirit",
+  "es": "Espíritu de llamas",
+  "fr": "Esprit des flammes",
+  "ja": "火炎の精霊",
+  "ko": "화염의 정령",
+  "pt": "Espírito da Flama",
+  "ru": "Дух пламени",
+  "zh-Hans": "火焰精灵",
+  "zh-Hant": "火焰精靈"
+ },
+ "String_STR_M_PD_Fire_Temple_FireEle_03_body": {
+  "de": "Gnadenloser Funkengeist",
+  "en": "Merciless Spark Spirit",
+  "es": "Espíritu de fulgor despiadado",
+  "fr": "Esprit d'étincelle impitoyable",
+  "ja": "無慈悲な炎の精霊",
+  "ko": "무자비한 불꽃 정령",
+  "pt": "Espírito da Fagulha Implacável",
+  "ru": "Безжалостный дух языка пламени",
+  "zh-Hans": "无情的火花精灵",
+  "zh-Hant": "無情的火花精靈"
+ },
+ "String_STR_M_PD_Fire_Temple_FireEle_04_body": {
+  "de": "Gnadenloser Flammengeist",
+  "en": "Merciless Flame Spirit",
+  "es": "Espíritu de llamas despiadado",
+  "fr": "Esprit de flamme impitoyable",
+  "ja": "無慈悲な火炎の精霊",
+  "ko": "무자비한 화염의 정령",
+  "pt": "Espírito da Flama Implacável",
+  "ru": "Безжалостный дух пламени",
+  "zh-Hans": "无情的火焰精灵",
+  "zh-Hant": "無情的火焰精靈"
  },
  "String_STR_M_PD_Fire_Temple_FireGuard_01_body": {
   "de": "Rotflamme Ignus",
@@ -26608,6 +28790,30 @@ const SOURCE_TEXT = {
   "zh-Hans": "红火花伊格努斯",
   "zh-Hant": "紅火花伊格努斯"
  },
+ "String_STR_M_PD_Fire_Temple_Gargoyle_01_body": {
+  "de": "Wächterstatue (Flammenstein)",
+  "en": "Flame Stone Guardian Statue",
+  "es": "Estatua guardiana de piedra de llamas",
+  "fr": "Statue gardienne de Pierre de flamme",
+  "ja": "火炎石の守護像",
+  "ko": "화염석 수호상",
+  "pt": "Estátua Guardiã da Pedra das Chamas",
+  "ru": "Охранная статуя пламенного камня",
+  "zh-Hans": "火焰石守护像",
+  "zh-Hant": "火焰石守護像"
+ },
+ "String_STR_M_PD_Fire_Temple_OdSpider_02_body": {
+  "de": "Lavaspinne",
+  "en": "Lava Spider",
+  "es": "Araña de lava",
+  "fr": "Araignée de lave",
+  "ja": "溶岩蜘蛛",
+  "ko": "용암 거미",
+  "pt": "Aranha de Lava",
+  "ru": "Лавовый паук",
+  "zh-Hans": "熔岩蜘蛛",
+  "zh-Hant": "熔岩蜘蛛"
+ },
  "String_STR_M_PD_Fire_Temple_Rotan_01_body": {
   "de": "Silberklinge Rotan",
   "en": "Silver Blade Rotan",
@@ -26619,6 +28825,66 @@ const SOURCE_TEXT = {
   "ru": "Серебряный рокан",
   "zh-Hans": "银刃罗坦",
   "zh-Hant": "銀刃羅坦"
+ },
+ "String_STR_M_PD_UC_Conuti_01_body": {
+  "de": "Gehirngewaschener Konutin",
+  "en": "Brainwashed Konutin",
+  "es": "Konutin adoctrinado",
+  "fr": "Konutin manipulé",
+  "ja": "洗脳されたコヌティ",
+  "ko": "세뇌된 코누티",
+  "pt": "Konutin Manipulado",
+  "ru": "Зомбированный конути",
+  "zh-Hans": "被洗脑的可努提",
+  "zh-Hant": "被洗腦的可努提"
+ },
+ "String_STR_M_PD_UC_OwlSoldier_02_body": {
+  "de": "Zauberer (Urugugu)",
+  "en": "Urugugu Mage",
+  "es": "Urugugu mago",
+  "fr": "Mage Urugugu",
+  "ja": "ウルググ魔法士",
+  "ko": "우루구구 마법사",
+  "pt": "Mago Urugugu",
+  "ru": "Маг ауругу",
+  "zh-Hans": "乌努库库魔法师",
+  "zh-Hant": "烏努庫庫魔法師"
+ },
+ "String_STR_M_PD_UC_OwlSoldier_06_body": {
+  "de": "Streiter (Urugugu)",
+  "en": "Urugugu Brawler",
+  "es": "Urugugu contendiente",
+  "fr": "Lutteur Urugugu",
+  "ja": "ウルググ闘士",
+  "ko": "우루구구 투사",
+  "pt": "Combatente Urugugu",
+  "ru": "Храбрец ауругу",
+  "zh-Hans": "乌努库库斗士",
+  "zh-Hant": "烏努庫庫鬥士"
+ },
+ "String_STR_M_PD_UC_Pino_01_body": {
+  "de": "Verzauberter Pino",
+  "en": "Deceived Pino",
+  "es": "Pinno engañado",
+  "fr": "Pino ensorcelé",
+  "ja": "惑わされたピノ",
+  "ko": "현혹된 피노",
+  "pt": "Pino Enfeitiçado",
+  "ru": "Зачарованный пино",
+  "zh-Hans": "被迷惑的皮诺",
+  "zh-Hant": "被迷惑的皮諾"
+ },
+ "String_STR_M_PD_UC_Pino_02_body": {
+  "de": "Wütender Pino",
+  "en": "Furious Pino",
+  "es": "Pinno iracundo",
+  "fr": "Pino enragé",
+  "ja": "怒りのピノ",
+  "ko": "분노한 피노",
+  "pt": "Pino Furioso",
+  "ru": "Разъяренный пино",
+  "zh-Hans": "愤怒的皮诺",
+  "zh-Hant": "憤怒的皮諾"
  },
  "String_STR_Map_Abyss_Reshanta_A_body": {
   "de": "Chaotische Untere Ebene von Reshanta",
@@ -26644,6 +28910,66 @@ const SOURCE_TEXT = {
   "zh-Hans": "浑沌艾雷修蓝塔表层",
   "zh-Hant": "渾沌艾雷修藍塔表層"
  },
+ "String_STR_Map_Arkanis_1_body": {
+  "de": "Zersplitterter Lufttempel",
+  "en": "Shattered Floating Temple",
+  "es": "Templo Divino Aéreo Fragmentado",
+  "fr": "Temple Divin Aérien Fragmenté",
+  "ja": "砕けた空中神殿",
+  "ko": "조각난 공중신전",
+  "pt": "Templo Divino Aéreo Despedaçado",
+  "ru": "Разбитый воздушный храм",
+  "zh-Hans": "破碎的空中神殿",
+  "zh-Hant": "破碎的空中神殿"
+ },
+ "String_STR_Map_Arkanis_2_body": {
+  "de": "Eingestürzter Korridor",
+  "en": "Collapsed Corridor",
+  "es": "Corredor Derrumbado",
+  "fr": "Corridor Effondré",
+  "ja": "崩れた回廊",
+  "ko": "무너진 회랑",
+  "pt": "Corredor Desmoronado",
+  "ru": "Рухнувшая галерея",
+  "zh-Hans": "倒塌的回廊",
+  "zh-Hant": "倒塌的迴廊"
+ },
+ "String_STR_Map_Arkanis_4_body": {
+  "de": "Schräger Platz",
+  "en": "Slanted Plaza",
+  "es": "Plaza Inclinada",
+  "fr": "Esplanade Inclinée",
+  "ja": "傾いた広場",
+  "ko": "기울어진 광장",
+  "pt": "Praça Inclinada",
+  "ru": "Накренившаяся площадь",
+  "zh-Hans": "倾倒的广场",
+  "zh-Hant": "傾倒的廣場"
+ },
+ "String_STR_Map_Arkanis_body": {
+  "de": "Zersplitterter Arkanis",
+  "en": "Shattered Arkanis",
+  "es": "Arkanis Fragmentado",
+  "fr": "Arkanis Fragmenté",
+  "ja": "砕けたアルカニス",
+  "ko": "조각난 아르카니스",
+  "pt": "Arcanis Despedaçada",
+  "ru": "Расколотый Арканис",
+  "zh-Hans": "破碎的雅尔卡尼斯",
+  "zh-Hant": "破碎的雅爾卡尼斯"
+ },
+ "String_STR_Map_BakronIsland_body": {
+  "de": "Vakrons Luftinsel",
+  "en": "Vakron Sky Island",
+  "es": "Isla Aérea de Vakron",
+  "fr": "Île Céleste de Vakron",
+  "ja": "バクロンの空中島",
+  "ko": "바크론의 공중섬",
+  "pt": "Ilha Aérea de Vakron",
+  "ru": "Парящий остров Вакрона",
+  "zh-Hans": "巴克隆空中岛",
+  "zh-Hant": "巴克隆空中島"
+ },
  "String_STR_Map_ConqueredTerritory_L_R1_body": {
   "de": "Feldlager der Deserteure",
   "en": "Deserter Encampment",
@@ -26655,6 +28981,18 @@ const SOURCE_TEXT = {
   "ru": "Лагерь дезертиров",
   "zh-Hans": "逃兵宿营地",
   "zh-Hant": "逃兵宿營地"
+ },
+ "String_STR_Map_DeusCenter_body": {
+  "de": "Forschungsbasis Deus",
+  "en": "Deus Research Base",
+  "es": "Base de Investigación Deus",
+  "fr": "Base de Recherche Deus",
+  "ja": "デウス研究基地",
+  "ko": "데우스 연구기지",
+  "pt": "Base de Pesquisa Deus",
+  "ru": "Исследовательская база Деус",
+  "zh-Hans": "德乌斯研究基地",
+  "zh-Hant": "德烏斯研究基地"
  },
  "String_STR_Map_Draupnir_body": {
   "en": "Draupnir",
@@ -26676,6 +29014,18 @@ const SOURCE_TEXT = {
   "zh-Hans": "火之神殿",
   "zh-Hant": "火之神殿"
  },
+ "String_STR_Map_HornCave_body": {
+  "de": "Grimmhornhöhle",
+  "en": "Ferocious Horn Den",
+  "es": "Caverna del Cuerno Feroz",
+  "fr": "Grotte de la Corne Féroce",
+  "ja": "獰猛な角岩窟",
+  "ko": "사나운 뿔 암굴",
+  "pt": "Gruta do Chifre Feroz",
+  "ru": "Логово Свирепого Рога",
+  "zh-Hans": "凶猛的角岩窟",
+  "zh-Hant": "凶猛的角岩窟"
+ },
  "String_STR_Map_Krao_Cave_body": {
   "de": "Kraohöhle",
   "en": "Krao Cave",
@@ -26687,6 +29037,18 @@ const SOURCE_TEXT = {
   "ru": "Пещера крао",
   "zh-Hans": "克劳洞穴",
   "zh-Hant": "克勞洞穴"
+ },
+ "String_STR_Map_Urugugu_Canyon_body": {
+  "de": "Uruguguschlucht",
+  "en": "Urugugu Canyon",
+  "es": "Cañón de Urugugu",
+  "fr": "Canyon Urugugu",
+  "ja": "ウルググ峡谷",
+  "ko": "우루구구 협곡",
+  "pt": "Desfiladeiro de Urugugu",
+  "ru": "Ущелье ауругу",
+  "zh-Hans": "乌努库库峡谷",
+  "zh-Hant": "烏努庫庫峽谷"
  },
  "String_STR_Map_World_D_A_body": {
   "en": "Altgard",
@@ -26823,6 +29185,42 @@ const SOURCE_TEXT = {
   "ru": "Артамийское ущелье",
   "zh-Hans": "阿尔塔米亚峡谷",
   "zh-Hant": "阿爾塔米亞峽谷"
+ },
+ "String_STR_Subzone_BakronIsland_1_body": {
+  "de": "Luftebene",
+  "en": "Sky Plains",
+  "es": "Llanura Aérea",
+  "fr": "Plaine Aérienne",
+  "ja": "空中平野",
+  "ko": "공중 평야",
+  "pt": "Campina Aérea",
+  "ru": "Воздушная равнина",
+  "zh-Hans": "空中平野",
+  "zh-Hant": "空中平野"
+ },
+ "String_STR_Subzone_BakronIsland_2_body": {
+  "de": "Felsenarchipel",
+  "en": "Boulder Islands",
+  "es": "Archipiélago de Roca",
+  "fr": "Archipel Rocheux",
+  "ja": "岩の群島",
+  "ko": "바위 군도",
+  "pt": "Arquipélago das Rochas",
+  "ru": "Архипелаг скал",
+  "zh-Hans": "岩石群岛",
+  "zh-Hant": "岩石群島"
+ },
+ "String_STR_Subzone_BakronIsland_3_body": {
+  "de": "Thamons Insel",
+  "en": "Thamon Island",
+  "es": "Isla de Thamon",
+  "fr": "Île de Thamon",
+  "ja": "タモンの島",
+  "ko": "타몬의 섬",
+  "pt": "Ilha de Thamon",
+  "ru": "Остров Тамона",
+  "zh-Hans": "塔蒙之岛",
+  "zh-Hant": "塔蒙之島"
  },
  "String_STR_Subzone_BasfeltRuins_body": {
   "de": "Basfeltruinen",
@@ -27052,6 +29450,54 @@ const SOURCE_TEXT = {
   "zh-Hans": "被破坏的神殿遗址",
   "zh-Hant": "被破壞的神殿遺址"
  },
+ "String_STR_Subzone_DeusCenter_1_body": {
+  "de": "Ruinen des Luft-Scientariums",
+  "en": "Aerial Research Center Ruins",
+  "es": "Ruinas del Centro de Investigación Aéreo",
+  "fr": "Ruines du Centre de Recherche Aérien",
+  "ja": "空中研究所の廃墟",
+  "ko": "공중 연구소 폐허",
+  "pt": "Ruínas do Laboratório Aéreo",
+  "ru": "Развалины лаборатории полета",
+  "zh-Hans": "空中研究所废墟",
+  "zh-Hant": "空中研究所廢墟"
+ },
+ "String_STR_Subzone_DeusCenter_2_body": {
+  "de": "Pseudo-Od-Herstellungsraum",
+  "en": "Pseudo-Odyle Workshop",
+  "es": "Sala de Fabricación de Pseudo-Od",
+  "fr": "Atelier de Fabrication de Pseudo-Od",
+  "ja": "擬似オード製作室",
+  "ko": "유사 오드 제작실",
+  "pt": "Sala de Criação de Od Sintético",
+  "ru": "Мастерская квазиэфира",
+  "zh-Hans": "类奥德制作室",
+  "zh-Hant": "類奧德製作室"
+ },
+ "String_STR_Subzone_DeusCenter_6_body": {
+  "de": "Eingestürzte Luftinsel",
+  "en": "Collapsed Sky Island",
+  "es": "Isla Aérea Derrumbada",
+  "fr": "Île Céleste Effondrée",
+  "ja": "崩れた空中島",
+  "ko": "무너진 공중섬",
+  "pt": "Ilha Aérea Desmoronada",
+  "ru": "Рухнувший парящий остров",
+  "zh-Hans": "倒塌的空中岛",
+  "zh-Hant": "倒塌的空中島"
+ },
+ "String_STR_Subzone_DeusCenter_7_body": {
+  "de": "Stürmische Luftinsel",
+  "en": "Storm-Battered Sky Island",
+  "es": "Isla Aérea Sumergida en la Tormenta",
+  "fr": "Île Céleste Engloutie par les Tempêtes",
+  "ja": "暴風に沈んだ空中島",
+  "ko": "폭풍에 잠긴 공중섬",
+  "pt": "Ilha Aérea Submersa na Tempestade",
+  "ru": "Поглощенный штормом Парящий остров",
+  "zh-Hans": "陷入暴风的空中岛",
+  "zh-Hant": "陷入暴風的空中島"
+ },
  "String_STR_Subzone_Dragon_Garrision_D1_1_body": {
   "de": "Äußere Sanktuariumswache",
   "en": "Sanctum Outskirts Watch",
@@ -27264,6 +29710,18 @@ const SOURCE_TEXT = {
   "zh-Hans": "激战之丘",
   "zh-Hant": "激戰之丘"
  },
+ "String_STR_Subzone_Fire_Temple_Cave1_body": {
+  "de": "Pfad der Sühne",
+  "en": "Path of Atonement",
+  "es": "Camino de la Expiación",
+  "fr": "Chemin d'Expiation",
+  "ja": "贖罪の道",
+  "ko": "속죄의 길",
+  "pt": "Caminho da Expiação",
+  "ru": "Путь искупления",
+  "zh-Hans": "赎罪之路",
+  "zh-Hant": "贖罪之路"
+ },
  "String_STR_Subzone_Fire_Temple_Cave2_body": {
   "de": "Brennender Tempel",
   "en": "Burning Temple",
@@ -27275,6 +29733,18 @@ const SOURCE_TEXT = {
   "ru": "Пылающий храм",
   "zh-Hans": "燃烧神殿",
   "zh-Hant": "燃燒神殿"
+ },
+ "String_STR_Subzone_Fire_Temple_Temple_body": {
+  "de": "Korridor des Feuers",
+  "en": "Fire Corridor",
+  "es": "Corredor del Fuego",
+  "fr": "Corridor du Feu",
+  "ja": "炎の回廊",
+  "ko": "불의 회랑",
+  "pt": "Corredor de Fogo",
+  "ru": "Галерея огня",
+  "zh-Hans": "火之回廊",
+  "zh-Hant": "火之迴廊"
  },
  "String_STR_Subzone_FugitiveVillage_body": {
   "de": "Exulantendorf",
@@ -27311,6 +29781,42 @@ const SOURCE_TEXT = {
   "ru": "Убежище Ромлона",
   "zh-Hans": "罗姆隆藏身处",
   "zh-Hant": "羅姆隆藏身處"
+ },
+ "String_STR_Subzone_HornCave_1_body": {
+  "de": "Spähposten der Fera",
+  "en": "Fera Surveillance Site",
+  "es": "Sitio de Vigilancia de Feras",
+  "fr": "Site de Surveillance de Bestia",
+  "ja": "野性の監視所",
+  "ko": "야성의 감시터",
+  "pt": "Posto de Vigia Feral",
+  "ru": "Место наблюдения дикого",
+  "zh-Hans": "野性监视地",
+  "zh-Hant": "野性監視地"
+ },
+ "String_STR_Subzone_HornCave_2_body": {
+  "de": "Funkelnder Abgrund",
+  "en": "Twinkling Abyss",
+  "es": "Abismo Reluciente",
+  "fr": "Abîme Scintillant",
+  "ja": "輝く深淵",
+  "ko": "반짝이는 심연",
+  "pt": "Abisso Cintilante",
+  "ru": "Мерцающая пропасть",
+  "zh-Hans": "闪亮的深渊",
+  "zh-Hant": "閃亮的深淵"
+ },
+ "String_STR_Subzone_HornCave_3_body": {
+  "de": "Altar des Requiems",
+  "en": "Requiem Altar",
+  "es": "Altar de Réquiem",
+  "fr": "Autel du Requiem",
+  "ja": "鎮魂の祭壇",
+  "ko": "진혼의 제단",
+  "pt": "Altar do Réquiem",
+  "ru": "Алтарь реквиема",
+  "zh-Hans": "镇魂祭坛",
+  "zh-Hant": "鎮魂祭壇"
  },
  "String_STR_Subzone_IdunsLake_body": {
   "de": "Idunsee",
@@ -27704,6 +30210,42 @@ const SOURCE_TEXT = {
   "ru": "Безымянное кладбище",
   "zh-Hans": "无名墓地",
   "zh-Hant": "無名墓地"
+ },
+ "String_STR_Subzone_Urugugu_Canyon_1_body": {
+  "de": "Urugugudorf",
+  "en": "Urugugu Village",
+  "es": "Aldea de Urugugu",
+  "fr": "Village Urugugu",
+  "ja": "ウルググの集落",
+  "ko": "우루구구 부락",
+  "pt": "Aldeia Urugugu",
+  "ru": "Поселение ауругу",
+  "zh-Hans": "乌努库库部落",
+  "zh-Hant": "烏努庫庫部落"
+ },
+ "String_STR_Subzone_Urugugu_Canyon_2_body": {
+  "de": "Tal des Windes",
+  "en": "Windy Valley",
+  "es": "Desfiladero del Viento",
+  "fr": "Vallée du Vent",
+  "ja": "風の谷",
+  "ko": "바람의 골짜기",
+  "pt": "Vale dos Ventos",
+  "ru": "Лощина ветра",
+  "zh-Hans": "风之山谷",
+  "zh-Hant": "風之山谷"
+ },
+ "String_STR_Subzone_Urugugu_Canyon_3_body": {
+  "de": "Uruguguschrein",
+  "en": "Urugugu Temple",
+  "es": "Templo de Urugugu",
+  "fr": "Temple d'Urugugu",
+  "ja": "ウルググ寺院",
+  "ko": "우루구구 사원",
+  "pt": "Templo de Urugugu",
+  "ru": "Собор ауругу",
+  "zh-Hans": "乌努库库寺院",
+  "zh-Hant": "烏努庫庫寺院"
  },
  "String_STR_Subzone_VerteronCitadelRuin_DestroyedAbyssGate_body": {
   "de": "Zerstörtes Abyss-Tor",

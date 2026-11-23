@@ -1,5 +1,18 @@
 [
   {
+    "version": "0.8.6",
+    "en": "Pets: souls from dungeon monsters are now listed, so 39 pets gain sources, among them Krao Mutant in Krao Cave, and Fire Temple, Draupnir, Urugugu Canyon and other dungeons. Entering these dungeons now shows the monsters you need.",
+    "ko": "펫: 던전 몬스터가 주는 영혼을 표시하여 펫 39마리의 획득처가 늘었습니다. 크라오 동굴의 크라오 변이체, 불의 신전, 드라웁니르, 우루구구 협곡 등의 던전이 포함됩니다. 이 던전에 들어가면 필요한 몬스터가 표시됩니다.",
+    "ja": "ペット：ダンジョンのモンスターが落とす魂を表示し、39体のペットの入手先が増えました。クラオ洞窟のクラオ変異体、炎の神殿、ドラウプニル、ウルググ峡谷などのダンジョンです。これらのダンジョンに入ると必要なモンスターが表示されます。",
+    "de": "Haustiere: Seelen, die Dungeon-Monster fallen lassen, werden aufgeführt. 39 Haustiere erhalten Quellen, darunter Kraomutant in der Kraohöhle sowie Feuertempel, Draupnir, Uruguguschlucht und weitere Dungeons. Beim Betreten dieser Dungeons erscheinen die benötigten Monster.",
+    "fr": "Familiers : les âmes que lâchent les monstres de donjon sont listées, et 39 familiers gagnent des sources, dont Mutant Krao dans la Grotte de Krao, ainsi que le Temple Divin du Feu, Draupnir, le Canyon Urugugu et d'autres donjons. Y entrer montre les monstres utiles.",
+    "es": "Mascotas: se listan las almas que sueltan los monstruos de mazmorra, y 39 mascotas ganan fuentes, entre ellas Mutación de Krao en la Cueva de Krao, además del Templo de Fuego, Draupnir, el Cañón de Urugugu y otras mazmorras. Al entrar se ven los monstruos que necesitas.",
+    "pt": "Mascotes: as almas que monstros de masmorra soltam são listadas, e 39 mascotes ganham fontes, entre elas Aberração de Krao na Caverna de Krao, além do Templo Divino do Fogo, Draupnir, o Desfiladeiro de Urugugu e outras masmorras. Ao entrar, os monstros necessários aparecem.",
+    "ru": "Питомцы: показаны души, которые роняют монстры подземелий, и у 39 питомцев появились источники, среди них мутант крао в пещере крао, а также храм огня, Драупнир, ущелье ауругу и другие подземелья. При входе в них видны нужные монстры.",
+    "zh-Hant": "寵物：列出副本怪物掉落的靈魂，39 隻寵物新增來源，包括克勞洞穴的克勞變異體，以及火之神殿、德拉烏伯尼爾、烏努庫庫峽谷等副本。進入這些副本時會顯示你需要的怪物。",
+    "zh-Hans": "宠物：列出副本怪物掉落的灵魂，39 只宠物新增来源，包括克劳洞穴的克劳变异体，以及火之神殿、德拉乌伯尼尔、乌努库库峡谷等副本。进入这些副本时会显示你需要的怪物。"
+  },
+  {
     "version": "0.8.5",
     "en": "Kinah: Unique drops count each item once. Moving gear to or from storage, or the game naming new gear twice, no longer adds a drop, and Unique materials such as Amplify Stone Fragments are no longer listed.",
     "ko": "키나: 유일 획득은 아이템마다 한 번만 셉니다. 장비를 창고에 넣거나 꺼낼 때나 게임이 새 장비를 두 번 알릴 때 더 이상 늘지 않으며, 돌파석 조각 같은 유일 재료는 더 이상 표시하지 않습니다.",
@@ -50,18 +63,5 @@
     "ru": "Сбор: для каждой травы показано, как часто она улучшается с самого начала, с вероятным диапазоном. Повторный бросок Оценщика удаётся с тем же шансом.",
     "zh-Hant": "採集：每種材料顯示開始時品質提升的機率與可能範圍。鑑定師的重新選擇也以同樣機率成功。",
     "zh-Hans": "采集：每种材料显示开始时品质提升的概率与可能范围。鉴定师的重新选择也以同样概率成功。"
-  },
-  {
-    "version": "0.8.1",
-    "en": "Skins: the search also finds where skins drop, e.g. a dungeon's name.",
-    "ko": "외형: 검색이 획득처도 찾습니다. 예: 던전 이름.",
-    "ja": "外見：検索で入手先も探せます（ダンジョン名など）。",
-    "de": "Aussehen: Die Suche findet auch, wo sie fallen, z. B. den Namen eines Dungeons.",
-    "fr": "Apparences : la recherche trouve aussi leur provenance, par exemple le nom d'un donjon.",
-    "es": "Aspectos: la búsqueda también encuentra dónde caen, por ejemplo el nombre de una mazmorra.",
-    "pt": "Visuais: a busca também encontra onde caem, por exemplo o nome de uma masmorra.",
-    "ru": "Облики: поиск находит и места добычи, например название подземелья.",
-    "zh-Hant": "外觀：搜尋也能找取得處，例如副本名稱。",
-    "zh-Hans": "外观：搜索也能找获取处，例如副本名称。"
   }
 ]
