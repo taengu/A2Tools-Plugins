@@ -1,5 +1,18 @@
 [
   {
+    "version": "0.1.2",
+    "en": "Server names as the game has them: the newest servers' new names in every region (Gauss, Lamuatan, Agnita, Atiel, Tassin, Heladrir), and server names in Japanese and Russian.",
+    "ko": "서버 이름을 게임과 같게 표시합니다: 모든 지역의 최신 서버 새 이름(Gauss, Lamuatan, Agnita, Atiel, Tassin, Heladrir), 일본어와 러시아어 서버 이름.",
+    "ja": "サーバー名をゲームと同じ表記に：全地域の最新サーバーの新しい名前（ガウス、ラムアタン、アグニター、アティエル、タッシン、ヒルラドル）と、日本語・ロシア語のサーバー名。",
+    "de": "Servernamen wie im Spiel: die neuen Namen der neuesten Server in jeder Region (Gauss, Lamuatan, Agnita, Atiel, Tassin, Heladrir) und Servernamen auf Japanisch und Russisch.",
+    "fr": "Noms des serveurs comme dans le jeu : les nouveaux noms des serveurs les plus récents dans chaque région (Gauss, Lamuatan, Agnita, Atiel, Tassin, Heladrir), et les noms en japonais et en russe.",
+    "es": "Nombres de servidor como en el juego: los nuevos nombres de los servidores más recientes en cada región (Gauss, Lamuatan, Agnita, Atiel, Tassin, Heladrir) y los nombres en japonés y ruso.",
+    "pt": "Nomes dos servidores como no jogo: os novos nomes dos servidores mais recentes em cada região (Gauss, Lamuatan, Agnita, Atiel, Tassin, Heladrir) e os nomes em japonês e russo.",
+    "ru": "Названия серверов как в игре: новые названия новейших серверов во всех регионах (Гаус, Ламуатан, Агнита, Атиэль, Тассин, Хеладрир) и названия на японском и русском.",
+    "zh-Hant": "伺服器名稱與遊戲一致：各地區最新伺服器的新名稱（Gauss、Lamuatan、Agnita、Atiel、Tassin、Heladrir），以及日文與俄文伺服器名稱。",
+    "zh-Hans": "服务器名称与游戏一致：各地区最新服务器的新名称（Gauss、Lamuatan、Agnita、Atiel、Tassin、Heladrir），以及日文和俄文服务器名称。"
+  },
+  {
     "version": "0.1.1",
     "en": "While you arrange the screen with the meter's Edit layout (meter 2.1.0 or newer), the card shows a sample roll, so you can place it.",
     "ko": "미터의 레이아웃 편집으로 화면을 배치하는 동안(미터 2.1.0 이상) 카드에 예시 주사위가 표시되어 위치를 정할 수 있습니다.",

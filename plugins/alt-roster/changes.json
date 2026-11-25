@@ -1,5 +1,18 @@
 [
   {
+    "version": "1.4.13",
+    "en": "Server names as the game has them: the newest servers' new names in every region (Gauss, Lamuatan, Agnita, Atiel, Tassin, Heladrir), and server names in Japanese and Russian.",
+    "ko": "서버 이름을 게임과 같게 표시합니다: 모든 지역의 최신 서버 새 이름(Gauss, Lamuatan, Agnita, Atiel, Tassin, Heladrir), 일본어와 러시아어 서버 이름.",
+    "ja": "サーバー名をゲームと同じ表記に：全地域の最新サーバーの新しい名前（ガウス、ラムアタン、アグニター、アティエル、タッシン、ヒルラドル）と、日本語・ロシア語のサーバー名。",
+    "de": "Servernamen wie im Spiel: die neuen Namen der neuesten Server in jeder Region (Gauss, Lamuatan, Agnita, Atiel, Tassin, Heladrir) und Servernamen auf Japanisch und Russisch.",
+    "fr": "Noms des serveurs comme dans le jeu : les nouveaux noms des serveurs les plus récents dans chaque région (Gauss, Lamuatan, Agnita, Atiel, Tassin, Heladrir), et les noms en japonais et en russe.",
+    "es": "Nombres de servidor como en el juego: los nuevos nombres de los servidores más recientes en cada región (Gauss, Lamuatan, Agnita, Atiel, Tassin, Heladrir) y los nombres en japonés y ruso.",
+    "pt": "Nomes dos servidores como no jogo: os novos nomes dos servidores mais recentes em cada região (Gauss, Lamuatan, Agnita, Atiel, Tassin, Heladrir) e os nomes em japonês e russo.",
+    "ru": "Названия серверов как в игре: новые названия новейших серверов во всех регионах (Гаус, Ламуатан, Агнита, Атиэль, Тассин, Хеладрир) и названия на японском и русском.",
+    "zh-Hant": "伺服器名稱與遊戲一致：各地區最新伺服器的新名稱（Gauss、Lamuatan、Agnita、Atiel、Tassin、Heladrir），以及日文與俄文伺服器名稱。",
+    "zh-Hans": "服务器名称与游戏一致：各地区最新服务器的新名称（Gauss、Lamuatan、Agnita、Atiel、Tassin、Heladrir），以及日文和俄文服务器名称。"
+  },
+  {
     "version": "1.4.12",
     "en": "Each character shows its Abyss Corridors for this siege under its name: done (green), still to run, or ? when you haven't played it since the siege.",
     "ko": "각 캐릭터 이름 아래에 이번 공성의 어비스 회랑 진행을 표시합니다: 완료(초록), 남음, 공성 이후 접속하지 않았다면 ?.",
@@ -50,18 +63,5 @@
     "ru": "Оповещение поверх игры со звуком, когда энергия Одила персонажа близка к пределу: когда следующее пополнение пропадёт, до 3 пополнений раньше или когда полная; для всех или отмеченных персонажей.",
     "zh-Hant": "角色的奧德能量接近上限時，在遊戲上方顯示提醒並發出提示音：下次補充會被浪費時、最多提前 3 次補充，或已滿時；適用於所有角色或勾選的角色。",
     "zh-Hans": "角色的奥德能量接近上限时，在游戏上方显示提醒并发出提示音：下次补充会被浪费时、最多提前 3 次补充，或已满时；适用于所有角色或勾选的角色。"
-  },
-  {
-    "version": "1.4.8",
-    "en": "Basic energy turns amber when the next refill would be wasted, and its tooltip says when to use some by.",
-    "ko": "다음 충전이 낭비될 때 기본 에너지가 주황색으로 바뀌고, 툴팁에 언제까지 사용해야 하는지 표시됩니다.",
-    "ja": "次の回復が無駄になるとき基本エネルギーが琥珀色になり、ツールチップにいつまでに使えばよいか表示されます。",
-    "de": "Grundenergie wird bernsteinfarben, wenn die nächste Aufladung verfallen würde; der Tooltip sagt, bis wann du sie nutzen solltest.",
-    "fr": "L'énergie de base passe en ambre quand la prochaine recharge serait perdue, et l'infobulle indique avant quand l'utiliser.",
-    "es": "La energía básica se vuelve ámbar cuando la próxima recarga se perdería, y su descripción indica antes de cuándo usarla.",
-    "pt": "A energia básica fica âmbar quando a próxima recarga seria desperdiçada, e a dica diz até quando usá-la.",
-    "ru": "Базовая энергия становится янтарной, когда следующее пополнение пропадёт, а подсказка говорит, до какого времени её потратить.",
-    "zh-Hant": "下次補充會被浪費時，基本能量會變成琥珀色，提示會說明要在何時前使用。",
-    "zh-Hans": "下次补充会被浪费时，基本能量会变成琥珀色，提示会说明要在何时前使用。"
   }
 ]
