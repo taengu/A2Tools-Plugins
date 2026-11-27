@@ -1,5 +1,18 @@
 [
   {
+    "version": "1.4.14",
+    "en": "Abyss Corridors count the right artifacts when the Abyss pairs two servers of the same faction: your server's side in the pairing, not its faction.",
+    "ko": "어비스에서 같은 진영의 서버끼리 매칭되어도 어비스 회랑이 올바른 아티팩트로 집계됩니다: 서버의 진영이 아니라 매칭에서 맡은 쪽을 기준으로 합니다.",
+    "ja": "アビスで同じ種族のサーバー同士がマッチングされても、アビス回廊を正しいアーティファクトで数えます：サーバーの種族ではなく、マッチングでの陣営で判断します。",
+    "de": "Die Abyss-Korridore zählen die richtigen Artefakte, wenn der Abyss zwei Server derselben Fraktion zusammenlegt: nach der Seite deines Servers in der Paarung, nicht nach seiner Fraktion.",
+    "fr": "Les Couloirs abyssaux comptent les bons artefacts quand l'Abysse associe deux serveurs de la même faction : selon le camp de ton serveur dans l'appariement, pas sa faction.",
+    "es": "Los Corredores del Abismo cuentan los artefactos correctos cuando el Abismo empareja dos servidores de la misma facción: según el bando de tu servidor en el emparejamiento, no su facción.",
+    "pt": "Os Corredores do Abismo contam os artefatos certos quando o Abismo pareia dois servidores da mesma facção: pelo lado do seu servidor no pareamento, não pela facção.",
+    "ru": "Коридоры Бездны считают нужные артефакты, когда Бездна сводит два сервера одной расы: по стороне вашего сервера в паре, а не по его расе.",
+    "zh-Hant": "深淵中同陣營伺服器配對時，深淵迴廊也會依正確的神器計算：依伺服器在配對中的陣營，而非其種族。",
+    "zh-Hans": "深渊中同阵营服务器匹配时，深渊回廊也会按正确的神器计算：按服务器在匹配中的阵营，而非其种族。"
+  },
+  {
     "version": "1.4.13",
     "en": "Server names as the game has them: the newest servers' new names in every region (Gauss, Lamuatan, Agnita, Atiel, Tassin, Heladrir), and server names in Japanese and Russian.",
     "ko": "서버 이름을 게임과 같게 표시합니다: 모든 지역의 최신 서버 새 이름(Gauss, Lamuatan, Agnita, Atiel, Tassin, Heladrir), 일본어와 러시아어 서버 이름.",
@@ -50,18 +63,5 @@
     "ru": "В свёрнутом виде теперь видна и заряженная энергия Одиль каждого персонажа, рядом с базовой.",
     "zh-Hant": "摺疊檢視也會在基本能量旁顯示每個角色的已充能奧德能量。",
     "zh-Hans": "折叠视图也会在基本能量旁显示每个角色的已充能奥德能量。"
-  },
-  {
-    "version": "1.4.9",
-    "en": "An alert over the game, with a chime, when a character's Odyle energy nears the cap: when the next refill would be wasted, up to 3 refills sooner, or when full; for every character or the ones you tick.",
-    "ko": "캐릭터의 오드 에너지가 한도에 가까워지면 게임 위에 알림과 알림음이 나옵니다: 다음 충전이 낭비될 때, 최대 충전 3회 전, 또는 가득 찼을 때; 모든 캐릭터 또는 선택한 캐릭터에 대해.",
-    "ja": "キャラクターのオードエネルギーが上限に近づくと、ゲームの上に通知とチャイム：次の回復が無駄になるとき、最大で回復3回前、または満タンのとき。全キャラクターかチェックしたキャラクターで。",
-    "de": "Ein Hinweis über dem Spiel mit Ton, wenn die Odyle-Energie eines Charakters fast voll ist: wenn die nächste Aufladung verfällt, bis zu 3 Aufladungen früher oder wenn voll; für alle oder markierte Charaktere.",
-    "fr": "Une alerte au-dessus du jeu, avec un carillon, quand l'énergie d'Odyle d'un personnage approche du plafond : quand la prochaine recharge serait perdue, jusqu'à 3 recharges plus tôt, ou quand c'est plein ; pour tous ou les personnages cochés.",
-    "es": "Un aviso sobre el juego, con sonido, cuando la energía de Odyle de un personaje se acerca al límite: cuando la próxima recarga se perdería, hasta 3 recargas antes o cuando esté lleno; para todos o los personajes marcados.",
-    "pt": "Um alerta sobre o jogo, com som, quando a energia de Odyle de um personagem chega perto do limite: quando a próxima recarga seria desperdiçada, até 3 recargas antes ou quando estiver cheio; para todos ou os personagens marcados.",
-    "ru": "Оповещение поверх игры со звуком, когда энергия Одила персонажа близка к пределу: когда следующее пополнение пропадёт, до 3 пополнений раньше или когда полная; для всех или отмеченных персонажей.",
-    "zh-Hant": "角色的奧德能量接近上限時，在遊戲上方顯示提醒並發出提示音：下次補充會被浪費時、最多提前 3 次補充，或已滿時；適用於所有角色或勾選的角色。",
-    "zh-Hans": "角色的奥德能量接近上限时，在游戏上方显示提醒并发出提示音：下次补充会被浪费时、最多提前 3 次补充，或已满时；适用于所有角色或勾选的角色。"
   }
 ]

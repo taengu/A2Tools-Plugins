@@ -73,7 +73,26 @@
     return { fire, alerted: kept };
   }
 
+  // The side a server plays in the Abyss: its side in the game's pairing
+  // (1 Elyos, 2 Asmodian; two servers of one faction can be paired, one then
+  // on the Elyos side), else its faction from the id (1xxx, 2xxx).
+  function abyssSide(serverId, pairedSide) {
+    const sides = { 1: "elyos", 2: "asmodian" };
+    return sides[pairedSide] || sides[String(serverId ?? "")[0]];
+  }
+
+  // Which of the three corridors a side can run: those whose artifact it
+  // holds; all when the side or a holder isn't known, or the holder is one
+  // the meter can't name.
+  function corridorsOpen(holders, side) {
+    return [1001, 1002, 1003].map((id) => {
+      const h = holders?.[id];
+      return !side || !h || h === side || String(h).startsWith("unknown");
+    });
+  }
+
   globalThis.RosterLogic = {
     STEP, EVERY, CAPS, ALERT_MODES, nextRefill, refillsBetween, estimate, fullAt, wastesNext, alertMark, alertsDue,
+    abyssSide, corridorsOpen,
   };
 })();

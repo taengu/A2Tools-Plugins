@@ -2,7 +2,8 @@
 // them (class, level, combat power, gear score, Odyle energy), kept between
 // sessions. Basic energy refills while you are away, so it is shown as it
 // likely is now (≈), until the game says again.
-const { CAPS, STEP, ALERT_MODES, nextRefill, estimate, fullAt, EVERY, wastesNext, alertsDue } = globalThis.RosterLogic;
+const { CAPS, STEP, ALERT_MODES, nextRefill, estimate, fullAt, EVERY, wastesNext, alertsDue, abyssSide: sideIn, corridorsOpen } =
+  globalThis.RosterLogic;
 const SERVERS = globalThis.ROSTER_SERVERS || {};
 const UI = globalThis.ROSTER_UI;
 const $ = (sel, root = document) => root.querySelector(sel);
@@ -173,6 +174,42 @@ function keepSiege(serverId, d) {
   render();
 }
 a2.on("abyss", (d) => keepSiege(state.chars[current]?.serverId, d));
+// The side each server plays in the Abyss this matchmaking: two servers of
+// one faction can be paired, one of them then on the Elyos side (2303 on 1
+// and 2304 on 2, 26 November), and the artifacts' holders are sides, not
+// factions. Kept per server until the next matchmaking (the pairings' from).
+function recountServer(serverId) {
+  for (const ch of Object.values(state.chars)) if (String(ch.serverId) === String(serverId)) corridors(ch);
+}
+a2.on("abyssPairing", (d) => {
+  const now = Date.now();
+  const changed = [];
+  let wrote = false;
+  for (const s of Array.isArray(d?.servers) ? d.servers : []) {
+    const id = String(s?.server || "");
+    if (!id || (s.side !== 1 && s.side !== 2)) continue;
+    const server = (state.servers[id] ||= {});
+    if (server.role?.side === s.side && now - server.role.at < 3_600_000) continue;
+    if (server.role?.side !== s.side) changed.push(id);
+    server.role = { side: s.side, at: now };
+    wrote = true;
+  }
+  if (!wrote) return;
+  changed.forEach(recountServer);
+  save();
+  if (changed.length) render();
+});
+a2.on("pairings", (p) => {
+  const from = Date.parse(p?.from);
+  if (!Number.isFinite(from)) return;
+  const dropped = Object.entries(state.servers).filter(([, s]) => s?.role && s.role.at < from).map(([id]) => id);
+  if (!dropped.length) return;
+  for (const id of dropped) delete state.servers[id].role;
+  dropped.forEach(recountServer);
+  save();
+  render();
+});
+const abyssSide = (serverId) => sideIn(serverId, state.servers[serverId ?? ""]?.role?.side);
 // The site's copy, for a server not seen in the Abyss yet this session, or
 // once the siege known has passed: asked again after 10 minutes at most.
 const asked = new Map();
@@ -203,12 +240,8 @@ function corridors(ch) {
   askSiege(ch.serverId);
   const now = Date.now();
   const siege = state.servers[ch.serverId ?? ""]?.siege;
-  const side = sideOf(ch.serverId);
-  const holders = siege?.holders || {};
-  const ours = PASSAGES.map((_, k) => {
-    const h = holders[1001 + k];
-    return !side || !h || h === side || String(h).startsWith("unknown");
-  });
+  const side = abyssSide(ch.serverId);
+  const ours = corridorsOpen(siege?.holders, side);
   const cap = ours.filter(Boolean).length;
   const done = states.filter((st, k) => ours[k] && st === "used").length;
   const prev = ch.counts?.["abyss:corridors"];

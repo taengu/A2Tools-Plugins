@@ -67,3 +67,21 @@ test("only ticked characters, or none when off", () => {
   assert.deepEqual([...L.alertsDue(chars, "off", "all", {}, now).fire], []);
   assert.deepEqual([...L.alertsDue(chars, "full", "all", {}, now).fire], [], "838 isn't full");
 });
+
+test("the Abyss side comes from the pairing, the faction only without one", () => {
+  // 26 November: 2303 and 2304, both Asmodian, paired; 2303 on side 1.
+  assert.equal(L.abyssSide(2303, 1), "elyos");
+  assert.equal(L.abyssSide(2304, 2), "asmodian");
+  assert.equal(L.abyssSide(2303, undefined), "asmodian");
+  assert.equal(L.abyssSide(1304, undefined), "elyos");
+  assert.equal(L.abyssSide(undefined, undefined), undefined);
+});
+
+test("the corridors open are those whose artifact the side holds", () => {
+  // As 2303's Abyss map had them: Root and Siel's Wings side 1, Sulfur side 2.
+  const holders = { 1001: "elyos", 1002: "asmodian", 1003: "elyos" };
+  assert.deepEqual([...L.corridorsOpen(holders, L.abyssSide(2303, 1))], [true, false, true]);
+  assert.deepEqual([...L.corridorsOpen(holders, "asmodian")], [false, true, false]);
+  assert.deepEqual([...L.corridorsOpen({ 1001: "none", 1002: "unknown-3" }, "elyos")], [false, true, true]);
+  assert.deepEqual([...L.corridorsOpen(holders, undefined)], [true, true, true]);
+});
