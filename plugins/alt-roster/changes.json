@@ -1,5 +1,18 @@
 [
   {
+    "version": "1.4.15",
+    "en": "Copy a character's code (stats and Genus) for sites such as aion2lab.dev, from the button by its name. Needs meter 2.1.7; open Genus Insight in the game once per character.",
+    "ko": "캐릭터 이름 옆 버튼으로 캐릭터 코드(능력치와 종족 이해도)를 복사해 aion2lab.dev 같은 사이트에서 쓸 수 있습니다. 미터 2.1.7 필요, 캐릭터마다 게임에서 종족 이해도를 한 번 열어 주세요.",
+    "ja": "名前の横のボタンでキャラクターコード (能力値と種族理解度) をコピーし、aion2lab.dev などのサイトで使えます。メーター 2.1.7 が必要です。キャラクターごとにゲームで種族理解度を一度開いてください。",
+    "de": "Kopiere den Code eines Charakters (Werte und Spezieskenntnis) für Seiten wie aion2lab.dev über die Schaltfläche neben seinem Namen. Braucht Meter 2.1.7; öffne die Spezieskenntnis im Spiel einmal pro Charakter.",
+    "fr": "Copiez le code d'un personnage (statistiques et Perception d'espèce) pour des sites comme aion2lab.dev, avec le bouton à côté de son nom. Nécessite le meter 2.1.7 ; ouvrez la Perception d'espèce une fois en jeu par personnage.",
+    "es": "Copia el código de un personaje (atributos y Comprensión de raza) para sitios como aion2lab.dev con el botón junto a su nombre. Requiere el medidor 2.1.7; abre la Comprensión de raza una vez en el juego por personaje.",
+    "pt": "Copie o código de um personagem (atributos e Compreensão do Tipo) para sites como aion2lab.dev pelo botão ao lado do nome. Requer o medidor 2.1.7; abra a Compreensão do Tipo uma vez no jogo por personagem.",
+    "ru": "Копируйте код персонажа (характеристики и Знание о видах) для сайтов вроде aion2lab.dev кнопкой рядом с именем. Нужен метр 2.1.7; откройте Знание о видах в игре один раз для каждого персонажа.",
+    "zh-Hans": "通过名字旁的按钮复制角色代码（属性与种族理解度），用于 aion2lab.dev 等网站。需要 2.1.7 版计量器；每个角色请在游戏中打开一次种族理解度。",
+    "zh-Hant": "透過名字旁的按鈕複製角色代碼（屬性與種族理解度），用於 aion2lab.dev 等網站。需要 2.1.7 版計量器；每個角色請在遊戲中開啟一次種族理解度。"
+  },
+  {
     "version": "1.4.14",
     "en": "Abyss Corridors count the right artifacts when the Abyss pairs two servers of the same faction: your server's side in the pairing, not its faction.",
     "ko": "어비스에서 같은 진영의 서버끼리 매칭되어도 어비스 회랑이 올바른 아티팩트로 집계됩니다: 서버의 진영이 아니라 매칭에서 맡은 쪽을 기준으로 합니다.",
@@ -50,18 +63,5 @@
     "ru": "Нажмите на заголовок столбца, чтобы сортировать по нему, и ещё раз, чтобы развернуть: персонаж по серверу, затем по имени, числа по убыванию. В меню сортировки появилась и Заряженная.",
     "zh-Hant": "點欄位標題即依該欄排序，再點一次反向：角色依伺服器再依名稱，數字由大到小。排序選單也新增了充能。",
     "zh-Hans": "点栏位标题即按该栏排序，再点一次反向：角色按服务器再按名称，数字由大到小。排序菜单也新增了充能。"
-  },
-  {
-    "version": "1.4.10",
-    "en": "The folded view shows each character's charged Odyle energy too, next to the basic energy.",
-    "ko": "접은 보기에서도 기본 에너지 옆에 각 캐릭터의 충전된 오드 에너지가 표시됩니다.",
-    "ja": "折りたたみ表示でも、基本エネルギーの横に各キャラクターのチャージ済みオードエネルギーが表示されます。",
-    "de": "Die eingeklappte Ansicht zeigt neben der Grundenergie auch die geladene Odyle-Energie jedes Charakters.",
-    "fr": "La vue repliée affiche aussi l'énergie d'Odyle chargée de chaque personnage, à côté de l'énergie de base.",
-    "es": "La vista plegada también muestra la energía de Odyle cargada de cada personaje, junto a la energía básica.",
-    "pt": "A visualização recolhida também mostra a energia de Odyle carregada de cada personagem, ao lado da energia básica.",
-    "ru": "В свёрнутом виде теперь видна и заряженная энергия Одиль каждого персонажа, рядом с базовой.",
-    "zh-Hant": "摺疊檢視也會在基本能量旁顯示每個角色的已充能奧德能量。",
-    "zh-Hans": "折叠视图也会在基本能量旁显示每个角色的已充能奥德能量。"
   }
 ]

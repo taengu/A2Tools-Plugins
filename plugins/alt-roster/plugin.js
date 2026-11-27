@@ -65,6 +65,56 @@ const same = (a, b) => JSON.stringify({ ...a, at: 0 }) === JSON.stringify({ ...b
 const kept = (prev, next) => (prev && same(prev, next) ? prev : next);
 
 // ── What the meter says ────────────────────────────────────────────────────
+// Each character's sheet the meter keeps (meter 2.1.7 on, permission
+// "events:stats"): stats and Genus, and the character code a site such as
+// aion2lab.dev reads. Characters the meter saw before Roster was installed
+// join the list from it.
+const sheets = {};
+const COPY_SVG = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>';
+let copied = null;
+// Sheets that come before the saved list is read wait for it (start).
+let sheetsReady = false;
+let sheetsWaiting = null;
+function takeSheets(list) {
+  if (!Array.isArray(list)) return;
+  if (!sheetsReady) {
+    sheetsWaiting = list;
+    return;
+  }
+  let added = false;
+  for (const sh of list) {
+    if (!sh?.name || !sh.serverId || !sh.code) continue;
+    const key = `${sh.name}@${sh.serverId}`;
+    sheets[key] = sh;
+    if (state.chars[key]) continue;
+    state.chars[key] = { name: sh.name, serverId: sh.serverId, cap: CAPS[1], seen: num(sh.seenAt) || undefined };
+    const ch = state.chars[key];
+    if (sh.className) ch.class = sh.className;
+    if (num(sh.level)) ch.level = sh.level;
+    if (num(sh.combatPower)) ch.cp = sh.combatPower;
+    if (num(sh.gearScore)) ch.gs = sh.gearScore;
+    added = true;
+  }
+  if (added) save();
+  render();
+}
+a2.on("characterSheets", takeSheets);
+async function copyText(text) {
+  try {
+    await navigator.clipboard.writeText(text);
+    return true;
+  } catch {
+    const area = document.createElement("textarea");
+    area.value = text;
+    document.body.append(area);
+    area.select();
+    let ok = false;
+    try { ok = document.execCommand("copy"); } catch {}
+    area.remove();
+    return ok;
+  }
+}
+
 a2.on("character", (c) => {
   // Only once the server is known: a meter started before the game says the
   // last name played before it knows where, and that made a second, empty
@@ -679,7 +729,18 @@ function rowOf(r) {
   bell.title = t.bellTip;
   bell.setAttribute("aria-pressed", String(!!ch.watch));
   bell.innerHTML = BELL_SVG;
-  who.append(badge, names, bell, remove);
+  const sheet = sheets[r.key];
+  const parts = [badge, names];
+  if (sheet) {
+    const done = copied?.key === r.key && Date.now() - copied.at < 2000;
+    const code = el("button", `copyCode${done ? " done" : ""}`);
+    code.type = "button";
+    code.title = done ? t.codeCopied : sheet.genus ? t.codeTip : `${t.codeTip}
+${t.codeNoGenus}`;
+    code.innerHTML = done ? "✓" : COPY_SVG;
+    parts.push(code);
+  }
+  who.append(...parts, bell, remove);
 
   const cp = el("div", `num cp${ch.cp ? "" : " none"}`, ch.cp ? fmt.format(ch.cp) : "—");
   cp.dataset.label = t.colCombat;
@@ -736,7 +797,16 @@ $(".list").addEventListener("click", (e) => {
   if (!li) return;
   const ch = state.chars[li.dataset.key];
   if (!ch) return;
-  if (e.target.closest(".bell")) {
+  if (e.target.closest(".copyCode")) {
+    const sheet = sheets[li.dataset.key];
+    if (!sheet) return;
+    copyText(sheet.code).then((ok) => {
+      if (!ok) return;
+      copied = { key: li.dataset.key, at: Date.now() };
+      render();
+      setTimeout(render, 2100);
+    });
+  } else if (e.target.closest(".bell")) {
     ch.watch = !ch.watch;
     save();
     render();
@@ -954,6 +1024,9 @@ function applyLanguage() {
   document.body.classList.toggle("alertTicked", state.prefs.alertWho === "ticked");
   showTab(state.prefs.tab);
   a2.ready();
+  sheetsReady = true;
+  if (sheetsWaiting) takeSheets(sheetsWaiting);
+  if (typeof a2.characterSheets === "function") a2.characterSheets().then(takeSheets, () => {});
   // The countdowns, and the one playing stays "seen now" (saved every 5 min).
   let seenSaved = Date.now();
   setInterval(() => {
