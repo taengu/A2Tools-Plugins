@@ -1,5 +1,18 @@
 [
   {
+    "version": "0.8.8",
+    "en": "Gathering: what you gathered in the last hour, your latest session (until a 15-minute break) or any period, every item with how many and about how many per hour, extras included. Drops, Gathering lists every item you gather too.",
+    "ko": "채집: 최근 1시간, 최근 세션(15분 쉬기 전까지) 또는 원하는 기간에 채집한 모든 아이템을 개수와 시간당 개수와 함께 표시합니다(추가 보상 포함). 드롭의 채집에도 채집한 모든 아이템이 나옵니다.",
+    "ja": "採集：直近1時間、直近のセッション（15分休むまで）または任意の期間に採集したすべてのアイテムを、個数と1時間あたりの個数とともに表示（追加報酬を含む）。ドロップの採集にも採集したすべてのアイテムを表示します。",
+    "de": "Sammeln: was du in der letzten Stunde, deiner letzten Sitzung (bis zu 15 Minuten Pause) oder einem beliebigen Zeitraum gesammelt hast, jeder Gegenstand mit Anzahl und etwa pro Stunde, Extras inklusive. Auch Beute, Sammeln listet jeden gesammelten Gegenstand.",
+    "fr": "Récolte : ce que vous avez récolté pendant la dernière heure, votre dernière session (jusqu'à 15 minutes de pause) ou toute période, chaque objet avec la quantité et environ combien par heure, bonus compris. Butin, Récolte liste aussi chaque objet récolté.",
+    "es": "Recolección: lo que recolectaste en la última hora, tu última sesión (hasta una pausa de 15 minutos) o cualquier periodo, cada objeto con cuántos y unos cuántos por hora, extras incluidos. Botín, Recolección también lista cada objeto recolectado.",
+    "pt": "Coleta: o que você coletou na última hora, na sua última sessão (até uma pausa de 15 minutos) ou em qualquer período, cada item com quantos e cerca de quantos por hora, extras incluídos. Saque, Coleta também lista cada item coletado.",
+    "ru": "Сбор: что вы собрали за последний час, последнюю сессию (до перерыва в 15 минут) или любой период — каждый предмет с количеством и примерно в час, включая бонусы. В «Добыча, Сбор» тоже показан каждый собранный предмет.",
+    "zh-Hant": "採集：最近 1 小時、最近一段（直到休息 15 分鐘）或任何期間採集到的每種物品，以及數量與約每小時數量（含額外獎勵）。掉落的採集也會列出你採集的每種物品。",
+    "zh-Hans": "采集：最近 1 小时、最近一段（直到休息 15 分钟）或任何期间采集到的每种物品，以及数量与约每小时数量（含额外奖励）。掉落的采集也会列出你采集的每种物品。"
+  },
+  {
     "version": "0.8.7",
     "en": "Filters: pick several genera and levels at once (for example Fera and Natura, level 0 and 1). All clears the row.",
     "ko": "필터: 종족과 레벨을 여러 개 함께 고를 수 있습니다(예: 야성과 자연, 0레벨과 1레벨). 「전체」는 선택을 지웁니다.",
@@ -50,18 +63,5 @@
     "ru": "История сбора сохраняется небольшими страницами, чтобы длинные журналы помещались в лимит счётчика. Временные ошибки записи повторяются, существующая история сохраняется.",
     "zh-Hant": "採集歷史以較小的分頁儲存，長篇紀錄也能符合計量器的儲存上限。暫時寫入失敗時會重試，並保留現有歷史。",
     "zh-Hans": "采集历史以较小的分页保存，使较长的记录也能符合统计器的存储上限。暂时写入失败时会重试，并保留已有历史。"
-  },
-  {
-    "version": "0.8.3",
-    "en": "Black Market: a pet or item on sale in two tabs at once stays on the list after you buy one of them, until the other is bought too.",
-    "ko": "검은 구름 무역단: 두 탭에 동시에 나온 펫이나 아이템은 하나를 사도 다른 하나를 살 때까지 목록에 남습니다.",
-    "ja": "黒雲貿易団：2つのタブに同時に出ているペットやアイテムは、片方を買っても、もう片方を買うまでリストに残ります。",
-    "de": "Schwarzmarkt: Ein Begleiter oder Gegenstand, der in zwei Tabs gleichzeitig angeboten wird, bleibt nach dem Kauf eines davon in der Liste, bis auch der andere gekauft ist.",
-    "fr": "Marché noir : un familier ou un objet en vente dans deux onglets à la fois reste dans la liste après en avoir acheté un, jusqu'à ce que l'autre soit acheté aussi.",
-    "es": "Mercado negro: una mascota o un objeto a la venta en dos pestañas a la vez sigue en la lista después de comprar uno, hasta que se compra también el otro.",
-    "pt": "Mercado negro: um mascote ou item à venda em duas abas ao mesmo tempo continua na lista depois de comprar um deles, até o outro ser comprado também.",
-    "ru": "Чёрный рынок: питомец или предмет, выставленный сразу в двух вкладках, остаётся в списке после покупки одного из них, пока не куплен и второй.",
-    "zh-Hant": "黑雲貿易團：同時在兩個分頁上架的寵物或物品，買下其中一個後仍會留在清單上，直到另一個也買下。",
-    "zh-Hans": "黑云贸易团：同时在两个分页上架的宠物或物品，买下其中一个后仍会留在列表中，直到另一个也买下。"
   }
 ]

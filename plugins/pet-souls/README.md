@@ -18,10 +18,14 @@ The game counts the Kinah each character gains in a day, up to 1,000,000, and re
 **Drops** puts what you get beside what the game lists (meter 2.0.98 or later). Each row is an item, with your rate and the game's listed chance:
 
 - **Monsters**: your drops of the item from a monster, against the kills of it you hit. In a party each member gets drops of their own, so only yours count. The listed chance is the game's own, from the monster's reward lists.
-- **Gathering**: the extras a gather can give (a Life Crystal from Aria and Targena, Poko's Skin Bundle from most nodes, a Seed of Detection from trees) and double yields, against your gathers of that item. The game lists no chance for these.
+- **Gathering**: every item you gathered, as many as you got from how many gathers; and the extras a gather can give (a Life Crystal from Aria and Targena, Poko's Skin Bundle from most nodes, a Seed of Detection from trees) and double yields, against your gathers of that item. The game lists no chance for these.
 - **Shugo Festival** and **Dimensional Invasion**: each item the rewards gave, and in how many of your runs.
 
 Search by item or monster, pick a source, sort by the most seen, the luckiest (your rate against the listed chance) or the name, and choose the period (today, the last 7 or 30 days, or all kept). **Unique and above only** and **This character only** narrow the list. Counts are kept per character and day, for 90 days.
+
+## Gathering
+
+**Gathering** shows what you gathered in the last hour, your latest session (back to a 15-minute break), today or a longer period: every item with how many you got and about how many per hour, the Plentiful Harvest copies and extras included. Below it, how often each node's gathers came out upgraded, by Herb Appraiser and at the start, and the latest gathers.
 
 ## Skins
 
