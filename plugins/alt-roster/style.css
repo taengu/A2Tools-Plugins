@@ -85,12 +85,14 @@ body.alertTicked .bell { display: inline-flex; align-items: center; justify-cont
 .bell svg { width: 14px; height: 14px; }
 /* Each row's character code (sheets from meter 2.1.7): copied on click. */
 .copyCode {
-  display: inline-flex; align-items: center; justify-content: center; flex: none; width: 20px; height: 20px;
-  padding: 0; border: 0; background: none; cursor: pointer; color: var(--dim); opacity: 0.55; font-size: 12px;
+  display: inline-flex; align-items: center; justify-content: center; flex: none; width: 24px; height: 20px;
+  padding: 0; border: 1px solid color-mix(in srgb, var(--accent) 55%, transparent); border-radius: 5px;
+  background: color-mix(in srgb, var(--accent) 14%, transparent); cursor: pointer; color: var(--accent); font-size: 12px;
 }
-.copyCode:hover { opacity: 1; }
-.copyCode.done { color: var(--full); opacity: 1; }
-.copyCode svg { width: 13px; height: 13px; }
+.copyCode:hover { background: color-mix(in srgb, var(--accent) 28%, transparent); border-color: var(--accent); }
+.copyCode:focus-visible { outline: 2px solid var(--accent); outline-offset: 1px; }
+.copyCode.done { color: var(--full); border-color: color-mix(in srgb, var(--full) 55%, transparent); background: color-mix(in srgb, var(--full) 14%, transparent); }
+.copyCode svg { width: 14px; height: 14px; }
 .search { flex: 1; min-width: 0; padding: 3px 7px; }
 .count { font-size: 12px; color: var(--dim); white-space: nowrap; }
 

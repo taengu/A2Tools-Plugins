@@ -1,5 +1,18 @@
 [
   {
+    "version": "1.4.16",
+    "en": "The button to copy a character's code is easier to see.",
+    "ko": "캐릭터 코드 복사 버튼이 더 잘 보입니다.",
+    "ja": "キャラクターコードをコピーするボタンが見やすくなりました。",
+    "de": "Die Schaltfläche zum Kopieren des Charaktercodes ist besser zu sehen.",
+    "fr": "Le bouton pour copier le code d'un personnage est plus visible.",
+    "es": "El botón para copiar el código de un personaje se ve mejor.",
+    "pt": "O botão para copiar o código de um personagem está mais visível.",
+    "ru": "Кнопку копирования кода персонажа теперь лучше видно.",
+    "zh-Hans": "复制角色代码的按钮更显眼了。",
+    "zh-Hant": "複製角色代碼的按鈕更顯眼了。"
+  },
+  {
     "version": "1.4.15",
     "en": "Copy a character's code (stats and Genus) for sites such as aion2lab.dev, from the button by its name. Needs meter 2.1.7; open Genus Insight in the game once per character.",
     "ko": "캐릭터 이름 옆 버튼으로 캐릭터 코드(능력치와 종족 이해도)를 복사해 aion2lab.dev 같은 사이트에서 쓸 수 있습니다. 미터 2.1.7 필요, 캐릭터마다 게임에서 종족 이해도를 한 번 열어 주세요.",
@@ -50,18 +63,5 @@
     "ru": "Под каждым персонажем — его Коридоры Бездны в эту осаду: пройдены (зелёным), ещё нет, или ?, если вы не играли им с осады.",
     "zh-Hant": "每個角色名稱下方顯示本次攻城的深淵迴廊：已完成（綠色）、未完成，若攻城後未登入則顯示 ?。",
     "zh-Hans": "每个角色名称下方显示本次攻城的深渊回廊：已完成（绿色）、未完成，若攻城后未登录则显示 ?。"
-  },
-  {
-    "version": "1.4.11",
-    "en": "Click a column header to sort the list by it, and again to reverse: Character by server then name, the numbers largest first. The order menu has Charged too.",
-    "ko": "열 제목을 누르면 그 기준으로 정렬하고, 다시 누르면 반대로 정렬합니다. 캐릭터는 서버, 이름 순이고 숫자는 큰 순서입니다. 정렬 메뉴에 충전도 추가했습니다.",
-    "ja": "列の見出しをクリックするとその列で並べ替え、もう一度で逆順になります。キャラクターはサーバー、名前の順、数値は大きい順です。並べ替えメニューにチャージも追加しました。",
-    "de": "Ein Klick auf eine Spaltenüberschrift sortiert danach, ein weiterer kehrt die Reihenfolge um: Charakter nach Server, dann Name, die Zahlen größte zuerst. Das Sortiermenü hat jetzt auch Geladen.",
-    "fr": "Clique sur un en-tête de colonne pour trier par celle-ci, et encore pour inverser : Personnage par serveur puis nom, les nombres du plus grand au plus petit. Le menu de tri propose aussi Chargée.",
-    "es": "Haz clic en un encabezado para ordenar por esa columna, y otra vez para invertir: Personaje por servidor y luego nombre, los números de mayor a menor. El menú de orden también tiene Cargada.",
-    "pt": "Clique no cabeçalho de uma coluna para ordenar por ela, e de novo para inverter: Personagem por servidor e depois nome, os números do maior para o menor. O menu de ordem também tem Carregada.",
-    "ru": "Нажмите на заголовок столбца, чтобы сортировать по нему, и ещё раз, чтобы развернуть: персонаж по серверу, затем по имени, числа по убыванию. В меню сортировки появилась и Заряженная.",
-    "zh-Hant": "點欄位標題即依該欄排序，再點一次反向：角色依伺服器再依名稱，數字由大到小。排序選單也新增了充能。",
-    "zh-Hans": "点栏位标题即按该栏排序，再点一次反向：角色按服务器再按名称，数字由大到小。排序菜单也新增了充能。"
   }
 ]
