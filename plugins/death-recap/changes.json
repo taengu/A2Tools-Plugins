@@ -1,5 +1,18 @@
 [
   {
+    "version": "0.5.0",
+    "en": "Your own sounds: choose a sound file for a kill, an assist, a spree and a death in Settings, played instead of the built-in sound. The spree sound plays from the streak you pick.",
+    "ko": "내 소리: 설정에서 처치, 어시스트, 연속 처치, 사망에 쓸 소리 파일을 고르면 기본 소리 대신 재생됩니다. 연속 처치 소리는 고른 연속 횟수부터 납니다.",
+    "ja": "自分のサウンド：設定でキル、アシスト、連続キル、デスの音声ファイルを選ぶと、標準の音の代わりに鳴ります。連続キル音は選んだ連続数から鳴ります。",
+    "de": "Eigene Sounds: Wähle in den Einstellungen eine Sounddatei für Kill, Assist, Serie und Tod; sie spielt statt des Standard-Sounds. Der Serien-Sound spielt ab der gewählten Serie.",
+    "fr": "Vos propres sons : choisissez dans les Paramètres un fichier son pour un abattage, une assistance, une série et une mort, joué à la place du son intégré. Le son de série se joue à partir de la série choisie.",
+    "es": "Tus propios sonidos: elige en Ajustes un archivo de sonido para una baja, una asistencia, una racha y una muerte, que suena en lugar del sonido integrado. El sonido de racha suena desde la racha que elijas.",
+    "pt": "Seus próprios sons: escolha nas Configurações um arquivo de som para abate, assistência, sequência e morte, tocado no lugar do som padrão. O som de sequência toca a partir da sequência escolhida.",
+    "ru": "Свои звуки: выберите в настройках звуковой файл для убийства, помощи, серии и смерти — он играет вместо встроенного звука. Звук серии играет с выбранной длины серии.",
+    "zh-Hant": "自訂音效：在設定中為擊殺、助攻、連殺和死亡選擇音訊檔，取代內建音效播放。連殺音效從你選擇的連殺次數開始播放。",
+    "zh-Hans": "自定义音效：在设置中为击杀、助攻、连杀和死亡选择音频文件，取代内置音效播放。连杀音效从你选择的连杀次数开始播放。"
+  },
+  {
     "version": "0.4.1",
     "en": "Server names as the game has them: the newest servers' new names in every region (Gauss, Lamuatan, Agnita, Atiel, Tassin, Heladrir), and server names in Japanese and Russian.",
     "ko": "서버 이름을 게임과 같게 표시합니다: 모든 지역의 최신 서버 새 이름(Gauss, Lamuatan, Agnita, Atiel, Tassin, Heladrir), 일본어와 러시아어 서버 이름.",
@@ -50,18 +63,5 @@
     "ru": "Death Recap теперь называется PvP Tracker и включает K/D/A Counter от Nullception: вкладка PvP считает ваши убийства, смерти и помощи, серию и очки Бездны, заработанные в Бездне (meter 2.0.94). Звуки убийств и открытие в Бездне выключены, пока вы не включите их в настройках.",
     "zh-Hant": "死亡回顧現在是 PvP 追蹤器，並加入了 Nullception 的 K/D/A 計數器：PvP 分頁會計算你的擊殺、死亡、助攻、連殺，以及在深淵獲得的深淵點數（計量器 2.0.94）。擊殺音效與進入深淵時自動開啟，在設定中開啟前都是關閉的。",
     "zh-Hans": "死亡回顾现在是 PvP 追踪器，并加入了 Nullception 的 K/D/A 计数器：PvP 页签会统计你的击杀、死亡、助攻、连杀，以及在深渊获得的深渊点数（计量器 2.0.94）。击杀音效与进入深渊时自动打开，在设置中开启前都是关闭的。"
-  },
-  {
-    "version": "0.1.1",
-    "en": "The class and score icons show on Linux, in the popup and the window.",
-    "ko": "직업과 점수 아이콘이 리눅스에서도 팝업과 창에 표시됩니다.",
-    "ja": "クラスとスコアのアイコンがLinuxでもポップアップとウィンドウに表示されます。",
-    "de": "Die Klassen- und Punktesymbole erscheinen unter Linux, im Popup und im Fenster.",
-    "fr": "Les icônes de classe et de score s'affichent sous Linux, dans la fenêtre surgissante et la fenêtre.",
-    "es": "Los iconos de clase y puntuación se muestran en Linux, en la ventana emergente y en la ventana.",
-    "pt": "Os ícones de classe e pontuação aparecem no Linux, no pop-up e na janela.",
-    "ru": "Значки класса и оценки отображаются в Linux, во всплывающем окне и в окне.",
-    "zh-Hant": "職業與分數圖示在 Linux 上也會顯示於彈出視窗與視窗中。",
-    "zh-Hans": "职业与分数图标在 Linux 上也会显示于弹出窗口与窗口中。"
   }
 ]

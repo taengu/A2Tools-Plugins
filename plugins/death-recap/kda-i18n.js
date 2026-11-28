@@ -8,6 +8,8 @@ globalThis.KDA_UI = {
     week: "This week", weekOf: (a, b) => `${a} / ${b}`, apPerKill: (n) => `≈ ${n} per kill`, apPerAssist: (n) => `≈ ${n} per assist`,
     victims: "Kills and assists", kill: "Kill", assist: "Assist",
     volume: "Volume", assistSound: "Assist sound", deathSound: "Death sound", abyssPopup: "Show when entering the Abyss", test: "Test",
+    spree: "Spree", death: "Death", ownSounds: "Your own sounds", spreeFrom: "Spree sound from", spreeKills: (n) => `${n} in a row`, builtIn: "Built-in",
+    choose: "File…", play: "Play", useBuiltIn: "Use the built-in sound", clipHelp: "Choose or drop a sound file (MP3, OGG or WAV, up to 4 MB). Without one, the built-in sound plays.", tooBig: "That file is over 4 MB.", notAudio: "That file isn't a sound that can be played.", saveFailed: "The sound couldn't be saved.",
   },
   ko: {
     kills: "처치", deaths: "사망", assists: "어시스트", abyss: "어비스 포인트",
@@ -17,6 +19,8 @@ globalThis.KDA_UI = {
     week: "이번 주", weekOf: (a, b) => `${a} / ${b}`, apPerKill: (n) => `처치당 ≈ ${n}`, apPerAssist: (n) => `어시스트당 ≈ ${n}`,
     victims: "처치와 어시스트", kill: "처치", assist: "어시스트",
     volume: "음량", assistSound: "어시스트 소리", deathSound: "사망 소리", abyssPopup: "어비스에 들어가면 표시", test: "테스트",
+    spree: "연속 처치", death: "사망", ownSounds: "내 소리", spreeFrom: "연속 처치 소리 시작", spreeKills: (n) => `${n}연속`, builtIn: "기본",
+    choose: "파일…", play: "재생", useBuiltIn: "기본 소리 사용", clipHelp: "소리 파일을 고르거나 끌어다 놓으세요 (MP3, OGG, WAV, 최대 4MB). 없으면 기본 소리가 납니다.", tooBig: "4MB가 넘는 파일입니다.", notAudio: "재생할 수 있는 소리 파일이 아닙니다.", saveFailed: "소리를 저장하지 못했습니다.",
   },
   ja: {
     kills: "キル", deaths: "デス", assists: "アシスト", abyss: "アビスポイント",
@@ -26,6 +30,8 @@ globalThis.KDA_UI = {
     week: "今週", weekOf: (a, b) => `${a} / ${b}`, apPerKill: (n) => `キルあたり ≈ ${n}`, apPerAssist: (n) => `アシストあたり ≈ ${n}`,
     victims: "キルとアシスト", kill: "キル", assist: "アシスト",
     volume: "音量", assistSound: "アシスト音", deathSound: "デス音", abyssPopup: "アビスに入ったら表示", test: "テスト",
+    spree: "連続キル", death: "デス", ownSounds: "自分のサウンド", spreeFrom: "連続キル音の開始", spreeKills: (n) => `${n}連続`, builtIn: "標準",
+    choose: "ファイル…", play: "再生", useBuiltIn: "標準の音を使う", clipHelp: "音声ファイルを選ぶかドロップ（MP3・OGG・WAV、4MBまで）。なければ標準の音が鳴ります。", tooBig: "4MBを超えるファイルです。", notAudio: "再生できる音声ファイルではありません。", saveFailed: "音を保存できませんでした。",
   },
   de: {
     kills: "Kills", deaths: "Tode", assists: "Assists", abyss: "Abyss-Punkte",
@@ -35,6 +41,8 @@ globalThis.KDA_UI = {
     week: "Diese Woche", weekOf: (a, b) => `${a} / ${b}`, apPerKill: (n) => `≈ ${n} pro Kill`, apPerAssist: (n) => `≈ ${n} pro Assist`,
     victims: "Kills und Assists", kill: "Kill", assist: "Assist",
     volume: "Lautstärke", assistSound: "Assist-Ton", deathSound: "Todes-Ton", abyssPopup: "Beim Betreten des Abyss anzeigen", test: "Test",
+    spree: "Serie", death: "Tod", ownSounds: "Eigene Sounds", spreeFrom: "Serien-Sound ab", spreeKills: (n) => `${n} in Folge`, builtIn: "Standard",
+    choose: "Datei…", play: "Abspielen", useBuiltIn: "Standard-Sound verwenden", clipHelp: "Wähle eine Sounddatei oder zieh sie hierher (MP3, OGG oder WAV, bis 4 MB). Ohne Datei spielt der Standard-Sound.", tooBig: "Die Datei ist größer als 4 MB.", notAudio: "Diese Datei ist kein abspielbarer Sound.", saveFailed: "Der Sound konnte nicht gespeichert werden.",
   },
   fr: {
     kills: "Éliminations", deaths: "Morts", assists: "Assistances", abyss: "Points d'Abysse",
@@ -44,6 +52,8 @@ globalThis.KDA_UI = {
     week: "Cette semaine", weekOf: (a, b) => `${a} / ${b}`, apPerKill: (n) => `≈ ${n} par élimination`, apPerAssist: (n) => `≈ ${n} par assistance`,
     victims: "Éliminations et assistances", kill: "Élimination", assist: "Assistance",
     volume: "Volume", assistSound: "Son d'assistance", deathSound: "Son de mort", abyssPopup: "Afficher en entrant dans l'Abysse", test: "Test",
+    spree: "Série", death: "Mort", ownSounds: "Vos propres sons", spreeFrom: "Son de série à partir de", spreeKills: (n) => `${n} d’affilée`, builtIn: "Intégré",
+    choose: "Fichier…", play: "Écouter", useBuiltIn: "Utiliser le son intégré", clipHelp: "Choisissez ou déposez un fichier son (MP3, OGG ou WAV, 4 Mo max.). Sans fichier, le son intégré est joué.", tooBig: "Ce fichier dépasse 4 Mo.", notAudio: "Ce fichier n’est pas un son lisible.", saveFailed: "Le son n’a pas pu être enregistré.",
   },
   es: {
     kills: "Bajas", deaths: "Muertes", assists: "Asistencias", abyss: "Puntos del Abismo",
@@ -53,6 +63,8 @@ globalThis.KDA_UI = {
     week: "Esta semana", weekOf: (a, b) => `${a} / ${b}`, apPerKill: (n) => `≈ ${n} por baja`, apPerAssist: (n) => `≈ ${n} por asistencia`,
     victims: "Bajas y asistencias", kill: "Baja", assist: "Asistencia",
     volume: "Volumen", assistSound: "Sonido de asistencia", deathSound: "Sonido de muerte", abyssPopup: "Mostrar al entrar en el Abismo", test: "Probar",
+    spree: "Racha", death: "Muerte", ownSounds: "Tus propios sonidos", spreeFrom: "Sonido de racha desde", spreeKills: (n) => `${n} seguidas`, builtIn: "Integrado",
+    choose: "Archivo…", play: "Reproducir", useBuiltIn: "Usar el sonido integrado", clipHelp: "Elige o suelta un archivo de sonido (MP3, OGG o WAV, hasta 4 MB). Sin él, suena el sonido integrado.", tooBig: "El archivo supera los 4 MB.", notAudio: "Ese archivo no es un sonido que se pueda reproducir.", saveFailed: "No se pudo guardar el sonido.",
   },
   pt: {
     kills: "Abates", deaths: "Mortes", assists: "Assistências", abyss: "Pontos do Abismo",
@@ -62,6 +74,8 @@ globalThis.KDA_UI = {
     week: "Esta semana", weekOf: (a, b) => `${a} / ${b}`, apPerKill: (n) => `≈ ${n} por abate`, apPerAssist: (n) => `≈ ${n} por assistência`,
     victims: "Abates e assistências", kill: "Abate", assist: "Assistência",
     volume: "Volume", assistSound: "Som de assistência", deathSound: "Som de morte", abyssPopup: "Mostrar ao entrar no Abismo", test: "Testar",
+    spree: "Sequência", death: "Morte", ownSounds: "Seus próprios sons", spreeFrom: "Som de sequência a partir de", spreeKills: (n) => `${n} seguidos`, builtIn: "Padrão",
+    choose: "Arquivo…", play: "Tocar", useBuiltIn: "Usar o som padrão", clipHelp: "Escolha ou solte um arquivo de som (MP3, OGG ou WAV, até 4 MB). Sem ele, toca o som padrão.", tooBig: "O arquivo passa de 4 MB.", notAudio: "Esse arquivo não é um som que possa ser tocado.", saveFailed: "Não foi possível salvar o som.",
   },
   ru: {
     kills: "Убийства", deaths: "Смерти", assists: "Помощь", abyss: "Очки Бездны",
@@ -71,6 +85,8 @@ globalThis.KDA_UI = {
     week: "Эта неделя", weekOf: (a, b) => `${a} / ${b}`, apPerKill: (n) => `≈ ${n} за убийство`, apPerAssist: (n) => `≈ ${n} за помощь`,
     victims: "Убийства и помощь", kill: "Убийство", assist: "Помощь",
     volume: "Громкость", assistSound: "Звук помощи", deathSound: "Звук смерти", abyssPopup: "Показывать при входе в Бездну", test: "Проверка",
+    spree: "Серия", death: "Смерть", ownSounds: "Свои звуки", spreeFrom: "Звук серии с", spreeKills: (n) => `${n} подряд`, builtIn: "Встроенный",
+    choose: "Файл…", play: "Прослушать", useBuiltIn: "Встроенный звук", clipHelp: "Выберите или перетащите звуковой файл (MP3, OGG или WAV, до 4 МБ). Без него играет встроенный звук.", tooBig: "Файл больше 4 МБ.", notAudio: "Этот файл нельзя воспроизвести как звук.", saveFailed: "Не удалось сохранить звук.",
   },
   "zh-Hans": {
     kills: "击杀", deaths: "死亡", assists: "助攻", abyss: "深渊点数",
@@ -80,6 +96,8 @@ globalThis.KDA_UI = {
     week: "本周", weekOf: (a, b) => `${a} / ${b}`, apPerKill: (n) => `每次击杀 ≈ ${n}`, apPerAssist: (n) => `每次助攻 ≈ ${n}`,
     victims: "击杀与助攻", kill: "击杀", assist: "助攻",
     volume: "音量", assistSound: "助攻音效", deathSound: "死亡音效", abyssPopup: "进入深渊时显示", test: "测试",
+    spree: "连杀", death: "死亡", ownSounds: "自定义音效", spreeFrom: "连杀音效起始", spreeKills: (n) => `连续 ${n} 次`, builtIn: "内置",
+    choose: "文件…", play: "播放", useBuiltIn: "使用内置音效", clipHelp: "选择或拖入音频文件（MP3、OGG 或 WAV，最大 4 MB）。没有文件时播放内置音效。", tooBig: "文件超过 4 MB。", notAudio: "该文件不是可播放的音频。", saveFailed: "无法保存音效。",
   },
   "zh-Hant": {
     kills: "擊殺", deaths: "死亡", assists: "助攻", abyss: "深淵點數",
@@ -89,5 +107,7 @@ globalThis.KDA_UI = {
     week: "本週", weekOf: (a, b) => `${a} / ${b}`, apPerKill: (n) => `每次擊殺 ≈ ${n}`, apPerAssist: (n) => `每次助攻 ≈ ${n}`,
     victims: "擊殺與助攻", kill: "擊殺", assist: "助攻",
     volume: "音量", assistSound: "助攻音效", deathSound: "死亡音效", abyssPopup: "進入深淵時顯示", test: "測試",
+    spree: "連殺", death: "死亡", ownSounds: "自訂音效", spreeFrom: "連殺音效起始", spreeKills: (n) => `連續 ${n} 次`, builtIn: "內建",
+    choose: "檔案…", play: "播放", useBuiltIn: "使用內建音效", clipHelp: "選擇或拖入音訊檔（MP3、OGG 或 WAV，最大 4 MB）。沒有檔案時播放內建音效。", tooBig: "檔案超過 4 MB。", notAudio: "此檔案不是可播放的音訊。", saveFailed: "無法儲存音效。",
   },
 };

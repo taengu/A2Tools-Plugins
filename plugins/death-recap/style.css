@@ -209,3 +209,13 @@ select option { background: var(--a2-panel, #0e1420); color: #fff; }
 .badge { font-size: 10.5px; font-weight: 600; letter-spacing: 0.04em; text-transform: uppercase; padding: 0 5px; border-radius: 3px; flex: 0 0 auto; }
 .badge.is-kill { color: #0d1a12; background: var(--green); }
 .badge.is-assist { color: var(--text-2); border: 1px solid rgba(255, 255, 255, 0.25); }
+.kdaClips { margin-top: 6px; padding-top: 6px; border-top: 1px solid rgba(255, 255, 255, 0.08); }
+.kdaClipsHead { font-weight: 600; margin: 2px 0 4px; }
+.kdaClip { border-radius: 4px; }
+.kdaClip.drop { outline: 1px dashed var(--text-2); background: rgba(255, 255, 255, 0.05); }
+.kdaClipFile { display: flex; align-items: center; gap: 4px; min-width: 0; }
+.kdaClipName { color: var(--text-3); font-size: 12.5px; max-width: 170px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.kdaClipName.own { color: var(--text); }
+.kdaClipFile button { border: 1px solid rgba(255, 255, 255, 0.2); border-radius: 4px; padding: 0 6px; background: none; color: var(--text-2); cursor: pointer; white-space: nowrap; }
+.kdaClipFile button:hover { color: var(--text); background: rgba(255, 255, 255, 0.08); }
+.kdaClipNote.bad { color: var(--red); }

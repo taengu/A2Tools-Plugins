@@ -80,6 +80,16 @@
       <label class="row"><span data-k="deathSound">Death sound</span> <input type="checkbox" class="kdaDeathSound" /></label>
       <label class="row"><span data-k="abyssPopup">Show when entering the Abyss</span> <input type="checkbox" class="kdaAbyssPopup" /></label>
       <div class="row"><span data-k="test">Test</span> <span class="kdaTests"></span></div>
+      <div class="kdaClips">
+        <div class="kdaClipsHead" data-k="ownSounds">Your own sounds</div>
+        <div class="row kdaClip" data-slot="kill"><span data-k="kill">Kill</span> <span class="kdaClipFile"></span></div>
+        <div class="row kdaClip" data-slot="assist"><span data-k="assist">Assist</span> <span class="kdaClipFile"></span></div>
+        <div class="row kdaClip" data-slot="spree"><span data-k="spree">Spree</span> <span class="kdaClipFile"></span></div>
+        <label class="row"><span data-k="spreeFrom">Spree sound from</span> <select class="kdaSpreeAt"></select></label>
+        <div class="row kdaClip" data-slot="death"><span data-k="death">Death</span> <span class="kdaClipFile"></span></div>
+        <p class="note kdaClipNote" data-k="clipHelp">Choose or drop a sound file (MP3, OGG or WAV, up to 4 MB). Without one, the built-in sound plays.</p>
+        <input type="file" class="kdaClipPick" accept="audio/*,.mp3,.ogg,.oga,.wav,.flac,.m4a,.aac,.opus,.webm" hidden />
+      </div>
     </div>
     <div class="buttons">
       <button type="button" class="test" data-t="test">Show a test popup</button>
@@ -94,6 +104,7 @@
   <script src="ranks.js"></script>
   <script src="logic.js"></script>
   <script src="kda.js"></script>
+  <script src="sounds.js"></script>
   <script src="kda-i18n.js"></script>
   <script src="plugin.js"></script>
 </body>

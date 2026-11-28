@@ -433,7 +433,7 @@ let kdaWords = globalThis.KDA_UI.en;
 const KDA_STALE_MS = 5_000;
 // Off at first: Death Recap's players never asked for sounds or a window
 // opening by itself, so these wait to be turned on in Settings.
-const kdaPrefs = { volume: 0, assistSound: true, deathSound: false, abyssPopup: false };
+const kdaPrefs = { volume: 0, assistSound: true, deathSound: false, abyssPopup: false, spreeAt: globalThis.KdaSounds.SPREE_DEFAULT };
 let kdaState = kdaFresh();
 // Kept apart from the counts: the reset clears those, not this.
 let kdaVictims = kdaFreshVictims();
@@ -452,6 +452,9 @@ function kdaPlay(kind, streak) {
     // Not awaited: in a hidden window WebKitGTK's resume() waits for the page
     // to be used, and a sound that waited for it stayed silent.
     if (audio.state !== "running") audio.resume().catch(() => {});
+    // The player's own sound for it, when they chose one.
+    const slot = Snd.slotFor(kind, streak, kdaPrefs.spreeAt, clipBuffers);
+    if (slot) return playClip(slot);
     for (const [freq, start, length, wave, volume] of kdaNotes(kind, streak)) {
       const osc = audio.createOscillator();
       const gain = audio.createGain();
@@ -536,6 +539,7 @@ function kdaTranslate(code) {
   for (const e of document.querySelectorAll("[data-k]")) e.textContent = kdaWords[e.dataset.k];
   for (const e of document.querySelectorAll("[data-k-title]")) e.title = kdaWords[e.dataset.kTitle];
   kdaDraw();
+  drawClips();
 }
 
 a2.on("kda", (e, meta) => {
@@ -588,9 +592,155 @@ for (const [label, kind, streak] of [["1", "kill", 1], ["2", "kill", 2], ["3", "
   K(".kdaTests").append(b);
 }
 
+// ----- The player's own sounds (kill, assist, spree, death) -----
+// A chosen file is kept in the plugin's storage in pieces (KdaSounds) and
+// decoded once; it plays through Web Audio, as the page may load no media.
+const Snd = globalThis.KdaSounds;
+const clipBuffers = {};
+const clipNames = {};
+let clipPlaying = null;
+let clipSlot = null;
+const decode = (bytes) => new OfflineAudioContext(1, 1, 44100).decodeAudioData(bytes.buffer.slice(bytes.byteOffset, bytes.byteOffset + bytes.byteLength));
+
+function playClip(slot) {
+  const buffer = clipBuffers[slot];
+  if (!buffer) return;
+  try { clipPlaying?.stop(); } catch {}
+  const src = audio.createBufferSource();
+  const gain = audio.createGain();
+  src.buffer = buffer;
+  gain.gain.value = kdaPrefs.volume / 100;
+  src.connect(gain).connect(audio.destination);
+  src.onended = () => { if (clipPlaying === src) clipPlaying = null; };
+  src.start();
+  clipPlaying = src;
+}
+
+function clipSay(word) {
+  const note = K(".kdaClipNote");
+  note.textContent = word ? kdaWords[word] : kdaWords.clipHelp;
+  note.classList.toggle("bad", Boolean(word));
+}
+
+function clipButton(text, title, onClick) {
+  const b = document.createElement("button");
+  b.type = "button";
+  b.textContent = text;
+  if (title) {
+    b.title = kdaWords[title];
+    b.dataset.kTitle = title;
+  }
+  b.addEventListener("click", onClick);
+  return b;
+}
+
+function drawClips() {
+  for (const row of document.querySelectorAll(".kdaClip")) {
+    const slot = row.dataset.slot;
+    const file = row.querySelector(".kdaClipFile");
+    const name = document.createElement("span");
+    name.className = "kdaClipName";
+    name.textContent = clipNames[slot] ? Snd.shortName(clipNames[slot]) : kdaWords.builtIn;
+    name.title = clipNames[slot] || "";
+    name.classList.toggle("own", Boolean(clipNames[slot]));
+    const parts = [name, clipButton(kdaWords.choose, null, () => { clipSlot = slot; K(".kdaClipPick").click(); })];
+    if (clipBuffers[slot]) {
+      parts.push(clipButton("▶", "play", () => {
+        audio ||= new AudioContext();
+        if (audio.state !== "running") audio.resume().catch(() => {});
+        const keep = kdaPrefs.volume;
+        kdaPrefs.volume ||= 50;
+        playClip(slot);
+        kdaPrefs.volume = keep;
+      }));
+      parts.push(clipButton("✕", "useBuiltIn", () => clearClip(slot)));
+    }
+    file.replaceChildren(...parts);
+  }
+  const spree = K(".kdaSpreeAt");
+  if (spree.options.length !== Snd.SPREE_MAX - Snd.SPREE_MIN + 1 || spree.dataset.lang !== lang) {
+    spree.replaceChildren();
+    for (let n = Snd.SPREE_MIN; n <= Snd.SPREE_MAX; n++) spree.append(new Option(kdaWords.spreeKills(n), String(n)));
+    spree.dataset.lang = lang;
+  }
+  spree.value = String(kdaPrefs.spreeAt);
+}
+
+async function setClip(slot, file) {
+  if (!file || !Snd.SLOTS.includes(slot)) return;
+  if (file.size > Snd.MAX_BYTES) return clipSay("tooBig");
+  let bytes, buffer;
+  try {
+    bytes = new Uint8Array(await file.arrayBuffer());
+    buffer = await decode(bytes);
+  } catch {
+    return clipSay("notAudio");
+  }
+  try {
+    const parts = Snd.pieces(Snd.toBase64(bytes));
+    for (let i = 0; i < parts.length; i++) await a2.storage.set(Snd.pieceKey(slot, i), parts[i]);
+    await a2.storage.set(Snd.metaKey(slot), { name: file.name, size: file.size, pieces: parts.length });
+  } catch (e) {
+    console.warn(e);
+    return clipSay("saveFailed");
+  }
+  clipBuffers[slot] = buffer;
+  clipNames[slot] = file.name;
+  clipSay(null);
+  drawClips();
+}
+
+async function clearClip(slot) {
+  delete clipBuffers[slot];
+  delete clipNames[slot];
+  drawClips();
+  // No delete in the storage: the details go first, then the pieces are emptied.
+  await a2.storage.set(Snd.metaKey(slot), null).catch(() => {});
+  for (let i = 0; i < Snd.MAX_PIECES; i++) await a2.storage.set(Snd.pieceKey(slot, i), null).catch(() => {});
+}
+
+async function loadClip(slot) {
+  const meta = await a2.storage.get(Snd.metaKey(slot)).catch(() => null);
+  if (!meta || !(meta.pieces > 0) || meta.pieces > Snd.MAX_PIECES) return;
+  try {
+    const parts = [];
+    for (let i = 0; i < meta.pieces; i++) parts.push(await a2.storage.get(Snd.pieceKey(slot, i)));
+    if (parts.some((p) => typeof p !== "string")) return;
+    clipBuffers[slot] = await decode(Snd.fromBase64(parts.join("")));
+    clipNames[slot] = String(meta.name || "?");
+  } catch (e) {
+    console.warn(e);
+  }
+}
+
+K(".kdaClipPick").addEventListener("change", (e) => {
+  const file = e.target.files?.[0];
+  e.target.value = "";
+  if (clipSlot) setClip(clipSlot, file);
+});
+// Dropping a file on a row sets that row's sound.
+for (const row of document.querySelectorAll(".kdaClip")) {
+  row.addEventListener("dragover", (e) => {
+    e.preventDefault();
+    row.classList.add("drop");
+  });
+  row.addEventListener("dragleave", () => row.classList.remove("drop"));
+  row.addEventListener("drop", (e) => {
+    e.preventDefault();
+    row.classList.remove("drop");
+    setClip(row.dataset.slot, e.dataTransfer?.files?.[0]);
+  });
+}
+K(".kdaSpreeAt").addEventListener("change", (e) => {
+  kdaPrefs.spreeAt = Snd.spreeAt(e.target.value);
+  kdaSavePrefs();
+});
+
 (async () => {
   const kp = await a2.storage.get("kdaPrefs").catch(() => null);
   if (kp && typeof kp === "object") Object.assign(kdaPrefs, kp);
+  kdaPrefs.spreeAt = Snd.spreeAt(kdaPrefs.spreeAt);
+  await Promise.all(Snd.SLOTS.map(loadClip));
   const ks = await a2.storage.get("kdaState").catch(() => null);
   if (ks && typeof ks.kills === "number") kdaState = { ...kdaFresh(), ...ks };
   const kv = await a2.storage.get("kdaVictims").catch(() => null);
