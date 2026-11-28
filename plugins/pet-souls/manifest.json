@@ -1,7 +1,7 @@
 {
   "id": "pet-souls",
   "name": "Shugo's Ledger",
-  "version": "0.8.9",
+  "version": "0.8.10",
   "apiVersion": 2,
   "author": "A2 Tools",
   "description": "Pets, Kinah, drops and skins in one window. Pets: souls still needed to raise each pet, where each pet's souls drop, the monsters around you that drop them, and the Black Cloud Merchants' pets, skins and Theostones. Kinah: how long each character takes to reach the daily 1,000,000 and the Unique drops along the way. Drops: your drop rates beside the game's listed chances. Gathering: how often each gather is upgraded as it starts and how often Appraiser upgrades it. Skins: your Closet against every skin in the game, and where to get the ones you're missing.",

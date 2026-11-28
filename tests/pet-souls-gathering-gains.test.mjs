@@ -38,3 +38,29 @@ test("the latest session runs back to a 15-minute gap", () => {
   assert.equal(sessionStart([row(7, HERB)]), 7);
   assert.equal(sessionStart([]), Infinity);
 });
+
+test("Plentiful Harvest doubles a gather of more than one (Mela ×3 → 6), whatever the bonus says", () => {
+  const MELA = 610680045;
+  const got = plain(gains([row(0, MELA, { status: 1, count: 3, bonus: 1 }), row(MIN, MELA, { status: 1, count: 3, bonus: 3 }), row(2 * MIN, MELA, { status: 1, count: 3 })]));
+  assert.deepEqual(got.items, [[MELA, 15]]);
+  assert.equal(got.materials, 15);
+});
+
+test("each quality's share at the start: an Appraiser upgrade counts as the base it started at", () => {
+  const { tally } = context.GatherGains;
+  const ODYLE = 610610013, FINE = 610610014, PURE = 610610015;
+  const base = (item, start) => [0, "me", item, item === ODYLE ? 1 : 2, start, 0, item === ODYLE ? 0 : 1, 1];
+  const s = tally([
+    base(ODYLE, 1), base(ODYLE, 1), base(ODYLE, 1),
+    base(FINE, 0x07), base(PURE, 0x07),
+    // Herb Appraiser: upgraded after a base start.
+    base(FINE, 0x03),
+    // A failed gather and one whose start wasn't seen: not counted.
+    [0, "me", ODYLE, 1, 1, 0, 2, 0], base(ODYLE, null),
+  ]);
+  const starts = Object.fromEntries([...s.starts]);
+  // Fine Odyle pairs back to Odyle (a pair the plugin knows), so the
+  // Appraiser's one started as Odyle.
+  assert.deepEqual(starts, { [ODYLE]: 4, [FINE]: 1, [PURE]: 1 });
+  assert.equal(s.failed, 1);
+});

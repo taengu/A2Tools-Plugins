@@ -640,7 +640,9 @@
       bump(s.gathers, g.item);
       (s.got ||= {}, s.gotOf ||= {});
       bump(s.gotOf, g.item);
-      if (g.status !== 2) bump(s.got, g.item, (Number(g.count) || 0) + (Number(g.bonus) || 0));
+      // Plentiful Harvest doubles the gather: as many copies as it gave.
+      const count = Number(g.count) || 0, bonus = Number(g.bonus) || 0;
+      if (g.status !== 2) bump(s.got, g.item, count + (bonus > 0 ? Math.max(bonus, count) : 0));
       if (g.bonus > 0) bump(s.bonus, g.item);
       if (g.extraItem) bump(s.extras, `${g.item}:${g.extraItem}`, g.extraCount || 1);
     } else if (e.kind === "items") {

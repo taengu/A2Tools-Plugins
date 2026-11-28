@@ -1,5 +1,18 @@
 [
   {
+    "version": "0.8.10",
+    "en": "Gathering: the materials you got beside the gathers, each node's chance of each quality as a gather starts (how often Odyle starts Fine or Pure), and Plentiful Harvest doubling gathers of more than one. Rates per hour count only time spent gathering.",
+    "ko": "채집: 채집 횟수와 함께 얻은 재료 수, 채집물마다 채집이 시작될 때 각 품질이 나올 확률(예: 오드가 고급이나 순수로 시작하는 빈도), 2개 이상 채집에서 풍요로운 수확이 두 배로 주는 양. 시간과 시간당 수치는 채집한 시간만 셉니다.",
+    "ja": "採集：採集回数と並べて得た素材数、採集物ごとに採集開始時の各品質の確率（例：オードが上質や純粋で始まる頻度）、2個以上の採集で豊かな収穫が倍にする量。時間と1時間あたりの数は採集していた時間だけで数えます。",
+    "de": "Sammeln: erhaltene Materialien neben den Sammelvorgängen, je Vorkommen die Chance jeder Qualität beim Start (wie oft Odyle fein oder rein beginnt), Reichhaltige Ernte verdoppelt auch mehrere Stücke. Stundenraten zählen nur die Sammelzeit.",
+    "fr": "Récolte : les matériaux obtenus, la chance de chaque qualité au départ pour chaque point (combien de fois l'Odyle commence fine ou pure), et la Récolte Abondante double les récoltes de plus d'un. Les taux par heure ne comptent que le temps de récolte.",
+    "es": "Recolección: los materiales obtenidos, la probabilidad de cada calidad al empezar en cada nodo (cuántas veces el Odyle empieza fino o puro) y la Cosecha abundante duplica recolecciones de más de uno. Las tasas por hora solo cuentan el tiempo recolectando.",
+    "pt": "Coleta: os materiais obtidos, a chance de cada qualidade no início em cada ponto (quantas vezes o Odyle começa fino ou puro) e a Colheita Abundante dobra coletas de mais de um. As taxas por hora contam só o tempo coletando.",
+    "ru": "Сбор: полученные материалы, шанс каждого качества в начале сбора для каждого ресурса (как часто одил начинается тонким или чистым), «Богатый урожай» удваивает сборы больше одного. Скорость в час считает только время сбора.",
+    "zh-Hant": "採集：在採集次數旁顯示獲得的材料數、各採集點開始採集時各品質的機率（例如奧德以精良或純淨開始的頻率），以及豐饒的收穫會加倍多於一個的採集。時間與每小時數量只計採集的時間。",
+    "zh-Hans": "采集：在采集次数旁显示获得的材料数、各采集点开始采集时各品质的概率（例如奥德以精良或纯净开始的频率），以及丰饶的收获会加倍多于一个的采集。时间与每小时数量只计采集的时间。"
+  },
+  {
     "version": "0.8.9",
     "en": "Gathering: more time ranges (15 and 30 minutes, 2, 4 and 8 hours, yesterday), the fail rate for each node, and the gathers list in pages of 20 with a search. The Pets list no longer shows under it.",
     "ko": "채집: 더 많은 기간(15분, 30분, 2·4·8시간, 어제), 채집물별 실패율, 20개씩 페이지로 나뉘고 검색할 수 있는 채집 목록. 아래에 펫 목록이 더 이상 나오지 않습니다.",
@@ -50,18 +63,5 @@
     "ru": "Питомцы: показаны души, которые роняют монстры подземелий, и у 39 питомцев появились источники, среди них мутант крао в пещере крао, а также храм огня, Драупнир, ущелье ауругу и другие подземелья. При входе в них видны нужные монстры.",
     "zh-Hant": "寵物：列出副本怪物掉落的靈魂，39 隻寵物新增來源，包括克勞洞穴的克勞變異體，以及火之神殿、德拉烏伯尼爾、烏努庫庫峽谷等副本。進入這些副本時會顯示你需要的怪物。",
     "zh-Hans": "宠物：列出副本怪物掉落的灵魂，39 只宠物新增来源，包括克劳洞穴的克劳变异体，以及火之神殿、德拉乌伯尼尔、乌努库库峡谷等副本。进入这些副本时会显示你需要的怪物。"
-  },
-  {
-    "version": "0.8.5",
-    "en": "Kinah: Unique drops count each item once. Moving gear to or from storage, or the game naming new gear twice, no longer adds a drop, and Unique materials such as Amplify Stone Fragments are no longer listed.",
-    "ko": "키나: 유일 획득은 아이템마다 한 번만 셉니다. 장비를 창고에 넣거나 꺼낼 때나 게임이 새 장비를 두 번 알릴 때 더 이상 늘지 않으며, 돌파석 조각 같은 유일 재료는 더 이상 표시하지 않습니다.",
-    "ja": "キナ：唯一入手はアイテムごとに1回だけ数えます。装備を倉庫に出し入れしたときや、ゲームが新しい装備を2回通知したときに増えなくなり、突破石の欠片などの唯一素材は表示しなくなりました。",
-    "de": "Kinah: Einzigartige Beute zählt jeden Gegenstand nur einmal. Ausrüstung ins Lager oder heraus zu legen oder die doppelte Meldung neuer Ausrüstung zählt nicht mehr, und einzigartige Materialien wie Zenitsteinfragmente erscheinen nicht mehr.",
-    "fr": "Kinah : le butin unique compte chaque objet une seule fois. Déplacer un équipement vers ou depuis l'entrepôt, ou le double avis du jeu pour un nouvel équipement, n'ajoute plus de butin, et les matériaux uniques comme les fragments de Pierre de percée ne sont plus listés.",
-    "es": "Kinah: el botín único cuenta cada objeto una sola vez. Mover equipo al almacén o desde él, o el doble aviso del juego por equipo nuevo, ya no suma botín, y los materiales únicos como los pedazos de Piedra de superación ya no aparecen.",
-    "pt": "Kinah: o saque único conta cada item uma só vez. Mover equipamento para o armazém ou dele, ou o aviso duplo do jogo para equipamento novo, não soma mais saque, e materiais únicos como pedaços de Pedra de Superação não aparecem mais.",
-    "ru": "Кина: уникальная добыча учитывает каждый предмет один раз. Перенос снаряжения в хранилище и обратно или двойное оповещение игры о новом снаряжении больше не добавляют добычу, а уникальные материалы вроде фрагментов камня прорыва больше не показываются.",
-    "zh-Hant": "基納：獨特掉落每件物品只計算一次。裝備存入或取出倉庫，或遊戲重複通知新裝備時不再增加，突破石碎片等獨特材料也不再列出。",
-    "zh-Hans": "基纳：独特掉落每件物品只计算一次。装备存入或取出仓库，或游戏重复通知新装备时不再增加，突破石碎片等独特材料也不再列出。"
   }
 ]

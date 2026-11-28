@@ -55,3 +55,11 @@ test("gathers kept before the counts were count as one each", () => {
   const row = plain(api.dropRows()).find((r) => r.source === "gathered" && r.item === HERB);
   assert.deepEqual([row.n, row.detail], [7, "7/6"]);
 });
+
+test("Drops: Plentiful Harvest doubles a gather of more than one", () => {
+  const api = fresh();
+  const MELA = 610680045;
+  api.noteLoot(done(MELA, { status: 1, count: 3, bonus: 1 }));
+  const row = plain(api.dropRows()).find((r) => r.source === "gathered" && r.item === MELA);
+  assert.deepEqual([row.n, row.detail], [6, "6/1"]);
+});

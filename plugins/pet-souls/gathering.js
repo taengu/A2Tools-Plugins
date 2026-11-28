@@ -36,16 +36,16 @@
   const SEED_PAIRS = { 610670045: 610670041, 610670046: 610670042, 610610014: 610610013 };
 
   const UI = {
-    en: { gathers: "gathers", fresh: "Upgraded", appraiser: "Appraiser", startedFresh: "Upgraded at start", extra: "Plentiful Harvest", failed: "Failed", allHerbs: "All", recent: "Recent gathers", likely: (lo, hi) => `likely ${lo}–${hi}`, of: (n, k) => `${n} of ${k}`, none: "No gathers yet: they are counted as you gather.", periodHour: "Last hour", periodSession: "Latest session", gained: "Gathered", gathersIn: (n, d) => `${n} gathers in ${d}`, perHour: (n) => `≈ ${n}/h`, dur: (h, m) => (h ? `${h}h ${m}m` : `${m}m`), searchGathers: "Search gathers", newer: "Newer", older: "Older", showing: (a, b, n) => `${a}–${b} of ${n}`, noMatch: "No gathers match.", lastMin: (n) => `Last ${n} min`, lastHours: (n) => `Last ${n} hours`, periodYesterday: "Yesterday", note: "Appraiser can only upgrade a gather that started at base quality, so its rate counts those gathers only. Its chance (30% at level 3) is a second roll for a higher grade, which succeeds as often as a gather is upgraded at start: expect about 30% of your upgraded-at-start rate. \"likely\" is the range the true rate is in, 95% of the time; it narrows as you gather more." },
-    ko: { gathers: "회 채집", fresh: "등급 상승", appraiser: "감정사", startedFresh: "시작부터 상승", extra: "풍요로운 수확", failed: "실패", allHerbs: "전체", recent: "최근 채집", likely: (lo, hi) => `예상 ${lo}–${hi}`, of: (n, k) => `${k}회 중 ${n}회`, none: "아직 채집 기록이 없습니다. 채집할 때마다 기록됩니다.", periodHour: "최근 1시간", periodSession: "최근 세션", gained: "채집한 아이템", gathersIn: (n, d) => `${d} 동안 ${n}회 채집`, perHour: (n) => `시간당 ≈ ${n}`, dur: (h, m) => (h ? `${h}시간 ${m}분` : `${m}분`), searchGathers: "채집 검색", newer: "최신", older: "이전", showing: (a, b, n) => `${n}개 중 ${a}–${b}`, noMatch: "일치하는 채집이 없습니다.", lastMin: (n) => `최근 ${n}분`, lastHours: (n) => `최근 ${n}시간`, periodYesterday: "어제", note: "감정사는 기본 등급으로 시작한 채집만 올릴 수 있으므로 그 채집만 셉니다. 감정사의 확률(3레벨 30%)은 상위 등급을 한 번 더 굴리는 기회이고, 그 굴림은 시작 시 등급 상승만큼만 성공하므로 시작 시 상승 확률의 약 30%가 됩니다. '예상'은 실제 확률이 95%의 경우 들어가는 범위이며, 많이 채집할수록 좁아집니다." },
-    ja: { gathers: "回採集", fresh: "品質上昇", appraiser: "鑑定士", startedFresh: "開始時に上昇", extra: "豊かな収穫", failed: "失敗", allHerbs: "すべて", recent: "最近の採集", likely: (lo, hi) => `推定 ${lo}–${hi}`, of: (n, k) => `${k}回中${n}回`, none: "まだ採集の記録がありません。採集するたびに記録されます。", periodHour: "直近1時間", periodSession: "直近のセッション", gained: "採集したアイテム", gathersIn: (n, d) => `${d}で${n}回採集`, perHour: (n) => `1時間あたり ≈ ${n}`, dur: (h, m) => (h ? `${h}時間${m}分` : `${m}分`), searchGathers: "採集を検索", newer: "新しい", older: "古い", showing: (a, b, n) => `${n}件中 ${a}–${b}`, noMatch: "一致する採集はありません。", lastMin: (n) => `直近${n}分`, lastHours: (n) => `直近${n}時間`, periodYesterday: "昨日", note: "鑑定士は基本品質で始まった採集しか上げられないため、その採集だけで数えます。鑑定士の確率（レベル3で30%）は上位品質をもう一度判定する機会で、その判定は開始時の品質上昇と同じ確率でしか成功しないため、開始時の上昇率の約30%になります。「推定」は本当の確率が95%の確率で入る範囲で、採集が増えるほど狭くなります。" },
-    de: { gathers: "× gesammelt", fresh: "Aufgewertet", appraiser: "Gutachter", startedFresh: "Beim Start aufgewertet", extra: "Reichhaltige Ernte", failed: "Fehlgeschlagen", allHerbs: "Alle", recent: "Letzte Sammelvorgänge", likely: (lo, hi) => `wahrscheinlich ${lo}–${hi}`, of: (n, k) => `${n} von ${k}`, none: "Noch nichts gesammelt: Es wird beim Sammeln gezählt.", periodHour: "Letzte Stunde", periodSession: "Letzte Sitzung", gained: "Gesammelt", gathersIn: (n, d) => `${n}-mal gesammelt in ${d}`, perHour: (n) => `≈ ${n}/h`, dur: (h, m) => (h ? `${h} h ${m} min` : `${m} min`), searchGathers: "Sammelvorgänge suchen", newer: "Neuere", older: "Ältere", showing: (a, b, n) => `${a}–${b} von ${n}`, noMatch: "Keine passenden Sammelvorgänge.", lastMin: (n) => `Letzte ${n} Min.`, lastHours: (n) => `Letzte ${n} Stunden`, periodYesterday: "Gestern", note: "Der Gutachter kann nur Sammelvorgänge aufwerten, die in Grundqualität begannen, daher zählt seine Rate nur diese. Seine Chance (30 % auf Stufe 3) ist ein zweiter Wurf auf eine höhere Qualität, der so oft gelingt wie eine Aufwertung beim Start: Erwarte etwa 30 % deiner Start-Aufwertungsrate. „wahrscheinlich“ ist der Bereich, in dem die wahre Rate zu 95 % liegt." },
-    fr: { gathers: "récoltes", fresh: "Amélioré", appraiser: "Expert", startedFresh: "Amélioré dès le départ", extra: "Récolte Abondante", failed: "Échec", allHerbs: "Tout", recent: "Récoltes récentes", likely: (lo, hi) => `probablement ${lo}–${hi}`, of: (n, k) => `${n} sur ${k}`, none: "Aucune récolte encore : elles sont comptées à mesure que tu récoltes.", periodHour: "Dernière heure", periodSession: "Dernière session", gained: "Récolté", gathersIn: (n, d) => `${n} récoltes en ${d}`, perHour: (n) => `≈ ${n}/h`, dur: (h, m) => (h ? `${h} h ${m} min` : `${m} min`), searchGathers: "Rechercher des récoltes", newer: "Plus récentes", older: "Plus anciennes", showing: (a, b, n) => `${a}–${b} sur ${n}`, noMatch: "Aucune récolte ne correspond.", lastMin: (n) => `${n} dernières min`, lastHours: (n) => `${n} dernières heures`, periodYesterday: "Hier", note: "L'Expert ne peut améliorer qu'une récolte commencée en qualité de base, donc son taux ne compte que celles-là. Sa chance (30 % au niveau 3) est un second tirage vers une meilleure qualité, qui réussit aussi souvent qu'une amélioration dès le départ : attendez-vous à environ 30 % de ce taux. « probablement » est la plage où se trouve le vrai taux 95 % du temps." },
-    es: { gathers: "recolecciones", fresh: "Mejorada", appraiser: "Tasador", startedFresh: "Mejorada al inicio", extra: "Cosecha abundante", failed: "Fallida", allHerbs: "Todo", recent: "Recolecciones recientes", likely: (lo, hi) => `probablemente ${lo}–${hi}`, of: (n, k) => `${n} de ${k}`, none: "Aún no hay recolecciones: se cuentan mientras recolectas.", periodHour: "Última hora", periodSession: "Última sesión", gained: "Recolectado", gathersIn: (n, d) => `${n} recolecciones en ${d}`, perHour: (n) => `≈ ${n}/h`, dur: (h, m) => (h ? `${h} h ${m} min` : `${m} min`), searchGathers: "Buscar recolecciones", newer: "Más recientes", older: "Más antiguas", showing: (a, b, n) => `${a}–${b} de ${n}`, noMatch: "Ninguna recolección coincide.", lastMin: (n) => `Últimos ${n} min`, lastHours: (n) => `Últimas ${n} horas`, periodYesterday: "Ayer", note: "El Tasador solo puede mejorar una recolección que empezó en calidad base, así que su tasa cuenta solo esas. Su probabilidad (30 % en nivel 3) es una segunda tirada a una calidad mayor, que acierta tan a menudo como una mejora al inicio: espera cerca del 30 % de esa tasa. «probablemente» es el rango donde está la tasa real el 95 % de las veces." },
-    pt: { gathers: "coletas", fresh: "Melhorada", appraiser: "Classificador", startedFresh: "Melhorada no início", extra: "Colheita Abundante", failed: "Falhou", allHerbs: "Tudo", recent: "Coletas recentes", likely: (lo, hi) => `provavelmente ${lo}–${hi}`, of: (n, k) => `${n} de ${k}`, none: "Ainda sem coletas: elas são contadas enquanto você coleta.", periodHour: "Última hora", periodSession: "Última sessão", gained: "Coletado", gathersIn: (n, d) => `${n} coletas em ${d}`, perHour: (n) => `≈ ${n}/h`, dur: (h, m) => (h ? `${h} h ${m} min` : `${m} min`), searchGathers: "Buscar coletas", newer: "Mais recentes", older: "Mais antigas", showing: (a, b, n) => `${a}–${b} de ${n}`, noMatch: "Nenhuma coleta corresponde.", lastMin: (n) => `Últimos ${n} min`, lastHours: (n) => `Últimas ${n} horas`, periodYesterday: "Ontem", note: "O Classificador só melhora uma coleta que começou na qualidade base, então a taxa dele conta só essas. A chance dele (30% no nível 3) é uma segunda rolagem para uma qualidade maior, que acerta tão frequentemente quanto uma melhoria no início: espere cerca de 30% dessa taxa. \"provavelmente\" é a faixa onde está a taxa real 95% das vezes." },
-    ru: { gathers: "сборов", fresh: "Улучшено", appraiser: "Оценщик", startedFresh: "Улучшено с начала", extra: "Богатый урожай", failed: "Неудача", allHerbs: "Всё", recent: "Последние сборы", likely: (lo, hi) => `вероятно ${lo}–${hi}`, of: (n, k) => `${n} из ${k}`, none: "Сборов пока нет: они считаются по мере сбора.", periodHour: "Последний час", periodSession: "Последняя сессия", gained: "Собрано", gathersIn: (n, d) => `${n} сборов за ${d}`, perHour: (n) => `≈ ${n}/ч`, dur: (h, m) => (h ? `${h} ч ${m} мин` : `${m} мин`), searchGathers: "Поиск сборов", newer: "Новее", older: "Старше", showing: (a, b, n) => `${a}–${b} из ${n}`, noMatch: "Нет подходящих сборов.", lastMin: (n) => `Последние ${n} мин`, lastHours: (n) => `Последние ${n} ч`, periodYesterday: "Вчера", note: "Оценщик улучшает только сбор, начатый с базовым качеством, поэтому его шанс считается только по таким сборам. Его шанс (30% на 3-м уровне) — второй бросок на более высокое качество, который удаётся так же часто, как улучшение с начала, так что ждите около 30% от этого шанса. «вероятно» — диапазон, где настоящий шанс находится в 95% случаев." },
-    "zh-Hant": { gathers: "次採集", fresh: "品質提升", appraiser: "鑑定師", startedFresh: "開始時提升", extra: "豐饒的收穫", failed: "失敗", allHerbs: "全部", recent: "最近採集", likely: (lo, hi) => `可能 ${lo}–${hi}`, of: (n, k) => `${k} 次中 ${n} 次`, none: "尚無採集紀錄：採集時會記錄。", periodHour: "最近 1 小時", periodSession: "最近一段", gained: "採集所得", gathersIn: (n, d) => `${d} 內採集 ${n} 次`, perHour: (n) => `每小時 ≈ ${n}`, dur: (h, m) => (h ? `${h} 小時 ${m} 分` : `${m} 分`), searchGathers: "搜尋採集", newer: "較新", older: "較舊", showing: (a, b, n) => `${n} 筆中的 ${a}–${b}`, noMatch: "沒有符合的採集。", lastMin: (n) => `最近 ${n} 分鐘`, lastHours: (n) => `最近 ${n} 小時`, periodYesterday: "昨天", note: "鑑定師只能提升以基本品質開始的採集，因此其機率只計這些採集。鑑定師的機率（3 級為 30%）是再擲一次更高品質的機會，而這次擲骰的成功率與開始時品質提升相同，所以約為開始時提升率的 30%。「可能」是真實機率 95% 會落在的範圍。" },
-    "zh-Hans": { gathers: "次采集", fresh: "品质提升", appraiser: "鉴定师", startedFresh: "开始时提升", extra: "丰饶的收获", failed: "失败", allHerbs: "全部", recent: "最近采集", likely: (lo, hi) => `可能 ${lo}–${hi}`, of: (n, k) => `${k} 次中 ${n} 次`, none: "尚无采集记录：采集时会记录。", periodHour: "最近 1 小时", periodSession: "最近一段", gained: "采集所得", gathersIn: (n, d) => `${d} 内采集 ${n} 次`, perHour: (n) => `每小时 ≈ ${n}`, dur: (h, m) => (h ? `${h} 小时 ${m} 分` : `${m} 分`), searchGathers: "搜索采集", newer: "较新", older: "较旧", showing: (a, b, n) => `${n} 条中的 ${a}–${b}`, noMatch: "没有符合的采集。", lastMin: (n) => `最近 ${n} 分钟`, lastHours: (n) => `最近 ${n} 小时`, periodYesterday: "昨天", note: "鉴定师只能提升以基本品质开始的采集，因此其概率只计这些采集。鉴定师的概率（3 级为 30%）是再掷一次更高品质的机会，而这次掷骰的成功率与开始时品质提升相同，所以约为开始时提升率的 30%。「可能」是真实概率 95% 会落在的范围。" },
+    en: { gathers: "gathers", fresh: "Upgraded", appraiser: "Appraiser", startedFresh: "Upgraded at start", extra: "Plentiful Harvest", failed: "Failed", allHerbs: "All", recent: "Recent gathers", likely: (lo, hi) => `likely ${lo}–${hi}`, of: (n, k) => `${n} of ${k}`, none: "No gathers yet: they are counted as you gather.", periodHour: "Last hour", periodSession: "Latest session", gained: "Gathered", gathersIn: (n, m, d) => `${n} gathers · ${m} materials in ${d}`, perHour: (n) => `≈ ${n}/h`, dur: (h, m) => (h ? `${h}h ${m}m` : `${m}m`), searchGathers: "Search gathers", newer: "Newer", older: "Older", showing: (a, b, n) => `${a}–${b} of ${n}`, noMatch: "No gathers match.", lastMin: (n) => `Last ${n} min`, lastHours: (n) => `Last ${n} hours`, periodYesterday: "Yesterday", materials: (n) => `${n} materials`, atStart: "At start", note: "Appraiser can only upgrade a gather that started at base quality, so its rate counts those gathers only. Its chance (30% at level 3) is a second roll for a higher grade, which succeeds as often as a gather is upgraded at start: expect about 30% of your upgraded-at-start rate. \"likely\" is the range the true rate is in, 95% of the time; it narrows as you gather more." },
+    ko: { gathers: "회 채집", fresh: "등급 상승", appraiser: "감정사", startedFresh: "시작부터 상승", extra: "풍요로운 수확", failed: "실패", allHerbs: "전체", recent: "최근 채집", likely: (lo, hi) => `예상 ${lo}–${hi}`, of: (n, k) => `${k}회 중 ${n}회`, none: "아직 채집 기록이 없습니다. 채집할 때마다 기록됩니다.", periodHour: "최근 1시간", periodSession: "최근 세션", gained: "채집한 아이템", gathersIn: (n, m, d) => `${d} 동안 ${n}회 채집 · 재료 ${m}개`, perHour: (n) => `시간당 ≈ ${n}`, dur: (h, m) => (h ? `${h}시간 ${m}분` : `${m}분`), searchGathers: "채집 검색", newer: "최신", older: "이전", showing: (a, b, n) => `${n}개 중 ${a}–${b}`, noMatch: "일치하는 채집이 없습니다.", lastMin: (n) => `최근 ${n}분`, lastHours: (n) => `최근 ${n}시간`, periodYesterday: "어제", materials: (n) => `재료 ${n}개`, atStart: "시작 시 품질", note: "감정사는 기본 등급으로 시작한 채집만 올릴 수 있으므로 그 채집만 셉니다. 감정사의 확률(3레벨 30%)은 상위 등급을 한 번 더 굴리는 기회이고, 그 굴림은 시작 시 등급 상승만큼만 성공하므로 시작 시 상승 확률의 약 30%가 됩니다. '예상'은 실제 확률이 95%의 경우 들어가는 범위이며, 많이 채집할수록 좁아집니다." },
+    ja: { gathers: "回採集", fresh: "品質上昇", appraiser: "鑑定士", startedFresh: "開始時に上昇", extra: "豊かな収穫", failed: "失敗", allHerbs: "すべて", recent: "最近の採集", likely: (lo, hi) => `推定 ${lo}–${hi}`, of: (n, k) => `${k}回中${n}回`, none: "まだ採集の記録がありません。採集するたびに記録されます。", periodHour: "直近1時間", periodSession: "直近のセッション", gained: "採集したアイテム", gathersIn: (n, m, d) => `${d}で${n}回採集・素材${m}個`, perHour: (n) => `1時間あたり ≈ ${n}`, dur: (h, m) => (h ? `${h}時間${m}分` : `${m}分`), searchGathers: "採集を検索", newer: "新しい", older: "古い", showing: (a, b, n) => `${n}件中 ${a}–${b}`, noMatch: "一致する採集はありません。", lastMin: (n) => `直近${n}分`, lastHours: (n) => `直近${n}時間`, periodYesterday: "昨日", materials: (n) => `素材${n}個`, atStart: "開始時の品質", note: "鑑定士は基本品質で始まった採集しか上げられないため、その採集だけで数えます。鑑定士の確率（レベル3で30%）は上位品質をもう一度判定する機会で、その判定は開始時の品質上昇と同じ確率でしか成功しないため、開始時の上昇率の約30%になります。「推定」は本当の確率が95%の確率で入る範囲で、採集が増えるほど狭くなります。" },
+    de: { gathers: "× gesammelt", fresh: "Aufgewertet", appraiser: "Gutachter", startedFresh: "Beim Start aufgewertet", extra: "Reichhaltige Ernte", failed: "Fehlgeschlagen", allHerbs: "Alle", recent: "Letzte Sammelvorgänge", likely: (lo, hi) => `wahrscheinlich ${lo}–${hi}`, of: (n, k) => `${n} von ${k}`, none: "Noch nichts gesammelt: Es wird beim Sammeln gezählt.", periodHour: "Letzte Stunde", periodSession: "Letzte Sitzung", gained: "Gesammelt", gathersIn: (n, m, d) => `${n}-mal gesammelt · ${m} Materialien in ${d}`, perHour: (n) => `≈ ${n}/h`, dur: (h, m) => (h ? `${h} h ${m} min` : `${m} min`), searchGathers: "Sammelvorgänge suchen", newer: "Neuere", older: "Ältere", showing: (a, b, n) => `${a}–${b} von ${n}`, noMatch: "Keine passenden Sammelvorgänge.", lastMin: (n) => `Letzte ${n} Min.`, lastHours: (n) => `Letzte ${n} Stunden`, periodYesterday: "Gestern", materials: (n) => `${n} Materialien`, atStart: "Beim Start", note: "Der Gutachter kann nur Sammelvorgänge aufwerten, die in Grundqualität begannen, daher zählt seine Rate nur diese. Seine Chance (30 % auf Stufe 3) ist ein zweiter Wurf auf eine höhere Qualität, der so oft gelingt wie eine Aufwertung beim Start: Erwarte etwa 30 % deiner Start-Aufwertungsrate. „wahrscheinlich“ ist der Bereich, in dem die wahre Rate zu 95 % liegt." },
+    fr: { gathers: "récoltes", fresh: "Amélioré", appraiser: "Expert", startedFresh: "Amélioré dès le départ", extra: "Récolte Abondante", failed: "Échec", allHerbs: "Tout", recent: "Récoltes récentes", likely: (lo, hi) => `probablement ${lo}–${hi}`, of: (n, k) => `${n} sur ${k}`, none: "Aucune récolte encore : elles sont comptées à mesure que tu récoltes.", periodHour: "Dernière heure", periodSession: "Dernière session", gained: "Récolté", gathersIn: (n, m, d) => `${n} récoltes · ${m} matériaux en ${d}`, perHour: (n) => `≈ ${n}/h`, dur: (h, m) => (h ? `${h} h ${m} min` : `${m} min`), searchGathers: "Rechercher des récoltes", newer: "Plus récentes", older: "Plus anciennes", showing: (a, b, n) => `${a}–${b} sur ${n}`, noMatch: "Aucune récolte ne correspond.", lastMin: (n) => `${n} dernières min`, lastHours: (n) => `${n} dernières heures`, periodYesterday: "Hier", materials: (n) => `${n} matériaux`, atStart: "Au départ", note: "L'Expert ne peut améliorer qu'une récolte commencée en qualité de base, donc son taux ne compte que celles-là. Sa chance (30 % au niveau 3) est un second tirage vers une meilleure qualité, qui réussit aussi souvent qu'une amélioration dès le départ : attendez-vous à environ 30 % de ce taux. « probablement » est la plage où se trouve le vrai taux 95 % du temps." },
+    es: { gathers: "recolecciones", fresh: "Mejorada", appraiser: "Tasador", startedFresh: "Mejorada al inicio", extra: "Cosecha abundante", failed: "Fallida", allHerbs: "Todo", recent: "Recolecciones recientes", likely: (lo, hi) => `probablemente ${lo}–${hi}`, of: (n, k) => `${n} de ${k}`, none: "Aún no hay recolecciones: se cuentan mientras recolectas.", periodHour: "Última hora", periodSession: "Última sesión", gained: "Recolectado", gathersIn: (n, m, d) => `${n} recolecciones · ${m} materiales en ${d}`, perHour: (n) => `≈ ${n}/h`, dur: (h, m) => (h ? `${h} h ${m} min` : `${m} min`), searchGathers: "Buscar recolecciones", newer: "Más recientes", older: "Más antiguas", showing: (a, b, n) => `${a}–${b} de ${n}`, noMatch: "Ninguna recolección coincide.", lastMin: (n) => `Últimos ${n} min`, lastHours: (n) => `Últimas ${n} horas`, periodYesterday: "Ayer", materials: (n) => `${n} materiales`, atStart: "Al inicio", note: "El Tasador solo puede mejorar una recolección que empezó en calidad base, así que su tasa cuenta solo esas. Su probabilidad (30 % en nivel 3) es una segunda tirada a una calidad mayor, que acierta tan a menudo como una mejora al inicio: espera cerca del 30 % de esa tasa. «probablemente» es el rango donde está la tasa real el 95 % de las veces." },
+    pt: { gathers: "coletas", fresh: "Melhorada", appraiser: "Classificador", startedFresh: "Melhorada no início", extra: "Colheita Abundante", failed: "Falhou", allHerbs: "Tudo", recent: "Coletas recentes", likely: (lo, hi) => `provavelmente ${lo}–${hi}`, of: (n, k) => `${n} de ${k}`, none: "Ainda sem coletas: elas são contadas enquanto você coleta.", periodHour: "Última hora", periodSession: "Última sessão", gained: "Coletado", gathersIn: (n, m, d) => `${n} coletas · ${m} materiais em ${d}`, perHour: (n) => `≈ ${n}/h`, dur: (h, m) => (h ? `${h} h ${m} min` : `${m} min`), searchGathers: "Buscar coletas", newer: "Mais recentes", older: "Mais antigas", showing: (a, b, n) => `${a}–${b} de ${n}`, noMatch: "Nenhuma coleta corresponde.", lastMin: (n) => `Últimos ${n} min`, lastHours: (n) => `Últimas ${n} horas`, periodYesterday: "Ontem", materials: (n) => `${n} materiais`, atStart: "No início", note: "O Classificador só melhora uma coleta que começou na qualidade base, então a taxa dele conta só essas. A chance dele (30% no nível 3) é uma segunda rolagem para uma qualidade maior, que acerta tão frequentemente quanto uma melhoria no início: espere cerca de 30% dessa taxa. \"provavelmente\" é a faixa onde está a taxa real 95% das vezes." },
+    ru: { gathers: "сборов", fresh: "Улучшено", appraiser: "Оценщик", startedFresh: "Улучшено с начала", extra: "Богатый урожай", failed: "Неудача", allHerbs: "Всё", recent: "Последние сборы", likely: (lo, hi) => `вероятно ${lo}–${hi}`, of: (n, k) => `${n} из ${k}`, none: "Сборов пока нет: они считаются по мере сбора.", periodHour: "Последний час", periodSession: "Последняя сессия", gained: "Собрано", gathersIn: (n, m, d) => `${n} сборов · ${m} материалов за ${d}`, perHour: (n) => `≈ ${n}/ч`, dur: (h, m) => (h ? `${h} ч ${m} мин` : `${m} мин`), searchGathers: "Поиск сборов", newer: "Новее", older: "Старше", showing: (a, b, n) => `${a}–${b} из ${n}`, noMatch: "Нет подходящих сборов.", lastMin: (n) => `Последние ${n} мин`, lastHours: (n) => `Последние ${n} ч`, periodYesterday: "Вчера", materials: (n) => `${n} материалов`, atStart: "При старте", note: "Оценщик улучшает только сбор, начатый с базовым качеством, поэтому его шанс считается только по таким сборам. Его шанс (30% на 3-м уровне) — второй бросок на более высокое качество, который удаётся так же часто, как улучшение с начала, так что ждите около 30% от этого шанса. «вероятно» — диапазон, где настоящий шанс находится в 95% случаев." },
+    "zh-Hant": { gathers: "次採集", fresh: "品質提升", appraiser: "鑑定師", startedFresh: "開始時提升", extra: "豐饒的收穫", failed: "失敗", allHerbs: "全部", recent: "最近採集", likely: (lo, hi) => `可能 ${lo}–${hi}`, of: (n, k) => `${k} 次中 ${n} 次`, none: "尚無採集紀錄：採集時會記錄。", periodHour: "最近 1 小時", periodSession: "最近一段", gained: "採集所得", gathersIn: (n, m, d) => `${d} 內採集 ${n} 次 · 材料 ${m} 個`, perHour: (n) => `每小時 ≈ ${n}`, dur: (h, m) => (h ? `${h} 小時 ${m} 分` : `${m} 分`), searchGathers: "搜尋採集", newer: "較新", older: "較舊", showing: (a, b, n) => `${n} 筆中的 ${a}–${b}`, noMatch: "沒有符合的採集。", lastMin: (n) => `最近 ${n} 分鐘`, lastHours: (n) => `最近 ${n} 小時`, periodYesterday: "昨天", materials: (n) => `材料 ${n} 個`, atStart: "開始時品質", note: "鑑定師只能提升以基本品質開始的採集，因此其機率只計這些採集。鑑定師的機率（3 級為 30%）是再擲一次更高品質的機會，而這次擲骰的成功率與開始時品質提升相同，所以約為開始時提升率的 30%。「可能」是真實機率 95% 會落在的範圍。" },
+    "zh-Hans": { gathers: "次采集", fresh: "品质提升", appraiser: "鉴定师", startedFresh: "开始时提升", extra: "丰饶的收获", failed: "失败", allHerbs: "全部", recent: "最近采集", likely: (lo, hi) => `可能 ${lo}–${hi}`, of: (n, k) => `${k} 次中 ${n} 次`, none: "尚无采集记录：采集时会记录。", periodHour: "最近 1 小时", periodSession: "最近一段", gained: "采集所得", gathersIn: (n, m, d) => `${d} 内采集 ${n} 次 · 材料 ${m} 个`, perHour: (n) => `每小时 ≈ ${n}`, dur: (h, m) => (h ? `${h} 小时 ${m} 分` : `${m} 分`), searchGathers: "搜索采集", newer: "较新", older: "较旧", showing: (a, b, n) => `${n} 条中的 ${a}–${b}`, noMatch: "没有符合的采集。", lastMin: (n) => `最近 ${n} 分钟`, lastHours: (n) => `最近 ${n} 小时`, periodYesterday: "昨天", materials: (n) => `材料 ${n} 个`, atStart: "开始时品质", note: "鉴定师只能提升以基本品质开始的采集，因此其概率只计这些采集。鉴定师的概率（3 级为 30%）是再掷一次更高品质的机会，而这次掷骰的成功率与开始时品质提升相同，所以约为开始时提升率的 30%。「可能」是真实概率 95% 会落在的范围。" },
   };
   const g = (k) => (UI[language] || UI.en)[k] ?? UI.en[k];
 
@@ -152,9 +152,16 @@
   const baseOf = (item) => pairs[item] || item;
 
   function tally(rows) {
-    const s = { gathers: 0, fresh: 0, startedFresh: 0, appraiser: 0, appraiserOf: 0, extra: 0, failed: 0 };
-    for (const [, , , grade, eff, bonus, status] of rows) {
+    const s = { gathers: 0, fresh: 0, startedFresh: 0, appraiser: 0, appraiserOf: 0, extra: 0, failed: 0, materials: gains(rows).materials };
+    s.starts = new Map();
+    for (const [, , item, grade, eff, bonus, status] of rows) {
       if (status === 2) { s.failed++; continue; }
+      // The quality it started at: the item it came out as when upgraded
+      // at the start, else its base item (Appraiser upgrades after it).
+      if (eff != null) {
+        const at = eff & F_STARTED_FRESH ? item : baseOf(item);
+        s.starts.set(at, (s.starts.get(at) || 0) + 1);
+      }
       s.gathers++;
       if (grade === 2) s.fresh++;
       if (bonus > 0) s.extra++;
@@ -171,28 +178,36 @@
   // What a stretch of gathering brought in: each item and how many (the
   // count, Plentiful Harvest's copies and the random extra), the gathers,
   // and the time from the first to the last.
+  const SESSION_GAP_MS = 15 * 60_000;
   function gains(rows) {
     const items = new Map();
     const add = (item, n) => { if (item && n > 0) items.set(item, (items.get(item) || 0) + n); };
     for (const [, , item, , , bonus, status, count, extra, extraCount] of rows) {
-      if (status !== 2) add(item, (count || 0) + (bonus || 0));
+      // Plentiful Harvest doubles the gather (Mela ×3 gives 3 more): its
+      // copies are the gather's count, or the bonus when that says more.
+      if (status !== 2) add(item, (count || 0) + (bonus > 0 ? Math.max(bonus, count || 0) : 0));
       if (extra) add(extra, extraCount || 1);
     }
     return {
       items: [...items].sort((a, b) => b[1] - a[1] || a[0] - b[0]),
       gathers: rows.length,
-      span: rows.length ? rows[rows.length - 1][0] - rows[0][0] : 0,
+      materials: [...items.values()].reduce((a, n) => a + n, 0),
+      // Time spent gathering: the time between gathers, breaks of 15
+      // minutes or more left out, so rates over days aren't diluted.
+      span: rows.reduce((t, r, i) => {
+        const gap = i ? r[0] - rows[i - 1][0] : 0;
+        return gap > 0 && gap < SESSION_GAP_MS ? t + gap : t;
+      }, 0),
     };
   }
   // A session: the gathers back from the newest until a gap of 15 minutes.
-  const SESSION_GAP_MS = 15 * 60_000;
   function sessionStart(rows) {
     if (!rows.length) return Infinity;
     let from = rows[rows.length - 1][0];
     for (let i = rows.length - 2; i >= 0 && from - rows[i][0] <= SESSION_GAP_MS; i--) from = rows[i][0];
     return from;
   }
-  globalThis.GatherGains = { gains, sessionStart };
+  globalThis.GatherGains = { gains, sessionStart, tally };
 
   function gainsList(rows, ledger) {
     const { node } = ledger;
@@ -200,7 +215,7 @@
     const out = [];
     const mins = Math.round(got.span / 60_000);
     const head = node("div", "sRow gHead");
-    head.append(node("span", "muted dLabel", g("gained")), node("span", "kRight muted dLabel", g("gathersIn")(ledger.num(got.gathers), g("dur")(Math.floor(mins / 60), mins % 60))));
+    head.append(node("span", "muted dLabel", g("gained")), node("span", "kRight muted dLabel", g("gathersIn")(ledger.num(got.gathers), ledger.num(got.materials), g("dur")(Math.floor(mins / 60), mins % 60))));
     out.push(head);
     // Per hour only once the stretch is long enough to say.
     const hours = got.span >= 10 * 60_000 ? got.span / 3_600_000 : 0;
@@ -209,7 +224,8 @@
       const line = node("div", "dSub gGain");
       const right = node("span", "kRight");
       right.append(node("b", null, `×${ledger.num(n)}`));
-      if (hours) right.append(node("small", "muted", ` ${g("perHour")(ledger.num(Math.round(n / hours)))}`));
+      const each = hours ? Math.round(n / hours) : 0;
+      if (each >= 1) right.append(node("small", "muted", ` ${g("perHour")(ledger.num(each))}`));
       line.append(node("span", `gName g${ledger.gradeOf ? ledger.gradeOf(item) : 0}`, ledger.itemName(item)), right);
       list.append(line);
     }
@@ -217,7 +233,7 @@
     return out;
   }
 
-  function card(name, s, ledger) {
+  function card(name, s, ledger, withStarts = false) {
     const { node } = ledger;
     const row = node("div", "drop");
     const top = node("div", "dTop");
@@ -234,7 +250,7 @@
       rate(seenStarts ? pc(s.startedFresh / seenStarts) : "—", g("startedFresh"), "listed"),
       rate(s.appraiserOf ? pc(s.appraiser / s.appraiserOf) : "—", g("appraiser"), "listed"));
     top.append(rates);
-    const bits = [`${ledger.num(s.gathers)} ${g("gathers")}`];
+    const bits = [`${ledger.num(s.gathers + s.failed)} ${g("gathers")}`, g("materials")(ledger.num(s.materials))];
     const r = range(s.appraiser, s.appraiserOf);
     if (s.appraiserOf) bits.push(`${g("appraiser")} ${g("of")(ledger.num(s.appraiser), ledger.num(s.appraiserOf))}${r ? ` (${g("likely")(pc(r[0]), pc(r[1]))})` : ""}`);
     const rs = range(s.startedFresh, seenStarts);
@@ -249,7 +265,25 @@
     const seen = node("span", "dSeen");
     seen.style.width = `${s.appraiserOf ? Math.min(100, (s.appraiser / s.appraiserOf) * 100) : 0}%`;
     bar.append(seen);
-    row.append(top, sub, bar);
+    row.append(top, sub);
+    // Each quality's chance at the start, lowest first, named by the item it
+    // gives and coloured by its grade.
+    if (withStarts && s.starts.size) {
+      const seen = [...s.starts.values()].reduce((a, n) => a + n, 0);
+      const line = node("div", "dSub gStart");
+      line.append(node("span", "muted", `${g("atStart")}: `));
+      const grade = (item) => (ledger.gradeOf ? ledger.gradeOf(item) : 0);
+      const parts = [...s.starts].sort((a, b) => grade(a[0]) - grade(b[0]) || a[0] - b[0]);
+      parts.forEach(([item, n], i) => {
+        const r = range(n, seen);
+        const bit = node("span", `gName g${grade(item)}`, `${ledger.itemName(item)} ${pc(n / seen)}`);
+        bit.title = `${g("of")(ledger.num(n), ledger.num(seen))}${r ? ` (${g("likely")(pc(r[0]), pc(r[1]))})` : ""}`;
+        if (i) line.append(node("span", "muted", " · "));
+        line.append(bit);
+      });
+      row.append(line);
+    }
+    row.append(bar);
     return row;
   }
 
@@ -295,7 +329,7 @@
     const list = node("div", "dList");
     if (herbs.size > 1) list.append(card(g("allHerbs"), tally(rows), ledger));
     for (const [base, herbRows] of [...herbs].sort((a, b) => b[1].length - a[1].length)) {
-      list.append(card(ledger.itemName(base), tally(herbRows), ledger));
+      list.append(card(ledger.itemName(base), tally(herbRows), ledger, true));
     }
     parts.push(list);
     if (!rows.length) parts.push(node("p", "kNote", g("none")));

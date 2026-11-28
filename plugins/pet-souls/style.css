@@ -1373,3 +1373,4 @@ body.compact .tabs { display: none; }
 .gSearch { margin: 4px 0 2px; }
 .gPager { justify-content: space-between; margin-top: 6px; }
 .gPage:disabled { opacity: 0.4; cursor: default; }
+.gStart { display: block; margin-top: 2px; white-space: normal; }
