@@ -25,7 +25,7 @@ Search by item or monster, pick a source, sort by the most seen, the luckiest (y
 
 ## Gathering
 
-**Gathering** shows what you gathered in the last hour, your latest session (back to a 15-minute break), today or a longer period: every item with how many you got and about how many per hour, the Plentiful Harvest copies and extras included. Below it, how often each node's gathers came out upgraded, by Herb Appraiser and at the start, and the latest gathers.
+**Gathering** shows what you gathered in the last 15 or 30 minutes, the last 1, 2, 4 or 8 hours, your latest session (back to a 15-minute break), today, yesterday or a longer period: every item with how many you got and about how many per hour, the Plentiful Harvest copies and extras included. Below it, how often each node's gathers came out upgraded, by Herb Appraiser and at the start, and how often they failed; and every gather, 20 to a page, with a search by item.
 
 ## Skins
 

@@ -1282,6 +1282,7 @@ body.marketOnly .nearby {
 body.tab-kinah .kinahView, body.tab-drops .dropsView, body.tab-gathering .gatheringView, body.tab-skins .skinsView { display: block; }
 body.tab-kinah:not(.popped) :is(.controls, .nearby, .head, .pets, .empty, .foot),
 body.tab-drops:not(.popped) :is(.controls, .nearby, .head, .pets, .empty, .foot),
+body.tab-gathering:not(.popped) :is(.controls, .nearby, .head, .pets, .empty, .foot),
 body.tab-skins:not(.popped) :is(.controls, .nearby, .head, .pets:not(.sList), .empty, .foot) { display: none; }
 body.popped .tabs, body.popped .kinahView, body.popped .dropsView, body.popped .gatheringView, body.popped .skinsView { display: none; }
 body.compact .tabs { display: none; }
@@ -1369,3 +1370,6 @@ body.compact .tabs { display: none; }
 .gHead { margin-top: 4px; }
 .gGain { display: flex; justify-content: space-between; gap: 8px; }
 .gGain .kRight { flex: none; font-variant-numeric: tabular-nums; }
+.gSearch { margin: 4px 0 2px; }
+.gPager { justify-content: space-between; margin-top: 6px; }
+.gPage:disabled { opacity: 0.4; cursor: default; }

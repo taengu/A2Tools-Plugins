@@ -1,5 +1,18 @@
 [
   {
+    "version": "0.8.9",
+    "en": "Gathering: more time ranges (15 and 30 minutes, 2, 4 and 8 hours, yesterday), the fail rate for each node, and the gathers list in pages of 20 with a search. The Pets list no longer shows under it.",
+    "ko": "채집: 더 많은 기간(15분, 30분, 2·4·8시간, 어제), 채집물별 실패율, 20개씩 페이지로 나뉘고 검색할 수 있는 채집 목록. 아래에 펫 목록이 더 이상 나오지 않습니다.",
+    "ja": "採集：期間を追加（15分・30分、2・4・8時間、昨日）、採集物ごとの失敗率、20件ずつのページと検索付きの採集一覧。下にペット一覧が表示されなくなりました。",
+    "de": "Sammeln: mehr Zeiträume (15 und 30 Minuten, 2, 4 und 8 Stunden, gestern), die Fehlschlagrate je Vorkommen und die Sammelliste in Seiten zu 20 mit Suche. Die Haustierliste erscheint nicht mehr darunter.",
+    "fr": "Récolte : plus de périodes (15 et 30 minutes, 2, 4 et 8 heures, hier), le taux d'échec par point, et la liste des récoltes par pages de 20 avec recherche. La liste des familiers n'apparaît plus en dessous.",
+    "es": "Recolección: más periodos (15 y 30 minutos, 2, 4 y 8 horas, ayer), la tasa de fallos por nodo y la lista de recolecciones en páginas de 20 con búsqueda. La lista de mascotas ya no aparece debajo.",
+    "pt": "Coleta: mais períodos (15 e 30 minutos, 2, 4 e 8 horas, ontem), a taxa de falha por ponto e a lista de coletas em páginas de 20 com busca. A lista de mascotes não aparece mais embaixo.",
+    "ru": "Сбор: больше периодов (15 и 30 минут, 2, 4 и 8 часов, вчера), доля неудач по каждому ресурсу и список сборов по 20 на странице с поиском. Список питомцев больше не показывается под ним.",
+    "zh-Hant": "採集：更多期間（15、30 分鐘，2、4、8 小時，昨天）、各採集點的失敗率，以及每頁 20 筆並可搜尋的採集列表。下方不再顯示寵物列表。",
+    "zh-Hans": "采集：更多期间（15、30 分钟，2、4、8 小时，昨天）、各采集点的失败率，以及每页 20 条并可搜索的采集列表。下方不再显示宠物列表。"
+  },
+  {
     "version": "0.8.8",
     "en": "Gathering: what you gathered in the last hour, your latest session (until a 15-minute break) or any period, every item with how many and about how many per hour, extras included. Drops, Gathering lists every item you gather too.",
     "ko": "채집: 최근 1시간, 최근 세션(15분 쉬기 전까지) 또는 원하는 기간에 채집한 모든 아이템을 개수와 시간당 개수와 함께 표시합니다(추가 보상 포함). 드롭의 채집에도 채집한 모든 아이템이 나옵니다.",
@@ -50,18 +63,5 @@
     "ru": "Кина: уникальная добыча учитывает каждый предмет один раз. Перенос снаряжения в хранилище и обратно или двойное оповещение игры о новом снаряжении больше не добавляют добычу, а уникальные материалы вроде фрагментов камня прорыва больше не показываются.",
     "zh-Hant": "基納：獨特掉落每件物品只計算一次。裝備存入或取出倉庫，或遊戲重複通知新裝備時不再增加，突破石碎片等獨特材料也不再列出。",
     "zh-Hans": "基纳：独特掉落每件物品只计算一次。装备存入或取出仓库，或游戏重复通知新装备时不再增加，突破石碎片等独特材料也不再列出。"
-  },
-  {
-    "version": "0.8.4",
-    "en": "Gathering history saves in smaller pages so long logs fit the meter's storage limit. Temporary write failures are retried, and existing history is retained.",
-    "ko": "채집 기록을 작은 페이지로 나누어 긴 기록도 미터의 저장 한도에 맞춥니다. 일시적인 저장 실패는 다시 시도하며 기존 기록은 유지합니다.",
-    "ja": "採集履歴を小さなページに分け、長い履歴もメーターの保存上限に収めます。一時的な書き込み失敗は再試行し、既存の履歴を保持します。",
-    "de": "Der Sammelverlauf wird in kleinen Seiten gespeichert, damit auch lange Verläufe ins Speicherlimit passen. Vorübergehend fehlgeschlagene Schreibvorgänge werden wiederholt; der vorhandene Verlauf bleibt erhalten.",
-    "fr": "L’historique de récolte est enregistré par petites pages pour respecter la limite du compteur. Les écritures qui échouent temporairement sont réessayées et l’historique existant est conservé.",
-    "es": "El historial de recolección se guarda en páginas pequeñas para ajustarse al límite del medidor. Se reintentan los fallos temporales de escritura y se conserva el historial existente.",
-    "pt": "O histórico de coleta é salvo em páginas menores para caber no limite do medidor. Falhas temporárias de gravação são tentadas novamente e o histórico existente é preservado.",
-    "ru": "История сбора сохраняется небольшими страницами, чтобы длинные журналы помещались в лимит счётчика. Временные ошибки записи повторяются, существующая история сохраняется.",
-    "zh-Hant": "採集歷史以較小的分頁儲存，長篇紀錄也能符合計量器的儲存上限。暫時寫入失敗時會重試，並保留現有歷史。",
-    "zh-Hans": "采集历史以较小的分页保存，使较长的记录也能符合统计器的存储上限。暂时写入失败时会重试，并保留已有历史。"
   }
 ]
